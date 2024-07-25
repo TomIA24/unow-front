@@ -1427,18 +1427,25 @@ align-items: center;
 
 }
   @media (min-width: 400px) and (max-width: 500px) {
+    .question{
+      font-size: 1.5rem;
+      margin-bottom: 30px;
+      margin-top: 30px;
+  
+    
+  }
     .questiontext{
       font-size: 2rem;
      
   
     }
     .questionsection {
-      margin-top: 20% ;
+      margin-top:25% ;
     }
     .questionquiz{
       
-      margin-right:5%;
-      margin-left: 5%;
+      margin-right:12%;
+      margin-left: 12%;
     
       }
     .scrumorg{
@@ -1550,17 +1557,39 @@ align-items: center;
     font-size: 1.4rem;
   
   }
-
+  .checkmarkcontainer,
+  .rdiocontainer {
+    font-size:1.4rem;
+    line-height: 2rem;
+    font-family: 'Lato';
+    margin-right: 3rem;
+  }
+  
   }
   @media (min-width: 500px) and (max-width: 520px) {
+    .checkmarkcontainer,
+    .rdiocontainer {
+      font-size:1.2rem;
+      line-height: 2rem;
+      font-family: 'Lato';
+      margin-right: 3rem;
+    }
+    .questionsection {
+      margin-top: 25% ;
+    }
+    .questionquiz{
+      
+      margin-right:12%;
+      margin-left: 12%;
+  
+      }
     .scrumorg{
       margin-top: 1px;
       width: 50%;
     }
     .backimage {
-     
-      height: 35vh;
-      border-radius: 0px 0px 29px 29px;
+      height: 20rem;
+      border-radius: 0px 0px 25px 25px;
    
   
     }
@@ -1999,12 +2028,12 @@ align-items: center;
       }
   @media (min-width: 760px) and (max-width: 800px) {
     .backimage {
-     
-      height: 42vh;
-  
+      height: 20rem;
+      border-radius: 0px 0px 25px 25px;
    
   
     }
+    
     .container{
       display: flex;
       flex-direction: row;
@@ -2206,9 +2235,8 @@ align-items: center;
     
     }
     .backimage {
-     
-      height: 45vh;
-  
+      height: 20rem;
+      border-radius: 0px 0px 25px 25px;
    
   
     }
@@ -2240,8 +2268,24 @@ align-items: center;
     font-size:2.5em;
   }
   .echectext span{
-    font-size:2rem;
+    font-size:1.7rem;
   }
+  .checkmarkcontainer,
+  .rdiocontainer {
+    font-size:1.2rem;
+    line-height: 2rem;
+    font-family: 'Lato';
+    margin-right: 3rem;
+  }
+.questionsection {
+    margin-top: 10% ;
+  }
+  .questionquiz{
+    
+    margin-right:6%;
+    margin-left: 6%;
+  
+    }
   }
 
   @media (min-width: 919px) and (max-width: 944px){
@@ -2466,7 +2510,7 @@ align-items: center;
 
   @media   (min-width: 1350px) and (max-width:1500px) {
     .questionsection {
-      margin-top: 5% ;
+      margin-top: -40% ;
     }
     .scoresection{
       flex-direction: column;
