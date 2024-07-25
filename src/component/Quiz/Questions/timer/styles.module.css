@@ -1,27 +1,22 @@
 .containerTimer {
-  /* position: fixed; */
-  /* right: 0; */
-  /* top: 50%; */
-  /* transform: translateY(-50%); */
-  /* margin-right: 10px; Optional: Adjust margin to suit your layout */
+ 
 }
 
 .timerContainer {
   display: flex;
-   flex-direction: column;
-  align-items: center;
-  justify-content: center; 
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
   position: relative;
-  /* width: 120px;
-  height: 120px; */
- 
+  width: 100%;
+
 }
 
 .timerSvg {
   transform: rotate(-90deg);
   /* width:140px; */
-  width: 100%;
-  height: 100%;
+  width: 50%;
+  height:100%;
    z-index: 100;
    /* background-color: #c8ff23; */
 }
@@ -47,7 +42,7 @@
 .timerText {
   position: absolute;
   top: 50%;
-   left: 48%; 
+   left: 75%; 
   transform: translate(-50%, -50%);
   font-size: 1rem;
   stroke: #ffffff; 
@@ -64,5 +59,143 @@ display: flex;
   font-weight: lighter;
   color: white;
 align-self: center;
-  /* margin-bottom: 5px; Optional: Adjust margin for spacing */
+  
+}
+@media (max-width: 326px) {
+  
+}
+
+@media (min-width: 327px) and (max-width: 366px) {
+ 
+}
+
+@media (min-width: 366px) and (max-width: 380px) {
+  .timerText {
+    position: absolute;
+    top: 50%;
+     left: 75%; 
+    transform: translate(-50%, -50%);
+    font-size: 1rem;
+    stroke: #ffffff; 
+    font-weight: bold;
+    color: white;
+  display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column
+  }
+  .timerContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+   
+  }
+  .timerSvg{
+    width:50%;
+    height: 100%;
+  }
+}
+
+@media (min-width: 380px) and (max-width: 470px) {
+  .containerTimer {
+ right: 1%;
+  }
+}
+
+@media (min-width: 470px) and (max-width: 530px) {
+
+}
+
+
+@media (min-width: 530px) and (max-width: 575px) {
+
+
+}
+@media (min-width: 575px) and (max-width: 650px) {
+
+}
+
+
+@media (min-width: 650px) and (max-width: 700px) {
+
+}
+
+
+@media (min-width: 700px) and (max-width: 760px) {
+ 
+}
+@media (min-width: 760px) and (max-width: 800px) {
+
+}
+
+
+@media (min-width: 800px) and (max-width: 876px) {
+
+
+  
+}
+
+
+@media (min-width: 876px) and (max-width: 900px) {
+
+}
+@media (min-width: 900px) and (max-width: 940px) {
+
+}
+@media (min-width: 940px) and (max-width: 1020px) {
+  
+ 
+}
+@media (min-width: 1021px) and (max-width: 1082px) {
+  
+  
+}
+@media (min-width: 1082px) and (max-width: 1500px) {
+
+
+
+}
+
+
+@media (min-width: 1500px) and (max-width: 1200px) {
+
+}
+
+@media (min-width: 1200px) and (max-width:1350px) {
+
+
+}
+@media (min-width: 1350px) and (max-width:1400px) {
+
+}
+@media (min-width:1400px) and (max-width:1450px) {
+ 
+}
+@media (min-width:1450px) and (max-width:1550px) {
+
+}
+@media (min-width:1500px) and (max-width:1700px) {
+ 
+}
+@media (min-width:1750px)and(max-width:1800px) {
+
+}
+
+@media (min-width:1810px) and (max-width:1848px){
+
+}
+@media (min-width:1850px) and (max-width:2300px){
+
+}
+
+@media (min-width: 1500px) and (max-width:1920px) {
+
+}
+
+@media (min-width: 1920px) and (max-width:2300px) {
+
+
 }

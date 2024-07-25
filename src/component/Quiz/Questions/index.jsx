@@ -17,7 +17,7 @@ const Quiz = ({startDate}) => {
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
-        const response = await axios.get(`http://localhost:6060/api/quiz/api/quiz/${numb}`);
+        const response = await axios.get(`http://localhost:5050/api/quiz/api/quiz/${numb}`);
         setQuestions(response.data);
         const initialAnswers = response.data.reduce((acc, _, idx) => ({ ...acc, [idx]: [] }), {});
         setSelectedAnswers(initialAnswers);
@@ -163,7 +163,7 @@ const Quiz = ({startDate}) => {
                 <img src="./images/quiz/copywright.png" alt="" className={styles.logoimag} />
               </div>
               <div className={styles.container}>
-                <div className={styles.containerTimer}>   <CircularTimer duration={180} onComplete={handleSubmit} className={styles.timer} /></div>
+                <div className={styles.containerTimer}>   <CircularTimer duration={5000} onComplete={handleSubmit} className={styles.timer} /></div>
 
                 <div className={styles.productcont}>
                   <img src="./images/quiz/scrumorg.png" alt="" className={styles.scrumorg} />
@@ -247,7 +247,7 @@ const Quiz = ({startDate}) => {
         ) : (
           questions.length > 0 && (
             <>
-
+<div  className={styles.questionquiz}>
               <div className={styles.questionsection}>
                 <div className={styles.questioncount}>
                   <div className={styles.questiontext}><span className={styles.questiontext}>Question {currentQuestion + 1}</span>/{questions.length}
@@ -304,6 +304,7 @@ const Quiz = ({startDate}) => {
                 ) : (
                   <button onClick={handleSubmit} className={styles.submitbtn}>Submit</button>
                 )}
+              </div>
               </div>
             </>
           )

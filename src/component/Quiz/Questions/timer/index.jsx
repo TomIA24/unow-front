@@ -4,15 +4,12 @@ import styles from './styles.module.css';
 const CircularTimer = ({ duration, onComplete }) => {
   const [timeLeft, setTimeLeft] = useState(duration);
   const [isComplete, setIsComplete] = useState(false);
-
-
+  const [radius, setRadius] = useState(60);
 
   const getSvgStyles = () => {
-    // Use JavaScript to determine cx and cy based on window size or other conditions
     const isSmallScreen = window.innerWidth < 600;
-    const cx = isSmallScreen ? 180 : 150; // Example condition for small screens
-    const cy = isSmallScreen ? 100 : 70;
-
+    const cx = isSmallScreen ? 150 : 150; // Adjusted for small screens
+    const cy = isSmallScreen ? 150 : 70; // Adjusted for small screens
     return { cx, cy };
   };
   const { cx, cy } = getSvgStyles();
@@ -37,24 +34,31 @@ const CircularTimer = ({ duration, onComplete }) => {
   }  if (timeLeft <= 120) {
     timerColor = '#E74C3C'; 
   }
-  const [radius, setRadius] = useState(60);
+
 
   useEffect(() => {
     const updateRadius = () => {
-      const isSmallScreen = window.innerWidth < 600;
-      setRadius(isSmallScreen ? 50 : 60);
+      const isSmallScreen = window.innerWidth;
+      if (isSmallScreen < 400 ){
+        setRadius(37);
+      }
+      else if (isSmallScreen < 500 ){
+        setRadius(40 );
+      } else if (isSmallScreen < 800 ){
+        setRadius(50);
+      }else{
+        setRadius(60 );
+      }
+      
     };
 
-   updateRadius();
-
+    updateRadius();
     window.addEventListener("resize", updateRadius);
-
 
     return () => {
       window.removeEventListener("resize", updateRadius);
     };
-  }, []); // Example condition for small screens
-
+  }, []);
   const circumference = 2 * Math.PI * radius;
   const offset = circumference - (timeLeft / duration) * circumference;
 
@@ -64,7 +68,6 @@ const CircularTimer = ({ duration, onComplete }) => {
     const remainingSeconds = seconds % 60;
     return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
   };
-
 
   return (
     <div className={styles.timerContainer}>
@@ -76,8 +79,8 @@ const CircularTimer = ({ duration, onComplete }) => {
           strokeWidth="9"
           fill="transparent"
           r={radius}
-          cx={cx}
-          cy={cy}
+          cx="50%"
+          cy="50%"
           style={{ strokeDasharray: circumference, strokeDashoffset: offset }}
         />
       </svg>

@@ -67,7 +67,7 @@ p{
    margin-bottom:10%;
    gap: 90px;
     padding-left: 12%; 
-   padding-right:  20%;
+   padding-right:  12%;
 }
 .imagebackground {
   width: 100%;
@@ -209,6 +209,42 @@ p{
 }
 
 @media (min-width: 327px) and (max-width: 366px) {
+  .instructionimage{
+    margin-top: 6vh;
+    width: 17rem;
+
+    right: 0;
+  }
+  .backimage {
+  
+    height: 12.5em;
+    border-radius: 0px 0px 30px 30px;
+  
+  
+  }
+  .product{
+    font-size: 1.2rem;
+    padding-left: 10%;
+    padding-right: 10%;
+ 
+
+
+  }
+  .start{  
+    width:15rem;
+    height: 2.5rem;
+    box-shadow: #1c4b82;
+    background-color: #1c4b82;
+    color: white;
+    font-size: 1em;
+    font-weight: bold;
+    text-align: center;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    align-items: center;
+    align-self: center;
+  }
   .continue{
     width:8rem;
     height:2.5rem;
@@ -229,26 +265,13 @@ p{
 
     right: 0;
   }
-  .backimage {
-  
-    height: 16vh;
-    border-radius: 0px 0px 25px 25px;
-  
-  
-  }
+
   .assessmentContainer{
     padding-left: 9%;
     padding-right: 9%;
     padding-top: 2%;
   }
-  .product{
-    font-size:1.3em;
-    padding-left: 9%;
-    padding-right: 9%;
- 
 
-
-  }
   .questiontext{
     font-size: 1.5rem;
  
@@ -279,17 +302,23 @@ p{
   list-style-type: disc; /* Ensure the list style is set to bullets */
   padding-left:5%; 
 }
-.textContainer{
+.textContainer ,.textContainer span{
   /* margin-top: 10%; */
  
   font-family: 'Lato';
   font-weight:500;
- font-size: 1rem;
+ font-size: 0.8rem;
   text-align:left;
   line-height: 2;
   letter-spacing: 1.5px;
 
 
+}
+.container{
+   
+  gap: 3rem;
+   padding-left: 12%; 
+  padding-right:  12%;
 }
 }
 
@@ -300,7 +329,7 @@ p{
      padding-left: 12%; 
     padding-right:  12%;
  }
- .textContainer{
+ .textContainer,.textContainer span{
 
  
   font-family: 'Lato';
@@ -316,32 +345,32 @@ p{
     width: 8rem;
   }
   .instructionimage{
-   margin-top: 6vh;
-    width: 12rem;
+    margin-top: 4rem;
+    width: 15rem;
 
     right: 0;
   }
   .backimage {
   
-    height: 19vh;
-    border-radius: 0px 0px 25px 25px;
+    height: 14.5em;
+    border-radius: 0px 0px 30px 30px;
   
   
-  }
-  .assessmentContainer{
-    padding-left: 10%;
-    padding-right: 10%;
-    padding-top: 2%;
   }
   .product{
-    margin-top: 2vh;
-    font-size:1.2em;
+    font-size: 1.2rem;
     padding-left: 10%;
     padding-right: 10%;
  
 
 
   }
+  .assessmentContainer{
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 2%;
+  }
+
   .underline{
   
     width:13%;
@@ -393,9 +422,19 @@ p{
 
  margin-right: 10%;
 }
+.start{  
+  width:15rem;
+  height: 2.5rem;
+  font-size: 1em;
+
+}
 }
 
-@media (min-width: 380px) and (max-width: 469px) {
+@media (min-width: 380px) and (max-width: 470px) {
+  .container{
+   
+    gap: 5rem;
+  }
   .textContainer{
 
    font-size: 1.2rem;
@@ -416,32 +455,32 @@ p{
     width: 8rem;
   }
   .instructionimage{
-   margin-top: 4.5vh;
+    margin-top: 6vh;
     width: 15rem;
-
+    margin-right: 9%;
     right: 0;
   }
   .backimage {
   
-    height: 16.5vh;
-    border-radius: 0px 0px 25px 25px;
+    height: 16em;
+    border-radius: 0px 0px 35px 35px;
   
   
-  }
-  .assessmentContainer{
-    padding-left: 10%;
-    padding-right: 10%;
-    padding-top: 2%;
   }
   .product{
-    margin-top: 1vh;
-    font-size:1.5em;
+    font-size: 1.4rem;
     padding-left: 10%;
     padding-right: 10%;
  
 
 
   }
+  .assessmentContainer{
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 2%;
+  }
+
 
   
 
@@ -483,6 +522,15 @@ p{
 
 
 }
+.start{  
+  width:15rem;
+  height: 3rem;
+  box-shadow: #1c4b82;
+  background-color: #1c4b82;
+  color: white;
+  font-size: 1.2em;
+ 
+}
 }
 
 @media (min-width: 470px) and (max-width: 530px) {
@@ -490,31 +538,32 @@ p{
     width: 8rem;
   }
   .instructionimage{
-   margin-top: 4.5vh;
+    margin-top: 6vh;
     width: 15rem;
 
     right: 0;
   }
   .backimage {
   
-    height: 19vh;
+    height: 15em;
     border-radius: 0px 0px 40px 40px;
   
   
   }
-  .assessmentContainer{
-    padding-left: 10%;
-    padding-right: 10%;
-    padding-top: 2%;
-  }
   .product{
-    font-size:1.8em;
+    font-size: 1.5rem;
     padding-left: 10%;
     padding-right: 10%;
  
 
 
   }
+  .assessmentContainer{
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 2%;
+  }
+
 
   
   .assessmentContainer{
@@ -527,15 +576,7 @@ p{
     padding-right: 10%;
     padding-top: 2%;
   }
-  .product{
-    margin-top: 1vh;
-    font-size:1.5em;
-    padding-left: 10%;
-    padding-right: 10%;
- 
 
-
-  }
 
   
 
@@ -577,7 +618,39 @@ p{
 
 
 }
- 
+.textContainer {
+
+   
+  font-family: 'Lato';
+  font-weight:500;
+ font-size: 1em;
+  text-align:left;
+  line-height: 2;
+  letter-spacing: 1.5px;
+
+
+}
+.start{  
+  width:15rem;
+  height: 2.5rem;
+  box-shadow: #1c4b82;
+  background-color: #1c4b82;
+  color: white;
+  font-size: 1em;
+  font-weight: bold;
+  text-align: center;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  align-items: center;
+  align-self: center;
+}
+.container{
+   
+  gap: 3rem;
+   padding-left: 12%; 
+  padding-right:  12%;
+}
 }
 
 
@@ -605,31 +678,31 @@ p{
     width: 8rem;
   }
   .instructionimage{
-   margin-top: 4.5vh;
-    width: 15rem;
-
+    margin-top: 6vh;
+    width: 17rem;
+    margin-right: 7%;
     right: 0;
   }
   .backimage {
   
-    height: 19vh;
-    border-radius: 0px 0px 40px 40px;
+    height: 16.2rem;
+    border-radius: 0px 0px 35px 35px;
   
   
-  }
-  .assessmentContainer{
-    padding-left: 10%;
-    padding-right: 10%;
-    padding-top: 2%;
   }
   .product{
-    font-size:1.8em;
+    font-size: 1.7rem;
     padding-left: 10%;
     padding-right: 10%;
  
 
 
   }
+  .assessmentContainer{
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 2%;
+  }
 
   
   .assessmentContainer{
@@ -641,15 +714,6 @@ p{
     padding-left: 10%;
     padding-right: 10%;
     padding-top: 2%;
-  }
-  .product{
-    margin-top: 1vh;
-    font-size:1.5em;
-    padding-left: 10%;
-    padding-right: 10%;
- 
-
-
   }
 
   
@@ -693,36 +757,37 @@ p{
 
 }
 }
-@media (min-width: 577px) and (max-width: 699px) {
+@media (min-width: 575px) and (max-width: 650px) {
   .logoimag{
     width: 8rem;
   }
   .instructionimage{
-
+    margin-top: 6vh;
     width: 18rem;
-
+    margin-right: 7%;
     right: 0;
   }
   .backimage {
- 
-    height: 19vh;
+  
+    height: 16.5em;
     border-radius: 0px 0px 40px 40px;
   
   
   }
-  .assessmentContainer{
-    padding-left: 10%;
-    padding-right: 10%;
-    padding-top: 2%;
-  }
   .product{
-    font-size:1.8em;
+    font-size: 1.6rem;
     padding-left: 10%;
     padding-right: 10%;
  
 
 
   }
+  .assessmentContainer{
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 2%;
+  }
+
 
   
   .assessmentContainer{
@@ -730,11 +795,116 @@ p{
     padding-right: 10%;
     padding-top: 2%;
   }
-
+  .textContainer ,.textContainer span{
+    /* margin-top: 10%; */
+   
+    font-family: 'Lato';
+    font-weight:500;
+   font-size: 1rem;
+    text-align:left;
+    line-height: 2;
+    letter-spacing: 1.5px;
+  
+  
+  }
+  .start{  
+    width:15rem;
+    height: 2.5rem;
+    box-shadow: #1c4b82;
+    background-color: #1c4b82;
+    color: white;
+    font-size: 1em;
+    font-weight: bold;
+    text-align: center;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    align-items: center;
+    align-self: center;
+  }
+  .container{
+   
+    gap: 3rem;
+     padding-left: 12%; 
+    padding-right:  12%;
+ }
 }
 
 
+@media (min-width: 650px) and (max-width: 700px) {
+  .logoimag{
+    width: 8rem;
+  }
+  .instructionimage{
+    margin-top: 6vh;
+    width: 19rem;
+   
+    margin-right: 8%;
+    right: 0;
+    right: 0;
+  }
+  .backimage {
+  
+    height: 17.5rem;
+    border-radius: 0px 0px 40px 40px;
+  
+  
+  }
+  .product{
+    font-size: 1.7rem;
+    padding-left: 10%;
+    padding-right: 10%;
+ 
 
+
+  }
+  .assessmentContainer{
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 2%;
+  }
+
+
+  
+  .assessmentContainer{
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 2%;
+  }
+  .textContainer ,.textContainer span{
+    /* margin-top: 10%; */
+   
+    font-family: 'Lato';
+    font-weight:500;
+   font-size: 1rem;
+    text-align:left;
+    line-height: 2;
+    letter-spacing: 1.5px;
+  
+  
+  }
+  .start{  
+    width:15rem;
+    height: 2.5rem;
+    box-shadow: #1c4b82;
+    background-color: #1c4b82;
+    color: white;
+    font-size: 1em;
+    font-weight: bold;
+    text-align: center;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    align-items: center;
+    align-self: center;
+  }
+  .container{
+   
+    gap: 3rem;
+     padding-left: 12%; 
+    padding-right:  12%;
+ }
+}
 
 
 @media (min-width: 700px) and (max-width: 760px) {
@@ -742,14 +912,14 @@ p{
     width: 10rem;
   }
   .instructionimage{
- 
-    width: 20rem;
+    margin-top: 6vh;
+    width: 18rem;
 
     right: 0;
   }
   .backimage {
   
-    height: 21vh;
+    height: 16.5rem;
     border-radius: 0px 0px 40px 40px;
   
   
@@ -760,7 +930,7 @@ p{
     padding-top: 2%;
   }
   .product{
-    font-size: 36px;
+    font-size: 2rem;
     padding-left: 10%;
     padding-right: 10%;
  
@@ -797,21 +967,21 @@ p{
   .container{
    
     gap: 5rem;
-     padding-left: 13%; 
+     padding-left: 12%; 
     padding-right:  12%;
  }
   .logoimag{
     width: 10rem;
   }
   .instructionimage{
-    margin-top: 5.5vh;
+    margin-top: 6vh;
     width: 20rem;
 
     right: 0;
   }
   .backimage {
   
-    height: 23vh;
+    height:18rem;
     border-radius: 0px 0px 40px 40px;
   
   
@@ -955,6 +1125,11 @@ p{
  }
 }  */
 @media (min-width: 800px) and (max-width: 876px) {
+  .container{
+   
+    gap: 4rem;
+   
+  }
   .questiontext{
     font-size: 2rem;
  
@@ -1005,8 +1180,8 @@ p{
   }
   .backimage {
   
-    height: 29vh;
-    border-radius: 0px 0px 35px 35px;
+    height:18rem;
+    border-radius: 0px 0px 40px 40px;
   
   
   }
@@ -1029,7 +1204,7 @@ p{
 }
 
 
-@media (min-width: 876px) and (max-width: 919px) {
+@media (min-width: 876px) and (max-width: 900px) {
   .questiontext{
     font-size: 2rem;
  
@@ -1075,13 +1250,126 @@ p{
   }
   .instructionimage{
     margin-top: 6vh;
-    width: 23.5rem;
+    width: 22rem;
 
     right: 0;
   }
+ 
+  .assessmentContainer{
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 2%;
+  }
+  .product{
+    font-size:1.8em;
+    padding-left: 10%;
+    padding-right: 10%;
+ 
+
+
+  }
+
+  
+  .assessmentContainer{
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 2%;
+  }
+  .questiontext{
+    font-size: 2rem;
+ 
+
+  }
+  .instructiontext{
+    font-size: 20px;
+  margin-top: 5.5vh;
+    margin-bottom: 20px;
+    margin-top: 1rem;
+ 
+
+  }
+  
+  
+  .instructiontext ul {
+    list-style-type: disc; /* Ensure the list style is set to bullets */
+    padding-left:3%; /* Add padding to align the bullet points */
+}
+
+.instructiontext li {
+    margin-bottom: 10px; /* Optional: add some space between list items for better readability */
+    font-size: 20px;
+  }
+.instructiontext li b{
+  margin-bottom: 10px;
+  font-size: 20px; /* Optional: add some space between list items for better readability */
+}
+.continuebutton{
+
+  margin-right: 17%;
+ }
+ .continue{
+  width:9rem;
+  height:2.5rem;
+
+
+
+}
+.backimage {
+  
+  height:19rem;
+  border-radius: 0px 0px 40px 40px;
+
+
+}
+}
+@media (min-width: 900px) and (max-width: 940px) {}
+@media (min-width: 900px) and (max-width: 940px) {
+  .questiontext{
+    font-size: 2rem;
+ 
+
+  }
+  .instructiontext{
+    font-size: 20px;
+  margin-top: 5.5vh;
+    margin-bottom: 20px;
+    margin-top: 1rem;
+ 
+
+  }
+  
+  
+  .instructiontext ul {
+    list-style-type: disc; /* Ensure the list style is set to bullets */
+    padding-left:3%; /* Add padding to align the bullet points */
+}
+
+.instructiontext li {
+    margin-bottom: 10px; /* Optional: add some space between list items for better readability */
+    font-size: 15px;
+  }
+.instructiontext li b{
+  margin-bottom: 10px;
+  font-size: 15px; /* Optional: add some space between list items for better readability */
+}
+.continuebutton{
+
+  margin-right: 17%;
+ }
+ .continue{
+  width:9rem;
+  height:2.5rem;
+
+
+
+}
+
+  .logoimag{
+    width: 10rem;
+  }
   .backimage {
   
-    height: 23vh;
+    height:19rem;
     border-radius: 0px 0px 40px 40px;
   
   
@@ -1145,8 +1433,99 @@ p{
 
 
 }
+  .instructionimage{
+    margin-top: 5vh;
+    width: 22.5rem;
+    right: 0;
+  }
 }
-@media (min-width: 919px) and (max-width: 1082px) {
+@media (min-width: 940px) and (max-width: 1020px) {
+  
+  .backimage {
+  
+    height:19.5rem;
+    border-radius: 0px 0px 40px 40px;
+  
+  
+  }
+  .instructionimage{
+    margin-top: 5vh;
+    width: 23.5rem;
+
+    right: 0;
+  }
+
+.questiontext{
+    font-size: 2.5rem;
+ 
+
+  }
+  .instructiontext{
+    font-size: 20px;
+  margin-top: 5.5vh;
+    margin-bottom: 20px;
+    margin-top: 1rem;
+ 
+
+  }
+  
+  
+  .instructiontext ul {
+    list-style-type: disc; /* Ensure the list style is set to bullets */
+    padding-left:2%; /* Add padding to align the bullet points */
+}
+
+.instructiontext li {
+    margin-bottom: 10px; /* Optional: add some space between list items for better readability */
+    font-size: 20px;
+  }
+.instructiontext li b{
+  margin-bottom: 10px;
+  font-size: 17px; /* Optional: add some space between list items for better readability */
+}
+.continuebutton{
+
+  margin-right: 17%;
+ }
+ .continue{
+  width:9rem;
+  height:2.5rem;
+
+
+
+}
+  .logoimag{
+    width: 10rem;
+  }
+
+  .assessmentContainer{
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 2%;
+  }
+  .product{
+    font-size:2em;
+    padding-left: 10%;
+    padding-right: 10%;
+ 
+
+
+  }
+
+  
+  .assessmentContainer{
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 2%;
+  }
+  .container{
+   
+    gap: 5rem;
+     padding-left: 12%; 
+    padding-right:  12%;
+ }
+}
+@media (min-width: 1021px) and (max-width: 1082px) {
   .questiontext{
     font-size: 2.5rem;
  
@@ -1190,17 +1569,26 @@ p{
     width: 10rem;
   }
   .instructionimage{
-    margin-top: 6vh;
-    width: 24rem;
-
-    right: 0;
-  }
-  .backimage {
+     margin-top: 4.5vh;
+     width: 23rem; 
   
-    height: 23vh;
+     right: 0;
+   }
+   .backimage {
+  
+    height:18.5rem;
     border-radius: 0px 0px 40px 40px;
   
   
+  }
+  .product{
+    margin-top: 1vh;
+    font-size:2em;
+    /* padding-left: 10%;
+    padding-right: 10%; */
+ 
+
+
   }
   .assessmentContainer{
     padding-left: 10%;
@@ -1225,13 +1613,49 @@ p{
   .container{
    
     gap: 5rem;
-     padding-left: 13%; 
+     padding-left: 12%; 
     padding-right:  12%;
  }
   
 }
-
 @media (min-width: 1082px) and (max-width: 1200px) {
+  .instructionimage{
+    margin-top: 5.5vh;
+     width: 22rem;
+     margin-right: 9%;
+     right: 0;
+   }
+  .backimage {
+  
+    height: 18.5rem;
+    border-radius: 0px 0px 40px 40px;
+  
+  
+  }
+  .logoimag{
+    width: 12rem;
+  }
+  .product{
+    margin-top: 0.2rem;
+    font-size:2em;
+    /* padding-left: 10%;
+    padding-right: 10%; */
+ 
+
+
+  }
+
+
+}
+
+@media (min-width: 1200px) and (max-width: 1300px) {
+  .backimage {
+  
+    height:19rem;
+    border-radius: 0px 0px 40px 40px;
+  
+  
+  }
   .product{
     font-size: 36px;
     padding-left: 10%;
@@ -1253,32 +1677,41 @@ p{
    .logoimag{
      width: 10rem;
    }
-   .backimage {
+   /* .backimage {
   
     height: 35vh;
     border-radius: 0px 0px 40px 40px;
   
   
-  }
+  } */
 }
 
-@media (min-width: 1200px) and (max-width:1350px) {
+
+@media (min-width: 1300px) and (max-width:1350px) {
   .backimage {
   
-    height: 35vh;
+    height: 21rem;
     border-radius: 0px 0px 40px 40px;
   
   
   }
   .instructionimage{
-   
-   width: 27rem;
-   /* margin-top: 5em; */
+    margin-top: 2rem;
+    width: 27rem; 
+    position:absolute;
     right: 0;
   }
   .logoimag{
     width: 10rem;
   }
+  .container{
+   
+    gap: 5rem;
+     padding-left: 13%; 
+    padding-right:  13%;
+ }
+
+
 
 }
 @media (min-width: 1350px) and (max-width:1400px) {
@@ -1308,14 +1741,12 @@ p{
 }
 @media (min-width:1450px) and (max-width:1550px) {
   .instructionimage{
-
-  
-    /* width: 35%; */
+    width: 29.5rem; 
     position:absolute;
     right: 0;
   }
 }
-@media (min-width:1500px) and (max-width:1700px) {
+@media (min-width:1550px) and (max-width:1700px) {
   .instructionimage{
     width: 29.5rem; 
     position:absolute;
@@ -1371,7 +1802,7 @@ p{
 @media (min-width: 1500px) and (max-width:1920px) {
   .backimage {
   
-    height: 45.5vh;
+    height: 21em;
     border-radius: 0px 0px 40px 40px;
   
   

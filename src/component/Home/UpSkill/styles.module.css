@@ -5,7 +5,8 @@
   align-items: center;
   justify-content: center;
   background-color: #3E4678;
-  margin: 8% 0%;
+  margin-bottom: 3rem;
+  margin-top: 7rem;
   border-bottom-right-radius: 25px;
   border-top-left-radius: 25px;
   padding: 7%;
@@ -77,6 +78,8 @@
 }
 
 .moreButton {
+  width: 5.87rem;
+  height: 2.5rem;
   padding: 0.7rem 0.4rem;
   background-color: white;
   color: #1c4b82;
@@ -96,19 +99,18 @@
 }
 @media (max-width: 430px) {
   .allContainer {
-    margin: 1rem 0px;
+    margin: 2rem 0px;
     padding: 0rem;
     height: 50%;
     margin-left: 0%;
   }
   .title {
     font-size: 10px;
-   margin-top: -2%;
+    margin-top: -1%;
   }
   .image, .image1 {
     width: 100%;
   }
-  
   .paragraph {
     font-size: 6px;  
     margin-top: 1rem;
@@ -119,31 +121,65 @@
     padding: 0.5rem 0.4rem;
     font-size: 6px;
     margin-bottom: 20%;
+    width: 6rem;
+
+  }
+}
+@media (max-width: 550px) and (min-width: 430px){
+  .allContainer {
+    margin: 3rem 0px;
+    padding: 0rem;
+    height: 50%;
+    margin-left: 0%;
+  }
+  .title {
+    font-size: 15px;
+   margin-top: -2%;
+  }
+  .image, .image1 {
+    width: 100%;
+  }
+  
+  .paragraph {
+    font-size: 7px;  
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    width: 60%;
+  }
+  .moreButton {
+    padding: 0.5rem 0.4rem;
+    font-size: 7px;
+    margin-bottom: 20%;
+    width: 6rem;
+    height: 2rem;
   }
 }
 
-@media (min-width: 431px) and (max-width: 499px){
+@media (min-width: 550px) and (max-width: 600px){
   .allContainer {
-    margin: 5rem 0px;
+    margin: 3rem 0px;
     padding: 3rem;
     height: auto;
   }
 
   .title {
-    font-size: 12px;
+    font-size: 19px;
     margin-top: -5%;
+  }
+  .moreButton {
+    font-size: 8%;
   }
 
   .paragraph {
-    font-size: 7px;  
+    font-size: 8px;  
     margin-top: 1rem;
     margin-bottom: 1rem;
-    width: 80%;
+    width: 65%;
   }
 
   .moreButton {
     padding: 0.7rem 1.2rem;
-    font-size: 6px;
+    font-size: 7px;
     margin-bottom: -3%;
     margin-top: 0px;
   }
@@ -158,11 +194,11 @@
   }
 }
 
-@media (min-width: 500px) and (max-width: 600px) {
+@media (min-width: 600px) and (max-width: 700px) {
   .title {
-    font-size: 17px;
+    font-size: 23px;
     width: 200%;
-    margin-top: -5%;
+    margin-top: -10%;
   }
 
   .paragraph {
@@ -184,29 +220,37 @@
   .image, .image1 {
     width: 100%;
   }
+  .allContainer {
+    margin-top: 5rem;
+    margin-bottom: 5%;
+  }
 }
 
-@media (min-width: 601px) and (max-width: 800px) {
+@media (min-width: 700px) and (max-width: 800px) {
   .title {
-    font-size: 20px;
+    font-size: 25px;
     width: 200%;
     margin-bottom: -10%;
-    margin-top: -5%;
+    margin-top: -7%;
+    
   }
   .allContainer {
     margin-left: 1%;
+    margin-top: 4rem;
+    margin-bottom: 8%;
   }
 
   .paragraph {
     font-size: 12px;
     margin-top: 5rem;
-    width: 85%;
+    width: 80%;
     margin-bottom: 2rem;
   }
 
   .moreButton {
-    padding: 0.7rem 1.5rem;
+    padding: 0.2rem 0.5rem;
     font-size: 10px;
+    width: 6.5rem;
   }
 
   .mainContainer {
@@ -222,14 +266,14 @@
   }
 }
 
-@media (min-width: 801px) and (max-width: 900px) {
+@media (min-width: 800px) and (max-width: 900px) {
   .title {
     font-size: 30px;
-    margin-top: -3%;
-    font-size: 20px;
+    margin-top: -5%;
+    
   }
   .allContainer {
-    margin: 3rem 0px;
+    margin-top: 5rem;
     padding: 50px;
     height: auto;
     margin-left: 0%;
@@ -244,8 +288,15 @@
     margin-top: 2rem;
   }
 }
+@media (max_width: 1025px) and (min-width: 992px) {
+  .allContainer {
+    margin: 3rem 0px;
+    padding: 3rem;
+    height: auto;
+  }
+}
 
-@media (min-width: 901px) and (max-width: 1200px) {
+@media (min-width: 900px) and (max-width: 1200px) {
   .title {
     font-size: 35px;
     width: 200%;
@@ -266,13 +317,15 @@
  .image, .image1 {
   width: 100%;
  }
+ 
+
 }
 
 @media (min-width: 1201px) {
   .title {
     font-size: 35px;
     width: 200%;
-    margin-top: 0%;
+    margin-top: -10%;
   }
 
   .paragraph {
@@ -283,9 +336,10 @@
   }
 
   .moreButton {
-    padding: 0.8rem 1.6rem;
+    padding: 0.2rem 0.2rem;
     font-size: 12px;
     line-height: 1;
+    margin-bottom: -5%;
   }
 
   .mainContainer {
@@ -304,10 +358,11 @@
   .title {
     font-size: 8px;
     width: 100%;
-    margin-top: -5%;
+    margin-top: -3%;
   }
   .moreButton {
     padding: 0.5rem 0.4rem;
     font-size: 6px;
+    margin-bottom: 12%;
   }
 }

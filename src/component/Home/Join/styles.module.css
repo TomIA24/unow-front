@@ -156,7 +156,7 @@
   text-align: center;
   margin-bottom: 5%;
   line-height: 20px;
-  font-size: 15px;
+  font-size: 17px;
   width: 100%;
 }
 
@@ -203,6 +203,11 @@
 @media (min-width:1301px) {
   .aboutContainer {
     padding-bottom: 10%;
+  }
+  .descriptionParagh {
+    font-size: 20px;
+    line-height: 40px;
+    width: 80%;
   }
   .aboutContainercollab {
     padding-bottom: 10%;
@@ -277,9 +282,14 @@
   .readButton {
     margin-top: 10px;
   }
+  .descriptionParagh {
+    font-size: 15px;
+    line-height: 25px;
+    width: 80%;
+  }
 }
 
-@media (min-width: 731px) and (max-width: 950px) {
+@media (min-width: 732px) and (max-width: 950px) {
   .aboutContainer {
     padding-left: 10px;
     padding-right: 10px;
@@ -301,7 +311,7 @@
   .descriptionParagh {
     text-align: center;
     margin-bottom: 5%;
-    line-height: 30px;
+    line-height: 25px;
     font-size: 15px;
     width: 100%;
   }
@@ -345,7 +355,7 @@
   text-align: center;
 }
 }
-@media (max-width: 700px) and (min-width: 501px){
+@media (max-width: 700px) and (min-width: 550px){
   .card {
     width: 120px;
     height: 120px;
@@ -395,11 +405,11 @@
   }
   .imageConsultant {
     width: 100%;
-    height: 80%;
+    height: 100%;
   }
   .applyButton {
     font-size: 8px;
-    width: 30%;
+    width: 6rem;
     
   }
   .descriptionParagh {
@@ -408,7 +418,7 @@
     line-height: 16px;
   }
 }
-@media (min-width: 701px) and (max-width: 730px){
+@media (min-width: 701px) and (max-width: 731px){
   .consultantsTitle { 
     font-size: 23px;
     align-self: center;
@@ -452,8 +462,31 @@
     white-space: nowrap;
   }
 }
-
-@media (max-width: 501px) and (min-width: 401px) {
+@media (max-width: 550px) and (min-width: 501px) {
+  
+  .title {
+    font-size: 10px;
+    margin-top: 0%;
+    margin-bottom: 3%;
+    color: #cd6214;
+    font-weight: bolder;
+    text-align: center;
+  }
+ 
+  
+  .consultantsTitle {
+    font-size: 10px;
+  }
+  .descriptionParagh {
+    font-size: 10px;
+    line-height: 15px;
+  }
+  .applyButton {
+    font-size: 8px;
+  }
+ 
+}
+@media (max-width: 500px) and (min-width: 401px) {
   .descriptionParagh {
     font-weight: normal;
     font-size: 8px;

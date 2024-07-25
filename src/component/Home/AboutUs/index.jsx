@@ -22,10 +22,8 @@ const About = () => {
           <p className={styles.underline}></p>
           </div>
           <div className={styles.container}>
-            <h1 className={styles.title}>U!NOW</h1>
-
             <div className={styles.subtitleContainer}>
-              <p className={styles.subtitle}><b>an innovative, holistic e-learning platform</b></p>
+              <p className={styles.subtitle}> <b style={{ fontWeight: 800 }}>U!NOW an innovative, holistic e-learning platform</b></p>
             </div>
             <div className={styles.imageWrapper}  > <img src={Team} alt="" className={styles.imageAboutUs} /> </div>
             <div className={styles.description}>
