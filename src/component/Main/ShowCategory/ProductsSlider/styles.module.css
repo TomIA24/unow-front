@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Nunito', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    margin: 0 5px;
+}
+
+
+/* ///////////////////////////////////////////////// */
+
+.slide_container {
+    width: 100%;
+    background-color: white;
+    /* background-color: blue; */
+}
+
+.step_cats_container {
+    width: 100%;
+    height: auto;
+    padding: 10px 0;
+    grid-column-gap: 22px;
+    grid-row-gap: 10px;
+    background-color: rgba(70, 145, 232, 0.08);
+    /* background-color: red; */
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content: center;
+}
+
+.topTrainingElement {
+    background-color: white;
+    width: 284px;
+    min-width: 284px;
+    max-width: 284px;
+    height: 300PX;
+    margin: 15px 20px;
+    padding: 5px;
+    border-radius: 4px;
+    box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.25);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+}
+
+.imgTop {
+    border-bottom: 1px solid #706f6f5a;
+    height: 195px;
+    width: 284px;
+    border-radius: 4px 4px 0 0;
+    box-shadow: 0px 0px 2px 0 rgba(0, 0, 0, 0.25);
+}
+
+.infoCourse {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+}
+
+.card_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    /* background-color: #345AA4; */
+}
+
+.category_tag {
+    margin: 5px 0;
+    background-color: rgba(255, 214, 0, 0.5);
+    width: fit-content;
+}
+
+.category {
+    font-family: 'Nunito', sans-serif;
+    font-size: 8px;
+    font-weight: 700;
+    color: #000000;
+    margin: 5px 15px;
+    /*border-top: 1px solid #E0E0E0;*/
+}
+
+.card_price {
+    font-family: 'Nunito', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    color: #343434;
+}
+
+.cardLevel {
+    width: 100%;
+    font-family: 'Nunito', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: #706F6F;
+}
+
+.cardTitle {
+    max-width: 280px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: #343434;
+    width: 100%;
+    align-self: flex-start;
+}
+
+.cardCenterHr {
+    background-color: #E0E0E0;
+    width: 150px;
+    height: 1px;
+    border: none;
+    border-radius: 50px;
+    align-self: center;
+}
+
+.card_footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.rating_text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 8px;
+    font-weight: bold;
+    color: #818181;
+}
+
+.card_footer_subscribers {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.subscribers_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    /* background-color: #0E2256; */
+}
+
+.user_avatar_subscribers {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    /* background-color: red; */
+}

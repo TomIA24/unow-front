@@ -1,0 +1,236 @@
+/* .background {
+  
+  background-image: url('../assets/backg.png'); 
+  background-size:cover; 
+  background-position: bottom;
+  background-repeat: no-repeat; 
+} */
+.container {
+  position: relative;
+  
+}
+
+.background {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Ensure the background is behind the content */
+  background-size: cover; /* Ensure the background image covers the entire container */
+  background-position: center; /* Center the background image */
+  background-repeat: no-repeat; /* Prevent the background image from repeating */
+}
+
+@media  (max-width: 327px)  {
+  .background {
+   height: 88%;   
+  }
+}
+@media (min-width: 327px) and (max-width: 346px) {
+  .background {
+   height: 88%;   
+  }
+}
+@media (min-width: 346px) and (max-width: 420px) {
+  .background {
+   height: 88%;   
+  }
+}
+
+@media (min-width: 420px) and (max-width: 440px) {
+  .background {
+   height: 88%;   
+  }
+}
+@media (min-width: 440px) and (max-width: 490px) {
+  .background {
+   height: 88%;   
+  }
+}
+@media (min-width: 490px) and (max-width: 530px) {
+  .background {
+   height: 88%;   
+  }
+}
+@media (min-width: 530px) and (max-width: 574px) {
+  .background {
+   height: 88%;   
+  }
+}
+@media (min-width: 574px) and (max-width: 608px) {
+  .background {
+   height: 89%;   
+  }
+}
+/* For small screens (phones) */
+@media (min-width: 608px) and (max-width: 701px) {
+  .background {
+   height: 91%;   
+  }
+}
+/* For small screens (phones) */
+@media (min-width: 701px) and (max-width: 748px) {
+  .background {
+   height: 100%;   
+  }
+}
+@media (min-width: 748px) and (max-width: 768px) {
+  .background {
+     height: 100%;  
+  }
+}
+@media (min-width: 768px) and (max-width: 776px) {
+  .background {
+     height: 98%;  
+  }
+}
+/* For medium screens (tablets) */
+@media (min-width: 777px) and (max-width: 799px) {
+  .background {
+     height: 99%;  
+  }
+}
+
+/* For medium screens (tablets) */
+@media (min-width: 800px) and (max-width: 890px) {
+  .background {
+     height: 98%;  
+  }
+}
+@media (min-width: 890px) and (max-width: 1000px) {
+  .background {
+      height: 96%;
+  }
+}
+
+
+/* For large screens (small desktops) */
+@media (min-width: 1000px) and (max-width: 1100px) {
+  .background {
+      height: 94%;
+  }
+}
+/* For extra large screens (large desktops) */
+@media (min-width: 1100px) and (max-width: 1240px) {
+  .background {
+    height: 94%;
+  }
+}
+/* For extra large screens (large desktops) */
+@media (min-width: 1240px) and (max-width: 1286px) {
+  .background {
+    height: 94%;
+  }
+}
+@media (min-width: 1286px) and (max-width:1340px)  {
+  .background {
+    height: 94%;
+  }
+}
+@media (min-width: 1340px) and (max-width:1400px)  {
+  .background {
+    height: 94%;
+  }
+}
+@media (min-width: 1400px) and (max-width:1527px)  {
+  .background {
+    height: 94%;
+  }
+}
+@media (min-width: 1527px) and (max-width:1580px)  {
+  .background {
+    height: 94%;
+  }
+}
+@media (min-width: 1580px) and (max-width:1650px)  {
+  .background {
+    height: 94%;
+  }
+}
+@media (min-width: 1650px) and (max-width:1750px)  {
+  .background {
+    height: 88%;
+  }
+}
+@media (min-width: 1750px) and (max-width:1850px)  {
+  .background {
+    height: 88%;
+  }
+}
+@media (min-width: 1850px) and (max-width:1950px)  {
+  .background {
+    height: 88%;
+  }
+}
+@media (min-width: 1950px) and (max-width:2050px)  {
+  .background {
+    height: 88%;
+  }
+}
+@media (min-width: 2050px) and (max-width:2150px)  {
+  .background {
+    height: 89%;
+  }
+}
+@media (min-width: 2150px) and (max-width:2250px)  {
+  .background {
+    height: 89%;
+  }
+}
+@media (min-width: 2250px) and (max-width:2350px)  {
+  .background {
+    height: 89%;
+  }
+}
+@media (min-width: 2350px) and (max-width:2450px)  {
+  .background {
+    height: 89%;
+  }
+}
+@media (min-width: 2450px) and (max-width: 2800px)  {
+  .background {
+    height: 93%;
+  }
+}
+@media (min-width: 2800px) and (max-width: 3000px)  {
+  .background {
+    height: 93%;
+  }
+}
+@media (min-width: 3000px) and (max-width: 3500px)  {
+  .background {
+    height: 96%;
+  }
+}
+@media (min-width: 3500px)   {
+  .background {
+    height: 96%;
+}}
+
+
+
+
+
+.imagebackground {
+  width: 100%;
+  height: 100%;
+   /* Ensure the image covers the entire background */
+}
+
+
+
+.content {
+  position: relative;
+  z-index: 1; /* Ensure the content is above the background */
+ 
+}
+.Featured{
+margin-top: 5%;
+}
+
+
+.margin{
+  margin-left: 50px;
+  margin-right: 50px;
+}

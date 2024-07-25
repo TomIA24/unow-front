@@ -1,0 +1,531 @@
+.background {
+    position: absolute;
+ 
+    width: 100%;
+    /* height: 30vh; */
+    z-index: -1; /* Ensure the background is behind the content */
+  }
+  
+  .imagebackground {
+    width: 100%;
+    height: 100%;
+     /* Ensure the image covers the entire background */
+  }
+
+  .navContainer{
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+
+  .backimage {
+    background: url('../../assets/quizbackground.png') no-repeat center center;
+    background-size: cover;
+    height: 40vh;
+    border-radius: 0px 0px 50px 50px;
+  }
+  .underline{
+  
+    width:9%;
+    background-color: #CD6214;
+    padding-top: 5px;
+    border-radius: 100px;
+    margin-top: 10px;
+  }
+  
+  .pdown{
+    color: #FFFFFF;
+    font-size: 40px;
+font-weight: bold;
+  }
+  .text{
+    color: #FFFFFF;
+    margin-top: 2em;
+  }
+  .pdowncontainer{
+    padding-left: 13.5%;
+    padding-right: 13.5%;
+    padding-top: 100px;
+  }
+
+
+
+
+
+  @media (max-width: 326px) {
+    .card {
+      margin: 6%;
+      width: clamp(89px, 20vw, 240px);
+      height: clamp(91px, 20vw, 240px);
+      border-radius: 5, 5rem;
+    }
+    .rightArrow {
+      right: -30px;
+    }
+  }
+  
+  @media (min-width: 327px) and (max-width: 366px) {
+    .pdown{
+      color: #ffffff;
+      font-size:1.7rem;
+  
+    }
+    .pdowncontainer{
+     
+      padding-top:2em;
+    }
+  
+ 
+    .underline{
+  
+      width:18%;
+      background-color: #CD6214;
+      padding-top: 3px;
+      border-radius: 100px;
+      margin-top:0.4rem;
+    }
+    .backimage {
+   
+      height: 18rem;
+      border-radius: 0px 0px 22px 22px;
+      display: flex;
+      flex-direction: column;
+
+      
+    
+  
+    }
+   
+    .pdowncontainer{
+     
+      padding-top:4em;
+    }
+
+    .text{
+      margin-top: 10px;
+    }
+    .navContainer{
+      padding-left: 0%;
+      padding-right: 10%;
+    }
+  }
+  @media (min-width: 367px) and (max-width: 469px) {
+    .pdown{
+      color: #ffffff;
+      font-size:1.9rem;
+  
+    }
+    .pdowncontainer{
+     
+      padding-top:2.5em;
+    }
+  
+ 
+    .underline{
+  
+      width:25%;
+      background-color: #CD6214;
+      padding-top: 2px;
+      border-radius: 100px;
+      margin-top:0.5rem;
+    }
+    .backimage {
+   
+      height: 18rem;
+      border-radius: 0px 0px 22px 22px;
+      display: flex;
+      flex-direction: column;
+
+      
+    
+  
+    }
+    .underline{
+  
+      width:20%;
+      background-color: #CD6214;
+      padding-top: 3px;
+      border-radius: 100px;
+      margin-top:0.5rem;
+    }
+    .pdowncontainer{
+     
+      padding-top:4em;
+    }
+
+    .text{
+      margin-top: 10px;
+    }
+    .navContainer{
+      /* padding-left: 8%; */
+      padding-right: 10%;
+    }
+  }
+
+  /* @media (max-width: 700px) {
+    .pdown{
+      color: #a81212;
+      font-size:2rem;
+  
+    }
+  
+  } */
+  /* @media (max-width: 400px) {
+    .pdown{
+      color: #12a84c;
+      font-size:1rem;
+  
+    }
+  
+  }   */
+  @media (min-width: 469px) and (max-width: 576px) {
+    .pdown{
+      color: #ffffff;
+      font-size:2rem;
+  
+    }
+    .pdowncontainer{
+     
+      padding-top:2.5em;
+    }
+  
+ 
+    .underline{
+  
+      width:25%;
+      background-color: #CD6214;
+      padding-top: 3px;
+      border-radius: 100px;
+      margin-top:0.5rem;
+    }
+    .backimage {
+   
+      height: 18rem;
+      border-radius: 0px 0px 22px 22px;
+      display: flex;
+      flex-direction: column;
+
+      
+    
+  
+    }
+    .underline{
+  
+      width:15%;
+      background-color: #CD6214;
+      padding-top: 5px;
+      border-radius: 100px;
+      margin-top: 10px;
+    }
+    .pdowncontainer{
+     
+      padding-top:4em;
+    }
+
+    .text{
+      margin-top: 10px;
+    }
+  }
+
+  
+  
+  @media (min-width: 576px) and (max-width: 700px) {
+
+    .pdown{
+      color: #ffffff;
+      font-size:2.1rem;
+  
+    }
+    .pdowncontainer{
+     
+      padding-top:3em;
+    }
+  
+ 
+    .underline{
+  
+      width:25%;
+      background-color: #CD6214;
+      padding-top: 5px;
+      border-radius: 100px;
+      margin-top:0.5rem;
+    }
+    .backimage {
+   
+      height: 18rem;
+      border-radius: 0px 0px 22px 22px;
+      display: flex;
+      flex-direction: column;
+
+      
+    
+  
+    }
+    .underline{
+  
+      width:15%;
+      background-color: #CD6214;
+      padding-top: 5px;
+      border-radius: 100px;
+      margin-top: 10px;
+    }
+    .pdowncontainer{
+     
+      padding-top:4em;
+    }
+
+    .text{
+      margin-top: 10px;
+    }
+
+  }
+  @media (min-width: 577px) and (max-width: 699px) {
+    .pdown{
+      color: #ffffff;
+      font-size:2.1rem;
+  
+    }
+    .pdowncontainer{
+     
+      padding-top:3em;
+    }
+  
+ 
+    .underline{
+  
+      width:25%;
+      background-color: #CD6214;
+      padding-top: 5px;
+      border-radius: 100px;
+      margin-top:0.5rem;
+    }
+    .backimage {
+   
+      height: 18rem;
+      border-radius: 0px 0px 22px 22px;
+      display: flex;
+      flex-direction: column;
+
+      
+    
+  
+    }
+    .underline{
+  
+      width:15%;
+      background-color: #CD6214;
+      padding-top: 5px;
+      border-radius: 100px;
+      margin-top: 10px;
+    }
+    .pdowncontainer{
+     
+      padding-top:4em;
+    }
+
+    .text{
+      margin-top: 10px;
+    }
+  }
+  @media (min-width: 700px) and (max-width: 780px) {
+    .pdown{
+      color: #ffffff;
+      font-size:2.1rem;
+  
+    }
+    .pdowncontainer{
+     
+      padding-top:3em;
+    }
+  
+ 
+    .underline{
+  
+      width:25%;
+      background-color: #CD6214;
+      padding-top: 5px;
+      border-radius: 100px;
+      margin-top:0.5rem;
+    }
+    .backimage {
+   
+      height: 18rem;
+      border-radius: 0px 0px 22px 22px;
+      display: flex;
+      flex-direction: column;
+
+      
+    
+  
+    }
+    .underline{
+  
+      width:10%;
+      background-color: #CD6214;
+      padding-top: 5px;
+      border-radius: 100px;
+      margin-top: 10px;
+    }
+    .pdowncontainer{
+     
+      padding-top:4em;
+    }
+
+    .text{
+      margin-top: 10px;
+    }
+  }
+  
+  
+  
+  
+  
+  @media (min-width: 700px) and (max-width: 764px) {
+  
+  }
+  
+  @media (min-width: 765px) and (max-width: 1082px) {
+    .pdown{
+      color: #ffffff;
+      font-size:2.1rem;
+  
+    }
+    .pdowncontainer{
+     
+      padding-top:3em;
+    }
+  
+ 
+    .underline{
+  
+      width:25%;
+      background-color: #CD6214;
+      padding-top: 5px;
+      border-radius: 100px;
+      margin-top:0.5rem;
+    }
+    .backimage {
+   
+      height: 18rem;
+      border-radius: 0px 0px 22px 22px;
+      display: flex;
+      flex-direction: column;
+
+      
+    
+  
+    }
+    .underline{
+  
+      width:10%;
+      background-color: #CD6214;
+      padding-top: 5px;
+      border-radius: 100px;
+      margin-top: 10px;
+    }
+    .pdowncontainer{
+     
+      padding-top:4em;
+    }
+
+    .text{
+      margin-top: 10px;
+    }
+    .text{
+      margin-top: 10px;
+    }
+  }
+    
+  @media (min-width: 1020px) and (max-width:1082px) {
+    .pdown{
+      color: #ffffff;
+      font-size:2.1rem;
+  
+    }
+    .pdowncontainer{
+     
+      padding-top:3em;
+    }
+  
+ 
+    .underline{
+  
+      width:25%;
+      background-color: #CD6214;
+      padding-top: 5px;
+      border-radius: 100px;
+      margin-top:0.5rem;
+    }
+    .backimage {
+   
+      height: 18rem;
+      border-radius: 0px 0px 22px 22px;
+      display: flex;
+      flex-direction: column;
+
+      
+    
+  
+    }
+    .underline{
+  
+      width:10%;
+      background-color: #CD6214;
+      padding-top: 5px;
+      border-radius: 100px;
+      margin-top: 10px;
+    }
+    .pdowncontainer{
+     
+      padding-top:4em;
+    }
+
+    .text{
+      margin-top: 10px;
+    }
+  }
+  
+  @media (min-width: 1082px) and (max-width:1300px) {
+
+
+    .backimage {
+   
+      height: 20rem;
+      border-radius: 0px 0px 25px 2p5x;
+      display: flex;
+      flex-direction: column;
+
+      
+    
+  
+    }
+    .pdown{
+    
+      font-size: 2rem;
+  
+    }
+
+    .pdowncontainer{
+   
+      padding-top:5em;
+    }
+ 
+  }
+  
+  @media (min-width: 1300px) and (max-width:1500px) {
+    .text{
+      margin-top: 20px;
+    }
+ 
+  }
+
+  @media (min-width: 1500px) and (max-width:1920px) {
+    .text{
+      margin-top: 20px;
+    }
+ 
+    .pdowncontainer{
+      padding-left: 13.5%;
+      padding-right: 13.5%;
+      padding-top:5em;
+    }
+  }

@@ -1,0 +1,176 @@
+.Welcome {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  height: 100%;
+  flex-wrap: wrap;
+}
+
+.wave {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  img{
+
+      max-width: 99vw;
+    }
+}
+
+.logo {
+  position: absolute;
+  top: 5%;
+  left: 5%;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 50%;
+  padding: 1.5rem;
+  left: 0;
+  height: 100%;
+  font-weight: 700;
+}
+
+.title {
+  color: black;
+  text-transform: uppercase;
+  font-size: 3vw;
+  font-weight: 700;
+  text-align: center;
+}
+
+.highlight {
+  color: #cd6214;
+  margin: 0 5px;
+}
+
+.text {
+  color: black;
+  text-transform: uppercase;
+  margin-top: 3rem;
+  font-size: 15px;
+  width: 80%;
+  font-weight: 400;
+  text-align: center;
+}
+
+.featuresList {
+  width: 80%;
+  margin-top: 3rem;
+  font-weight: 500;
+  font-size: 20px;
+  list-style: none;
+  padding: 0;
+}
+
+.featuresList li {
+  margin-bottom: 0.5rem;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 3rem;
+  width: 100%;
+}
+
+.signupButton {
+  width: 318px;
+  height: 48px;
+  background: linear-gradient(360deg, #345aa4 0%, #e2e0f6 100%);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.14);
+  border-radius: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 18px;
+}
+
+.continueButton {
+  color: #ababab;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+}
+
+.coverImage {
+  background-image: url("https://unow.tn/welcome.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+}
+
+@media (max-width: 768px) {
+  .description {
+    width: 100%;
+    position: relative;
+    padding: 2rem;
+  }
+
+  .coverImage {
+    display: none;
+  }
+
+  .title {
+    font-size: 5vw;
+  }
+
+  .highlight {
+    font-size: 5vw;
+  }
+
+  .text,
+  .featuresList {
+    font-size: 12px;
+  }
+
+  .featuresList li {
+    font-size: 14px;
+  }
+
+  .buttons {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .signupButton,
+  .continueButton {
+    width: 80%;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 6vw;
+  }
+
+  .highlight {
+    font-size: 6vw;
+  }
+
+  .text,
+  .featuresList {
+    font-size: 10px;
+  }
+
+  .featuresList li {
+    font-size: 12px;
+  }
+
+  .signupButton,
+  .continueButton {
+    width: 100%;
+  }
+}

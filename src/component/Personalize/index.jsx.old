@@ -1,0 +1,417 @@
+import styles from "./styles.module.css";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { IoIosArrowForward, IoMdArrowDropright } from "react-icons/io";
+
+const Personalize = () => {
+  const [error, setError] = useState("");
+
+  const [oneOut, setOneOut] = useState(false);
+  const [twoOut, setTwoOut] = useState(false);
+  const [threeOut, setThreeOut] = useState(false);
+  const [fourOut, setFourOut] = useState(false);
+
+  const [one, setOne] = useState(true);
+  const [two, setTwo] = useState(false);
+  const [three, setThree] = useState(false);
+  const [four, setFour] = useState(false);
+
+  const [otherUp, setOtherUp] = useState(false);
+  const [otherUpShow, setOtherUpShow] = useState(false);
+  const [otherUpShowSubmit, setOtherUpShowSubmit] = useState(false);
+
+  const [learningType, setLearningType] = useState("");
+  const [learningReason, setLearningReason] = useState("");
+  const [learningDomain, setLearningDomain] = useState("");
+  const [learningCertif, setLearningCertif] = useState("");
+
+  const location = useLocation();
+  const { data } = location.state || {};
+
+  const navigate = useNavigate();
+
+  const handleChange = ({ currentTarget: input }) => {
+    setLearningReason(input.value);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log("login");
+    try {
+      const config = {
+        headers: {
+           
+           
+           
+             
+        }
+        ,
+      };
+      const url = `${process.env.REACT_APP_API}/api/Candidat/Signup`;
+      const { data: res } = await axios.post(
+        url,
+        {
+          ...data,
+          personalized: {
+            learningType: learningType,
+            learningReason: learningReason,
+            learningDomain: learningDomain,
+            learningCertif: learningCertif,
+          },
+        },
+        config
+      );
+      navigate("/login", { state: { signup: true } });
+      console.log(res.message);
+    } catch (error) {
+      if (
+        error.response &&
+        error.response.status >= 400 &&
+        error.response.status <= 500
+      ) {
+        setError(error.response.data.message);
+        setOneOut(false);
+        setTwoOut(false);
+        setThreeOut(false);
+        setFourOut(false);
+
+        setOne(true);
+        setTwo(false);
+        setThree(false);
+        setFour(false);
+
+        setOtherUp(false);
+        setOtherUpShow(false);
+        setOtherUpShowSubmit(false);
+
+        setLearningType("");
+        setLearningReason("");
+        setLearningDomain("");
+        setLearningCertif("");
+
+        navigate("/signup", {
+          state: { errorState: error.response.data.message },
+        });
+      }
+    }
+  };
+
+  return (
+    <div className={styles.backSignup}>
+      <div className={styles.blurBackground}></div>
+      <Link className={styles.Close} to="/">
+        Home
+        <IoIosArrowForward size={30} />
+      </Link>
+      {one ? (
+        <div
+          className={`${styles.SignupContainer} ${
+            !oneOut ? styles.zoom_out : styles.zoom_in
+          }`}
+        >
+          <div className={styles.Title}>
+            <p>What do you want to discover ?</p>
+          </div>
+          <div className={styles.form_container}>
+            <button
+              onClick={async () => {
+                setLearningType("courses");
+                setOneOut(true);
+                await new Promise((resolve) => setTimeout(resolve, 1000));
+                setOne(false);
+                setTwo(true);
+              }}
+              className={styles.btn_choose}
+            >
+              Courses
+              <span className={styles.btn_choose_courses}>📹</span>{" "}
+            </button>
+            <button
+              onClick={async () => {
+                setLearningType("trainings");
+                setOneOut(true);
+                await new Promise((resolve) => setTimeout(resolve, 1000));
+                setOne(false);
+                setTwo(true);
+              }}
+              className={styles.btn_choose}
+            >
+              Trainings
+              <span className={styles.btn_choose_courses}>👨‍🏫</span>{" "}
+            </button>
+            <button
+              onClick={async () => {
+                setLearningType("both");
+                setOneOut(true);
+                await new Promise((resolve) => setTimeout(resolve, 1000));
+                setOne(false);
+                setTwo(true);
+              }}
+              className={styles.btn_choose}
+            >
+              Both
+              <span className={styles.btn_choose_courses}>🔥</span>{" "}
+            </button>
+          </div>
+        </div>
+      ) : (
+        ""
+      )}
+      {two ? (
+        <div
+          className={`${styles.SignupContainer} ${
+            !twoOut ? styles.zoom_out : styles.zoom_in
+          }`}
+        >
+          <div className={styles.Title}>
+            <p>For which reason ?</p>
+          </div>
+          <div
+            className={`${styles.form_container_scale_buttons} ${
+              otherUp
+                ? styles.form_container_for_scale_up
+                : styles.form_container_for_scale_down
+            }`}
+          >
+            <div
+              className={`${styles.two_buttons_for_scale}
+              ${
+                otherUp
+                  ? styles.two_buttons_for_scale_up
+                  : styles.two_buttons_for_scale_down
+              }
+              `}
+            >
+              <button
+                onClick={async () => {
+                  setLearningReason("personal");
+                  setTwoOut(true);
+                  await new Promise((resolve) => setTimeout(resolve, 1000));
+                  setTwo(false);
+                  setThree(true);
+                }}
+                className={`${styles.btn_choose} ${
+                  otherUp ? styles.other_up : styles.other_down
+                }`}
+              >
+                Personal
+                <span className={styles.btn_choose_courses}>🏠</span>{" "}
+              </button>
+              <button
+                onClick={async () => {
+                  setLearningReason("professional");
+                  setTwoOut(true);
+                  await new Promise((resolve) => setTimeout(resolve, 1000));
+                  setTwo(false);
+                  setThree(true);
+                }}
+                className={`${styles.btn_choose} ${
+                  otherUp ? styles.other_up : styles.other_down
+                }`}
+              >
+                Professional
+                <span className={styles.btn_choose_courses}>👨‍💻</span>{" "}
+              </button>
+            </div>
+            <div className={`${styles.one_buttons_for_scale}`}>
+              <button
+                onClick={async () => {
+                  if (otherUp) {
+                    setOtherUp(false);
+                    await new Promise((resolve) => setTimeout(resolve, 400));
+                    setOtherUpShowSubmit(false);
+                    await new Promise((resolve) => setTimeout(resolve, 600));
+                    setOtherUpShow(false);
+                  } else {
+                    setOtherUp(true);
+                    setOtherUpShow(true);
+                    await new Promise((resolve) => setTimeout(resolve, 700));
+                    setOtherUpShowSubmit(true);
+                  }
+
+                  // setTwoOut(true);
+                  // await new Promise((resolve) => setTimeout(resolve, 1000));
+                  // setTwo(false);
+                  // setThree(true);
+                }}
+                className={styles.btn_choose}
+              >
+                {otherUp ? "" : "Other"}
+                <span className={styles.btn_choose_courses}>
+                  {otherUp ? "🔙" : "➕"}
+                </span>{" "}
+              </button>
+              {/* input */}
+              {otherUpShow ? (
+                <div className={styles.form_input_other}>
+                  <input
+                    type="text"
+                    placeholder="Other..."
+                    name="other"
+                    onChange={handleChange}
+                    value={learningReason}
+                    required
+                    className={`${styles.input} ${
+                      otherUp ? styles.other_up_input : styles.other_down_input
+                    }`}
+                  />
+                  {otherUpShowSubmit ? (
+                    <button
+                      type="button"
+                      onClick={async () => {
+                        if (learningReason !== "") {
+                          setTwoOut(true);
+                          await new Promise((resolve) =>
+                            setTimeout(resolve, 1000)
+                          );
+                          setTwo(false);
+                          setThree(true);
+                        }
+                      }}
+                      className={styles.btn_choose}
+                    >
+                      <span className={styles.btn_choose_courses}>✔️</span>{" "}
+                    </button>
+                  ) : (
+                    ""
+                  )}
+                </div>
+              ) : (
+                ""
+              )}
+            </div>
+          </div>
+        </div>
+      ) : (
+        ""
+      )}
+      {three ? (
+        <div
+          className={`${styles.SignupContainer} ${
+            !threeOut ? styles.zoom_out : styles.zoom_in
+          }`}
+        >
+          <div className={styles.Title}>
+            <p>For which domain you're here ?</p>
+          </div>
+          <div className={styles.form_container}>
+            <button
+              onClick={async () => {
+                setLearningDomain("it");
+                setThreeOut(true);
+                await new Promise((resolve) => setTimeout(resolve, 1000));
+                setThree(false);
+                setFour(true);
+              }}
+              className={styles.btn_choose}
+            >
+              IT
+              <span className={styles.btn_choose_courses}>💻</span>{" "}
+            </button>
+            <button
+              onClick={async () => {
+                setLearningDomain("non it");
+
+                setThreeOut(true);
+                await new Promise((resolve) => setTimeout(resolve, 1000));
+                setThree(false);
+                setFour(true);
+              }}
+              className={styles.btn_choose}
+            >
+              non IT
+              <span className={styles.btn_choose_courses}>🗃️</span>{" "}
+            </button>
+            <button
+              onClick={async () => {
+                setLearningDomain("both");
+                setThreeOut(true);
+                await new Promise((resolve) => setTimeout(resolve, 1000));
+                setThree(false);
+                setFour(true);
+              }}
+              className={styles.btn_choose}
+            >
+              Both
+              <span className={styles.btn_choose_courses}>🔥</span>{" "}
+            </button>
+          </div>
+        </div>
+      ) : (
+        ""
+      )}
+      {four ? (
+        <div
+          className={`${styles.SignupContainer} ${
+            !fourOut ? styles.zoom_out : styles.zoom_in
+          }`}
+        >
+          <div className={styles.Title}>
+            <p>
+              Would you want{" "}
+              {learningType === "trainings"
+                ? "trainings"
+                : `${
+                    learningType === "courses"
+                      ? "courses"
+                      : "trainings and courses"
+                  }`}{" "}
+              certified or not ?
+            </p>
+          </div>
+          <form className={styles.form_container} onSubmit={handleSubmit}>
+            <button
+              onClick={async () => {
+                setLearningCertif("certified");
+                setFourOut(true);
+                await new Promise((resolve) => setTimeout(resolve, 1000));
+                setFour(false);
+              }}
+              type="submit"
+              className={styles.btn_choose}
+            >
+              certified
+              <span className={styles.btn_choose_courses}>💻</span>{" "}
+            </button>
+            <button
+              onClick={async () => {
+                setLearningCertif("not certified");
+                setFourOut(true);
+                await new Promise((resolve) => setTimeout(resolve, 1000));
+                setFour(false);
+              }}
+              type="submit"
+              className={styles.btn_choose}
+            >
+              not certified
+              <span className={styles.btn_choose_courses}>🗃️</span>{" "}
+            </button>
+            <button
+              onClick={async () => {
+                setLearningCertif("both");
+                setFourOut(true);
+                await new Promise((resolve) => setTimeout(resolve, 1000));
+                setFour(false);
+              }}
+              type="submit"
+              className={styles.btn_choose}
+            >
+              Both
+              <span className={styles.btn_choose_courses}>🔥</span>{" "}
+            </button>
+          </form>
+        </div>
+      ) : (
+        ""
+      )}
+      {!one & !two & !three & !four ? (
+        <div className={styles.SignupContainer}></div>
+      ) : (
+        ""
+      )}
+    </div>
+  );
+};
+
+export default Personalize;

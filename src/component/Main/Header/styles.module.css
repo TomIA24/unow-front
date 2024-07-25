@@ -1,0 +1,73 @@
+.header{
+  
+  width:100%;
+  border-radius:10px ;
+ 
+}
+
+
+.carousel-container {
+  position: relative;
+}
+
+.customDot {
+  width: 10px; /* Size of the dots */
+  height: 10px; /* Size of the dots */
+  margin: 3px 5px;
+  background-color: #ccc; /* Default color of the dots */
+  border-radius: 50%; /* Makes the dots circular */
+  cursor: pointer; /* Indicates that the dots are clickable */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition effects */
+}
+
+.customDot.active {
+  background-color: #B66326; /* Color when active */
+  transform: scale(1.2); /* Slightly enlarge the active dot */
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .customDot {
+      width: 4px; /* Smaller dots for mobile */
+      height: 4px;
+      margin-bottom: -15px;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .customDot {
+      width: 5px; /* Default size for tablets */
+      height: 5px;
+      margin-bottom: -7px;
+  }
+}
+
+@media (min-width: 769px) {
+  .customDot {
+      width: 8px; /* Larger dots for desktop */
+      height: 8px;
+      margin-bottom: -2px;
+  }
+}
+
+
+.customDot.active {
+  background-color: #333; /* Couleur du point actif */
+}
+
+.customDotContainer {
+  position: absolute;
+  bottom: 10px; /* Place les points en bas de l'image */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  z-index: 10; /* Assurez-vous que z-index est suffisamment élevé */
+}
+
+.header {
+  width: 100%;
+  height: auto;
+}
+
+

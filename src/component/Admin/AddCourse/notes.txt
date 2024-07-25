@@ -1,0 +1,10 @@
+		Title: "",
+		Trainer: "",
+		Description: "",
+		Goals: "",
+		WhoShouldAttend: "",
+		CourseContent: "",
+		PracticalWork: "",
+		Category: "",
+		Thumbnail: "",
+		Videos: ""

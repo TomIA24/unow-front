@@ -1,0 +1,15 @@
+{
+  "slides": [
+
+ 
+    {
+      "src": "/src/assets/img/n.png",
+      "alt": "Image 3 for carousel"
+    },
+    {
+      "src": "/src/assets/img/unw.png",
+      "alt": "Image 3 for carousel"
+    }
+  ]
+}
+

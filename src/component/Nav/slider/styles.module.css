@@ -1,0 +1,293 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    /* font-family: 'Nunito', sans-serif; */
+}
+
+.slide {
+    display: flex;
+    flex-direction: column;
+    color: #ffffff;
+}
+
+.menuIcon{
+    color: #ffffff ;
+    font-size: 50px
+
+}
+@media (min-width: 377px) and (max-width: 577px) {
+    .menuIcon{/* Styles pour les tablettes et petits appareils */
+        font-size: 50%;
+    
+}
+}
+.logoimage {
+    width: 100%;
+}
+@media (max-width: 300px)  {
+    .logoimage {
+        width: 60px; /* Adjust the width for small screens */
+        margin-left: 16%;
+    }
+}
+@media (min-width: 300px) and (max-width: 320px) {
+    .logoimage {
+        width: 96%; /* Adjust the width for small screens */
+        margin-left: 16%;
+    }
+}
+
+/* For screens up to 350px */
+@media (min-width: 320px) and (max-width: 350px) {
+    .logoimage {
+        width: 96%; /* Adjust the width for small screens */
+        margin-left: 18%;
+    }
+}
+
+/* For screens between 351px and 400px */
+@media (min-width: 351px) and (max-width: 400px) {
+    .logoimage {
+        width: 75%;
+        margin-left: 30%;
+    }
+}
+
+/* For screens between 401px and 450px */
+@media (min-width: 401px) and (max-width: 450px) {
+    .logoimage {
+        width: 69%;
+        margin-left: 25%;
+    }
+}
+
+/* For screens between 451px and 500px */
+@media (min-width: 451px) and (max-width: 500px) {
+    .logoimage {
+        width: 75%;
+        margin-left: 12%;
+    }
+}
+
+/* For screens between 501px and 550px */
+@media (min-width: 501px) and (max-width: 550px) {
+    .logoimage {
+        width: 80%;
+        margin-left: 17%;
+    }
+}
+
+/* For screens between 551px and 600px */
+@media (min-width: 551px) and (max-width: 600px) {
+    .logoimage {
+        width: 84%;
+        margin-left: 18%;
+    }
+}
+
+/* For screens between 601px and 650px */
+@media (min-width: 601px) and (max-width: 650px) {
+    .logoimage {
+        width: 95%;
+    }
+}
+
+/* For screens between 651px and 700px */
+@media (min-width: 651px) and (max-width: 700px) {
+    .logoimage {
+        width: 90%;
+    }
+}
+
+/* For screens between 701px and 750px */
+@media (min-width: 701px) and (max-width: 750px) {
+    .logoimage {
+        width: 100%;
+    }
+}
+
+/* For screens between 751px and 800px */
+@media (min-width: 751px) and (max-width: 800px) {
+    .logoimage {
+        width: 100%;
+    }
+}
+
+
+.logo {
+    width: 100%;
+    font-size: 36px;
+    font-weight: 800;
+    color: #ffffff;
+    align-self: flex-start;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  
+}
+
+.logoslider {
+    width: 100%;
+    font-size: 36px;
+    font-weight: 800;
+    color: #2e22ce;
+    align-self: flex-start;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  
+}
+
+.logo p {
+    margin: 15px;
+}
+
+.Links {
+    width: 80%;
+    flex: 2;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.Links a {
+    text-decoration: none;
+    margin: 10px 5px;
+}
+
+.nav_btn {
+    font-size: 19px;
+    color: #1C4B82;
+  
+    font-weight: 700;
+    border: none;
+}
+
+.nav_btn_special_light {
+    composes: nav_btn;
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.15);
+    background-color: white;
+    border-radius: 4px;
+    width: 87px;
+    height: 34px;
+}
+@media (max-width: 300px) {
+    .nav_btn_special_light {
+        width: 54px; /* Adjust width for smaller screens */
+        height: 30px; /* Adjust height for smaller screens */
+        margin-left: 54%;
+    }
+}
+
+
+/* For screens up to 350px */
+@media (min-width: 300px) and (max-width: 350px) {
+    .nav_btn_special_light {
+        width: 58px; /* Adjust width for smaller screens */
+        height: 30px; /* Adjust height for smaller screens */
+        margin-left: 66%;
+    }
+}
+
+/* For screens between 351px and 400px */
+@media (min-width: 351px) and (max-width: 400px) {
+    .nav_btn_special_light {
+        width: 75px;
+        height: 32px;
+        margin-left: 45%;
+    }
+}
+
+/* For screens between 401px and 450px */
+@media (min-width: 401px) and (max-width: 450px) {
+    .nav_btn_special_light {
+        width: 80px;
+        height: 32px;
+        margin-left: 45%;
+    }
+}
+
+/* For screens between 451px and 500px */
+@media (min-width: 451px) and (max-width: 500px) {
+    .nav_btn_special_light {
+        width: 82px;
+        height: 33px;
+    }
+}
+
+/* For screens between 501px and 550px */
+@media (min-width: 501px) and (max-width: 550px) {
+    .nav_btn_special_light {
+        width: 85px;
+        height: 33px;
+    }
+}
+
+/* For screens between 551px and 600px */
+@media (min-width: 551px) and (max-width: 600px) {
+    .nav_btn_special_light {
+        width: 87px;
+        height: 34px;
+    }
+}
+
+/* For screens between 601px and 650px */
+@media (min-width: 601px) and (max-width: 650px) {
+    .nav_btn_special_light {
+        width: 87px;
+        height: 34px;
+    }
+}
+
+/* For screens between 651px and 700px */
+@media (min-width: 651px) and (max-width: 700px) {
+    .nav_btn_special_light {
+        width: 87px;
+        height: 34px;
+    }
+}
+
+/* For screens between 701px and 750px */
+@media (min-width: 701px) and (max-width: 750px) {
+    .nav_btn_special_light {
+        width: 87px;
+        height: 34px;
+    }
+}
+
+/* For screens between 751px and 800px */
+@media (min-width: 751px) and (max-width: 800px) {
+    .nav_btn_special_light {
+        width: 87px;
+        height: 34px;
+    }
+}
+
+
+.nav_btn_special_dark {
+    composes: nav_btn;
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.15);
+    background-color: #1C4B82;
+    border-radius: 4px;
+    width: 87px;
+    height: 34px;
+    color: white !important;
+    font-weight: 600 !important;
+}
+
+.nav_btn_profile {
+    composes: nav_btn;
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.15);
+    background-color: white;
+    border-radius: 4px;
+    height: 34px;
+    padding: 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+

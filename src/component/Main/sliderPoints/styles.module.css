@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Nunito', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    margin: 0 5px;
+}
+
+
+/* ///////////////////////////////////////////////// */
+
+.slide_container {
+    width: 84.5%;
+    background-color: white;
+    /* background-color: blue; */
+}
+
+.step_cats_container {
+    width: 100%;
+    height: auto;
+    padding: 10px 0;
+    grid-column-gap: 22px;
+    grid-row-gap: 10px;
+    background-color: rgba(70, 145, 232, 0.08);
+    /* background-color: red; */
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content: center;
+}
+
+.category_container {
+    width: 400px;
+    height: 125px;
+    /* background-color: aqua; */
+    background-color: white;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 2px 2px 5.2px rgba(0, 0, 0, 0.15);
+    transition: box-shadow 0.2s ease-in-out;
+    cursor: pointer;
+    border-radius: 15px;
+}
+
+.category_container:hover {
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.637);
+}
+
+.stepper_container {
+    background-color: rgba(70, 145, 232, 0.08);
+}
+
+.category_img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.category_img img {
+    margin: auto 2.5px;
+    width: 120px;
+    height: 120px;
+    border-radius: 13px 0px 0px 13px;
+}
+
+.category_decription {
+    height: 80%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.category_decription_title {
+    max-width: 230px;
+}
+
+.category_decription_title p {
+    font-size: 18px;
+    color: #000;
+    font-weight: 700;
+    font-family: 'Nunito', sans-serif;
+    text-align: left;
+}
+
+.category_devider {
+    height: 2px;
+    width: 80%;
+    border-radius: 10px;
+}
+
+.category_decription_txt_gen {
+    font-weight: 600;
+    font-family: 'Nunito', sans-serif;
+    text-align: left;
+}
+
+.category_decription_stats {
+    font-size: 16px;
+    color: #9F9F9F;
+}

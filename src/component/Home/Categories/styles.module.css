@@ -1,0 +1,707 @@
+/* Base styles for imageNext and imagePrev */
+.imageNext,
+.imagePrev {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* Media queries for different screen widths */
+
+/* For screens up to 300px */
+@media (max-width: 300px) {
+  .imageNext,
+  .imagePrev {
+    width: 15px;
+    height: 15px;
+  }
+}
+
+/* For screens between 301px and 400px */
+@media (min-width: 301px) and (max-width: 400px) {
+  .imageNext,
+  .imagePrev {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* For screens between 401px and 500px */
+@media (min-width: 401px) and (max-width: 500px) {
+  .imageNext,
+  .imagePrev {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+/* For screens between 501px and 600px */
+@media (min-width: 501px) and (max-width: 600px) {
+  .imageNext,
+  .imagePrev {
+    width: 29px;
+    height: 29px;
+  }
+}
+
+/* For screens between 601px and 700px */
+@media (min-width: 601px) and (max-width: 700px) {
+  .imageNext,
+  .imagePrev {
+    width: 30px;
+    height: 30px;
+  }
+}
+.leftArrow,
+.rightArrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  display: block;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.leftArrow {
+  left: -30px;
+  
+}
+
+.rightArrow {
+
+  right: 40px;
+}
+
+.categorieContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* width:90%; */
+  position: relative;
+  right: -10px;
+  margin: auto;
+  padding-top: 34px;
+  /* margin: 20px; */
+  /* background-color: red; */
+}
+
+.categorieTitle {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: left;
+}
+@media (max-width: 270px)   {
+  .categorieTitle {
+      font-size: 8px;
+     
+      margin-left: -6%; /* Adjust font size for small screens */
+      margin-bottom: 5%;
+  }
+}
+@media (min-width: 270px) and (max-width: 300px)  {
+  .categorieTitle {
+      font-size: 11px;
+     
+      margin-left: -4%; /* Adjust font size for small screens */
+      margin-bottom: 5%;
+  }
+}
+@media (min-width: 300px) and (max-width: 356px) {
+  .categorieTitle {
+      font-size: 12px;
+      
+      margin-left: -3%; /* Adjust font size for small screens */
+      margin-bottom: 5%;
+  }
+}
+@media (min-width: 356px) and (max-width: 470px) {
+  .categorieTitle {
+      font-size: 12px;
+    
+      margin-left: 1%; /* Adjust font size for small screens */
+      margin-bottom: 3%;
+  }
+}
+
+
+@media (min-width: 471px) and (max-width: 576px) {
+  .categorieTitle {
+      font-size: 16px;
+      
+      margin-left: 1%; /* Adjust font size for small screens */
+      margin-bottom: 5%;
+  }
+}
+
+/* For medium screens (tablets) */
+@media (min-width: 577px) and (max-width: 768px) {
+  .categorieTitle {
+      font-size: 21px; /* Adjust font size for tablets */
+      
+      margin-left: 1%;
+      font-weight: 800; /* Augmentation du poids de la police */
+      margin-bottom: 4%;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1240px) {
+  .categorieTitle {
+      font-size: 25px; /* Adjust font size for small desktops */
+      
+      margin-left: 4%;
+      margin-bottom: 3%;
+      font-weight: 800; /* Augmentation du poids de la police */
+  }
+}
+@media (min-width: 1240px) and (max-width:1300px)  {
+  .categorieTitle {
+      font-size: 35px; /* Adjust font size for small desktops */
+      
+      margin-left: 5%;
+      margin-bottom: 4%;
+  }
+}
+@media (min-width: 1300px)   {
+  .categorieTitle {
+      font-size: 40px; /* Adjust font size for small desktops */
+      
+      margin-left: 5%;
+      margin-bottom: 4%;
+  }
+}
+
+.underline {
+  width: 10%;
+  background-color: #cd6214;
+  padding-top: 3px;
+  border-radius: 100px;
+  margin-top: 7px;
+}
+
+.cardC {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  /* background-color: yellow; */
+}
+
+.cardsContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  justify-items: center;
+  padding: 20px;
+}
+
+/* For screens up to 300px */
+@media (max-width: 300px) {
+  .cardsContainer {
+    grid-template-columns: 1fr; /* 1 column layout */
+    gap: 10px;
+    padding: 10px;
+  }
+}
+
+/* For screens between 301px and 400px */
+@media (min-width: 301px) and (max-width: 400px) {
+  .cardsContainer {
+    grid-template-columns: 1fr; /* 1 column layout */
+    gap: 15px;
+    padding: 15px;
+  }
+}
+
+/* For screens between 401px and 500px */
+@media (min-width: 401px) and (max-width: 500px) {
+  .cardsContainer {
+    grid-template-columns: repeat(2, 1fr); /* 2 column layout */
+    gap: 20px;
+    padding: 20px;
+  }
+}
+
+/* For screens between 501px and 600px */
+@media (min-width: 501px) and (max-width: 600px) {
+  .cardsContainer {
+    grid-template-columns: repeat(2, 1fr); /* 2 column layout */
+    gap: 25px;
+    padding: 20px;
+  }
+}
+
+/* For screens between 601px and 700px */
+@media (min-width: 601px) and (max-width: 700px) {
+  .cardsContainer {
+    grid-template-columns: repeat(4, 1fr); /* 3 column layout */
+    gap: 30px;
+    padding: 20px;
+  }
+}
+
+/* For screens between 701px and 800px */
+@media (min-width: 701px) and (max-width: 800px) {
+  .cardsContainer {
+    grid-template-columns: repeat(4, 1fr); /* 3 column layout */
+    gap: 35px;
+    padding: 0px 43px 0px 0px;
+  }
+}
+
+/* For screens between 801px and 1000px */
+@media (min-width: 801px) and (max-width: 1000px) {
+  .cardsContainer {
+    grid-template-columns: repeat(4, 1fr); /* 4 column layout */
+    gap: 40px;
+    padding: 0px 25px 4px 0px;
+  }
+}
+
+/* For screens between 1001px and 1200px */
+@media (min-width: 1001px) and (max-width: 1280px) {
+  .cardsContainer {
+    grid-template-columns: repeat(4, 1fr); /* 4 column layout */
+    gap: 50px;
+    padding: 0px 25px 4px 0px;
+  }
+}
+
+/* For screens between 1201px and 1500px */
+@media (min-width: 1280px) and (max-width: 1500px) {
+  .cardsContainer {
+    grid-template-columns: repeat(4, 1fr); /* 4 column layout */
+    gap: 53px;
+    padding: 20px;
+  }
+}
+
+/* For screens above 1500px */
+@media (min-width: 1501px) {
+  .cardsContainer {
+    grid-template-columns: repeat(4, 1fr); /* 4 column layout */
+    gap: 5rem;
+    padding: 20px;
+  }
+}
+
+
+
+
+.card {
+  width: clamp(150px, 15vw, 240px);
+  height: clamp(150px, 15vw, 240px);
+  border-radius: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+/* For screens up to 300px */
+@media (max-width: 300px) {
+  .card {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+/* For screens between 301px and 400px */
+@media (min-width: 301px) and (max-width: 400px) {
+  .card {
+    width: calc(15vw);
+    height: calc(15vw);
+  }
+}
+
+/* For screens between 401px and 500px */
+@media (min-width: 401px) and (max-width: 500px) {
+  .card {
+    width: calc(15vw);
+    height: calc(15vw);
+  }
+}
+
+/* For screens between 501px and 600px */
+@media (min-width: 576px) and (max-width: 700px) {
+  .card {
+    width: calc(25vw);
+    height: calc(26vw);
+  }
+}
+
+/* For screens between 601px and 700px */
+@media (min-width: 700px) and (max-width: 800px) {
+  .card {
+    width: calc(15vw);
+    height: calc(15vw);
+  }
+}
+
+/* For screens between 701px and 800px */
+@media (min-width: 800px) and (max-width: 900px) {
+  .card {
+    width: calc(15vw);
+    height: calc(15vw);
+  }
+}
+@media (min-width: 900px) and (max-width: 1300px) {
+  .card {
+    width: calc(15vw);
+    height: calc(15vw);
+  }
+}
+@media (min-width: 1300px) and (max-width: 1500px) {
+  .card {
+    width: calc(17vw);
+    height: calc(17vw);
+  }
+}
+@media (min-width: 1500px) {
+  .card {
+    width: calc(17vw);
+    height: calc(17vw);
+  }
+}
+
+
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.cardImage {
+  width: 35%;
+}
+
+.titleName {
+  font-size: 10px;
+  text-align: center;
+  margin-top: 1rem;
+  font-weight: 600;
+  max-width: 50%;
+}
+/* Base styles */
+.titleName {
+  font-size: 10px;
+  text-align: center;
+  margin-top: 1rem;
+}
+@media (max-width: 300px) {
+  .titleName {
+    font-size: 6px;
+    
+  }
+}
+
+/* Media query for screens between 300px and 400px */
+@media (min-width: 300px) and (max-width: 400px) {
+  .titleName {
+    font-size: 6px;
+    
+  }
+}
+
+/* Media query for screens between 401px and 500px */
+@media (min-width: 401px) and (max-width: 500px) {
+  .titleName {
+    font-size: 7px;
+    
+  }
+}
+
+/* Media query for screens between 501px and 600px */
+@media (min-width: 501px) and (max-width: 600px) {
+  .titleName {
+    font-size: 9px;
+   
+  }
+}
+
+/* Media query for screens between 601px and 700px */
+@media (min-width: 601px) and (max-width: 700px) {
+  .titleName {
+    font-size: 9px;
+   
+  }
+}
+
+/* Media query for screens between 701px and 800px */
+@media (min-width: 701px) and (max-width: 800px) {
+  .titleName {
+    font-size: 7px;
+    
+  }
+}
+
+/* Media query for screens between 801px and 900px */
+@media (min-width: 801px) and (max-width: 900px) {
+  .titleName {
+    font-size: 8px;
+
+  }
+}
+
+/* Media query for screens between 901px and 1000px */
+@media (min-width: 901px) and (max-width: 1000px) {
+  .titleName {
+    font-size: 10px;
+  
+}
+}
+
+/* Media query for screens between 1001px and 1100px */
+@media (min-width: 1001px) and (max-width: 1100px) {
+  .titleName {
+    font-size: 10px;
+    
+  }
+}
+
+/* Media query for screens between 1101px and 1200px */
+@media (min-width: 1101px) and (max-width: 1200px) {
+  .titleName {
+    font-size: 20px;
+    
+  }
+}
+
+/* Media query for screens between 1201px and 1300px */
+@media (min-width: 1201px) and (max-width: 1300px) {
+  .titleName {
+    font-size: 20px;
+
+  }
+}
+
+/* Media query for screens between 1301px and 1400px */
+@media (min-width: 1301px) and (max-width: 1400px) {
+  .titleName {
+    font-size: 20px;
+
+  }
+}
+
+/* Media query for screens between 1401px and 1500px */
+@media (min-width: 1401px) and (max-width: 1500px) {
+  .titleName {
+    font-size: 20px;
+   
+  }
+}
+/* Media query for screens up than 1500px */
+@media (min-width: 1500px) {
+  .titleName {
+    font-size: 20px;
+   
+  }
+}
+
+
+.slider {
+  position: relative;
+  left: 10px;
+  /* width: 120%; */
+  /* background-color: #cd6214; */
+}
+@media (max-width: 310px)  {
+  .card {
+    margin-bottom: 11%;
+    margin-left: 5%;
+    width: clamp(75px, 20vw, 240px);
+    height: clamp(72px, 20vw, 240px);
+    border-radius: 5, 5rem;
+  }
+  .rightArrow {
+    right: -30px;
+  }
+  
+}
+@media (min-width: 310px) and (max-width: 350px) {
+  .card {
+    margin-bottom: 11%;
+    margin-left: 3%;
+    width: clamp(90px, 20vw, 240px);
+    height: clamp(87px, 20vw, 240px);
+    border-radius: 5, 5rem;
+  }
+  .rightArrow {
+    right: -30px;
+  }
+  
+}
+
+@media (min-width: 350px) and (max-width: 390px) {
+  .card {
+    margin-bottom: 11%;
+    margin-left: 1%;
+    width: clamp(101px, 20vw, 240px);
+    height: clamp(96px, 20vw, 240px);
+    border-radius: 5, 5rem;
+  }
+  .rightArrow {
+    right: -30px;
+  }
+  
+}
+@media (min-width: 390px) and (max-width: 440px) {
+  .card {
+    margin-bottom: 11%;
+    margin-left: 3%;
+    width: clamp(119px, 20vw, 240px);
+    height: clamp(115px, 20vw, 240px);
+    border-radius: 5, 5rem;
+  }
+  .rightArrow {
+    right: -25px;
+  }
+}
+
+@media (min-width: 440px) and (max-width: 480px) {
+  .card {
+    margin-bottom: 11%;
+    margin-left: 4%;
+    width: clamp(134px, 20vw, 240px);
+    height: clamp(127px, 20vw, 240px);
+    border-radius: 5, 5rem;
+  }
+  .rightArrow {
+    right: -25px;
+  }
+  
+}
+@media (min-width: 480px) and (max-width: 530px) {
+  .card {
+    
+    width: clamp(154px, 20vw, 240px);
+    height: clamp(149px, 20vw, 240px);
+    border-radius: 5, 5rem;
+    margin-bottom: 11%;
+    margin-left: 4%;
+  }
+  .rightArrow {
+    right: -30px;
+  }
+  
+
+}
+@media (min-width: 530px) and (max-width: 575px) {
+  .card {
+    
+    width: clamp(167px, 20vw, 240px);
+    height: clamp(160px, 20vw, 240px);
+    border-radius: 5, 5rem;
+    margin-bottom: 11%;
+    margin-left: 6%;
+  }
+  .rightArrow {
+    right: -25px;
+  }
+}
+@media (min-width: 409px) and (max-width: 575px) {
+ 
+  .rightArrow {
+    right: -25px;
+  }
+}
+
+
+@media (min-width: 576px) and (max-width: 600px) {
+  .card {
+    width: clamp(178px, 20vw, 240px);
+    height: clamp(171px, 20vw, 240px);
+    border-radius: 5, 5rem;
+    margin-bottom: 11%;
+    margin-left: 4%;
+  }
+  
+  .rightArrow {
+    right: 10px;
+  }
+}
+@media (min-width: 600px) and (max-width: 630px) {
+  .card {
+    width: clamp(185px, 20vw, 240px);
+    height: clamp(179px, 20vw, 240px);
+    border-radius: 5, 5rem;
+    margin-bottom: 11%;
+    margin-left: 6%;
+  }
+  
+  .rightArrow {
+    right: 10px;
+  }
+}
+@media (min-width: 630px) and (max-width: 700px) {
+  .card {
+    width: clamp(187px, 20vw, 240px);
+    height: clamp(180px, 20vw, 240px);
+    border-radius: 5, 5rem;
+    margin-bottom: 11%;
+    margin-left: 13%;
+  }
+  
+  .rightArrow {
+    right: 10px;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 699px) {
+  .cardsContainer {
+    justify-content: center;
+    margin-right: 10px;
+    margin-left: 25px;
+  }
+  /* .imageNext{
+    background-color: aqua;
+        left: -80px;
+      } */
+}
+
+
+
+
+
+
+@media (min-width: 700px) and (max-width: 764px) {
+  .cardsContainer {
+    justify-content: center;
+    margin-right: 10px;
+    margin-left: 25px;
+  }
+}
+
+@media (min-width: 765px) and (max-width: 1082px) {
+  .cardsContainer {
+    justify-content: center;
+    margin-right: 10px;
+    margin-left: 25px;
+  }
+  
+  /* .rightArrow {
+    right: 20px;
+  } */
+}
+
+/* @media (max-width: 550px) {
+  .underline {
+    width: 18%;
+  }
+  .titleName {
+    font-size: 1rem;
+  }
+} */
+ 
+
