@@ -504,6 +504,7 @@
   font-size: 12px;
   text-align: center;
   white-space: normal;
+  padding: 0 10% 0 10%;
 }
 
 @media (max-width: 300px) {
