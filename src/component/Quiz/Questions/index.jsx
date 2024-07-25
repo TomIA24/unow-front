@@ -96,7 +96,7 @@ const Quiz = ({startDate}) => {
     setShowScore(true);
   
     try {
-      await axios.post('http://127.0.0.1:6060/api/quiz/api/saveQuiz', {
+      await axios.post('http://127.0.0.1:5050/api/quiz/api/saveQuiz', {
         questions: updatedQuestions,
         quizName: 'My Quiz',
         score: percentageCorrect,
@@ -118,7 +118,7 @@ const Quiz = ({startDate}) => {
 
     // Update the flag status in the backend
     try {
-      await axios.put(`http://localhost:6060/api/quiz/api/mark/${questionId}`, {
+      await axios.put(`http://localhost:5050/api/quiz/api/mark/${questionId}`, {
         flag: updatedFlags[questionIndex]
       });
     } catch (error) {
