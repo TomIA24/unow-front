@@ -157,7 +157,7 @@ function ProductsSlider({ products, categoryData, loading, productType }) {
                               {element.Thumbnail ? (
                                 <CardMedia
                                   component="img"
-                                  src={`${process.env.REACT_APP_API}/${element.Thumbnail.filePath}`}
+                                  src={`${process.env.REACT_APP_API}${element.Thumbnail.filePath}`}
                                   alt=""
                                   className={styles.imgTop}
                                 />

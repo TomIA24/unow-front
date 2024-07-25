@@ -188,7 +188,7 @@ const InfoUser = (props) => {
           {Data.image ? (
             <Avatar
               alt="icon"
-              src={`${process.env.REACT_APP_API}/${Data.image.filePath}`}
+              src={`${process.env.REACT_APP_API}${Data.image.filePath}`}
               sx={{ width: 200, height: 200 }}
             />
           ) : (

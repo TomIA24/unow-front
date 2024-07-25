@@ -62,7 +62,7 @@ function AddRessources() {
                       <div className="">
                         {file.fileType === "image/png" ? (
                           <img
-                            src={`${process.env.REACT_APP_API}/${file.filePath}`}
+                            src={`${process.env.REACT_APP_API}${file.filePath}`}
                             height="200"
                             className=""
                             alt="img"

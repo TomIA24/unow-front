@@ -79,7 +79,7 @@ const ShowTrainings = () => {
         <div className={styles.avatar}>
           {course.Thumbnail ? (
             <img
-              src={`${process.env.REACT_APP_API}/${course.Thumbnail.filePath}`}
+              src={`${process.env.REACT_APP_API}${course.Thumbnail.filePath}`}
               alt=""
               style={{ width: 180, height: 180, objectFit: "cover" }}
               className={styles.imgTHMB}

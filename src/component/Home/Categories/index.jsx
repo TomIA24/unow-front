@@ -41,7 +41,7 @@ const Categories = () => {
     const fetchCategories = async () => {
       try {
         const response = await fetch(
-          "http://localhost:5050/api/Category/getCategories"
+          `${process.env.REACT_APP_API}api/Category/getCategories`
         );
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);

@@ -72,7 +72,7 @@ const Main = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5050/api/trainings")
+      .get(`${process.env.REACT_APP_API}api/trainings`)
       .then((response) => {
         console.log(response.data.data);
         setTrainings(response.data.data);
@@ -188,7 +188,7 @@ const Main = () => {
                 <div className={styles.inner_carousel} key={training._id}>
                   {training.Thumbnail && training.Thumbnail.filePath ? (
                     <div className={styles.image}>
-                      <img src={`http://localhost:5050/api/${training.Thumbnail.filePath}`} alt={training.Title} className={styles.imagefeatures} />
+                      <img src={`${process.env.REACT_APP_API}${training.Thumbnail.filePath}`} alt={training.Title} className={styles.imagefeatures} />
 
                     </div>
                   ) : (

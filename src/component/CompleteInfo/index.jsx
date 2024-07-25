@@ -368,7 +368,7 @@ const CompleteInfo = () => {
                       {data.image ? (
                         <Avatar
                           alt="icon"
-                          src={`${process.env.REACT_APP_API}/${data.image.filePath}`}
+                          src={`${process.env.REACT_APP_API}${data.image.filePath}`}
                           sx={{ width: 200, height: 200 }}
                         />
                       ) : (

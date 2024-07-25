@@ -137,7 +137,7 @@ const Nav = () => {
                       {user.image ? (
                         <Avatar
                           alt="icon"
-                          src={`${process.env.REACT_APP_API}/${user.image.filePath}`}
+                          src={`${process.env.REACT_APP_API}${user.image.filePath}`}
                           sx={{ width: 30, height: 30 }}
                         />
                       ) : (

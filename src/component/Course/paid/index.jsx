@@ -329,7 +329,7 @@ const PaidCourse = () => {
                 />
               ) : (
                 <img
-                  src={`${process.env.REACT_APP_API}/${Data.Thumbnail.filePath}`}
+                  src={`${process.env.REACT_APP_API}${Data.Thumbnail.filePath}`}
                   alt=""
                   className={styles.imgCourse}
                 />
@@ -677,7 +677,7 @@ const PaidCourse = () => {
                             {e.image ? (
                               <Avatar
                                 alt="Remy Sharp"
-                                src={`${process.env.REACT_APP_API}/${e.image.filePath}`}
+                                src={`${process.env.REACT_APP_API}${e.image.filePath}`}
                                 sx={{ width: 24, height: 24 }}
                               />
                             ) : (

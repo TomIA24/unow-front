@@ -17,7 +17,7 @@ const Quiz = ({startDate}) => {
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
-        const response = await axios.get(`http://localhost:5050/api/quiz/api/quiz/${numb}`);
+        const response = await axios.get(`${process.env.REACT_APP_API}api/quiz/api/quiz/${numb}`);
         setQuestions(response.data);
         const initialAnswers = response.data.reduce((acc, _, idx) => ({ ...acc, [idx]: [] }), {});
         setSelectedAnswers(initialAnswers);
@@ -118,7 +118,7 @@ const Quiz = ({startDate}) => {
 
     // Update the flag status in the backend
     try {
-      await axios.put(`http://localhost:5050/api/quiz/api/mark/${questionId}`, {
+      await axios.put(`${process.env.REACT_APP_API}api/quiz/api/mark/${questionId}`, {
         flag: updatedFlags[questionIndex]
       });
     } catch (error) {

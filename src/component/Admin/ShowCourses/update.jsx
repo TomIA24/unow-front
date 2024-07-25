@@ -464,7 +464,7 @@ const Update = ({ Course, setOpenChange, openChange }) => {
             {course.Thumbnail ? (
               <Avatar
                 alt="icon"
-                src={`${process.env.REACT_APP_API}/${course.Thumbnail.filePath}`}
+                src={`${process.env.REACT_APP_API}${course.Thumbnail.filePath}`}
                 sx={{
                   boxShadow: "0 0 4px 2.5px rgba(0, 0, 0, 0.315)",
                   width: 200,

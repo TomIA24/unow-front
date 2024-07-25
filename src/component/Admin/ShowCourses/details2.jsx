@@ -73,7 +73,7 @@ const Details = ({ Course, setOpenChange, openChange }) => {
   //         };
   //         console.log(config)
 
-  //           const url= "${process.env.REACT_APP_API}/api/Trainer/getTrainer"
+  //           const url= `${process.env.REACT_APP_API}/api/Trainer/getTrainer"
   //           await axios.post(url,{trainerId: notif.trainer} )
   //           .then(res=>{
   //               console.log("hello from api")

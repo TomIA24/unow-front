@@ -26,7 +26,7 @@ const Rooms = ({ user }) => {
   //
   // };
   //     try {
-  //             await axios.get("${process.env.REACT_APP_API}/api/Trainer/GetNotifTrainer" ).then((res)=>{
+  //             await axios.get(`${process.env.REACT_APP_API}/api/Trainer/GetNotifTrainer" ).then((res)=>{
   //                 (res.data.data)
   //                 var list = res.data.data.map(notif=>{
   //                     if(notif.StatusMandate==="confirmed")

@@ -105,7 +105,7 @@ const Videos = () =>{
                         <video 
                         controls 
                         className={styles.Vid}
-                        src={`${process.env.REACT_APP_API}/${VideoDisplay}`} ></video> 
+                        src={`${process.env.REACT_APP_API}${VideoDisplay}`} ></video> 
                         :
                         <div className={styles.NoVid}>
                             <p>No video selected</p>
