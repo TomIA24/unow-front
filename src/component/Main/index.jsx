@@ -72,8 +72,9 @@ const Main = () => {
 
   useEffect(() => {
     axios
-      .post("http://localhost:5050/api/trainings")
+      .get("http://localhost:5050/api/trainings")
       .then((response) => {
+        console.log(response.data.data);
         setTrainings(response.data.data);
       })
       .catch((error) => {

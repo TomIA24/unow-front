@@ -14,7 +14,7 @@ const MainQuiz = ({onStartQuiz}) => {
 
     return (
         <>
-            {!started ? (<div className={styles.containerQuiz}>
+            {started ? (<div className={styles.containerQuiz}>
                 <div className={styles.quiNav}>
                     <QuizNav />
                 </div>

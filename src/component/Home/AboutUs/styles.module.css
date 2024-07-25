@@ -13,14 +13,9 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding-bottom: 5%;
+  
 }
 
-.title {
-  color: #CD6214;
-  font-size: 35px;
-  margin-top: -5%;
-}
 
 .subtitleContainer {
   margin-top: 1%;
@@ -37,7 +32,7 @@
 }
 
 .description {
-  margin-top: 0%;
+  margin-top: -2%;
   color: black;
   font-weight: small;
   margin-bottom: -5%;
@@ -52,11 +47,11 @@
   width: 100%;
   max-width: 100%;
   height: auto;
-  margin-top: 5%;
+  margin-top: 0%;
 }
 
 .imageWrapper {
-  margin-bottom: 5%;
+  margin-bottom: 0%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -68,15 +63,15 @@
   font-size: 36px;
   font-weight: bold;
   margin-bottom: 8%;
-  margin-top: 5%;
+  margin-top: 0%;
 }
 
 .underline {
-  width: 5%;
+  width: 7%;
   background-color: #cd6214;
-  padding-top: 3px;
+  padding-top: 4px;
   border-radius: 100px;
-  margin-top: 1px;
+  margin-top: 7px;
 }
 
 .readButton, .applyButton {
@@ -84,7 +79,7 @@
   height: 2.5rem;
   display: flex;
   justify-content: center;
-  background-color: #1c4b82;
+  background-color: #3E4678;
   color: white;
   font-size: 10px;
   font-weight: bold;
@@ -97,6 +92,7 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding-top: 1.5%;
   padding-bottom: 2%;
+  margin-bottom: 2%;
 }
 
 .readButton:hover, .applyButton:hover {
@@ -106,25 +102,27 @@
 /* Media queries for responsiveness */
 @media (min-width: 1025px) {
   .descriptionpar {
-    margin-bottom: 5%;
+    margin-bottom: 0%;
     line-height: 30px;
     margin-top: 0%;
     font-size: 20px;
   }
   .subtitle {
     font-size: 35px;
+    font-weight: 800;
   }
   .aboutTitle {
     font-size: 25px;
     margin-left: 4%;
-    margin-bottom: 3%;
+    margin-bottom: 0%;
     font-weight: 800;
+    margin-top: 5%;
   }
 
   .underline {
-    width: 10%;
+    width: 7%;
     background-color: #cd6214;
-    padding-top: 3px;
+    padding-top: 4px;
     border-radius: 100px;
     margin-top: 7px;
   }
@@ -149,13 +147,9 @@
     height: auto;
     background-color: transparent;
     margin-bottom: 5%;
-    margin-top: 5%;
+        margin-top: 2%;
   }
-  .title {
-    font-size: 20px;
-    margin-top: 0%;
-    margin-left: 4%;
-  }
+ 
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
@@ -176,27 +170,26 @@
   }
   .subtitle {
     font-size: 30px;
+    font-weight: 800;
+    margin-bottom: 3%;
   }
-  .title {
-    font-size: 20px;
-        margin-top: 0%;
-        margin-left: 4%;
-  }
+  
   .underline {
-    width: 10%;
+    width: 9%;
         background-color: #CD6214;
-        padding-top: 3px;
+        padding-top: 4px;
         border-radius: 100px;
         margin-top: 10px;
     }
   
   .aboutTitle {
     font-size: 25px;
-        margin-top: 10%;
+        margin-top: 7%;
         margin-left: 4%;
-        margin-bottom: 3%;
+        margin-bottom: 0%;
         font-weight: 800;
   }
+ 
 }
 
 @media (min-width: 1300px) {
@@ -205,16 +198,14 @@
     line-height: 20px;
     margin-bottom: -5%;
   }
-  .title {
-    font-size: 35px;
-  }
+  
 
   .aboutTitle, .collaborateTitle, .consultantsTitle {
     font-size: 40px;
   }
 
   .imageWrapper {
-    margin-bottom: 10%;
+    margin-bottom: 0%;
   }
 
   .aboutContainer, .aboutContainercollab, .consultantSection, .allParaghraphe {
@@ -223,6 +214,7 @@
   }
   .subtitle {
     font-size: 30px;
+    font-weight: 800;
   }
 }
 
@@ -234,24 +226,20 @@
     margin-top: 0%;
     font-weight: bold;
   }
-  .title{
-    margin-top: 0%;
-    margin-left: 4%;
-    font-size: 18px;
-  }
-
+  
   .aboutTitle, .collaborateTitle, .consultantsTitle {
     font-size: 25px;
         margin-top: 10%;
         margin-left: 4%;
-        margin-bottom: 3%;
+        margin-bottom: 0%;
         font-weight: 800;
   }
 
   .readButton, .applyButton {
-    padding-top: 1%;
+    padding-top: 1.3%;
     padding-bottom: 2%;
     font-size: 12px;
+    margin-bottom: -2%;
   }
 
   .descriptionpar {
@@ -263,7 +251,7 @@
   }
 
   .imageWrapper {
-    margin-bottom: 50px;
+    margin-bottom: 0%;
   }
 
   .aboutContainer, .aboutContainercollab, .consultantSection, .allParaghraphe {
@@ -275,18 +263,19 @@
     width: 50%;
     height: auto;
     background-color: transparent;
-    margin-top: 10%;
+    margin-top: 0%;
+    margin-bottom: 4%;
   }
   
 }
 
-@media (max-width: 767px) {
+@media (max-width: 769px) {
   .aboutTitle, .collaborateTitle, .consultantsTitle {
     font-size: 21px;
         margin-top: 14%;
         margin-left: 1%;
         font-weight: 800;
-        margin-bottom: 4%;
+        margin-bottom: 0%;
   }
   .descriptionpar {
     margin-top: 30%;
@@ -301,15 +290,12 @@
     width: 7rem;
   }
 
- 
-  .title {
-    font-size: 20px;
-    margin-bottom: 3%;
-    color: #CD6214;
-    margin-left: 1%;
-  }
+  
   .subtitle {
     margin-left: 1%;
+    font-weight: 800;
+    margin-bottom: -2%;
+    margin-top: 4%;
   }
 
   .allParaghraphe {
@@ -317,14 +303,22 @@
   }
 
   .imageWrapper {
-    margin-left: 10%;
+    margin-bottom: 8%;
+    margin-top: 5%;
+    margin-left: 5%;
     border: none;
   }
 
   .aboutContainer, .aboutContainercollab, .consultantSection, .allParaghraphe {
     padding: 0px;
   }
-
+  .underline {
+    width: 10%;
+    background-color: #CD6214;
+    padding-top: 4px;
+    border-radius: 100px;
+    margin-top: 7px;
+  }
   .imageAboutUs {
     position: absolute;
     width: 40%;
@@ -339,7 +333,7 @@
   .readButton, .applyButton {
     padding-top: 2%;
     padding-bottom: 3.5%;
-    width: 15%;
+    width: 6rem;
     
   }
 }
@@ -377,6 +371,11 @@
     background-color: transparent;
     padding: 0px;
   }
+  .subtitle {
+    margin-bottom: -7%;
+    margin-top: 4%;
+    
+  }
 
   .aboutContainer {
     padding: 0px;
@@ -384,23 +383,31 @@
 
   .applyButton, .readButton {
     width: 17%;
-    padding-top: 1.5%;
+    padding-top: 1.7%;
     padding-bottom: 3%;
     height: 15%;
     font-size: 8px;
   }
 
-  .title {
-    font-size: 13px;
-    color: #CD6214;
-    margin-bottom: 5%;
-    font-weight: bolder;
-  }
+ 
   .aboutTitle {
     font-size: 16px;
         margin-top: 20%;
         margin-left: 1%;
-        margin-bottom: 5%;
+        margin-bottom: 0%;
+  }
+  .imageWrapper {
+    margin-bottom: 12%;
+    margin-top: 10%;
+    
+  }
+}
+@media (max-width: 500px) and (min-width: 400px) {
+  .applyButton {
+    padding-top: 2.5%;
+  }
+  .descriptionpar {
+    line-height: 12px;
   }
 }
 
@@ -433,11 +440,12 @@
   }
 
   .underline {
-    width: 10%;
+    width: 12%;
     background-color: #cd6214;
-    padding-top: 3px;
+    padding-top: 4px;
     border-radius: 100px;
-    margin-top: 1px;
+    margin-top: 7px;
+    margin-bottom: -1%;
   }
 }
 
@@ -454,11 +462,11 @@
   }
   
   .underline {
-    width: 10%;
+    width: 13%;
     background-color: #cd6214;
     padding-top: 3px;
     border-radius: 100px;
-    margin-top: 1px;
+    margin-top: 4px;
   }
 
   .imageWrapper {
@@ -466,7 +474,8 @@
     flex-wrap: wrap; /* Allow items to wrap onto a new line */
     justify-content: flex-start; /* Align items at the start */
     align-items: center; /* Align items at the start */
-    margin-left: 5%;
+    margin-left: 15%;
+    margin-bottom: 20%;
   }
 
   .imageAboutUs {
@@ -481,7 +490,7 @@
     font-weight: bold;
     font-family: lato;
     font-size: 8px;
-    line-height: 10px;
+    line-height: 12px;
     margin-top: 25%;
     color: black;
     font-weight: normal;
@@ -492,13 +501,13 @@
 
   .aboutTitle {
     font-size: 12px;
-    margin-bottom: 10%;
+    margin-bottom: 0%;
     color: #000000;
   }
   
 
   .readButton {
-    padding-top: 2%;
+    padding-top: 1.7%;
     font-size: 6px;
     padding-bottom: 4%;
     width: 20%;
@@ -511,16 +520,17 @@
 
  
 
-  .title {
-    color: #CD6214;
-    font-size: 10px;
-  }
+  
 }
 @media (max-width: 350px) {
+  
   .readButton {
-    padding-top: 3%;
+    padding-top: 2.4%;
     padding-bottom: 2%;
     width: 20%;
+  }
+  .descriptionpar {
+    line-height: 10px;
   }
   .aboutTitle {
     font-size: 12px;
@@ -528,14 +538,11 @@
         margin-left: -3%;
         margin-bottom: 5%;
   }
- .title {
-   font-size: 10px;
-   margin-left: -3%;
  
- }
  .subtitle {
   
    margin-top: 2%;
    margin-left: -3%;
+   font-weight: 800;
  }
 }

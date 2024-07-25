@@ -13,8 +13,8 @@
   }
 
   .navContainer{
-    padding-left: 5%;
-    padding-right: 5%;
+    /* padding-left: 5%;
+    padding-right: 5%; */
   }
 
   .backimage {
@@ -66,7 +66,7 @@ font-weight: bold;
   @media (min-width: 327px) and (max-width: 366px) {
     .pdown{
       color: #ffffff;
-      font-size:1.7rem;
+      font-size:1.4rem;
   
     }
     .pdowncontainer{
@@ -101,17 +101,19 @@ font-weight: bold;
     }
 
     .text{
-      margin-top: 10px;
+      color: #FFFFFF;
+      margin-top: 1em;
+      font-size: 0.8em;
     }
     .navContainer{
-      padding-left: 0%;
-      padding-right: 10%;
+      /* padding-left: 8%; */
+      padding-right: 14%;
     }
   }
   @media (min-width: 367px) and (max-width: 469px) {
     .pdown{
       color: #ffffff;
-      font-size:1.9rem;
+      font-size:1.7rem;
   
     }
     .pdowncontainer{
@@ -153,7 +155,9 @@ font-weight: bold;
     }
 
     .text{
-      margin-top: 10px;
+      color: #FFFFFF;
+      margin-top: 1em;
+      font-size: 0.9em;
     }
     .navContainer{
       /* padding-left: 8%; */
@@ -178,10 +182,22 @@ font-weight: bold;
   
   }   */
   @media (min-width: 469px) and (max-width: 576px) {
+    .navContainer{
+       padding-left: 1%; 
+      padding-right: 2%;
+    }
     .pdown{
       color: #ffffff;
-      font-size:2rem;
+      font-size:1.7rem;
   
+    }
+    .underline{
+  
+      width:17%;
+      background-color: #CD6214;
+      padding-top: 4px;
+      border-radius: 100px;
+      margin-top:0.5rem;
     }
     .pdowncontainer{
      
@@ -189,14 +205,7 @@ font-weight: bold;
     }
   
  
-    .underline{
-  
-      width:25%;
-      background-color: #CD6214;
-      padding-top: 3px;
-      border-radius: 100px;
-      margin-top:0.5rem;
-    }
+
     .backimage {
    
       height: 18rem;
@@ -208,14 +217,7 @@ font-weight: bold;
     
   
     }
-    .underline{
-  
-      width:15%;
-      background-color: #CD6214;
-      padding-top: 5px;
-      border-radius: 100px;
-      margin-top: 10px;
-    }
+
     .pdowncontainer{
      
       padding-top:4em;
@@ -228,7 +230,11 @@ font-weight: bold;
 
   
   
-  @media (min-width: 576px) and (max-width: 700px) {
+  @media (min-width: 576px) and (max-width: 625px) {
+    .navContainer{
+      /* padding-left: 8%; */
+      padding-right: 12%;
+    }
 
     .pdown{
       color: #ffffff;
@@ -278,10 +284,10 @@ font-weight: bold;
     }
 
   }
-  @media (min-width: 577px) and (max-width: 699px) {
+  @media (min-width: 625px) and (max-width: 700px) {
     .pdown{
       color: #ffffff;
-      font-size:2.1rem;
+      font-size:1.8rem;
   
     }
     .pdowncontainer{
@@ -325,6 +331,10 @@ font-weight: bold;
     .text{
       margin-top: 10px;
     }
+    .navContainer{
+      padding-left: 5%; 
+     padding-right: 5%;
+   }
   }
   @media (min-width: 700px) and (max-width: 780px) {
     .pdown{
