@@ -36,6 +36,7 @@ function App() {
     const now = new Date();
     setStartDate(now.toLocaleString()); 
     console.log("start time",startDate);
+    console.log("test deploy");
   };
 
   var user = "";
