@@ -9,7 +9,7 @@ import SignUp from "./component/SignUp";
 import Room from "./component/Room";
 import Course from "./component/Course";
 import Contact from "./component/Contact";
-// import CourseRessources from "./component/Course/Ressources"
+// // import CourseRessources from "./component/Course/Ressources"
 import Training from "./component/Training";
 import CompleteInfo from "./component/CompleteInfo";
 import ProfileClient from "./component/ProfileClient";
