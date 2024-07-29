@@ -23,7 +23,7 @@ import MissingRoute from "./secure/MissingRoute";
 
 import { LanguageProvider } from "./hooks/LanguageContext";
 //import Categories from "./component/Categories";
-//import Featured from "./component/Home/Featured Trainers";
+// //import Featured from "./component/Home/Featured Trainers";
 import HomeInterface from "./component/Home/HomeInterface";
 import MainQuiz from "./component/Quiz";
 import Quiz from "./component/Quiz/Questions"; 
