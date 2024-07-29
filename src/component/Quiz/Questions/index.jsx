@@ -14,14 +14,36 @@ const Quiz = ({startDate}) => {
   const [finishDate, setFinishDate] = useState(null);
   const numb = 4; // Number of questions to fetch
 
+
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
-        const response = await axios.get(`http://localhost:5050/api/quiz/api/quiz/${numb}`);
-        setQuestions(response.data);
-        const initialAnswers = response.data.reduce((acc, _, idx) => ({ ...acc, [idx]: [] }), {});
+        const killMistakeCheckResponse = await axios.get('http://localhost:5050/api/quiz/api/checkillmistakempty');
+        const isKillMistakeEmpty = killMistakeCheckResponse.data.isEmpty;
+
+        let questionresp;
+        if (isKillMistakeEmpty) {
+          questionresp = await axios.get(`http://localhost:5050/api/quiz/api/quiz/${numb}`);
+        } else {
+      
+          questionresp = await axios.get('http://localhost:5050/api/quiz/api/questionwithkillmistakes');
+          console.log('killmistake');
+        }
+        let fetchedQuestions = [];
+        if (Array.isArray(questionresp.data)) {
+
+          fetchedQuestions = questionresp.data;
+        } else if (questionresp.data.questions) {
+
+          fetchedQuestions = questionresp.data.questions;
+        }
+        const killMistakeQuestions = questionresp.data.killMistakeQuestions || [];
+        const combinedQuestions = fetchedQuestions.concat(killMistakeQuestions);
+
+        setQuestions(combinedQuestions);
+        const initialAnswers = questionresp.data.reduce((acc, _, idx) => ({ ...acc, [idx]: [] }), {});
         setSelectedAnswers(initialAnswers);
-        setFlags(Array(response.data.length).fill(false)); // Initialize flags with false
+        setFlags(Array(questionresp.data.length).fill(false)); 
       } catch (error) {
         console.error('Error fetching quiz:', error);
       }
@@ -250,6 +272,7 @@ const Quiz = ({startDate}) => {
           questions.length > 0 && (
             <>
 <div  className={styles.questionquiz}>
+  
               <div className={styles.questionsection}>
                 <div className={styles.questioncount}>
                   <div className={styles.questiontext}><span className={styles.questiontext}>Question {currentQuestion + 1}</span>/{questions.length}
