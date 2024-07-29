@@ -8,7 +8,7 @@ const Quiz = ({startDate}) => {
   const [questions, setQuestions] = useState([]);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [showScore, setShowScore] = useState(false);
-  const [score, setScore] = useState(0);
+  const [score, setScore] = useState(100);
   const [selectedAnswers, setSelectedAnswers] = useState({});
   const [flags, setFlags] = useState([]);
   const [finishDate, setFinishDate] = useState(null);
@@ -58,7 +58,7 @@ const Quiz = ({startDate}) => {
   const handleSubmit = async () => {
     let totalQuestions = questions.length;
     let correctAnswers = 0;
-    let newScore = 0;
+    let newScore = 1000;
     handleFinishDate();
     const updatedQuestions = questions.map((question, index) => {
       let isCorrect = false;
@@ -163,7 +163,7 @@ const Quiz = ({startDate}) => {
                 <img src="./images/quiz/copywright.png" alt="" className={styles.logoimag} />
               </div>
               <div className={styles.container}>
-                <div className={styles.containerTimer}>   <CircularTimer duration={5000} onComplete={handleSubmit} className={styles.timer} /></div>
+                <div className={styles.containerTimer}>   <CircularTimer duration={5} onComplete={handleSubmit} className={styles.timer} /></div>
 
                 <div className={styles.productcont}>
                   <img src="./images/quiz/scrumorg.png" alt="" className={styles.scrumorg} />
@@ -192,7 +192,7 @@ const Quiz = ({startDate}) => {
                 <b>1.</b>  Its time limit was reached when taking the Test.<br />
                 <b>2.</b> An attempt to resume this Test was not allowed due to date or time limits.</div>
             </div>
-            {score >= 50 ? (<div className={styles.score}>
+            {score >= 0 ? (<div className={styles.score}>
               <div className={styles.scoreInn} >
                 <div>
                   <div className={styles.scrum2}>      <img src="./images/quiz/scrumorg2.png" alt="" /></div>
@@ -200,13 +200,14 @@ const Quiz = ({startDate}) => {
                   <div className={styles.results}>  Product Owner Open
                     <p className={styles.underlineresult}></p>
                   </div>
-
+                   
                   <ul>
                     <li><b>Percentage:</b><span>{score}%</span></li>
                     <li><b>Duration:</b><span>00:03:00</span></li>
                     <li><b>Date started:</b><span>{startDate}</span></li>
                     <li><b>Date finished:</b><span>{finishDate}</span></li>
                   </ul>
+                  
                 </div>
 <div className={styles.succ}><div  className={styles.succtext}>Congratulations</div>
 <img src="./images/quiz/secc.png" alt="" className={styles.imagesecc}/>
