@@ -179,8 +179,9 @@ const Quiz = ({startDate}) => {
 
 
 
-      <div className={styles.quiz}>
+      
         {showScore ? (
+          <div className={styles.quiz}>
           <div className={styles.scoresection}>
 
             <div className={styles.warning}>
@@ -243,6 +244,7 @@ const Quiz = ({startDate}) => {
 
             </div>)}
 
+          </div>
           </div>
         ) : (
           questions.length > 0 && (
@@ -310,7 +312,7 @@ const Quiz = ({startDate}) => {
           )
         )}
 
-      </div>
+  
     </>
   );
 };
