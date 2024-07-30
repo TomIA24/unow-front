@@ -63,7 +63,7 @@ const AddCourse = () => {
 
   useEffect(() => {
     setData({ ...data, QuestionsQCM: QuestionsQCM, QuestionsQR: QuestionsQR });
-  }, [QuestionsQCM, QuestionsQR]);
+  }, [QuestionsQCM, QuestionsQR, data]);
   const initialData = {
     Title: "",
     Description: "",
@@ -167,9 +167,9 @@ const AddCourse = () => {
   const [categoriesFromBd, setCategoriesFromBd] = useState([]);
 
   const HandleCategories = async () => {
-    const config = {
-      headers: {},
-    };
+    // const config = {
+    //   headers: {},
+    // };
     await axios
       .get(`${process.env.REACT_APP_API}/api/Category/getCategories`)
       .then(async (res) => {
@@ -195,16 +195,16 @@ const AddCourse = () => {
 
   const TrainersList = ["1", "2", "3"];
 
-  const Trainers = TrainersList.map((Trainer) => {
-    return (
-      <MenuItem key={Trainer} value={Trainer}>
-        {Trainer}
-      </MenuItem>
-    );
-  });
+  // const Trainers = TrainersList.map((Trainer) => {
+  //   return (
+  //     <MenuItem key={Trainer} value={Trainer}>
+  //       {Trainer}
+  //     </MenuItem>
+  //   );
+  // });
 
   const [error, setError] = useState("");
-
+	console.log(error)
   const handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
@@ -300,7 +300,7 @@ const AddCourse = () => {
         filesArrayRessources.push(file);
       });
     }
-  }, [multipleFilesSelectedRessources]);
+  }, [multipleFilesSelectedRessources, filesArrayRessources]);
 
   const [close, setClose] = useState(false);
 
@@ -369,7 +369,7 @@ const AddCourse = () => {
         filesArray.push(file);
       });
     }
-  }, [multipleFilesSelected]);
+  }, [multipleFilesSelected, filesArray]);
 
   const UploadMultipleFiles = async () => {
     const formData = new FormData();
@@ -404,6 +404,7 @@ const AddCourse = () => {
   };
 
   const OnAddQCM = async () => {
+	  setLoading(true)
     setQuestionsQCM([
       ...QuestionsQCM,
       {
@@ -419,6 +420,7 @@ const AddCourse = () => {
       Responses: "",
       ResAcceptable: "",
     });
+	  setLoading(false)
   };
 
   const OnAddQR = () => {
