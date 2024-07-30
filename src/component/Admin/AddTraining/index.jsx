@@ -23,7 +23,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import Stack from "@mui/material/Stack";
 import TextField from "@mui/material/TextField";
-import CircularProgressWithLabel from "../../../Custom/CircularProgressWithLabel";
+// import CircularProgressWithLabel from "../../../Custom/CircularProgressWithLabel";
 import { styled } from "@mui/material/styles";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
@@ -54,7 +54,7 @@ const AddTraining = () => {
   const user = JSON.parse(localStorage.getItem("user"));
   const [DatesPicked, setDatesPicked] = useState([]);
   const [value, setValue] = useState([null, null]);
-  const [count, setCount] = useState(0);
+  // const [count, setCount] = useState(0);
   const [QuestionsQCM, setQuestionsQCM] = useState([]);
   const [QuestionsQR, setQuestionsQR] = useState([]);
   const [QCMQuestionValues, setQCMQuestionValues] = useState({
@@ -73,7 +73,7 @@ const AddTraining = () => {
 
   useEffect(() => {
     setData({ ...data, QuestionsQCM: QuestionsQCM, QuestionsQR: QuestionsQR });
-  }, [QuestionsQCM, QuestionsQR]);
+  }, [QuestionsQCM, QuestionsQR, data]);
 
   const SaveDate = () => {
     setDatesPicked([value]);
@@ -144,6 +144,7 @@ const AddTraining = () => {
   };
 
   const [mobile, setMobile] = useState(false);
+	setMobile(false)
   const [data, setData] = useState({
     Title: "",
     Trainer: "",
@@ -168,9 +169,9 @@ const AddTraining = () => {
   });
 
   const [loading, setLoading] = React.useState(false);
-  function handleClick() {
-    setLoading(true);
-  }
+  // function handleClick() {
+  //   setLoading(true);
+  // }
 
   const LevelsList = [
     "Beginner",
@@ -199,6 +200,7 @@ const AddTraining = () => {
 
   const [singleFile, setSingleFile] = useState("");
   const [singleFilePath, setSingleFilePath] = useState("");
+	console.log(singleFilePath)
   const [prev, setPrev] = useState(null);
 
   const SingleFileChange = async (e) => {
@@ -231,7 +233,7 @@ const AddTraining = () => {
 
   const [categoriesFromBd, setCategoriesFromBd] = useState([]);
   const [trainersFromBd, setTrainersFromBd] = useState([]);
-
+console.log(trainersFromBd)
   const HandleCategoriesAndTrainers = async () => {
     const config = {
       headers: {
@@ -256,7 +258,7 @@ const AddTraining = () => {
 
   useEffect(() => {
     HandleCategoriesAndTrainers();
-  }, []);
+  }, [HandleCategoriesAndTrainers]);
 
   const categories = categoriesList.map((category) => {
     return (
@@ -276,7 +278,8 @@ const AddTraining = () => {
 
   const token = localStorage.getItem("token");
   const [error, setError] = useState("");
-  const navigate = useNavigate();
+	console.log(error)
+  // const navigate = useNavigate();
 
   const handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
@@ -285,7 +288,7 @@ const AddTraining = () => {
   const [saved, setSaved] = useState(false);
   useEffect(() => {
     setData({ ...data, Date: DatesPicked });
-  }, [DatesPicked]);
+  }, [DatesPicked, data]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -425,7 +428,7 @@ const AddTraining = () => {
         filesArray.push(file);
       });
     }
-  }, [selectedFiles]);
+  }, [selectedFiles, filesArray]);
 
   const UploadRessources = async () => {
     const formData = new FormData();
