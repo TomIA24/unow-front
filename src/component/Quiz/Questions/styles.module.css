@@ -218,7 +218,7 @@ ul li span {
 }
 @media (max-width: 400px) {
   ul li span {
-    font-size: 10px; /* Smaller font size for very small screens */
+    font-size: 9px; /* Smaller font size for very small screens */
   }
 }
 
@@ -793,7 +793,7 @@ margin: 5px ;
  right: 5%;
 }
 .logoimag{
-  width: 20%;
+  width: 30%;
 }
 .product{
   font-size: 1.5rem;
@@ -1255,7 +1255,7 @@ padding-left: 10%;
   
     }
     .logoimag{
-      width: 40%;
+      width: 35%;
     }
     .imagesecc{
       position: relative;
@@ -1422,7 +1422,7 @@ padding-left: 10%;
   
     }
     .logoimag{
-      width: 40%;
+      width: 35%;
     }
     .checkmark {
       position: absolute;
@@ -2102,7 +2102,7 @@ align-items: center;
   
     }
     .logoimag{
-      width: 30%;
+      width: 25%;
     }
     .scoresection{
       flex-direction: column;
@@ -2313,7 +2313,7 @@ align-items: center;
   
     }
     .logoimag{
-      width: 30%;
+      width: 27%;
     }
     .warning{
 

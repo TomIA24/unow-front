@@ -192,7 +192,7 @@ const Quiz = ({startDate}) => {
                 <b>1.</b>  Its time limit was reached when taking the Test.<br />
                 <b>2.</b> An attempt to resume this Test was not allowed due to date or time limits.</div>
             </div>
-            {score >= 0 ? (<div className={styles.score}>
+            {score >= 50 ? (<div className={styles.score}>
               <div className={styles.scoreInn} >
                 <div>
                   <div className={styles.scrum2}>      <img src="./images/quiz/scrumorg2.png" alt="" /></div>
