@@ -31,11 +31,16 @@ const Category = () => {
     pb: 3,
   };
 
-  useEffect(async () => {
+  useEffect( () => {
+    async function fetchData() {
+      
     await HandleCategories();
     await HandleTrainings();
     await HandleCourses();
-  }, []);
+
+    }
+    fetchData()
+  }, [HandleCategories, HandleTrainings, HandleCourses]);
 
   const token = localStorage.getItem("token");
   const [category, setCategory] = useState();
@@ -113,10 +118,7 @@ const Category = () => {
         await HandleCategories();
       });
   };
-
-  useEffect(() => {
-    const list = [];
-  }, [categories]);
+ 
 
   const [expanded, setExpanded] = React.useState(false);
 
