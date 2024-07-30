@@ -1,0 +1,52 @@
+.dialogOverlay {
+    position: absolute;
+    top: 100%; /* Adjust as needed */
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* margin-top: 5rem; */
+  
+  }
+  
+  .dialogContent {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    
+    max-height: 45vh; /* Add this to limit height */
+    overflow-y: auto;
+    margin-top:2rem ;
+    margin-bottom:5rem ; /* Add this to make it scrollable */
+  }
+  
+  .scrollContainer {
+    max-height: 60vh; /* Add this to limit height of the scrollable area */
+    overflow-y: auto; /* Add this to make it scrollable */
+  }
+  
+  .closeButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .question {
+    margin-bottom: 10px;
+    cursor: pointer;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .question:hover {
+    background-color: #f0f0f0;
+  }

@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
+import Dialog from './dialog';
 import axios from 'axios';
 import styles from "./styles.module.css";
 import CircularTimer from "./timer";
@@ -12,8 +13,16 @@ const Quiz = ({startDate}) => {
   const [selectedAnswers, setSelectedAnswers] = useState({});
   const [flags, setFlags] = useState([]);
   const [finishDate, setFinishDate] = useState(null);
-  const numb = 4; // Number of questions to fetch
 
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const numb = 4; // Number of questions to fetch
+  const handleMenuClick = () => {
+    setIsDialogOpen(true);
+  };
+
+  const handleCloseDialog = () => {
+    setIsDialogOpen(false);
+  };
 
   useEffect(() => {
     const fetchQuestions = async () => {
@@ -185,16 +194,28 @@ const Quiz = ({startDate}) => {
                 <img src="./images/quiz/copywright.png" alt="" className={styles.logoimag} />
               </div>
               <div className={styles.container}>
-                <div className={styles.containerTimer}>   <CircularTimer duration={5000} onComplete={handleSubmit} className={styles.timer} /></div>
+                <div className={styles.containerTimer}>   <CircularTimer duration={5} onComplete={handleSubmit} className={styles.timer} /></div>
 
                 <div className={styles.productcont}>
                   <img src="./images/quiz/scrumorg.png" alt="" className={styles.scrumorg} />
                   <div className={styles.product}>PRODUCT OWNER OPEN</div>
+                  <div className={styles.menulist}>
+                  <img src="./images/quiz/menu.png" alt="" className={styles.menu} onClick={handleMenuClick}/>
+                  <div>See all questions</div>
+                  </div>
                 </div>
 
               </div>
+              {isDialogOpen &&  (
+                <div className={styles.menudialog}>
+        <Dialog onClose={handleCloseDialog}  questions={questions}>
+          <div>Here are all the questions...</div>
+        </Dialog>
+        </div>
+      )}
             </div>
           </div>
+    
         </div>
 
       )}
@@ -271,66 +292,74 @@ const Quiz = ({startDate}) => {
         ) : (
           questions.length > 0 && (
             <>
+             {!isDialogOpen &&
+      (
 <div  className={styles.questionquiz}>
   
-              <div className={styles.questionsection}>
-                <div className={styles.questioncount}>
-                  <div className={styles.questiontext}><span className={styles.questiontext}>Question {currentQuestion + 1}</span>/{questions.length}
-                    <p className={styles.underline}></p></div>
-                  <div className={styles.question}>{questions[currentQuestion].question}</div>
+  <div className={styles.questionsection}>
+    <div className={styles.questioncount}>
+      <div className={styles.questiontext}><span className={styles.questiontext}>Question {currentQuestion + 1}</span>/{questions.length}
+        <p className={styles.underline}></p></div>
+      <div className={styles.question}>{questions[currentQuestion].question}</div>
 
-                </div>
-                <div >
-                  <button onClick={() => handleFlagQuestion(currentQuestion)} className={styles.flagsection}>
-                    <img
-                      src={flags[currentQuestion] ? "./images/quiz/bookmark.png" : "./images/quiz/unbooked.png"}
-                      alt="Flag Question"
-                      className={styles.flagimg} />
-                  </button>
-                </div>
+    </div>
+    <div >
+      <button onClick={() => handleFlagQuestion(currentQuestion)} className={styles.flagsection}>
+        <img
+          src={flags[currentQuestion] ? "./images/quiz/bookmark.png" : "./images/quiz/unbooked.png"}
+          alt="Flag Question"
+          className={styles.flagimg} />
+      </button>
+    </div>
 
 
-              </div>
-              <div className={styles.answersection}>
-                {questions[currentQuestion].correctAnswers.length === 1
-                  ? questions[currentQuestion].correctAnswers.concat(questions[currentQuestion].wrongAnswers).map((answer, index) => (
-                    <label key={index} className={styles.rdiocontainer}>
-                      <input
-                        type='radio'
-                        name={`question-${currentQuestion}`}
-                        checked={selectedAnswers[currentQuestion] === answer}
-                        onChange={() => handleRadioChange(currentQuestion, answer)}
-                      />
-                      {answer}
-                      <span className={styles.radio}></span>
-                    </label>
-                  ))
-                  : questions[currentQuestion].correctAnswers.concat(questions[currentQuestion].wrongAnswers).map((answer, index) => (
-                    <label key={index} className={styles.checkmarkcontainer}>
+  </div>
+  <div className={styles.answersection}>
+    {questions[currentQuestion].correctAnswers.length === 1
+      ? questions[currentQuestion].correctAnswers.concat(questions[currentQuestion].wrongAnswers).map((answer, index) => (
+        <label key={index} className={styles.rdiocontainer}>
+          <input
+            type='radio'
+            name={`question-${currentQuestion}`}
+            checked={selectedAnswers[currentQuestion] === answer}
+            onChange={() => handleRadioChange(currentQuestion, answer)}
+          />
+          {answer}
+          <span className={styles.radio}></span>
+        </label>
+      ))
+      : questions[currentQuestion].correctAnswers.concat(questions[currentQuestion].wrongAnswers).map((answer, index) => (
+        <label key={index} className={styles.checkmarkcontainer}>
 
-                      <input
-                        type="checkbox"
-                        name={`question-${currentQuestion}`}
-                        checked={selectedAnswers[currentQuestion] && selectedAnswers[currentQuestion].includes(answer)}
-                        onChange={() => handleCheckboxChange(currentQuestion, answer)}
-                      />
-                      <span className={styles.checkmark}></span>
-                      {answer}
-                    </label>
-                  ))}
-              </div>
+          <input
+            type="checkbox"
+            name={`question-${currentQuestion}`}
+            checked={selectedAnswers[currentQuestion] && selectedAnswers[currentQuestion].includes(answer)}
+            onChange={() => handleCheckboxChange(currentQuestion, answer)}
+          />
+          <span className={styles.checkmark}></span>
+          {answer}
+        </label>
+      ))}
+  </div>
 
-              <div className={styles.submitSection}>
-                {currentQuestion > 0 && (
-                  <button onClick={handlePreviousQuestion} className={styles.butnprevious}>Previous</button>
-                )}
-                {currentQuestion < questions.length - 1 ? (
-                  <button onClick={handleNextQuestion} className={styles.butnnext}>Next</button>
-                ) : (
-                  <button onClick={handleSubmit} className={styles.submitbtn}>Submit</button>
-                )}
-              </div>
-              </div>
+  <div className={styles.submitSection}>
+    {currentQuestion > 0 && (
+      <button onClick={handlePreviousQuestion} className={styles.butnprevious}>Previous</button>
+    )}
+    {currentQuestion < questions.length - 1 ? (
+      <button onClick={handleNextQuestion} className={styles.butnnext}>Next</button>
+    ) : (
+      <button onClick={handleSubmit} className={styles.submitbtn}>Submit</button>
+    )}
+  </div>
+  </div>
+
+
+      )
+      
+      }
+
             </>
           )
         )}
