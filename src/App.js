@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 
-import Main from "./component/Main"
+// import Main from "./component/Main"
 //import Welcome from "./component/Welcome";
 import Personalize from "./component/Personalize";
 import Login from "./component/Login";
@@ -18,7 +18,11 @@ import Admin from "./component/Admin";
 import Videos from "./component/Course/paid/Ressources/Videos";
 import { Accept, Refuse } from "./component/Payment";
 
-import { Link, Route, Routes, Navigate } from "react-router-dom";
+import { 
+  // Link, 
+        Route, Routes
+  // , Navigate 
+  } from "react-router-dom";
 import MissingRoute from "./secure/MissingRoute";
 
 import { LanguageProvider } from "./hooks/LanguageContext";
