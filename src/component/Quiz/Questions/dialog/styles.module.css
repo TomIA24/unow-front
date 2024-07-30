@@ -40,11 +40,10 @@
   }
   
   .question {
-    margin-bottom: 10px;
-    cursor: pointer;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+  
+    display: flex;
+    flex-direction: column;
+ 
   }
   
   .question:hover {

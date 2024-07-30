@@ -228,7 +228,7 @@ const Quiz = ({ startDate }) => {
             <img src="./images/quiz/copywright.png" alt="" className={styles.logoimag} />
           </div>
           <div className={styles.container}>
-            <div className={styles.containerTimer}>   <CircularTimer duration={5} onComplete={handleTimeRanOut} className={styles.timer} /></div>
+            <div className={styles.containerTimer}>   <CircularTimer duration={50000} onComplete={handleTimeRanOut} className={styles.timer} /></div>
 
             <div className={styles.productcont}>
               <img src="./images/quiz/scrumorg.png" alt="" className={styles.scrumorg} />
