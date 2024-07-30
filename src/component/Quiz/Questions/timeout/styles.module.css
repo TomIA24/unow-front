@@ -77,7 +77,6 @@ body {
 
   gap: 1.5rem;
 }
-
 .logo {
   display: flex;
   justify-content: center;
@@ -95,55 +94,8 @@ body {
 
 }
 
-.questioncount {}
 
-.quiz {
-  padding-top: 10%;
-  padding-left: 15%;
-  padding-right: 15%;
-  background-color: #F9F9F9;
-  position: relative;
-  font-family: 'Lato';
-}
 
-.answersection {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-
-  padding-right: 2%;
-  gap: 33px;
-  font-family: 'Lato';
-  font-size: 20px;
-  margin-bottom:6rem;
-  background-color: rgba(240, 248, 255, 0);
-}
-
-.questiontext {
-  font-size: 32px;
-  font-weight: 800;
-  color: #2C2C2C;
-  font-family: "Lato";
-
-}
-
-.question {
-  font-size: 1.9rem;
-  font-weight: 600;
-  color: #2C2C2C;
-  font-family: 'Lato';
-  margin-bottom: 30px;
-  margin-top: 30px;
-
-}
-
-.underline {
-  width: 10%;
-  background-color: #CD6214;
-  padding-top: 5px;
-  border-radius: 100px;
-  margin-top: 10px;
-}
 
 /* input{
     margin-right: 16px;
@@ -224,51 +176,7 @@ body {
 
 }
 
-.imagesecc {
-  position: relative;
-  width: 100%;
-}
 
-.succtext {
-  font-size: 5rem;
-  font-weight: 900;
-  color: #CD6214;
-  font-family: 'Tangerine' !important;
-}
-
-.succ {
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
-  justify-content: space-between;
-  align-items: center;
-  width: 50%;
-
-}
-
-
-.finishsection{
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-.finishbutton{
-  width: 10rem;
-  height: 2.5rem;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-
-  background-color: #0de68b;
-  color: white;
-  font-size: 15px;
-  font-weight: bold;
-  text-align: center;
-  font-family: "Nunito";
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  margin-top: 5px;
-  margin-bottom: 10px;
-}
 .timeOutMessage{
   display: flex;
   flex-direction: column;
@@ -285,1185 +193,289 @@ text-align: center;
 
 
 @media (min-width: 300px) and (max-width: 327px) {
-  /*results*/
-  .imagesecc{
-    position: relative;
-    width: 50%;
+  .butnprevious {
+    width: 10rem;
+    height: 3rem;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  
+    background-color: rgb(14, 59, 110);
+    color: white;
+    font-size:1.5rem;
+
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 2rem;
+    margin-bottom: 10px;
   }
-  .succtext{
-    font-size:2em;
+  .backimagtimeout{
+
    
-  }
-  .succ{
+    border-radius: 0px 0px 35px 35px;
     display: flex;
-    flex-direction: row;
-    gap:0px;
-  justify-content: space-between  ;
-  align-items: center;
-  
-  }
-  .scoresection{
     flex-direction: column;
-    display: flex;
   
-   margin-left:1%;
-   margin-right: 1%;  
-    gap: 25px;
-   /* margin-top: -80%; */
+    z-index: 1;
   }
-  .logoimag{
-    width: 20%;
+  .imgtimeout{
+    width: 65%;
+      }
+  .scrumorg {
+    margin-top: 1px;
+
   }
+
+  .product {
+    font-size: 2rem;
+
+  }
+
+  .logoimagtimout{
+    width: 11rem;  
+    }
 }
 
 @media (min-width: 327px) and (max-width: 346px) {
-  .submitSection {
+  .butnprevious {
+    width: 10rem;
+    height: 3rem;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  
+    background-color: rgb(14, 59, 110);
+    color: white;
+    font-size:1.5rem;
 
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 2rem;
+    margin-bottom: 10px;
   }
-  .containerTimer{
-    right: 0;
-    padding-right: 0;
+  .backimagtimeout{
+
+   
+    border-radius: 0px 0px 35px 35px;
+    display: flex;
+    flex-direction: column;
+  
+    z-index: 1;
   }
-  .answersection{
-    padding-right: 3rem;
-  }
-
-  /*quiz*/
-  .backimage {
-
-
-    border-radius: 0px 0px 25px 25px;
-
-
-  }
-
-  .logoimag {
-    width: 20%;
-  }
-
-  .questionquiz {
-    margin-left: 10%;
-    margin-right: 10%;
-  }
-
-  .questiontext {
-    font-size: 2.5rem;
-
-
-  }
-
-  .flagimg {
-    width: 30px;
-  }
-
+  .imgtimeout{
+    width: 65%;
+      }
   .scrumorg {
     margin-top: 1px;
-    width: 50%;
-  }
 
-  /* .containerTimer {
-
-    right: 0%;
-
-
-
-  } */
-
-
-  .imagesecc {
-    position: relative;
-    width: 50%;
-  }
-
-  .succtext {
-    font-size: 2em;
-
-  }
-
-  .succ {
-    display: flex;
-    flex-direction: row;
-    gap: 0px;
-    justify-content: space-between;
-    align-items: center;
-
-  }
-.scoresection{
-  flex-direction: column;
-  display: flex;
-
- margin-left:1%;
- margin-right: 1%;  
-  gap: 25px;
-  /* margin-top: -80%;  */
-}
-  .question {
-    font-size: 1rem;
-    margin-bottom: 30px;
-    margin-top: 30px;
-
-  }
-
-  .container {
-
-    padding-left: 10%;
-    padding-right: 10%;
-
-    /* padding-top: 1rem; */
   }
 
   .product {
-    font-size: 1.2rem;
+    font-size: 2rem;
 
   }
-  .butnnext {
-    width: 10rem;
-    height: 2.5rem;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  
-    background-color: #CD6214;
-    color: white;
-    font-size: 1rem;
-    border: none;
-    border-radius:0.5rem;
-    cursor: pointer;
-    margin-top: 1rem;
-    margin-bottom: 10px;
-  }
+
+  .logoimagtimout{
+    width: 11rem;  
+    }
 }
 
 @media (min-width: 346px) and (max-width: 360px) {
-  .backimage {
-
-
-    border-radius: 0px 0px 25px 25px;
-
-
-  }
-
-  .warning {
-    border-radius: 40px;
-    border: 5px;
-    background-color: white;
-    align-items: center;
-    border: 1px solid rgb(203, 195, 194);
-    padding-left: 0px;
-    display: flex;
-    /* justify-content:center; */
-    gap: 20px;
-  }
-
-  .scoresection{
-    flex-direction: column;
-    display: flex;
- 
-   margin-left:6%;
-   margin-right: 6%;  
-    gap: 25px;
-    /* margin-top: -28%; */
-  }
-
-  
-  .quiz{
-    padding-top: 10%;
-    padding-left: 0%;
-    padding-right: 5%;
- 
-  
-  }
-
-  .imagesecc {
-    position: relative;
-    width: 50%;
-  }
-
-  .succtext{
-    font-size:4rem;
-    margin-left: 16%;
-   
-  }
-  .warning{
-
-    padding-left: 8% 0% 8% 6% ;
-    
-      }
-
-  .imageechec{
-    width: 30%;
-  }
-
-  .echectext {
-    font-size: 1.5em;
-  }
-
-  .echectext span {
-    font-size: 1.5rem;
-  }
-
-  .score {
-    border-radius: 40px;
-    border: 5px;
-    background-color: white;
-    border: 1px solid rgb(203, 195, 194);
-    display: flex;
-    padding-left: 10%;
-    margin-bottom: 50px;
-    flex-direction: column;
-    gap: 50px;
-  }
-
-  .imagesecc{
-    position: relative;
-    width: 75%;
-  }
-
-  .succtext{
-    font-size:5rem;
-   
-  }
-  .echec{
-    gap: 10px;
-  }
-
-  .succ{
-    display: flex;
-    flex-direction: row;
-    gap:20px;
-  justify-content: space-between  ;
-  align-items: center;
-  
-  }
-  .questionquiz {
-    margin-left: 10%;
-    margin-right: 10%;
-  }
-  .containerTimer {
-    right: 1rem;
-  padding-left: 1rem;
-    position: fixed;
-    /* flex: 1; */
-  
-  
-  }
-  .container {
-
-    padding-left: 10%;
-    padding-right: 10%;
- 
-
-  }
-
-  .scrumorg {
-    margin-top: 1px;
-    width: 50%;
-  }
-
-  .questiontext {
-    font-size: 2.5rem;
-
-
-  }
-
-  .flagimg {
-    width: 30px;
-  }
-
-  .logoimag {
-    width: 20%;
-  }
-  .logoimagtimout{
-    width: 20%;
-  }
-  .product {
-    font-size: 1.2rem;
-
-  }
-  /*buttons*/
-  .butnnext {
+  .butnprevious {
     width: 10rem;
-    height: 2.5rem;
+    height: 3rem;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   
-    background-color: #CD6214;
+    background-color: rgb(14, 59, 110);
     color: white;
-    font-size: 1rem;
+    font-size:1.5rem;
+
     border: none;
-    border-radius:0.5rem;
+    border-radius: 6px;
     cursor: pointer;
-    margin-top: 1rem;
+    margin-top: 2rem;
     margin-bottom: 10px;
   }
-  
+  .imgtimeout{
+    width: 65%;
+      }
+  .scrumorg {
+    margin-top: 1px;
+
+  }
+
+  .product {
+    font-size: 2rem;
+
+  }
+
+  .logoimagtimout{
+    width: 11rem;  
+    }
 }
 
 @media (min-width: 361px) and (max-width: 390px) {
-  .questionquiz {
-    margin-left: 10%;
-    margin-right: 10%;
-  }
-    .answersection{
-    padding-right: 3rem;
-  }
-  .logoimag {
-    width: 20%;
-  }
-  .logoimagtimout{
-    width: 20%;
-  }
-  .backimage {
 
-    border-radius: 0px 0px 25px 25px;
-
-
-  }
-
-  .containerTimer {
-    right: 0rem;
-  padding-left: 1rem;
-    position: fixed;
-    /* flex: 1; */
+  .butnprevious {
+    width: 10rem;
+    height: 3rem;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   
-  
+    background-color: rgb(14, 59, 110);
+    color: white;
+    font-size:1.5rem;
+
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 2rem;
+    margin-bottom: 10px;
   }
-  
-
-  .checkmark {
-    position: absolute;
-    top: 15%;
-    left: 0;
-    height: 15px;
-    width: 15px;
-
-  }
-
-  .checkmarkcontainer,
-  .rdiocontainer {
-    font-size: 1.5rem;
-    line-height: 2rem;
-    font-family: 'Lato';
-    margin-right: 3rem;
-  }
-
-  .questiontext {
-    font-size: 2rem;
-
-
-  }
-
-  .warning {
-    border-radius: 40px;
-    border: 5px;
-    background-color: white;
-    align-items: center;
-    border: 1px solid rgb(203, 195, 194);
-    padding-left: 0px;
-    display: flex;
-
-    gap: 20px;
-  }
-
-
-  .scoresection{
-    flex-direction: column;
-    display: flex;
- 
-   margin-left:7%;
-   margin-right: 7%;  
-    gap: 25px;
-    /* margin-top: -28%; */
-  }
-
-  .quiz{
-    padding-top: 8%;
-    padding-left: 3%;
-    padding-right: 3%;
-    background-color: #F9F9F9;
-    position: relative;
-    font-family: 'Lato';
-  }
-  .imagesecc{
-    position: relative;
-    width: 30%;
-  }
-
-  .succtext {
-    font-size: 4rem;
-
-  }
-  .echec{
-    gap: 10px;
-  }
-  .warning{
-
-    padding: 10% 3% 9% 4%;
-    
+  .imgtimeout{
+    width: 65%;
       }
-  .imageechec{
-    width: 30%;
-  }
+  .scrumorg {
+    margin-top: 1px;
 
-  .echectext {
-    font-size: 1.5em;
-  }
-
-  .echectext span {
-    font-size: 1.5rem;
-  }
-
-  .score {
-    border-radius: 40px;
-    border: 5px;
-    background-color: white;
-    border: 1px solid rgb(203, 195, 194);
-    display: flex;
-    padding-left: 10%;
-    margin-bottom: 50px;
-    flex-direction: column;
-    gap: 50px;
-  }
-
-  .imagesecc{
-    position: relative;
-    width: 70%;
-  }
-  .succtext{
-    font-size:4rem;
-    margin-right: 15%;
-    margin-left: 10%;
-   
-  }
-  .succ{
-    display: flex;
-    flex-direction: row;
-    gap:20px;
-  justify-content: space-between  ;
-  align-items: center;
-  
-  }
-
-  .container {
-
-    padding-left: 10%;
-    padding-right: 10%;
- 
-    /* padding-top: 2rem; */
   }
 
   .product {
-    font-size: 1.5rem;
+    font-size: 2rem;
 
   }
 
-  .scrumorg {
-    margin-top: 1px;
-    width: 30%;
+  .logoimagtimout{
+    width: 11rem;  
+    }
+  .backimagtimeout{
+
+   
+    border-radius: 0px 0px 35px 35px;
+    display: flex;
+    flex-direction: column;
+  
+    z-index: 1;
   }
-
-  .question {
-    font-size: 1.5rem;
-    margin-bottom: 30px;
-    margin-top: 30px;
-
-
-  }
-
-  .flagimg {
-    width: 30px;
-  }
-
 
 }
 
 @media (min-width: 390px) and (max-width: 400px) {
-  .logoimag {
-    width: 20%;
-  }
-  .logoimagtimout{
-    width: 20%;
-  }
-  .flagimg {
-    width: 30px;
-  }
 
+
+  .imgtimeout{
+    width: 65%;
+      }
   .scrumorg {
     margin-top: 1px;
-    width: 50%;
-  }
 
-  .backimage {
-
-    border-radius: 0px 0px 25px 25px;
-
-
-  }
-
-  .warning {
-    border-radius: 40px;
-    border: 5px;
-    background-color: white;
-    align-items: center;
-    border: 1px solid rgb(203, 195, 194);
-    padding-left: 0px;
-    display: flex;
-
-    gap: 20px;
-  }
-
-  .questiontext {
-    font-size: 2.2rem;
-
-
-  }
-
-  .scoresection{
-    flex-direction: column;
-    display: flex;
- 
-   margin-left:7%;
-   margin-right: 7%;  
-    gap: 25px;
-    /* margin-top: -28%; */
-  }
-
-  .quiz{
-    padding-top: 8%;
-    padding-left: 7%;
-    padding-right: 7%;
-    background-color: #F9F9F9;
-    position: relative;
-    font-family: 'Lato';
-  }
-
-  .imagesecc{
-    position: relative;
-    width: 70%;
-  }
-
-  .succtext {
-    font-size: 4rem;
-
-  }
-
-  .warning{
-
-    padding: 11% 4% 9% 4%;
-    
-      }
-
-  .imageechec {
-    width: 50%;
-  }
-
-  .echectext {
-    font-size: 1.5em;
-  }
-
-  .echectext span {
-    font-size: 1.5rem;
-  }
-
-  .score{
-    border-radius:40px;
-    border:5px;
-    background-color: white;
-    border: 1px solid rgb(203, 195, 194);
-    display: flex;
-    padding-left: 10%;
-    margin-bottom: 50px;
-    flex-direction: column;
-    gap:50px; 
-  }
-  .imagesecc{
-    position: relative;
-    width: 80%;
-  }
-  .succtext{
-    font-size:4rem;
-    margin-left: 6%;
-   
-  }
-
-  .succ{
-    display: flex;
-    flex-direction: row;
-    gap:10px;
-  justify-content: space-between  ;
-  align-items: center;
-  
-  }
-  .containerTimer {
-    right: 1rem;
-  padding-left: 1rem;
-    position: fixed;
-    /* flex: 1; */
-  
-  
-  }
-
-  .container {
-
-    padding-left: 10%;
-    padding-right: 10%;
-/*  
-    padding-top: 1rem; */
   }
 
   .product {
-    font-size: 1.4rem;
-
-  }
-
-  .questionquiz {
-    margin-left: 10%;
-    margin-right: 10%;
-  }
-
-  .question {
     font-size: 2rem;
-    font-family: 'Lato';
-
 
   }
-
+  .logoimagtimout{
+    width: 11rem;  
+    }
 }
 
 @media (min-width: 400px) and (max-width: 500px) {
-  .backimage {
+  .backimagtimeout{
 
-    border-radius: 0px 0px 25px 25px;
-
-
+   
+    border-radius: 0px 0px 35px 35px;
+    display: flex;
+    flex-direction: column;
+  
+    z-index: 1;
   }
 
-  .flagimg {
-    width: 30px;
-  }
-
-  .logoimag {
-    width: 30%;
-  }
-  .logoimagtimout{
-    width: 20%;
-  }
-  .question {
-    font-size: 16px;
-    font-family: 'Lato';
-
-    margin-bottom: 30px;
-    margin-top: 30px;
-
-  }
-  .questiontext {
-    font-size: 1.8rem;
-
-
-  }
-  .answersection {
-    padding-right: 5rem;
-    margin-bottom: 45px;
-  }
+  .imgtimeout{
+    width: 70%;
+      }
   .scrumorg {
     margin-top: 1px;
-    width: 30%;
-  }
-
-
-  .warning {
-    border-radius: 40px;
-    border: 5px;
-    background-color: white;
-    align-items: center;
-    border: 1px solid rgb(203, 195, 194);
-    padding-left: 0px;
-    display: flex;
-
-    gap: 20px;
-  }
-
-  .scoresection{
-    flex-direction: column;
-    display: flex;
- 
-   margin-left:2%;
-   margin-right: 2%;  
-    gap: 25px;
-    /* margin-top: -28%; */
-  }
-
-
-  .quiz{
-    padding-top: 8%;
-    padding-left: 9%;
-    padding-right: 7.5%;
-    background-color: #F9F9F9;
-    position: relative;
-    font-family: 'Lato';
-  }
-
-
-  .imagesecc {
-    position: relative;
-    width: 50%;
-  }
-
-  .succtext {
-    font-size: 4rem;
 
   }
 
-  .warning{
-
-    padding: 9% 1% 8% 2%;
-    
-      }
-
-  .imageechec{
-    width: 40%;
-  }
-  .echectext {
-    font-size: 1.5em;
-  }
-
-  .echectext span {
-    font-size: 1.5rem;
-  }
-
-  .score {
-    border-radius: 40px;
-    border: 5px;
-    background-color: white;
-    border: 1px solid rgb(203, 195, 194);
-    display: flex;
-    padding-left: 10%;
-    margin-bottom: 50px;
-    flex-direction: column;
-    gap: 50px;
-  }
-
-  .imagesecc{
-    position: relative;
-    width: 70%;
-  }
-
-  .succtext{
-    font-size:4rem;
-    margin-right: 20%;
-   
-  }
-
-  .succ{
-    display: flex;
-    flex-direction: row;
-    gap:10px;
-  justify-content: space-between  ;
-  align-items: center;
-  
-  }
-  .containerTimer {
-    right: 1rem;
-  padding-left: 1rem;
-    position: fixed;
-    /* flex: 1; */
-  
-  
-  }
-  .container {
-
-    padding-left: 10%;
-    padding-right: 10%;
- 
-    /* padding-top: 2rem; */
-  }
-  .questionquiz {
-    margin-left: 10%;
-    margin-right: 10%;
-  }
   .product {
-    font-size: 1.4rem;
+    font-size: 2rem;
 
   }
-    .butnnext {
-    width: 10rem;
-    height: 2.5rem;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  
-    background-color: #CD6214;
-    color: white;
-    font-size: 1.5rem;
-    border: none;
-    border-radius:0.5rem;
-    cursor: pointer;
-    margin-top: 1rem;
-    margin-bottom: 10px;
-  }
 
+  .logoimagtimout{
+    width: 11rem;  
+    }
 }
 
 @media (min-width: 500px) and (max-width: 520px) {
-  .backimage {
 
-    border-radius: 0px 0px 29px 29px;
-
-
-  }
-  .question {
-    font-size: 16px;
-    font-family: 'Lato';
-
-    margin-bottom: 30px;
-    margin-top: 30px;
-
-  }
-  .flagimg {
-    width: 30px;
-  }
-  .questiontext {
-    font-size: 2rem;
-
-
-  }
-  
-  .answersection {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    /* padding-left: 2%; */
-    /* padding-right: 2%; */
-    gap: 20px;
-    font-family: 'Lato';
-    font-size: 24px;
-    padding-right: 5rem;
-    margin-bottom: 45px;
-    background-color: rgba(240, 248, 255, 0);
-  }
-  .logoimag {
-    width: 32%;
-  }
+  .imgtimeout{
+    width: 80%;
+      }
   .scrumorg {
     margin-top: 1px;
-    width: 50%;
-  }
-  .containerTimer {
-    right: 1rem;
-  padding-left: 1rem;
-    position: fixed;
-    /* flex: 1; */
-  
-  
-  }
-  .questionquiz {
-    margin-left: 10%;
-    margin-right: 10%;
-  }
-  .container {
 
-    padding-left: 10%;
-    padding-right: 10%;
-    /* height: 100%; */
-    /* padding-top: 1rem; */
-  }
-
-  .scoresection {
-    flex-direction: column;
-    display: flex;
-
-    margin-left: 13%;
-    margin-right: 13%;
-    gap: 25px;
-    /* margin-top: -28%; */
-  }
-
-  .quiz{
-    padding-top: 8%;
-    padding-left: 0%;
-    padding-right: 0%;
-    background-color: #F9F9F9;
-    position: relative;
-    font-family: 'Lato';
-  }
-
-
-
-  .imagesecc {
-    position: relative;
-    width: 50%;
-  }
-
-  .succtext {
-    font-size: 4rem;
-
-  }
-
-  .warning {
-
-    padding-left: 10%;
-
-  }
-
-  .imageechec {
-    width: 50%;
-  }
-
-  .echectext {
-    font-size: 1.5em;
-  }
-
-  .echectext span {
-    font-size: 1.5rem;
-  }
-
-  .score {
-    border-radius: 40px;
-    border: 5px;
-    background-color: white;
-    border: 1px solid rgb(203, 195, 194);
-    display: flex;
-    padding-left: 10%;
-    margin-bottom: 50px;
-    flex-direction: column;
-    gap: 50px;
   }
 
   .product {
-    font-size: 1.5rem;
+    font-size: 2rem;
 
   }
+
+  .logoimagtimout{
+    width: 11rem;  
+    }
 }
 
 @media (min-width: 520px) and (max-width: 576px) {
-  .containerTimer {
-    right:3rem;
 
-    position: fixed;
-    /* flex: 1; */
-  
-  
-  }
-  .logoimag {
-    width: 25%;
-  }
-  .questionquiz{
-    margin-left: 10%;
-    margin-right: 10%;
-  }
-
-  .container {
- 
-    padding-left: 10%;
-    padding-right: 10%;
-    /* height: 100%; */
-    /* padding-top: 1rem; */
-  }
-
-  .checkmark {
-    position: absolute;
-    top: 15%;
-    left: 0;
-    height: 15px;
-    width: 15px;
-
-  }
-
-  .answersection {
-    gap: 20px;
-    font-size: 24px;
-    padding-right: 5rem;
-    margin-bottom: 45px;
-    background-color: rgba(240, 248, 255, 0);
-  }
-
-  .checkmarkcontainer,
-  .rdiocontainer {
-    font-size: 1.2rem;
-    line-height: 2rem;
-    font-family: 'Lato';
-    margin-right: 3rem;
-  }
-
-  .flagimg {
-    width: 30px;
-  }
-
-  .question {
-    font-size: 16px;
-    font-family: 'Lato';
-
-    margin-bottom: 30px;
-    margin-top: 30px;
-
-  }
-
-  .underline {
-    width: 25%;
-    padding-top: 3px;
-    margin-top: 0.5em;
-  }
-
-  .questiontext {
-    font-size: 2rem;
-
-
-  }
-
-  .quiz{
-    padding-top: 8%;
-    padding-left: 13%;
-    padding-right: 13%;
-    background-color: #F9F9F9;
-    position: relative;
-    font-family: 'Lato';
-  }
-
+  .imgtimeout{
+    width: 80%;
+      }
   .scrumorg {
     margin-top: 1px;
-    width: 50%;
-  }
 
+  }
 
   .product {
-    font-size: 1.5rem;
-
-  }
-
-  .warning {
-
-    padding-left: 10%;
-
-  }
-
-  .score {
-    border-radius: 40px;
-    border: 5px;
-    background-color: white;
-    border: 1px solid rgb(203, 195, 194);
-    display: flex;
-    padding-left: 10%;
-    margin-bottom: 50px;
-    flex-direction: column;
-    gap: 50px;
-  }
-
-  .imageechec {
-    width: 50%;
-  }
-
-  .echectext {
-    font-size: 1.7em;
-  }
-
-  .echectext span {
     font-size: 2rem;
+
   }
 
-  /* .logoscore{
-    width: 50%;
-  } */
-
+  .logoimagtimout{
+    width: 11rem;  
+    }
 }
 
 
 
 @media (min-width: 577px) and (max-width: 699px) {
-  .logoimag {
-    width: 25%;
-  }
-  .question {
-    font-size: 16px;
-    font-family: 'Lato';
-
-    margin-bottom: 30px;
-    margin-top: 30px;
-
-  }
-  .questiontext {
-    font-size: 2rem;
-
-
-  }
   
-  .flagimg {
-    width: 2.8rem;
-  }
-  .containerTimer {
-    right:3rem;
-  /* padding-left: 5.2em; */
-    position: fixed;
-    /* flex: 1; */
-  
-  
-  }
-  .logoimag {
-    width: 32%;
-  }
+  .imgtimeout{
+    width: 80%;
+      }
+  .scrumorg {
+    margin-top: 1px;
 
-  .questionquiz {  margin-left: 10%;
-    margin-right: 10%;}
+  }
 
   .product {
     font-size: 2rem;
 
   }
 
-  .container {
- 
-    padding-left: 10%;
-    padding-right: 10%;
-    /* height: 100%; */
-  }
-
-  .quiz{
-    padding-top: 8%;
-    padding-left: 9%;
-    padding-right: 9%;
-    background-color: #F9F9F9;
-    position: relative;
-    font-family: 'Lato';
-  }
-
-  .product {
-    font-size: 1.8rem;
-
-  }
-
+  .logoimagtimout{
+    width: 11rem;  
+    }
 }
 
 /* For small screens (phones) */
 @media (min-width: 699px) and (max-width: 748px) {  
-  .question {
-    font-size: 16px;
-    font-family: 'Lato';
-
-    margin-bottom: 30px;
-    margin-top: 30px;
-
-  }
-  .questiontext {
-    font-size: 2rem;
-
-
-  }
-  .container {
- 
-    padding-left: 10%;
-    padding-right: 10%;
-    /* height: 100%; */
-  }
-
-  .flagimg {
-    width: 2.8rem;
-  }
-  .containerTimer {
-    right:3rem;
-  /* padding-left: 5.2em; */
-    position: fixed;
-    /* flex: 1; */
   
-  
-  }
-  .questionquiz {
-
-    margin-right: 10%;
-    margin-left: 10%;
+  .imgtimeout{
+    width: 80%;
+      }
+  .scrumorg {
+    margin-top: 1px;
 
   }
 
@@ -1472,75 +484,9 @@ text-align: center;
 
   }
 
-
-  .scoresection{
-    flex-direction: column;
-    display: flex;
- 
-   margin-left:7%;
-   margin-right: 7%;  
-    gap: 25px;
-    /* margin-top: -28%; */
-  }
-
-  .quiz {
-    padding-top: 8%;
-    padding-left: 5%;
-    padding-right: 5%;
-
-
-  }
-
-  .imagesecc{
-    position: relative;
-    width: 75%;
-  }
-  .succtext{
-    font-size:3.7rem;
-   
-  }
-
-  .warning {
-
-    padding-left: 10%;
-
-  }
-
-  .imageechec{
-    width: 40%;
-  }
-
-  .echectext {
-    font-size: 1.5em;
-  }
-
-  .echectext span {
-    font-size: 1.5rem;
-  }
-
-  .warning {
-    border-radius: 40px;
-    border: 5px;
-    background-color: white;
-    align-items: center;
-    border: 1px solid rgb(203, 195, 194);
-    padding-left: 2%;
-    display: flex;
-    /* justify-content:center; */
-    gap: 20px;
-  }
-
-  .score {
-    border-radius: 40px;
-    border: 5px;
-    background-color: white;
-    border: 1px solid rgb(203, 195, 194);
-    display: flex;
-    padding-left: 10%;
-    margin-bottom: 50px;
-    flex-direction: column;
-    gap: 50px;
-  }
+  .logoimagtimout{
+    width: 11rem;  
+    }
 
 }
 
@@ -1549,320 +495,62 @@ text-align: center;
 
 
 @media (min-width: 748px) and (max-width: 760px) {
-  .containerTimer {
-    right: 7rem;
+  
+  .imgtimeout{
+    width: 80%;
+      }
+  .scrumorg {
+    margin-top: 1px;
 
-    position: fixed;
-    /* flex: 1; */
-  
-  
   }
-  .logoimag {
-    width: 25%;
-  }
+
   .product {
     font-size: 2rem;
 
   }
-
-
-
-  .warning {
-
-    padding-left: 10%;
-
-  }
-
-  .score {
-    border-radius: 40px;
-    border: 5px;
-    background-color: white;
-    border: 1px solid rgb(203, 195, 194);
-    display: flex;
-    padding-left: 10%;
-    margin-bottom: 50px;
-    flex-direction: column;
-    gap: 50px;
-  }
-
-  .imagesecc {
-    position: relative;
-    width: 50%;
-  }
-
-  .succtext {
-    font-size: 4rem;
-
-  }
-
-  .container {
-
-    padding-left: 15%;
-    padding-right: 15%;
-
-  }
-
-  .scoresection {
-    flex-direction: column;
-    display: flex;
-
-    margin-left: 13%;
-    margin-right: 13%;
-    gap: 25px;
-
-  }
-
-  .quiz{
-    padding-top: 8%;
-  
-  }
-
-  .imagesecc {
-    position: relative;
-    width: 50%;
-  }
-
-  .succtext {
-    font-size: 4rem;
-
-  }
-
-  .warning{
-
-    padding: 8% 0% 8% 6%;
-    
-      }
-  .imageechec {
-    width: 50%;
-  }
-
-  .echectext {
-    font-size: 1.5em;
-  }
-
-  .echectext span {
-    font-size: 1.5rem;
-  }
-
+  .logoimagtimout{
+    width: 11rem;  
+    }
 }
 
 @media (min-width: 760px) and (max-width: 800px) {
-  .logoimag {
-    width: 25%;
+  
+  .imgtimeout{
+    width: 80%;
+      }
+  .scrumorg {
+    margin-top: 1px;
+
   }
+
   .product {
     font-size: 2rem;
 
   }
 
-
-  .questionquiz {
-
-    margin-right: 15%;
-    margin-left: 15%;
-
-  }
-
-  .warning {
-
-    padding-left: 10%;
-
-  }
-
-  .score {
-    border-radius: 40px;
-    border: 5px;
-    background-color: white;
-    border: 1px solid rgb(203, 195, 194);
-    display: flex;
-    padding-left: 10%;
-    margin-bottom: 50px;
-    flex-direction: column;
-    gap: 50px;
-  }
-
-  .imagesecc {
-    position: relative;
-    width: 50%;
-  }
-
-  .succtext {
-    font-size: 4rem;
-
-  }
-  .containerTimer {
-    right:6rem;
-  /* padding-left: 5.2em; */
-    position: fixed;
-    /* flex: 1; */
-  
-  
-  }
-  .container {
-  
-    padding-left: 15%;
-    padding-right: 10%;
-    /* height: 100%; */
-  }
-
-  .scoresection{
-    flex-direction: column;
-    display: flex;
- 
-   margin-left:4%;
-   margin-right: 4%;  
-    gap: 25px;
-    /* margin-top: -28%; */
-  }
-
-  .quiz{
-    padding-top: 8%;
-  
-  }
-
-
-  .imagesecc{
-    position: relative;
-    width: 75%;
-  }
-
-  .succtext {
-    font-size: 4rem;
-
-  }
-
-  .warning {
-
-    padding-left: 10%;
-
-  }
-
-  .imageechec {
-    width: 50%;
-  }
-
-  .echectext {
-    font-size: 1.5em;
-  }
-
-  .echectext span {
-    font-size: 1.5rem;
-  }
-
+  .logoimagtimout{
+    width: 11rem;  
+    }
 }
 
 @media (min-width: 800px) and (max-width: 876px) {
+  
   .imgtimeout{
-width: 80%;
+    width: 80%;
+      }
+  .scrumorg {
+    margin-top: 1px;
+
   }
-  .containerTimer {
-    right:7rem;
-  /* padding-left: 5.2em; */
-    position: fixed;
-    /* flex: 1; */
-  
-  
-  }
+
   .product {
     font-size: 2rem;
 
   }
-  .logoimag {
-    width: 25%;
-  }
 
-
-  .question {
-    font-size: 1.3rem;
-    font-family: 'Lato';
-
-    margin-bottom: 30px;
-    margin-top: 30px;
-
-  }
-  .questiontext {
-    font-size: 2.1rem;
-
-
-  }
-  .warning {
-
-    padding-left: 10%;
-
-  }
-
-  .score {
-    border-radius: 40px;
-    border: 5px;
-    background-color: white;
-    border: 1px solid rgb(203, 195, 194);
-    display: flex;
-    padding-left: 10%;
-    margin-bottom: 50px;
-    flex-direction: column;
-    gap: 50px;
-  }
-
-  .imagesecc {
-    position: relative;
-    width: 50%;
-  }
-
-  .succtext {
-    font-size: 4rem;
-
-  }
-
-  .container {
-
-    padding-left: 15%;
-    padding-right: 15%;
-    /* height: 100%; */
-  }
-
-  .scoresection {
-    flex-direction: column;
-    display: flex;
-
-    margin-left: 13%;
-    margin-right: 13%;
-    gap: 25px;
-    /* margin-top: -28%; */
-  }
-
-  .quiz {
-    padding-top: 15%;
-
-  }
-
-  .imagesecc {
-    position: relative;
-    width: 50%;
-  }
-
-  .succtext {
-    font-size: 4rem;
-
-  }
-
-  .warning{
-
-    padding: 8% 0% 8% 6%;
-    
-      }
-
-  .imageechec {
-    width: 50%;
-  }
-
-  .echectext {
-    font-size: 1.5em;
-  }
-
-  .echectext span {
-    font-size: 1.5rem;
-  }
-
+  .logoimagtimout{
+    width: 11rem;  
+    }
 }
 
 
@@ -1870,231 +558,95 @@ width: 80%;
 
 
 @media (min-width: 876px) and (max-width: 919px) {
-  .containerTimer {
-    right: 8rem;
-  padding-left: 1rem;
-    position: fixed;
-    /* flex: 1; */
-  
-  
-  }
-
-
-  .quiz {
-    padding-top: 15%;
-
-  }
-
-  .score {
-    border-radius: 40px;
-    border: 5px;
-    background-color: white;
-    border: 1px solid rgb(203, 195, 194);
-    display: flex;
-    padding-left: 10%;
-    margin-bottom: 50px;
-    flex-direction: column;
-    gap: 50px;
-  }
-
-  .imagesecc {
-    position: relative;
-    width: 50%;
-  }
-
-  .succtext {
-    font-size: 4rem;
-
-  }
-
-  .warning{
-
-    padding: 8% 0% 8% 6%;
-    
+ 
+  .imgtimeout{
+    width: 80%;
       }
+  .scrumorg {
+    margin-top: 1px;
+
+  }
 
   .product {
     font-size: 2rem;
 
   }
 
-  .scoresection {
-    flex-direction: column;
-    display: flex;
-
-    margin-left: 1%;
-    margin-right: 1%;
-    gap: 25px;
-    /* margin-top: -30%; */
-  }
-
-  .score {
-    border-radius: 40px;
-    border: 5px;
-    background-color: white;
-    border: 1px solid rgb(203, 195, 194);
-    display: flex;
-    padding-left: 10%;
-    margin-bottom: 50px;
-    flex-direction: column;
-    gap: 50px;
-  }
-
-  .imageechec {
-    width: 50%;
-  }
-
-  .echectext {
-    font-size: 2.5em;
-  }
-
-  .echectext span {
-    font-size: 2rem;
-  }
+  .logoimagtimout{
+    width: 11em;  
+    }
 }
 
 @media (min-width: 919px) and (max-width: 944px) {
-  .containerTimer {
-    right:9rem;
-  /* padding-left: 5.2em; */
-    position: fixed;
-    /* flex: 1; */
-  
-  
-  }
-  .logoimag {
-    width: 25%;
-  }
-  .scoresection {
-    flex-direction: column;
-    display: flex;
-
-    margin-left: 0.5%;
-    margin-right: 0.5%;
-    gap: 25px;
-    /* margin-top: -80%; */
-  }
-
-  .score {
-    border-radius: 40px;
-    border: 5px;
-    background-color: white;
-    border: 1px solid rgb(203, 195, 194);
-    display: flex;
-    padding-left: 10%;
-    margin-bottom: 50px;
-    flex-direction: column;
-    gap: 50px;
-  }
-
-  .imageechec {
-    width: 50%;
-  }
-
-  .echectext {
-    font-size: 2.5em;
-  }
-
-  .echectext span {
-    font-size: 2rem;
-  }
-
-  .quiz {
-    padding-top: 9%;
+ 
+  .imgtimeout{
+    width: 80%;
+      }
+  .scrumorg {
+    margin-top: 1px;
 
   }
 
   .product {
     font-size: 2rem;
 
+  }
+
+  .logoimagtimout{
+  width: 11rem;  
   }
 }
 
 @media (min-width: 945px) and (max-width: 1082px) {
-  /* .containerTimer {
-
-    right: 0%;
-
-
-
-  } */
-  .containerTimer {
-    right: 10rem;
-
-    position: fixed;
-    /* flex: 1; */
   
-  
-  }
+  .imgtimeout{
+    width: 80%;
+      }
+  .scrumorg {
+    margin-top: 1px;
 
-  .quiz{
-    padding-top: 9%;
-  
-  }
-
-  .scoresection {
-    flex-direction: column;
-    display: flex;
-
-    margin-left: 10%;
-    margin-right: 10%;
-    gap: 25px;
-    /* margin-top: -30%; */
   }
 
   .product {
     font-size: 2rem;
 
+  }
+
+  .logoimagtimout{
+    width: 12rem;
   }
 }
 
 @media (min-width: 1082px) and (max-width: 1100px) {
 
 
-  .quiz {
-    padding-top: 8%;
-    padding-left: 10%;
-    padding-right: 10%;
+ 
+  .imgtimeout{
+    width: 80%;
+      }
+  .scrumorg {
+    margin-top: 1px;
+
   }
 
   .product {
     font-size: 2rem;
 
   }
-  .containerTimer {
-    right: 10rem;
 
-    position: fixed;
-    /* flex: 1; */
-  
-  
+  .logoimagtimout{
+
   }
-
 }
 
 @media (min-width: 1100px) and (max-width: 1200px) {
-  .containerTimer {
-    right: 10rem;
-
-    position: fixed;
-    /* flex: 1; */
   
-  
-  }
+  .imgtimeout{
+    width: 80%;
+      }
+  .scrumorg {
+    margin-top: 1px;
 
-  .container {
-
-
-    /* height: 100%; */
-  }
-
-  .quiz {
-    padding-top: 10%;
-    padding-left: 15%;
-    padding-right: 15%;
-    background-color: #F9F9F9;
-    position: relative;
-    font-family: 'Lato';
   }
 
   .product {
@@ -2102,170 +654,70 @@ width: 80%;
 
   }
 
-
+  .logoimagtimout{
+    
+  }
 }
 
 /* For extra large screens (large desktops) */
 @media (min-width: 1200px) and (max-width: 1240px) {
 
-  .quiz{
-    padding-top: 9%;
   
-  }
-  .containerTimer {
-    right: 11rem;
+  .imgtimeout{
+    width: 80%;
+      }
+  .scrumorg {
+    margin-top: 1px;
 
-    position: fixed;
-    /* flex: 1; */
-  
-  
-  }
-
-  .scoresection {
-    flex-direction: column;
-    display: flex;
-
-    margin-left: 1%;
-    margin-right: 1%;
-    gap: 25px;
-    /* margin-top: -30%; */
   }
 
   .product {
     font-size: 2rem;
 
+  }
+
+  .logoimagtimout{
+    
   }
 }
 
 
 @media (min-width: 1240px) and (max-width:1350px) {
 
-  .container {
-
-    /* padding-left: 13%; */
-    /* padding-right: 5%; */
-
-    /* height: 100%; */
-  }
-
-  .scoresection {
-    flex-direction: column;
-    display: flex;
-
-    margin-left: 1%;
-    margin-right: 1%;
-    gap: 25px;
-    /* margin-top: -25%; */
+ 
+  .imgtimeout{
+    width: 80%;
+      }
+  .scrumorg {
+    margin-top: 1px;
+   
   }
 
   .product {
     font-size: 2rem;
 
   }
-  .quiz{
-    padding-top: 10%;
-  
-  }
-  .score{
-    border-radius:40px;
-    border:5px;
-    background-color: white;
-    border: 1px solid rgb(203, 195, 194);
-    display: flex;
-    padding: 4% 17% 8% 16%;
-    margin-bottom: 50px;
-    flex-direction: column;
-    gap:50px; 
-  }
-  .imageechec {
-    width: 50%;
-  }
 
-  .echectext {
-    font-size: 2.5em;
-  }
+  .logoimagtimout{
 
-  .echectext span {
-    font-size: 2rem;
-  }
-  
-  .containerTimer {
-    right: 12rem;
-  /* padding-left: 1rem; */
-    position: fixed;
-    /* flex: 1; */
-  
-  
   }
 }
 
 @media (min-width: 1350px) and (max-width:1500px) {
-  .quiz {
-    padding-top: 10%;
-
+ 
+  .imgtimeout{
+    width: 80%;
+      }
+  .scrumorg {
+    margin-top: 1px;
   }
 
-  .scoresection {
-    flex-direction: column;
-    display: flex;
-
-    margin-left: 0.5%;
-    margin-right: 0.5%;
-    gap: 25px;
-    /* margin-top: -80%; */
-  }
-
-  .score {
-    border-radius: 40px;
-    border: 5px;
-    background-color: white;
-    border: 1px solid rgb(203, 195, 194);
-    display: flex;
-    padding-left: 10%;
-    margin-bottom: 50px;
-    flex-direction: column;
-    gap: 50px;
-  }
-
-  .imageechec {
-    width: 50%;
-  }
-
-  .echectext {
-    font-size: 2.5em;
-  }
-
-  .echectext span {
+  .product {
     font-size: 2rem;
-  }
-
-  .backimage {
-    border-radius: 0px 0px 50px 50px;
-    display: flex;
-    flex-direction: column;
-
-    z-index: 1;
 
   }
 
-  .containerTimer {
-    right: 13rem;
-
-    position: fixed;
-    /* flex: 1; */
-  
-  
-  }
-
-
-  .logo {
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* height: 95%; */
-    width: 100%;
-    margin-bottom: 0;
+  .logoimagtimout{
 
   }
 
@@ -2279,10 +731,4 @@ width: 80%;
 
 
 
-  .succtext {
-    font-size: 5rem;
-    font-weight: 900;
-    color: #fb1111;
-    font-family: 'Tangerine' !important;
-  }
 }
