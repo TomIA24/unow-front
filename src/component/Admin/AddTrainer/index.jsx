@@ -1,8 +1,10 @@
 import styles from "./styles.module.css";
-import { Link, useNavigate } from "react-router-dom";
+import { 
+  // Link, 
+        useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { IoIosArrowForward, IoMdArrowDropright } from "react-icons/io";
+// import { IoIosArrowForward, IoMdArrowDropright } from "react-icons/io";
 
 const AddTrainer = () => {
   const currentDate = new Date();
@@ -48,7 +50,7 @@ const AddTrainer = () => {
     firstConnection: true,
   });
   const [error, setError] = useState("");
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const handleChange = ({ currentTarget: input }) => {
     setData({ ...data, [input.name]: input.value });
@@ -76,6 +78,7 @@ const AddTrainer = () => {
     try {
       const url = `${process.env.REACT_APP_API}/api/Trainer`;
       const { data: res } = await axios.post(url, data, { headers: {} });
+      console.log(res)
       // window.location.reload();
       setData({ ...initialData });
       setSaved(true);
