@@ -2,10 +2,12 @@
 import React, { useState, useEffect } from 'react';
 import Dialog from './dialog';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom'; 
 import styles from "./styles.module.css";
 import CircularTimer from "./timer";
 
-const Quiz = ({startDate}) => {
+
+const Quiz = ({ startDate }) => {
   const [questions, setQuestions] = useState([]);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [showScore, setShowScore] = useState(false);
@@ -13,9 +15,26 @@ const Quiz = ({startDate}) => {
   const [selectedAnswers, setSelectedAnswers] = useState({});
   const [flags, setFlags] = useState([]);
   const [finishDate, setFinishDate] = useState(null);
+  const [finishbutton, setFinishButton] = useState(false);
 
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [isDialogOpen, setIsDialogOpen] = useState(true);
+
+  const [timeRanOut, setTimeRanOut] = useState(false);
   const numb = 4; // Number of questions to fetch
+
+  const navigate = useNavigate();
+
+
+  const handletimeout = () => {
+    navigate('/timeout');
+  };
+  const handleTimeRanOut = () => {
+    // setTimeRanOut(true);
+    handletimeout()
+    handleSubmit();
+  };
+
+
   const handleMenuClick = () => {
     setIsDialogOpen(true);
   };
@@ -34,7 +53,7 @@ const Quiz = ({startDate}) => {
         if (isKillMistakeEmpty) {
           questionresp = await axios.get(`http://localhost:5050/api/quiz/api/quiz/${numb}`);
         } else {
-      
+
           questionresp = await axios.get('http://localhost:5050/api/quiz/api/questionwithkillmistakes');
           console.log('killmistake');
         }
@@ -52,7 +71,7 @@ const Quiz = ({startDate}) => {
         setQuestions(combinedQuestions);
         const initialAnswers = questionresp.data.reduce((acc, _, idx) => ({ ...acc, [idx]: [] }), {});
         setSelectedAnswers(initialAnswers);
-        setFlags(Array(questionresp.data.length).fill(false)); 
+        setFlags(Array(questionresp.data.length).fill(false));
       } catch (error) {
         console.error('Error fetching quiz:', error);
       }
@@ -93,8 +112,8 @@ const Quiz = ({startDate}) => {
     handleFinishDate();
     const updatedQuestions = questions.map((question, index) => {
       let isCorrect = false;
-  
-      // Check if question is answered
+
+
       if (selectedAnswers[index] !== undefined && selectedAnswers[index].length > 0) {
         if (Array.isArray(selectedAnswers[index])) {
           isCorrect = selectedAnswers[index].every(answer =>
@@ -106,35 +125,35 @@ const Quiz = ({startDate}) => {
       } else {
         isCorrect = false;
       }
-  
+
       if (isCorrect) {
         newScore += 1;
         correctAnswers += 1;
       }
-  
+
       return { ...question, checked: isCorrect, flag: flags[index] };
     });
-  
-    // Calculate the percentage of correct answers
+
+
     let percentageCorrect = (correctAnswers / totalQuestions) * 100;
-  
+
     console.log('Updated Questions:', updatedQuestions);
     console.log('New Score:', newScore);
     console.log('Percentage Correct:', percentageCorrect);
-  
-    newScore = Math.round(newScore); 
+
+    newScore = Math.round(newScore);
     setScore(percentageCorrect);
     setShowScore(true);
-  
+
     try {
       await axios.post('http://127.0.0.1:5050/api/quiz/api/saveQuiz', {
         questions: updatedQuestions,
         quizName: 'My Quiz',
         score: percentageCorrect,
-       // Save the percentage as well
+
       });
-  
-      // Assuming you want to update the questions state after saving
+
+
       setQuestions(updatedQuestions);
     } catch (error) {
       console.error('Error saving quiz:', error);
@@ -166,6 +185,9 @@ const Quiz = ({startDate}) => {
     const nextQuestion = currentQuestion + 1;
     if (nextQuestion < questions.length) {
       setCurrentQuestion(nextQuestion);
+      if (nextQuestion === questions.length - 1) {
+        setFinishButton(true);
+      }
     } else {
       handleSubmit();
     }
@@ -174,198 +196,233 @@ const Quiz = ({startDate}) => {
 
 
   return (
+<>
+
+
+    
+  <>
+  {showScore ? (
     <>
-      {showScore ? (
-        <div className={styles.backimagescore} >
 
-          {/* <img src="./start/back1.png" alt="" className={styles.imagebackground} /> */}
-          <div className={styles.logoscore}  >
-            <img src="./images/quiz/copywright.png" alt="" className={styles.logoimag} />
-          </div>
+    
 
-        </div>
-      ) : (
-        <div className={styles.backimagecontainer}>
-          <div className={styles.backimage}>
-            <div className={styles.quizcontainer}>
-              {/* <img src="./start/back1.png" alt="" className={styles.imagebackground} /> */}
 
-              <div className={styles.logo}>
-                <img src="./images/quiz/copywright.png" alt="" className={styles.logoimag} />
-              </div>
-              <div className={styles.container}>
-                <div className={styles.containerTimer}>   <CircularTimer duration={5} onComplete={handleSubmit} className={styles.timer} /></div>
+          
+          <div className={styles.backimagescore} >
 
-                <div className={styles.productcont}>
-                  <img src="./images/quiz/scrumorg.png" alt="" className={styles.scrumorg} />
-                  <div className={styles.product}>PRODUCT OWNER OPEN</div>
-                  <div className={styles.menulist}>
-                  <img src="./images/quiz/menu.png" alt="" className={styles.menu} onClick={handleMenuClick}/>
-                  <div>See all questions</div>
-                  </div>
-                </div>
 
-              </div>
-              {isDialogOpen &&  (
-                <div className={styles.menudialog}>
-        <Dialog onClose={handleCloseDialog}  questions={questions}>
-          <div>Here are all the questions...</div>
-        </Dialog>
-        </div>
-      )}
+            <div className={styles.logoscore}  >
+              <img src="./images/quiz/copywright.png" alt="" className={styles.logoimag} />
             </div>
           </div>
     
-        </div>
+    </>
+  ) : (
 
-      )}
+    <div className={styles.backimagecontainer}>
+      <div className={styles.backimage}>
+        <div className={styles.quizcontainer}>
+          {/* <img src="./start/back1.png" alt="" className={styles.imagebackground} /> */}
 
+          <div className={styles.logo}>
+            <img src="./images/quiz/copywright.png" alt="" className={styles.logoimag} />
+          </div>
+          <div className={styles.container}>
+            <div className={styles.containerTimer}>   <CircularTimer duration={5} onComplete={handleTimeRanOut} className={styles.timer} /></div>
 
-
-      
-        {showScore ? (
-          <div className={styles.quiz}>
-          <div className={styles.scoresection}>
-
-            <div className={styles.warning}>
-              <div>
-                <img src="./images/quiz/warning.png" alt="" className={styles.warningimg} />
+            <div className={styles.productcont}>
+              <img src="./images/quiz/scrumorg.png" alt="" className={styles.scrumorg} />
+              <div className={styles.product}>PRODUCT OWNER OPEN</div>
+              <div className={styles.menulist}>
+                <img src="./images/quiz/menu.png" alt="" className={styles.menu} onClick={handleMenuClick} />
+                <div>See all questions</div>
               </div>
-              <div className={styles.textwarning}>  <b>Note:</b> This Test was automatically finished when either:<br /><br />
-                <b>1.</b>  Its time limit was reached when taking the Test.<br />
-                <b>2.</b> An attempt to resume this Test was not allowed due to date or time limits.</div>
             </div>
-            {score >= 50 ? (<div className={styles.score}>
-              <div className={styles.scoreInn} >
-                <div>
-                  <div className={styles.scrum2}>      <img src="./images/quiz/scrumorg2.png" alt="" /></div>
-          
-                  <div className={styles.results}>  Product Owner Open
-                    <p className={styles.underlineresult}></p>
-                  </div>
-
-                  <ul>
-                    <li><b>Percentage:</b><span>{score}%</span></li>
-                    <li><b>Duration:</b><span>00:03:00</span></li>
-                    <li><b>Date started:</b><span>{startDate}</span></li>
-                    <li><b>Date finished:</b><span>{finishDate}</span></li>
-                  </ul>
-                </div>
-<div className={styles.succ}><div  className={styles.succtext}>Congratulations</div>
-<img src="./images/quiz/secc.png" alt="" className={styles.imagesecc}/>
-</div>
-                
-
-              </div>
-
-            </div>) : (<div className={styles.score}>
-              <div className={styles.scoreInn} >
-                <div>
-                <div >
-                <img src="./images/quiz/scrumorg2.png" alt="" className={styles.scrum2}/>
-                </div>
-              
-                  <div className={styles.results}>  Product Owner Open
-                    <p className={styles.underlineresult}></p>
-                  </div>
-
-                  <ul>
-                    <li><b>Percentage:</b><span>{score}%</span></li>
-                    <li><b>Duration:</b><span>00:03:00</span></li>
-                    <li><b>Date started:</b><span>{startDate}</span></li>
-                    <li><b>Date finished:</b><span>{finishDate}</span></li>
-                  </ul>
-                </div>
-<div className={styles.echec}><div  className={styles.echectext}>Sometimes, Even <span style={{ color: '#CD6214' }}>Geniuses</span> Make Mistakes</div>
-
-
-<img src="./images/quiz/echec.png" alt="" className={styles.imageechec}/>
-</div>
-                
-
-              </div>
-
-            </div>)}
 
           </div>
+          {isDialogOpen && (
+            <div className={styles.menudialog}>
+              <Dialog onClose={handleCloseDialog} questions={questions}>
+                <div>Here are all the questions...</div>
+              </Dialog>
+            </div>
+          )}
+        </div>
+      </div>
+
+    </div>
+
+  )}
+
+
+
+
+  {showScore ? (
+    <div className={styles.quiz}>
+      <div className={styles.scoresection}>
+        {!timeRanOut && (
+          <div className={styles.warning}>
+            <div>
+              <img src="./images/quiz/warning.png" alt="" className={styles.warningimg} />
+            </div>
+            <div className={styles.textwarning}>  <b>Note:</b> This Test was automatically finished when either:<br /><br />
+              <b>1.</b>  Its time limit was reached when taking the Test.<br />
+              <b>2.</b> An attempt to resume this Test was not allowed due to date or time limits.</div>
           </div>
-        ) : (
-          questions.length > 0 && (
-            <>
-             {!isDialogOpen &&
-      (
-<div  className={styles.questionquiz}>
-  
-  <div className={styles.questionsection}>
-    <div className={styles.questioncount}>
-      <div className={styles.questiontext}><span className={styles.questiontext}>Question {currentQuestion + 1}</span>/{questions.length}
-        <p className={styles.underline}></p></div>
-      <div className={styles.question}>{questions[currentQuestion].question}</div>
 
-    </div>
-    <div >
-      <button onClick={() => handleFlagQuestion(currentQuestion)} className={styles.flagsection}>
-        <img
-          src={flags[currentQuestion] ? "./images/quiz/bookmark.png" : "./images/quiz/unbooked.png"}
-          alt="Flag Question"
-          className={styles.flagimg} />
-      </button>
-    </div>
-
-
-  </div>
-  <div className={styles.answersection}>
-    {questions[currentQuestion].correctAnswers.length === 1
-      ? questions[currentQuestion].correctAnswers.concat(questions[currentQuestion].wrongAnswers).map((answer, index) => (
-        <label key={index} className={styles.rdiocontainer}>
-          <input
-            type='radio'
-            name={`question-${currentQuestion}`}
-            checked={selectedAnswers[currentQuestion] === answer}
-            onChange={() => handleRadioChange(currentQuestion, answer)}
-          />
-          {answer}
-          <span className={styles.radio}></span>
-        </label>
-      ))
-      : questions[currentQuestion].correctAnswers.concat(questions[currentQuestion].wrongAnswers).map((answer, index) => (
-        <label key={index} className={styles.checkmarkcontainer}>
-
-          <input
-            type="checkbox"
-            name={`question-${currentQuestion}`}
-            checked={selectedAnswers[currentQuestion] && selectedAnswers[currentQuestion].includes(answer)}
-            onChange={() => handleCheckboxChange(currentQuestion, answer)}
-          />
-          <span className={styles.checkmark}></span>
-          {answer}
-        </label>
-      ))}
-  </div>
-
-  <div className={styles.submitSection}>
-    {currentQuestion > 0 && (
-      <button onClick={handlePreviousQuestion} className={styles.butnprevious}>Previous</button>
-    )}
-    {currentQuestion < questions.length - 1 ? (
-      <button onClick={handleNextQuestion} className={styles.butnnext}>Next</button>
-    ) : (
-      <button onClick={handleSubmit} className={styles.submitbtn}>Submit</button>
-    )}
-  </div>
-  </div>
-
-
-      )
-      
-      }
-
-            </>
-          )
         )}
 
-  
-    </>
+        {score >= 50 ? (
+          <div className={styles.score}>
+            <div className={styles.scoreInn}>
+              <div>
+                <div className={styles.scrum2}>
+                  <img src="./images/quiz/scrumorg2.png" alt="" />
+                </div>
+                <div className={styles.results}>
+                  Product Owner Open
+                  <p className={styles.underlineresult}></p>
+                </div>
+                <ul>
+                  <li><b>Percentage:</b><span>{score}%</span></li>
+                  <li><b>Duration:</b><span>00:03:00</span></li>
+                  <li><b>Date started:</b><span>{startDate}</span></li>
+                  <li><b>Date finished:</b><span>{finishDate}</span></li>
+                </ul>
+              </div>
+              <div className={styles.succ}>
+                <div className={styles.succtext}>Congratulations</div>
+                <img src="./images/quiz/secc.png" alt="" className={styles.imagesecc} />
+              </div>
+            </div>
+          </div>
+        ) : (
+          <>
+            
+              <div className={styles.score}>
+                <div className={styles.scoreInn}>
+                  <div>
+                    <div className={styles.scrum2}>
+                      <img src="./images/quiz/scrumorg2.png" alt="" />
+                    </div>
+                    <div className={styles.results}>
+                      Product Owner Open
+                      <p className={styles.underlineresult}></p>
+                    </div>
+                    <ul>
+                      <li><b>Percentage:</b><span>{score}%</span></li>
+                      <li><b>Duration:</b><span>00:03:00</span></li>
+                      <li><b>Date started:</b><span>{startDate}</span></li>
+                      <li><b>Date finished:</b><span>{finishDate}</span></li>
+                    </ul>
+                  </div>
+                  <div className={styles.echec}>
+                    <div className={styles.echectext}>
+                      Sometimes, Even <span style={{ color: '#CD6214' }}>Geniuses</span> Make Mistakes
+                    </div>
+                    <img src="./images/quiz/echec.png" alt="" className={styles.imageechec} />
+                  </div>
+                </div>
+              </div>
+       
+          </>
+        )}
+      </div>
+    </div>
+  ) : (
+    questions.length > 0 && (
+      <>
+        {!isDialogOpen &&
+          (
+            <div className={styles.questionquiz}>
+
+              <div className={styles.questionsection}>
+                <div className={styles.questioncount}>
+                  <div className={styles.questiontext}><span className={styles.questiontext}>Question {currentQuestion + 1}</span>/{questions.length}
+                    <p className={styles.underline}></p></div>
+                  <div className={styles.question}>{questions[currentQuestion].question}</div>
+
+                </div>
+                <div >
+                  <button onClick={() => handleFlagQuestion(currentQuestion)} className={styles.flagsection}>
+                    <img
+                      src={flags[currentQuestion] ? "./images/quiz/bookmark.png" : "./images/quiz/unbooked.png"}
+                      alt="Flag Question"
+                      className={styles.flagimg} />
+                  </button>
+                </div>
+
+
+              </div>
+              <div className={styles.answersection}>
+                {questions[currentQuestion].correctAnswers.length === 1
+                  ? questions[currentQuestion].correctAnswers.concat(questions[currentQuestion].wrongAnswers).map((answer, index) => (
+                    <label key={index} className={styles.rdiocontainer}>
+                      <input
+                        type='radio'
+                        name={`question-${currentQuestion}`}
+                        checked={selectedAnswers[currentQuestion] === answer}
+                        onChange={() => handleRadioChange(currentQuestion, answer)}
+                      />
+                      {answer}
+                      <span className={styles.radio}></span>
+                    </label>
+                  ))
+                  : questions[currentQuestion].correctAnswers.concat(questions[currentQuestion].wrongAnswers).map((answer, index) => (
+                    <label key={index} className={styles.checkmarkcontainer}>
+
+                      <input
+                        type="checkbox"
+                        name={`question-${currentQuestion}`}
+                        checked={selectedAnswers[currentQuestion] && selectedAnswers[currentQuestion].includes(answer)}
+                        onChange={() => handleCheckboxChange(currentQuestion, answer)}
+                      />
+                      <span className={styles.checkmark}></span>
+                      {answer}
+                    </label>
+                  ))}
+              </div>
+
+              <div className={styles.submitSection}>
+                {currentQuestion > 0 && (
+                  <button onClick={handlePreviousQuestion} className={styles.butnprevious}>Previous</button>
+                )}
+                {currentQuestion < questions.length - 1 ? (
+                  <button onClick={handleNextQuestion} className={styles.butnnext}>Next</button>
+                ) : (
+                  <button onClick={handleSubmit} className={styles.submitbtn}>Submit</button>
+                )}
+              </div>
+              {finishbutton && (
+                <div className={styles.finishsection}>
+                  <button className={styles.finishbutton} onClick={handleSubmit}>
+                    Finish
+                  </button>
+                </div>
+              )}
+            </div>
+
+
+          )
+
+        }
+
+      </>
+    )
+  )}
+
+
+</>
+
+
+
+
+
+
+</>
+
+
+
   );
 };
 
