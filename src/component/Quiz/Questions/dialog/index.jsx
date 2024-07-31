@@ -1,11 +1,11 @@
-import React , { useState, useEffect } from 'react';
-import styles from './styles.module.css'; // Create styles for the dialog
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import styles from "./styles.module.css"; // Create styles for the dialog
+import axios from "axios";
 
 const Dialog = ({ onClose, questions }) => {
   const [flags, setFlags] = useState([]);
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const handleFlagQuestion = async (questionIndex) => {
+  const handleFlagQuestion = async questionIndex => {
     const questionId = questions[questionIndex]._id;
     const updatedFlags = [...flags];
     updatedFlags[questionIndex] = !updatedFlags[questionIndex];
@@ -17,36 +17,53 @@ const Dialog = ({ onClose, questions }) => {
         flag: updatedFlags[questionIndex]
       });
     } catch (error) {
-      console.error('Error updating flag status:', error);
+      console.error("Error updating flag status:", error);
     }
   };
-    return (
-      <div className={styles.dialogOverlay}>
-        <div className={styles.dialogContent}>
-          <button onClick={onClose} className={styles.closeButton}>Close</button>
-          <div>
-            {questions.length > 0 ? (
-              questions.map((question, index) => (
-                <div key={index} className={styles.question}>
-                            <div >
-                  <button className={styles.flagsection}>
-                    <img
-                      src="./images/quiz/bookmark.png"
-                      alt="Flag Question"
-                      className={styles.flagimg} />
-                  </button>
+  return (
+    <div className={styles.dialogOverlay}>
+      <div className={styles.dialogContent}>
+        <div className={styles.dialogContentInner}>
+        <div className={styles.menudialog}>
+          <button className={styles.bookmark}>ALL QUESTIONS</button>  <button className={styles.bookmark}>
+            {" "}<img
+              src="./images/quiz/dialog/flag.png"
+              alt="Flag Question"
+              className={styles.flagimg}
+            />{" "}
+            BOOKMARKED
+          </button>
+        
+        </div>
+        <p className={styles.underline} />
+        <button onClick={onClose} className={styles.closeButton}>
+          Close
+        </button>
+        <div>
+          {questions.length > 0
+            ? questions.map((question, index) =>
+                <div key={index} className={styles.flagged}>
+                  <div className={styles.question}>
+                    <button className={styles.flagsection}>
+                      <img
+                        src="./images/quiz/dialog/flag.png"
+                        alt="Flag Question"
+                        className={styles.flagimg}
+                      />
+                    </button>
+                    <div>
+                      {question.question}
+                    </div>
+                  </div>
+                  <p className={styles.underline} />
                 </div>
-                <div>         <p>{question.question}</p></div>
-         
-                </div>
-              ))
-            ) : (
-              <p>No questions available.</p>
-            )}
-          </div>
+              )
+            : <p>No questions available.</p>}
         </div>
       </div>
-    );
-  };
-  
-  export default Dialog;
+      </div>
+    </div>
+  );
+};
+
+export default Dialog;

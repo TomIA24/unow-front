@@ -17,7 +17,7 @@ const Quiz = ({ startDate }) => {
   const [finishDate, setFinishDate] = useState(null);
   const [finishbutton, setFinishButton] = useState(false);
 
-  const [isDialogOpen, setIsDialogOpen] = useState(true);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const [timeRanOut, setTimeRanOut] = useState(false);
   const numb = 4; // Number of questions to fetch
@@ -37,6 +37,7 @@ const Quiz = ({ startDate }) => {
 
   const handleMenuClick = () => {
     setIsDialogOpen(true);
+    console.log('clicked');
   };
 
   const handleCloseDialog = () => {
@@ -69,9 +70,9 @@ const Quiz = ({ startDate }) => {
         const combinedQuestions = fetchedQuestions.concat(killMistakeQuestions);
 
         setQuestions(combinedQuestions);
-        const initialAnswers = questionresp.data.reduce((acc, _, idx) => ({ ...acc, [idx]: [] }), {});
+        const initialAnswers = combinedQuestions.data.reduce((acc, _, idx) => ({ ...acc, [idx]: [] }), {});
         setSelectedAnswers(initialAnswers);
-        setFlags(Array(questionresp.data.length).fill(false));
+        setFlags(Array(combinedQuestions.length).fill(false));
       } catch (error) {
         console.error('Error fetching quiz:', error);
       }
@@ -83,7 +84,10 @@ const Quiz = ({ startDate }) => {
   const handleCheckboxChange = (questionIndex, answer) => {
 
     const updatedSelectedAnswers = { ...selectedAnswers };
-
+    if (!updatedSelectedAnswers[questionIndex]) {
+      updatedSelectedAnswers[questionIndex] = [];
+    }
+  
 
     if (updatedSelectedAnswers[questionIndex].includes(answer)) {
       updatedSelectedAnswers[questionIndex] = updatedSelectedAnswers[questionIndex].filter(a => a !== answer);
