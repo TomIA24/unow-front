@@ -350,12 +350,13 @@ cursor: pointer;
 }
 
 .checkmarkcontainer .checkmark:after {
-  align-self: center;
-  width: 5px;
-  height: 5px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  width: 30%;
+  height: 50%;
   border: solid white;
   border-width: 0 3px 3px 0;
-  transform: rotate(45deg);
 }
 
 .rdiocontainer {
@@ -406,8 +407,9 @@ cursor: pointer;
 }
 
 .rdiocontainer .radio:after {
-  top: 6px;
-  left: 6px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 8px;
   height: 8px;
   border-radius: 50%;
