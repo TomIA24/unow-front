@@ -201,7 +201,7 @@ const Main = () => {
                       <div className={styles.categoriprice}>{training.Price} $</div>
                     </div>
                     <div className={styles.categoriniveau}>{training.Level}</div>
-                    <div className={styles.categoridomain}>{training.Title}</div>
+                    <div className={styles.categoridomain}>{training.Title}</div>                   
                   </div>
                 </div>
               ))}

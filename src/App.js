@@ -27,6 +27,7 @@ import { LanguageProvider } from "./hooks/LanguageContext";
 import HomeInterface from "./component/Home/HomeInterface";
 import MainQuiz from "./component/Quiz";
 import Quiz from "./component/Quiz/Questions"; 
+import CategoryDetails from "./component/Home/Categories/CategoryDetails";
 // import axios from "axios";
 // import React, { useEffect, useState } from "react";
 
@@ -72,6 +73,12 @@ function App() {
           <Route exact path="/Training/Ressources/:id" element={<Training />} />
           <Route exact path="/completeInfo" element={<CompleteInfo />} />
           <Route exact path="/room/:url" element={<Room />} />
+          <Route exact path="/categoryCourses" element={<CategoryDetails onlineCourses={[{subcat:"Web Developement",price:"1000 $",level:"Intermediate",title:"React Course",thumbnail:"https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png"},{subcat:"Web Developement",price:"1000 $",level:"Intermediate",title:"React Course",thumbnail:"https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png"},{subcat:"Web Developement",price:"1000 $",level:"Intermediate",title:"React Course",thumbnail:"https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png"},
+
+            
+          ]} 
+          offlineCourses={[{subcat:"Web Developement",price:"1000 $",level:"Intermediate",title:"React Course",thumbnail:"https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png"},{subcat:"Web Developement",price:"1000 $",level:"Intermediate",title:"React Course",thumbnail:"https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png"},{subcat:"Web Developement",price:"1000 $",level:"Intermediate",title:"React Course",thumbnail:"https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png"}]}
+          />} />
 
           {user && (
             <React.Fragment>
