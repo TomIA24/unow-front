@@ -1,10 +1,36 @@
-import React, { useState, useEffect } from "react";
-import styles from "./styles.module.css"; // Create styles for the dialog
-import axios from "axios";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import styles from './styles.module.css'; // Adjust path as needed
 
-const Dialog = ({ onClose, questions }) => {
+const Dialog = ({ onClose, quizId }) => {
+  const [questions, setQuestions] = useState([]);
   const [flags, setFlags] = useState([]);
   const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [showBookmarked, setShowBookmarked] = useState(false);
+
+  // Fetch all questions initially or flagged questions based on state
+  const fetchQuestions = async () => {
+    try {
+      const endpoint = showBookmarked 
+        ? `http://localhost:5050/api/quiz/api/quiz/${quizId}/flaggedQuestions`
+        : `http://localhost:5050/api/quiz/api/quiz/${quizId}/questions`;
+      
+      const response = await axios.get(endpoint);
+      setQuestions(response.data);
+
+      // Update flags array based on fetched questions
+      const initialFlags = response.data.map(question => question.flag || false);
+      setFlags(initialFlags);
+    } catch (error) {
+      console.error('Error fetching questions:', error);
+    }
+  };
+
+  // Fetch questions whenever `quizId` or `showBookmarked` changes
+  useEffect(() => {
+    fetchQuestions();
+  }, [quizId, showBookmarked]);
+
   const handleFlagQuestion = async questionIndex => {
     const questionId = questions[questionIndex]._id;
     const updatedFlags = [...flags];
@@ -13,40 +39,52 @@ const Dialog = ({ onClose, questions }) => {
 
     // Update the flag status in the backend
     try {
-      await axios.put(`http://localhost:5050/api/quiz/api/mark/${questionId}`, {
+      await axios.put(`http://localhost:5050/api/quiz/api/updateQuiz/${quizId}/question/${questionId}`, {
         flag: updatedFlags[questionIndex]
       });
     } catch (error) {
-      console.error("Error updating flag status:", error);
+      console.error('Error updating flag status:', error);
     }
   };
+
   return (
     <div className={styles.dialogOverlay}>
       <div className={styles.dialogContent}>
         <div className={styles.dialogContentInner}>
-        <div className={styles.menudialog}>
-          <button className={styles.bookmark}>ALL QUESTIONS</button>  <button className={styles.bookmark}>
-            {" "}<img
-              src="./images/quiz/dialog/flag.png"
-              alt="Flag Question"
-              className={styles.flagimg}
-            />{" "}
-            BOOKMARKED
+          <div className={styles.menudialog}>
+            <button 
+              className={styles.bookmark} 
+              onClick={() => setShowBookmarked(false)}
+            >
+              ALL QUESTIONS
+            </button>
+            <button 
+              className={styles.bookmark} 
+              onClick={() => setShowBookmarked(true)}
+            >
+              <img
+                src="./images/quiz/dialog/flag.png"
+                alt="Flag Question"
+                className={styles.flagimg}
+              />
+              BOOKMARKED
+            </button>
+          </div>
+          <p className={styles.underline} />
+          <button onClick={onClose} className={styles.closeButton}>
+            Close
           </button>
-        
-        </div>
-        <p className={styles.underline} />
-        <button onClick={onClose} className={styles.closeButton}>
-          Close
-        </button>
-        <div>
-          {questions.length > 0
-            ? questions.map((question, index) =>
+          <div>
+            {questions.length > 0
+              ? questions.map((question, index) => (
                 <div key={index} className={styles.flagged}>
                   <div className={styles.question}>
-                    <button className={styles.flagsection}>
+                    <button 
+                      className={styles.flagsection}
+                      onClick={() => handleFlagQuestion(index)}
+                    >
                       <img
-                        src="./images/quiz/dialog/flag.png"
+                        src={flags[index] ? "./images/quiz/dialog/flag.png" : "./images/quiz/dialog/flagunmarked.png"}
                         alt="Flag Question"
                         className={styles.flagimg}
                       />
@@ -57,10 +95,10 @@ const Dialog = ({ onClose, questions }) => {
                   </div>
                   <p className={styles.underline} />
                 </div>
-              )
-            : <p>No questions available.</p>}
+              ))
+              : <p>No questions available.</p>}
+          </div>
         </div>
-      </div>
       </div>
     </div>
   );

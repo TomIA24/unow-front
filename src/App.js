@@ -28,6 +28,7 @@ import HomeInterface from "./component/Home/HomeInterface";
 import MainQuiz from "./component/Quiz";
 import Quiz from "./component/Quiz/Questions"; 
 import Timeout from './component/Quiz/Questions/timeout';
+import { QuizProvider } from './hooks/QuizContext';
 // import axios from "axios";
 // import React, { useEffect, useState } from "react";
 
@@ -46,6 +47,7 @@ function App() {
 
   return (
     <LanguageProvider>
+     <QuizProvider>
       <div className="App">
         <Routes>
           {!user && (
@@ -91,6 +93,7 @@ function App() {
           )}
         </Routes>
       </div>
+      </QuizProvider>
     </LanguageProvider>
   );
 }
