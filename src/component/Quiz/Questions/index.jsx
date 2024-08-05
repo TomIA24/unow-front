@@ -45,7 +45,7 @@ let time =5000;
 
 
   const handleMenuClick = () => {
-    setIsDialogOpen(true);
+    setIsDialogOpen(!isDialogOpen);
     console.log('clicked');
   };
 
@@ -297,7 +297,7 @@ let time =5000;
               <img src="./images/quiz/scrumorg.png" alt="" className={styles.scrumorg} />
               <div className={styles.product}>PRODUCT OWNER OPEN</div>
               <div className={styles.menulist}>
-                <img src="./images/quiz/menu.png" alt="" className={styles.menu} onClick={handleMenuClick} />
+                <img src={isDialogOpen ? "./images/quiz/menu.png" :"./images/quiz/menuopen.png"} alt="" className={styles.menu} onClick={handleMenuClick} />
                 <div>See all questions</div>
               </div>
             </div>
@@ -335,7 +335,7 @@ let time =5000;
 
         )}
 
-        {score >= 50 ? (
+        {score >= 0 ? (
           <div className={styles.score}>
             <div className={styles.scoreInn}>
               <div>

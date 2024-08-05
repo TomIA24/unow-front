@@ -17,7 +17,7 @@ const Dialog = ({ onClose, quizId }) => {
       
       const response = await axios.get(endpoint);
       setQuestions(response.data);
-
+ 
       // Update flags array based on fetched questions
       const initialFlags = response.data.map(question => question.flag || false);
       setFlags(initialFlags);
@@ -71,9 +71,7 @@ const Dialog = ({ onClose, quizId }) => {
             </button>
           </div>
           <p className={styles.underline} />
-          <button onClick={onClose} className={styles.closeButton}>
-            Close
-          </button>
+      
           <div>
             {questions.length > 0
               ? questions.map((question, index) => (
@@ -90,7 +88,7 @@ const Dialog = ({ onClose, quizId }) => {
                       />
                     </button>
                     <div>
-                      {question.question}
+                      Question {index +1 }
                     </div>
                   </div>
                   <p className={styles.underline} />

@@ -17,44 +17,34 @@
     box-sizing: border-box; 
   }
   .dialogContent {
-  background: white;
-  padding: 20px;
-  border-radius: 30px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  position: relative;
-
-  max-height: 45vh; /* Limit height */
-
-  overflow-y: auto;
-  margin-top: 2rem;
-  margin-bottom: 5rem; /* Add this to make it scrollable */
+    background: white;
+    padding: 20px;
+    border-radius: 30px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    max-height: 45vh; /* Limit height */
+    overflow-y: auto;
+    margin-top: 2rem;
+    margin-bottom: 5rem;
   }
+  
+  /* Customize the scrollbar */
   .dialogContent::-webkit-scrollbar {
-    width: 8px; 
+    width: 8px; /* Set the width of the scrollbar */
   }
   
-  /* Style for the scrollbar track */
   .dialogContent::-webkit-scrollbar-track {
-    background: #dadadf5e; 
-    border-radius: 80px; 
-    height: 50%;
+    background: #f1f1f1; /* Color of the track (background) */
+    border-radius: 10px; /* Rounded corners for track */
   }
   
-  /* Style for the scrollbar thumb */
   .dialogContent::-webkit-scrollbar-thumb {
-    background: #ff0000; /* Color of the scrollbar thumb */
-    border-radius: 10px; /* Rounded corners */
+    background: #888; /* Color of the draggable part */
+    border-radius: 10px; /* Rounded corners for thumb */
   }
   
-  /* Style for the scrollbar thumb on hover */
   .dialogContent::-webkit-scrollbar-thumb:hover {
-    background: #555; /* Color of the scrollbar thumb when hovered */
-  }
-  
-  /* Optional: Style for the scrollbar corner */
-  .dialogContent::-webkit-scrollbar-corner {
-    background: #01f56f; 
-    border-radius: 10px; /* Background color of the corner */
+    background: #555; /* Darker color when hovering over the thumb */
   }
  
   .closeButton {
@@ -71,7 +61,9 @@
   }
 
   .bookmark{
+    font-family: 'Lato';
 
+    
   }
   .underline {
     width: 100%;
