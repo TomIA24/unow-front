@@ -211,6 +211,10 @@ let time =5000;
     if (currentQuestion > 0) {
       setCurrentQuestion(currentQuestion - 1);
     }
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
   };
   const handleFlagQuestion = async (questionIndex) => {
     const question = questions[questionIndex];
@@ -251,6 +255,10 @@ let time =5000;
       if (nextQuestion === questions.length - 1) {
         setFinishButton(true);
       }
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
     } else {
       handleSubmit();
     }
@@ -305,7 +313,8 @@ let time =5000;
           </div>
           {isDialogOpen && (
             <div className={styles.menudialog}>
-              <Dialog onClose={handleCloseDialog} quizId={storedQuizId}>
+              <Dialog onClose={handleCloseDialog} quizId={storedQuizId}
+              setCurrentQuestionIndex={setCurrentQuestion}>
                 <div>Here are all the questions...</div>
               </Dialog>
             </div>

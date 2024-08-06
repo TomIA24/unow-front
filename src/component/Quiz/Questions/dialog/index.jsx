@@ -2,11 +2,17 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styles from './styles.module.css'; // Adjust path as needed
 
-const Dialog = ({ onClose, quizId }) => {
+const Dialog = ({ onClose, quizId,index, setCurrentQuestionIndex }) => {
+  
   const [questions, setQuestions] = useState([]);
   const [flags, setFlags] = useState([]);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [showBookmarked, setShowBookmarked] = useState(false);
+
+  const handleGotoQuestion = (index) => {
+    setCurrentQuestionIndex(index);
+    onClose(); // Close the dialog if needed
+  };
 
   // Fetch all questions initially or flagged questions based on state
   const fetchQuestions = async () => {
@@ -53,17 +59,18 @@ const Dialog = ({ onClose, quizId }) => {
         <div className={styles.dialogContentInner}>
           <div className={styles.menudialog}>
             <button 
-              className={styles.bookmark} 
+               className={showBookmarked ? styles.bookmark:styles.bookmarked}  
               onClick={() => setShowBookmarked(false)}
-            >
+          >
               ALL QUESTIONS
             </button>
             <button 
-              className={styles.bookmark} 
+              className={showBookmarked ? styles.bookmark:styles.bookmarked} 
               onClick={() => setShowBookmarked(true)}
+             
             >
               <img
-                src="./images/quiz/dialog/flag.png"
+                src={showBookmarked ? "./images/quiz/dialog/flag.png" : "./images/quiz/dialog/flagunmarked.png"}
                 alt="Flag Question"
                 className={styles.flagimg}
               />
@@ -77,6 +84,7 @@ const Dialog = ({ onClose, quizId }) => {
               ? questions.map((question, index) => (
                 <div key={index} className={styles.flagged}>
                   <div className={styles.question}>
+                    <div className={styles.questionsection}>
                     <button 
                       className={styles.flagsection}
                       onClick={() => handleFlagQuestion(index)}
@@ -87,9 +95,20 @@ const Dialog = ({ onClose, quizId }) => {
                         className={styles.flagimg}
                       />
                     </button>
-                    <div>
+                    <div  className={styles.quest}>
                       Question {index +1 }
                     </div>
+                    </div>
+                    <button 
+                      className={styles.gotoquestion}
+                      onClick={() => handleGotoQuestion(index)}
+                    >
+                      <img
+                        src= "./images/quiz/dialog/gotoquestion.png"
+                        alt="Flag Question"
+                        className={styles.gotoquestionimg}
+                      />
+                    </button>
                   </div>
                   <p className={styles.underline} />
                 </div>
