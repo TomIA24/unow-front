@@ -59,13 +59,13 @@ const Dialog = ({ onClose, quizId,index, setCurrentQuestionIndex }) => {
         <div className={styles.dialogContentInner}>
           <div className={styles.menudialog}>
             <button 
-               className={showBookmarked ? styles.bookmark:styles.bookmarked}  
+               className={showBookmarked ? styles.bookmarked:styles.bookmark}  
               onClick={() => setShowBookmarked(false)}
           >
               ALL QUESTIONS
             </button>
             <button 
-              className={showBookmarked ? styles.bookmark:styles.bookmarked} 
+              className={showBookmarked ? styles.bookmarked:styles.bookmark} 
               onClick={() => setShowBookmarked(true)}
              
             >
