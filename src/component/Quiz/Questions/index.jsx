@@ -263,7 +263,10 @@ let time =5000;
       handleSubmit();
     }
   };
-
+  const isAnyAnswerSelected = (questionIndex) => {
+    const answers = selectedAnswers[questionIndex];
+    return Array.isArray(answers) ? answers.length > 0 : !!answers;
+  };
 
 
   return (
@@ -305,7 +308,9 @@ let time =5000;
               <img src="./images/quiz/scrumorg.png" alt="" className={styles.scrumorg} />
               <div className={styles.product}>PRODUCT OWNER OPEN</div>
               <div className={styles.menulist}>
-                <img src={isDialogOpen ? "./images/quiz/menu.png" :"./images/quiz/menuopen.png"} alt="" className={styles.menu} onClick={handleMenuClick} />
+              <button className={styles.menu}>
+                <img src={isDialogOpen ? "./images/quiz/menu.png" :"./images/quiz/menuopen.png"} className={styles.menu} alt=""  onClick={handleMenuClick} />
+                </button>
                 <div>See all questions</div>
               </div>
             </div>
@@ -313,8 +318,8 @@ let time =5000;
           </div>
           {isDialogOpen && (
             <div className={styles.menudialog}>
-              <Dialog onClose={handleCloseDialog} quizId={storedQuizId}
-              setCurrentQuestionIndex={setCurrentQuestion}>
+              <Dialog onClose={handleCloseDialog} quizId={storedQuizId} 
+              setCurrentQuestionIndex={setCurrentQuestion}     currentQuestion={currentQuestion}  isAnyAnswerSelected={isAnyAnswerSelected}>
                 <div>Here are all the questions...</div>
               </Dialog>
             </div>
@@ -457,14 +462,15 @@ let time =5000;
               </div>
 
               <div className={styles.submitSection}>
-                {currentQuestion > 0 && (
-                  <button onClick={handlePreviousQuestion} className={styles.butnprevious}>Previous</button>
-                )}
-                {currentQuestion < questions.length - 1 ? (
-                  <button onClick={handleNextQuestion} className={styles.butnnext}>Next</button>
+              {currentQuestion < questions.length - 1 ? (
+                  <button onClick={handleNextQuestion} className={styles.butnnext} disabled={!isAnyAnswerSelected(currentQuestion )}>Next</button>
                 ) : (
                   <button onClick={handleSubmit} className={styles.submitbtn}>Submit</button>
                 )}
+                {currentQuestion > 0 && (
+                  <button onClick={handlePreviousQuestion} className={styles.butnprevious}>Previous</button>
+                )}
+              
               </div>
               {finishbutton && (
                 <div className={styles.finishsection}>
