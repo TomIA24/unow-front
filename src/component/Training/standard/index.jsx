@@ -27,7 +27,7 @@ import { FaOpencart } from "react-icons/fa";
 import { useParams } from "react-router-dom";
 import Loading from "../../Loading";
 import Nav from "../../Nav";
-import Footer from "../../footer";
+import Footer from "../../Home/Footer";
 import styles from "./styles.module.css";
 
 const StandardTraining = (props) => {
@@ -497,7 +497,21 @@ const StandardTraining = (props) => {
   }
   return (
     <React.Fragment>
-      <Nav />
+    
+                  <div className={styles.backimage}>
+               
+  <div className={styles.navContainer}>
+
+       <Nav   />
+       </div>
+<div className={styles.pdowncontainer}> 
+    <div className={styles.pdown} >COURSES DETAILS
+    <p className={styles.underline}></p>
+    </div>
+  
+</div>
+  
+</div> 
 
       <main className={styles.MotherDivCourse}>
         <div className={styles.MainDivCourse}>
@@ -639,20 +653,16 @@ const StandardTraining = (props) => {
               )}
             </div>
           </div>
+          <div className={styles.rightSectionContainer}>
           <div className={styles.rightSectionCourse}>
             <div className={styles.scndInfos}>
-              <div className={styles.InfosRefDur}>
-                <p>
-                  Reference: <span>{Data.Reference}</span>
-                </p>
-                <p>
-                  Duration: <span> 2 hours/Day</span>
-                </p>
-                <p>
-                  Time: <span> {Data.TimePerDay}</span>
-                </p>
+            <div className={styles.CoursePriceInfoPage}>
+                <div className={styles.price}>{Data.Price} TTC
+                      <p className={styles.underline}></p>
+                </div>
+                
               </div>
-
+              <div className={styles.InfosRefDur}>
               <div className={styles.InfosDates}>
                 <h1
                   className={styles.radioTitle}
@@ -666,9 +676,33 @@ const StandardTraining = (props) => {
                   <p>session concluded</p>
                 )}
               </div>
-              <div className={styles.CoursePriceInfoPage}>
-                <p>{Data.Price} TTC</p>
+                {/* <p>
+                  Reference: <span>{Data.Reference}</span>
+                </p> */}
+               <ul>
+                 <li>
+                  Instructor: <span> 2 hours/Day</span>
+                </li>
+                <li>
+                  Duration: <span> 2 hours/Day</span>
+                </li>
+                <li>
+                  Lectures: <span> {Data.TimePerDay}</span>
+                </li>
+                <li>
+                  Level: <span> {Data.Level}</span>
+                </li>
+                <li>
+              Category: <span> {Data.Category}</span>
+                </li>
+                <li>
+                  Certificate: <span> {Data.certificate !==null ? "yes": "no"}</span>
+                </li>
+                </ul>
               </div>
+
+           
+           
               <div className={styles.CourseButtonsInfoPage}>
                 {user ? (
                   <React.Fragment>
@@ -680,7 +714,7 @@ const StandardTraining = (props) => {
                             id={styles.CourseButtonsInfoPageB1}
                           >
                             <p>Add To Cart</p>
-                            <FaOpencart size={20} />
+                            <img src="/images/course/addchat.png" alt=""   className={styles.imagechart}  />
                           </button>
                         ) : (
                           <Tooltip
@@ -692,8 +726,8 @@ const StandardTraining = (props) => {
                               id={styles.CourseButtonsInfoPageB1Mod}
                             >
                               {/*onClick={handleDisabled} */}
-                              <p>Add To Cart</p>
-                              <FaOpencart size={20} />
+                              <p>Add To Cart  here</p>
+                             <img src="/images/course/addchat.png" alt=""   className={styles.imagechart}  />
                             </button>
                           </Tooltip>
                         )}
@@ -704,8 +738,8 @@ const StandardTraining = (props) => {
                         id={styles.CourseButtonsInfoPageB1Mod}
                       >
                         {/*onClick={handleDisabled} */}
-                        <p>Add To Cart</p>
-                        <FaOpencart size={20} />
+                        <p>Add To Cart </p>
+                       <img src="/images/course/addchat.png" alt=""   className={styles.imagechart}  />
                       </button>
                     )}
                   </React.Fragment>
@@ -716,8 +750,8 @@ const StandardTraining = (props) => {
                         onClick={handleEnroll}
                         id={styles.CourseButtonsInfoPageB1}
                       >
-                        <p>Add To Cart</p>
-                        <FaOpencart size={20} />
+                        <p>Add To Cart  here</p>
+                       <img src="/images/course/addchat.png" alt=""   className={styles.imagechart}  />
                       </button>
                     ) : (
                       <button
@@ -726,7 +760,7 @@ const StandardTraining = (props) => {
                       >
                         {/*onClick={handleDisabled} */}
                         <p>Add To Cart</p>
-                        <FaOpencart size={20} />
+                       <img src="/images/course/addchat.png" alt=""   className={styles.imagechart}  />
                       </button>
                     )}
                   </React.Fragment>
@@ -793,7 +827,7 @@ const StandardTraining = (props) => {
                             id={styles.CourseButtonsInfoPageB2}
                           >
                             <p>Customize</p>
-                            <BiCustomize size={20} />
+                       <img src="/images/course/customize.png" alt=""   className={styles.imagechart}  />
                           </button>
                         ) : (
                           <Tooltip
@@ -805,8 +839,8 @@ const StandardTraining = (props) => {
                               id={styles.CourseButtonsInfoPageB2Mod}
                             >
                               {/*onClick={handleDisabled} */}
-                              <p>Customize</p>
-                              <BiCustomize size={20} />
+                              <p>Customize  here</p>
+                              <img src="/images/course/customize.png" alt=""   className={styles.imagechart}  />
                             </button>
                           </Tooltip>
                         )}
@@ -818,7 +852,7 @@ const StandardTraining = (props) => {
                       >
                         {/*onClick={handleDisabled} */}
                         <p>Customize</p>
-                        <BiCustomize size={20} />
+                        <img src="/images/course/customize.png" alt=""   className={styles.imagechart}  />
                       </button>
                     )}
                   </React.Fragment>
@@ -830,7 +864,7 @@ const StandardTraining = (props) => {
                         id={styles.CourseButtonsInfoPageB2}
                       >
                         <p>Customize</p>
-                        <BiCustomize size={20} />
+                   <img src="/images/course/customize.png" alt=""   className={styles.imagechart}  />
                       </button>
                     ) : (
                       <button
@@ -839,7 +873,7 @@ const StandardTraining = (props) => {
                       >
                         {/*onClick={handleDisabled} */}
                         <p>Customize</p>
-                        <BiCustomize size={20} />
+                   <img src="/images/course/customize.png" alt=""   className={styles.imagechart}  />
                       </button>
                     )}
                   </React.Fragment>
@@ -1055,6 +1089,7 @@ const StandardTraining = (props) => {
                   </Box>
                 </Modal>
               </div>
+            </div>
             </div>
           </div>
         </div>

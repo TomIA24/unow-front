@@ -185,10 +185,11 @@ const Main = () => {
             </div>
             <div className={styles.carousel} ref={carouselRef}>
               {currentTrainings.map((training) => (
+                <Link to={{ pathname: `/Training/${training._id}` }}>
                 <div className={styles.inner_carousel} key={training._id}>
                   {training.Thumbnail && training.Thumbnail.filePath ? (
                     <div className={styles.image}>
-                      <img src={`http://localhost:5050/api/${training.Thumbnail.filePath}`} alt={training.Title} className={styles.imagefeatures} />
+                      <img src={`${process.env.REACT_APP_API}/${training.Thumbnail.filePath}`}alt={training.Title} className={styles.imagefeatures} />
 
                     </div>
                   ) : (
@@ -204,6 +205,7 @@ const Main = () => {
                     <div className={styles.categoridomain}>{training.Title}</div>
                   </div>
                 </div>
+                </Link>
               ))}
             </div>
             <div>

@@ -1,14 +1,59 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
-* {
-    margin: 0;
-    padding: 0;
-    font-family: 'Nunito', sans-serif;
-}
 
-a {
+.backimage {
+    background: url('../../assets/quizbackground.png') no-repeat center center;
+    background-size: cover;
+    height: 40vh;
+    border-radius: 0px 0px 50px 50px;
+    
+  }
+  .logoimage {
+    margin-left: 30%; /* Centre l'image horizontalement */
+    padding: 10px;
+    height: auto; /* Garde les proportions de l'image */
+    width: auto; /* Garde les proportions de l'image */
+    max-height: 52px; /* Hauteur maximale */
+    max-width: 135px; /* Largeur maximale */
+}
+  
+  .pdown{
+    color: #FFFFFF;
+    font-size: 40px;
+font-weight: bold;
+  }
+
+  .underline{
+  
+    width:8%;
+    background-color: #CD6214;
+    padding-top: 5px;
+    border-radius: 100px;
+    margin-top: 10px;
+  }
+  .product{
+    font-size: 40px;
+    color: white;
+    font-weight: 600;
+    padding-left: 15%;
+    padding-right: 15%;
+    font-family: "Lato";
+
+
+  }
+  .navContainer{
+     padding-left: 5%;
+    padding-right: 5%; 
+  }
+  .pdowncontainer{
+    padding-left: 13.5%;
+    padding-right: 13.5%;
+    padding-top: 100px;
+  }
+
+/* a {
     text-decoration: none;
     margin: 0 5px;
-}
+} */
 
 .nav {
     width: 100%;
@@ -175,6 +220,7 @@ a {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 .MainDivCourse {
@@ -223,91 +269,124 @@ a {
     margin: auto;
 }
 
-.rightSectionCourse {
-    position: fixed;
-    /* background-color: #1c822d; */
-    width: 25%;
-    height: 60vh;
-    min-height: 300px;
-    top: 180px;
-    right: 90px;
-    bottom: 90px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow-y: auto;
+
+.rightSectionContainer {
+    position: relative; /* Establishes a context for the sticky positioning */
+    height: 2000px; /* Height to allow scrolling */
 }
 
+.rightSectionCourse {
+    position: -webkit-sticky; /* For Safari */
+    position: sticky;
+    top: 30%;
+    right: 90px;
+    bottom: 30px;
+    height: auto;
+    overflow-y: auto;
+}
 .scndInfos {
     padding: 20px 0;
-    background-color: white;
-    height: 90%;
-    width: 90%;
+    border-radius: 0px 40px 0px 40px;
+    background-color: #3E4678;
+    /* height: 50%; */
+    /* width: 40rem; */
     position: sticky;
     box-shadow: 0 0 7px rgba(0, 0, 0, 0.25);
     display: block;
     transition: margin-top 1s ease-out;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    /* justify-content: center; */
+    /* align-items: center;
 }
 
+
 .InfosRefDur {
-    width: 90%;
+    /* width: 90%;
     height: 25%;
-    min-height: 100px;
-    display: flex;
+    min-height: 100px; */
+    text-align: left;
+    /* display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
+    align-items: flex-start; */
     gap: 10px;
-    color: black;
-    font: bolder 20px "Nunito", sans-serif;
+    color: #FFFFFF;
+    font: bold 20px "Lato", sans-serif;
+    padding: 1rem 1rem;
 }
 
 .InfosRefDur span {
-    font: 400 20px "Nunito", sans-serif;
+    font:lighter 20px "Lato", sans-serif;
 }
 
 .InfosDates {
-    width: 90%;
+    /* width: 90%;
     height: 25%;
-    min-height: 70px;
-    display: flex;
+    /* min-height: 70px; */
+    /* display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
+    align-items: flex-start; */ 
+
+    padding-bottom: 2rem;
 }
 
 .radioTitle {
-    color: black;
-    font: bolder 20px "Nunito", sans-serif;
+    color: #FFFFFF;
+    font: bolder 2rem "Lato", sans-serif;
+}
+.InfosRefDur ul {
+    list-style-type: disc; /* Ensure the list style is set to bullets */
+    padding-left: 20px; /* Add padding to align the bullet points */
 }
 
+.InfosRefDur li {
+    margin-bottom: 10px; /* Optional: add some space between list items for better readability */
+}
+.InfosRefDur li b{
+  margin-bottom: 10px;
+  font-size: 20px; /* Optional: add some space between list items for better readability */
+}
 .radioLable {
-    color: rgb(95, 95, 95);
-    font: 400 20px "Nunito", sans-serif;
+    color: #FFFFFF;
+    font: 400 20px "Lato", sans-serif;
 }
 
 .CoursePriceInfoPage {
-    width: 90%;
-    height: 15%;
+   /* width: 90%; */
+   
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
-    color: black;
-    font: bold 35px "Nunito", sans-serif;
+    /* align-items: flex-start; */
+    color: #FFFFFF;
+    font-size: 40px;
+    font-family: 'Lato';
+}
+
+.price{
+    color: #FFFFFF;
+    font-size: 2.5rem;
+    font-family: 'Lato';
+    align-self: center;
+    font-weight: 900;
+}
+.price .underline{
+    width:50%;
+    background-color: #CD6214;
+    padding-top: 0.35rem;
+    border-radius: 100px;
+    margin-top: 0.5rem;
 }
 
 .CourseButtonsInfoPage {
-    width: 90%;
+
     height: 30%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
+    align-items:center;
 }
 
 .CourseButtonsInfoPage button {
@@ -316,13 +395,15 @@ a {
     margin: 5px 10px;
     padding: 0 20px;
     display: flex;
-    justify-content: space-between;
+    justify-content:center;
     align-items: center;
+    flex-direction: row-reverse;
     border-radius: 5px;
     border: none;
-    color: white;
-    font: 500 20px "Nunito", sans-serif;
+    color: #3E4678;
+    font: 500 20px "Lato", sans-serif;
     cursor: pointer;
+    font-weight: bolder;
 }
 
 #CourseButtonsInfoPageB1 {
@@ -331,17 +412,17 @@ a {
 }
 
 #CourseButtonsInfoPageB1Mod {
-    background-color: #5c5c5c;
+    background-color: white;
     cursor: not-allowed;
 }
 
 #CourseButtonsInfoPageB2 {
-    background-color: #427CFF;
+    background-color:  white;
     opacity: 72%;
 }
 
 #CourseButtonsInfoPageB2Mod {
-    background-color: #858585;
+    background-color:  white;
     cursor: not-allowed;
 }
 

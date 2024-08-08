@@ -3,7 +3,8 @@ import { Link, useParams} from "react-router-dom";
 import StandardTraining from "./standard"
 import PaidTraining from "./paid"
 import ConfirmedTraining from "./confirmedTraining"
-
+import styles from "./styles.module.css";
+import Nav from "../Nav";
 
 const  Training = () =>{
 
@@ -30,6 +31,7 @@ const  Training = () =>{
 
     return (
         <React.Fragment>
+   
             {
                 paid ? 
                     <PaidTraining/>
