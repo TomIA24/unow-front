@@ -25,7 +25,7 @@
     position: relative;
     /* height: 63vh; Limit height */
 
-    height:23rem;
+    height:37rem;
     margin-top: 0rem;
     margin-bottom: 5rem;
   }
@@ -192,10 +192,25 @@ font-weight: bolder;
     transition: filter 0.3s; /* Smooth transition for hover effect */
   }
   
+
   .gotoquestionimg:hover {
     filter: sepia(1) saturate(7) hue-rotate(180deg); /* Adjust these values to achieve the desired color effect */
   }
   
+  .numberbookmarked{
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: 50%;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+    padding: 0.5rem;
+    color: #2C2C2C;
+    font-size: medium;
+    width: 2rem; 
+    height: 2rem; 
+    display: inline-block; 
+    text-align: center; 
+    line-height: 1rem; 
+  }
+
   @media (min-width: 300px) and (max-width: 327px) {
 
   }
@@ -378,7 +393,7 @@ font-weight: bolder;
     .dialogContent {
     
       width: 70%;
-   
+   height: 31rem;
     }
     
   

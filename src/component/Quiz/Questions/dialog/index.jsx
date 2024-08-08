@@ -10,7 +10,7 @@ const Dialog = ({ onClose, quizId,index, setCurrentQuestionIndex,currentQuestion
   const [showBookmarked, setShowBookmarked] = useState(false);
   const [originalIndexes, setOriginalIndexes] = useState([]);
 
-
+  const bookmarkedCount = flags.filter(flag => flag).length;
   // Fetch all questions initially or flagged questions based on state
   const fetchQuestions = async () => {
     try {
@@ -80,7 +80,7 @@ const Dialog = ({ onClose, quizId,index, setCurrentQuestionIndex,currentQuestion
                 alt="Flag Question"
                 className={styles.flagimg}
               />
-              BOOKMARKED
+              BOOKMARKED <span className={styles.numberbookmarked}>{bookmarkedCount}</span>  
             </button>
           </div>
           <p className={styles.underline} />
