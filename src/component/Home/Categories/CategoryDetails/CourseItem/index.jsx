@@ -8,19 +8,21 @@ import styles from "../../../../Main/styles.module.css";
 import stylesItem from "./styles.modules.css";
 const CourseItem = (props) => {
   return (
+    <div>
     <div
       className={styles.topTrainingElements}
       style={{ paddingRight: "7%", marginTop: "3%" }}
     >
-      <div className={styles.inner_carousel} style={{ width: "100%" }}>
+      <div className={styles.inner_carousel} style={{ width: "100%",height:"50vh" }}>
         {props.course.thumbnail ? (
           <div
             className={styles.image}
-            style={{ marginBottom: "0px !important" }}
+            style={{ marginBottom: "1%" }}
           >
             <img
               src={props.course.thumbnail}
               alt={""}
+              style={{height:"100%"}}
               className={styles.imagefeatures}
             />
           </div>
@@ -115,6 +117,7 @@ const CourseItem = (props) => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };
