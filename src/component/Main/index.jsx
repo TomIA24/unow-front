@@ -51,7 +51,9 @@ import Avatar from "@mui/material/Avatar";
 import AvatarGroup from "@mui/material/AvatarGroup";
 import { Header } from "./Header/header";
 const Main = () => {
-
+  const [currentTrainings, setCurrentTrainings] = useState([]);
+  const [trainings, setTrainings] = useState([]);
+  const [courses, setCourses] = useState([]);
 
   const [WindowWidth, setWindowWidth] = useState(0);
   const handleWidthChange = () => {
@@ -68,19 +70,52 @@ const Main = () => {
   }, []);
   const [itemsPerPage, setItemsPerPage] = useState(3);
 
-  const [trainings, setTrainings] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("http://localhost:5050/api/trainings")
-      .then((response) => {
-        console.log(response.data.data);
-        setTrainings(response.data.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
-  }, []);
+    // Combine the GET and POST requests using Promise.all
+    const fetchData = async () => {
+        try {
+            const [trainingsResponse, coursesResponse] = await Promise.all([
+                axios.get("http://localhost:5050/api/trainings"),
+                axios.post("http://localhost:5050/api/courses")
+            ]);
+
+            // Set the data for trainings and courses
+            setTrainings(trainingsResponse.data.data);
+            setCourses(coursesResponse.data.data);
+
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
+    };
+
+    fetchData();
+}, []);
+useEffect(() => {
+  const fetchData = async () => {
+      try {
+          const [trainingsResponse, coursesResponse] = await Promise.all([
+              axios.get("http://localhost:5050/api/trainings"),
+              axios.post("http://localhost:5050/api/courses")
+          ]);
+
+          // Combine the data from trainings and courses
+          const combinedData = [
+              ...trainingsResponse.data.data,
+              ...coursesResponse.data.data,
+          ];
+
+          setTrainings(combinedData);
+
+          // Set the current trainings for the current page
+          setCurrentTrainings(combinedData.slice(indexOfFirstTraining, indexOfLastTraining));
+      } catch (error) {
+          console.error("Error fetching data:", error);
+      }
+  };
+
+  fetchData();
+}, [currentPage]);
 
 
   useEffect(() => {
@@ -103,12 +138,13 @@ const Main = () => {
     } else {
       settrainingsPerPage(3);
     }
+
+
   }, [WindowWidth]);
 
   const indexOfLastTraining = currentPage * trainingsPerPage;
   const indexOfFirstTraining = indexOfLastTraining - trainingsPerPage;
-  const currentTrainings = trainings.slice(indexOfFirstTraining, indexOfLastTraining);
-
+ 
   const nextPage = () => {
     if (currentPage < Math.ceil(trainings.length / trainingsPerPage)) {
       setCurrentPage(currentPage + 1);
@@ -185,25 +221,27 @@ const Main = () => {
             </div>
             <div className={styles.carousel} ref={carouselRef}>
               {currentTrainings.map((training) => (
-                <div className={styles.inner_carousel} key={training._id}>
-                  {training.Thumbnail && training.Thumbnail.filePath ? (
-                    <div className={styles.image}>
-                      <img src={`http://localhost:5050/api/${training.Thumbnail.filePath}`} alt={training.Title} className={styles.imagefeatures} />
-
+                  <Link to={{ pathname: `/Course/${training._id}` }}>
+                  <div className={styles.inner_carousel} key={training._id}>
+                    {training.Thumbnail && training.Thumbnail.filePath ? (
+                      <div className={styles.image}>
+                        <img src={`${process.env.REACT_APP_API}/${training.Thumbnail.filePath}`} alt={training.Title} className={styles.imagefeatures} />
+  
+                      </div>
+                    ) : (
+                      <div className={styles.image}>
+                        <img src="default-image.png" alt="Default" className={styles.imagefeatures} /></div>
+                    )}
+                    <div>
+                      <div className={styles.categorie}>
+                        <div className={styles.categorietype}>{training.Category}</div>
+                        <div className={styles.categoriprice}>{training.Price} $</div>
+                      </div>
+                      <div className={styles.categoriniveau}>{training.Level}</div>
+                      <div className={styles.categoridomain}>{training.Title}</div>
                     </div>
-                  ) : (
-                    <div className={styles.image}>
-                      <img src="default-image.png" alt="Default" className={styles.imagefeatures} /></div>
-                  )}
-                  <div>
-                    <div className={styles.categorie}>
-                      <div className={styles.categorietype}>{training.Category}</div>
-                      <div className={styles.categoriprice}>{training.Price} $</div>
-                    </div>
-                    <div className={styles.categoriniveau}>{training.Level}</div>
-                    <div className={styles.categoridomain}>{training.Title}</div>
                   </div>
-                </div>
+                  </Link>
               ))}
             </div>
             <div>

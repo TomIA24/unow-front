@@ -314,7 +314,20 @@ const PaidCourse = () => {
 
   return (
     <React.Fragment>
-      <Nav />
+   <div className={styles.backimage}>
+
+<div className={styles.navContainer}>
+
+  <Nav />
+</div>
+<div className={styles.pdowncontainer}>
+  <div className={styles.pdown} >COURSES DETAILS
+    <p className={styles.underline}></p>
+  </div>
+
+</div>
+
+</div>
       <main className={styles.MotherDivCourse}>
         <div className={styles.MainDivCourse}>
           <div className={styles.leftSectionCourse}>
