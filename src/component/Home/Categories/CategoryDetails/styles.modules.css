@@ -24,12 +24,10 @@ b {
   margin-top: 20px;
 }
 .features {
-  color: black;
-  font-family: "Lato";
   font-size: 40px;
-  font-weight: bolder;
-  padding-bottom: 50px;
-  font-weight: 800; /* Augmentation du poids de la police */
+  margin-top: 5%;
+  margin-left: 5%;
+  margin-bottom: 4%;
 }
 .container-grid {
   width: 100%;

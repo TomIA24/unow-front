@@ -50,7 +50,7 @@ const CategoryDetails = (props) => {
   const arrayOffline = windowWidth>900?groupIntoRows(props.offlineCourses, 3): groupIntoRows(props.onlineCourses, 2)
 
   return (
-    <div>
+    <div style={{marginLeft:"50px",marginRight:"50px"}}>
       <Nav ref={refHome} />
       <br />
       <TopBarComponent
@@ -64,11 +64,10 @@ const CategoryDetails = (props) => {
       />
       <div
         className="d-flex justify-content-center align-items-center mt-4"
-        style={{ marginLeft: "8%", marginRight: "8%" }}
       >
         <br />
         <div className="features">
-          ONLINE COURSES
+           COURSES
           <p className="underline"></p>
         </div>
         <Container className="container-grid">
@@ -107,7 +106,7 @@ const CategoryDetails = (props) => {
           }}
         >
           <div className="features">
-            OFFLINE COURSES
+             TRAININGS
             <p className="underline"></p>
           </div>
           <Container className="container-grid">

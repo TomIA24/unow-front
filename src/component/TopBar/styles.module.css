@@ -1,0 +1,90 @@
+.topcontainer {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+.secondcontainer{
+    border-radius:20px;
+    width:auto;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:70px;
+    width: 80%;
+    box-shadow: 0px 2px 5px rgba(255, 255, 255, 0.3), 0px -2px 5px rgba(255, 255, 255, 0.3), -2px 0px 5px rgba(255, 255, 255, 0.3), 2px 0px 5px rgba(0, 0, 0, 0.3);
+
+
+    
+}
+.btnstyle{
+    border: none;
+        background-color: #3E4678;
+        display:inline-flex;
+        color:white;
+        border-radius:20px 0px 0px 20px;
+        justify-content:center;
+        align-items:center;
+        cursor:pointer;
+        margin-right:10px;
+        width:40%;
+        height: 100%;
+    
+}
+.lastbtnstyle{
+    border: none;
+        background-color: #3E4678;
+        display:inline-flex;
+        color: white;
+        border-radius:0px 20px 20px 0px;
+        justify-content:center;
+        align-items:center;
+        cursor:pointer;
+        width:40%;
+        height: 100%;
+    
+}
+.btn2style{
+    border: none;
+        background-color: #3E4678;
+        display:inline-flex;
+        color:white;
+        justify-content:center;
+        align-items:center;
+        cursor:pointer;
+        width:40%;
+        height: 100%;
+}
+.btn3style{
+    background-color: transparent;
+        border-radius:20px 0px 0px 20px;
+        display:inline-flex;
+        justify-content:center;
+        align-items:center;
+        cursor:pointer;
+        width:auto;
+        margin-right:10px;
+        border:none;
+        height: 100%;
+}
+.itemstyle{
+    margin-right:20px;
+   font-size: 20px;
+   padding-left:10px;
+        font-weight: bold
+}
+.verticalline{
+     color:#CD6214;
+     height:70px;
+      width: 4px;
+        background-color: #CD6214;
+        border-radius:15px;
+        margin-right:13px;
+        height: 30px;
+        float: left ;
+}
+.morestyle{
+    border:none;
+    background-color:transparent;
+    cursor:pointer;
+    margin-left:15px
+}

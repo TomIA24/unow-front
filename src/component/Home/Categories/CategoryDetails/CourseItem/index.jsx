@@ -4,6 +4,7 @@ import {
   StarOutline,
   StarRounded,
 } from "@mui/icons-material";
+import AddIcon from '@mui/icons-material/Add';
 import styles from "../../../../Main/styles.module.css";
 import stylesItem from "./styles.modules.css";
 const CourseItem = (props) => {
@@ -11,9 +12,8 @@ const CourseItem = (props) => {
     <div>
     <div
       className={styles.topTrainingElements}
-      style={{ paddingRight: "7%", marginTop: "3%" }}
     >
-      <div className={styles.inner_carousel} style={{ width: "100%",height:"50vh" }}>
+      <div className={styles.inner_carousel} >
         {props.course.thumbnail ? (
           <div
             className={styles.image}
@@ -42,16 +42,14 @@ const CourseItem = (props) => {
             display: "inline-block",
           }}
         >
-          <div className={styles.categorie} style={{ alignItems: "center" }}>
-            <div className={styles.categorietype} style={{ fontSize: "15px" }}>
+          <div className={styles.categorie} >
+            <div className={styles.categorietype}>
               {props.course.subcat}
             </div>
             <div
               className={styles.categoriprice}
-              style={{
-                fontSize: "15px",
-                margin: "0px 15px 0px 0px !important",
-              }}
+              style={{margin: "0px 15px 0px 0px"}}
+             
             >
               {props.course.price}{" "}
             </div>
@@ -86,6 +84,7 @@ const CourseItem = (props) => {
                 marginTop: "20px",
                 float: "left",
                 display: "flex",
+                fontSize:"13px",
                 alignItems: "center",
               }}
             >
@@ -96,7 +95,7 @@ const CourseItem = (props) => {
               style={{
                 marginTop: "20px",
                 float: "right",
-                margin: "0px 15px 0px 0px !important",
+                margin: "0px 15px 15px 0px ",
               }}
             >
               {props.course.title}
@@ -108,12 +107,11 @@ const CourseItem = (props) => {
               display: "flex",
               float: "right",
               backgroundColor: "#cd6214",
-              borderRadius: "20px 0px 0px",
+              borderRadius: "15px 0px 0px",
               cursor: "pointer",
-              padding: "2%",
             }}
           >
-            <AddTwoTone fontSize="xs" />
+            <AddIcon  />
           </div>
         </div>
       </div>
