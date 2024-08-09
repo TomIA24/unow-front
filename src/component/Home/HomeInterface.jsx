@@ -9,6 +9,13 @@ import styles from "./styles.module.css";
 import Join from "./Join";
 import Collab from "./Collab";
 
+
+
+
+
+
+
+
 const HomeInterface = () => {
   return (
     <>
@@ -30,6 +37,7 @@ const HomeInterface = () => {
       <div className={styles.Featured}> 
         <Featured />
       </div>
+      
      
       <About />
       <UpSkill />
