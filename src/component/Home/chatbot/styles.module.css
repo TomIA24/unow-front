@@ -1,0 +1,461 @@
+/* styles.module.css */
+.chatIcon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #3E4678;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000; /* Ensure it’s on top */
+  }
+  
+  .chatIcon img {
+    width: 60px;
+    height: 60px;
+  }
+  
+  /* Base styles */
+  .chatbotContainer {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 350px;
+    max-height: 500px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid #e1e1e1;
+    z-index: 1000; /* Ensure it’s on top */
+  }
+  
+  /* For screens between 300px and 500px */
+  @media (max-width: 570px) {
+    .chatbotContainer {
+      width: 92%;
+      bottom: 80px;
+      height: 100%;
+      max-height: 89%;
+    }
+  }
+  
+  @media (min-width: 570px) and (max-width: 670px) {
+    .chatbotContainer {
+      width: 45%;
+      bottom: 80px;
+      right: 20px;
+      height: 54%;
+    }
+  }
+  
+  @media (min-width: 670px) and (max-width: 800px) {
+    .chatbotContainer {
+      width: 40%;
+      bottom: 80px;
+      right: 20px;
+      height: 54%;
+    }
+  }
+  
+  @media (min-width: 800px) and (max-width: 900px) {
+    .chatbotContainer {
+      width: 34%;
+      bottom: 80px;
+      right: 20px;
+      height: 54%;
+    }
+  }
+  
+  @media (min-width: 900px) and (max-width: 1000px) {
+    .chatbotContainer {
+      width: 33%;
+      bottom: 80px;
+      right: 20px;
+      height: 57%;
+    }
+  }
+  
+  @media (min-width: 1000px) and (max-width: 1100px) {
+    .chatbotContainer {
+      width: 29%;
+      bottom: 80px;
+      right: 20px;
+      height: 57%;
+    }
+  }
+  @media (min-width: 1101px) and (max-width: 1250px) {
+    .chatbotContainer {
+      width: 25%;
+      bottom: 80px;
+      right: 20px;
+      height: 57%;
+      max-height: 60%;
+    }
+  }
+  
+  @media (min-width: 1250px) and (max-width: 1350px) {
+    .chatbotContainer {
+      width: 23%;
+      bottom: 80px;
+      right: 20px;
+      height: 57%;
+      max-height: 62%;
+    }
+  }
+  
+  @media (min-width: 1350px) and (max-width: 1500px) {
+    .chatbotContainer {
+      width: 24%;
+      bottom: 80px;
+      right: 20px;
+      height: 53%;
+      max-height: 60%;
+    }
+  }
+  
+  @media (min-width: 1500px) and (max-width: 1850px) {
+    .chatbotContainer {
+      width: 24%;
+      bottom: 80px;
+      right: 20px;
+      height: 53%;
+      max-height: 65%;
+    }
+  }
+  
+  @media (min-width: 1850px) and (max-width: 2000px) {
+    .chatbotContainer {
+      width: 29%;
+      bottom: 80px;
+      right: 20px;
+      height: 57%;
+      max-height: 39%;
+    }
+  }
+  
+  @media (min-width: 2000px) and (max-width: 2500px) {
+    .chatbotContainer {
+      width: 29%;
+      bottom: 80px;
+      right: 20px;
+      height: 57%;
+      max-height: 39%;
+    }
+  }
+  
+  @media (min-width: 2500px) and (max-width: 3000px) {
+    .chatbotContainer {
+      width: 28%;
+      bottom: 80px;
+      right: 20px;
+      height: 57%;
+      max-height: 42%;
+    }
+  }
+  
+  @media (min-width: 3000px) {
+    .chatbotContainer {
+      width: 27%;
+      bottom: 80px;
+      right: 20px;
+      height: 57%;
+      max-height: 43%;
+    }
+  }
+  
+  
+  
+  
+  
+  .chatHeader {
+    background-color: #fff;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+   
+  }
+  
+  
+  /* Base styles */
+  .chatHeader img {
+    width: 22%;
+    height: 100%;
+    margin-right: 10px;
+    margin-left: 15%;
+  }
+  
+  /* For screens between 300px and 500px */
+  @media (max-width: 570px) {
+    .chatHeader img {
+      width: 18%;
+      margin-left: 18%;
+      margin-right: 17px;
+    }
+  }
+  
+  /* For screens between 501px and 800px */
+  @media (min-width: 501px) and (max-width: 800px) {
+    .chatHeader img {
+      width: 18%; /* Medium width */
+      margin-left: 12%; /* Adjust left margin */
+      margin-right: 8px; /* Adjust right margin */
+    }
+  }
+  
+  /* For screens between 801px and 1200px */
+  @media (min-width: 801px) and (max-width: 1200px) {
+    .chatHeader img {
+      width: 17%; /* Slightly larger width */
+      margin-left: 13%; /* Adjust left margin */
+      margin-right: 9px; /* Adjust right margin */
+    }
+  }
+  
+  /* For screens between 1201px and 1500px */
+  @media (min-width: 1201px) and (max-width: 1500px) {
+    .chatHeader img {
+      width: 20%; /* Default width */
+      margin-left: 15%; /* Default left margin */
+      margin-right: 10px; /* Default right margin */
+    }
+  }
+  @media  (min-width: 1500px) {
+    .chatHeader img {
+      width: 22%; /* Default width */
+      margin-left: 15%; /* Default left margin */
+      margin-right: 10px; /* Default right margin */
+    }
+  }
+  
+  .chatHeader .title {
+    font-weight: 600;
+      
+      color: #003366;
+  }
+  
+  .chatMessages {
+    flex: 1;
+    padding: 15px ;
+    overflow-y: auto;
+    background-color: #f9f9f9;
+  
+  }
+  
+  
+  
+  
+  
+  /* Styles pour les messages */
+  .message {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 10px;
+  }
+  
+  .message1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+  }
+  .message2 {
+    display: flex;
+   
+    margin-bottom: 10px;
+  }
+  .userText {
+    background-color: #CD6214;
+    border-radius: 15px 15px 15px 15px;
+    margin-left: auto;
+    padding: 10px;
+    max-width: 75%;
+    color: white;
+    display: flex;
+    align-items: right;
+    font-size: 13px;
+    font-family: 'Lato', sans-serif;
+  
+  }
+  
+  /* Styles spécifiques pour le texte des messages du chatbot */
+  .botText {
+    background-color: #3E4678;
+    border-radius: 15px 15px 15px 15px;
+    padding: 10px;
+    max-width: 56%;
+    color: white;
+    display: flex;
+    align-items: left;
+    font-size: 13px;
+    font-family: 'Lato', sans-serif;
+  }
+  
+  
+  /* Base styles */
+  .byUnow {
+    color: #3E4678;
+    font-size: 15px;
+  }
+  
+  /* For screens between 300px and 500px */
+  @media (max-width: 500px) {
+    .byUnow {
+      font-size: 12px; /* Smaller font size for smaller screens */
+    }
+  }
+  
+  /* For screens between 501px and 800px */
+  @media (min-width: 501px) and (max-width: 800px) {
+    .byUnow {
+      font-size: 13px; /* Medium font size for mid-sized screens */
+    }
+  }
+  
+  /* For screens between 801px and 1200px */
+  @media (min-width: 801px) and (max-width: 1200px) {
+    .byUnow {
+      font-size: 14px; /* Larger font size for larger screens */
+    }
+  }
+  
+  /* For screens between 1201px and 1500px */
+  @media (min-width: 1201px) and (max-width: 1500px) {
+    .byUnow {
+      font-size: 15px; /* Default font size for very large screens */
+    }
+  }
+  @media  (min-width: 1500px) {
+    .byUnow {
+      font-size: 15px; /* Default font size for very large screens */
+    }
+  }
+  
+  /* Base styles */
+  .knowy {
+    color: #3E4678;
+    font-weight: 900;
+    font-size: 26px;
+    font-family: 'Lato', sans-serif;
+    margin-top: 1%;
+  }
+  
+  /* For screens between 300px and 500px */
+  @media (max-width: 500px) {
+    .knowy {
+      font-size: 18px; /* Smaller font size for smaller screens */
+    }
+  }
+  
+  /* For screens between 501px and 800px */
+  @media (min-width: 501px) and (max-width: 800px) {
+    .knowy {
+      font-size: 17px; /* Medium font size for mid-sized screens */
+    }
+  }
+  
+  /* For screens between 801px and 1200px */
+  @media (min-width: 801px) and (max-width: 1200px) {
+    .knowy {
+      font-size: 18px; /* Larger font size for larger screens */
+    }
+  }
+  
+  /* For screens between 1201px and 1500px */
+  @media (min-width: 1201px) and (max-width: 1500px) {
+    .knowy {
+      font-size: 19px; /* Default font size for large screens */
+    }
+  }
+  @media (min-width: 1500px) {
+    .knowy {
+      font-size: 20px; /* Default font size for large screens */
+    }
+  }
+  
+  .message.user .text {
+    background-color: #CD6214;
+    border-radius: 15px 15px 15px 15px;
+    margin-left: auto;
+    padding: 10px;
+    max-width: 75%;
+    color: white;
+    display: flex;
+    align-items: right;
+  
+  }
+  
+  .message.bot .text {
+    background-color: #3E4678;
+    border-radius: 15px 15px 15px 15px;
+    padding: 10px;
+    max-width: 56%;
+    color: white;
+    display: flex;
+    align-items: left;
+  }
+  .userAvatar {
+    margin-left: 5%;
+  }
+  
+  .botAvatar {
+    width: 14%;
+    height: 10%;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
+  .message img {
+    width: 14%;
+    height: 10%;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
+  .chatInput {
+    display: flex;
+    padding: 10px;
+    background-color: #fff;
+    border-top: 1px solid #ddd;
+  }
+  
+  .chatInput input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    margin-right: 10px;
+  }
+  
+  .chatInput button {
+    padding: 10px 15px;
+    background-color: #3E4678;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .chatInput button:hover {
+    background-color: #ff5733; /* Changer la couleur ici selon votre préférence */
+    color: black; /* Vous pouvez également changer la couleur du texte */
+  }
+  
+  .buttonSend:hover {
+    background-color: #CD6214;
+  }
+  

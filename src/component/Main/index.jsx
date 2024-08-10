@@ -50,6 +50,8 @@ import CategorySlider from "./sliderPoints";
 import Avatar from "@mui/material/Avatar";
 import AvatarGroup from "@mui/material/AvatarGroup";
 import { Header } from "./Header/header";
+
+
 const Main = () => {
 
 
@@ -223,6 +225,7 @@ const Main = () => {
       </div>
 
     </React.Fragment>
+    
   );
 };
 
