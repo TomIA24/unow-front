@@ -4,7 +4,13 @@ import Nav from "../../../Nav";
 import { Button, Col, Row, Container } from "react-bootstrap";
 import "./styles.modules.css";
 import TopBarComponent from "../../../TopBar";
-
+import Footer from "../../Footer";
+import loupe from "../../../assets/loupe.png";
+import image from "../../../assets/image_training.png";
+import TopListItem from "../../../TopListItem";
+import React from "react";
+import PaginationComponent from "../../../Pagination";
+import axios from "axios";
 const CategoryDetails = (props) => {
   useEffect(() => {}, []);
   const [loadMoreOnline, setLoadMoreOnline] = useState(false);
@@ -12,6 +18,26 @@ const CategoryDetails = (props) => {
   const [indexItems, setIndexItems] = useState(6);
   const [indexItemsOffline, setIndexItemsOffline] = useState(6);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [courses, setCourses] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+  const getAllTraining = () => {
+    axios
+      .get(`http://localhost:5050/api/courses?page=${currentPage}&limit=${6}`)
+      .then((res) => {
+        console.log("result", res);
+        setCourses(res.data.data);
+        setTotalPages(res.data.totalPages);
+      });
+  };
+
+  useEffect(() => {
+    getAllTraining();
+  }, [currentPage]);
 
   useEffect(() => {
     if (loadMoreOnline && !loadMoreOffline) {
@@ -32,10 +58,10 @@ const CategoryDetails = (props) => {
   useEffect(() => {
     const handleResize = () => setWindowWidth(window.innerWidth);
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
     // Clean up the event listener on component unmount
-    return () => window.removeEventListener('resize', handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
   const groupIntoRows = (items, itemsPerRow) => {
     const rows = [];
@@ -46,98 +72,112 @@ const CategoryDetails = (props) => {
   };
 
   const refHome = useRef();
-  const arrayOnline = windowWidth>900? groupIntoRows(props.onlineCourses, 3): groupIntoRows(props.onlineCourses, 2)
-  const arrayOffline = windowWidth>900?groupIntoRows(props.offlineCourses, 3): groupIntoRows(props.onlineCourses, 2)
+  const arrayOnline =
+    windowWidth > 900 ? groupIntoRows(courses, 3) : groupIntoRows(courses, 2);
+  const arrayOffline =
+    windowWidth > 900
+      ? groupIntoRows(props.offlineCourses, 3)
+      : groupIntoRows(props.onlineCourses, 2);
 
   return (
-    <div style={{marginLeft:"50px",marginRight:"50px"}}>
-      <Nav ref={refHome} />
-      <br />
-      <TopBarComponent
-        items={[
-          { id: 0, title: "Design" },
-          { id: 1, title: "Conception Web" },
-          { id: 2, title: "Conception Graphique et Illustration" },
-          { id: 3, title: "Outil de conception" },
-          { id: 4, title: "Conception d'une expérience utilisateur" }
-        ]}
-      />
-      <div
-        className="d-flex justify-content-center align-items-center mt-4"
-      >
-        <br />
-        <div className="features">
-           COURSES
-          <p className="underline"></p>
+    <div>
+      <div style={{ marginLeft: "50px", marginRight: "50px" }}>
+        <div className={"background"}>
+          <img
+            src="./images/home/backg.png"
+            alt=""
+            className={"imagebackground"}
+          />
         </div>
-        <Container className="container-grid">
-          {arrayOnline.slice(0,  windowWidth>900?indexItems / 3:indexItems/2).map((itemnested) => (
-            <div key={itemnested[0].id}>
-              <Row className="row1">
-                {itemnested.map((course) => (
-                  <Col xs={6} md={4} className="col" key={course.id}>
-                    <CourseItem course={course} />
-                  </Col>
-                ))}
-              </Row>
-              <br />
-            </div>
-          ))}
-          <Row>
-            <Col className="text-center">
-              <button
-                className="btn_style btn-primary"
-                onClick={() => {
-                  setLoadMoreOnline(true);
-                  updatItemsFunction();
-                }}
-              >
-                <p className="text_btn">Other Courses</p>
-              </button>
-            </Col>
-          </Row>
-        </Container>
-
+        <Nav ref={refHome} />
         <div
           style={{
-            justifyContent: "center",
-            alignItems: "center",
-            marginTop: "70px",
+            display: "flex",
+            justifyContent: "space-between",
+            width: "100%",
           }}
         >
-          <div className="features">
-             TRAININGS
-            <p className="underline"></p>
+          <div className={"explore_container"}>
+            <button className={"explore_btn"} type="button" onClick={() => {}}>
+              Explore
+            </button>
+            <div className={"explore_line"} />
+            <input
+              type="text"
+              placeholder="Type here..."
+              className={"explore_input"}
+            />
+            <div className={"explore_line"} />
+            <button className={"search_btn"} type="button" onClick={() => {}}>
+              <img src={loupe} alt="" className={"icon_search"} />
+            </button>
+          </div>
+          <img width={200} height={200} src={image} />
+        </div>
+        <br />
+        <TopListItem
+          items={[
+            { id: 0, title: "Products" },
+            { id: 1, title: "Categories" },
+            { id: 2, title: "Subcategories" },
+          ]}
+        />
+        <TopBarComponent
+          items={[
+            { id: 0, title: "Design" },
+            { id: 1, title: "Conception Web" },
+            { id: 2, title: "Conception Graphique et Illustration" },
+            { id: 3, title: "Outil de conception" },
+            { id: 4, title: "Conception d'une expérience utilisateur" },
+          ]}
+        />
+        <div className="d-flex justify-content-center align-items-center mt-4 paddingbottom">
+          <br />
+          <div style={{ display: "inline-flex" }}>
+            <div className="features">
+              COURSES
+              <p className="underline"></p>
+            </div>
+            <div className="features">
+              TRAININGS
+              <p className="underline"></p>
+            </div>
           </div>
           <Container className="container-grid">
-            {arrayOffline.slice(0, windowWidth>900?indexItemsOffline / 3:indexItemsOffline / 2).map((itemnested) => (
-              <div key={itemnested[0].id}>
-                <Row className="row1">
-                  {itemnested.map((course) => (
-                    <Col xs={6} md={4} className="col" key={course.id}>
-                      <CourseItem course={course} />
-                    </Col>
-                  ))}
-                </Row>
-                <br />
-              </div>
-            ))}
-            <Row>
-              <Col className="text-center">
-                <button
-                  className="btn_style btn-primary"
-                  onClick={() => {
-                    setLoadMoreOffline(true);
-                    updatItemsOfflineFunction();
-                  }}
-                >
-                  <p className="text_btn">Other Courses</p>
-                </button>
-              </Col>
-            </Row>
+            {arrayOnline
+              .slice(0, windowWidth > 900 ? indexItems / 3 : indexItems / 2)
+              .map((itemnested) => (
+                <div key={itemnested[0].id}>
+                  <Row className="row1">
+                    {itemnested.map((course) => (
+                      <Col xs={6} md={4} className="col" key={course.id}>
+                        <CourseItem course={course} />
+                      </Col>
+                    ))}
+                  </Row>
+                  <br />
+                </div>
+              ))}
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                paddingTop: "2%",
+              }}
+            >
+              <PaginationComponent
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onPageChange={handlePageChange}
+              />
+              <br />
+            </div>
           </Container>
         </div>
       </div>
+
+      <Footer />
     </div>
   );
 };
