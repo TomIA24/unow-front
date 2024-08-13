@@ -8,8 +8,8 @@ import paper from './paper.png';
 
 const Chatbot = () => {
   const [messages, setMessages] = useState([
-    { user: 'Bot', text: "​Hi Amira!" },
-    { user: 'Bot', text: "👋It's nice to meet you !" }
+    { user: 'Bot', text: "Hello there! I am Knowy, your virtual assistant." },
+    { user: 'Bot', text: "How may I assist you?" }
   ]);
   const [input, setInput] = useState('');
   const [conversationId, setConversationId] = useState('');
@@ -122,22 +122,22 @@ const Chatbot = () => {
             ))}
           </div>
           <div className={styles.chatInput}>
-            <input
-              type="text"
-              placeholder="Type your message here..."
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              onKeyPress={(e) => {
-                if (e.key === 'Enter') sendMessage();
-              }}
-            />
-             <button
-          onClick={sendMessage}
-          className={isButtonClicked ? styles.clickedButton : ''}
-        >
-          <img src={paper} alt="button icon" className={styles.buttonImage} />
-        </button>
-          </div>
+  <input
+    type="text"
+    placeholder="Type your message here..."
+    value={input}
+    onChange={(e) => setInput(e.target.value)}
+    onKeyPress={(e) => {
+      if (e.key === 'Enter') sendMessage();
+    }}
+  />
+  <button
+    onClick={sendMessage}
+    className={input ? styles.activeButton : ''}
+  >
+    <img src={paper} alt="button icon" className={styles.buttonImage} />
+  </button>
+</div>
         </div>
       )}
     </div>

@@ -41,10 +41,11 @@
   /* For screens between 300px and 500px */
   @media (max-width: 570px) {
     .chatbotContainer {
-      width: 92%;
+      width: 100%;
       bottom: 80px;
       height: 100%;
       max-height: 89%;
+      right: 0%;
     }
   }
   
@@ -435,6 +436,16 @@
     border-radius: 20px;
     margin-right: 10px;
   }
+  @media (max-width:570px){
+    .chatInput input {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 20px;
+      margin-right: 10px;
+      font-size: 12px;
+    }
+  }
   
   .chatInput button {
     padding: 10px 15px;
@@ -449,13 +460,6 @@
     align-items: center;
     justify-content: center;
   }
-  
-  .chatInput button:hover {
-    background-color: #ff5733; /* Changer la couleur ici selon votre préférence */
-    color: black; /* Vous pouvez également changer la couleur du texte */
-  }
-  
-  .buttonSend:hover {
+  .chatInput button.activeButton {
     background-color: #CD6214;
   }
-  
