@@ -11,6 +11,7 @@ import TopListItem from "../../../TopListItem";
 import React from "react";
 import PaginationComponent from "../../../Pagination";
 import axios from "axios";
+import GenericSwitcher from "../../../GenericSwitcher";
 const CategoryDetails = (props) => {
   useEffect(() => {}, []);
   const [loadMoreOnline, setLoadMoreOnline] = useState(false);
@@ -21,6 +22,8 @@ const CategoryDetails = (props) => {
   const [courses, setCourses] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [type,setType]=useState("Course")
+  const [selected,setSelected]=useState("Course")
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -78,13 +81,15 @@ const CategoryDetails = (props) => {
     windowWidth > 900
       ? groupIntoRows(props.offlineCourses, 3)
       : groupIntoRows(props.onlineCourses, 2);
-
+  useEffect(()=>{
+    console.log("Type",type)
+  },[type])
   return (
     <div>
       <div style={{ marginLeft: "50px", marginRight: "50px" }}>
         <div className={"background"}>
           <img
-            src="./images/home/backg.png"
+            src="./images/home/background-image.png"
             alt=""
             className={"imagebackground"}
           />
@@ -112,7 +117,7 @@ const CategoryDetails = (props) => {
               <img src={loupe} alt="" className={"icon_search"} />
             </button>
           </div>
-          <img width={200} height={200} src={image} />
+          <img width={300} height={253} src={image} />
         </div>
         <br />
         <TopListItem
@@ -131,16 +136,22 @@ const CategoryDetails = (props) => {
             { id: 4, title: "Conception d'une expérience utilisateur" },
           ]}
         />
+        <GenericSwitcher />
         <div className="d-flex justify-content-center align-items-center mt-4 paddingbottom">
           <br />
-          <div style={{ display: "inline-flex" }}>
-            <div className="features">
+          <div style={{ display: "inline-flex",alignItems:"center",justifyContent:"space-between"}}>
+            <div className="features" style={{cursor:"pointer"}} onClick={()=>setType("Course")}>
               COURSES
-              <p className="underline"></p>
+              <br/>
+              {type=="Course"&&<p className="underline"></p>}
+
             </div>
-            <div className="features">
+            <p  style={{color:"orange",  fontSize: "40px"}}>/</p>
+            <div className="features" style={{cursor:"pointer"}} onClick={()=>setType("Training")}>
               TRAININGS
-              <p className="underline"></p>
+              <br/>
+                          {type==="Training"&&<p className="underline"></p>}
+
             </div>
           </div>
           <Container className="container-grid">

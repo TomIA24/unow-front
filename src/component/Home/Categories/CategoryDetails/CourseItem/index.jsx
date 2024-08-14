@@ -12,9 +12,9 @@ const CourseItem = (props) => {
   return (
     <div>
       <div className={stylesItem.topTrainingElements}>
-        <div className={stylesItem.inner_carousel} style={{ height: "50vh" }}>
+        <div className={stylesItem.inner_carousel}>
           {props.course.Thumbnail?.filePath ? (
-            <div className={stylesItem.image} style={{ marginBottom: "1%" }}>
+            <div className={stylesItem.image} >
               <img
                 src={props?.course?.Thumbnail?.filePath}
                 alt={""}
@@ -119,22 +119,22 @@ const CourseItem = (props) => {
                 <Avatar
                   sx={{ width: "20px", height: "20px" }}
                   alt="Remy Sharp"
-                  src="https://cdn.icon-icons.com/icons2/2407/PNG/512/aws_icon_146074.png"
+                  src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png"
                 />
                 <Avatar
                   sx={{ width: "20px", height: "20px" }}
                   alt="Travis Howard"
-                  src="https://cdn.icon-icons.com/icons2/2407/PNG/512/aws_icon_146074.png"
+                  src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png"
                 />
                 <Avatar
                   sx={{ width: "20px", height: "20px" }}
                   alt="Agnes Walker"
-                  src="https://cdn.icon-icons.com/icons2/2407/PNG/512/aws_icon_146074.png"
+                  src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png"
                 />
                 <Avatar
                   sx={{ width: "20px", height: "20px" }}
                   alt="Trevor Henderson"
-                  src="https://cdn.icon-icons.com/icons2/2407/PNG/512/aws_icon_146074.png"
+                  src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png"
                 />
               </AvatarGroup>
             </div>
@@ -144,10 +144,11 @@ const CourseItem = (props) => {
                 float: "right",
                 backgroundColor: "#cd6214",
                 borderRadius: "10px 0px 0px",
+                bottom:"10px",
                 cursor: "pointer",
               }}
             >
-              <AddIcon style={{ fontSize: "15px" }} />
+              <AddIcon style={{ fontSize: "15px",color:"white" }} />
             </div>
           </div>
         </div>
