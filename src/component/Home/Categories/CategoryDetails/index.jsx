@@ -12,6 +12,9 @@ import React from "react";
 import PaginationComponent from "../../../Pagination";
 import axios from "axios";
 import GenericSwitcher from "../../../GenericSwitcher";
+import imageCourse from "../../../assets/icon_course.png";
+import imageTraining from "../../../assets/icon_training.png";
+
 const CategoryDetails = (props) => {
   useEffect(() => {}, []);
   const [loadMoreOnline, setLoadMoreOnline] = useState(false);
@@ -22,8 +25,8 @@ const CategoryDetails = (props) => {
   const [courses, setCourses] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const [type,setType]=useState("Course")
-  const [selected,setSelected]=useState("Course")
+  const [type, setType] = useState("Course");
+  const [selected, setSelected] = useState("Course");
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -81,9 +84,9 @@ const CategoryDetails = (props) => {
     windowWidth > 900
       ? groupIntoRows(props.offlineCourses, 3)
       : groupIntoRows(props.onlineCourses, 2);
-  useEffect(()=>{
-    console.log("Type",type)
-  },[type])
+  useEffect(() => {
+    console.log("Type", type);
+  }, [type]);
   return (
     <div>
       <div style={{ marginLeft: "50px", marginRight: "50px" }}>
@@ -136,24 +139,15 @@ const CategoryDetails = (props) => {
             { id: 4, title: "Conception d'une expérience utilisateur" },
           ]}
         />
-        <GenericSwitcher />
+        <GenericSwitcher
+          items={[
+            { icon: imageCourse, title: "Courses" },
+            { icon: imageTraining, title: "Trainings" },
+          ]}
+        />
         <div className="d-flex justify-content-center align-items-center mt-4 paddingbottom">
           <br />
-          <div style={{ display: "inline-flex",alignItems:"center",justifyContent:"space-between"}}>
-            <div className="features" style={{cursor:"pointer"}} onClick={()=>setType("Course")}>
-              COURSES
-              <br/>
-              {type=="Course"&&<p className="underline"></p>}
 
-            </div>
-            <p  style={{color:"orange",  fontSize: "40px"}}>/</p>
-            <div className="features" style={{cursor:"pointer"}} onClick={()=>setType("Training")}>
-              TRAININGS
-              <br/>
-                          {type==="Training"&&<p className="underline"></p>}
-
-            </div>
-          </div>
           <Container className="container-grid">
             {arrayOnline
               .slice(0, windowWidth > 900 ? indexItems / 3 : indexItems / 2)
