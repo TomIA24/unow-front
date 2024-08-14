@@ -45,8 +45,7 @@ font-weight: 900;
 
   }
   .navContainer{
-     padding-left: 5rem;
-    padding-right: 5rem; 
+    
   }
   .pdowncontainer{
     padding-left: 8rem;
@@ -266,6 +265,7 @@ font-weight: 900;
 .leftSectionCourse {
       /* background-color: #6FC2D0; */
       width: 60%;
+
       /* height: 100%; */
       display: flex;
       flex-direction: column;
@@ -297,15 +297,31 @@ font-weight: 900;
     color: #2C2C2C;
 }
 
-.imgCourse {
+/* .imgCourse {
     width:100%;
+    height:28rem; */
  /* height: 100%;  */
     /* display: grid; */
     /* grid-template-columns: 1fr; */
-    border-radius: 3rem;
-    /* margin: auto 5px; */
+    /* border-radius: 3rem; */
+    /* margin: auto 5px;
     box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.16);
     z-index: -1;
+} */
+.imgCourse {
+  width: 100%;  /* Make the container take up full width */
+  height: 28rem; /* Set the height to 28rem */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; 
+  border-radius: 3rem;/* Hide any overflow if the image is larger */
+}
+
+.imgCourseImage {
+  width: 100%;  /* Image takes full width of the container */
+  height: 100%; /* Image takes full height of the container */
+  object-fit: cover; /* Ensure the image covers the container without stretching */
 }
 
 .imgCourse img {
@@ -343,6 +359,7 @@ font-weight: 900;
     transition: margin-top 1s ease-out;
     display: flex;
     flex-direction: column;   
+    align-items: center;
     text-align: left;
     gap:1rem;
     color: #FFFFFF;
@@ -366,7 +383,7 @@ font-weight: 900;
     padding-bottom: 2rem;
 }
 .InfosDates p{
-    font:lighter 1rem "Lato", sans-serif;
+  font: 1rem "Lato", sans-serif;
 }
 
 
@@ -406,13 +423,17 @@ font-weight: 900;
     font-family: 'Lato';
     align-self: center;
     font-weight: 900;
+    text-align: center;
+  
 }
-.price .underline{
+.price p{
     width:50%;
     background-color: #CD6214;
     padding-top: 0.35rem;
     border-radius: 100px;
     margin-top: 0.5rem;
+    align-self: center;
+  
 }
 
 .CourseButtonsInfoPage {
@@ -433,7 +454,7 @@ font-weight: 900;
     justify-content:center;
     align-items: center;
     flex-direction: row-reverse;
-    border-radius: 5px;
+    border-radius: 10px;     
     border: none;
     color: #3E4678;
     font: 500 20px "Lato", sans-serif;
@@ -885,11 +906,11 @@ font-weight: 900;
     flex-direction: column;
 }
 .imgCourse {
-    width: 19rem;
-  
-    border-radius: 3rem;
-   
-    z-index: -1;}
+  width: 100%; 
+  height:28rem;
+  background-size: contain; 
+  background-position: center;
+  background-repeat: no-repeat;}
 .MainDivCourse{
     /* width: 90%; */
     width: 100%;
@@ -989,7 +1010,7 @@ font-weight: 900;
       flex-direction: column;
   }
   .imgCourse {
-      width: 19rem;
+      /* width: 19rem; */
     
       border-radius: 3rem;
      
@@ -1075,7 +1096,7 @@ font-weight: 900;
       font-size: 0.8em;
     }
     .navContainer{
-      /* padding-left: 8%; */
+      padding-left: 8%;
       padding-right: 14%;
     }
   }
@@ -1124,7 +1145,7 @@ font-weight: 900;
         flex-direction: column;
     }
     .imgCourse {
-        width: 19rem;
+        /* width: 19rem; */
       
         border-radius: 3rem;
        
@@ -1217,7 +1238,7 @@ font-weight: 900;
       font-size: 0.9em;
     }
     .navContainer{
-      /* padding-left: 8%; */
+      padding-left: 8%;
       padding-right: 10%;
     }
   }
@@ -1239,6 +1260,7 @@ font-weight: 900;
   
   }   */
   @media (min-width: 469px) and (max-width: 576px) {
+    
     .radioTitle {
         color: #FFFFFF;
         font: bolder 1.4rem "Lato";
@@ -1283,8 +1305,8 @@ font-weight: 900;
         flex-direction: column;
     }
     .imgCourse {
-        width: 19rem;
-      
+        /* width: 19rem;
+       */
         border-radius: 3rem;
        
         z-index: -1;}
@@ -1364,13 +1386,16 @@ font-weight: 900;
   
   
   @media (min-width: 576px) and (max-width: 625px) {
+    .InfosRefDur {
+      width: 60%;
+    }
     .radioTitle {
         color: #FFFFFF;
         font: bolder 1.4rem "Lato";
         padding-bottom: 1rem;
     }
     .scndInfos {
-        padding: 2rem 3rem;
+        padding: 1rem 0rem;
         border-radius: 0px 20px 0px 20px;
         background-color: #3E4678;
         /* height: 50%; */
@@ -1408,11 +1433,11 @@ font-weight: 900;
         flex-direction: column;
     }
     .imgCourse {
-        width: 19rem;
+        /* width: 19rem; */
       
         border-radius: 3rem;
        
-        z-index: -1;}
+       }
     .MainDivCourse{
         /* width: 90%; */
         width: 100%;
@@ -1443,7 +1468,10 @@ font-weight: 900;
         cursor: pointer;
         font-weight: bolder;
     }
-      
+    .leftSectionCourse{
+      width: 55%;
+
+    }
     .imagechart{
         width: 2rem;
     }
@@ -1459,6 +1487,57 @@ font-weight: 900;
     }
   }
   @media (min-width: 625px) and (max-width: 700px) {
+    
+    .CourseButtonsInfoPage button{
+      width: 70%;
+      height: 3rem;
+      margin: 3px 6px;
+      padding: 0 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row-reverse;
+      border-radius: 14px;
+      border: none;
+      color: #3E4678;
+      font: 500 20px "Lato", sans-serif;
+      cursor: pointer;
+      font-weight: bolder;
+    
+  
+}   
+
+    .MainDivCourse{
+      width: 100%;
+      height: auto;
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding-left: 5rem;
+      padding-right: 5rem;
+      padding-top: 5rem;
+      gap: 4rem;
+  }
+    .scndInfos{
+      padding: 0rem 0rem;
+      border-radius: 0px 40px 0px 40px;
+      background-color: #3E4678;
+      /* height: 50%; */
+      /* width: 40rem; */
+      position: sticky;
+      box-shadow: 0 0 7px rgba(0, 0, 0, 0.25);
+      display: block;
+      transition: margin-top 1s ease-out;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: left;
+      gap: 1rem;
+      color: #FFFFFF;
+      font: bold 20px "Lato", sans-serif;
+
+    }
     .pdown{
       color: #ffffff;
       font-size:1.8rem;
@@ -1511,6 +1590,78 @@ font-weight: 900;
    }
   }
   @media (min-width: 700px) and (max-width: 780px) {
+    .navContainer{
+      margin-left: 4rem; 
+      margin-right:8rem;
+    }
+    .scndInfos{
+      padding: 1rem 1rem;
+      border-radius: 0px 40px 0px 40px;
+      background-color: #3E4678;
+      /* height: 50%; */
+      /* width: 40rem; */
+      position: sticky;
+      box-shadow: 0 0 7px rgba(0, 0, 0, 0.25);
+      display: block;
+      transition: margin-top 1s ease-out;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: left;
+      gap: 1rem;
+      color: #FFFFFF;
+      font: bold 20px "Lato", sans-serif;
+
+    }    .InfosRefDur{
+     
+    }
+    .CourseButtonsInfoPage button{
+      width: 64%;
+      height: 4rem;
+      margin: 3px 6px;
+      padding: 0 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row-reverse;
+      border-radius: 14px;
+      border: none;
+      color: #3E4678;
+      font: 500 20px "Lato", sans-serif;
+      cursor: pointer;
+      font-weight: bolder;
+    
+  
+}   
+
+.InfosRefDur {
+  width: 81%;
+}
+
+.imgCourse {
+     
+      height: 28rem;
+      border-radius: 3rem;
+     
+ }
+    .MainDivCourse {
+      /* width: 90%; */
+      width: 100%;
+      height: auto;
+      /* background-color: #1C4B82; */
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+      /* grid-template-columns: auto 19rem; */
+       padding-left: 5rem;
+      padding-right: 5rem; 
+      padding-top: 5rem;
+  }
+
+
+
+
     .pdown{
       color: #ffffff;
       font-size:2.1rem;
@@ -1564,81 +1715,255 @@ font-weight: 900;
   
   
   @media (min-width: 700px) and (max-width: 764px) {
-  
+    .MainDivCourse{
+      width: 100%;
+      height: auto;
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding-left: 5rem;
+      padding-right: 5rem;
+      padding-top: 5rem;
+      gap: 4rem;
+  }
   }
   
   @media (min-width: 765px) and (max-width: 1082px) {
-    .pdown{
-      color: #ffffff;
-      font-size:2.1rem;
-  
+    .navContainer{
+      margin-left: 4rem; 
+      margin-right:4rem;
     }
-    .pdowncontainer{
-     
-      padding-top:3em;
+    .rightSectionCourse {
+      position: -webkit-sticky; /* For Safari */
+      position: sticky;
+      top: 30%;
+      right: 90px;
+      bottom: 30px;
+      height: auto;
+      overflow-y: auto;
+      margin-top: 5rem;
+  }
+    .FirsSectionInfoCourse{
+      /* background-color: #6fd0b3; */
+      display: flex;
+      justify-content: start;
+      align-items: start;
+      /* width: 100%; */
+      margin-top: 1rem;
+      margin-bottom: 20px;
+      flex-direction: column;
+  }
+    .InfosRefDur {
+      width: 80%;
     }
-  
- 
-    .underline{
-  
-      width:25%;
-      background-color: #CD6214;
-      padding-top: 5px;
-      border-radius: 100px;
-      margin-top:0.5rem;
-    }
-    .backimage {
-   
-      height: 18rem;
-      border-radius: 0px 0px 22px 22px;
+    .radioTitle {
+      color: #FFFFFF;
+      font: bolder 1.4rem "Lato";
+      padding-bottom: 1rem;
+  }
+  .scndInfos {
+      padding: 2rem 3rem;
+      border-radius: 0px 20px 0px 20px;
+      background-color: #3E4678;
+      /* height: 50%; */
+      /* width: 40rem; */
+      position: sticky;
+      box-shadow: 0 0 7px rgba(0, 0, 0, 0.25);
+      display: block;
+      transition: margin-top 1s ease-out;
       display: flex;
       flex-direction: column;
-
-      
-    
-  
-    }
-    .underline{
-  
-      width:10%;
-      background-color: #CD6214;
-      padding-top: 5px;
-      border-radius: 100px;
-      margin-top: 10px;
-    }
-    .pdowncontainer{
+      text-align: left;
+      gap: 1rem;
+      color: #FFFFFF;
+      font: bold 14px "Lato", sans-serif;
+  }
+  .price {
+      color: #FFFFFF;
+      font-size: 1.5rem;
+      font-family: 'Lato';
+      align-self: center;
+      font-weight: 900;
+  }
+  .DescriptionInfoCourseTitle span {
+      font-family: 'Lato';
+      font-weight: 900;
+      text-transform: uppercase;
+      font-size: 1rem;
+      color: #2C2C2C;
+  }
+  .leftSectionCourse {
+      /* background-color: #6FC2D0; */
+      width: 59%;
+      /* height: 100%; */
+      display: flex;
+      flex-direction: column;
+  }
+  .imgCourse {
+    width: 100%;
+      height: 26rem;
+      border-radius: 3rem;
      
-      padding-top:4em;
+      z-index: -1;}
+  .MainDivCourse{
+      width: 100%;
+      height: auto;
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding-left: 5rem;
+      padding-right: 5rem;
+      padding-top: 5rem;
+      gap: 4rem;
+  }
+  .CourseButtonsInfoPage button {
+      height: 4rem;
+      margin: 1rem 1rem;
+      padding: 0px 7px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row-reverse;
+      border-radius: 20px;
+      border: none;
+      color: #3E4678;
+      font: 500 20px "Lato", sans-serif;
+      cursor: pointer;
+      font-weight: bolder;
+  }
+    
+  .imagechart{
+      width: 2rem;
+  }
+  .course{
+      color: #2C2C2C;
+      font-size: 2rem;
+  font-weight: 900;
     }
+  .pdown{
+    color: #ffffff;
+    font-size:1.7rem;
 
-    .text{
-      margin-top: 10px;
-    }
-    .text{
-      margin-top: 10px;
-    }
+  }
   }
     
   @media (min-width: 1020px) and (max-width:1082px) {
-    .pdown{
-      color: #ffffff;
-      font-size:2.1rem;
-  
+    .rightSectionCourse {
+      position: -webkit-sticky; /* For Safari */
+      position: sticky;
+      top: 30%;
+      right: 90px;
+      bottom: 30px;
+      height: auto;
+      overflow-y: auto;
+      margin-top: 5rem;
+  }
+    .imgCourse {
+   
+      height: 28rem;
+      border-radius: 3rem;
+     
+      z-index: -1;}
+    .radioTitle {
+      color: #FFFFFF;
+      font: bolder 1.4rem "Lato";
+      padding-bottom: 1rem;
+  }
+  .scndInfos {
+      padding: 2rem 3rem;
+      border-radius: 0px 20px 0px 20px;
+      background-color: #3E4678;
+      /* height: 50%; */
+      /* width: 40rem; */
+      position: sticky;
+      box-shadow: 0 0 7px rgba(0, 0, 0, 0.25);
+      display: block;
+      transition: margin-top 1s ease-out;
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+      gap: 1rem;
+      color: #FFFFFF;
+      font: bold 14px "Lato", sans-serif;
+  }
+  .price {
+      color: #FFFFFF;
+      font-size: 1.5rem;
+      font-family: 'Lato';
+      align-self: center;
+      font-weight: 900;
+  }
+  .DescriptionInfoCourseTitle span {
+      font-family: 'Lato';
+      font-weight: 900;
+      text-transform: uppercase;
+      font-size: 1rem;
+      color: #2C2C2C;
+  }
+  .leftSectionCourse {
+      /* background-color: #6FC2D0; */
+      width: 59%;
+      /* height: 100%; */
+      display: flex;
+      flex-direction: column;
+  }
+  .imgCourse {
+    width: 100%;
+      height: 26rem;
+      border-radius: 3rem;
+     
+      z-index: -1;}
+  .MainDivCourse{
+      width: 100%;
+      height: auto;
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding-left: 5rem;
+      padding-right: 5rem;
+      padding-top: 5rem;
+      gap: 4rem;
+  }
+  .CourseButtonsInfoPage button {
+      height: 4rem;
+      margin: 0.5rem 0rem;
+      padding: 0px 7px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row-reverse;
+      border-radius: 5px;
+      border: none;
+      color: #3E4678;
+      font: 500 20px "Lato", sans-serif;
+      cursor: pointer;
+      font-weight: bolder;
+  }
+    
+  .imagechart{
+      width: 3rem;
+  }
+  .course{
+      color: #2C2C2C;
+      font-size: 2rem;
+  font-weight: 900;
     }
+  .pdown{
+    color: #ffffff;
+    font-size:1.7rem;
+
+  }
+ 
     .pdowncontainer{
      
       padding-top:3em;
     }
   
  
-    .underline{
-  
-      width:25%;
-      background-color: #CD6214;
-      padding-top: 5px;
-      border-radius: 100px;
-      margin-top:0.5rem;
-    }
+
     .backimage {
    
       height: 18rem;
@@ -1658,57 +1983,207 @@ font-weight: 900;
       border-radius: 100px;
       margin-top: 10px;
     }
-    .pdowncontainer{
-     
-      padding-top:4em;
-    }
-
+  
     .text{
       margin-top: 10px;
     }
   }
-  
-  @media (min-width: 1082px) and (max-width:1300px) {
-
+  @media (min-width: 1082px) and (max-width:1200px) {
     .radioTitle {
-        color: #FFFFFF;
-        font: bolder 1.8rem "Lato";
-        padding-bottom: 1rem;
-    }
-    .backimage {
-   
-      height: 20rem;
-      border-radius: 0px 0px 25px 2p5x;
+      color: #FFFFFF;
+      font: bolder 1.4rem "Lato";
+      padding-bottom: 1rem;
+  }
+  .scndInfos {
+      padding: 2rem 3rem;
+      border-radius: 0px 2rem 0px 2rem;
+      background-color: #3E4678;
+      /* height: 50%; */
+      /* width: 40rem; */
+      position: sticky;
+      box-shadow: 0 0 7px rgba(0, 0, 0, 0.25);
+      display: block;
+      transition: margin-top 1s ease-out;
       display: flex;
       flex-direction: column;
+      text-align: left;
+      gap: 1rem;
+      color: #FFFFFF;
+      font: bold 14px "Lato", sans-serif;
+  }
+  .price {
+      color: #FFFFFF;
+      font-size: 1.5rem;
+      font-family: 'Lato';
+      align-self: center;
+      font-weight: 900;
+  }
+  .DescriptionInfoCourseTitle span {
+      font-family: 'Lato';
+      font-weight: 900;
+      text-transform: uppercase;
+      font-size: 1rem;
+      color: #2C2C2C;
+  }
+  .leftSectionCourse {
+      /* background-color: #6FC2D0; */
+      width: 59%;
+      /* height: 100%; */
+      display: flex;
+      flex-direction: column;
+  }
+  .imgCourse {
+    width: 100%;
+      height: 28rem;
+      border-radius: 3rem;
+     
+      z-index: -1;}
 
-      
+  .MainDivCourse{
+      /* width: 90%; */
+      width: 100%;
+      height: auto;
+      /* background-color: #1C4B82; */
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+      /* grid-template-columns: auto 19rem; */
+      padding-left: 5rem;
+      padding-right: 5rem;
+      padding-top: 5rem;
+      gap: 4rem;
+  }
+  .CourseButtonsInfoPage button {
+          height: 4rem;
+        margin: 0.5rem 0rem;
+        padding: 0px 17px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row-reverse;
+        border-radius: 16px;
+        border: none;
+        color: #3E4678;
+        font: 500 20px "Lato", sans-serif;
+        cursor: pointer;
+        font-weight: bolder;
+  }
     
-  
-    }
-    .pdown{
-    
+  .imagechart{
+      width: 2rem;
+  }
+  .course{
+      color: #2C2C2C;
       font-size: 2rem;
-  
+  font-weight: 900;
     }
+  .pdown{
+    color: #ffffff;
+    font-size:1.7rem;
 
-    .pdowncontainer{
-   
-      padding-top:5em;
-    }
+  }
  
   }
   
-  @media (min-width: 1300px) and (max-width:1500px) {
-    .text{
-      margin-top: 20px;
-    }
-    .pdown{
-        color: #ffffff;
-        font-size:3rem;
-    
-      }
+  @media (min-width: 1200px) and (max-width:1300px) {
+    .radioTitle {
+      color: #FFFFFF;
+      font: bolder 1.4rem "Lato";
+      padding-bottom: 1rem;
   }
+  .scndInfos {
+      padding: 2rem 3rem;
+      border-radius: 0px 2rem 0px 2rem;
+      background-color: #3E4678;
+      /* height: 50%; */
+      /* width: 40rem; */
+      position: sticky;
+      box-shadow: 0 0 7px rgba(0, 0, 0, 0.25);
+      display: block;
+      transition: margin-top 1s ease-out;
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+      gap: 1rem;
+      color: #FFFFFF;
+      font: bold 14px "Lato", sans-serif;
+  }
+  .price {
+      color: #FFFFFF;
+      font-size: 1.5rem;
+      font-family: 'Lato';
+      align-self: center;
+      font-weight: 900;
+  }
+  .DescriptionInfoCourseTitle span {
+      font-family: 'Lato';
+      font-weight: 900;
+      text-transform: uppercase;
+      font-size: 1rem;
+      color: #2C2C2C;
+  }
+  .leftSectionCourse {
+      /* background-color: #6FC2D0; */
+      width: 59%;
+      /* height: 100%; */
+      display: flex;
+      flex-direction: column;
+  }
+  .imgCourse {
+      width: 100%;
+      height: 28rem;
+      border-radius: 3rem;
+     
+      z-index: -1;}
+
+  .MainDivCourse{
+      /* width: 90%; */
+      width: 100%;
+      height: auto;
+      /* background-color: #1C4B82; */
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+      /* grid-template-columns: auto 19rem; */
+      padding-left: 5rem;
+      padding-right: 5rem;
+      padding-top: 5rem;
+      gap: 4rem;
+  }
+  .CourseButtonsInfoPage button {
+          height: 4rem;
+        margin: 0.5rem 0rem;
+        padding: 0px 17px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row-reverse;
+        border-radius: 16px;
+        border: none;
+        color: #3E4678;
+        font: 500 20px "Lato", sans-serif;
+        cursor: pointer;
+        font-weight: bolder;
+  }
+    
+  .imagechart{
+      width: 2rem;
+  }
+  .course{
+      color: #2C2C2C;
+      font-size: 2rem;
+  font-weight: 900;
+    }
+  .pdown{
+    color: #ffffff;
+    font-size:1.7rem;
+
+  }
+ 
+  }
+  
 
   @media (min-width: 1500px) and (max-width:1920px) {
     

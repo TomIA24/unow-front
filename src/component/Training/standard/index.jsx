@@ -532,17 +532,34 @@ const StandardTraining = (props) => {
               {Data.Thumbnail === "qqq" ||
                 Data.Thumbnail == {} ||
                 !Data.Thumbnail ? (
-                <img
+
+                  <div  className={styles.imgCourse} style={{  backgroundImage: `url(${process.env.REACT_APP_API}/uploads/courseImg.png) !important` }}>
+
+                  
+                {/* <img
                   src={`${process.env.REACT_APP_API}/uploads/courseImg.png`}
                   alt=""
-                  className={styles.imgCourse}
-                />
+                
+                /> */}
+                </div>
               ) : (
-                <img
+                // <img
+                //   src={`${process.env.REACT_APP_API}/${Data.Thumbnail.filePath}`}
+                //   alt=""
+                //   className={styles.imgCourse}
+                // />
+                <div 
+                className={styles.imgCourse} 
+                style={{  backgroundImage: `url(${process.env.REACT_APP_API}/uploads/courseImg.png) !important` }}
+              >
+                      <img
                   src={`${process.env.REACT_APP_API}/${Data.Thumbnail.filePath}`}
                   alt=""
-                  className={styles.imgCourse}
+                  className={styles.imgCourseImage}
                 />
+              </div>
+            
+               
               )}
 
               <div className={styles.FirsSectionInfoCourseTitle}>

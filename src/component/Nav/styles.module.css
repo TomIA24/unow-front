@@ -156,17 +156,14 @@ a {
 .underline.active {
     background-color: rgba(0, 0, 0, 0); /* Change this to the desired color for the underline */
   }
-  .logo{
-width: 100%;
-  }
 
   .logoimage {
-    /* margin-left: 30%; Centre l'image horizontalement */
+    margin-left: 30%; /* Centre l'image horizontalement */
     padding: 10px;
     height: auto; /* Garde les proportions de l'image */
     width: auto; /* Garde les proportions de l'image */
-    /* max-height: 52px; /* Hauteur maximale */
-    /* max-width: 135px; Largeur maximale */ 
+    max-height: 52px; /* Hauteur maximale */
+    max-width: 135px; /* Largeur maximale */
 }
 
 @media (max-width: 600px)  {
