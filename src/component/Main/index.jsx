@@ -54,8 +54,14 @@ const Main = () => {
   const [currentTrainings, setCurrentTrainings] = useState([]);
   const [trainings, setTrainings] = useState([]);
   const [courses, setCourses] = useState([]);
-
+  const [currentPage, setCurrentPage] = useState(1);
   const [WindowWidth, setWindowWidth] = useState(0);
+  const [trainingsPerPage, settrainingsPerPage] = useState(3);
+
+  const indexOfFirstTraining = (currentPage - 1) * trainingsPerPage;
+  const indexOfLastTraining = currentPage * trainingsPerPage;
+
+
   const handleWidthChange = () => {
     const currentWidth = window.innerWidth;
     setWindowWidth(currentWidth);
@@ -71,51 +77,52 @@ const Main = () => {
   const [itemsPerPage, setItemsPerPage] = useState(3);
 
 
+//   useEffect(() => {
+//     // Combine the GET and POST requests using Promise.all
+//     const fetchData = async () => {
+//         try {
+//             const [trainingsResponse, coursesResponse] = await Promise.all([
+//                 axios.get("http://localhost:5050/api/trainings"),
+//                 axios.post("http://localhost:5050/api/courses")
+//             ]);
+
+//             // Set the data for trainings and courses
+//             setTrainings(trainingsResponse.data.data);
+//             setCourses(coursesResponse.data.data);
+
+//         } catch (error) {
+//             console.error("Error fetching data:", error);
+//         }
+//     };
+
+//     fetchData();
+// }, []);
+
+
   useEffect(() => {
-    // Combine the GET and POST requests using Promise.all
     const fetchData = async () => {
-        try {
-            const [trainingsResponse, coursesResponse] = await Promise.all([
-                axios.get("http://localhost:5050/api/trainings"),
-                axios.post("http://localhost:5050/api/courses")
-            ]);
+      try {
+        const [trainingsResponse, coursesResponse] = await Promise.all([
+          axios.get("http://localhost:5050/api/trainings"),
+          axios.post("http://localhost:5050/api/courses")
+        ]);
 
-            // Set the data for trainings and courses
-            setTrainings(trainingsResponse.data.data);
-            setCourses(coursesResponse.data.data);
+        const combinedData = [
+          ...trainingsResponse.data.data.map(item => ({ ...item, type: 'training' })),
+          ...coursesResponse.data.data.map(item => ({ ...item, type: 'course' })),
+        ];
 
-        } catch (error) {
-            console.error("Error fetching data:", error);
-        }
+        setTrainings(combinedData);
+
+        const currentData = combinedData.slice(indexOfFirstTraining, indexOfLastTraining);
+        setCurrentTrainings(currentData);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
     };
 
     fetchData();
-}, []);
-useEffect(() => {
-  const fetchData = async () => {
-      try {
-          const [trainingsResponse, coursesResponse] = await Promise.all([
-              axios.get("http://localhost:5050/api/trainings"),
-              axios.post("http://localhost:5050/api/courses")
-          ]);
-
-          // Combine the data from trainings and courses
-          const combinedData = [
-              ...trainingsResponse.data.data,
-              ...coursesResponse.data.data,
-          ];
-
-          setTrainings(combinedData);
-
-          // Set the current trainings for the current page
-          setCurrentTrainings(combinedData.slice(indexOfFirstTraining, indexOfLastTraining));
-      } catch (error) {
-          console.error("Error fetching data:", error);
-      }
-  };
-
-  fetchData();
-}, [currentPage]);
+  }, [currentPage, indexOfFirstTraining, indexOfLastTraining]);
 
 
   useEffect(() => {
@@ -128,9 +135,9 @@ useEffect(() => {
   }, [WindowWidth]);
 
   const refHome = useRef(null);
-  const [currentPage, setCurrentPage] = useState(1);
+
   const carouselRef = useRef(null);
-  const [trainingsPerPage, settrainingsPerPage] = useState(3);
+  
   useEffect(() => {
     //console.log(WindowWidth)
     if (WindowWidth <= 817) {
@@ -142,8 +149,7 @@ useEffect(() => {
 
   }, [WindowWidth]);
 
-  const indexOfLastTraining = currentPage * trainingsPerPage;
-  const indexOfFirstTraining = indexOfLastTraining - trainingsPerPage;
+ 
  
   const nextPage = () => {
     if (currentPage < Math.ceil(trainings.length / trainingsPerPage)) {
@@ -221,7 +227,12 @@ useEffect(() => {
             </div>
             <div className={styles.carousel} ref={carouselRef}>
               {currentTrainings.map((training) => (
-                  <Link to={{ pathname: `/Course/${training._id}` }}>
+                <Link
+        to={{
+          pathname: `/${training.type === 'course' ? 'Course' : 'Training'}/${training._id}`,
+        }}
+        key={training._id}
+      >
                   <div className={styles.inner_carousel} key={training._id}>
                     {training.Thumbnail && training.Thumbnail.filePath ? (
                       <div className={styles.image}>

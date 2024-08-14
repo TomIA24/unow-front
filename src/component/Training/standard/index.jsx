@@ -20,13 +20,15 @@ import Stack from "@mui/material/Stack";
 import TextField from "@mui/material/TextField";
 import Tooltip from "@mui/material/Tooltip";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { BiCustomize } from "react-icons/bi";
 import { BsArrowDownRightCircleFill } from "react-icons/bs";
+
 import { FaOpencart } from "react-icons/fa";
 import { useParams } from "react-router-dom";
 import Loading from "../../Loading";
 import Nav from "../../Nav";
+import { Link, Route, Routes, Navigate } from "react-router-dom";
 import Footer from "../../Home/Footer";
 import styles from "./styles.module.css";
 
@@ -38,7 +40,7 @@ const StandardTraining = (props) => {
   const [usersLimited, setUsersLimited] = useState([]);
   let { id } = useParams();
   const token = localStorage.getItem("token");
-
+  const refHome = useRef(null);
   useEffect(() => {
     if (token) {
       const config = {
@@ -500,7 +502,9 @@ const StandardTraining = (props) => {
 
         <div className={styles.navContainer}>
 
-          <Nav />
+  
+  
+   <Nav ref={refHome} />
         </div>
         <div className={styles.pdowncontainer}>
           <div className={styles.pdown} >COURSES DETAILS
@@ -555,7 +559,8 @@ const StandardTraining = (props) => {
               <div className={styles.DescriptionInfoCourse}>
                 <div className={styles.DescriptionInfoCourseTitle}>
 
-                  <h1>Description</h1>
+                  <span>DESCRIPTION
+                     <p className={styles.underline}></p></span>
                 </div>
                 <div className={styles.DescriptionInfoCourseText}>
                   <p>{Data.Description}</p>
@@ -564,7 +569,8 @@ const StandardTraining = (props) => {
               <div className={styles.DescriptionInfoCourse}>
                 <div className={styles.DescriptionInfoCourseTitle}>
 
-                  <h1>Goals</h1>
+                  <span>Goals
+                  <p className={styles.underline}></p></span>
                 </div>
                 <div className={styles.DescriptionInfoCourseText}>
                   <p>{Data.Goals}</p>
@@ -573,7 +579,8 @@ const StandardTraining = (props) => {
               <div className={styles.DescriptionInfoCourse}>
                 <div className={styles.DescriptionInfoCourseTitle}>
 
-                  <h1>Who Should Attend</h1>
+                  <span>Who Should Attend
+                  <p className={styles.underline}></p></span>
                 </div>
                 <div className={styles.DescriptionInfoCourseText}>
                   <p>{Data.WhoShouldAttend}</p>
@@ -582,7 +589,8 @@ const StandardTraining = (props) => {
               <div className={styles.DescriptionInfoCourse}>
                 <div className={styles.DescriptionInfoCourseTitle}>
 
-                  <h1>Course Content</h1>
+                  <span>Course Content
+                  <p className={styles.underline}></p></span>
                 </div>
                 <div className={styles.DescriptionInfoCourseText}>
                   <p>{Data.CourseContent}</p>
@@ -591,7 +599,8 @@ const StandardTraining = (props) => {
               <div className={styles.DescriptionInfoCourse}>
                 <div className={styles.DescriptionInfoCourseTitle}>
 
-                  <h1>PracticalWork</h1>
+                  <span>PracticalWork
+                  <p className={styles.underline}></p></span>
                 </div>
                 <div className={styles.DescriptionInfoCourseText}>
                   <p>{Data.PracticalWork}</p>
@@ -600,7 +609,8 @@ const StandardTraining = (props) => {
               <div className={styles.DescriptionInfoCourse}>
                 <div className={styles.DescriptionInfoCourseTitle}>
 
-                  <h1>Certificate</h1>
+                  <span>Certificate
+                  <p className={styles.underline}></p></span>
                 </div>
                 <div className={styles.DescriptionInfoCourseText}>
                   <p>{Data.certificate}</p>
@@ -737,7 +747,7 @@ const StandardTraining = (props) => {
                                 id={styles.CourseButtonsInfoPageB1Mod}
                               >
                                 {/*onClick={handleDisabled} */}
-                                <p>Add To Cart  here</p>
+                                <p>Add To Cart  here2</p>
                                 <img src="/images/course/addchat.png" alt="" className={styles.imagechart} />
                               </button>
                             </Tooltip>
@@ -747,9 +757,10 @@ const StandardTraining = (props) => {
                         <button
                           disabled={true}
                           id={styles.CourseButtonsInfoPageB1Mod}
+                          // onClick={handleEnroll}
                         >
-                          {/*onClick={handleDisabled} */}
-                          <p>Add To Cart </p>
+                     
+                          <p>Add To Cart here </p>
                           <img src="/images/course/addchat.png" alt="" className={styles.imagechart} />
                         </button>
                       )}

@@ -74,6 +74,7 @@ export default function SliderNav({ user, handleLogout }) {
           </React.Fragment>
         ) : (
           <React.Fragment>
+          
             {user.userType === "Admin" ? (
               <Link to="/admin">
                 <a type="button" className={styles.nav_btn}>
