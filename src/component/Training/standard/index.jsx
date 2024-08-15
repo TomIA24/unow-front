@@ -33,11 +33,15 @@ import Footer from "../../Home/Footer";
 import styles from "./styles.module.css";
 
 const StandardTraining = (props) => {
+
   const [user, SetUser] = useState();
   const [isLoading, setLoading] = useState(true);
   const [Evaluations, setEvaluations] = useState([]);
   const [EvaluationsCompleated, setEvaluationsCompleated] = useState([]);
   const [usersLimited, setUsersLimited] = useState([]);
+const[down,setDown] = useState(false);
+
+
   let { id } = useParams();
   const token = localStorage.getItem("token");
   const refHome = useRef(null);
@@ -196,14 +200,14 @@ const StandardTraining = (props) => {
   const handleChange = (event) => {
     setDate(event.target.value);
   };
-  /*///////////////////////////////////*/
+
 
   const [scrollPosition, setScrollPosition] = useState(0);
   const handleScroll = () => {
     const position = window.pageYOffset;
     setScrollPosition(position);
   };
-
+ 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
 
@@ -462,6 +466,16 @@ const StandardTraining = (props) => {
   };
   /************/ //////////////////////// */
   const [WindowWidth, setWindowWidth] = useState(0);
+  
+  useEffect(() => {
+    console.log(WindowWidth);
+    if (WindowWidth <= 800) {
+      setDown(true);
+    } else {
+      setDown(false);
+    }
+  }, []);
+
   const handleWidthChange = () => {
     const currentWidth = window.innerWidth;
     setWindowWidth(currentWidth);
@@ -477,7 +491,7 @@ const StandardTraining = (props) => {
   const [mobileView, setMobileView] = useState(false);
   useEffect(() => {
     //console.log(WindowWidth)
-    if (WindowWidth <= 756) {
+    if (WindowWidth <= 800) {
       setMobileView(true);
     } else {
       setMobileView(false);
@@ -485,7 +499,16 @@ const StandardTraining = (props) => {
   }, []);
   useEffect(() => {
     console.log(WindowWidth);
-    if (WindowWidth <= 756) {
+    if (WindowWidth <= 800) {
+      setMobileView(true);
+    } else {
+      setMobileView(false);
+    }
+  }, [WindowWidth]);
+
+  useEffect(() => {
+    console.log(WindowWidth);
+    if (WindowWidth <= 800) {
       setMobileView(true);
     } else {
       setMobileView(false);
@@ -572,7 +595,450 @@ const StandardTraining = (props) => {
                       : TextRating(0, 0)}</span></div>
                  </div>
             </div>
+
+
+
             <div className={styles.ScndSectionInfoCourse}>
+ {mobileView &&(  <div className={styles.rightSectionCourse}>
+              <div className={styles.scndInfos}>
+                <div className={styles.CoursePriceInfoPage}>
+                  <div className={styles.price}>{Data.Price} TTC
+                    <p className={styles.underline}></p>
+                  </div>
+
+                </div>
+            <div className={styles.InfosRefDur}>
+                  <div className={styles.InfosDates}>
+                    <h1
+                      className={styles.radioTitle}
+                      id="demo-controlled-radio-buttons-group"
+                    >
+                      Date :
+                    </h1>
+                    {Data.state !== "expired" ? (
+                      <p>{datesDisplay}</p>
+                    ) : (
+                      <p>session concluded</p>
+                    )}
+                  </div>
+                  {/* <p>
+                  Reference: <span>{Data.Reference}</span>
+                </p> */}
+                  <ul>
+                    <li>
+                      Instructor: <span> 2 hours/Day</span>
+                    </li>
+                    <li>
+                      Duration: <span> 2 hours/Day</span>
+                    </li>
+                    <li>
+                      Lectures: <span> {Data.TimePerDay}</span>
+                    </li>
+                    <li>
+                      Level: <span> {Data.Level}</span>
+                    </li>
+                    <li>
+                      Category: <span> {Data.Category}</span>
+                    </li>
+                    <li>
+                      Certificate: <span> {Data.certificate !== null ? "yes" : "no"}</span>
+                    </li>
+                  </ul>
+                </div>
+
+
+
+                <div className={styles.CourseButtonsInfoPage}>
+                  {user ? (
+                    <React.Fragment>
+                      {Data.state !== "expired" ? (
+                        <React.Fragment>
+                          {!user.cartTrainings.includes(Data._id) ? (
+                            <button
+                              onClick={handleEnroll}
+                              id={styles.CourseButtonsInfoPageB1}
+                            >
+                              <p>Add To Cart</p>
+                              <img src="/images/course/addchat.png" alt="" className={styles.imagechart} />
+                            </button>
+                          ) : (
+                            <Tooltip
+                              title="You don't have permission to do this"
+                              followCursor
+                            >
+                              <button
+                                disabled={false}
+                                id={styles.CourseButtonsInfoPageB1Mod}
+                              >
+                                {/*onClick={handleDisabled} */}
+                                <p>Add To Cart  here2</p>
+                                <img src="/images/course/addchat.png" alt="" className={styles.imagechart} />
+                              </button>
+                            </Tooltip>
+                          )}
+                        </React.Fragment>
+                      ) : (
+                        <button
+                          disabled={true}
+                          id={styles.CourseButtonsInfoPageB1Mod}
+                          // onClick={handleEnroll}
+                        >
+                     
+                          <p>Add To Cart here </p>
+                          <img src="/images/course/addchat.png" alt="" className={styles.imagechart} />
+                        </button>
+                      )}
+                    </React.Fragment>
+                  ) : (
+                    <React.Fragment>
+                      {Data.state !== "expired" ? (
+                        <button
+                          onClick={handleEnroll}
+                          id={styles.CourseButtonsInfoPageB1}
+                        >
+                          <p>Add To Cart </p>
+                          <img src="/images/course/addchat.png" alt="" className={styles.imagechart} />
+                        </button>
+                      ) : (
+                        <button
+                          disabled={true}
+                          id={styles.CourseButtonsInfoPageB1Mod}
+                        >
+                          {/*onClick={handleDisabled} */}
+                          <p>Add To Cart</p>
+                          <img src="/images/course/addchat.png" alt="" className={styles.imagechart} />
+                        </button>
+                      )}
+                    </React.Fragment>
+                  )}
+
+                  <Modal
+                    sx={{ p: 1 }}
+                    open={Enrolled}
+                    onClose={handleCloseEnrolled}
+                    aria-labelledby="parent-modal-title"
+                    aria-describedby="parent-modal-description"
+                  >
+                    <Box
+                      sx={{
+                        ...style,
+                        width: 450,
+                        display: "flex",
+                        flexDirection: "column",
+                        overflowY: "auto",
+                        overflowX: "hidden",
+                        maxHeight: "85vh",
+                        alignItems: "center",
+                      }}
+                    >
+                      <div className={styles.ModalComponent}>
+                        <h3 id="parent-modal-title" className={styles.ModalTitle}>
+                          Course added to the cart successfully
+                        </h3>
+                        <p
+                          sx={{ textAlign: "center" }}
+                          id="parent-modal-description"
+                        >
+                          Your registration request for this course is being
+                          processed.{" "}
+                        </p>
+
+                        <Divider
+                          variant="inset"
+                          sx={{ width: "100%", height: "3px", margin: 0 }}
+                        />
+
+                        <p
+                          sx={{ textAlign: "center" }}
+                          id="parent-modal-description"
+                        >
+                          you can track your registration status through your
+                          profile,
+                          <a href="/profile"> quick access to profile </a>
+                        </p>
+                      </div>
+                      <br />
+                      <Button onClick={handleCart} variant="contained">
+                        Enroll Now
+                      </Button>
+                    </Box>
+                  </Modal>
+                  {user ? (
+                    <React.Fragment>
+                      {Data.state !== "expired" ? (
+                        <React.Fragment>
+                          {!user.cartTrainings.includes(Data._id) ? (
+                            <button
+                              onClick={handleOpenCustom}
+                              id={styles.CourseButtonsInfoPageB2}
+                            >
+                              <p>Customize</p>
+                              <img src="/images/course/customize.png" alt="" className={styles.imagechart} />
+                            </button>
+                          ) : (
+                            <Tooltip
+                              title="You don't have permission to do this"
+                              followCursor
+                            >
+                              <button
+                                disabled={false}
+                                id={styles.CourseButtonsInfoPageB2Mod}
+                              >
+                                {/*onClick={handleDisabled} */}
+                                <p>Customize  here</p>
+                                <img src="/images/course/customize.png" alt="" className={styles.imagechart} />
+                              </button>
+                            </Tooltip>
+                          )}
+                        </React.Fragment>
+                      ) : (
+                        <button
+                          disabled={true}
+                          id={styles.CourseButtonsInfoPageB2Mod}
+                        >
+                          {/*onClick={handleDisabled} */}
+                          <p>Customize</p>
+                          <img src="/images/course/customize.png" alt="" className={styles.imagechart} />
+                        </button>
+                      )}
+                    </React.Fragment>
+                  ) : (
+                    <React.Fragment>
+                      {Data.state !== "expired" ? (
+                        <button
+                          onClick={handleOpenCustom}
+                          id={styles.CourseButtonsInfoPageB2}
+                        >
+                          <p>Customize</p>
+                          <img src="/images/course/customize.png" alt="" className={styles.imagechart} />
+                        </button>
+                      ) : (
+                        <button
+                          disabled={true}
+                          id={styles.CourseButtonsInfoPageB2Mod}
+                        >
+                          {/*onClick={handleDisabled} */}
+                          <p>Customize</p>
+                          <img src="/images/course/customize.png" alt="" className={styles.imagechart} />
+                        </button>
+                      )}
+                    </React.Fragment>
+                  )}
+
+                  <Modal
+                    sx={{ p: 1 }}
+                    open={openCustom}
+                    onClose={handleCloseCustom}
+                    aria-labelledby="parent-modal-title"
+                    aria-describedby="parent-modal-description"
+                  >
+                    <Box
+                      sx={{
+                        ...style,
+                        width: 400,
+                        display: "flex",
+                        flexDirection: "column",
+                        overflowY: "auto",
+                        overflowX: "hidden",
+                        maxHeight: "85vh",
+                      }}
+                    >
+                      <div className={styles.ModalComponent}>
+                        <h2 id="parent-modal-title" className={styles.ModalTitle}>
+                          Customize
+                        </h2>
+                        <p id="parent-modal-description">
+                          What do you want to customize ?
+                        </p>
+                        <Autocomplete
+                          sx={{ width: 400, m: 1 }}
+                          multiple
+                          id="tags-outlined"
+                          options={Custom}
+                          getOptionLabel={(option) => option}
+                          filterSelectedOptions
+                          onChange={handleChangeSelected}
+                          renderInput={(params) => (
+                            <TextField
+                              {...params}
+                              label="Customize"
+                              placeholder="I want to customize..."
+                            />
+                          )}
+                        />
+
+                        {selectedOptions[0] &&
+                          selectedOptions[0].includes("Date") ? (
+                          <div className={styles.Date}>
+                            <div className={styles.DatePicker}>
+                              <LocalizationProvider dateAdapter={AdapterDateFns}>
+                                <Stack spacing={2}>
+                                  {mobile && (
+                                    <MobileDateRangePicker
+                                      name="date"
+                                      startText="start"
+                                      value={CustomizeNotif.date}
+                                      onChange={(newDate) => {
+                                        setCustomizeNotif({
+                                          ...CustomizeNotif,
+                                          date: newDate,
+                                        });
+                                      }}
+                                      renderInput={(startProps, endProps) => (
+                                        <React.Fragment>
+                                          <TextField {...startProps} />
+                                          <Box sx={{ mx: 1 }}> to </Box>
+                                          <TextField {...endProps} />
+                                        </React.Fragment>
+                                      )}
+                                    />
+                                  )}
+                                  <DesktopDateRangePicker
+                                    name="date"
+                                    startText="Select Start Date"
+                                    endText="Select End Date"
+                                    value={CustomizeNotif.date}
+                                    onChange={(newDate) => {
+                                      setCustomizeNotif({
+                                        ...CustomizeNotif,
+                                        date: newDate,
+                                      });
+                                    }}
+                                    renderInput={(startProps, endProps) => (
+                                      <React.Fragment>
+                                        <TextField {...startProps} />
+                                        <Box sx={{ mx: 1 }}> to </Box>
+                                        <TextField {...endProps} />
+                                      </React.Fragment>
+                                    )}
+                                  />
+                                </Stack>
+                              </LocalizationProvider>
+                            </div>
+                          </div>
+                        ) : (
+                          ""
+                        )}
+
+                        {selectedOptions[0] &&
+                          selectedOptions[0].includes("Horaire") ? (
+                          <div className={styles.Date}>
+                            <div className={styles.DatePicker}>
+                              <LocalizationProvider dateAdapter={AdapterDateFns}>
+                                <Stack spacing={2}>
+                                  {mobile && (
+                                    <MobileTimePicker
+                                      name="time"
+                                      label="Select Time"
+                                      value={CustomizeNotif.time}
+                                      onChange={(newTime) => {
+                                        setCustomizeNotif({
+                                          ...CustomizeNotif,
+                                          time: newTime,
+                                        });
+                                      }}
+                                      renderInput={(params) => (
+                                        <TextField {...params} />
+                                      )}
+                                    />
+                                  )}
+                                  <DesktopTimePicker
+                                    name="time"
+                                    label="Select Time"
+                                    value={CustomizeNotif.time}
+                                    onChange={(newTime) => {
+                                      setCustomizeNotif({
+                                        ...CustomizeNotif,
+                                        time: newTime,
+                                      });
+                                    }}
+                                    renderInput={(params) => (
+                                      <TextField {...params} />
+                                    )}
+                                  />
+                                </Stack>
+                              </LocalizationProvider>
+                            </div>
+                          </div>
+                        ) : (
+                          ""
+                        )}
+
+                        {selectedOptions[0] &&
+                          selectedOptions[0].includes("durée de la formation") ? (
+                          <div className={styles.Date}>
+                            <div className={styles.DatePicker}>
+                              <TextField
+                                label="durée de la formation"
+                                id="outlined-start-adornment"
+                                sx={{ m: 1, width: "25ch" }}
+                                InputProps={{
+                                  endAdornment: (
+                                    <InputAdornment position="end">
+                                      hrs
+                                    </InputAdornment>
+                                  ),
+                                }}
+                                name="duration"
+                                value={CustomizeNotif.duration}
+                                onChange={handleChangeCustom}
+                              />
+                            </div>
+                          </div>
+                        ) : (
+                          ""
+                        )}
+                        {selectedOptions[0] &&
+                          selectedOptions[0].includes("Autre...") ? (
+                          <div className={styles.Date}>
+                            <div className={styles.DatePicker}>
+                              <FormControl
+                                className={styles.FormControl}
+                                sx={{ m: 1, minWidth: "80%" }}
+                              >
+                                <Box
+                                  component="form"
+                                  sx={{
+                                    "& > :not(style)": { width: "100%" },
+                                  }}
+                                  noValidate
+                                  autoComplete="off"
+                                >
+                                  <TextField
+                                    multiline
+                                    name="message"
+                                    id="outlined-basic"
+                                    label="Message"
+                                    value={CustomizeNotif.message}
+                                    onChange={handleChangeCustom}
+                                    variant="outlined"
+                                  />
+                                </Box>
+                              </FormControl>
+                            </div>
+                          </div>
+                        ) : (
+                          ""
+                        )}
+                        <LoadingButton
+                          sx={{ m: 1 }}
+                          onClick={handleSend}
+                          type="submit"
+                          endIcon={<SendIcon />}
+                          // loading={loading}
+                          // loadingPosition="end"
+                          variant="contained"
+                        >
+                          Send
+                        </LoadingButton>
+                      </div>
+                    </Box>
+                  </Modal>
+                </div>
+              </div>
+            </div>)}
+
+
               <div className={styles.DescriptionInfoCourse}>
                 <div className={styles.DescriptionInfoCourseTitle}>
 
@@ -691,7 +1157,13 @@ const StandardTraining = (props) => {
               )}
             </div>
           </div>
-          <div className={styles.rightSectionContainer}>
+          <div>
+
+          </div>
+
+
+         {!mobileView && <div className={styles.rightSectionContainer}>
+            
             <div className={styles.rightSectionCourse}>
               <div className={styles.scndInfos}>
                 <div className={styles.CoursePriceInfoPage}>
@@ -1130,7 +1602,7 @@ const StandardTraining = (props) => {
                 </div>
               </div>
             </div>
-          </div>
+          </div>}
         </div>
       </main>
       <Footer />

@@ -781,6 +781,23 @@ font-weight: 900;
     height: .5px;
 }
 
+@media (max-width:799px) {
+  .rightSectionContainer {
+    position: relative; 
+    /* height: 2000px;  */
+}
+
+.rightSectionCourse {
+    position: -webkit-sticky; /* For Safari */
+    position:fixed;
+    top: 30%;
+    right: 90px;
+    bottom: 30px;
+    height: auto;
+    overflow-y: auto;
+    margin-top: 8rem;
+}
+}
 
 /**********************************************************************/ 
 @media (max-width: 300px) {
