@@ -26,7 +26,7 @@ const CategoryDetails = (props) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [type, setType] = useState("Course");
-  const [selected, setSelected] = useState("Course");
+  const [selectedType, setSelectedType] = useState("COURSES");
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -84,19 +84,10 @@ const CategoryDetails = (props) => {
     windowWidth > 900
       ? groupIntoRows(props.offlineCourses, 3)
       : groupIntoRows(props.onlineCourses, 2);
-  useEffect(() => {
-    console.log("Type", type);
-  }, [type]);
+
   return (
-    <div>
+    <div className="backimage">
       <div style={{ marginLeft: "50px", marginRight: "50px" }}>
-        <div className={"background"}>
-          <img
-            src="./images/home/background-image.png"
-            alt=""
-            className={"imagebackground"}
-          />
-        </div>
         <Nav ref={refHome} />
         <div
           style={{
@@ -141,9 +132,11 @@ const CategoryDetails = (props) => {
         />
         <GenericSwitcher
           items={[
-            { icon: imageCourse, title: "Courses" },
-            { icon: imageTraining, title: "Trainings" },
+            { icon: imageCourse, title: "COURSES" },
+            { icon: imageTraining, title: "TRAININGS" },
           ]}
+          selectedItem={selectedType}
+          setSelectedItem={setSelectedType}
         />
         <div className="d-flex justify-content-center align-items-center mt-4 paddingbottom">
           <br />

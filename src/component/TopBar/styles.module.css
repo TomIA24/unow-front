@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  margin-left: 5%;
 }
 
 .secondcontainer {
@@ -11,6 +11,7 @@
   border-radius: 30px;
   align-items: center;
   height: 50px;
+  background-color: white;
   overflow-x: none;
   justify-content: center;
   box-shadow: 0px 2px 5px rgba(255, 255, 255, 0.3),
@@ -94,4 +95,26 @@
   background: transparent;
   cursor: pointer;
   padding: 10px;
+}
+.topListItemsContainer {
+  display: inline-flex;
+  position: absolute;
+  box-shadow: 0px 2px 5px rgba(255, 255, 255, 0.3),
+    0px -2px 5px rgba(255, 255, 255, 0.3), -2px 0px 5px rgba(255, 255, 255, 0.3),
+    2px 0px 5px rgba(0, 0, 0, 0.3);
+  background-color: white;
+  z-index: 1;
+  right: 0;
+  border-radius: 9px;
+  margin-top: 4px;
+}
+.listItemsContainer {
+  display: inline-block;
+  padding: 2%;
+}
+.itemContainer {
+  padding-top: 20px;
+  padding-left: 10px;
+  padding-bottom: 20px;
+  padding-right: 10px;
 }
