@@ -111,7 +111,7 @@ const CategoryDetails = (props) => {
               <img src={loupe} alt="" className={"icon_search"} />
             </button>
           </div>
-          <img width={300} height={253} src={image} />
+          <img className="imagestyle" src={image} />
         </div>
         <br />
         <TopListItem

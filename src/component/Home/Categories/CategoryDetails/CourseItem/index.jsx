@@ -7,6 +7,7 @@ import {
 import ControlPointIcon from "@mui/icons-material/ControlPoint";
 import AddIcon from "@mui/icons-material/Add";
 import stylesItem from "./styles.module.css";
+
 import { Avatar, AvatarGroup } from "@mui/material";
 const CourseItem = (props) => {
   return (
@@ -14,11 +15,10 @@ const CourseItem = (props) => {
       <div className={stylesItem.topTrainingElements}>
         <div className={stylesItem.inner_carousel}>
           {props.course.Thumbnail?.filePath ? (
-            <div className={stylesItem.image} >
+            <div className={stylesItem.image}>
               <img
                 src={props?.course?.Thumbnail?.filePath}
                 alt={""}
-                style={{ height: "100%" }}
                 className={stylesItem.imagefeatures}
               />
             </div>
@@ -31,42 +31,23 @@ const CourseItem = (props) => {
               />
             </div>
           )}
-          <div
-            style={{
-              width: "100%",
-              margin: "1px 3px 0px 3px",
-              display: "inline-block",
-            }}
-          >
+          <div className={stylesItem.containercard}>
             <div className={stylesItem.categorie}>
               <div className={stylesItem.categorietype}>
                 {props.course.Category}
               </div>
-              <div
-                className={stylesItem.categoriprice}
-                style={{ margin: "0px 15px 0px 0px" }}
-              >
+              <div className={stylesItem.categoriprice}>
                 {props.course.Price} $
               </div>
             </div>
-            <div style={{ display: "inline-block", float: "left" }}>
-              <div
-                className={stylesItem.categoriniveau}
-                style={{ marginTop: "8px", fontSize: "15px" }}
-              >
-                {props.course.Level}
-              </div>
-              <div
-                className={stylesItem.categoridomain}
-                style={{
-                  marginTop: "8px",
-                  fontSize: "15px",
-                  float: "left",
-                  paddingLeft: "3px",
-                }}
-              >
-                {props.course.Title}
-              </div>
+            <div
+              className={stylesItem.categoriniveau}
+              style={{ marginTop: "8px", fontSize: "15px" }}
+            >
+              {props.course.Level}
+            </div>
+            <div className={stylesItem.categoridomain}>
+              {props.course.Title}
             </div>
             <div
               style={{
@@ -77,42 +58,27 @@ const CourseItem = (props) => {
                 alignItems: "center",
               }}
             >
-              <div
-                className={stylesItem.categoriniveau}
-                style={{
-                  marginTop: "20px",
-                  float: "left",
-                  display: "flex",
-                  fontSize: "13px",
-                  alignItems: "center",
-                }}
-              >
+              <div className={stylesItem.categoriniveau}>
                 <StarRounded style={{ color: "yellow" }} />
                 {props.course.rating} (750)
               </div>
 
               <AvatarGroup
-                style={{
-                  marginTop: "10px",
+                sx={{
                   float: "right",
-                  display: "inline-flex",
                   width: "20px",
                   height: "20px",
+                  display: "inline-flex",
+                  "& .MuiAvatar-root": {
+                    width: "20px",
+                    height: "20px",
+                    fontSize: "9px",
+                    backgroundColor: "transparent",
+                    color: "black",
+                  },
                 }}
                 renderSurplus={(surplus) => (
-                  <span
-                    style={{
-                      backgroundColor: "transparent",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      width: "20px",
-                      height: "20px",
-                      fontSize: "0.5rem", // Smaller font size for the surplus indicator
-                    }}
-                  >
-                    +{surplus.toString()[0]}k
-                  </span>
+                  <span>+{surplus.toString()[0]}k</span>
                 )}
                 total={10}
               >
@@ -138,17 +104,8 @@ const CourseItem = (props) => {
                 />
               </AvatarGroup>
             </div>
-            <div
-              style={{
-                display: "flex",
-                float: "right",
-                backgroundColor: "#cd6214",
-                borderRadius: "10px 0px 0px",
-                bottom:"10px",
-                cursor: "pointer",
-              }}
-            >
-              <AddIcon style={{ fontSize: "15px",color:"white" }} />
+            <div className={stylesItem.containerplus}>
+              <AddIcon className={stylesItem.plusstyle} />
             </div>
           </div>
         </div>
