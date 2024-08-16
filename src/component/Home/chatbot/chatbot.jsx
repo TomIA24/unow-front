@@ -14,6 +14,7 @@ const Chatbot = () => {
   const [input, setInput] = useState('');
   const [conversationId, setConversationId] = useState('');
   const [isChatOpen, setIsChatOpen] = useState(false);
+  const [isChatAtTop, setIsChatAtTop] = useState(false);
   const [isButtonClicked, setIsButtonClicked] = useState(false); // New state
 
   const API_KEY = '55ShM0TPpI19H14ZGDeeULP3hdm3ZGrs38rXXfDKbce8c511'; // Replace with your actual API key
@@ -80,13 +81,23 @@ const Chatbot = () => {
   };
 
   const toggleChat = () => {
+    if (window.innerWidth <= 570) {
+      setIsChatAtTop(!isChatAtTop); // Basculez la position seulement dans ce cas
+    }
     setIsChatOpen(!isChatOpen);
   };
 
   return (
     <div>
       {/* Floating icon to open the chat */}
-      <button className={styles.chatIcon} onClick={toggleChat}>
+      <button
+        className={styles.chatIcon}
+        onClick={toggleChat}
+        style={{
+          bottom: isChatAtTop ? 'unset' : '20px',
+          top: isChatAtTop ? '10px' : 'unset',
+        }}
+      >
         <img src={ChatbotIcon} alt="Chatbot Icon" />
       </button>
 
