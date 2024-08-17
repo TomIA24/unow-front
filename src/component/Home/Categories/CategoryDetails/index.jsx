@@ -33,9 +33,12 @@ const CategoryDetails = (props) => {
   };
   const getAllTraining = () => {
     axios
-      .get(`http://localhost:5050/api/courses?page=${currentPage}&limit=${6}`)
+      .get(
+        selectedType == "COURSES"
+          ? `http://localhost:5050/api/courses?page=${currentPage}&limit=3&type=course`
+          : `http://localhost:5050/api/courses?page=${currentPage}&limit=3&type=training`
+      )
       .then((res) => {
-        console.log("result", res);
         setCourses(res.data.data);
         setTotalPages(res.data.totalPages);
       });
@@ -43,7 +46,7 @@ const CategoryDetails = (props) => {
 
   useEffect(() => {
     getAllTraining();
-  }, [currentPage]);
+  }, [currentPage, selectedType]);
 
   useEffect(() => {
     if (loadMoreOnline && !loadMoreOffline) {
