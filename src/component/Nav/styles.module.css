@@ -21,8 +21,8 @@ a {
     justify-content: space-between;
     align-items: center; /* Center items vertically */
     background-color: #00000000;
-    /* padding-left: 5rem; */
-    /* padding-right: 5rem; */
+    padding-left: 5rem;
+    padding-right: 5rem;
     line-height: center;
 }
 
@@ -82,7 +82,7 @@ a {
     width: 100%;
     /* flex: 2; */
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     /* margin-inline: 60px; */
     align-items: center;
     background-color:#3e467800 ;

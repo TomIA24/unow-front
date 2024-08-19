@@ -469,7 +469,7 @@ const[down,setDown] = useState(false);
   
   useEffect(() => {
     console.log(WindowWidth);
-    if (WindowWidth <= 800) {
+    if (WindowWidth <= 810) {
       setDown(true);
     } else {
       setDown(false);
@@ -489,31 +489,17 @@ const[down,setDown] = useState(false);
     };
   }, []);
   const [mobileView, setMobileView] = useState(false);
-  useEffect(() => {
-    //console.log(WindowWidth)
-    if (WindowWidth <= 800) {
-      setMobileView(true);
-    } else {
-      setMobileView(false);
-    }
-  }, []);
+
   useEffect(() => {
     console.log(WindowWidth);
-    if (WindowWidth <= 800) {
+    if (WindowWidth <= 810) {
       setMobileView(true);
     } else {
       setMobileView(false);
     }
   }, [WindowWidth]);
 
-  useEffect(() => {
-    console.log(WindowWidth);
-    if (WindowWidth <= 800) {
-      setMobileView(true);
-    } else {
-      setMobileView(false);
-    }
-  }, [WindowWidth]);
+ 
 
   if (isLoading) {
     return <Loading />;
@@ -523,7 +509,7 @@ const[down,setDown] = useState(false);
 
       <div className={styles.backimage}>
 
-        <div className={styles.navContainer}>
+        <div className={styles.nav_container}>
 
   
   
@@ -599,7 +585,127 @@ const[down,setDown] = useState(false);
 
 
             <div className={styles.ScndSectionInfoCourse}>
- {mobileView &&(  <div className={styles.rightSectionCourse}>
+
+
+<div>
+              <div className={styles.DescriptionInfoCourse}>
+                <div className={styles.DescriptionInfoCourseTitle}>
+
+                  <span>DESCRIPTION
+                     <p className={styles.underline}></p></span>
+                </div>
+                <div className={styles.DescriptionInfoCourseText}>
+                  <p>{Data.Description}</p>
+                </div>
+              </div>
+              <div className={styles.DescriptionInfoCourse}>
+                <div className={styles.DescriptionInfoCourseTitle}>
+
+                  <span>Goals
+                  <p className={styles.underline}></p></span>
+                </div>
+                <div className={styles.DescriptionInfoCourseText}>
+                  <p>{Data.Goals}</p>
+                </div>
+              </div>
+              <div className={styles.DescriptionInfoCourse}>
+                <div className={styles.DescriptionInfoCourseTitle}>
+
+                  <span>Who Should Attend
+                  <p className={styles.underline}></p></span>
+                </div>
+                <div className={styles.DescriptionInfoCourseText}>
+                  <p>{Data.WhoShouldAttend}</p>
+                </div>
+              </div>
+              <div className={styles.DescriptionInfoCourse}>
+                <div className={styles.DescriptionInfoCourseTitle}>
+
+                  <span>Course Content
+                  <p className={styles.underline}></p></span>
+                </div>
+                <div className={styles.DescriptionInfoCourseText}>
+                  <p>{Data.CourseContent}</p>
+                </div>
+              </div>
+              <div className={styles.DescriptionInfoCourse}>
+                <div className={styles.DescriptionInfoCourseTitle}>
+
+                  <span>PracticalWork
+                  <p className={styles.underline}></p></span>
+                </div>
+                <div className={styles.DescriptionInfoCourseText}>
+                  <p>{Data.PracticalWork}</p>
+                </div>
+              </div>
+              <div className={styles.DescriptionInfoCourse}>
+                <div className={styles.DescriptionInfoCourseTitle}>
+
+                  <span>Certificate
+                  <p className={styles.underline}></p></span>
+                </div>
+                <div className={styles.DescriptionInfoCourseText}>
+                  <p>{Data.certificate}</p>
+                </div>
+              </div>
+              {Data.evaluate.length > 0 ? (
+                <div className={styles.OpinionsCourse}>
+                  <div className={styles.OpinionsCourseTitle}>
+
+                    <h1>Users Opinion</h1>
+                  </div>
+                  {EvaluationsCompleated.map((e) => {
+                    return (
+                      <React.Fragment>
+                        <div className={styles.opinion}>
+                          <div className={styles.opinionHeader}>
+                            {token ? (
+                              <React.Fragment>
+                                {e.image ? (
+                                  <Avatar
+                                    alt="Remy Sharp"
+                                    src={`${process.env.REACT_APP_API}/${e.image.filePath}`}
+                                    sx={{ width: 24, height: 24 }}
+                                  />
+                                ) : (
+                                  <Avatar
+                                    alt="Remy Sharp"
+                                    src={`${process.env.REACT_APP_API}/uploads/2022-03-25T09-59-55.836Z-avatar.png`}
+                                    sx={{ width: 24, height: 24 }}
+                                  />
+                                )}
+                              </React.Fragment>
+                            ) : (
+                              <React.Fragment>
+                                <Avatar
+                                  alt="Remy Sharp"
+                                  src={`${process.env.REACT_APP_API}/uploads/2022-03-25T09-59-55.836Z-avatar.png`}
+                                  sx={{ width: 24, height: 24 }}
+                                />
+                              </React.Fragment>
+                            )}
+                            <h5>{e.name}</h5>
+                          </div>
+                          <div className={styles.opinionBody}>
+                            <p>{e.message}</p>
+                            <Rating
+                              name="read-only"
+                              value={e.rate}
+                              readOnly
+                              precision={0.5}
+                            />
+                          </div>
+                        </div>
+                        <hr className={styles.opinionHr} />
+                      </React.Fragment>
+                    );
+                  })}
+                </div>
+              ) : (
+                ""
+              )}
+            </div>
+            {mobileView &&(  <div className={styles.rightSectionCourse}>
               <div className={styles.scndInfos}>
                 <div className={styles.CoursePriceInfoPage}>
                   <div className={styles.price}>{Data.Price} TTC
@@ -1037,124 +1143,6 @@ const[down,setDown] = useState(false);
                 </div>
               </div>
             </div>)}
-
-
-              <div className={styles.DescriptionInfoCourse}>
-                <div className={styles.DescriptionInfoCourseTitle}>
-
-                  <span>DESCRIPTION
-                     <p className={styles.underline}></p></span>
-                </div>
-                <div className={styles.DescriptionInfoCourseText}>
-                  <p>{Data.Description}</p>
-                </div>
-              </div>
-              <div className={styles.DescriptionInfoCourse}>
-                <div className={styles.DescriptionInfoCourseTitle}>
-
-                  <span>Goals
-                  <p className={styles.underline}></p></span>
-                </div>
-                <div className={styles.DescriptionInfoCourseText}>
-                  <p>{Data.Goals}</p>
-                </div>
-              </div>
-              <div className={styles.DescriptionInfoCourse}>
-                <div className={styles.DescriptionInfoCourseTitle}>
-
-                  <span>Who Should Attend
-                  <p className={styles.underline}></p></span>
-                </div>
-                <div className={styles.DescriptionInfoCourseText}>
-                  <p>{Data.WhoShouldAttend}</p>
-                </div>
-              </div>
-              <div className={styles.DescriptionInfoCourse}>
-                <div className={styles.DescriptionInfoCourseTitle}>
-
-                  <span>Course Content
-                  <p className={styles.underline}></p></span>
-                </div>
-                <div className={styles.DescriptionInfoCourseText}>
-                  <p>{Data.CourseContent}</p>
-                </div>
-              </div>
-              <div className={styles.DescriptionInfoCourse}>
-                <div className={styles.DescriptionInfoCourseTitle}>
-
-                  <span>PracticalWork
-                  <p className={styles.underline}></p></span>
-                </div>
-                <div className={styles.DescriptionInfoCourseText}>
-                  <p>{Data.PracticalWork}</p>
-                </div>
-              </div>
-              <div className={styles.DescriptionInfoCourse}>
-                <div className={styles.DescriptionInfoCourseTitle}>
-
-                  <span>Certificate
-                  <p className={styles.underline}></p></span>
-                </div>
-                <div className={styles.DescriptionInfoCourseText}>
-                  <p>{Data.certificate}</p>
-                </div>
-              </div>
-              {Data.evaluate.length > 0 ? (
-                <div className={styles.OpinionsCourse}>
-                  <div className={styles.OpinionsCourseTitle}>
-
-                    <h1>Users Opinion</h1>
-                  </div>
-                  {EvaluationsCompleated.map((e) => {
-                    return (
-                      <React.Fragment>
-                        <div className={styles.opinion}>
-                          <div className={styles.opinionHeader}>
-                            {token ? (
-                              <React.Fragment>
-                                {e.image ? (
-                                  <Avatar
-                                    alt="Remy Sharp"
-                                    src={`${process.env.REACT_APP_API}/${e.image.filePath}`}
-                                    sx={{ width: 24, height: 24 }}
-                                  />
-                                ) : (
-                                  <Avatar
-                                    alt="Remy Sharp"
-                                    src={`${process.env.REACT_APP_API}/uploads/2022-03-25T09-59-55.836Z-avatar.png`}
-                                    sx={{ width: 24, height: 24 }}
-                                  />
-                                )}
-                              </React.Fragment>
-                            ) : (
-                              <React.Fragment>
-                                <Avatar
-                                  alt="Remy Sharp"
-                                  src={`${process.env.REACT_APP_API}/uploads/2022-03-25T09-59-55.836Z-avatar.png`}
-                                  sx={{ width: 24, height: 24 }}
-                                />
-                              </React.Fragment>
-                            )}
-                            <h5>{e.name}</h5>
-                          </div>
-                          <div className={styles.opinionBody}>
-                            <p>{e.message}</p>
-                            <Rating
-                              name="read-only"
-                              value={e.rate}
-                              readOnly
-                              precision={0.5}
-                            />
-                          </div>
-                        </div>
-                        <hr className={styles.opinionHr} />
-                      </React.Fragment>
-                    );
-                  })}
-                </div>
-              ) : (
-                ""
-              )}
             </div>
           </div>
           <div>

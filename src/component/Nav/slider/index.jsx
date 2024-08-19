@@ -109,7 +109,9 @@ export default function SliderNav({ user, handleLogout }) {
     <React.Fragment>
       <Button onClick={toggleDrawer(true)}>
       <MenuIcon className={styles.menuIcon} />
+      
       </Button>
+      
       <SwipeableDrawer
         open={toggle}
         onClose={toggleDrawer(false)}
@@ -117,6 +119,16 @@ export default function SliderNav({ user, handleLogout }) {
       >
         {list()}
       </SwipeableDrawer>
+      <div className={styles.logo}>
+            <Link to="/" >
+            <img src="/images/home/logoblanc 1.png" alt=""   className={styles.logoimage}  />
+              {/* <img
+                style={{ marginTop: "20px", width: "160px" }}
+                className={styles.LogoImg}
+                src={imgLogo}
+              />{" "} */}
+            </Link>
+            </div>
       <Link to="/">
       <img src="./images/home/logoblanc 1.png" alt=""   className={styles.logoimage}  />
         {/* <img
