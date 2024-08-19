@@ -25,7 +25,7 @@ function AddRessources() {
     try {
       console.log(id);
       const result = await axios.post(
-        `${process.env.REACT_APP_API}/api/download/`,
+        `${process.env.REACT_APP_API}api/download/`,
         { params: { id: id } },
         { headers: {} },
         { responseType: "blob" },

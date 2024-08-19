@@ -59,7 +59,7 @@ const Categories = () => {
 
   const handleCardClick = (category) => {
     setSelectedCategory(category);
-    navigate("/categoryCourses");
+    navigate(`/categoryCourses/${category._id}`);
   };
 
   const handleCloseModal = () => {

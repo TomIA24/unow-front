@@ -92,7 +92,7 @@ const Update = ({ User, setOpenChange, openChange }) => {
     const config = {
       headers: { authorization: `Bearer ${token}` },
     };
-    const url = `${process.env.REACT_APP_API}/api/Trainer/updateTrainers`;
+    const url = `${process.env.REACT_APP_API}api/Trainer/updateTrainers`;
     axios.post(url, user, config).then(async (res) => {
       if (singleFile !== "") {
         await uploadSingleFile();

@@ -15,7 +15,7 @@ export const Accept =()=>{
         headers: { authorization: `Bearer ${token}`,       },
          
     };
-    const url = `${process.env.REACT_APP_API}/api/payment/updatePayment`
+    const url = `${process.env.REACT_APP_API}api/payment/updatePayment`;
     axios.post(url, {courseId:id},config )
     .then(res=>{
         console.log('Course Updated successfully')

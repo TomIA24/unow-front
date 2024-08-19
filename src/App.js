@@ -45,307 +45,322 @@ function App() {
 
   return (
     <LanguageProvider>
-     <QuizProvider>
-      <div className="App">
-        <Routes>
-          {!user && (
-            <React.Fragment>
-              <Route exact path="/" element={<HomeInterface />} />
-              <Route exact path="/Personalize" element={<Personalize />} />
-            </React.Fragment>
-          )}
+      <QuizProvider>
+        <div className="App">
+          <Routes>
+            {!user && (
+              <React.Fragment>
+                <Route exact path="/" element={<HomeInterface />} />
+                <Route exact path="/Personalize" element={<Personalize />} />
+              </React.Fragment>
+            )}
 
-          <Route path="*" element={<MissingRoute />} />
-          <Route exact path="/home" element={<HomeInterface />} />
- 
-          
-          <Route exact path="/question" element={<Quiz     startDate={startDate}/>}  />
-          <Route exact path="/quiz" element={<MainQuiz onStartQuiz={handleStartQuiz}/>}   />
-          <Route exact path="/timeout" element={<Timeout />} />
- 
-          <Route exact path="/login" element={<Login />} />
-          <Route exact path="/ResetPassword" element={<ResetPassword />} />
-          <Route exact path="/signup" element={<SignUp />} />
-          <Route exact path="/Contact" element={<Contact />} />
-          <Route exact path="/successPayment/:id" element={<Accept />} />
-          <Route exact path="/cancelPayment" element={<Refuse />} />
+            <Route path="*" element={<MissingRoute />} />
+            <Route exact path="/home" element={<HomeInterface />} />
 
-          <Route exact path="/Course/:id" element={<Course />} />
-          <Route exact path="/Course/:id/Videos" element={<Videos />} />
-          <Route exact path="/Training/:id" element={<Training />} />
-          {/* <Route exact path="/Course/Ressources/:id" element={<CourseRessources/>} /> */}
-          <Route exact path="/Training/Ressources/:id" element={<Training />} />
-          <Route exact path="/completeInfo" element={<CompleteInfo />} />
-          <Route exact path="/room/:url" element={<Room />} />
-          <Route
-            exact
-            path="/categoryCourses"
-            element={
-              <CategoryDetails
-                onlineCourses={[
-                  {
-                    subcat: "Web Developement",
-                    price: "1000 $",
-                    level: "Intermediate",
-                    title: "React Course",
-                    thumbnail:
-                      "https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png",
-                  },
-                  {
-                    subcat: "Web Developement",
-                    price: "1000 $",
-                    level: "Intermediate",
-                    title: "React Course",
-                    thumbnail:
-                      "https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png",
-                  },
-                  {
-                    subcat: "Web Developement",
-                    price: "1000 $",
-                    level: "Intermediate",
-                    title: "React Course",
-                    thumbnail:
-                      "https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png",
-                  },
-                  {
-                    subcat: "Web Developement",
-                    price: "1000 $",
-                    level: "Intermediate",
-                    title: "React Course",
-                    thumbnail:
-                      "https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png",
-                  },
-                  {
-                    subcat: "Web Developement",
-                    price: "1000 $",
-                    level: "Intermediate",
-                    title: "React Course",
-                    thumbnail:
-                      "https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png",
-                  },
-                  {
-                    subcat: "Web Developement",
-                    price: "1000 $",
-                    level: "Intermediate",
-                    title: "React Course",
-                    thumbnail:
-                      "https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png",
-                  },
-                  {
-                    subcat: "Web Developement",
-                    price: "1000 $",
-                    level: "Intermediate",
-                    title: "React Course",
-                    thumbnail:
-                      "https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png",
-                  },
-                  {
-                    subcat: "Web Developement",
-                    price: "1000 $",
-                    level: "Intermediate",
-                    title: "React Course",
-                    thumbnail:
-                      "https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png",
-                  },
-                  {
-                    subcat: "Web Developement",
-                    price: "1000 $",
-                    level: "Intermediate",
-                    title: "React Course",
-                    thumbnail:
-                      "https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png",
-                  },
-                  {
-                    subcat: "Web Developement",
-                    price: "1000 $",
-                    level: "Intermediate",
-                    title: "React Course",
-                    thumbnail:
-                      "https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png",
-                  },
-                  {
-                    subcat: "Web Developement",
-                    price: "1000 $",
-                    level: "Intermediate",
-                    title: "React Course",
-                    thumbnail:
-                      "https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png",
-                  },
-                  {
-                    subcat: "Web Developement",
-                    price: "1000 $",
-                    level: "Intermediate",
-                    title: "React Course",
-                    thumbnail:
-                      "https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png",
-                  },
-                  {
-                    subcat: "Web Developement",
-                    price: "1000 $",
-                    level: "Intermediate",
-                    title: "React Course",
-                    thumbnail:
-                      "https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png",
-                  },
-                  {
-                    subcat: "Web Developement",
-                    price: "1000 $",
-                    level: "Intermediate",
-                    title: "React Course",
-                    thumbnail:
-                      "https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png",
-                  },
-                  {
-                    subcat: "Web Developement",
-                    price: "1000 $",
-                    level: "Intermediate",
-                    title: "React Course",
-                    thumbnail:
-                      "https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png",
-                  },
-                ]}
-                offlineCourses={[
-                  {
-                    subcat: "Web Developement",
-                    price: "1000 $",
-                    level: "Intermediate",
-                    title: "React Course",
-                    thumbnail:
-                      "https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png",
-                  },
-                  {
-                    subcat: "Web Developement",
-                    price: "1000 $",
-                    level: "Intermediate",
-                    title: "React Course",
-                    thumbnail:
-                      "https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png",
-                  },
-                  {
-                    subcat: "Web Developement",
-                    price: "1000 $",
-                    level: "Intermediate",
-                    title: "React Course",
-                    thumbnail:
-                      "https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png",
-                  },
-                  {
-                    subcat: "Web Developement",
-                    price: "1000 $",
-                    level: "Intermediate",
-                    title: "React Course",
-                    thumbnail:
-                      "https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png",
-                  },
-                  {
-                    subcat: "Web Developement",
-                    price: "1000 $",
-                    level: "Intermediate",
-                    title: "React Course",
-                    thumbnail:
-                      "https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png",
-                  },
-                  {
-                    subcat: "Web Developement",
-                    price: "1000 $",
-                    level: "Intermediate",
-                    title: "React Course",
-                    thumbnail:
-                      "https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png",
-                  },
-                  {
-                    subcat: "Web Developement",
-                    price: "1000 $",
-                    level: "Intermediate",
-                    title: "React Course",
-                    thumbnail:
-                      "https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png",
-                  },
-                  {
-                    subcat: "Web Developement",
-                    price: "1000 $",
-                    level: "Intermediate",
-                    title: "React Course",
-                    thumbnail:
-                      "https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png",
-                  },
-                  {
-                    subcat: "Web Developement",
-                    price: "1000 $",
-                    level: "Intermediate",
-                    title: "React Course",
-                    thumbnail:
-                      "https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png",
-                  },
-                  {
-                    subcat: "Web Developement",
-                    price: "1000 $",
-                    level: "Intermediate",
-                    title: "React Course",
-                    thumbnail:
-                      "https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png",
-                  },
-                  {
-                    subcat: "Web Developement",
-                    price: "1000 $",
-                    level: "Intermediate",
-                    title: "React Course",
-                    thumbnail:
-                      "https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png",
-                  },
-                  {
-                    subcat: "Web Developement",
-                    price: "1000 $",
-                    level: "Intermediate",
-                    title: "React Course",
-                    thumbnail:
-                      "https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png",
-                  },
-                  {
-                    subcat: "Web Developement",
-                    price: "1000 $",
-                    level: "Intermediate",
-                    title: "React Course",
-                    thumbnail:
-                      "https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png",
-                  },
-                  {
-                    subcat: "Web Developement",
-                    price: "1000 $",
-                    level: "Intermediate",
-                    title: "React Course",
-                    thumbnail:
-                      "https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png",
-                  },
-                  {
-                    subcat: "Web Developement",
-                    price: "1000 $",
-                    level: "Intermediate",
-                    title: "React Course",
-                    thumbnail:
-                      "https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png",
-                  },
-                ]}
-              />
-            }
-          />
-          <Route exact path="/categoryCourses2" element={<CoursesSection />} />
+            <Route
+              exact
+              path="/question"
+              element={<Quiz startDate={startDate} />}
+            />
+            <Route
+              exact
+              path="/quiz"
+              element={<MainQuiz onStartQuiz={handleStartQuiz} />}
+            />
+            <Route exact path="/timeout" element={<Timeout />} />
 
-          {user && (
-            <React.Fragment>
-              {user.userType === "Admin" && (
-                <Route exact path="/admin" element={<Admin />} />
-              )}
+            <Route exact path="/login" element={<Login />} />
+            <Route exact path="/ResetPassword" element={<ResetPassword />} />
+            <Route exact path="/signup" element={<SignUp />} />
+            <Route exact path="/Contact" element={<Contact />} />
+            <Route exact path="/successPayment/:id" element={<Accept />} />
+            <Route exact path="/cancelPayment" element={<Refuse />} />
 
-              {user.userType === "Trainer" ? (
-                <Route exact path="/profile" element={<ProfileTrainer />} />
-              ) : (
-                <Route exact path="/profile" element={<ProfileClient />} />
-              )}
-            </React.Fragment>
-          )}
-        </Routes>
-      </div>
+            <Route exact path="/Course/:id" element={<Course />} />
+            <Route exact path="/Course/:id/Videos" element={<Videos />} />
+            <Route exact path="/Training/:id" element={<Training />} />
+            {/* <Route exact path="/Course/Ressources/:id" element={<CourseRessources/>} /> */}
+            <Route
+              exact
+              path="/Training/Ressources/:id"
+              element={<Training />}
+            />
+            <Route exact path="/completeInfo" element={<CompleteInfo />} />
+            <Route exact path="/room/:url" element={<Room />} />
+            <Route
+              exact
+              path="/categoryCourses/:id"
+              element={
+                <CategoryDetails
+                  onlineCourses={[
+                    {
+                      subcat: "Web Developement",
+                      price: "1000 $",
+                      level: "Intermediate",
+                      title: "React Course",
+                      thumbnail:
+                        "https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png",
+                    },
+                    {
+                      subcat: "Web Developement",
+                      price: "1000 $",
+                      level: "Intermediate",
+                      title: "React Course",
+                      thumbnail:
+                        "https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png",
+                    },
+                    {
+                      subcat: "Web Developement",
+                      price: "1000 $",
+                      level: "Intermediate",
+                      title: "React Course",
+                      thumbnail:
+                        "https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png",
+                    },
+                    {
+                      subcat: "Web Developement",
+                      price: "1000 $",
+                      level: "Intermediate",
+                      title: "React Course",
+                      thumbnail:
+                        "https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png",
+                    },
+                    {
+                      subcat: "Web Developement",
+                      price: "1000 $",
+                      level: "Intermediate",
+                      title: "React Course",
+                      thumbnail:
+                        "https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png",
+                    },
+                    {
+                      subcat: "Web Developement",
+                      price: "1000 $",
+                      level: "Intermediate",
+                      title: "React Course",
+                      thumbnail:
+                        "https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png",
+                    },
+                    {
+                      subcat: "Web Developement",
+                      price: "1000 $",
+                      level: "Intermediate",
+                      title: "React Course",
+                      thumbnail:
+                        "https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png",
+                    },
+                    {
+                      subcat: "Web Developement",
+                      price: "1000 $",
+                      level: "Intermediate",
+                      title: "React Course",
+                      thumbnail:
+                        "https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png",
+                    },
+                    {
+                      subcat: "Web Developement",
+                      price: "1000 $",
+                      level: "Intermediate",
+                      title: "React Course",
+                      thumbnail:
+                        "https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png",
+                    },
+                    {
+                      subcat: "Web Developement",
+                      price: "1000 $",
+                      level: "Intermediate",
+                      title: "React Course",
+                      thumbnail:
+                        "https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png",
+                    },
+                    {
+                      subcat: "Web Developement",
+                      price: "1000 $",
+                      level: "Intermediate",
+                      title: "React Course",
+                      thumbnail:
+                        "https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png",
+                    },
+                    {
+                      subcat: "Web Developement",
+                      price: "1000 $",
+                      level: "Intermediate",
+                      title: "React Course",
+                      thumbnail:
+                        "https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png",
+                    },
+                    {
+                      subcat: "Web Developement",
+                      price: "1000 $",
+                      level: "Intermediate",
+                      title: "React Course",
+                      thumbnail:
+                        "https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png",
+                    },
+                    {
+                      subcat: "Web Developement",
+                      price: "1000 $",
+                      level: "Intermediate",
+                      title: "React Course",
+                      thumbnail:
+                        "https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png",
+                    },
+                    {
+                      subcat: "Web Developement",
+                      price: "1000 $",
+                      level: "Intermediate",
+                      title: "React Course",
+                      thumbnail:
+                        "https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png",
+                    },
+                  ]}
+                  offlineCourses={[
+                    {
+                      subcat: "Web Developement",
+                      price: "1000 $",
+                      level: "Intermediate",
+                      title: "React Course",
+                      thumbnail:
+                        "https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png",
+                    },
+                    {
+                      subcat: "Web Developement",
+                      price: "1000 $",
+                      level: "Intermediate",
+                      title: "React Course",
+                      thumbnail:
+                        "https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png",
+                    },
+                    {
+                      subcat: "Web Developement",
+                      price: "1000 $",
+                      level: "Intermediate",
+                      title: "React Course",
+                      thumbnail:
+                        "https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png",
+                    },
+                    {
+                      subcat: "Web Developement",
+                      price: "1000 $",
+                      level: "Intermediate",
+                      title: "React Course",
+                      thumbnail:
+                        "https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png",
+                    },
+                    {
+                      subcat: "Web Developement",
+                      price: "1000 $",
+                      level: "Intermediate",
+                      title: "React Course",
+                      thumbnail:
+                        "https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png",
+                    },
+                    {
+                      subcat: "Web Developement",
+                      price: "1000 $",
+                      level: "Intermediate",
+                      title: "React Course",
+                      thumbnail:
+                        "https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png",
+                    },
+                    {
+                      subcat: "Web Developement",
+                      price: "1000 $",
+                      level: "Intermediate",
+                      title: "React Course",
+                      thumbnail:
+                        "https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png",
+                    },
+                    {
+                      subcat: "Web Developement",
+                      price: "1000 $",
+                      level: "Intermediate",
+                      title: "React Course",
+                      thumbnail:
+                        "https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png",
+                    },
+                    {
+                      subcat: "Web Developement",
+                      price: "1000 $",
+                      level: "Intermediate",
+                      title: "React Course",
+                      thumbnail:
+                        "https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png",
+                    },
+                    {
+                      subcat: "Web Developement",
+                      price: "1000 $",
+                      level: "Intermediate",
+                      title: "React Course",
+                      thumbnail:
+                        "https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png",
+                    },
+                    {
+                      subcat: "Web Developement",
+                      price: "1000 $",
+                      level: "Intermediate",
+                      title: "React Course",
+                      thumbnail:
+                        "https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png",
+                    },
+                    {
+                      subcat: "Web Developement",
+                      price: "1000 $",
+                      level: "Intermediate",
+                      title: "React Course",
+                      thumbnail:
+                        "https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png",
+                    },
+                    {
+                      subcat: "Web Developement",
+                      price: "1000 $",
+                      level: "Intermediate",
+                      title: "React Course",
+                      thumbnail:
+                        "https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png",
+                    },
+                    {
+                      subcat: "Web Developement",
+                      price: "1000 $",
+                      level: "Intermediate",
+                      title: "React Course",
+                      thumbnail:
+                        "https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png",
+                    },
+                    {
+                      subcat: "Web Developement",
+                      price: "1000 $",
+                      level: "Intermediate",
+                      title: "React Course",
+                      thumbnail:
+                        "https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png",
+                    },
+                  ]}
+                />
+              }
+            />
+            <Route
+              exact
+              path="/categoryCourses2"
+              element={<CoursesSection />}
+            />
+
+            {user && (
+              <React.Fragment>
+                {user.userType === "Admin" && (
+                  <Route exact path="/admin" element={<Admin />} />
+                )}
+
+                {user.userType === "Trainer" ? (
+                  <Route exact path="/profile" element={<ProfileTrainer />} />
+                ) : (
+                  <Route exact path="/profile" element={<ProfileClient />} />
+                )}
+              </React.Fragment>
+            )}
+          </Routes>
+        </div>
       </QuizProvider>
     </LanguageProvider>
   );

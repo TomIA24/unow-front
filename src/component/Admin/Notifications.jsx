@@ -25,7 +25,7 @@ const Notifications = ({ setNotifOpenModal }) => {
       },
     };
     try {
-      const url = `${process.env.REACT_APP_API}/api/notifications/getNotifications`;
+      const url = `${process.env.REACT_APP_API}api/notifications/getNotifications`;
       axios.post(url, {}, config).then(async (res) => {
         setNotificationsData(res.data.data);
         //console.log(NotificationsData)

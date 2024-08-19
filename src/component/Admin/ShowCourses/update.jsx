@@ -123,8 +123,8 @@ const Update = ({ Course, setOpenChange, openChange }) => {
     const config = {
       headers: { authorization: `Bearer ${token}` },
     };
-    const url = `${process.env.REACT_APP_API}/api/courses/updateCourse`;
-    axios.post(url, course,config).then(async (res) => {
+    const url = `${process.env.REACT_APP_API}api/courses/updateCourse`;
+    axios.post(url, course, config).then(async (res) => {
       if (singleFile !== "") {
         await uploadSingleFile();
       }
@@ -165,7 +165,7 @@ const Update = ({ Course, setOpenChange, openChange }) => {
       headers: {},
     };
     await axios
-      .get(`${process.env.REACT_APP_API}/api/Category/getCategories`)
+      .get(`${process.env.REACT_APP_API}api/Category/getCategories`)
       .then(async (res) => {
         setCategoriesFromBd(res.data.data);
         console.log(res.data.data);

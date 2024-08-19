@@ -98,7 +98,7 @@ const CompleteInfo = () => {
   });
 
   useEffect(() => {
-    const url = `${process.env.REACT_APP_API}/api/userData`;
+    const url = `${process.env.REACT_APP_API}api/userData`;
     const config = {
       headers: {
         authorization: `Bearer ${token}`,
@@ -232,7 +232,7 @@ const CompleteInfo = () => {
   };
 
   const [changeImage, setChangeImage] = useState(false);
-  useEffect(async() => {
+  useEffect(async () => {
     await uploadSingleFile();
   }, [singleFile]);
 
@@ -247,7 +247,7 @@ const CompleteInfo = () => {
     console.log("///////////");
     if (phoneError === "") {
       try {
-        const url = `${process.env.REACT_APP_API}/api/Trainer/complete`;
+        const url = `${process.env.REACT_APP_API}api/Trainer/complete`;
         axios
           .post(url, data, config)
           .then(async (res) => {
@@ -257,7 +257,7 @@ const CompleteInfo = () => {
                 authorization: `Bearer ${localStorage.getItem("token")}`,
               },
             };
-            const url = `${process.env.REACT_APP_API}/api/userData`;
+            const url = `${process.env.REACT_APP_API}api/userData`;
             axios.post(url, {}, config).then((response) => {
               console.log(response);
               localStorage.removeItem("user");

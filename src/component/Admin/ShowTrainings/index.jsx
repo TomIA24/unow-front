@@ -35,7 +35,7 @@ const ShowTrainings = () => {
         authorization: `Bearer ${token}`,
       },
     };
-    const url = `${process.env.REACT_APP_API}/api/trainings`;
+    const url = `${process.env.REACT_APP_API}api/trainings`;
     axios.post(url, {}, config).then((res) => {
       setData(res.data.data);
     });
@@ -47,7 +47,7 @@ const ShowTrainings = () => {
         authorization: `Bearer ${token}`,
       },
     };
-    const url = `${process.env.REACT_APP_API}/api/trainings/deleteTraining`;
+    const url = `${process.env.REACT_APP_API}api/trainings/deleteTraining`;
     console.log(id);
     axios.post(url, { idTraining: id }, config).then(async (res) => {
       await handleData();

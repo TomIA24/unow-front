@@ -171,7 +171,7 @@ const AddCourse = () => {
       headers: {},
     };
     await axios
-      .get(`${process.env.REACT_APP_API}/api/Category/getCategories`)
+      .get(`${process.env.REACT_APP_API}api/Category/getCategories`)
       .then(async (res) => {
         setCategoriesFromBd(res.data.data);
       });
@@ -217,7 +217,7 @@ const AddCourse = () => {
       headers: { authorization: `Bearer ${localStorage.getItem("token")}` },
     };
     try {
-      const url = `${process.env.REACT_APP_API}/api/courses/CreateCourse`;
+      const url = `${process.env.REACT_APP_API}api/courses/CreateCourse`;
       axios
         .post(url, data, config)
         .then(async (res) => {

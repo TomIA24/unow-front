@@ -25,7 +25,7 @@ const Ressources = ({ openRessources, setOpenRessources, Ressources, Id }) => {
       console.log(id);
       console.log("Data:", Id);
       const result = await axios.post(
-        `${process.env.REACT_APP_API}/api/download/`,
+        `${process.env.REACT_APP_API}api/download/`,
         { params: { id: Id, fileId: id } },
         { headers: { authorization: `Bearer ${token}` } },
         { responseType: "blob" },

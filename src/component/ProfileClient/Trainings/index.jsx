@@ -43,41 +43,36 @@ const Trainings = ({user}) =>{
              
         };
         try {
-        const url = `${process.env.REACT_APP_API}/api/trainings/specificGroupe`;
-        await axios.post(url,{cardIds:CartIds} )
-        .then(async res => {
-            setCart(res.data.data)
-            await res.data.data.map(async (element) => {
-    
-                        try {
-                            const config = {
-                                headers: { authorization: `Bearer ${token}`,       },
-                                 
-                            };
-                        const url = `${process.env.REACT_APP_API}/api/Room/getRoom`;
-                        await axios.post(url,{course:element._id} )
-                        .then( async res => {
-                              element.Room = await res.data.data
-                              
-                        })
-                        } catch (error) {
-                        if (
-                            error.response &&
-                            error.response.status >= 400 &&
-                            error.response.status <= 500
-                        ) {
-                        }
-                        }
-                        if(element.Room){
-                            carts.push(element)
-                        }
-                    
-                        setCt(carts)
-                        setLoading(false)
-                
-            })
-            
-        })
+        const url = `${process.env.REACT_APP_API}api/trainings/specificGroupe`;
+        await axios.post(url, { cardIds: CartIds }).then(async (res) => {
+          setCart(res.data.data);
+          await res.data.data.map(async (element) => {
+            try {
+              const config = {
+                headers: { authorization: `Bearer ${token}` },
+              };
+              const url = `${process.env.REACT_APP_API}api/Room/getRoom`;
+              await axios
+                .post(url, { course: element._id })
+                .then(async (res) => {
+                  element.Room = await res.data.data;
+                });
+            } catch (error) {
+              if (
+                error.response &&
+                error.response.status >= 400 &&
+                error.response.status <= 500
+              ) {
+              }
+            }
+            if (element.Room) {
+              carts.push(element);
+            }
+
+            setCt(carts);
+            setLoading(false);
+          });
+        });
         } catch (error) {
         if (
             error.response &&

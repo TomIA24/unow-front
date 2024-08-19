@@ -22,7 +22,7 @@ const ApplyTrainer = ({ openApply, setOpenApply }) => {
     const config = {
       headers: {},
     };
-    const url = `${process.env.REACT_APP_API}/api/contact/SendRequestTrainer`;
+    const url = `${process.env.REACT_APP_API}api/contact/SendRequestTrainer`;
     axios.post(url, Data).then(async (res) => {
       setData({
         name: "",

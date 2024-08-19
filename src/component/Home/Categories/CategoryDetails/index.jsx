@@ -14,8 +14,10 @@ import axios from "axios";
 import GenericSwitcher from "../../../GenericSwitcher";
 import imageCourse from "../../../assets/icon_course.png";
 import imageTraining from "../../../assets/icon_training.png";
+import { useParams } from "react-router-dom";
 
 const CategoryDetails = (props) => {
+  let { id } = useParams();
   useEffect(() => {}, []);
   const [loadMoreOnline, setLoadMoreOnline] = useState(false);
   const [loadMoreOffline, setLoadMoreOffline] = useState(false);
@@ -31,17 +33,46 @@ const CategoryDetails = (props) => {
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
+  // const getAllTraining = () => {
+  //   axios
+  //     .get(
+  //       selectedType == "COURSES"
+  //         ? `http://localhost:5050/api/courses?page=${currentPage}&limit=3`
+  //         : `http://localhost:5050/api/courses?page=${currentPage}&limit=3`
+  //     )
+  //     .then((res) => {
+  //       setCourses(res.data.data);
+  //       setTotalPages(res.data.totalPages);
+  //     });
+  // };
+
   const getAllTraining = () => {
-    axios
-      .get(
-        selectedType == "COURSES"
-          ? `http://localhost:5050/api/courses?page=${currentPage}&limit=3&type=course`
-          : `http://localhost:5050/api/courses?page=${currentPage}&limit=3&type=training`
-      )
-      .then((res) => {
+    // e.preventDefault();
+    const urlTrainings = `${process.env.REACT_APP_API}api/Category/specificGroupeFromCategory`;
+    const urlCourses = `${process.env.REACT_APP_API}api/Category/specificGroupeFromCategory`;
+    if (selectedType === "COURSES") {
+      axios.post(urlCourses, { id: id, type: "courses" }).then(async (res) => {
         setCourses(res.data.data);
-        setTotalPages(res.data.totalPages);
       });
+    } else {
+      axios
+        .post(urlTrainings, { id: id, type: "trainings" })
+        .then(async (res) => {
+          setCourses(res.data.data);
+          // setTotalPages(res.data.totalPages);
+        });
+    }
+
+    // axios
+    //   .get(
+    //     selectedType === "COURSES"
+    //       ? `http://localhost:5050/api/courses`
+    //       : `http://localhost:5050/api/trainings`
+    //   )
+    //   .then((res) => {
+    //     setCourses(res.data.data);
+    //     setTotalPages(res.data.totalPages);
+    //   });
   };
 
   useEffect(() => {
@@ -83,10 +114,10 @@ const CategoryDetails = (props) => {
   const refHome = useRef();
   const arrayOnline =
     windowWidth > 900 ? groupIntoRows(courses, 3) : groupIntoRows(courses, 2);
-  const arrayOffline =
-    windowWidth > 900
-      ? groupIntoRows(props.offlineCourses, 3)
-      : groupIntoRows(props.onlineCourses, 2);
+  // const arrayOffline =
+  //   windowWidth > 900
+  //     ? groupIntoRows(props.offlineCourses, 3)
+  //     : groupIntoRows(props.onlineCourses, 2);
 
   return (
     <div className="backimage">

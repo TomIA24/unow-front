@@ -31,7 +31,7 @@ const Footer = ({ refHome }) => {
       headers: {},
     };
     try {
-      const url = `${process.env.REACT_APP_API}/api/newsletter/`;
+      const url = `${process.env.REACT_APP_API}api/newsletter/`;
       await axios.post(url, { email: email }).then(async (res) => {
         setSaved(true);
         setEmail({ email: "" });

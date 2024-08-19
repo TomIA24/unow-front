@@ -60,14 +60,16 @@ const Cart = ({ user }) => {
       headers: { authorization: `Bearer ${token}` },
     };
     try {
-      const url = `${process.env.REACT_APP_API}/api/trainings/specificGroupe`;
-      await axios.post(url, { cardIds: CartTrainingsIds },config).then((res) => {
-        setCart(res.data.data);
-        setLoadingTraining(false);
-      });
-      const urlCourses = `${process.env.REACT_APP_API}/api/courses/specificGroupe`;
+      const url = `${process.env.REACT_APP_API}api/trainings/specificGroupe`;
       await axios
-        .post(urlCourses, { cardIds: uniqueCartCoursesIds },config)
+        .post(url, { cardIds: CartTrainingsIds }, config)
+        .then((res) => {
+          setCart(res.data.data);
+          setLoadingTraining(false);
+        });
+      const urlCourses = `${process.env.REACT_APP_API}api/courses/specificGroupe`;
+      await axios
+        .post(urlCourses, { cardIds: uniqueCartCoursesIds }, config)
         .then((res) => {
           setCartCourses(res.data.data);
           setLoadingCourses(false);
@@ -88,7 +90,7 @@ const Cart = ({ user }) => {
   //
   //     };
   //     try {
-  //         const url = `${process.env.REACT_APP_API}/api/Candidat/buyInCart`
+  //         const url = `${process.env.REACT_APP_API}api/Candidat/buyInCart`
   //         await axios.post(url, {courseId: courseId}  )
   //         .then(res=>{
   //             window.location.reload(true)
@@ -104,8 +106,8 @@ const Cart = ({ user }) => {
       headers: { authorization: `Bearer ${token}` },
     };
     try {
-      const url = `${process.env.REACT_APP_API}/api/payment/course`;
-      await axios.post(url, { courseId: courseId },config).then((res) => {
+      const url = `${process.env.REACT_APP_API}api/payment/course`;
+      await axios.post(url, { courseId: courseId }, config).then((res) => {
         window.location = res.data.url;
       });
     } catch (error) {

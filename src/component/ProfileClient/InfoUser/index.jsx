@@ -56,11 +56,11 @@ const InfoUser = (props) => {
 
   const handleSubmit = async () => {
     try {
-      const url = `${process.env.REACT_APP_API}/api/courses`;
+      const url = `${process.env.REACT_APP_API}api/courses`;
       await axios.post(url).then((res) => {
         setAllCourses(res.data.data);
       });
-      const url2 = `${process.env.REACT_APP_API}/api/trainings`;
+      const url2 = `${process.env.REACT_APP_API}api/trainings`;
       await axios.post(url2).then((res) => {
         setAllTrainings(res.data.data);
       });
@@ -145,7 +145,7 @@ const InfoUser = (props) => {
   }, [, singleFile]);
 
   useEffect(() => {
-    const url = `${process.env.REACT_APP_API}/api/userData`;
+    const url = `${process.env.REACT_APP_API}api/userData`;
     const config = {
       headers: {
         authorization: `Bearer ${token}`,
@@ -216,7 +216,7 @@ const InfoUser = (props) => {
       },
     };
     try {
-      const url = `${process.env.REACT_APP_API}/api/Candidat/updateCandidat`;
+      const url = `${process.env.REACT_APP_API}api/Candidat/updateCandidat`;
       axios
         .post(url, Data, config)
         .then(async (res) => {
@@ -225,7 +225,7 @@ const InfoUser = (props) => {
               authorization: `Bearer ${localStorage.getItem("token")}`,
             },
           };
-          const url = `${process.env.REACT_APP_API}/api/userData`;
+          const url = `${process.env.REACT_APP_API}api/userData`;
           axios.post(url, {}, config).then((response) => {
             localStorage.removeItem("user");
             localStorage.setItem("user", JSON.stringify(response.data.data));

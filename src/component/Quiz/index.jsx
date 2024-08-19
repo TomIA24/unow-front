@@ -14,7 +14,10 @@ const MainQuiz = ({onStartQuiz}) => {
     const { quizId, setQuizId } = useQuiz();
     const startStatment = async () => {
         try {
-            const response = await axios.post('http://localhost:5050/api/quiz/api/quiz/create/4', { quizName: 'Sample Quiz' });
+            const response = await axios.post(
+              "http://localhost:5050/api/quizapi/quiz/create/4",
+              { quizName: "Sample Quiz" }
+            );
             const quizId = response.data._id;
             localStorage.setItem('quizId', quizId);
             console.log('quizId', quizId); // Save quizId to localStorage

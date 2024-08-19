@@ -30,7 +30,7 @@ const ProfileTrainer = (props) => {
         authorization: `Bearer ${token}`,
       },
     };
-    const urlUserData = `${process.env.REACT_APP_API}/api/userData`;
+    const urlUserData = `${process.env.REACT_APP_API}api/userData`;
     try {
       axios.post(urlUserData, {}, config).then((response) => {
         localStorage.setItem("user", JSON.stringify(response.data.data));
@@ -49,7 +49,7 @@ const ProfileTrainer = (props) => {
 
   const handleSubmit = async () => {
     try {
-      const url = `${process.env.REACT_APP_API}/api/courses`;
+      const url = `${process.env.REACT_APP_API}api/courses`;
       await axios
         .post(
           url

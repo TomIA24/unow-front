@@ -16,7 +16,7 @@ const Featured = () => {
         // Handle the case when image is missing
         const updatedData = data.trainers.map((trainer) => ({
           ...trainer,
-          image:  `http://localhost:5050/api/${trainer.image.filePath}` 
+          image: `http://localhost:5050/api/${trainer.image.filePath}`,
         }));
         setTrainers(updatedData);
       })

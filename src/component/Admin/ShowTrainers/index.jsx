@@ -23,7 +23,7 @@ const ShowTrainers = () => {
     const config = {
       headers: { authorization: `Bearer ${token}` },
     };
-    const url = `${process.env.REACT_APP_API}/api/Trainer/showTrainers`;
+    const url = `${process.env.REACT_APP_API}api/Trainer/showTrainers`;
     axios.post(url, {}, config).then((res) => {
       setData(res.data.trainers);
     });
@@ -33,7 +33,7 @@ const ShowTrainers = () => {
     const config = {
       headers: { authorization: `Bearer ${token}` },
     };
-    const url = `${process.env.REACT_APP_API}/api/Trainer/deleteTrainers`;
+    const url = `${process.env.REACT_APP_API}api/Trainer/deleteTrainers`;
     console.log(id);
     axios.post(url, { idTrainer: id }, config).then((res) => {
       handleData();

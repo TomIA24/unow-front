@@ -51,20 +51,20 @@ const Category = () => {
       },
     };
     await axios
-      .get(`${process.env.REACT_APP_API}/api/Category/getCategories`, config)
+      .get(`${process.env.REACT_APP_API}api/Category/getCategories`, config)
       .then(async (res) => {
         setCategories(res.data.data);
       });
   };
   const HandleCourses = async () => {
-    const url = `${process.env.REACT_APP_API}/api/courses`;
+    const url = `${process.env.REACT_APP_API}api/courses`;
     await axios.post(url).then((res) => {
       setCourses(res.data.data);
     });
   };
 
   const HandleTrainings = async () => {
-    const url = `${process.env.REACT_APP_API}/api/trainings`;
+    const url = `${process.env.REACT_APP_API}api/trainings`;
     await axios.post(url).then((res) => {
       setTrainings(res.data.data);
     });
@@ -78,7 +78,7 @@ const Category = () => {
     };
     await axios
       .post(
-        `${process.env.REACT_APP_API}/api/Category/setCategory`,
+        `${process.env.REACT_APP_API}api/Category/setCategory`,
         {
           Category: category,
         },
@@ -103,7 +103,7 @@ const Category = () => {
     };
     await axios
       .post(
-        `${process.env.REACT_APP_API}/api/Category/deleteCategory`,
+        `${process.env.REACT_APP_API}api/Category/deleteCategory`,
         {
           id: id,
         },

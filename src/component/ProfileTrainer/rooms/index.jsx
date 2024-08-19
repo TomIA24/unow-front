@@ -26,7 +26,7 @@ const Rooms = ({ user }) => {
   //
   // };
   //     try {
-  //             await axios.get("${process.env.REACT_APP_API}/api/Trainer/GetNotifTrainer" ).then((res)=>{
+  //             await axios.get("${process.env.REACT_APP_API}api/Trainer/GetNotifTrainer" ).then((res)=>{
   //                 (res.data.data)
   //                 var list = res.data.data.map(notif=>{
   //                     if(notif.StatusMandate==="confirmed")
@@ -69,7 +69,7 @@ const Rooms = ({ user }) => {
     };
     try {
       await axios
-        .post(`${process.env.REACT_APP_API}/api/Room/getRooms`, {}, config)
+        .post(`${process.env.REACT_APP_API}api/Room/getRooms`, {}, config)
         .then((res) => {
           setData(res.data.data)(res.data.data);
         });

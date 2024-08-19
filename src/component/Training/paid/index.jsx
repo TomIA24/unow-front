@@ -45,7 +45,7 @@ const PaidTraining = () => {
     };
     await axios
       .post(
-        `${process.env.REACT_APP_API}/api/trainings/getRoom`,
+        `${process.env.REACT_APP_API}api/trainings/getRoom`,
         {
           courseId: id,
         },
@@ -107,7 +107,7 @@ const PaidTraining = () => {
       params: { id: id },
     };
     await axios
-      .get(`${process.env.REACT_APP_API}/api/trainings/specific`, config)
+      .get(`${process.env.REACT_APP_API}api/trainings/specific`, config)
       .then(async (res) => {
         console.log("Data : -- ", res.data.data);
         setData(res.data.data);
@@ -138,7 +138,7 @@ const PaidTraining = () => {
     };
     await axios
       .post(
-        `${process.env.REACT_APP_API}/api/evaluations/getEvaluations`,
+        `${process.env.REACT_APP_API}api/evaluations/getEvaluations`,
         {
           courseId: id,
           student: user._id,
@@ -157,7 +157,7 @@ const PaidTraining = () => {
     };
     axios
       .post(
-        `${process.env.REACT_APP_API}/api/Candidat/returnCandidatForRatingInfo`,
+        `${process.env.REACT_APP_API}api/Candidat/returnCandidatForRatingInfo`,
         { ids: ids },
         config
       )
@@ -323,7 +323,7 @@ const PaidTraining = () => {
     console.log("data to save: ", evaluation.Evaluation);
     await axios
       .post(
-        `${process.env.REACT_APP_API}/api/evaluations/setEvaluation`,
+        `${process.env.REACT_APP_API}api/evaluations/setEvaluation`,
         {
           Data: evaluation,
         },

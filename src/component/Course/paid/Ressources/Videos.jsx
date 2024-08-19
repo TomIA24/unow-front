@@ -44,7 +44,7 @@ const Videos = () =>{
           params: { id: id },
         };
         axios
-          .get(`${process.env.REACT_APP_API}/api/courses/specific`, config)
+          .get(`${process.env.REACT_APP_API}api/courses/specific`, config)
           .then((res) => {
             setData(res.data.data);
             setVideos(res.data.data.Videos);
