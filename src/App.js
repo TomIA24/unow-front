@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-
-import Main from "./component/Main";
-//import Welcome from "./component/Welcome";
+ 
 import Personalize from "./component/Personalize";
 import Login from "./component/Login";
 import ResetPassword from "./component/ResetPassword";
@@ -9,7 +7,6 @@ import SignUp from "./component/SignUp";
 import Room from "./component/Room";
 import Course from "./component/Course";
 import Contact from "./component/Contact";
-// import CourseRessources from "./component/Course/Ressources"
 import Training from "./component/Training";
 import CompleteInfo from "./component/CompleteInfo";
 import ProfileClient from "./component/ProfileClient";
@@ -18,26 +15,21 @@ import Admin from "./component/Admin";
 import Videos from "./component/Course/paid/Ressources/Videos";
 import { Accept, Refuse } from "./component/Payment";
 
-import { Link, Route, Routes, Navigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import MissingRoute from "./secure/MissingRoute";
 
 import { LanguageProvider } from "./hooks/LanguageContext";
-//import Categories from "./component/Categories";
-//import Featured from "./component/Home/Featured Trainers";
 import HomeInterface from "./component/Home/HomeInterface";
 import MainQuiz from "./component/Quiz";
- 
+
 import Quiz from "./component/Quiz/Questions";
 import CategoryDetails from "./component/Home/Categories/CategoryDetails";
 import CoursesSection from "./component/CoursesSection";
- 
-import Timeout from './component/Quiz/Questions/timeout';
-import { QuizProvider } from './hooks/QuizContext';
- 
-// import axios from "axios";
-// import React, { useEffect, useState } from "react";
 
-
+import Timeout from "./component/Quiz/Questions/timeout";
+import { QuizProvider } from "./hooks/QuizContext";
+ 
+ 
 function App() {
   const [startDate, setStartDate] = useState(null);
   const handleStartQuiz = () => {
