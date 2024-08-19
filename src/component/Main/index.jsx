@@ -166,8 +166,7 @@ const Main = () => {
   };
   return (
     <React.Fragment className={styles.body}>
-
-      <div style={{ backgroundColor: 'background: #f9f9f9;' }}>
+      <div style={{ backgroundColor: "background: #f9f9f9;" }}>
         {/* <div className={styles.containerimage}><img src="./images/home/background.png" alt="" className={styles.imagebackground} /></div> */}
         <Nav ref={refHome} />
         <div className={styles.motivationImg}>
@@ -179,37 +178,34 @@ const Main = () => {
               “Coming together is a beginning, keeping together is progress,
               working together is success.”
               <div className={styles.textsearch2}> Henry Ford</div>
-              <br /> 
+              <br />
             </div>
           </div>
           {/* <div className={styles.sectionTwo}> */}
 
           <div className={styles.explore_container}>
-
             <button
               className={styles.explore_btn}
               type="button"
-              onClick={() => { }}
+              onClick={() => {}}
             >
               Explore
             </button>
             <div className={styles.explore_line} />
             <input
               type="text"
-              placeholder="Type here..." 
+              placeholder="Type here..."
               className={styles.explore_input}
             />
             <div className={styles.explore_line} />
             <button
               className={styles.search_btn}
               type="button"
-              onClick={() => { }}
+              onClick={() => {}}
             >
-              <img src={loupe} alt=""  className={styles.icon_search} />
+              <img src={loupe} alt="" className={styles.icon_search} />
             </button>
           </div>
-
-        
         </div>
         <Header />
 
@@ -220,60 +216,68 @@ const Main = () => {
           </div>
           <div className={styles.topTrainingElements}>
             <div>
-            <button
-             className={styles.arrowButton} 
-              onClick={prevPage}
-            >
-              <img src="./images/home/left.png" alt="Description of the image" className={styles.arrows}/>
-            </button>
+              <button className={styles.arrowButton} onClick={prevPage}>
+                <img
+                  src="./images/home/left.png"
+                  alt="Description of the image"
+                  className={styles.arrows}
+                />
+              </button>
             </div>
             <div className={styles.carousel} ref={carouselRef}>
               {currentTrainings.map((training) => (
-
                 <Link to={{ pathname: `/Training/${training._id}` }}>
-                <div className={styles.inner_carousel} key={training._id}>
-                  {training.Thumbnail && training.Thumbnail.filePath ? (
-                    <div className={styles.image}>
-                      <img src={`${process.env.REACT_APP_API}/${training.Thumbnail.filePath}`}alt={training.Title} className={styles.imagefeatures} />
-
+                  <div className={styles.inner_carousel} key={training._id}>
+                    {training.Thumbnail && training.Thumbnail.filePath ? (
+                      <div className={styles.image}>
+                        <img
+                          src={`${process.env.REACT_APP_API}/${training.Thumbnail.filePath}`}
+                          alt={training.Title}
+                          className={styles.imagefeatures}
+                        />
+                      </div>
+                    ) : (
+                      <div className={styles.image}>
+                        <img
+                          src="default-image.png"
+                          alt="Default"
+                          className={styles.imagefeatures}
+                        />
+                      </div>
+                    )}
+                    <div>
+                      <div className={styles.categorie}>
+                        <div className={styles.categorietype}>
+                          {training.Category}
+                        </div>
+                        <div className={styles.categoriprice}>
+                          {training.Price} $
+                        </div>
+                      </div>
                     </div>
-                  ) : (
-                    <div className={styles.image}>
-                      <img src="default-image.png" alt="Default" className={styles.imagefeatures} /></div>
-                  )}
-                  <div>
-                    <div className={styles.categorie}>
-                      <div className={styles.categorietype}>{training.Category}</div>
-                      <div className={styles.categoriprice}>{training.Price} $</div>
-
-                    </div>
- 
-                    <div className={styles.categoriniveau}>{training.Level}</div>
-                    <div className={styles.categoridomain}>{training.Title}</div>                   
- 
                   </div>
-
-                </div>
                 </Link>
-
               ))}
             </div>
             <div>
-            <button
-             className={styles.arrowButton}
-              onClick={nextPage}
-              disabled={currentPage === Math.ceil(trainings.length / trainingsPerPage)}
-            >
-              <img src="./images/home/right.png" alt="Description of the image" className={styles.arrows}/>
-            </button>
+              <button
+                className={styles.arrowButton}
+                onClick={nextPage}
+                disabled={
+                  currentPage === Math.ceil(trainings.length / trainingsPerPage)
+                }
+              >
+                <img
+                  src="./images/home/right.png"
+                  alt="Description of the image"
+                  className={styles.arrows}
+                />
+              </button>
             </div>
           </div>
         </div>
-
       </div>
-
     </React.Fragment>
-    
   );
 };
 

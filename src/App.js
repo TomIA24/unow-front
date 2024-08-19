@@ -31,7 +31,6 @@ import Quiz from "./component/Quiz/Questions";
 import CategoryDetails from "./component/Home/Categories/CategoryDetails";
 import CoursesSection from "./component/CoursesSection";
  
-import Quiz from "./component/Quiz/Questions"; 
 import Timeout from './component/Quiz/Questions/timeout';
 import { QuizProvider } from './hooks/QuizContext';
  
