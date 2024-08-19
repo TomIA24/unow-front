@@ -151,13 +151,19 @@ const StandardCourse = () => {
   // },[Data])
 
   const handleDisabled = () => {
-    document.getElementById(styles.CourseButtonsInfoPageB1).disabled = true;
+    // if(document.getElementById(styles.CourseButtonsInfoPageB1).disabled){
+
+    //   document.getElementById(styles.CourseButtonsInfoPageB1).disabled = true;
+    // }
     // document.getElementById(styles.CourseButtonsInfoPageB1).style.backgroundColor = 'grey'
     // document.getElementById(styles.CourseButtonsInfoPageB1).style.cursor= 'not-allowed'
   };
 
   const handleDisabled2 = () => {
-    document.getElementById(styles.CourseButtonsInfoPageB2).disabled = true;
+    // if(document.getElementById(styles.CourseButtonsInfoPageB2).disabled){
+
+    //   document.getElementById(styles.CourseButtonsInfoPageB2).disabled = true;
+    // }
     // document.getElementById(styles.CourseButtonsInfoPageB2).style.backgroundColor = 'grey'
     // document.getElementById(styles.CourseButtonsInfoPageB2).style.cursor= 'not-allowed'
   };

@@ -31,7 +31,7 @@ const Nav = () => {
       setMobileView(false);
     }
   }, []);
-  useEffect(() => {
+  useEffect(() => { 
     console.log(WindowWidth);
     if (WindowWidth <= 800) {
       setMobileView(true);

@@ -492,9 +492,11 @@ const[down,setDown] = useState(false);
 
   useEffect(() => {
     console.log(WindowWidth);
-    if (WindowWidth <= 810) {
+    if (WindowWidth <= 876) {
+      setDown(true);
       setMobileView(true);
     } else {
+      setDown(false);
       setMobileView(false);
     }
   }, [WindowWidth]);
@@ -508,22 +510,22 @@ const[down,setDown] = useState(false);
     <React.Fragment>
 
       <div className={styles.backimage}>
-
+      <div className={styles.maincontainernav}>
         <div className={styles.nav_container}>
 
-  
+
   
    <Nav ref={refHome} />
+ 
         </div>
         <div className={styles.pdowncontainer}>
-          <div className={styles.pdown} >COURSES DETAILS
+          <div className={styles.pdown} >TRAINING DETAILS
             <p className={styles.underline}></p>
           </div>
-
+          </div>
         </div>
-
       </div>
-
+      <div className={styles.maincontainer}>
       <main className={styles.MotherDivCourse}>
 
 
@@ -533,7 +535,7 @@ const[down,setDown] = useState(false);
         <div className={styles.MainDivCourse}>
 
           <div className={styles.leftSectionCourse}>
-            <div className={styles.course} >COURSES 
+            <div className={styles.course} >TRAINING
               <p className={styles.underline}></p>
             </div>
 
@@ -559,21 +561,22 @@ const[down,setDown] = useState(false);
                 // />
                 <div 
                 className={styles.imgCourse} 
-                style={{  backgroundImage: `url(${process.env.REACT_APP_API}/uploads/courseImg.png) !important` }}
+                // style={{  backgroundImage: `url(${process.env.REACT_APP_API}/uploads/courseImg.png) !important` }}
               >
-                      <img
-                  src={`${process.env.REACT_APP_API}/${Data.Thumbnail.filePath}`}
-                  alt=""
-                  className={styles.imgCourseImage}
-                />
+                      <div className={styles.videocontainer}>
+                  <video controls>
+                    <source src="/video/test.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
               </div>
             
                
               )}
 
               <div className={styles.FirsSectionInfoCourseTitle}>
+                {/* <h1>{Data.Title}</h1> */}
                 <h1>{Data.Title}</h1>
-               
               </div>
               <div>
                 <div className={styles.courseInfo}><span>Amira BACHA</span><span>enrolled number</span><span>{Data.rating
@@ -587,7 +590,7 @@ const[down,setDown] = useState(false);
             <div className={styles.ScndSectionInfoCourse}>
 
 
-<div>
+<div className={styles.coursePart}>
               <div className={styles.DescriptionInfoCourse}>
                 <div className={styles.DescriptionInfoCourseTitle}>
 
@@ -705,7 +708,7 @@ const[down,setDown] = useState(false);
                 ""
               )}
             </div>
-            {mobileView &&(  <div className={styles.rightSectionCourse}>
+            {down &&(  <div className={styles.rightSectionCourse}>
               <div className={styles.scndInfos}>
                 <div className={styles.CoursePriceInfoPage}>
                   <div className={styles.price}>{Data.Price} TTC
@@ -1150,7 +1153,7 @@ const[down,setDown] = useState(false);
           </div>
 
 
-         {!mobileView && <div className={styles.rightSectionContainer}>
+         {!down && <div className={styles.rightSectionContainer}>
             
             <div className={styles.rightSectionCourse}>
               <div className={styles.scndInfos}>
@@ -1593,6 +1596,7 @@ const[down,setDown] = useState(false);
           </div>}
         </div>
       </main>
+      </div>
       <Footer />
     </React.Fragment>
   );

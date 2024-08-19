@@ -359,7 +359,7 @@ const PaidTraining = () => {
     return (
       <React.Fragment>
         <Nav />
-
+{/* //kitebda mafamesh tasiwra y7ut mta3 el categorie  */}
         <main className={styles.MotherDivCourse}>
           <div className={styles.MainDivCourse}>
             <div className={styles.leftSectionCourse}>
