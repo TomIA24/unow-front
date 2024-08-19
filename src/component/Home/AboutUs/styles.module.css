@@ -80,7 +80,6 @@
   display: flex;
   justify-content: center;
   background-color: #3E4678;
-  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.503);
   color: white;
   font-size: 10px;
   font-weight: bold;
@@ -98,7 +97,6 @@
 
 .readButton:hover, .applyButton:hover {
   box-shadow: 0 3px 7px rgba(0, 0, 0, 0.503);
-  background-color: #CD6214;
 }
 
 /* Media queries for responsiveness */
