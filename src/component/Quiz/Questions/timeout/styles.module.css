@@ -1,0 +1,734 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700,800,800i,900i&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap');
+
+body {
+  background-color: #F9F9F9;
+}
+.backimagtimeout{
+  background: url('../../../assets/quizbackground.png') no-repeat center center;
+  background-size: cover;
+  height: 22rem;
+  border-radius: 0px 0px 50px 50px;
+  display: flex;
+  flex-direction: column;
+
+  z-index: 1;
+}
+.producttimeout{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.menudialog{
+ margin-top: 5rem;
+ margin-bottom:5rem ;
+}
+
+.backimagecontainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  padding-left: 15%;
+  padding-right: 15%;
+  align-items: center;
+}
+
+.timer {}
+
+.containerTimer {
+  right:15em;
+
+  position: fixed;
+
+
+
+}
+
+.menulist{
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  padding-top: 0.5rem;
+  width: 100%;
+
+}
+.menu{
+
+}
+.quizcontainer {
+  padding-top: 4rem;
+  display: flex;
+  flex-direction: column;
+
+  gap: 1.5rem;
+}
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  margin-bottom: 0;
+}
+
+.questionsection {
+  padding-right: 2%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+}
+
+
+
+
+/* input{
+    margin-right: 16px;
+  } */
+.product {
+  font-size: 40px;
+  color: white;
+  margin-top: 10px;
+  font-weight: 800;
+  font-family: 'Lato';
+}
+
+.scrumorg {
+  margin-top: 10px;
+}
+
+.scrumorgscore {
+  width: 50%;
+}
+
+.submitSection {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /* padding-top: 5px; */
+  /* padding-bottom: 0px; */
+
+}
+
+.butnprevious {
+  width: 10rem;
+  height: 2.5rem;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+
+  background-color: rgb(14, 59, 110);
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+  font-family: "Nunito";
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 2rem;
+  margin-bottom: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.logotimeout{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50%;
+  width: 100%;
+  margin-bottom: 0;
+}
+.imageechec {
+  position: relative;
+}
+.imagetimeout{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.imgtimeout{
+
+}
+
+
+.timeOutMessage{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+align-items: center;
+}
+.timeOutText{
+text-align: center;
+}
+/*Score Resullts */
+
+
+
+
+
+@media (min-width: 300px) and (max-width: 327px) {
+  .butnprevious {
+    width: 10rem;
+    height: 3rem;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  
+    background-color: rgb(14, 59, 110);
+    color: white;
+    font-size:1.5rem;
+
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 2rem;
+    margin-bottom: 10px;
+  }
+  .backimagtimeout{
+
+   
+    border-radius: 0px 0px 35px 35px;
+    display: flex;
+    flex-direction: column;
+  
+    z-index: 1;
+  }
+  .imgtimeout{
+    width: 65%;
+      }
+  .scrumorg {
+    margin-top: 1px;
+
+  }
+
+  .product {
+    font-size: 2rem;
+
+  }
+
+  .logoimagtimout{
+    width: 11rem;  
+    }
+}
+
+@media (min-width: 327px) and (max-width: 346px) {
+  .butnprevious {
+    width: 10rem;
+    height: 3rem;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  
+    background-color: rgb(14, 59, 110);
+    color: white;
+    font-size:1.5rem;
+
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 2rem;
+    margin-bottom: 10px;
+  }
+  .backimagtimeout{
+
+   
+    border-radius: 0px 0px 35px 35px;
+    display: flex;
+    flex-direction: column;
+  
+    z-index: 1;
+  }
+  .imgtimeout{
+    width: 65%;
+      }
+  .scrumorg {
+    margin-top: 1px;
+
+  }
+
+  .product {
+    font-size: 2rem;
+
+  }
+
+  .logoimagtimout{
+    width: 11rem;  
+    }
+}
+
+@media (min-width: 346px) and (max-width: 360px) {
+  .butnprevious {
+    width: 10rem;
+    height: 3rem;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  
+    background-color: rgb(14, 59, 110);
+    color: white;
+    font-size:1.5rem;
+
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 2rem;
+    margin-bottom: 10px;
+  }
+  .imgtimeout{
+    width: 65%;
+      }
+  .scrumorg {
+    margin-top: 1px;
+
+  }
+
+  .product {
+    font-size: 2rem;
+
+  }
+
+  .logoimagtimout{
+    width: 11rem;  
+    }
+}
+
+@media (min-width: 361px) and (max-width: 390px) {
+
+  .butnprevious {
+    width: 10rem;
+    height: 3rem;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  
+    background-color: rgb(14, 59, 110);
+    color: white;
+    font-size:1.5rem;
+
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 2rem;
+    margin-bottom: 10px;
+  }
+  .imgtimeout{
+    width: 65%;
+      }
+  .scrumorg {
+    margin-top: 1px;
+
+  }
+
+  .product {
+    font-size: 2rem;
+
+  }
+
+  .logoimagtimout{
+    width: 11rem;  
+    }
+  .backimagtimeout{
+
+   
+    border-radius: 0px 0px 35px 35px;
+    display: flex;
+    flex-direction: column;
+  
+    z-index: 1;
+  }
+
+}
+
+@media (min-width: 390px) and (max-width: 400px) {
+
+
+  .imgtimeout{
+    width: 65%;
+      }
+  .scrumorg {
+    margin-top: 1px;
+
+  }
+
+  .product {
+    font-size: 2rem;
+
+  }
+  .logoimagtimout{
+    width: 11rem;  
+    }
+}
+
+@media (min-width: 400px) and (max-width: 500px) {
+  .backimagtimeout{
+
+   
+    border-radius: 0px 0px 35px 35px;
+    display: flex;
+    flex-direction: column;
+  
+    z-index: 1;
+  }
+
+  .imgtimeout{
+    width: 70%;
+      }
+  .scrumorg {
+    margin-top: 1px;
+
+  }
+
+  .product {
+    font-size: 2rem;
+
+  }
+
+  .logoimagtimout{
+    width: 11rem;  
+    }
+}
+
+@media (min-width: 500px) and (max-width: 520px) {
+
+  .imgtimeout{
+    width: 80%;
+      }
+  .scrumorg {
+    margin-top: 1px;
+
+  }
+
+  .product {
+    font-size: 2rem;
+
+  }
+
+  .logoimagtimout{
+    width: 11rem;  
+    }
+}
+
+@media (min-width: 520px) and (max-width: 576px) {
+
+  .imgtimeout{
+    width: 80%;
+      }
+  .scrumorg {
+    margin-top: 1px;
+
+  }
+
+  .product {
+    font-size: 2rem;
+
+  }
+
+  .logoimagtimout{
+    width: 11rem;  
+    }
+}
+
+
+
+@media (min-width: 577px) and (max-width: 699px) {
+  
+  .imgtimeout{
+    width: 80%;
+      }
+  .scrumorg {
+    margin-top: 1px;
+
+  }
+
+  .product {
+    font-size: 2rem;
+
+  }
+
+  .logoimagtimout{
+    width: 11rem;  
+    }
+}
+
+/* For small screens (phones) */
+@media (min-width: 699px) and (max-width: 748px) {  
+  
+  .imgtimeout{
+    width: 80%;
+      }
+  .scrumorg {
+    margin-top: 1px;
+
+  }
+
+  .product {
+    font-size: 2rem;
+
+  }
+
+  .logoimagtimout{
+    width: 11rem;  
+    }
+
+}
+
+
+
+
+
+@media (min-width: 748px) and (max-width: 760px) {
+  
+  .imgtimeout{
+    width: 80%;
+      }
+  .scrumorg {
+    margin-top: 1px;
+
+  }
+
+  .product {
+    font-size: 2rem;
+
+  }
+  .logoimagtimout{
+    width: 11rem;  
+    }
+}
+
+@media (min-width: 760px) and (max-width: 800px) {
+  
+  .imgtimeout{
+    width: 80%;
+      }
+  .scrumorg {
+    margin-top: 1px;
+
+  }
+
+  .product {
+    font-size: 2rem;
+
+  }
+
+  .logoimagtimout{
+    width: 11rem;  
+    }
+}
+
+@media (min-width: 800px) and (max-width: 876px) {
+  
+  .imgtimeout{
+    width: 80%;
+      }
+  .scrumorg {
+    margin-top: 1px;
+
+  }
+
+  .product {
+    font-size: 2rem;
+
+  }
+
+  .logoimagtimout{
+    width: 11rem;  
+    }
+}
+
+
+
+
+
+@media (min-width: 876px) and (max-width: 919px) {
+ 
+  .imgtimeout{
+    width: 80%;
+      }
+  .scrumorg {
+    margin-top: 1px;
+
+  }
+
+  .product {
+    font-size: 2rem;
+
+  }
+
+  .logoimagtimout{
+    width: 11em;  
+    }
+}
+
+@media (min-width: 919px) and (max-width: 944px) {
+ 
+  .imgtimeout{
+    width: 80%;
+      }
+  .scrumorg {
+    margin-top: 1px;
+
+  }
+
+  .product {
+    font-size: 2rem;
+
+  }
+
+  .logoimagtimout{
+  width: 11rem;  
+  }
+}
+
+@media (min-width: 945px) and (max-width: 1082px) {
+  
+  .imgtimeout{
+    width: 80%;
+      }
+  .scrumorg {
+    margin-top: 1px;
+
+  }
+
+  .product {
+    font-size: 2rem;
+
+  }
+
+  .logoimagtimout{
+    width: 12rem;
+  }
+}
+
+@media (min-width: 1082px) and (max-width: 1100px) {
+
+
+ 
+  .imgtimeout{
+    width: 80%;
+      }
+  .scrumorg {
+    margin-top: 1px;
+
+  }
+
+  .product {
+    font-size: 2rem;
+
+  }
+
+  .logoimagtimout{
+
+  }
+}
+
+@media (min-width: 1100px) and (max-width: 1200px) {
+  
+  .imgtimeout{
+    width: 80%;
+      }
+  .scrumorg {
+    margin-top: 1px;
+
+  }
+
+  .product {
+    font-size: 2rem;
+
+  }
+
+  .logoimagtimout{
+    
+  }
+}
+
+/* For extra large screens (large desktops) */
+@media (min-width: 1200px) and (max-width: 1240px) {
+
+  
+  .imgtimeout{
+    width: 80%;
+      }
+  .scrumorg {
+    margin-top: 1px;
+
+  }
+
+  .product {
+    font-size: 2rem;
+
+  }
+
+  .logoimagtimout{
+    
+  }
+}
+
+
+@media (min-width: 1240px) and (max-width:1350px) {
+
+ 
+  .imgtimeout{
+    width: 80%;
+      }
+  .scrumorg {
+    margin-top: 1px;
+   
+  }
+
+  .product {
+    font-size: 2rem;
+
+  }
+
+  .logoimagtimout{
+
+  }
+}
+
+@media (min-width: 1350px) and (max-width:1500px) {
+ 
+  .imgtimeout{
+    width: 80%;
+      }
+  .scrumorg {
+    margin-top: 1px;
+  }
+
+  .product {
+    font-size: 2rem;
+
+  }
+
+  .logoimagtimout{
+
+  }
+
+}
+
+@media (min-width: 1500px) and (max-width:1920px) {
+
+
+
+
+
+
+
+}

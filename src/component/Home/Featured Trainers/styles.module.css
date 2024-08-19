@@ -186,14 +186,14 @@
 }
 
 /* Media queries for different screen widths */
-@media (max-width: 350px)  {
+@media (max-width: 372px)  {
   .card {
-    width: 81px;
-    height: 8.5rem;
+    width: 95px;
+    height: 12.5rem;
   }
 }
 /* For screens between 300px and 399px */
-@media (min-width: 350px) and (max-width: 400px) {
+@media (min-width: 372px) and (max-width: 400px) {
   .card {
     width: 98px;
     height: 9.5rem;
@@ -504,7 +504,8 @@
   font-size: 12px;
   text-align: center;
   white-space: normal;
-  padding: 0 10% 0 10%;
+  padding: 0 12% 0 12%;
+ 
 }
 
 @media (max-width: 300px) {

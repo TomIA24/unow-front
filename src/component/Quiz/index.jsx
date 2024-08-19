@@ -1,20 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect } from 'react';
 import { Link } from "react-router-dom";
 import styles from "./styles.module.css";
 import Footer from '../Home/Footer';
 import QuizNav from "./nabar";
+import axios from 'axios';
+import { useQuiz } from '../../hooks/QuizContext';
+
 
 const MainQuiz = ({onStartQuiz}) => {
 
     const [started, setStarted] = useState(false);
-    const startStatment = () => {
-        setStarted(true);
+   
+    const { quizId, setQuizId } = useQuiz();
+    const startStatment = async () => {
+        try {
+            const response = await axios.post('http://localhost:5050/api/quiz/api/quiz/create/4', { quizName: 'Sample Quiz' });
+            const quizId = response.data._id;
+            localStorage.setItem('quizId', quizId);
+            console.log('quizId', quizId); // Save quizId to localStorage
+            setQuizId(quizId);
+            setStarted(true);
+        } catch (error) {
+            console.error('Error creating quiz:', error);
+        }
     };
- 
-
+    useEffect(() => {
+        const storedQuizId = localStorage.getItem('quizId');
+        if (storedQuizId) {
+            setQuizId(storedQuizId);
+        
+        }
+    }, [setQuizId]);
     return (
         <>
-            {started ? (<div className={styles.containerQuiz}>
+            {!started ? (<div className={styles.containerQuiz}>
                 <div className={styles.quiNav}>
                     <QuizNav />
                 </div>
@@ -28,7 +47,7 @@ const MainQuiz = ({onStartQuiz}) => {
                     </div>
                 </div>
                 <div className={styles.footer}>
-                    <Footer />
+                    <Footer />a
                 </div>
             </div>) : (
                 <>
@@ -68,7 +87,7 @@ const MainQuiz = ({onStartQuiz}) => {
 
                         </div>
                         <div className={styles.continuebutton}>
-                            <button className={styles.continue}>  <Link to="/question" style={{ color: 'white' }}  onClick={onStartQuiz} >
+                            <button className={styles.continue}>  <Link to={`/question`}  style={{ color: 'white' }}  onClick={onStartQuiz} >
                                 Continue
                             </Link></button>
                         </div>

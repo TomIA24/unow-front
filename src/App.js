@@ -27,6 +27,8 @@ import { LanguageProvider } from "./hooks/LanguageContext";
 import HomeInterface from "./component/Home/HomeInterface";
 import MainQuiz from "./component/Quiz";
 import Quiz from "./component/Quiz/Questions"; 
+import Timeout from './component/Quiz/Questions/timeout';
+import { QuizProvider } from './hooks/QuizContext';
 // import axios from "axios";
 // import React, { useEffect, useState } from "react";
 
@@ -45,6 +47,7 @@ function App() {
 
   return (
     <LanguageProvider>
+     <QuizProvider>
       <div className="App">
         <Routes>
           {!user && (
@@ -58,6 +61,8 @@ function App() {
           <Route exact path="/home" element={<HomeInterface />} />
           <Route exact path="/question" element={<Quiz     startDate={startDate}/>}  />
           <Route exact path="/quiz" element={<MainQuiz onStartQuiz={handleStartQuiz}/>}   />
+          <Route exact path="/timeout" element={<Timeout />} />
+
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/ResetPassword" element={<ResetPassword />} />
           <Route exact path="/signup" element={<SignUp />} />
@@ -88,6 +93,7 @@ function App() {
           )}
         </Routes>
       </div>
+      </QuizProvider>
     </LanguageProvider>
   );
 }
