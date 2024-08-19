@@ -5,10 +5,11 @@
   background-position: bottom;
   background-repeat: no-repeat; 
 } */
+ 
 .container {
   position: relative;
-  
 }
+
 
 .background {
   position: absolute;
@@ -133,46 +134,12 @@
     height: 94%;
   }
 }
-@media (min-width: 1400px) and (max-width:1527px)  {
+@media (min-width: 1400px) {
   .background {
     height: 94%;
   }
 }
-@media (min-width: 1527px) and (max-width:1580px)  {
-  .background {
-    height: 94%;
-  }
-}
-@media (min-width: 1580px) and (max-width:1650px)  {
-  .background {
-    height: 94%;
-  }
-}
-@media (min-width: 1650px) and (max-width:1750px)  {
-  .background {
-    height: 94%;
-  }
-}
-@media (min-width: 1750px) and (max-width:1850px)  {
-  .background {
-    height: 94%;
-  }
-}
-@media (min-width: 1850px) and (max-width:1950px)  {
-  .background {
-    height: 94%;
-  }
-}
-@media (min-width: 1950px) and (max-width:2050px)  {
-  .background {
-    height: 94%;
-  }
-}
-@media (min-width: 2050px)  {
-  .background {
-    height: 94%;
-  }
-}
+
 
 
 
@@ -190,7 +157,7 @@
 .content {
   position: relative;
   z-index: 1; /* Ensure the content is above the background */
- 
+
 }
 .Featured{
 margin-top: 5%;
@@ -200,4 +167,10 @@ margin-top: 5%;
 .margin{
   margin-left: 50px;
   margin-right: 50px;
+}
+@media (min-width:1500px){
+  .margin{
+    padding-left: 12em;
+    padding-right: 12em;
+  }
 }
