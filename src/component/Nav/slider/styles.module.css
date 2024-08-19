@@ -16,6 +16,16 @@
     font-size: 50px
 
 }
+
+@media (max-width: 800px) {
+    .logo{
+      
+            justify-content:center;
+      
+          
+        
+    }
+}
 @media (min-width: 377px) and (max-width: 577px) {
     .menuIcon{/* Styles pour les tablettes et petits appareils */
         font-size: 50%;
@@ -117,12 +127,11 @@
 
 .logo {
     width: 100%;
-    font-size: 36px;
-    font-weight: 800;
+
     color: #ffffff;
-    align-self: flex-start;
+    align-self: center;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
   
 }

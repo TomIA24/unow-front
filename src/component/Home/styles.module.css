@@ -150,63 +150,30 @@
 }
 @media (min-width: 1650px) and (max-width:1750px)  {
   .background {
-    height: 88%;
+    height: 94%;
   }
 }
 @media (min-width: 1750px) and (max-width:1850px)  {
   .background {
-    height: 88%;
+    height: 94%;
   }
 }
 @media (min-width: 1850px) and (max-width:1950px)  {
   .background {
-    height: 88%;
+    height: 94%;
   }
 }
 @media (min-width: 1950px) and (max-width:2050px)  {
   .background {
-    height: 88%;
+    height: 94%;
   }
 }
-@media (min-width: 2050px) and (max-width:2150px)  {
+@media (min-width: 2050px)  {
   .background {
-    height: 89%;
+    height: 94%;
   }
 }
-@media (min-width: 2150px) and (max-width:2250px)  {
-  .background {
-    height: 89%;
-  }
-}
-@media (min-width: 2250px) and (max-width:2350px)  {
-  .background {
-    height: 89%;
-  }
-}
-@media (min-width: 2350px) and (max-width:2450px)  {
-  .background {
-    height: 89%;
-  }
-}
-@media (min-width: 2450px) and (max-width: 2800px)  {
-  .background {
-    height: 93%;
-  }
-}
-@media (min-width: 2800px) and (max-width: 3000px)  {
-  .background {
-    height: 93%;
-  }
-}
-@media (min-width: 3000px) and (max-width: 3500px)  {
-  .background {
-    height: 96%;
-  }
-}
-@media (min-width: 3500px)   {
-  .background {
-    height: 96%;
-}}
+
 
 
 

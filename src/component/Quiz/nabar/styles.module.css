@@ -20,7 +20,7 @@
   .backimage {
     background: url('../../assets/quizbackground.png') no-repeat center center;
     background-size: cover;
-    height: 40vh;
+    height: 20rem;
     border-radius: 0px 0px 50px 50px;
   }
   .underline{

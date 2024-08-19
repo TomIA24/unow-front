@@ -438,7 +438,20 @@ const StandardCourse = () => {
 
   return (
     <React.Fragment>
-      <Nav />
+   <div className={styles.backimage}>
+
+<div className={styles.navContainer}>
+
+  <Nav />
+</div>
+<div className={styles.pdowncontainer}>
+  <div className={styles.pdown} >COURSES DETAILS
+    <p className={styles.underline}></p>
+  </div>
+
+</div>
+
+</div>
       <main className={styles.MotherDivCourse}>
         <div className={styles.MainDivCourse}>
           <div className={styles.leftSectionCourse}>
@@ -578,6 +591,7 @@ const StandardCourse = () => {
               )}
             </div>
           </div>
+          <div className={styles.rightSectionCourseCnt}>
           <div className={styles.rightSectionCourse}>
             <div className={styles.scndInfos}>
               <div className={styles.InfosRefDur}>
@@ -746,6 +760,7 @@ const StandardCourse = () => {
                 </Modal>
               </div>
             </div>
+          </div>
           </div>
         </div>
       </main>
