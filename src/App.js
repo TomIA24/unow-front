@@ -32,6 +32,7 @@ import { QuizProvider } from './hooks/QuizContext';
 // import axios from "axios";
 // import React, { useEffect, useState } from "react";
 
+
 function App() {
   const [startDate, setStartDate] = useState(null);
   const handleStartQuiz = () => {
@@ -59,6 +60,9 @@ function App() {
 
           <Route path="*" element={<MissingRoute />} />
           <Route exact path="/home" element={<HomeInterface />} />
+
+
+          
           <Route exact path="/question" element={<Quiz     startDate={startDate}/>}  />
           <Route exact path="/quiz" element={<MainQuiz onStartQuiz={handleStartQuiz}/>}   />
           <Route exact path="/timeout" element={<Timeout />} />

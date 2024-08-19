@@ -54,14 +54,18 @@ const Nav = () => {
       <nav className={styles.nav_container}>
       {!mobileView ? (
           <div className={styles.nav_web_container}>
-          <div className={styles.logo}>
-            <Link to="/" >
-            <img src="/images/home/logoblanc 1.png" alt=""   className={styles.logoimage}  />
+
+            <Link to="/">
+            
+            <img src="/images/home/logoblanc.png" alt="" className={styles.logoimage} />
+
+
               {/* <img
                 style={{ marginTop: "20px", width: "160px" }}
                 className={styles.LogoImg}
                 src={imgLogo}
               />{" "} */}
+             
             </Link>
             </div>
             <div className={styles.middle_nav}>

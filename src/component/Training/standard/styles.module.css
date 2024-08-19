@@ -3,7 +3,9 @@
 .backimage {
     background: url('../../assets/quizbackground.png') no-repeat center center;
     background-size: cover;
+ 
     height:18rem;
+ 
     border-radius: 0px 0px 50px 50px;
     
   }
@@ -19,12 +21,14 @@
   .pdown{
     color: #FFFFFF;
     font-size: 40px;
+ 
 font-weight: 900;
   }
   .course{
     color: #2C2C2C;
     font-size: 3rem;
 font-weight: 900;
+ 
   }
 
   .underline{
@@ -39,17 +43,19 @@ font-weight: 900;
     font-size: 40px;
     color: white;
     font-weight: 600;
-  
+ 
     font-family: "Lato";
 
 
   }
   .navContainer{
+ 
     
   }
   .pdowncontainer{
     padding-left: 8rem;
     padding-right: 8rem;
+ 
     padding-top: 100px;
   }
 
@@ -240,11 +246,13 @@ align-items: center;
     align-items: center; */
     position: relative;
     align-items: center;
+ 
     justify-self: space-between;
     gap: 105px;
     /* padding-left: 5rem;
     padding-right: 5rem; */
 
+ 
 }
 
 .MainDivCourse {
@@ -336,6 +344,12 @@ align-items: center;
     /* height: 2000px;  */
 }
 
+
+.rightSectionContainer {
+    position: relative; /* Establishes a context for the sticky positioning */
+    height: 2000px; /* Height to allow scrolling */
+}
+
 .rightSectionCourse {
     position: -webkit-sticky; /* For Safari */
     position: sticky;
@@ -347,8 +361,9 @@ align-items: center;
     margin-top: 8rem;
 }
 .scndInfos {
+ 
     padding: 3rem 4rem;
-
+ 
     border-radius: 0px 40px 0px 40px;
     background-color: #3E4678;
     /* height: 50%; */
@@ -358,6 +373,7 @@ align-items: center;
     display: block;
     transition: margin-top 1s ease-out;
     display: flex;
+ 
     flex-direction: column;   
     align-items: center;
     text-align: left;
@@ -369,6 +385,7 @@ align-items: center;
 
 .InfosRefDur span {
     font:lighter 1rem "Lato", sans-serif;
+ 
 }
 
 .InfosDates {
@@ -381,14 +398,17 @@ align-items: center;
     align-items: flex-start; */ 
 
     padding-bottom: 2rem;
+ 
 }
 .InfosDates p{
   font: 1rem "Lato", sans-serif;
+ 
 }
 
 
 .radioTitle {
     color: #FFFFFF;
+ 
     font: bolder 2rem "Lato";
     padding-bottom: 1rem;
 }
@@ -409,13 +429,14 @@ align-items: center;
   margin-bottom: 10px;
   font-size: 1.2rem;
    /* Optional: add some space between list items for better readability */
+ 
 }
 .radioLable {
     color: #FFFFFF;
     font: 400 20px "Lato", sans-serif;
 }
 
-
+ 
 
 .price{
     color: #FFFFFF;
@@ -423,17 +444,20 @@ align-items: center;
     font-family: 'Lato';
     align-self: center;
     font-weight: 900;
+ 
     text-align: center;
   
 }
 .price p{
+ 
     width:50%;
     background-color: #CD6214;
     padding-top: 0.35rem;
     border-radius: 100px;
     margin-top: 0.5rem;
+ 
     align-self: center;
-  
+   
 }
 
 .CourseButtonsInfoPage {
@@ -454,7 +478,9 @@ align-items: center;
     justify-content:center;
     align-items: center;
     flex-direction: row-reverse;
+ 
     border-radius: 10px;     
+ 
     border: none;
     color: #3E4678;
     font: 500 20px "Lato", sans-serif;
@@ -469,11 +495,13 @@ align-items: center;
 
 #CourseButtonsInfoPageB1Mod {
     background-color: white;
+ 
     cursor: not-allowed;
 }
 #CourseButtonsInfoPageB1Mod:disabled{
 
     background-color: rgb(107, 106, 106);
+ 
     cursor: not-allowed;
 }
 

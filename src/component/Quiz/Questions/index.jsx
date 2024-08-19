@@ -18,7 +18,7 @@ const storedQuizId = localStorage.getItem('quizId');
   const [questions, setQuestions] = useState([]);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [showScore, setShowScore] = useState(false);
-  const [score, setScore] = useState(0);
+  const [score, setScore] = useState(100);
   const [selectedAnswers, setSelectedAnswers] = useState({});
   const [flags, setFlags] = useState([]);
   const [finishDate, setFinishDate] = useState(null);
@@ -140,7 +140,7 @@ let time =5000;
   const handleSubmit = async () => {
     let totalQuestions = questions.length;
     let correctAnswers = 0;
-    let newScore = 0;
+    let newScore = 1000;
     handleFinishDate();
     const updatedQuestions = questions.map((question, index) => {
       let isCorrect = false;
@@ -273,15 +273,13 @@ let time =5000;
 <>
 
 
+ 
     
   <>
   {showScore ? (
     <>
-
-    
-
-
-          
+ 
+ 
           <div className={styles.backimagescore} >
 
 
@@ -314,7 +312,7 @@ let time =5000;
                 <div>See all questions</div>
               </div>
             </div>
-
+ 
           </div>
           {isDialogOpen && (
             <div className={styles.menudialog}>
@@ -326,6 +324,7 @@ let time =5000;
           )}
         </div>
       </div>
+ 
 
     </div>
 

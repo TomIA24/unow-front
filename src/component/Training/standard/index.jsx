@@ -28,7 +28,9 @@ import { FaOpencart } from "react-icons/fa";
 import { useParams } from "react-router-dom";
 import Loading from "../../Loading";
 import Nav from "../../Nav";
+ 
 import { Link, Route, Routes, Navigate } from "react-router-dom";
+ 
 import Footer from "../../Home/Footer";
 import styles from "./styles.module.css";
 
@@ -506,6 +508,7 @@ const[down,setDown] = useState(false);
   }
   return (
     <React.Fragment>
+ 
 
       <div className={styles.backimage}>
 
@@ -523,6 +526,7 @@ const[down,setDown] = useState(false);
         </div>
 
       </div>
+ 
 
       <main className={styles.MotherDivCourse}>
 
@@ -705,6 +709,7 @@ const[down,setDown] = useState(false);
                 ""
               )}
             </div>
+
             {mobileView &&(  <div className={styles.rightSectionCourse}>
               <div className={styles.scndInfos}>
                 <div className={styles.CoursePriceInfoPage}>
@@ -760,10 +765,12 @@ const[down,setDown] = useState(false);
                       {Data.state !== "expired" ? (
                         <React.Fragment>
                           {!user.cartTrainings.includes(Data._id) ? (
+
                             <button
                               onClick={handleEnroll}
                               id={styles.CourseButtonsInfoPageB1}
                             >
+
                               <p>Add To Cart</p>
                               <img src="/images/course/addchat.png" alt="" className={styles.imagechart} />
                             </button>
@@ -874,10 +881,12 @@ const[down,setDown] = useState(false);
                       {Data.state !== "expired" ? (
                         <React.Fragment>
                           {!user.cartTrainings.includes(Data._id) ? (
+
                             <button
                               onClick={handleOpenCustom}
                               id={styles.CourseButtonsInfoPageB2}
                             >
+
                               <p>Customize</p>
                               <img src="/images/course/customize.png" alt="" className={styles.imagechart} />
                             </button>
@@ -937,6 +946,7 @@ const[down,setDown] = useState(false);
                     onClose={handleCloseCustom}
                     aria-labelledby="parent-modal-title"
                     aria-describedby="parent-modal-description"
+
                   >
                     <Box
                       sx={{
@@ -1590,7 +1600,9 @@ const[down,setDown] = useState(false);
                 </div>
               </div>
             </div>
+
           </div>}
+
         </div>
       </main>
       <Footer />

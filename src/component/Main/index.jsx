@@ -50,6 +50,8 @@ import CategorySlider from "./sliderPoints";
 import Avatar from "@mui/material/Avatar";
 import AvatarGroup from "@mui/material/AvatarGroup";
 import { Header } from "./Header/header";
+
+
 const Main = () => {
   const [currentTrainings, setCurrentTrainings] = useState([]);
   const [trainings, setTrainings] = useState([]);
@@ -227,32 +229,29 @@ const Main = () => {
             </div>
             <div className={styles.carousel} ref={carouselRef}>
               {currentTrainings.map((training) => (
-                <Link
-        to={{
-          pathname: `/${training.type === 'course' ? 'Course' : 'Training'}/${training._id}`,
-        }}
-        key={training._id}
-      >
-                  <div className={styles.inner_carousel} key={training._id}>
-                    {training.Thumbnail && training.Thumbnail.filePath ? (
-                      <div className={styles.image}>
-                        <img src={`${process.env.REACT_APP_API}/${training.Thumbnail.filePath}`} alt={training.Title} className={styles.imagefeatures} />
-  
-                      </div>
-                    ) : (
-                      <div className={styles.image}>
-                        <img src="default-image.png" alt="Default" className={styles.imagefeatures} /></div>
-                    )}
-                    <div>
-                      <div className={styles.categorie}>
-                        <div className={styles.categorietype}>{training.Category}</div>
-                        <div className={styles.categoriprice}>{training.Price} $</div>
-                      </div>
-                      <div className={styles.categoriniveau}>{training.Level}</div>
-                      <div className={styles.categoridomain}>{training.Title}</div>
+
+                <Link to={{ pathname: `/Training/${training._id}` }}>
+                <div className={styles.inner_carousel} key={training._id}>
+                  {training.Thumbnail && training.Thumbnail.filePath ? (
+                    <div className={styles.image}>
+                      <img src={`${process.env.REACT_APP_API}/${training.Thumbnail.filePath}`}alt={training.Title} className={styles.imagefeatures} />
+
+                    </div>
+                  ) : (
+                    <div className={styles.image}>
+                      <img src="default-image.png" alt="Default" className={styles.imagefeatures} /></div>
+                  )}
+                  <div>
+                    <div className={styles.categorie}>
+                      <div className={styles.categorietype}>{training.Category}</div>
+                      <div className={styles.categoriprice}>{training.Price} $</div>
+
                     </div>
                   </div>
-                  </Link>
+
+                </div>
+                </Link>
+
               ))}
             </div>
             <div>
@@ -270,6 +269,7 @@ const Main = () => {
       </div>
 
     </React.Fragment>
+    
   );
 };
 
