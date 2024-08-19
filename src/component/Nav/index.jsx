@@ -54,9 +54,11 @@ const Nav = () => {
       <nav className={styles.nav_container}>
       {!mobileView ? (
           <div className={styles.nav_web_container}>
+
             <Link to="/">
             
             <img src="/images/home/logoblanc.png" alt="" className={styles.logoimage} />
+
 
               {/* <img
                 style={{ marginTop: "20px", width: "160px" }}
@@ -65,6 +67,7 @@ const Nav = () => {
               />{" "} */}
              
             </Link>
+            </div>
             <div className={styles.middle_nav}>
               <Link to="/">
                 <a type="button" className={styles.nav_btn} style={{color: 'white'}}>
