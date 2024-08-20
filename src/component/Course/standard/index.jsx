@@ -454,9 +454,6 @@ const StandardCourse = () => {
       <div className={styles.backimage}>
         <div className={styles.maincontainernav}>
           <div className={styles.nav_container}>
-
-
-
             <Nav ref={refHome} />
 
           </div>

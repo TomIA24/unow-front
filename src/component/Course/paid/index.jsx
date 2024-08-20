@@ -314,12 +314,10 @@ const PaidCourse = () => {
   const refHome = useRef(null);
   return (
     <React.Fragment>
+      
    <div className={styles.backimage}>
         <div className={styles.maincontainernav}>
           <div className={styles.nav_container}>
-
-
-
             <Nav ref={refHome} />
 
           </div>
