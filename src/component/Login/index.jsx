@@ -22,7 +22,7 @@ const Login = () => {
       const config = {
         headers: {},
       };
-      const url = `${process.env.REACT_APP_API}/api/auth`;
+      const url = `${process.env.REACT_APP_API}api/auth`;
       await axios.post(url, data).then(async (res) => {
         localStorage.setItem("token", res.data.data);
         console.log("success");
@@ -32,7 +32,7 @@ const Login = () => {
             authorization: `Bearer ${res.data.data}`,
           },
         };
-        const url = `${process.env.REACT_APP_API}/api/userData`;
+        const url = `${process.env.REACT_APP_API}api/userData`;
         await axios.post(url, {}, config).then((response) => {
           console.log("user data", response.data.data);
           localStorage.setItem("user", JSON.stringify(response.data.data));

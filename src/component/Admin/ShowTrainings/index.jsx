@@ -35,8 +35,8 @@ const ShowTrainings = () => {
         authorization: `Bearer ${token}`,
       },
     };
-    const url = `${process.env.REACT_APP_API}/api/trainings`;
-    axios.post(url, {}, config).then((res) => {
+    const url = `${process.env.REACT_APP_API}api/trainings`;
+    axios.get(url, config).then((res) => {
       setData(res.data.data);
     });
   };
@@ -47,7 +47,7 @@ const ShowTrainings = () => {
         authorization: `Bearer ${token}`,
       },
     };
-    const url = `${process.env.REACT_APP_API}/api/trainings/deleteTraining`;
+    const url = `${process.env.REACT_APP_API}api/trainings/deleteTraining`;
     console.log(id);
     axios.post(url, { idTraining: id }, config).then(async (res) => {
       await handleData();
@@ -79,14 +79,14 @@ const ShowTrainings = () => {
         <div className={styles.avatar}>
           {course.Thumbnail ? (
             <img
-              src={`${process.env.REACT_APP_API}/${course.Thumbnail.filePath}`}
+              src={`${process.env.REACT_APP_API}${course.Thumbnail.filePath}`}
               alt=""
               style={{ width: 180, height: 180, objectFit: "cover" }}
               className={styles.imgTHMB}
             />
           ) : (
             <img
-              src={`${process.env.REACT_APP_API}/uploads/courseImg.png`}
+              src={`${process.env.REACT_APP_API}uploads/courseImg.png`}
               alt=""
               style={{ width: 180, height: 180 }}
               className={styles.imgTHMB}

@@ -20,16 +20,17 @@ import HistoryEduIcon from '@mui/icons-material/HistoryEdu';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import DraftsIcon from '@mui/icons-material/Drafts';
 import SendIcon from '@mui/icons-material/Send';
-import ExpandLess from '@mui/icons-material/ExpandLess';
-import ExpandMore from '@mui/icons-material/ExpandMore';
-import ListAltIcon from '@mui/icons-material/ListAlt';
-import {MaterialUISwitch} from './elements.js'
-import imgLogo from '../assets/logo.jpg'
-import LineAxisIcon from '@mui/icons-material/LineAxis';
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import SettingsIcon from "@mui/icons-material/Settings";
+import ExpandLess from "@mui/icons-material/ExpandLess";
+import ExpandMore from "@mui/icons-material/ExpandMore";
+import ListAltIcon from "@mui/icons-material/ListAlt";
+import { MaterialUISwitch } from "./elements.js";
+import imgLogo from "../assets/logo.jpg";
+import LineAxisIcon from "@mui/icons-material/LineAxis";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
-const Admin = () =>{
+const Admin = () => {
   // localStorage.setItem("Dashboard", true)
   // localStorage.setItem("addTrainer", false)
   // localStorage.setItem("addCourse", false)
@@ -52,6 +53,7 @@ const Admin = () =>{
   const [showTrainings, setShowTrainings] = useState(false);
   const [addTraining, setAddTraining] = useState(false);
   const [showCategories, setShowCategories] = useState(false);
+  const [showSettings, setShowSettings] = useState(false);
   const [Dashboard, setShowDashboard] = useState(true);
 
   const showHideDashboard = () => {
@@ -64,6 +66,7 @@ const Admin = () =>{
     setShowTrainings(false);
     setAddTraining(false);
     setShowCategories(false);
+    setShowSettings(false);
   };
 
   const showHideAddTrainer = () => {
@@ -75,6 +78,7 @@ const Admin = () =>{
     setShowTrainings(false);
     setAddTraining(false);
     setShowCategories(false);
+    setShowSettings(false);
     setShowDashboard(false);
   };
   const showHideAddCourse = () => {
@@ -87,6 +91,7 @@ const Admin = () =>{
     setAddTraining(false);
     setShowCategories(false);
     setShowDashboard(false);
+    setShowSettings(false);
   };
 
   const showHideAddTraining = () => {
@@ -99,6 +104,7 @@ const Admin = () =>{
     setAddTraining(true);
     setShowCategories(false);
     setShowDashboard(false);
+    setShowSettings(false);
   };
   const showHideShowCandidats = () => {
     setAddTrainer(false);
@@ -110,6 +116,7 @@ const Admin = () =>{
     setAddTraining(false);
     setShowCategories(false);
     setShowDashboard(false);
+    setShowSettings(false);
   };
   const showHideShowTrainers = () => {
     setAddCourse(false);
@@ -121,6 +128,7 @@ const Admin = () =>{
     setAddTraining(false);
     setShowCategories(false);
     setShowDashboard(false);
+    setShowSettings(false);
   };
   const showHideShowCourses = () => {
     setAddCourse(false);
@@ -132,6 +140,7 @@ const Admin = () =>{
     setAddTraining(false);
     setShowCategories(false);
     setShowDashboard(false);
+    setShowSettings(false);
   };
 
   const showHideShowTrainings = () => {
@@ -144,6 +153,7 @@ const Admin = () =>{
     setAddTraining(false);
     setShowCategories(false);
     setShowDashboard(false);
+    setShowSettings(false);
   };
 
   const showHideShowCategories = () => {
@@ -157,6 +167,21 @@ const Admin = () =>{
     setShowCategories(true);
     handleClick6();
     setShowDashboard(false);
+    setShowSettings(false);
+  };
+
+  const showHideShowSettings = () => {
+    setAddCourse(false);
+    setAddTrainer(false);
+    setShowCandidats(false);
+    setShowTrainers(false);
+    setShowCourses(false);
+    setShowTrainings(false);
+    setAddTraining(false);
+    setShowCategories(false);
+    handleClick7();
+    setShowDashboard(false);
+    setShowSettings(true);
   };
 
   const user = JSON.parse(localStorage.getItem("user"));
@@ -193,6 +218,12 @@ const Admin = () =>{
 
   const handleClick6 = () => {
     setOpen6(!open6);
+  };
+
+  const [open7, setOpen7] = React.useState(false);
+
+  const handleClick7 = () => {
+    setOpen7(!open7);
   };
 
   useEffect(() => {}, []);
@@ -412,6 +443,20 @@ const Admin = () =>{
                 <ListItemText primary="Show Categories" />
                 <ArrowForwardIosIcon sx={{ fontSize: 17 }} />
               </ListItemButton>
+              <ListItemButton
+                onClick={showHideShowSettings}
+                sx={
+                  showSettings
+                    ? { pl: 2, backgroundColor: "#ebebeb" }
+                    : { pl: 2 }
+                }
+              >
+                <ListItemIcon>
+                  <SettingsIcon />
+                </ListItemIcon>
+                <ListItemText primary="Settings" />
+                <ArrowForwardIosIcon sx={{ fontSize: 17 }} />
+              </ListItemButton>
             </List>
           </div>
         </section>
@@ -430,6 +475,7 @@ const Admin = () =>{
               setShowCandidats={setShowCandidats}
               showTrainings={showTrainings}
               showCategories={showCategories}
+              showSettings={showSettings}
               dashboard={Dashboard}
             />
           </main>
@@ -437,6 +483,6 @@ const Admin = () =>{
       </main>
     </React.Fragment>
   );
-}
+};
 
 export default Admin;

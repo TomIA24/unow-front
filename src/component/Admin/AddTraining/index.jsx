@@ -239,12 +239,12 @@ const AddTraining = () => {
       },
     };
     await axios
-      .get(`${process.env.REACT_APP_API}/api/Category/getCategories`, config)
+      .get(`${process.env.REACT_APP_API}api/Category/getCategories`, config)
       .then(async (res) => {
         setCategoriesFromBd(res.data.data);
       });
     await axios
-      .post(`${process.env.REACT_APP_API}/api/Trainer/showTrainers`, {}, config)
+      .post(`${process.env.REACT_APP_API}api/Trainer/showTrainers`, {}, config)
       .then(async (res) => {
         setTrainersFromBd(res.data.trainers);
       });
@@ -295,7 +295,7 @@ const AddTraining = () => {
       },
     };
     try {
-      const url = `${process.env.REACT_APP_API}/api/trainings/CreateTraining`;
+      const url = `${process.env.REACT_APP_API}api/trainings/CreateTraining`;
       await axios
         .post(url, data, config)
         .then(async (res) => {

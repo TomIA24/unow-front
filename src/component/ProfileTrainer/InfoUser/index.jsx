@@ -64,7 +64,7 @@ const InfoUser = (props) => {
   }, [, singleFile]);
 
   useEffect(() => {
-    const url = `${process.env.REACT_APP_API}/api/userData`;
+    const url = `${process.env.REACT_APP_API}api/userData`;
     const config = {
       headers: {
         authorization: `Bearer ${token}`,
@@ -116,7 +116,7 @@ const InfoUser = (props) => {
       },
     };
     try {
-      const url = `${process.env.REACT_APP_API}/api/Trainer/updateTrainers`;
+      const url = `${process.env.REACT_APP_API}api/Trainer/updateTrainers`;
       axios
         .post(url, Data, config)
         .then(async (res) => {
@@ -125,7 +125,7 @@ const InfoUser = (props) => {
               authorization: `Bearer ${localStorage.getItem("token")}`,
             },
           };
-          const url = `${process.env.REACT_APP_API}/api/userData`;
+          const url = `${process.env.REACT_APP_API}api/userData`;
           axios.post(url, {}, config).then((response) => {
             localStorage.removeItem("user");
             localStorage.setItem("user", JSON.stringify(response.data.data));
@@ -149,7 +149,7 @@ const InfoUser = (props) => {
       }
     }
   };
-
+  console.log(`${process.env.REACT_APP_API}${Data?.image?.filePath}`);
   return (
     <div className={styles.leftSectionProfile}>
       <div className={styles.FirsSectionInfoProfile}>
@@ -188,7 +188,7 @@ const InfoUser = (props) => {
           {Data.image ? (
             <Avatar
               alt="icon"
-              src={`${process.env.REACT_APP_API}/${Data.image.filePath}`}
+              src={`${process.env.REACT_APP_API}${Data.image.filePath}`}
               sx={{ width: 200, height: 200 }}
             />
           ) : (

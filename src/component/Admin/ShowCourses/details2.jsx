@@ -53,8 +53,8 @@ const Details = ({ Course, setOpenChange, openChange }) => {
     const config = {
       headers: { authorization: `Bearer ${token}` },
     };
-    const url = `${process.env.REACT_APP_API}/api/courses/updateCourse`;
-    axios.post(url, course,config).then((res) => {
+    const url = `${process.env.REACT_APP_API}api/courses/updateCourse`;
+    axios.post(url, course, config).then((res) => {
       handleCloseChange();
     });
   };
@@ -73,7 +73,7 @@ const Details = ({ Course, setOpenChange, openChange }) => {
   //         };
   //         console.log(config)
 
-  //           const url= "${process.env.REACT_APP_API}/api/Trainer/getTrainer"
+  //           const url= "${process.env.REACT_APP_API}api/Trainer/getTrainer"
   //           await axios.post(url,{trainerId: notif.trainer} )
   //           .then(res=>{
   //               console.log("hello from api")
@@ -87,8 +87,8 @@ const Details = ({ Course, setOpenChange, openChange }) => {
     const config = {
       headers: { authorization: `Bearer ${token}` },
     };
-    const url = `${process.env.REACT_APP_API}/api/Trainer/GetNotifTrainerByCourse`;
-    await axios.post(url, { CourseId: id },config).then((res) => {
+    const url = `${process.env.REACT_APP_API}api/Trainer/GetNotifTrainerByCourse`;
+    await axios.post(url, { CourseId: id }, config).then((res) => {
       console.log(res);
       setNotifs(res.data.data);
     });
@@ -182,13 +182,17 @@ const Details = ({ Course, setOpenChange, openChange }) => {
     };
 
     const urlId = uuidv4();
-    const url = `${process.env.REACT_APP_API}/api/Trainer/ConfirmNotif`;
+    const url = `${process.env.REACT_APP_API}api/Trainer/ConfirmNotif`;
     axios
-      .post(url, {
-        FRSelected: { Notif: FRSelected, trainer: trainerSelected },
-        Course: course,
-        urlId: urlId,
-      },config)
+      .post(
+        url,
+        {
+          FRSelected: { Notif: FRSelected, trainer: trainerSelected },
+          Course: course,
+          urlId: urlId,
+        },
+        config
+      )
       .then((res) => {
         handleCloseChange();
       });

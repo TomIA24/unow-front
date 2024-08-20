@@ -103,7 +103,7 @@ const StandardCourse = () => {
       params: { id: id },
     };
     axios
-      .get(`${process.env.REACT_APP_API}/api/courses/specific`, config)
+      .get(`${process.env.REACT_APP_API}api/courses/specific`, config)
       .then((res) => {
         setData(res.data.data);
         setEvaluations(res.data.data.evaluate);
@@ -176,7 +176,7 @@ const StandardCourse = () => {
     };
     axios
       .post(
-        `${process.env.REACT_APP_API}/api/Candidat/returnCandidatForRatingInfo`,
+        `${process.env.REACT_APP_API}api/Candidat/returnCandidatForRatingInfo`,
         { ids: ids },
         config
       )
@@ -309,10 +309,10 @@ const StandardCourse = () => {
       },
     };
     try {
-      const url = `${process.env.REACT_APP_API}/api/Candidat/lastSeen`;
+      const url = `${process.env.REACT_APP_API}api/Candidat/lastSeen`;
 
       axios.post(url, { lastSeen: user.lastSeen }, config).then(async (res) => {
-        const url = `${process.env.REACT_APP_API}/api/userData`;
+        const url = `${process.env.REACT_APP_API}api/userData`;
         try {
           axios.post(url, {}, config).then((response) => {
             localStorage.setItem("user", JSON.stringify(response.data.data));
@@ -338,7 +338,7 @@ const StandardCourse = () => {
         },
       };
       try {
-        const url = `${process.env.REACT_APP_API}/api/Candidat/cart`;
+        const url = `${process.env.REACT_APP_API}api/Candidat/cart`;
         axios
           .post(
             url,
@@ -346,7 +346,7 @@ const StandardCourse = () => {
             config
           )
           .then(async (res) => {
-            const url = `${process.env.REACT_APP_API}/api/userData`;
+            const url = `${process.env.REACT_APP_API}api/userData`;
             try {
               axios.post(url).then((response) => {
                 localStorage.setItem(
@@ -377,7 +377,7 @@ const StandardCourse = () => {
       },
     };
     try {
-      const url = `${process.env.REACT_APP_API}/api/payment/course`;
+      const url = `${process.env.REACT_APP_API}api/payment/course`;
       await axios.post(url, { courseId: Data._id }, config).then((res) => {
         window.location = res.data.url;
       });

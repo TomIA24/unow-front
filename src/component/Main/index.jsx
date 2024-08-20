@@ -50,6 +50,8 @@ import CategorySlider from "./sliderPoints";
 import Avatar from "@mui/material/Avatar";
 import AvatarGroup from "@mui/material/AvatarGroup";
 import { Header } from "./Header/header";
+
+
 const Main = () => {
   const [currentTrainings, setCurrentTrainings] = useState([]);
   const [trainings, setTrainings] = useState([]);
@@ -60,7 +62,6 @@ const Main = () => {
 
   const indexOfFirstTraining = (currentPage - 1) * trainingsPerPage;
   const indexOfLastTraining = currentPage * trainingsPerPage;
-
 
   const handleWidthChange = () => {
     const currentWidth = window.innerWidth;
@@ -76,45 +77,53 @@ const Main = () => {
   }, []);
   const [itemsPerPage, setItemsPerPage] = useState(3);
 
+  //   useEffect(() => {
+  //     // Combine the GET and POST requests using Promise.all
+  //     const fetchData = async () => {
+  //         try {
+  //             const [trainingsResponse, coursesResponse] = await Promise.all([
+  //                 axios.get("http://localhost:5050/api/trainings"),
+  //                 axios.post("http://localhost:5050/api/courses")
+  //             ]);
 
-//   useEffect(() => {
-//     // Combine the GET and POST requests using Promise.all
-//     const fetchData = async () => {
-//         try {
-//             const [trainingsResponse, coursesResponse] = await Promise.all([
-//                 axios.get("http://localhost:5050/api/trainings"),
-//                 axios.post("http://localhost:5050/api/courses")
-//             ]);
+  //             // Set the data for trainings and courses
+  //             setTrainings(trainingsResponse.data.data);
+  //             setCourses(coursesResponse.data.data);
 
-//             // Set the data for trainings and courses
-//             setTrainings(trainingsResponse.data.data);
-//             setCourses(coursesResponse.data.data);
+  //         } catch (error) {
+  //             console.error("Error fetching data:", error);
+  //         }
+  //     };
 
-//         } catch (error) {
-//             console.error("Error fetching data:", error);
-//         }
-//     };
-
-//     fetchData();
-// }, []);
-
+  //     fetchData();
+  // }, []);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const [trainingsResponse, coursesResponse] = await Promise.all([
           axios.get("http://localhost:5050/api/trainings"),
-          axios.post("http://localhost:5050/api/courses")
+          axios.get("http://localhost:5050/api/courses"),
         ]);
 
         const combinedData = [
-          ...trainingsResponse.data.data.map(item => ({ ...item, type: 'training' })),
-          ...coursesResponse.data.data.map(item => ({ ...item, type: 'course' })),
+          ...trainingsResponse.data.data.map((item) => ({
+            ...item,
+            type: "training",
+          })),
+          ...coursesResponse.data.data.map((item) => ({
+            ...item,
+            type: "course",
+          })),
         ];
 
         setTrainings(combinedData);
 
-        const currentData = combinedData.slice(indexOfFirstTraining, indexOfLastTraining);
+        const currentData = combinedData.slice(
+          indexOfFirstTraining,
+          indexOfLastTraining
+        );
+        console.log(currentData);
         setCurrentTrainings(currentData);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -123,7 +132,6 @@ const Main = () => {
 
     fetchData();
   }, [currentPage, indexOfFirstTraining, indexOfLastTraining]);
-
 
   useEffect(() => {
     //console.log(WindowWidth)
@@ -137,7 +145,7 @@ const Main = () => {
   const refHome = useRef(null);
 
   const carouselRef = useRef(null);
-  
+
   useEffect(() => {
     //console.log(WindowWidth)
     if (WindowWidth <= 817) {
@@ -145,12 +153,8 @@ const Main = () => {
     } else {
       settrainingsPerPage(3);
     }
-
-
   }, [WindowWidth]);
 
- 
- 
   const nextPage = () => {
     if (currentPage < Math.ceil(trainings.length / trainingsPerPage)) {
       setCurrentPage(currentPage + 1);
@@ -164,8 +168,7 @@ const Main = () => {
   };
   return (
     <React.Fragment className={styles.body}>
-
-      <div style={{ backgroundColor: 'background: #f9f9f9;' }}>
+      <div style={{ backgroundColor: "background: #f9f9f9;" }}>
         {/* <div className={styles.containerimage}><img src="./images/home/background.png" alt="" className={styles.imagebackground} /></div> */}
         <Nav ref={refHome} />
         <div className={styles.motivationImg}>
@@ -177,37 +180,34 @@ const Main = () => {
               “Coming together is a beginning, keeping together is progress,
               working together is success.”
               <div className={styles.textsearch2}> Henry Ford</div>
-              <br /> 
+              <br />
             </div>
           </div>
           {/* <div className={styles.sectionTwo}> */}
 
           <div className={styles.explore_container}>
-
             <button
               className={styles.explore_btn}
               type="button"
-              onClick={() => { }}
+              onClick={() => {}}
             >
               Explore
             </button>
             <div className={styles.explore_line} />
             <input
               type="text"
-              placeholder="Type here..." 
+              placeholder="Type here..."
               className={styles.explore_input}
             />
             <div className={styles.explore_line} />
             <button
               className={styles.search_btn}
               type="button"
-              onClick={() => { }}
+              onClick={() => {}}
             >
-              <img src={loupe} alt=""  className={styles.icon_search} />
+              <img src={loupe} alt="" className={styles.icon_search} />
             </button>
           </div>
-
-        
         </div>
         <Header />
 
@@ -218,57 +218,67 @@ const Main = () => {
           </div>
           <div className={styles.topTrainingElements}>
             <div>
-            <button
-             className={styles.arrowButton} 
-              onClick={prevPage}
-            >
-              <img src="./images/home/left.png" alt="Description of the image" className={styles.arrows}/>
-            </button>
+              <button className={styles.arrowButton} onClick={prevPage}>
+                <img
+                  src="./images/home/left.png"
+                  alt="Description of the image"
+                  className={styles.arrows}
+                />
+              </button>
             </div>
             <div className={styles.carousel} ref={carouselRef}>
               {currentTrainings.map((training) => (
-                <Link
-        to={{
-          pathname: `/${training.type === 'course' ? 'Course' : 'Training'}/${training._id}`,
-        }}
-        key={training._id}
-      >
+                <Link to={{ pathname: `/Training/${training._id}` }}>
                   <div className={styles.inner_carousel} key={training._id}>
                     {training.Thumbnail && training.Thumbnail.filePath ? (
                       <div className={styles.image}>
-                        <img src={`${process.env.REACT_APP_API}/${training.Thumbnail.filePath}`} alt={training.Title} className={styles.imagefeatures} />
-  
+                        <img
+                          src={`${process.env.REACT_APP_API}${training.Thumbnail.filePath}`}
+                          alt={training.Title}
+                          className={styles.imagefeatures}
+                        />
                       </div>
                     ) : (
                       <div className={styles.image}>
-                        <img src="default-image.png" alt="Default" className={styles.imagefeatures} /></div>
+                        <img
+                          src="default-image.png"
+                          alt="Default"
+                          className={styles.imagefeatures}
+                        />
+                      </div>
                     )}
                     <div>
                       <div className={styles.categorie}>
-                        <div className={styles.categorietype}>{training.Category}</div>
-                        <div className={styles.categoriprice}>{training.Price} $</div>
+                        <div className={styles.categorietype}>
+                          {training.Category}
+                        </div>
+                        <div className={styles.categoriprice}>
+                          {training.Price} $
+                        </div>
                       </div>
-                      <div className={styles.categoriniveau}>{training.Level}</div>
-                      <div className={styles.categoridomain}>{training.Title}</div>
                     </div>
                   </div>
-                  </Link>
+                </Link>
               ))}
             </div>
             <div>
-            <button
-             className={styles.arrowButton}
-              onClick={nextPage}
-              disabled={currentPage === Math.ceil(trainings.length / trainingsPerPage)}
-            >
-              <img src="./images/home/right.png" alt="Description of the image" className={styles.arrows}/>
-            </button>
+              <button
+                className={styles.arrowButton}
+                onClick={nextPage}
+                disabled={
+                  currentPage === Math.ceil(trainings.length / trainingsPerPage)
+                }
+              >
+                <img
+                  src="./images/home/right.png"
+                  alt="Description of the image"
+                  className={styles.arrows}
+                />
+              </button>
             </div>
           </div>
         </div>
-
       </div>
-
     </React.Fragment>
   );
 };

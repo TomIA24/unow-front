@@ -42,7 +42,7 @@ const Courses = ({user}) =>{
              
         };
         try {
-        const url = `${process.env.REACT_APP_API}/api/courses/specificGroupe`;
+        const url = `${process.env.REACT_APP_API}api/courses/specificGroupe`;
         await axios.post(url,{cardIds:CartIds} ,config)
         .then(async res => {
             console.log("response: ",res.data.data)

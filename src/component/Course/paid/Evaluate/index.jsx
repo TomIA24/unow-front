@@ -23,7 +23,7 @@ const Evaluate = ({ openEvaluate, setOpenEvaluate, courseId }) => {
     const config = {
       headers: { authorization: `Bearer ${token}` },
     };
-    const url = `${process.env.REACT_APP_API}/api/courses/Evaluate`;
+    const url = `${process.env.REACT_APP_API}api/courses/Evaluate`;
     axios
       .post(url, { Data: Data, courseId: courseId }, config)
       .then(async (res) => {

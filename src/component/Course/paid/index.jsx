@@ -32,7 +32,6 @@ const PaidCourse = () => {
   let { id } = useParams();
   const token = localStorage.getItem("token");
   const user = JSON.parse(localStorage.getItem("user"));
-  const [error, setError] = useState("");
   const [openEvaluate, setOpenEvaluate] = useState(false);
   const [Evaluations, setEvaluations] = useState([]);
   const [EvaluationsCompleated, setEvaluationsCompleated] = useState([]);
@@ -65,11 +64,11 @@ const PaidCourse = () => {
 
   useEffect(() => {
     handleCourse();
-  }, []);
+  });
 
   useEffect(() => {
     getEvaluations();
-  }, [Data]);
+  });
 
   const handleCourse = () => {
     const config = {
@@ -77,7 +76,7 @@ const PaidCourse = () => {
       params: { id: id },
     };
     axios
-      .get(`${process.env.REACT_APP_API}/api/courses/specific`, config)
+      .get(`${process.env.REACT_APP_API}api/courses/specific`, config)
       .then((res) => {
         setData(res.data.data);
         setEvaluations(res.data.data.evaluate);
@@ -110,7 +109,7 @@ const PaidCourse = () => {
     };
     await axios
       .post(
-        `${process.env.REACT_APP_API}/api/evaluations/getEvaluations`,
+        `${process.env.REACT_APP_API}api/evaluations/getEvaluations`,
         { courseId: id, student: user._id },
         config
       )
@@ -128,7 +127,7 @@ const PaidCourse = () => {
     };
     axios
       .post(
-        `${process.env.REACT_APP_API}/api/Candidat/returnCandidatForRatingInfo`,
+        `${process.env.REACT_APP_API}api/Candidat/returnCandidatForRatingInfo`,
         { ids: ids },
         config
       )
@@ -137,23 +136,23 @@ const PaidCourse = () => {
       });
   };
 
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
-    window.location = "/login";
-  };
+  // const handleLogout = () => {
+  //   localStorage.removeItem("token");
+  //   localStorage.removeItem("user");
+  //   window.location = "/login";
+  // };
 
-  useEffect(async () => {
+  useEffect(() => {
     const ids = Evaluations.map((e) => {
       return e.id;
     });
     GetUsers(ids);
-  }, [Evaluations]);
-
-  useEffect(async () => {
+  });
+  // [Evaluations]
+  useEffect(() => {
     var list = [];
-    await Evaluations.map((e) => {
-      usersLimited.map((u) => {
+    Evaluations.forEach((e) => {
+      usersLimited.forEach((u) => {
         if (u._id === e.id) {
           list.push({
             id: e.id,
@@ -166,8 +165,8 @@ const PaidCourse = () => {
       });
     });
     setEvaluationsCompleated(list);
-  }, [usersLimited]);
-
+  });
+  // , [usersLimited]
   const TextRating = (value, avis) => {
     return (
       <Box
@@ -188,9 +187,9 @@ const PaidCourse = () => {
       </Box>
     );
   };
-  const [Enrolled, setEnrolled] = useState(false);
-  const [Paid, setPaid] = useState(false);
-  const [PaidBtn, setPaidBtn] = useState(false);
+  // const [Enrolled, setEnrolled] = useState(false);
+  // const [Paid, setPaid] = useState(false);
+  // const [PaidBtn, setPaidBtn] = useState(false);
   /************/ //////////////////////// */
   const [WindowWidth, setWindowWidth] = useState(0);
   const handleWidthChange = () => {
@@ -206,6 +205,7 @@ const PaidCourse = () => {
     };
   }, []);
   const [mobileView, setMobileView] = useState(false);
+  console.log(mobileView);
   useEffect(() => {
     //console.log(WindowWidth)
     if (WindowWidth <= 756) {
@@ -213,7 +213,7 @@ const PaidCourse = () => {
     } else {
       setMobileView(false);
     }
-  }, []);
+  }, [WindowWidth]);
   useEffect(() => {
     console.log(WindowWidth);
     if (WindowWidth <= 756) {
@@ -255,7 +255,7 @@ const PaidCourse = () => {
       trainer: "Course",
       course: Data._id,
     });
-  }, [Data]);
+  }, [Data, evaluation]);
 
   const [changingResultEvaluations, setChangingResultEvaluations] = useState(
     []
@@ -285,12 +285,12 @@ const PaidCourse = () => {
       ...evaluationResult,
       QCM: changingResultEvaluations,
     });
-  }, [changingResultEvaluations]);
+  }, [changingResultEvaluations, evaluationResult]);
 
   useEffect(() => {
     console.log("Evaluation result:", evaluationResult);
     setEvaluation({ ...evaluation, Evaluation: evaluationResult });
-  }, [evaluationResult]);
+  }, [evaluationResult, evaluation]);
 
   const handleEvaluation = async () => {
     const config = {
@@ -301,7 +301,7 @@ const PaidCourse = () => {
     console.log("data to save: ", evaluation.Evaluation);
     await axios
       .post(
-        `${process.env.REACT_APP_API}/api/evaluations/setEvaluation`,
+        `${process.env.REACT_APP_API}api/evaluations/setEvaluation`,
         { Data: evaluation },
         config
       )
@@ -328,22 +328,21 @@ const PaidCourse = () => {
           </div>
         </div>
       </div>
-
       <main className={styles.MotherDivCourse}>
         <div className={styles.MainDivCourse}>
           <div className={styles.leftSectionCourse}>
             <div className={styles.FirsSectionInfoCourse}>
               {Data.Thumbnail === "qqq" ||
-              Data.Thumbnail == {} ||
+              Data.Thumbnail === null ||
               !Data.Thumbnail ? (
                 <img
-                  src={`${process.env.REACT_APP_API}/uploads/courseImg.png`}
+                  src={`${process.env.REACT_APP_API}uploads/courseImg.png`}
                   alt=""
                   className={styles.imgCourse}
                 />
               ) : (
                 <img
-                  src={`${process.env.REACT_APP_API}/${Data.Thumbnail.filePath}`}
+                  src={`${process.env.REACT_APP_API}${Data.Thumbnail.filePath}`}
                   alt=""
                   className={styles.imgCourse}
                 />
@@ -691,13 +690,13 @@ const PaidCourse = () => {
                             {e.image ? (
                               <Avatar
                                 alt="Remy Sharp"
-                                src={`${process.env.REACT_APP_API}/${e.image.filePath}`}
+                                src={`${process.env.REACT_APP_API}${e.image.filePath}`}
                                 sx={{ width: 24, height: 24 }}
                               />
                             ) : (
                               <Avatar
                                 alt="Remy Sharp"
-                                src={`${process.env.REACT_APP_API}/uploads/2022-03-25T09-59-55.836Z-avatar.png`}
+                                src={`${process.env.REACT_APP_API}uploads/2022-03-25T09-59-55.836Z-avatar.png`}
                                 sx={{ width: 24, height: 24 }}
                               />
                             )}

@@ -57,7 +57,7 @@ const Update = ({ Course, setOpenChange, openChange }) => {
     const config = {
       headers: { authorization: `Bearer ${token}` },
     };
-    const url = `${process.env.REACT_APP_API}/api/trainings/updateTraining`;
+    const url = `${process.env.REACT_APP_API}api/trainings/updateTraining`;
     axios.post(url, course, config).then((res) => {
       handleCloseChange();
     });

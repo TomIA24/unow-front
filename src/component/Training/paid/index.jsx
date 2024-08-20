@@ -45,7 +45,7 @@ const PaidTraining = () => {
     };
     await axios
       .post(
-        `${process.env.REACT_APP_API}/api/trainings/getRoom`,
+        `${process.env.REACT_APP_API}api/trainings/getRoom`,
         {
           courseId: id,
         },
@@ -107,7 +107,7 @@ const PaidTraining = () => {
       params: { id: id },
     };
     await axios
-      .get(`${process.env.REACT_APP_API}/api/trainings/specific`, config)
+      .get(`${process.env.REACT_APP_API}api/trainings/specific`, config)
       .then(async (res) => {
         console.log("Data : -- ", res.data.data);
         setData(res.data.data);
@@ -138,7 +138,7 @@ const PaidTraining = () => {
     };
     await axios
       .post(
-        `${process.env.REACT_APP_API}/api/evaluations/getEvaluations`,
+        `${process.env.REACT_APP_API}api/evaluations/getEvaluations`,
         {
           courseId: id,
           student: user._id,
@@ -157,7 +157,7 @@ const PaidTraining = () => {
     };
     axios
       .post(
-        `${process.env.REACT_APP_API}/api/Candidat/returnCandidatForRatingInfo`,
+        `${process.env.REACT_APP_API}api/Candidat/returnCandidatForRatingInfo`,
         { ids: ids },
         config
       )
@@ -323,7 +323,7 @@ const PaidTraining = () => {
     console.log("data to save: ", evaluation.Evaluation);
     await axios
       .post(
-        `${process.env.REACT_APP_API}/api/evaluations/setEvaluation`,
+        `${process.env.REACT_APP_API}api/evaluations/setEvaluation`,
         {
           Data: evaluation,
         },
@@ -368,13 +368,13 @@ const PaidTraining = () => {
                 Data.Thumbnail == {} ||
                 !Data.Thumbnail ? (
                   <img
-                    src={`${process.env.REACT_APP_API}/uploads/courseImg.png`}
+                    src={`${process.env.REACT_APP_API}uploads/courseImg.png`}
                     alt=""
                     className={styles.imgCourse}
                   />
                 ) : (
                   <img
-                    src={`${process.env.REACT_APP_API}/${Data.Thumbnail.filePath}`}
+                    src={`${process.env.REACT_APP_API}${Data.Thumbnail.filePath}`}
                     alt=""
                     className={styles.imgCourse}
                   />
@@ -735,13 +735,13 @@ const PaidTraining = () => {
                               {e.image ? (
                                 <Avatar
                                   alt="Remy Sharp"
-                                  src={`${process.env.REACT_APP_API}/${e.image.filePath}`}
+                                  src={`${process.env.REACT_APP_API}${e.image.filePath}`}
                                   sx={{ width: 24, height: 24 }}
                                 />
                               ) : (
                                 <Avatar
                                   alt="Remy Sharp"
-                                  src={`${process.env.REACT_APP_API}/uploads/2022-03-25T09-59-55.836Z-avatar.png`}
+                                  src={`${process.env.REACT_APP_API}uploads/2022-03-25T09-59-55.836Z-avatar.png`}
                                   sx={{ width: 24, height: 24 }}
                                 />
                               )}

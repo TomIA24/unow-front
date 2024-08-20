@@ -53,7 +53,7 @@ const Update = ({ User, setOpenChange, openChange }) => {
     const config = {
       headers: { authorization: `Bearer ${token}` },
     };
-    const url = `${process.env.REACT_APP_API}/api/Candidat/updateCandidat`;
+    const url = `${process.env.REACT_APP_API}api/Candidat/updateCandidat`;
     axios.post(url, user,config).then((res) => {
       handleCloseChange();
     });

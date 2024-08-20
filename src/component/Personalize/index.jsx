@@ -94,7 +94,7 @@ const Personalize = () => {
       const config = {
         headers: {},
       };
-      const url = `${process.env.REACT_APP_API}/api/Candidat/Signup`;
+      const url = `${process.env.REACT_APP_API}api/Candidat/Signup`;
       const { data: res } = await axios.post(url, signup);
       navigate("/login", { state: { signup: true } });
       console.log(res.message);
