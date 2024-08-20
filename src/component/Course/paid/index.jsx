@@ -19,11 +19,11 @@ import Rating from "@mui/material/Rating";
 import Typography from "@mui/material/Typography";
 import { green, red } from "@mui/material/colors";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, {  useRef,useEffect, useState } from "react";
 import { BsArrowDownRightCircleFill } from "react-icons/bs";
 import { Link, useParams } from "react-router-dom";
 import Nav from "../../Nav";
-import Footer from "../../footer";
+import Footer from "../../Home/Footer";
 import Evaluate from "./Evaluate";
 import Ressources from "./RessourcesFiles";
 import styles from "./styles.module.css";
@@ -311,7 +311,7 @@ const PaidCourse = () => {
       });
   };
   const [openRessources, setOpenRessources] = useState(false);
-
+  const refHome = useRef(null);
   return (
     <React.Fragment>
       <div className={styles.backimage}>
@@ -748,6 +748,7 @@ const PaidCourse = () => {
       ) : (
         ""
       )}
+      
     </React.Fragment>
   );
 };
