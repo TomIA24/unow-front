@@ -10,6 +10,12 @@
   align-items: center; 
     
   }
+  .maincontainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
   .logoimage {
     margin-left: 30%; /* Centre l'image horizontalement */
     padding: 10px;
@@ -244,7 +250,7 @@ align-items: center;
 
 .MotherDivCourse {
     /* background: url('../../assets/courseBack.png') no-repeat top; */
-    /* width: 100%; */
+    width: 100%;
    /* height: auto;
     margin-top: 20px; */
     display: flex;
@@ -326,23 +332,24 @@ align-items: center;
     z-index: -1;
 } */
 .imgCourse {
-  width:100%;  /* Make the container take up full width */
-  /* height:498px;  */
+  width: 100%;  /* Make the container take up full width */
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden; 
-  /* border-radius: 2rem; */
-  height: 100%;
-  /* Hide any overflow if the image is larger */
+  border-radius: 2rem;
+  position: relative;
+  padding-bottom: 64.5%; /* (498 / 772) * 100% to maintain aspect ratio */
 }
 
 .imgCourseImage {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;  /* Image takes full width of the container */
   height: 100%; /* Image takes full height of the container */
-  object-fit: fill; /* Ensure the image covers the container without stretching */
+  object-fit: cover; /* Ensure the image covers the container without stretching */
 }
-
 .imgCourse img {
     /* position: relative;
     height: 200px;
@@ -354,39 +361,34 @@ align-items: center;
 
 
 .rightSectionContainer {
-    position: relative; 
-    /* height: 2000px;  */
+  position: sticky;
+  top:0;
+  margin-bottom: 2rem;
 }
+
 
 .rightSectionCourse {
-    position: -webkit-sticky; /* For Safari */
-    position: sticky;
-    top: 30%;
-    right: 90px;
-    bottom: 30px;
-    height: auto;
-    overflow-y: auto;
-    margin-top: 6rem;
+    position: relative; /* Allows the element to scroll normally */
+    top: 0; /* Resets the top position */
+    right: 0; /* Aligns it to the right (if needed) */
+    height: auto; 
+    margin-top: 6rem; /* Keeps the top margin as needed */
 }
+
 .scndInfos {
     padding: 3rem 4rem;
-
     border-radius: 0px 40px 0px 40px;
     background-color: #3E4678;
-    /* height: 50%; */
-    /* width: 40rem; */
-    position: sticky;
     box-shadow: 0 0 7px rgba(0, 0, 0, 0.25);
-    display: block;
-    transition: margin-top 1s ease-out;
     display: flex;
     flex-direction: column;   
     align-items: center;
     text-align: left;
-    gap:1rem;
+    gap: 1rem;
     color: #FFFFFF;
     font: bold 20px "Lato", sans-serif;
-
+    position: relative; /* Allows the element to scroll normally */
+    margin-top: 0; /* Adjust as needed */
 }
 .maincontainernav{
   /* width: 1500px; */
@@ -1142,7 +1144,7 @@ font-weight: 900;
         font-family: 'Lato';
         font-weight: 900;
         text-transform: uppercase;
-        font-size: 1rem;
+        font-size: 1.5rem;
         color: #2C2C2C;
     }
 
@@ -1242,6 +1244,22 @@ font-weight: 900;
   
   }   */
   @media (min-width: 469px) and (max-width: 576px) {
+    .DescriptionInfoCourseTitle span {
+      font-family: 'Lato';
+      font-weight: 900;
+      text-transform: uppercase;
+      font-size: 1.2rem;
+      color: #2C2C2C;
+  }
+  .DescriptionInfoCourseTitle .underline{
+  
+    width:3.7rem;
+    background-color: #CD6214;
+    padding:0.22em;
+    border-radius: 100px;
+    margin-top: 10px;
+  }
+
     .pdowncontainer{
       /* padding-left: 8rem;
       padding-right: 8rem; */
@@ -1289,13 +1307,7 @@ font-weight: 900;
         align-self: center;
         font-weight: 900;
     }
-    .DescriptionInfoCourseTitle span {
-        font-family: 'Lato';
-        font-weight: 900;
-        text-transform: uppercase;
-        font-size: 1rem;
-        color: #2C2C2C;
-    }
+
 
     /* .imgCourse { */
         /* width: 19rem;
@@ -1756,6 +1768,22 @@ font-weight: 900;
     }
   }
   @media (min-width: 780px) and (max-width: 875px) {
+    .DescriptionInfoCourseTitle span {
+      font-family: 'Lato';
+      font-weight: 900;
+      text-transform: uppercase;
+      font-size: 1.4rem;
+      color: #2C2C2C;
+  }
+  .DescriptionInfoCourseTitle .underline{
+  
+    width:3.7rem;
+    background-color: #CD6214;
+    padding:0.22em;
+    border-radius: 100px;
+    margin-top: 10px;
+  }
+
     .pdowncontainer{
       /* padding-left: 8rem;
       padding-right: 8rem; */
@@ -1934,6 +1962,12 @@ font-weight: 900;
   .coursePart{
     width:50%;
   }
+  .rightSectionContainer {
+    position: relative;
+    top:0;
+    margin-bottom: 2rem;
+}
+
   }
   
   @media (min-width: 874px) and (max-width: 1020px) {
@@ -2004,8 +2038,16 @@ font-weight: 900;
       font-family: 'Lato';
       font-weight: 900;
       text-transform: uppercase;
-      font-size: 1rem;
+      font-size: 1.4rem;
       color: #2C2C2C;
+  }
+  .DescriptionInfoCourseTitle .underline{
+  
+    width:3.7rem;
+    background-color: #CD6214;
+    padding:0.22em;
+    border-radius: 100px;
+    margin-top: 10px;
   }
 /* 
   .imgCourse {
@@ -2459,11 +2501,10 @@ font-weight: 900;
   }
   @media(min-width:1520px) {
     .maincontainer{
-
-     display: flex;
-      justify-content:center;
-      align-items: center;
+      display: flex;
       flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
     .maincontainernav{
       display: flex;
@@ -2479,4 +2520,7 @@ font-weight: 900;
       /* padding-left: 15rem;
     padding-right: 15rem; */
     }
+ .MainDivCourse{
+  width: 1500px;
+ }
   }

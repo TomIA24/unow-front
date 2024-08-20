@@ -19,11 +19,11 @@ import Rating from "@mui/material/Rating";
 import Typography from "@mui/material/Typography";
 import { green, red } from "@mui/material/colors";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, {  useRef,useEffect, useState } from "react";
 import { BsArrowDownRightCircleFill } from "react-icons/bs";
 import { Link, useParams } from "react-router-dom";
 import Nav from "../../Nav";
-import Footer from "../../footer";
+import Footer from "../../Home/Footer";
 import Evaluate from "./Evaluate";
 import Ressources from "./RessourcesFiles";
 import styles from "./styles.module.css";
@@ -311,23 +311,26 @@ const PaidCourse = () => {
       });
   };
   const [openRessources, setOpenRessources] = useState(false);
-
+  const refHome = useRef(null);
   return (
     <React.Fragment>
    <div className={styles.backimage}>
+        <div className={styles.maincontainernav}>
+          <div className={styles.nav_container}>
 
-<div className={styles.navContainer}>
 
-  <Nav />
-</div>
-<div className={styles.pdowncontainer}>
-  <div className={styles.pdown} >COURSES DETAILS
-    <p className={styles.underline}></p>
-  </div>
 
-</div>
+            <Nav ref={refHome} />
 
-</div>
+          </div>
+          <div className={styles.pdowncontainer}>
+            <div className={styles.pdown} >COURSE DETAILS
+              <p className={styles.underline}></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <main className={styles.MotherDivCourse}>
         <div className={styles.MainDivCourse}>
           <div className={styles.leftSectionCourse}>
@@ -751,6 +754,7 @@ const PaidCourse = () => {
       ) : (
         ""
       )}
+      
     </React.Fragment>
   );
 };

@@ -56,12 +56,12 @@ const InfoUser = (props) => {
 
   const handleSubmit = async () => {
     try {
-      const url = `${process.env.REACT_APP_API}/api/courses`;
+      const url = `${process.env.REACT_APP_API}/api/courses/`;
       await axios.post(url).then((res) => {
         setAllCourses(res.data.data);
       });
-      const url2 = `${process.env.REACT_APP_API}/api/trainings`;
-      await axios.post(url2).then((res) => {
+      const url2 = `${process.env.REACT_APP_API}/api/trainings/`;
+      await axios.get(url2).then((res) => {
         setAllTrainings(res.data.data);
       });
     } catch (error) {
