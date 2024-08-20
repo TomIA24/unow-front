@@ -5,37 +5,9 @@ html, body {
     margin: 0;
     font-family: Arial, sans-serif;
 }
-.backLogin {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #f0f0f0; /* Couleur de fond pour plus de visibilité */
-}
-.loginContainer {
-    width: 90%;
-    max-width: 400px;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 1px 23px 2px rgba(0, 0, 0, 0.25);
-    border-radius: 14px;
-    box-sizing: border-box; /* Assure que le padding est inclus dans la largeur */
-}
-@media (min-width: 768px) {
-    .loginContainer {
-        width: 60%;
-        max-width: 500px;
-        height: auto;
-    }
-}
-@media (min-width: 1024px) {
-    .loginContainer {
-        width: 40%;
-        max-width: 600px;
-        height: auto;
-    }
-}
+
+
+
 .loginContainer form {
     display: flex;
     flex-direction: column;
@@ -44,7 +16,7 @@ html, body {
     margin-top: 10px;
 }
 .loginContainer input {
-    width: 100%;
+  
     padding: 10px;
     margin-top: 5px;
     box-sizing: border-box; /* Assure que le padding est inclus dans la largeur */
@@ -58,22 +30,25 @@ html, body {
 
 .Close {
     display: flex;
-    justify-content: end;
-    align-items: center;
+    justify-content: space-between;
     padding: 20px 20px;
-    /* color: #1C7182; */
-    color: #345AA4;
+   
     cursor: pointer;
+    flex-direction: row-reverse;
 }
 
-.Title {
-    font-size: 35px;
-    color: #345AA4;
-    font-weight: 700;
+.Title p {
+    font-size: 25px;
+    color: black;
     margin-bottom: 10px;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.text{
+    color: gray;
+    align-self: flex-start;
+    margin-bottom: 7px;
 }
 
 .form_container {
@@ -142,16 +117,15 @@ html, body {
 }
 
 .Login_btn {
-    width: 150px;
+    width: 100%;
     height: 50px;
     border: 2px solid #1E5F74;
     margin-top: 20px;
-    background-color: white;
-    border-radius: 7px;
+    background-color: gray;
+    border-radius: 30px;
     /* border-radius: 14px; */
-    
     font-weight: bold;
-    color: #1E5F74;
+    color: white;
     cursor: pointer;
 }
 
@@ -163,4 +137,163 @@ html, body {
     font-size: 15px;
     margin: 3px 0;
     padding-left: 7px;
+}
+.images{
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    height: 200px;
+    margin-top: 20px;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.loginImageContainer{
+ 
+   
+    width: 40%;
+    max-width: 600px;
+    padding: 20px;
+}
+.logo{
+    margin-top: 0;
+    background-color:#3E4678 ;
+}
+.by{
+    color: black;
+    font-size: 12px;
+    align-self: start;
+}
+.by u{
+    color: black;
+    font-size: 12px;
+    align-self: start;
+}
+.nvaccount{
+    color: gray;
+    font-size: 13px;
+}
+.nvaccount u{
+    color: black;
+    font-size: 13px;
+}
+.forgetpsw u{
+    color: black;
+    font-size: 13px;
+    /* align-self: start; */
+    /* margin-top: 10px; */
+    font-weight: 700;
+}
+.dividerImage{
+    width: 30%;
+    margin-top: 20px;
+}
+    
+.divider{
+    display: flex;
+    justify-content: space-between;
+
+}
+.allsocialmedia{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.socialmedia{
+    padding: 7%;
+}
+.Container{
+    display: flex;
+    flex-direction: row;
+    /* justify-content: center; */
+    align-items: center;
+    height: 100vh;
+    background-color: #3E4678;
+    justify-content: space-between;
+}
+.backLogin {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #3E4678; /* Couleur de fond pour plus de visibilité */
+}
+
+.container {
+    display: flex;
+    width: 90%;
+    
+    justify-content: space-between;
+    align-items: center;
+}
+
+.leftSection, .rightSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
+
+.leftSection {
+    
+}
+
+.rightSection {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+   
+    justify-content: space-evenly;
+    align-items: flex-end;
+}
+
+.logo {
+    margin-bottom: 20px;
+    max-width: 200px;
+    background-color: #3E4678;
+}
+
+.loginContainer {
+    width: 100%;
+    max-width: 400px;
+    padding: 2%;
+    background-color: #fff;
+    box-shadow: 0 1px 23px 2px rgba(0, 0, 0, 0.25);
+    border-radius: 14px;
+}
+
+.loginImage {
+    max-width: 110%;
+    height: auto;
+}
+
+.textcontainer {
+    text-align: right;
+    margin-top: 20px;
+}
+
+.textsearchtitle {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: white;
+    font-family: lato;
+    margin-top: -4%;
+}
+
+.textsearch {
+    font-size: 16px;
+    color: white;
+    margin-top: 4%;
+}
+
+.textsearch2 {
+    font-size: 14px;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    /* align-content: center; */
+    justify-content: center;
+    margin-top: 4%;
 }

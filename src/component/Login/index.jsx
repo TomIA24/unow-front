@@ -4,6 +4,13 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { IoIosArrowForward, IoMdArrowDropright } from "react-icons/io";
 import { Alert, Box, LinearProgress } from "@mui/material";
+import image from "./dhfg.png";
+import unow from "./logoblanc.png";
+import divider from "./Divider.png";
+import facebook from "./imgMedia/Social media logo.png";
+import apple from "./imgMedia/Social media logo (1).png";
+import google from "./imgMedia/Social media logo (2).png";
+import twitter from "./imgMedia/Social media logo (3).png";
 
 const Login = () => {
   const location = useLocation();
@@ -74,50 +81,85 @@ const Login = () => {
       clearInterval(timer);
     };
   }, []);
+
   return (
     <div className={styles.backLogin}>
-      <div className={styles.loginContainer}>
-        <Link className={styles.Close} to="/">
-          Home
-          <IoIosArrowForward size={30} />
-        </Link>
-        <div className={styles.Title}>
-          <p>Login</p>
-        </div>
-        <form className={styles.form_container} onSubmit={handleSubmit}>
-          <input
-            type="email"
-            placeholder="Email"
-            name="email"
-            onChange={handleChange}
-            value={data.email}
-            required
-            className={styles.input}
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            name="password"
-            onChange={handleChange}
-            value={data.password}
-            required
-            className={styles.input}
-          />
-          <div className={styles.options}>
-            <div className={styles.checkBox}>
-              <input type="checkbox" name="remember" />
-              <label htmlFor="remember">Remember me</label>
+      <div className={styles.container}>
+        <div className={styles.leftSection}>
+          <img src={unow} className={styles.logo} alt="Unow Logo" />
+          <div className={styles.loginContainer}>
+          <div className={styles.Title}>
+              <p>Login</p>
             </div>
-            <Link to="/ResetPassword">Forgot Password ?</Link>
+            <Link className={styles.Close} to="/">
+              Home
+              
+              
+            </Link>
+            
+            <form className={styles.form_container} onSubmit={handleSubmit}>
+              <p className={styles.text}>Email address or user name</p>
+              <input
+                type="email"
+                placeholder="Email"
+                name="email"
+                onChange={handleChange}
+                value={data.email}
+                required
+                className={styles.input}
+              />
+              <p className={styles.text}>Password</p>
+              <input
+                type="password"
+                placeholder="Password"
+                name="password"
+                onChange={handleChange}
+                value={data.password}
+                required
+                className={styles.input}
+              />
+              <div className={styles.options}>
+                <div className={styles.checkBox}>
+                  <input type="checkbox" name="remember" />
+                  <label htmlFor="remember">Remember me</label>
+                </div>
+               
+              </div>
+              <p className={styles.by}> By continuing, you agree to the <u>Terms of use</u> and <u> Privacy Policy.</u> </p>
+              {error && <div className={styles.error_msg}>{error}</div>}
+              <button type="submit" className={styles.Login_btn}>
+                Login
+              </button>
+              <p className={styles.forgetpsw}><u>Forget your password</u> </p>
+              <p className={styles.nvaccount}>Don’t have an acount? <u> Sign up</u>  </p>
+              <div className={styles.divider}>
+                <img src={divider} className={styles.dividerImage} alt="Divider" />
+                <img src={divider} className={styles.dividerImage} alt="Divider" />
+              </div>
+              <div className={styles.allsocialmedia}>
+                <img src={facebook} className={styles.socialmedia}/>
+                <img src={apple} className={styles.socialmedia}/>
+                <img src={google} className={styles.socialmedia}/>
+                <img src={twitter} className={styles.socialmedia}/>
+
+              </div>
+            </form>
           </div>
-          {error && <div className={styles.error_msg}>{error}</div>}
-          <button type="submit" className={styles.Login_btn}>
-            Login
-          </button>
-          <Link className={styles.signup} to="/signup">
-            Create an account <IoMdArrowDropright />
-          </Link>
-        </form>
+        </div>
+        <div className={styles.rightSection}>
+          <img src={image} className={styles.loginImage} alt="Login" />
+          <div className={styles.textcontainer}>
+            <div className={styles.textsearchtitle}>
+              Let's build the future together
+            </div>
+            <div className={styles.textsearch}>
+              “Coming together is a beginning, keeping together is progress,
+              working together is success.”
+              <div className={styles.textsearch2}> Henry Ford</div>
+              <br /> 
+            </div>
+          </div>
+        </div>
       </div>
       {signupState && (
         <Box sx={{ position: "absolute", top: 0, right: 0, margin: "10px 0" }}>
