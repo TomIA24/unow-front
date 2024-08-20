@@ -62,7 +62,7 @@ function AddRessources() {
                       <div className="">
                         {file.fileType === "image/png" ? (
                           <img
-                            src={`${process.env.REACT_APP_API}/${file.filePath}`}
+                            src={`${process.env.REACT_APP_API}${file.filePath}`}
                             height="200"
                             className=""
                             alt="img"
@@ -70,7 +70,7 @@ function AddRessources() {
                         ) : (
                           <React.Fragment>
                             <img
-                              src={`${process.env.REACT_APP_API}/uploads/833px-PDF_file_icon.svg.png`}
+                              src={`${process.env.REACT_APP_API}uploads/833px-PDF_file_icon.svg.png`}
                               height="200"
                               className=""
                               alt="img"

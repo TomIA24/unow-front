@@ -55,7 +55,7 @@ const ShowCandidats = ({ setShowCandidats }) => {
           {user.image ? (
             <Avatar
               alt="icon"
-              src={`${process.env.REACT_APP_API}/${user.image.filePath}`}
+              src={`${process.env.REACT_APP_API}${user.image.filePath}`}
               sx={{ width: 170, height: 170 }}
             />
           ) : (

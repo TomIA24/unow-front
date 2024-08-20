@@ -55,8 +55,8 @@ const Dashboard = () => {
     const config = {
       headers: { authorization: `Bearer ${token}` },
     };
-    const url = `${process.env.REACT_APP_API}api/trainings/`;
-    axios.post(url, {}, config).then((res) => {
+    const url = `${process.env.REACT_APP_API}api/trainings`;
+    axios.get(url, config).then((res) => {
       setTrainings(res.data.data);
       setTrainingsExpired(res.data.data.filter((t) => t.state === "expired"));
       setTrainingsConfirmed(
@@ -70,8 +70,8 @@ const Dashboard = () => {
     const config = {
       headers: { authorization: `Bearer ${token}` },
     };
-    const url = `${process.env.REACT_APP_API}api/courses/`;
-    axios.post(url, config).then((res) => {
+    const url = `${process.env.REACT_APP_API}api/courses`;
+    axios.get(url, config).then((res) => {
       setCourses(res.data.data);
     });
   };

@@ -50,22 +50,9 @@ const ProfileTrainer = (props) => {
   const handleSubmit = async () => {
     try {
       const url = `${process.env.REACT_APP_API}api/courses`;
-      await axios
-        .post(
-          url
-          //   {
-          //     headers: {
-          //
-          //
-          //
-          //
-          //     },
-          //   },
-          //   {  }
-        )
-        .then((res) => {
-          setAllCourses(res.data.data);
-        });
+      await axios.get(url).then((res) => {
+        setAllCourses(res.data.data);
+      });
     } catch (error) {
       if (
         error.response &&

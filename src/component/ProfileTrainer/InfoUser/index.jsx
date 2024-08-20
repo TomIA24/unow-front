@@ -149,7 +149,7 @@ const InfoUser = (props) => {
       }
     }
   };
-
+  console.log(`${process.env.REACT_APP_API}${Data?.image?.filePath}`);
   return (
     <div className={styles.leftSectionProfile}>
       <div className={styles.FirsSectionInfoProfile}>
@@ -188,7 +188,7 @@ const InfoUser = (props) => {
           {Data.image ? (
             <Avatar
               alt="icon"
-              src={`${process.env.REACT_APP_API}/${Data.image.filePath}`}
+              src={`${process.env.REACT_APP_API}${Data.image.filePath}`}
               sx={{ width: 200, height: 200 }}
             />
           ) : (

@@ -57,11 +57,11 @@ const InfoUser = (props) => {
   const handleSubmit = async () => {
     try {
       const url = `${process.env.REACT_APP_API}api/courses`;
-      await axios.post(url).then((res) => {
+      await axios.get(url).then((res) => {
         setAllCourses(res.data.data);
       });
       const url2 = `${process.env.REACT_APP_API}api/trainings`;
-      await axios.post(url2).then((res) => {
+      await axios.get(url2).then((res) => {
         setAllTrainings(res.data.data);
       });
     } catch (error) {
@@ -335,7 +335,7 @@ const InfoUser = (props) => {
               {Data.image ? (
                 <Avatar
                   alt="icon"
-                  src={`${process.env.REACT_APP_API}/${Data.image.filePath}`}
+                  src={`${process.env.REACT_APP_API}${Data.image.filePath}`}
                   sx={{ width: 200, height: 200 }}
                 />
               ) : (

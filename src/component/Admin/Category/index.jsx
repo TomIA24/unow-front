@@ -58,14 +58,14 @@ const Category = () => {
   };
   const HandleCourses = async () => {
     const url = `${process.env.REACT_APP_API}api/courses`;
-    await axios.post(url).then((res) => {
+    await axios.get(url).then((res) => {
       setCourses(res.data.data);
     });
   };
 
   const HandleTrainings = async () => {
     const url = `${process.env.REACT_APP_API}api/trainings`;
-    await axios.post(url).then((res) => {
+    await axios.get(url).then((res) => {
       setTrainings(res.data.data);
     });
   };
@@ -216,8 +216,9 @@ const Category = () => {
                   }}
                 >
                   <Typography sx={{ color: "text.secondary" }}>
-                    {c.Trainings ? c.Trainings.length : "0"} Training and &nbsp;
-                    {c.Courses ? c.Courses.length : "0"} Course
+                    {c.Trainings !== null ? c.Trainings?.length : "0"} Training
+                    and &nbsp;
+                    {c.Courses !== null ? c.Courses?.length : "0"} Course
                   </Typography>
                   <IconButton
                     onClick={() => HandleDeleteCategory(c._id)}
@@ -228,12 +229,12 @@ const Category = () => {
                 </Box>
               </AccordionSummary>
               <AccordionDetails>
-                {c.Trainings.length > 0 ? (
+                {c.Trainings?.length > 0 ? (
                   <React.Fragment>
                     <h3>Trainings</h3>
 
                     {trainings.map((t) => {
-                      if (c.Trainings.includes(t._id)) {
+                      if (c.Trainings?.includes(t._id)) {
                         return (
                           <Box
                             sx={{
@@ -253,12 +254,12 @@ const Category = () => {
                 ) : (
                   ""
                 )}
-                {c.Courses.length > 0 ? (
+                {c.Courses?.length > 0 ? (
                   <React.Fragment>
                     <h3>Courses</h3>
 
                     {courses.map((t) => {
-                      if (c.Courses.includes(t._id)) {
+                      if (c.Courses?.includes(t._id)) {
                         return (
                           <Box
                             sx={{

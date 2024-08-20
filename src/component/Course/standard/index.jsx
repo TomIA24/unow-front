@@ -438,20 +438,17 @@ const StandardCourse = () => {
 
   return (
     <React.Fragment>
-   <div className={styles.backimage}>
-
-<div className={styles.navContainer}>
-
-  <Nav />
-</div>
-<div className={styles.pdowncontainer}>
-  <div className={styles.pdown} >COURSES DETAILS
-    <p className={styles.underline}></p>
-  </div>
-
-</div>
-
-</div>
+      <div className={styles.backimage}>
+        <div className={styles.navContainer}>
+          <Nav />
+        </div>
+        <div className={styles.pdowncontainer}>
+          <div className={styles.pdown}>
+            COURSES DETAILS
+            <p className={styles.underline}></p>
+          </div>
+        </div>
+      </div>
       <main className={styles.MotherDivCourse}>
         <div className={styles.MainDivCourse}>
           <div className={styles.leftSectionCourse}>
@@ -460,13 +457,13 @@ const StandardCourse = () => {
               Data.Thumbnail == {} ||
               !Data.Thumbnail ? (
                 <img
-                  src={`${process.env.REACT_APP_API}/uploads/courseImg.png`}
+                  src={`${process.env.REACT_APP_API}uploads/courseImg.png`}
                   alt=""
                   className={styles.imgCourse}
                 />
               ) : (
                 <img
-                  src={`${process.env.REACT_APP_API}/${Data.Thumbnail.filePath}`}
+                  src={`${process.env.REACT_APP_API}${Data.Thumbnail.filePath}`}
                   alt=""
                   className={styles.imgCourse}
                 />
@@ -549,13 +546,13 @@ const StandardCourse = () => {
                                 {e.image ? (
                                   <Avatar
                                     alt="Remy Sharp"
-                                    src={`${process.env.REACT_APP_API}/${e.image.filePath}`}
+                                    src={`${process.env.REACT_APP_API}${e.image.filePath}`}
                                     sx={{ width: 24, height: 24 }}
                                   />
                                 ) : (
                                   <Avatar
                                     alt="Remy Sharp"
-                                    src={`${process.env.REACT_APP_API}/uploads/2022-03-25T09-59-55.836Z-avatar.png`}
+                                    src={`${process.env.REACT_APP_API}uploads/2022-03-25T09-59-55.836Z-avatar.png`}
                                     sx={{ width: 24, height: 24 }}
                                   />
                                 )}
@@ -564,7 +561,7 @@ const StandardCourse = () => {
                               <React.Fragment>
                                 <Avatar
                                   alt="Remy Sharp"
-                                  src={`${process.env.REACT_APP_API}/uploads/2022-03-25T09-59-55.836Z-avatar.png`}
+                                  src={`${process.env.REACT_APP_API}uploads/2022-03-25T09-59-55.836Z-avatar.png`}
                                   sx={{ width: 24, height: 24 }}
                                 />
                               </React.Fragment>
@@ -592,25 +589,53 @@ const StandardCourse = () => {
             </div>
           </div>
           <div className={styles.rightSectionCourseCnt}>
-          <div className={styles.rightSectionCourse}>
-            <div className={styles.scndInfos}>
-              <div className={styles.InfosRefDur}>
-                <p>
-                  Reference: <span>{Data.Reference}</span>
-                </p>
-                <p>
-                  Duration: <span> {duration} days (Data.Hours)</span>
-                </p>
-              </div>
+            <div className={styles.rightSectionCourse}>
+              <div className={styles.scndInfos}>
+                <div className={styles.InfosRefDur}>
+                  <p>
+                    Reference: <span>{Data.Reference}</span>
+                  </p>
+                  <p>
+                    Duration: <span> {duration} days (Data.Hours)</span>
+                  </p>
+                </div>
 
-              <div className={styles.CoursePriceInfoPage}>
-                <p>{Data.Price} TTC</p>
-              </div>
-              <br />
-              <div className={styles.CourseButtonsInfoPage}>
-                {user ? (
-                  <React.Fragment>
-                    {!Data.enrolled.includes(user._id) ? (
+                <div className={styles.CoursePriceInfoPage}>
+                  <p>{Data.Price} TTC</p>
+                </div>
+                <br />
+                <div className={styles.CourseButtonsInfoPage}>
+                  {user ? (
+                    <React.Fragment>
+                      {!Data.enrolled.includes(user._id) ? (
+                        <button
+                          onClick={() => {
+                            handleEnroll();
+                            handleCart();
+                          }}
+                          id={styles.CourseButtonsInfoPageB1}
+                        >
+                          <p>Add To Cart</p>
+                          <FaOpencart size={20} />
+                        </button>
+                      ) : (
+                        <Tooltip
+                          title="You don't have permission to do this"
+                          followCursor
+                        >
+                          <button
+                            onClick={handleDisabled}
+                            id={styles.CourseButtonsInfoPageB1Disabled}
+                            disabled
+                          >
+                            <p>Add To Cart</p>
+                            <FaOpencart size={20} />
+                          </button>
+                        </Tooltip>
+                      )}
+                    </React.Fragment>
+                  ) : (
+                    <React.Fragment>
                       <button
                         onClick={() => {
                           handleEnroll();
@@ -621,86 +646,81 @@ const StandardCourse = () => {
                         <p>Add To Cart</p>
                         <FaOpencart size={20} />
                       </button>
-                    ) : (
-                      <Tooltip
-                        title="You don't have permission to do this"
-                        followCursor
-                      >
-                        <button
-                          onClick={handleDisabled}
-                          id={styles.CourseButtonsInfoPageB1Disabled}
-                          disabled
-                        >
-                          <p>Add To Cart</p>
-                          <FaOpencart size={20} />
-                        </button>
-                      </Tooltip>
-                    )}
-                  </React.Fragment>
-                ) : (
-                  <React.Fragment>
-                    <button
-                      onClick={() => {
-                        handleEnroll();
-                        handleCart();
-                      }}
-                      id={styles.CourseButtonsInfoPageB1}
-                    >
-                      <p>Add To Cart</p>
-                      <FaOpencart size={20} />
-                    </button>
-                  </React.Fragment>
-                )}
-                <Modal
-                  sx={{ p: 1 }}
-                  open={Enrolled}
-                  onClose={handleCloseEnrolled}
-                  aria-labelledby="parent-modal-title"
-                  aria-describedby="parent-modal-description"
-                >
-                  <Box
-                    sx={{
-                      ...style,
-                      width: 450,
-                      display: "flex",
-                      flexDirection: "column",
-                      overflowY: "auto",
-                      overflowX: "hidden",
-                      maxHeight: "85vh",
-                      alignItems: "center",
-                    }}
+                    </React.Fragment>
+                  )}
+                  <Modal
+                    sx={{ p: 1 }}
+                    open={Enrolled}
+                    onClose={handleCloseEnrolled}
+                    aria-labelledby="parent-modal-title"
+                    aria-describedby="parent-modal-description"
                   >
-                    <div className={styles.ModalComponent}>
-                      <h3 id="parent-modal-title" className={styles.ModalTitle}>
-                        Course added to the cart successfully
-                      </h3>
-                      <p
-                        sx={{ textAlign: "center" }}
-                        id="parent-modal-description"
-                      >
-                        Your registration request for this course is being
-                        processed.{" "}
-                      </p>
+                    <Box
+                      sx={{
+                        ...style,
+                        width: 450,
+                        display: "flex",
+                        flexDirection: "column",
+                        overflowY: "auto",
+                        overflowX: "hidden",
+                        maxHeight: "85vh",
+                        alignItems: "center",
+                      }}
+                    >
+                      <div className={styles.ModalComponent}>
+                        <h3
+                          id="parent-modal-title"
+                          className={styles.ModalTitle}
+                        >
+                          Course added to the cart successfully
+                        </h3>
+                        <p
+                          sx={{ textAlign: "center" }}
+                          id="parent-modal-description"
+                        >
+                          Your registration request for this course is being
+                          processed.{" "}
+                        </p>
 
-                      <Divider
-                        variant="inset"
-                        sx={{ width: "100%", height: "3px", margin: 0 }}
-                      />
+                        <Divider
+                          variant="inset"
+                          sx={{ width: "100%", height: "3px", margin: 0 }}
+                        />
 
-                      <p
-                        sx={{ textAlign: "center" }}
-                        id="parent-modal-description"
-                      >
-                        you can track your registration status through your
-                        profile, <a href="/profile">quick access to profile</a>
-                      </p>
-                    </div>
-                  </Box>
-                </Modal>
+                        <p
+                          sx={{ textAlign: "center" }}
+                          id="parent-modal-description"
+                        >
+                          you can track your registration status through your
+                          profile,{" "}
+                          <a href="/profile">quick access to profile</a>
+                        </p>
+                      </div>
+                    </Box>
+                  </Modal>
 
-                {user ? (
-                  <React.Fragment>
-                    {!Data.enrolledPaid.includes(user._id) ? (
+                  {user ? (
+                    <React.Fragment>
+                      {!Data.enrolledPaid.includes(user._id) ? (
+                        <button
+                          onClick={handlePay}
+                          id={styles.CourseButtonsInfoPageB2}
+                        >
+                          <p>Subscribe Now</p>
+                          <RiSecurePaymentLine size={20} />
+                        </button>
+                      ) : (
+                        <button
+                          onClick={handleDisabled2}
+                          id={styles.CourseButtonsInfoPageB2Disabled}
+                        >
+                          <p>Subscribe Now</p>
+                          <RiSecurePaymentLine size={20} />
+                        </button>
+                      )}
+                    </React.Fragment>
+                  ) : (
+                    <React.Fragment>
                       <button
                         onClick={handlePay}
                         id={styles.CourseButtonsInfoPageB2}
@@ -708,59 +728,40 @@ const StandardCourse = () => {
                         <p>Subscribe Now</p>
                         <RiSecurePaymentLine size={20} />
                       </button>
-                    ) : (
-                      <button
-                        onClick={handleDisabled2}
-                        id={styles.CourseButtonsInfoPageB2Disabled}
-                      >
-                        <p>Subscribe Now</p>
-                        <RiSecurePaymentLine size={20} />
-                      </button>
-                    )}
-                  </React.Fragment>
-                ) : (
-                  <React.Fragment>
-                    <button
-                      onClick={handlePay}
-                      id={styles.CourseButtonsInfoPageB2}
-                    >
-                      <p>Subscribe Now</p>
-                      <RiSecurePaymentLine size={20} />
-                    </button>
-                  </React.Fragment>
-                )}
+                    </React.Fragment>
+                  )}
 
-                <Modal
-                  sx={{ p: 1 }}
-                  open={Paid}
-                  onClose={handleClosePaid}
-                  aria-labelledby="parent-modal-title"
-                  aria-describedby="parent-modal-description"
-                >
-                  <Box
-                    sx={{
-                      ...style,
-                      width: 450,
-                      display: "flex",
-                      flexDirection: "column",
-                      overflowY: "auto",
-                      overflowX: "hidden",
-                      maxHeight: "85vh",
-                      alignItems: "center",
-                    }}
+                  <Modal
+                    sx={{ p: 1 }}
+                    open={Paid}
+                    onClose={handleClosePaid}
+                    aria-labelledby="parent-modal-title"
+                    aria-describedby="parent-modal-description"
                   >
-                    <Button
-                      variant="contained"
-                      endIcon={<PaymentIcon />}
-                      onClick={Pay}
+                    <Box
+                      sx={{
+                        ...style,
+                        width: 450,
+                        display: "flex",
+                        flexDirection: "column",
+                        overflowY: "auto",
+                        overflowX: "hidden",
+                        maxHeight: "85vh",
+                        alignItems: "center",
+                      }}
                     >
-                      Pay
-                    </Button>
-                  </Box>
-                </Modal>
+                      <Button
+                        variant="contained"
+                        endIcon={<PaymentIcon />}
+                        onClick={Pay}
+                      >
+                        Pay
+                      </Button>
+                    </Box>
+                  </Modal>
+                </div>
               </div>
             </div>
-          </div>
           </div>
         </div>
       </main>

@@ -31,7 +31,7 @@ const ShowRessources = () => {
       headers: { authorization: `Bearer ${token}` },
     };
     const url = `${process.env.REACT_APP_API}api/trainings`;
-    axios.post(url, {}, config).then((res) => {
+    axios.get(url, config).then((res) => {
       setData(res.data.data);
     });
   };

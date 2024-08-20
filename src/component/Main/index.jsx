@@ -103,7 +103,7 @@ const Main = () => {
       try {
         const [trainingsResponse, coursesResponse] = await Promise.all([
           axios.get("http://localhost:5050/api/trainings"),
-          axios.post("http://localhost:5050/api/courses"),
+          axios.get("http://localhost:5050/api/courses"),
         ]);
 
         const combinedData = [
@@ -123,6 +123,7 @@ const Main = () => {
           indexOfFirstTraining,
           indexOfLastTraining
         );
+        console.log(currentData);
         setCurrentTrainings(currentData);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -232,7 +233,7 @@ const Main = () => {
                     {training.Thumbnail && training.Thumbnail.filePath ? (
                       <div className={styles.image}>
                         <img
-                          src={`${process.env.REACT_APP_API}/${training.Thumbnail.filePath}`}
+                          src={`${process.env.REACT_APP_API}${training.Thumbnail.filePath}`}
                           alt={training.Title}
                           className={styles.imagefeatures}
                         />

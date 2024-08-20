@@ -36,7 +36,7 @@ const ShowTrainings = () => {
       },
     };
     const url = `${process.env.REACT_APP_API}api/trainings`;
-    axios.post(url, {}, config).then((res) => {
+    axios.get(url, config).then((res) => {
       setData(res.data.data);
     });
   };
@@ -79,14 +79,14 @@ const ShowTrainings = () => {
         <div className={styles.avatar}>
           {course.Thumbnail ? (
             <img
-              src={`${process.env.REACT_APP_API}/${course.Thumbnail.filePath}`}
+              src={`${process.env.REACT_APP_API}${course.Thumbnail.filePath}`}
               alt=""
               style={{ width: 180, height: 180, objectFit: "cover" }}
               className={styles.imgTHMB}
             />
           ) : (
             <img
-              src={`${process.env.REACT_APP_API}/uploads/courseImg.png`}
+              src={`${process.env.REACT_APP_API}uploads/courseImg.png`}
               alt=""
               style={{ width: 180, height: 180 }}
               className={styles.imgTHMB}

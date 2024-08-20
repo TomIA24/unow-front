@@ -2,10 +2,11 @@ import React from "react";
 import styles from "./styles.module.css";
 
 const CourseCard = ({ course }) => {
+  console.log(`${process.env.REACT_APP_API}${course.Thumbnail.filePath}`);
   return (
     <div className={styles.courseCard}>
       <img
-        src={course.image}
+        src={`${process.env.REACT_APP_API}${course.Thumbnail.filePath}`}
         alt={course.title}
         className={styles.courseImage}
       />

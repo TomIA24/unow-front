@@ -340,11 +340,11 @@ function App() {
                 />
               }
             />
-            <Route
+            {/* <Route
               exact
               path="/categoryCourses2"
               element={<CoursesSection />}
-            />
+            /> */}
 
             {user && (
               <React.Fragment>

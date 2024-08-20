@@ -534,14 +534,14 @@ const StandardTraining = (props) => {
                   }}
                 >
                   {/* <img
-                  src={`${process.env.REACT_APP_API}/uploads/courseImg.png`}
+                  src={`${process.env.REACT_APP_API}uploads/courseImg.png`}
                   alt=""
                 
                 /> */}
                 </div>
               ) : (
                 // <img
-                //   src={`${process.env.REACT_APP_API}/${Data.Thumbnail.filePath}`}
+                //   src={`${process.env.REACT_APP_API}${Data.Thumbnail.filePath}`}
                 //   alt=""
                 //   className={styles.imgCourse}
                 // />
@@ -552,7 +552,7 @@ const StandardTraining = (props) => {
                   }}
                 >
                   <img
-                    src={`${process.env.REACT_APP_API}/${Data.Thumbnail.filePath}`}
+                    src={`${process.env.REACT_APP_API}${Data.Thumbnail.filePath}`}
                     alt=""
                     className={styles.imgCourseImage}
                   />
@@ -658,13 +658,13 @@ const StandardTraining = (props) => {
                                   {e.image ? (
                                     <Avatar
                                       alt="Remy Sharp"
-                                      src={`${process.env.REACT_APP_API}/${e.image.filePath}`}
+                                      src={`${process.env.REACT_APP_API}${e.image.filePath}`}
                                       sx={{ width: 24, height: 24 }}
                                     />
                                   ) : (
                                     <Avatar
                                       alt="Remy Sharp"
-                                      src={`${process.env.REACT_APP_API}/uploads/2022-03-25T09-59-55.836Z-avatar.png`}
+                                      src={`${process.env.REACT_APP_API}uploads/2022-03-25T09-59-55.836Z-avatar.png`}
                                       sx={{ width: 24, height: 24 }}
                                     />
                                   )}
@@ -673,7 +673,7 @@ const StandardTraining = (props) => {
                                 <React.Fragment>
                                   <Avatar
                                     alt="Remy Sharp"
-                                    src={`${process.env.REACT_APP_API}/uploads/2022-03-25T09-59-55.836Z-avatar.png`}
+                                    src={`${process.env.REACT_APP_API}uploads/2022-03-25T09-59-55.836Z-avatar.png`}
                                     sx={{ width: 24, height: 24 }}
                                   />
                                 </React.Fragment>

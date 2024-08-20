@@ -9,15 +9,16 @@ import AddIcon from "@mui/icons-material/Add";
 import stylesItem from "./styles.module.css";
 
 import { Avatar, AvatarGroup } from "@mui/material";
-const CourseItem = (props) => {
+const CourseItem = ({ course }) => {
+  console.log(`${process.env.REACT_APP_API}${course.Thumbnail.filePath}`);
   return (
     <div>
       <div className={stylesItem.topTrainingElements}>
         <div className={stylesItem.inner_carousel}>
-          {props.course.Thumbnail?.filePath ? (
+          {course.Thumbnail?.filePath ? (
             <div className={stylesItem.image}>
               <img
-                src={props?.course?.Thumbnail?.filePath}
+                src={`${process.env.REACT_APP_API}${course.Thumbnail.filePath}`}
                 alt={""}
                 className={stylesItem.imagefeatures}
               />
@@ -33,22 +34,16 @@ const CourseItem = (props) => {
           )}
           <div className={stylesItem.containercard}>
             <div className={stylesItem.categorie}>
-              <div className={stylesItem.categorietype}>
-                {props.course.Category}
-              </div>
-              <div className={stylesItem.categoriprice}>
-                {props.course.Price} $
-              </div>
+              <div className={stylesItem.categorietype}>{course.Category}</div>
+              <div className={stylesItem.categoriprice}>{course.Price} $</div>
             </div>
             <div
               className={stylesItem.categoriniveau}
               style={{ marginTop: "8px", fontSize: "15px" }}
             >
-              {props.course.Level}
+              {course.Level}
             </div>
-            <div className={stylesItem.categoridomain}>
-              {props.course.Title}
-            </div>
+            <div className={stylesItem.categoridomain}>{course.Title}</div>
             <div
               style={{
                 display: "inline-flex",
@@ -60,7 +55,7 @@ const CourseItem = (props) => {
             >
               <div className={stylesItem.categoriniveau}>
                 <StarRounded style={{ color: "yellow" }} />
-                {props.course.rating} (750)
+                {course.rating} (750)
               </div>
 
               <AvatarGroup

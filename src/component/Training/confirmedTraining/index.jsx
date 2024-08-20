@@ -221,13 +221,13 @@ const ConfirmedTraining = () => {
               Data.Thumbnail == {} ||
               !Data.Thumbnail ? (
                 <img
-                  src={`${process.env.REACT_APP_API}/uploads/courseImg.png`}
+                  src={`${process.env.REACT_APP_API}uploads/courseImg.png`}
                   alt=""
                   className={styles.imgCourse}
                 />
               ) : (
                 <img
-                  src={`${process.env.REACT_APP_API}/${Data.Thumbnail.filePath}`}
+                  src={`${process.env.REACT_APP_API}${Data.Thumbnail.filePath}`}
                   alt=""
                   className={styles.imgCourse}
                 />
@@ -377,13 +377,13 @@ const ConfirmedTraining = () => {
                             {e.image ? (
                               <Avatar
                                 alt="Remy Sharp"
-                                src={`${process.env.REACT_APP_API}/${e.image.filePath}`}
+                                src={`${process.env.REACT_APP_API}${e.image.filePath}`}
                                 sx={{ width: 24, height: 24 }}
                               />
                             ) : (
                               <Avatar
                                 alt="Remy Sharp"
-                                src={`${process.env.REACT_APP_API}/uploads/2022-03-25T09-59-55.836Z-avatar.png`}
+                                src={`${process.env.REACT_APP_API}uploads/2022-03-25T09-59-55.836Z-avatar.png`}
                                 sx={{ width: 24, height: 24 }}
                               />
                             )}

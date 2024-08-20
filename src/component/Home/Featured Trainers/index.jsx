@@ -10,13 +10,13 @@ const Featured = () => {
 
   useEffect(() => {
     // Fetch data from the API
-    fetch("http://localhost:5050/api/Trainer/trainers")
+    fetch(`${process.env.REACT_APP_API}api/Trainer/trainers`)
       .then((response) => response.json())
       .then((data) => {
         // Handle the case when image is missing
         const updatedData = data.trainers.map((trainer) => ({
           ...trainer,
-          image: `http://localhost:5050/api/${trainer.image.filePath}`,
+          image: `${process.env.REACT_APP_API}${trainer.image.filePath}`,
         }));
         setTrainers(updatedData);
       })

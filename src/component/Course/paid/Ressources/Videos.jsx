@@ -79,43 +79,36 @@ const Videos = () =>{
     
        
 
-    return(
-
-        <div className={styles.body}>
-            <div className={styles.DisplayRoom}>
-                <nav className={styles.nav}>
-                    <Link  to={{pathname : `/` }} >
-                        <Button startIcon={<ArrowBackIosIcon />}>
-                                Home
-                        </Button>
-                    </Link>
-                    <Link  to={{pathname : `/Profile` }} >
-                        <Button endIcon={<ArrowForwardIosIcon />}>
-                                Profile
-                        </Button>
-                    </Link>
-                </nav>
-                <div className={styles.Params}>
-                    <div className={styles.list}>
-                            {ListVideos}
-                    </div>
-                    <div className={styles.video}>
-                    {
-                        VideoDisplay ? 
-                        <video 
-                        controls 
-                        className={styles.Vid}
-                        src={`${process.env.REACT_APP_API}/${VideoDisplay}`} ></video> 
-                        :
-                        <div className={styles.NoVid}>
-                            <p>No video selected</p>
-                        </div>
-                    }
-                    </div>
+    return (
+      <div className={styles.body}>
+        <div className={styles.DisplayRoom}>
+          <nav className={styles.nav}>
+            <Link to={{ pathname: `/` }}>
+              <Button startIcon={<ArrowBackIosIcon />}>Home</Button>
+            </Link>
+            <Link to={{ pathname: `/Profile` }}>
+              <Button endIcon={<ArrowForwardIosIcon />}>Profile</Button>
+            </Link>
+          </nav>
+          <div className={styles.Params}>
+            <div className={styles.list}>{ListVideos}</div>
+            <div className={styles.video}>
+              {VideoDisplay ? (
+                <video
+                  controls
+                  className={styles.Vid}
+                  src={`${process.env.REACT_APP_API}${VideoDisplay}`}
+                ></video>
+              ) : (
+                <div className={styles.NoVid}>
+                  <p>No video selected</p>
                 </div>
+              )}
             </div>
+          </div>
         </div>
-    )
+      </div>
+    );
 
 }
 
