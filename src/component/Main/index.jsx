@@ -102,8 +102,8 @@ const Main = () => {
     const fetchData = async () => {
       try {
         const [trainingsResponse, coursesResponse] = await Promise.all([
-          axios.get("http://localhost:5050/api/trainings"),
-          axios.get("http://localhost:5050/api/courses"),
+          axios.get(`${process.env.REACT_APP_API}api/trainings`),
+          axios.get(`${process.env.REACT_APP_API}api/courses`),
         ]);
 
         const combinedData = [

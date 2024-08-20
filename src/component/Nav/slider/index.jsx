@@ -108,9 +108,10 @@ export default function SliderNav({ user, handleLogout }) {
   return (
     <React.Fragment>
       <Button onClick={toggleDrawer(true)}>
-        <MenuIcon className={styles.menuIcon} />
+      <MenuIcon className={styles.menuIcon} />
+      
       </Button>
-
+      
       <SwipeableDrawer
         open={toggle}
         onClose={toggleDrawer(false)}
@@ -119,25 +120,17 @@ export default function SliderNav({ user, handleLogout }) {
         {list()}
       </SwipeableDrawer>
       <div className={styles.logo}>
-        <Link to="/">
-          <img
-            src="/images/home/logoblanc 1.png"
-            alt=""
-            className={styles.logoimage}
-          />
-          {/* <img
+            <Link to="/" >
+            <img src="/images/home/logoblanc.png" alt=""   className={styles.logoimage}  />
+              {/* <img
                 style={{ marginTop: "20px", width: "160px" }}
                 className={styles.LogoImg}
                 src={imgLogo}
               />{" "} */}
-        </Link>
-      </div>
+            </Link>
+            </div>
       <Link to="/">
-        <img
-          src="./images/home/logoblanc 1.png"
-          alt=""
-          className={styles.logoimage}
-        />
+      <img src="./images/home/logoblanc.png" alt=""   className={styles.logoimage}  />
         {/* <img
                 style={{ marginTop: "20px", width: "160px" }}
                 className={styles.LogoImg}
@@ -162,7 +155,7 @@ export default function SliderNav({ user, handleLogout }) {
             {user?.image ? (
               <Avatar
                 alt="icon"
-                src={`${process.env.REACT_APP_API}${user.image.filePath}`}
+                src={`${process.env.REACT_APP_API}/${user.image.filePath}`}
                 sx={{ width: 30, height: 30 }}
               />
             ) : (
