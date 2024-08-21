@@ -227,8 +227,13 @@ const Main = () => {
               </button>
             </div>
             <div className={styles.carousel} ref={carouselRef}>
-              {currentTrainings.map((training) => (
-                <Link to={{ pathname: `/Training/${training._id}` }}>
+              {currentTrainings.map((training) => (      
+                      <Link
+              to={{
+                pathname: `/${training.type === 'course' ? 'Course' : 'Training'}/${training._id}`,
+              }}
+              key={training._id}
+            >
                   <div className={styles.inner_carousel} key={training._id}>
                     {training.Thumbnail && training.Thumbnail.filePath ? (
                       <div className={styles.image}>

@@ -223,54 +223,57 @@ a {
 /*/////////ENDNAV////////////////////*/
 
 .MotherDivCourse {
-    background: url('../../assets/courseBack.png') no-repeat top;
-    width: 100%;
-    height: auto;
-    margin-top: 20px;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
+   
 }
 
 .MainDivCourse {
-    width: 80%;
-    height: auto;
-    margin: auto;
+    width: 100%;
+    /* height: auto; */
+    /* margin: auto; */
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1200px;
 }
 
 .leftSectionCourse {
     /* background-color: #6FC2D0; */
-    width: 90%;
-    height: 100%;
+    width: 100%;
+}
+.imgCourse {
+    width: 100%;  /* Full width relative to its parent */
+   /* 50% of the original width to scale it down */
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    overflow: hidden; 
+    border-radius: 2rem;
+    position: relative;
+    padding-bottom: 56.21%; /* Aspect ratio of 1345x756 */
 }
 
+.imgCourseImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;  /* Video takes full width of the container */
+    height: 100%; /* Video takes full height of the container */
+    object-fit: cover; /* Ensure the video covers the container without stretching */}
 .FirsSectionInfoCourse {
-    background-color: #ffffff;
+    /* background-color: #ffffff; */
     /* border: 3px solid #0E2256; */
-    box-shadow: inset 0 0 7px 2px #0e3dd93d, 0 0 5px 2px #0e3dd93d;
-    border-radius: 15px;
-    display: flex;
-    justify-content: start;
-    align-items: start;
-    width: 70%;
-    height: 30vh;
-    min-height: 200px;
-    min-width: 650px;
-    margin-top: 100px;
-    margin-bottom: 20px;
+    /* box-shadow: inset 0 0 7px 2px #0e3dd93d, 0 0 5px 2px #0e3dd93d; */
+
 }
 
 .FirsSectionInfoCourseTitle {
     margin: 50px 10px;
+    display: flex;
+    flex-direction: row;
 }
 
 .FirsSectionInfoCourseTitle h4 {
@@ -282,53 +285,66 @@ a {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+
     gap: 10px;
     width: 45%;
     height: 100%;
+    margin-bottom: 12rem;
 }
+.btncourse{
+    width: 100%;
+    height: 5rem;
+    border-radius:20px;
+    background-color: rgba(62, 70, 120, 1);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0);
+    border: none;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    color:white
+    
+}
+.btncour{
+    width: 10%;
+    
+    border-radius:20px;
+    background-color: rgba(62, 70, 120, 0);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0);
+    border: none;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    color:rgba(62, 70, 120, 1)
+}
+.btncour:hover{
+  color: #CD6214;
+    cursor: pointer;
+}
+.btncourse:hover {
+    background-color: #CD6214;
+    cursor: pointer;
+}
+.allbutton:hover{
 
+}
+.allbutton{
+    display: flex;
+    flex-direction:row;
+}
 .imgCourse {
-    max-width: 200px;
-    max-height: 200px;
-    display: grid;
-    grid-template-columns: 1fr;
+
     border-radius: 50px;
-    margin: auto;
-    box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.16);
+
 }
 
 .imgCourse img {
-    position: relative;
-    height: 200px;
-    margin: auto;
+
 }
 
 .rightSectionCourse {
-    position: fixed;
-    /* background-color: #1c822d; */
-    width: 25%;
-    height: 60vh;
-    right: 90px;
-    bottom: 90px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
 }
 
 .scndInfos {
-    padding: 20px 0;
-    background-color: white;
-    height: 90%;
-    width: 90%;
-    position: sticky;
-    box-shadow: 0 0 7px rgba(0, 0, 0, 0.25);
-    display: block;
-    transition: margin-top 1s ease-out;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+ 
 }
 
 .InfosRefDur {

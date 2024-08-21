@@ -476,17 +476,17 @@ const StandardCourse = () => {
                   Data.Thumbnail == {} ||
                   !Data.Thumbnail ? (
                   <img
-                    src={`${process.env.REACT_APP_API}/uploads/courseImg.png`}
+                    src={`${process.env.REACT_APP_API}uploads/courseImg.png`}
                     alt=""
                     className={styles.imgCourse}
                   />
                 ) : (
                   <div 
                   className={styles.imgCourse} 
-                  style={{  backgroundImage: `url(${process.env.REACT_APP_API}/uploads/courseImg.png) !important` }}
+                  style={{  backgroundImage: `url(${process.env.REACT_APP_API}uploads/courseImg.png) !important` }}
                 >
                         <img
-                    src={`${process.env.REACT_APP_API}/${Data.Thumbnail.filePath}`}
+                    src={`${process.env.REACT_APP_API}${Data.Thumbnail.filePath}`}
                     alt=""
                     className={styles.imgCourseImage}
                   />
@@ -577,7 +577,7 @@ const StandardCourse = () => {
                                     {e.image ? (
                                       <Avatar
                                         alt="Remy Sharp"
-                                        src={`${process.env.REACT_APP_API}/${e.image.filePath}`}
+                                        src={`${process.env.REACT_APP_API}${e.image.filePath}`}
                                         sx={{ width: 24, height: 24 }}
                                       />
                                     ) : (
@@ -805,18 +805,23 @@ const StandardCourse = () => {
               <div className={styles.rightSectionContainer}>
               <div className={styles.rightSectionCourse}>
                 <div className={styles.scndInfos}>
+                <div className={styles.CoursePriceInfoPage}>
+                <div className={styles.price}>{Data.Price} TTC
+                    <p className={styles.underline}></p>
+                  </div>
+                  </div>
                   <div className={styles.InfosRefDur}>
-                    <p>
+                    <ul>
+                    <li>
                       Reference: <span>{Data.Reference}</span>
-                    </p>
-                    <p>
+                    </li>
+                    <li>
                       Duration: <span> {duration} days (Data.Hours)</span>
-                    </p>
+                    </li>
+                    </ul>
                   </div>
 
-                  <div className={styles.CoursePriceInfoPage}>
-                    <p>{Data.Price} TTC</p>
-                  </div>
+               
                   <br />
                   <div className={styles.CourseButtonsInfoPage}>
                     {user ? (

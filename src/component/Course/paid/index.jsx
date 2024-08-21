@@ -19,7 +19,7 @@ import Rating from "@mui/material/Rating";
 import Typography from "@mui/material/Typography";
 import { green, red } from "@mui/material/colors";
 import axios from "axios";
-import React, {  useRef,useEffect, useState } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { BsArrowDownRightCircleFill } from "react-icons/bs";
 import { Link, useParams } from "react-router-dom";
 import Nav from "../../Nav";
@@ -53,7 +53,7 @@ const PaidCourse = () => {
     Price: "",
     Thumbnail: {},
     Video: [],
-    Level: "",                                                                                                                                                                                             
+    Level: "",
     Reference: "",
     Date: [],
     enrolled: [],
@@ -63,13 +63,13 @@ const PaidCourse = () => {
   });
 
   useEffect(async () => {
-    console.log("test") 
+    console.log("test")
     await handleCourse();
-  },[]);
+  }, []);
 
   useEffect(() => {
     getEvaluations();
-  },[]);
+  }, []);
 
   const handleCourse = () => {
     console.log("test")
@@ -150,7 +150,7 @@ const PaidCourse = () => {
       return e.id;
     });
     GetUsers(ids);
-  },[Evaluations]);
+  }, [Evaluations]);
   // 
   useEffect(() => {
     var list = [];
@@ -168,7 +168,7 @@ const PaidCourse = () => {
       });
     });
     setEvaluationsCompleated(list);
-  },[]);
+  }, []);
   // , [usersLimited]
   const TextRating = (value, avis) => {
     return (
@@ -317,15 +317,15 @@ const PaidCourse = () => {
   const refHome = useRef(null);
   return (
     <React.Fragment>
-      
-   <div className={styles.backimage}>
+
+      <div className={styles.backimage}>
         <div className={styles.maincontainernav}>
           <div className={styles.nav_container}>
             <Nav ref={refHome} />
 
           </div>
           <div className={styles.pdowncontainer}>
-            <div className={styles.pdown} >COURSE DETAILS
+            <div className={styles.pdown} >COURS
               <p className={styles.underline}></p>
             </div>
           </div>
@@ -336,35 +336,46 @@ const PaidCourse = () => {
           <div className={styles.leftSectionCourse}>
             <div className={styles.FirsSectionInfoCourse}>
               {Data.Thumbnail === "qqq" ||
-              Data.Thumbnail === null ||
-              !Data.Thumbnail ? (
-                <img
-                  src={`${process.env.REACT_APP_API}uploads/courseImg.png`}
-                  alt=""
+                Data.Thumbnail === null ||
+                !Data.Thumbnail ? (
+                <div
                   className={styles.imgCourse}
-                />
+
+                >
+                  <img
+                    src={`${process.env.REACT_APP_API}uploads/courseImg.png`}
+                    alt=""
+                    className={styles.imgCourseImage}
+                  />
+                </div>
+
               ) : (
-                <img
-                  src={`${process.env.REACT_APP_API}${Data.Thumbnail.filePath}`}
-                  alt=""
+                <div
                   className={styles.imgCourse}
-                />
+
+                >
+                  <img
+                    src={`${process.env.REACT_APP_API}${Data.Thumbnail.filePath}`}
+                    alt=""
+                    className={styles.imgCourseImage}
+                  />
+                </div>
               )}
               <div className={styles.FirsSectionInfoCourseTitle}>
                 <h1>{Data.Title}</h1>
-                <h4>{Data.Category}</h4>
+             
+              </div>
+              <div className={styles.FirsSectionInfoCourseTitle}>   <h4>{Data.Category}</h4>
                 {Data.rating
                   ? TextRating(Data.rating, Data.evaluate.length)
-                  : TextRating(0, 0)}
-              </div>
+                  : TextRating(0, 0)}</div>
+              {/*Les button*/}
               <div className={styles.Btn_Div}>
-                <Link to={{ pathname: `/Course/${id}/Videos` }}>
+                {/* <Link to={{ pathname: `/Course/${id}/Videos` }}         className={styles.btncourse}>
                   <Button
-                    sx={{ width: "186px" }}
-                    variant="outlined"
-                    endIcon={<PlayArrowIcon />}
+          
                   >
-                    Start Course
+                    Start Course here
                   </Button>
                 </Link>
 
@@ -389,15 +400,34 @@ const PaidCourse = () => {
                 >
                   Ressources
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                </Button>
+                </Button> */}
+                <div>
+                  <div className={styles.allbutton}> 
+                    <button className={styles.btncourse}>   Start Course here </button>
+                    <button className={styles.btncour}> > </button>
+                  </div>
+                  
+                </div>
+                <div>
+                  <button className={styles.btncourse}>
+                  Pré-cours </button>
+                </div>
+                <div>
+                  <button className={styles.btncourse}>
+                  PDF </button>
+                </div>
+                <div>
+                  <button className={styles.btncourse}>
+                  QUIZ </button>
+                </div>
               </div>
             </div>
-            <div className={styles.ScndSectionInfoCourse}>
+            {/* <div className={styles.ScndSectionInfoCourse}>
               <div className={styles.DescriptionInfoCourse}>
                 <div className={styles.Accordion}>
-                  <Accordion disabled={TestState}>
-                    {/*  */}
-                    <AccordionSummary
+                  <Accordion disabled={TestState}> */}
+            {/*  */}
+            {/* <AccordionSummary
                       expandIcon={<ExpandMoreIcon />}
                       aria-controls="panel1a-content"
                       id="panel1a-header"
@@ -405,9 +435,9 @@ const PaidCourse = () => {
                       <Typography>Evaluation</Typography>
                     </AccordionSummary>
                     <AccordionDetails>
-                      <Accordion>
-                        {/* disabled */}
-                        <AccordionSummary
+                      <Accordion> */}
+            {/* disabled */}
+            {/* <AccordionSummary
                           expandIcon={<ExpandMoreIcon />}
                           aria-controls="panel1a-content"
                           id="panel1a-header"
@@ -418,9 +448,9 @@ const PaidCourse = () => {
                           {Data.QuestionsQCM
                             ? Data.QuestionsQCM.map((qcm, index) => {
                                 return (
-                                  <Accordion key={qcm.id}>
-                                    {/* disabled */}
-                                    <AccordionSummary
+                                  <Accordion key={qcm.id}> */}
+            {/* disabled */}
+            {/* <AccordionSummary
                                       expandIcon={<ExpandMoreIcon />}
                                       aria-controls="panel1a-content"
                                       id="panel1a-header"
@@ -466,8 +496,8 @@ const PaidCourse = () => {
                               })
                             : ""}
                         </AccordionDetails>
-                      </Accordion>
-                      {/* <Accordion >
+                      </Accordion> */}
+            {/* <Accordion >
                                                 <AccordionSummary
                                                     expandIcon={<ExpandMoreIcon />}
                                                     aria-controls="panel1a-content"
@@ -535,7 +565,7 @@ const PaidCourse = () => {
                                                     
                                                 </AccordionDetails>
                                             </Accordion> */}
-                      <Button
+            {/* <Button
                         sx={{ margin: "10px", float: "right" }}
                         onClick={handleEvaluation}
                         variant="contained"
@@ -723,7 +753,7 @@ const PaidCourse = () => {
               ) : (
                 ""
               )}
-            </div>
+            </div> */}
           </div>
         </div>
       </main>
@@ -754,7 +784,7 @@ const PaidCourse = () => {
       ) : (
         ""
       )}
-      
+
     </React.Fragment>
   );
 };
