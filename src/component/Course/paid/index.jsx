@@ -53,7 +53,7 @@ const PaidCourse = () => {
     Price: "",
     Thumbnail: {},
     Video: [],
-    Level: "",
+    Level: "",                                                                                                                                                                                             
     Reference: "",
     Date: [],
     enrolled: [],
@@ -62,15 +62,18 @@ const PaidCourse = () => {
     evaluate: [],
   });
 
-  useEffect(() => {
-    handleCourse();
-  });
+  useEffect(async () => {
+    console.log("test") 
+    await handleCourse();
+  },[]);
 
   useEffect(() => {
     getEvaluations();
-  });
+  },[]);
 
   const handleCourse = () => {
+    console.log("test")
+
     const config = {
       headers: {},
       params: { id: id },
@@ -147,8 +150,8 @@ const PaidCourse = () => {
       return e.id;
     });
     GetUsers(ids);
-  });
-  // [Evaluations]
+  },[Evaluations]);
+  // 
   useEffect(() => {
     var list = [];
     Evaluations.forEach((e) => {
@@ -165,7 +168,7 @@ const PaidCourse = () => {
       });
     });
     setEvaluationsCompleated(list);
-  });
+  },[]);
   // , [usersLimited]
   const TextRating = (value, avis) => {
     return (
@@ -255,7 +258,7 @@ const PaidCourse = () => {
       trainer: "Course",
       course: Data._id,
     });
-  }, [Data, evaluation]);
+  }, [Data]);
 
   const [changingResultEvaluations, setChangingResultEvaluations] = useState(
     []
@@ -285,12 +288,12 @@ const PaidCourse = () => {
       ...evaluationResult,
       QCM: changingResultEvaluations,
     });
-  }, [changingResultEvaluations, evaluationResult]);
+  }, [changingResultEvaluations]);
 
   useEffect(() => {
     console.log("Evaluation result:", evaluationResult);
     setEvaluation({ ...evaluation, Evaluation: evaluationResult });
-  }, [evaluationResult, evaluation]);
+  }, [evaluationResult]);
 
   const handleEvaluation = async () => {
     const config = {
