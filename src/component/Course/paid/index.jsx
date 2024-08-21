@@ -19,11 +19,11 @@ import Rating from "@mui/material/Rating";
 import Typography from "@mui/material/Typography";
 import { green, red } from "@mui/material/colors";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, {  useRef,useEffect, useState } from "react";
 import { BsArrowDownRightCircleFill } from "react-icons/bs";
 import { Link, useParams } from "react-router-dom";
 import Nav from "../../Nav";
-import Footer from "../../footer";
+import Footer from "../../Home/Footer";
 import Evaluate from "./Evaluate";
 import Ressources from "./RessourcesFiles";
 import styles from "./styles.module.css";
@@ -53,7 +53,7 @@ const PaidCourse = () => {
     Price: "",
     Thumbnail: {},
     Video: [],
-    Level: "",
+    Level: "",                                                                                                                                                                                             
     Reference: "",
     Date: [],
     enrolled: [],
@@ -62,15 +62,18 @@ const PaidCourse = () => {
     evaluate: [],
   });
 
-  useEffect(() => {
-    handleCourse();
-  });
+  useEffect(async () => {
+    console.log("test") 
+    await handleCourse();
+  },[]);
 
   useEffect(() => {
     getEvaluations();
-  });
+  },[]);
 
   const handleCourse = () => {
+    console.log("test")
+
     const config = {
       headers: {},
       params: { id: id },
@@ -147,8 +150,8 @@ const PaidCourse = () => {
       return e.id;
     });
     GetUsers(ids);
-  });
-  // [Evaluations]
+  },[Evaluations]);
+  // 
   useEffect(() => {
     var list = [];
     Evaluations.forEach((e) => {
@@ -165,7 +168,7 @@ const PaidCourse = () => {
       });
     });
     setEvaluationsCompleated(list);
-  });
+  },[]);
   // , [usersLimited]
   const TextRating = (value, avis) => {
     return (
@@ -255,7 +258,7 @@ const PaidCourse = () => {
       trainer: "Course",
       course: Data._id,
     });
-  }, [Data, evaluation]);
+  }, [Data]);
 
   const [changingResultEvaluations, setChangingResultEvaluations] = useState(
     []
@@ -285,12 +288,12 @@ const PaidCourse = () => {
       ...evaluationResult,
       QCM: changingResultEvaluations,
     });
-  }, [changingResultEvaluations, evaluationResult]);
+  }, [changingResultEvaluations]);
 
   useEffect(() => {
     console.log("Evaluation result:", evaluationResult);
     setEvaluation({ ...evaluation, Evaluation: evaluationResult });
-  }, [evaluationResult, evaluation]);
+  }, [evaluationResult]);
 
   const handleEvaluation = async () => {
     const config = {
@@ -311,17 +314,20 @@ const PaidCourse = () => {
       });
   };
   const [openRessources, setOpenRessources] = useState(false);
-
+  const refHome = useRef(null);
   return (
     <React.Fragment>
-      <div className={styles.backimage}>
-        <div className={styles.navContainer}>
-          <Nav />
-        </div>
-        <div className={styles.pdowncontainer}>
-          <div className={styles.pdown}>
-            COURSES DETAILS
-            <p className={styles.underline}></p>
+      
+   <div className={styles.backimage}>
+        <div className={styles.maincontainernav}>
+          <div className={styles.nav_container}>
+            <Nav ref={refHome} />
+
+          </div>
+          <div className={styles.pdowncontainer}>
+            <div className={styles.pdown} >COURSE DETAILS
+              <p className={styles.underline}></p>
+            </div>
           </div>
         </div>
       </div>
@@ -748,6 +754,7 @@ const PaidCourse = () => {
       ) : (
         ""
       )}
+      
     </React.Fragment>
   );
 };

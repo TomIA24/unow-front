@@ -21,22 +21,26 @@ import TextField from "@mui/material/TextField";
 import Tooltip from "@mui/material/Tooltip";
 import axios from "axios";
 import React, { useRef, useEffect, useState } from "react";
+import { BiCustomize } from "react-icons/bi";
+import { BsArrowDownRightCircleFill } from "react-icons/bs";
 
+import { FaOpencart } from "react-icons/fa";
 import { useParams } from "react-router-dom";
 import Loading from "../../Loading";
 import Nav from "../../Nav";
-
+import { Link, Route, Routes, Navigate } from "react-router-dom";
 import Footer from "../../Home/Footer";
 import styles from "./styles.module.css";
 
 const StandardTraining = (props) => {
+
   const [user, SetUser] = useState();
   const [isLoading, setLoading] = useState(true);
   const [Evaluations, setEvaluations] = useState([]);
   const [EvaluationsCompleated, setEvaluationsCompleated] = useState([]);
   const [usersLimited, setUsersLimited] = useState([]);
   const [down, setDown] = useState(false);
-  console.log(down);
+
 
   let { id } = useParams();
   const token = localStorage.getItem("token");
@@ -67,7 +71,9 @@ const StandardTraining = (props) => {
     } else {
       setLoading(false);
     }
-  }, [token, id]);
+  }, []);
+
+  const [error, setError] = useState("");
 
   const [Data, setData] = useState({
     _id: "",
@@ -104,18 +110,10 @@ const StandardTraining = (props) => {
     px: 4,
     pb: 3,
   };
-  const [CustomizeNotif, setCustomizeNotif] = useState({
-    user: user,
-    course: Data,
-    date: [null, null],
-    time: new Date(""),
-    duration: "",
-    message: "",
-    NotifType: "Customization",
-  });
+
   useEffect(() => {
     setCustomizeNotif({ ...CustomizeNotif, user: user });
-  }, [user, CustomizeNotif]);
+  }, [user]);
 
   const initialNotif = {
     user: user,
@@ -151,14 +149,13 @@ const StandardTraining = (props) => {
 
   const [selectedOptions, setSelectedOptions] = useState([]);
 
-  useEffect(() => {}, [selectedOptions]);
+  useEffect(() => { }, [selectedOptions]);
 
   const handleChangeSelected = (e, newValue) => {
     setSelectedOptions([newValue]);
   };
 
   const [mobile, setMobile] = useState(false);
-  setMobile(false);
 
   // const [dateCust, setDateCust] = useState([null, null]);
 
@@ -167,6 +164,16 @@ const StandardTraining = (props) => {
   // const [durée, setDurée] = useState();
 
   // const [message, setMessage] = useState();
+
+  const [CustomizeNotif, setCustomizeNotif] = useState({
+    user: user,
+    course: Data,
+    date: [null, null],
+    time: new Date(""),
+    duration: "",
+    message: "",
+    NotifType: "Customization",
+  });
 
   const handleSend = async (e) => {
     e.preventDefault();
@@ -188,14 +195,14 @@ const StandardTraining = (props) => {
     console.log(CustomizeNotif);
   }, [CustomizeNotif]);
 
-  //   const [date, setDate] = React.useState("date1");
+  const [date, setDate] = React.useState("date1");
 
-  // const handleChange = (event) => {
-  //   setDate(event.target.value);
-  // };
+  const handleChange = (event) => {
+    setDate(event.target.value);
+  };
+
 
   const [scrollPosition, setScrollPosition] = useState(0);
-  console.log(scrollPosition);
   const handleScroll = () => {
     const position = window.pageYOffset;
     setScrollPosition(position);
@@ -219,6 +226,9 @@ const StandardTraining = (props) => {
   /*///////////////////////////////////*/
 
   const GetUsers = (ids) => {
+    const config = {
+      headers: {},
+    };
     axios
       .post(
         `${process.env.REACT_APP_API}api/Candidat/returnCandidatForRatingInfo`,
@@ -230,17 +240,17 @@ const StandardTraining = (props) => {
       });
   };
 
-  useEffect(() => {
+  useEffect(async () => {
     const ids = Evaluations.map((e) => {
       return e.id;
     });
     GetUsers(ids);
   }, [Evaluations]);
 
-  useEffect(() => {
+  useEffect(async () => {
     var list = [];
-    Evaluations.forEach((e) => {
-      usersLimited.forEach((u) => {
+    Evaluations.map((e) => {
+      usersLimited.map((u) => {
         if (u._id === e.id) {
           list.push({
             id: e.id,
@@ -253,27 +263,22 @@ const StandardTraining = (props) => {
       });
     });
     setEvaluationsCompleated(list);
-  }, [usersLimited, Evaluations]);
+  }, [usersLimited]);
 
   /*********************************************** */
   useEffect(() => {
     handleCourse();
-  });
-  useEffect(() => {
     if (token) {
       setCustomizeNotif({ ...CustomizeNotif, course: Data });
       console.log(user);
     }
-  }, [CustomizeNotif, Data, token, user]);
+  }, []);
 
   const handleCourse = () => {
     axios
       .get(
         `${process.env.REACT_APP_API}api/trainings/specific`,
-        {
-          params: { id: id },
-          headers: { authorization: `Bearer ${localStorage.getItem("token")}` },
-        },
+        { params: { id: id }, headers: { authorization: `Bearer ${localStorage.getItem("token")}` } },
         {}
       )
       .then((res) => {
@@ -284,15 +289,13 @@ const StandardTraining = (props) => {
   };
 
   const TimeperDay = new Date(Data.TimePerDay);
-  const time = `${
-    TimeperDay.getHours() < 10
-      ? "0" + TimeperDay.getHours()
-      : TimeperDay.getHours()
-  }:${
-    TimeperDay.getMinutes() < 10
+  const time = `${TimeperDay.getHours() < 10
+    ? "0" + TimeperDay.getHours()
+    : TimeperDay.getHours()
+    }:${TimeperDay.getMinutes() < 10
       ? "0" + TimeperDay.getMinutes()
       : TimeperDay.getMinutes()
-  }`;
+    }`;
   console.log("time: ", time);
   const datesDisplay = Data.Date.map((date) => {
     // console.log("date: ",date)
@@ -317,23 +320,21 @@ const StandardTraining = (props) => {
     return (
       <p className={styles.radioLable}>
         {" "}
-        {`from ${
-          months[dateFormated1.getMonth()]
-        },${dateFormated1.getDate()} ${dateFormated1.getFullYear()} to ${
-          months[dateFormated2.getMonth()]
-        },${dateFormated2.getDate()} ${dateFormated2.getFullYear()}`}
+        {`from ${months[dateFormated1.getMonth()]
+          },${dateFormated1.getDate()} ${dateFormated1.getFullYear()} to ${months[dateFormated2.getMonth()]
+          },${dateFormated2.getDate()} ${dateFormated2.getFullYear()}`}
       </p>
     );
   });
 
-  // const handleLogout = () => {
-  //   localStorage.removeItem("token");
-  //   localStorage.removeItem("user");
-  //   window.location = "/login";
-  // };
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    window.location = "/login";
+  };
 
   const [enrollementButtonState, setEnrollementButtonState] = useState(true);
-  console.log(enrollementButtonState);
+
   // useEffect(()=>{
   //     if(!enrollementButtonState){
   //         handleDisabled()
@@ -348,7 +349,7 @@ const StandardTraining = (props) => {
         }
       }
     }
-  }, [user, Data]);
+  }, [Data]);
 
   const TextRating = (value, avis) => {
     return (
@@ -392,7 +393,7 @@ const StandardTraining = (props) => {
     if (token) {
       handleLastSeen();
     }
-  });
+  }, []);
 
   const handleLastSeen = async () => {
     const config = {
@@ -455,25 +456,25 @@ const StandardTraining = (props) => {
     }
   };
 
-  // const [tool, setTool] = useState(false);
+  const [tool, setTool] = useState(false);
+  const toolClose = () => {
+    setTool(false);
+  };
 
-  // const toolClose = () => {
-  //   setTool(false);
-  // };
-
-  // const toolOpen = () => {
-  //   setTool(true);
-  // };
+  const toolOpen = () => {
+    setTool(true);
+  };
   /************/ //////////////////////// */
   const [WindowWidth, setWindowWidth] = useState(0);
 
   useEffect(() => {
+    console.log(WindowWidth);
     if (WindowWidth <= 810) {
       setDown(true);
     } else {
       setDown(false);
     }
-  }, [WindowWidth]);
+  }, []);
 
   const handleWidthChange = () => {
     const currentWidth = window.innerWidth;
@@ -491,223 +492,229 @@ const StandardTraining = (props) => {
 
   useEffect(() => {
     console.log(WindowWidth);
-    if (WindowWidth <= 810) {
+    if (WindowWidth <= 876) {
+      setDown(true);
       setMobileView(true);
     } else {
+      setDown(false);
       setMobileView(false);
     }
   }, [WindowWidth]);
+
+
 
   if (isLoading) {
     return <Loading />;
   }
   return (
     <React.Fragment>
+
       <div className={styles.backimage}>
-        <div className={styles.nav_container}>
-          <Nav ref={refHome} />
-        </div>
-        <div className={styles.pdowncontainer}>
-          <div className={styles.pdown}>
-            COURSES DETAILS
-            <p className={styles.underline}></p>
+        <div className={styles.maincontainernav}>
+          <div className={styles.nav_container}>
+
+
+
+            <Nav ref={refHome} />
+
+          </div>
+          <div className={styles.pdowncontainer}>
+            <div className={styles.pdown} >TRAINING DETAILS
+              <p className={styles.underline}></p>
+            </div>
           </div>
         </div>
       </div>
+      <div className={styles.maincontainer}>
+        <main className={styles.MotherDivCourse}>
 
-      <main className={styles.MotherDivCourse}>
-        <div className={styles.MainDivCourse}>
-          <div className={styles.leftSectionCourse}>
-            <div className={styles.course}>
-              COURSES
-              <p className={styles.underline}></p>
-            </div>
 
-            <div className={styles.FirsSectionInfoCourse}>
-              {Data.Thumbnail === "qqq" ||
-              Data.Thumbnail == null ||
-              !Data.Thumbnail ? (
-                <div
-                  className={styles.imgCourse}
-                  style={{
-                    backgroundImage: `url(${process.env.REACT_APP_API}/uploads/courseImg.png) !important`,
-                  }}
-                >
-                  {/* <img
-                  src={`${process.env.REACT_APP_API}uploads/courseImg.png`}
+
+
+
+          <div className={styles.MainDivCourse}>
+
+            <div className={styles.leftSectionCourse}>
+              <div className={styles.course} >TRAINING
+                <p className={styles.underline}></p>
+              </div>
+
+              <div className={styles.FirsSectionInfoCourse}>
+                {Data.Thumbnail === "qqq" ||
+                  Data.Thumbnail == {} ||
+                  !Data.Thumbnail ? (
+
+                  <div className={styles.imgCourse} style={{ backgroundImage: `url(${process.env.REACT_APP_API}uploads/courseImg.png) !important` }}>
+
+
+                    {/* <img
+                  src={`${process.env.REACT_APP_API}/uploads/courseImg.png`}
                   alt=""
                 
                 /> */}
-                </div>
-              ) : (
-                // <img
-                //   src={`${process.env.REACT_APP_API}${Data.Thumbnail.filePath}`}
-                //   alt=""
-                //   className={styles.imgCourse}
-                // />
-                <div
-                  className={styles.imgCourse}
-                  style={{
-                    backgroundImage: `url(${process.env.REACT_APP_API}/uploads/courseImg.png) !important`,
-                  }}
+                  </div>
+                ) : (
+                  // <img
+                  //   src={`${process.env.REACT_APP_API}/${Data.Thumbnail.filePath}`}
+                  //   alt=""
+                  //   className={styles.imgCourse}
+                  // />
+                  <div 
+                  className={styles.imgCourse} 
+                  style={{  backgroundImage: `url(${process.env.REACT_APP_API}uploads/courseImg.png) !important` }}
                 >
-                  <img
+                        <img
                     src={`${process.env.REACT_APP_API}${Data.Thumbnail.filePath}`}
                     alt=""
                     className={styles.imgCourseImage}
                   />
                 </div>
-              )}
+              
 
-              <div className={styles.FirsSectionInfoCourseTitle}>
-                <h1>{Data.Title}</h1>
-              </div>
-              <div>
-                <div className={styles.courseInfo}>
-                  <span>Amira BACHA</span>
-                  <span>enrolled number</span>
-                  <span>
-                    {Data.rating
-                      ? TextRating(Data.rating, Data.evaluate.length)
-                      : TextRating(0, 0)}
-                  </span>
-                </div>
-              </div>
-            </div>
 
-            <div className={styles.ScndSectionInfoCourse}>
-              <div>
-                <div className={styles.DescriptionInfoCourse}>
-                  <div className={styles.DescriptionInfoCourseTitle}>
-                    <span>
-                      DESCRIPTION
-                      <p className={styles.underline}></p>
-                    </span>
-                  </div>
-                  <div className={styles.DescriptionInfoCourseText}>
-                    <p>{Data.Description}</p>
-                  </div>
-                </div>
-                <div className={styles.DescriptionInfoCourse}>
-                  <div className={styles.DescriptionInfoCourseTitle}>
-                    <span>
-                      Goals
-                      <p className={styles.underline}></p>
-                    </span>
-                  </div>
-                  <div className={styles.DescriptionInfoCourseText}>
-                    <p>{Data.Goals}</p>
-                  </div>
-                </div>
-                <div className={styles.DescriptionInfoCourse}>
-                  <div className={styles.DescriptionInfoCourseTitle}>
-                    <span>
-                      Who Should Attend
-                      <p className={styles.underline}></p>
-                    </span>
-                  </div>
-                  <div className={styles.DescriptionInfoCourseText}>
-                    <p>{Data.WhoShouldAttend}</p>
-                  </div>
-                </div>
-                <div className={styles.DescriptionInfoCourse}>
-                  <div className={styles.DescriptionInfoCourseTitle}>
-                    <span>
-                      Course Content
-                      <p className={styles.underline}></p>
-                    </span>
-                  </div>
-                  <div className={styles.DescriptionInfoCourseText}>
-                    <p>{Data.CourseContent}</p>
-                  </div>
-                </div>
-                <div className={styles.DescriptionInfoCourse}>
-                  <div className={styles.DescriptionInfoCourseTitle}>
-                    <span>
-                      PracticalWork
-                      <p className={styles.underline}></p>
-                    </span>
-                  </div>
-                  <div className={styles.DescriptionInfoCourseText}>
-                    <p>{Data.PracticalWork}</p>
-                  </div>
-                </div>
-                <div className={styles.DescriptionInfoCourse}>
-                  <div className={styles.DescriptionInfoCourseTitle}>
-                    <span>
-                      Certificate
-                      <p className={styles.underline}></p>
-                    </span>
-                  </div>
-                  <div className={styles.DescriptionInfoCourseText}>
-                    <p>{Data.certificate}</p>
-                  </div>
-                </div>
-                {Data.evaluate.length > 0 ? (
-                  <div className={styles.OpinionsCourse}>
-                    <div className={styles.OpinionsCourseTitle}>
-                      <h1>Users Opinion</h1>
-                    </div>
-                    {EvaluationsCompleated.map((e) => {
-                      return (
-                        <React.Fragment>
-                          <div className={styles.opinion}>
-                            <div className={styles.opinionHeader}>
-                              {token ? (
-                                <React.Fragment>
-                                  {e.image ? (
-                                    <Avatar
-                                      alt="Remy Sharp"
-                                      src={`${process.env.REACT_APP_API}${e.image.filePath}`}
-                                      sx={{ width: 24, height: 24 }}
-                                    />
-                                  ) : (
-                                    <Avatar
-                                      alt="Remy Sharp"
-                                      src={`${process.env.REACT_APP_API}uploads/2022-03-25T09-59-55.836Z-avatar.png`}
-                                      sx={{ width: 24, height: 24 }}
-                                    />
-                                  )}
-                                </React.Fragment>
-                              ) : (
-                                <React.Fragment>
-                                  <Avatar
-                                    alt="Remy Sharp"
-                                    src={`${process.env.REACT_APP_API}uploads/2022-03-25T09-59-55.836Z-avatar.png`}
-                                    sx={{ width: 24, height: 24 }}
-                                  />
-                                </React.Fragment>
-                              )}
-                              <h5>{e.name}</h5>
-                            </div>
-                            <div className={styles.opinionBody}>
-                              <p>{e.message}</p>
-                              <Rating
-                                name="read-only"
-                                value={e.rate}
-                                readOnly
-                                precision={0.5}
-                              />
-                            </div>
-                          </div>
-                          <hr className={styles.opinionHr} />
-                        </React.Fragment>
-                      );
-                    })}
-                  </div>
-                ) : (
-                  ""
                 )}
+
+                <div className={styles.FirsSectionInfoCourseTitle}>
+                  {/* <h1>{Data.Title}</h1> */}
+                  <h1>{Data.Title}</h1>
+                </div>
+                <div>
+                  <div className={styles.courseInfo}><span>Amira BACHA</span><span>enrolled number</span><span>{Data.rating
+                    ? TextRating(Data.rating, Data.evaluate.length)
+                    : TextRating(0, 0)}</span></div>
+                </div>
               </div>
 
-              {mobileView && (
-                <div className={styles.rightSectionCourse}>
+
+
+              <div className={styles.ScndSectionInfoCourse}>
+
+
+                <div className={styles.coursePart}>
+                  <div className={styles.DescriptionInfoCourse}>
+                    <div className={styles.DescriptionInfoCourseTitle}>
+
+                      <span>DESCRIPTION
+                        <p className={styles.underline}></p></span>
+                    </div>
+                    <div className={styles.DescriptionInfoCourseText}>
+                      <p>{Data.Description}</p>
+                    </div>
+                  </div>
+                  <div className={styles.DescriptionInfoCourse}>
+                    <div className={styles.DescriptionInfoCourseTitle}>
+
+                      <span>Goals
+                        <p className={styles.underline}></p></span>
+                    </div>
+                    <div className={styles.DescriptionInfoCourseText}>
+                      <p>{Data.Goals}</p>
+                    </div>
+                  </div>
+                  <div className={styles.DescriptionInfoCourse}>
+                    <div className={styles.DescriptionInfoCourseTitle}>
+
+                      <span>Who Should Attend
+                        <p className={styles.underline}></p></span>
+                    </div>
+                    <div className={styles.DescriptionInfoCourseText}>
+                      <p>{Data.WhoShouldAttend}</p>
+                    </div>
+                  </div>
+                  <div className={styles.DescriptionInfoCourse}>
+                    <div className={styles.DescriptionInfoCourseTitle}>
+
+                      <span>Course Content
+                        <p className={styles.underline}></p></span>
+                    </div>
+                    <div className={styles.DescriptionInfoCourseText}>
+                      <p>{Data.CourseContent}</p>
+                    </div>
+                  </div>
+                  <div className={styles.DescriptionInfoCourse}>
+                    <div className={styles.DescriptionInfoCourseTitle}>
+
+                      <span>PracticalWork
+                        <p className={styles.underline}></p></span>
+                    </div>
+                    <div className={styles.DescriptionInfoCourseText}>
+                      <p>{Data.PracticalWork}</p>
+                    </div>
+                  </div>
+                  <div className={styles.DescriptionInfoCourse}>
+                    <div className={styles.DescriptionInfoCourseTitle}>
+
+                      <span>Certificate
+                        <p className={styles.underline}></p></span>
+                    </div>
+                    <div className={styles.DescriptionInfoCourseText}>
+                      <p>{Data.certificate}</p>
+                    </div>
+                  </div>
+                  {Data.evaluate.length > 0 ? (
+                    <div className={styles.OpinionsCourse}>
+                      <div className={styles.OpinionsCourseTitle}>
+
+                        <h1>Users Opinion</h1>
+                      </div>
+                      {EvaluationsCompleated.map((e) => {
+                        return (
+                          <React.Fragment>
+                            <div className={styles.opinion}>
+                              <div className={styles.opinionHeader}>
+                                {token ? (
+                                  <React.Fragment>
+                                    {e.image ? (
+                                      <Avatar
+                                        alt="Remy Sharp"
+                                        src={`${process.env.REACT_APP_API}/${e.image.filePath}`}
+                                        sx={{ width: 24, height: 24 }}
+                                      />
+                                    ) : (
+                                      <Avatar
+                                        alt="Remy Sharp"
+                                        src={`${process.env.REACT_APP_API}/uploads/2022-03-25T09-59-55.836Z-avatar.png`}
+                                        sx={{ width: 24, height: 24 }}
+                                      />
+                                    )}
+                                  </React.Fragment>
+                                ) : (
+                                  <React.Fragment>
+                                    <Avatar
+                                      alt="Remy Sharp"
+                                      src={`${process.env.REACT_APP_API}/uploads/2022-03-25T09-59-55.836Z-avatar.png`}
+                                      sx={{ width: 24, height: 24 }}
+                                    />
+                                  </React.Fragment>
+                                )}
+                                <h5>{e.name}</h5>
+                              </div>
+                              <div className={styles.opinionBody}>
+                                <p>{e.message}</p>
+                                <Rating
+                                  name="read-only"
+                                  value={e.rate}
+                                  readOnly
+                                  precision={0.5}
+                                />
+                              </div>
+                            </div>
+                            <hr className={styles.opinionHr} />
+                          </React.Fragment>
+                        );
+                      })}
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                </div>
+                {down && (<div className={styles.rightSectionCourse}>
                   <div className={styles.scndInfos}>
                     <div className={styles.CoursePriceInfoPage}>
-                      <div className={styles.price}>
-                        {Data.Price} TTC
+                      <div className={styles.price}>{Data.Price} TTC
                         <p className={styles.underline}></p>
                       </div>
+
                     </div>
                     <div className={styles.InfosRefDur}>
                       <div className={styles.InfosDates}>
@@ -743,14 +750,12 @@ const StandardTraining = (props) => {
                           Category: <span> {Data.Category}</span>
                         </li>
                         <li>
-                          Certificate:{" "}
-                          <span>
-                            {" "}
-                            {Data.certificate !== null ? "yes" : "no"}
-                          </span>
+                          Certificate: <span> {Data.certificate !== null ? "yes" : "no"}</span>
                         </li>
                       </ul>
                     </div>
+
+
 
                     <div className={styles.CourseButtonsInfoPage}>
                       {user ? (
@@ -763,11 +768,7 @@ const StandardTraining = (props) => {
                                   id={styles.CourseButtonsInfoPageB1}
                                 >
                                   <p>Add To Cart</p>
-                                  <img
-                                    src="/images/course/addchat.png"
-                                    alt=""
-                                    className={styles.imagechart}
-                                  />
+                                  <img src="/images/course/addchat.png" alt="" className={styles.imagechart} />
                                 </button>
                               ) : (
                                 <Tooltip
@@ -779,12 +780,8 @@ const StandardTraining = (props) => {
                                     id={styles.CourseButtonsInfoPageB1Mod}
                                   >
                                     {/*onClick={handleDisabled} */}
-                                    <p>Add To Cart here2</p>
-                                    <img
-                                      src="/images/course/addchat.png"
-                                      alt=""
-                                      className={styles.imagechart}
-                                    />
+                                    <p>Add To Cart  here2</p>
+                                    <img src="/images/course/addchat.png" alt="" className={styles.imagechart} />
                                   </button>
                                 </Tooltip>
                               )}
@@ -793,14 +790,11 @@ const StandardTraining = (props) => {
                             <button
                               disabled={true}
                               id={styles.CourseButtonsInfoPageB1Mod}
-                              // onClick={handleEnroll}
+                            // onClick={handleEnroll}
                             >
+
                               <p>Add To Cart here </p>
-                              <img
-                                src="/images/course/addchat.png"
-                                alt=""
-                                className={styles.imagechart}
-                              />
+                              <img src="/images/course/addchat.png" alt="" className={styles.imagechart} />
                             </button>
                           )}
                         </React.Fragment>
@@ -812,11 +806,7 @@ const StandardTraining = (props) => {
                               id={styles.CourseButtonsInfoPageB1}
                             >
                               <p>Add To Cart </p>
-                              <img
-                                src="/images/course/addchat.png"
-                                alt=""
-                                className={styles.imagechart}
-                              />
+                              <img src="/images/course/addchat.png" alt="" className={styles.imagechart} />
                             </button>
                           ) : (
                             <button
@@ -825,11 +815,7 @@ const StandardTraining = (props) => {
                             >
                               {/*onClick={handleDisabled} */}
                               <p>Add To Cart</p>
-                              <img
-                                src="/images/course/addchat.png"
-                                alt=""
-                                className={styles.imagechart}
-                              />
+                              <img src="/images/course/addchat.png" alt="" className={styles.imagechart} />
                             </button>
                           )}
                         </React.Fragment>
@@ -855,10 +841,7 @@ const StandardTraining = (props) => {
                           }}
                         >
                           <div className={styles.ModalComponent}>
-                            <h3
-                              id="parent-modal-title"
-                              className={styles.ModalTitle}
-                            >
+                            <h3 id="parent-modal-title" className={styles.ModalTitle}>
                               Course added to the cart successfully
                             </h3>
                             <p
@@ -878,8 +861,8 @@ const StandardTraining = (props) => {
                               sx={{ textAlign: "center" }}
                               id="parent-modal-description"
                             >
-                              you can track your registration status through
-                              your profile,
+                              you can track your registration status through your
+                              profile,
                               <a href="/profile"> quick access to profile </a>
                             </p>
                           </div>
@@ -899,11 +882,7 @@ const StandardTraining = (props) => {
                                   id={styles.CourseButtonsInfoPageB2}
                                 >
                                   <p>Customize</p>
-                                  <img
-                                    src="/images/course/customize.png"
-                                    alt=""
-                                    className={styles.imagechart}
-                                  />
+                                  <img src="/images/course/customize.png" alt="" className={styles.imagechart} />
                                 </button>
                               ) : (
                                 <Tooltip
@@ -915,12 +894,8 @@ const StandardTraining = (props) => {
                                     id={styles.CourseButtonsInfoPageB2Mod}
                                   >
                                     {/*onClick={handleDisabled} */}
-                                    <p>Customize here</p>
-                                    <img
-                                      src="/images/course/customize.png"
-                                      alt=""
-                                      className={styles.imagechart}
-                                    />
+                                    <p>Customize  here</p>
+                                    <img src="/images/course/customize.png" alt="" className={styles.imagechart} />
                                   </button>
                                 </Tooltip>
                               )}
@@ -932,11 +907,7 @@ const StandardTraining = (props) => {
                             >
                               {/*onClick={handleDisabled} */}
                               <p>Customize</p>
-                              <img
-                                src="/images/course/customize.png"
-                                alt=""
-                                className={styles.imagechart}
-                              />
+                              <img src="/images/course/customize.png" alt="" className={styles.imagechart} />
                             </button>
                           )}
                         </React.Fragment>
@@ -948,11 +919,7 @@ const StandardTraining = (props) => {
                               id={styles.CourseButtonsInfoPageB2}
                             >
                               <p>Customize</p>
-                              <img
-                                src="/images/course/customize.png"
-                                alt=""
-                                className={styles.imagechart}
-                              />
+                              <img src="/images/course/customize.png" alt="" className={styles.imagechart} />
                             </button>
                           ) : (
                             <button
@@ -961,11 +928,7 @@ const StandardTraining = (props) => {
                             >
                               {/*onClick={handleDisabled} */}
                               <p>Customize</p>
-                              <img
-                                src="/images/course/customize.png"
-                                alt=""
-                                className={styles.imagechart}
-                              />
+                              <img src="/images/course/customize.png" alt="" className={styles.imagechart} />
                             </button>
                           )}
                         </React.Fragment>
@@ -990,10 +953,7 @@ const StandardTraining = (props) => {
                           }}
                         >
                           <div className={styles.ModalComponent}>
-                            <h2
-                              id="parent-modal-title"
-                              className={styles.ModalTitle}
-                            >
+                            <h2 id="parent-modal-title" className={styles.ModalTitle}>
                               Customize
                             </h2>
                             <p id="parent-modal-description">
@@ -1017,12 +977,10 @@ const StandardTraining = (props) => {
                             />
 
                             {selectedOptions[0] &&
-                            selectedOptions[0].includes("Date") ? (
+                              selectedOptions[0].includes("Date") ? (
                               <div className={styles.Date}>
                                 <div className={styles.DatePicker}>
-                                  <LocalizationProvider
-                                    dateAdapter={AdapterDateFns}
-                                  >
+                                  <LocalizationProvider dateAdapter={AdapterDateFns}>
                                     <Stack spacing={2}>
                                       {mobile && (
                                         <MobileDateRangePicker
@@ -1035,10 +993,7 @@ const StandardTraining = (props) => {
                                               date: newDate,
                                             });
                                           }}
-                                          renderInput={(
-                                            startProps,
-                                            endProps
-                                          ) => (
+                                          renderInput={(startProps, endProps) => (
                                             <React.Fragment>
                                               <TextField {...startProps} />
                                               <Box sx={{ mx: 1 }}> to </Box>
@@ -1075,12 +1030,10 @@ const StandardTraining = (props) => {
                             )}
 
                             {selectedOptions[0] &&
-                            selectedOptions[0].includes("Horaire") ? (
+                              selectedOptions[0].includes("Horaire") ? (
                               <div className={styles.Date}>
                                 <div className={styles.DatePicker}>
-                                  <LocalizationProvider
-                                    dateAdapter={AdapterDateFns}
-                                  >
+                                  <LocalizationProvider dateAdapter={AdapterDateFns}>
                                     <Stack spacing={2}>
                                       {mobile && (
                                         <MobileTimePicker
@@ -1121,9 +1074,7 @@ const StandardTraining = (props) => {
                             )}
 
                             {selectedOptions[0] &&
-                            selectedOptions[0].includes(
-                              "durée de la formation"
-                            ) ? (
+                              selectedOptions[0].includes("durée de la formation") ? (
                               <div className={styles.Date}>
                                 <div className={styles.DatePicker}>
                                   <TextField
@@ -1147,7 +1098,7 @@ const StandardTraining = (props) => {
                               ""
                             )}
                             {selectedOptions[0] &&
-                            selectedOptions[0].includes("Autre...") ? (
+                              selectedOptions[0].includes("Autre...") ? (
                               <div className={styles.Date}>
                                 <div className={styles.DatePicker}>
                                   <FormControl
@@ -1194,21 +1145,23 @@ const StandardTraining = (props) => {
                       </Modal>
                     </div>
                   </div>
-                </div>
-              )}
+                </div>)}
+              </div>
             </div>
-          </div>
-          <div></div>
+            <div>
 
-          {!mobileView && (
-            <div className={styles.rightSectionContainer}>
+            </div>
+
+
+            {!down && <div className={styles.rightSectionContainer}>
+
               <div className={styles.rightSectionCourse}>
                 <div className={styles.scndInfos}>
                   <div className={styles.CoursePriceInfoPage}>
-                    <div className={styles.price}>
-                      {Data.Price} TTC
+                    <div className={styles.price}>{Data.Price} TTC
                       <p className={styles.underline}></p>
                     </div>
+
                   </div>
                   <div className={styles.InfosRefDur}>
                     <div className={styles.InfosDates}>
@@ -1244,11 +1197,12 @@ const StandardTraining = (props) => {
                         Category: <span> {Data.Category}</span>
                       </li>
                       <li>
-                        Certificate:{" "}
-                        <span> {Data.certificate !== null ? "yes" : "no"}</span>
+                        Certificate: <span> {Data.certificate !== null ? "yes" : "no"}</span>
                       </li>
                     </ul>
                   </div>
+
+
 
                   <div className={styles.CourseButtonsInfoPage}>
                     {user ? (
@@ -1261,11 +1215,7 @@ const StandardTraining = (props) => {
                                 id={styles.CourseButtonsInfoPageB1}
                               >
                                 <p>Add To Cart</p>
-                                <img
-                                  src="/images/course/addchat.png"
-                                  alt=""
-                                  className={styles.imagechart}
-                                />
+                                <img src="/images/course/addchat.png" alt="" className={styles.imagechart} />
                               </button>
                             ) : (
                               <Tooltip
@@ -1277,12 +1227,8 @@ const StandardTraining = (props) => {
                                   id={styles.CourseButtonsInfoPageB1Mod}
                                 >
                                   {/*onClick={handleDisabled} */}
-                                  <p>Add To Cart here2</p>
-                                  <img
-                                    src="/images/course/addchat.png"
-                                    alt=""
-                                    className={styles.imagechart}
-                                  />
+                                  <p>Add To Cart  here2</p>
+                                  <img src="/images/course/addchat.png" alt="" className={styles.imagechart} />
                                 </button>
                               </Tooltip>
                             )}
@@ -1291,14 +1237,11 @@ const StandardTraining = (props) => {
                           <button
                             disabled={true}
                             id={styles.CourseButtonsInfoPageB1Mod}
-                            // onClick={handleEnroll}
+                          // onClick={handleEnroll}
                           >
+
                             <p>Add To Cart here </p>
-                            <img
-                              src="/images/course/addchat.png"
-                              alt=""
-                              className={styles.imagechart}
-                            />
+                            <img src="/images/course/addchat.png" alt="" className={styles.imagechart} />
                           </button>
                         )}
                       </React.Fragment>
@@ -1310,11 +1253,7 @@ const StandardTraining = (props) => {
                             id={styles.CourseButtonsInfoPageB1}
                           >
                             <p>Add To Cart </p>
-                            <img
-                              src="/images/course/addchat.png"
-                              alt=""
-                              className={styles.imagechart}
-                            />
+                            <img src="/images/course/addchat.png" alt="" className={styles.imagechart} />
                           </button>
                         ) : (
                           <button
@@ -1323,11 +1262,7 @@ const StandardTraining = (props) => {
                           >
                             {/*onClick={handleDisabled} */}
                             <p>Add To Cart</p>
-                            <img
-                              src="/images/course/addchat.png"
-                              alt=""
-                              className={styles.imagechart}
-                            />
+                            <img src="/images/course/addchat.png" alt="" className={styles.imagechart} />
                           </button>
                         )}
                       </React.Fragment>
@@ -1353,10 +1288,7 @@ const StandardTraining = (props) => {
                         }}
                       >
                         <div className={styles.ModalComponent}>
-                          <h3
-                            id="parent-modal-title"
-                            className={styles.ModalTitle}
-                          >
+                          <h3 id="parent-modal-title" className={styles.ModalTitle}>
                             Course added to the cart successfully
                           </h3>
                           <p
@@ -1397,11 +1329,7 @@ const StandardTraining = (props) => {
                                 id={styles.CourseButtonsInfoPageB2}
                               >
                                 <p>Customize</p>
-                                <img
-                                  src="/images/course/customize.png"
-                                  alt=""
-                                  className={styles.imagechart}
-                                />
+                                <img src="/images/course/customize.png" alt="" className={styles.imagechart} />
                               </button>
                             ) : (
                               <Tooltip
@@ -1413,12 +1341,8 @@ const StandardTraining = (props) => {
                                   id={styles.CourseButtonsInfoPageB2Mod}
                                 >
                                   {/*onClick={handleDisabled} */}
-                                  <p>Customize here</p>
-                                  <img
-                                    src="/images/course/customize.png"
-                                    alt=""
-                                    className={styles.imagechart}
-                                  />
+                                  <p>Customize  here</p>
+                                  <img src="/images/course/customize.png" alt="" className={styles.imagechart} />
                                 </button>
                               </Tooltip>
                             )}
@@ -1430,11 +1354,7 @@ const StandardTraining = (props) => {
                           >
                             {/*onClick={handleDisabled} */}
                             <p>Customize</p>
-                            <img
-                              src="/images/course/customize.png"
-                              alt=""
-                              className={styles.imagechart}
-                            />
+                            <img src="/images/course/customize.png" alt="" className={styles.imagechart} />
                           </button>
                         )}
                       </React.Fragment>
@@ -1446,11 +1366,7 @@ const StandardTraining = (props) => {
                             id={styles.CourseButtonsInfoPageB2}
                           >
                             <p>Customize</p>
-                            <img
-                              src="/images/course/customize.png"
-                              alt=""
-                              className={styles.imagechart}
-                            />
+                            <img src="/images/course/customize.png" alt="" className={styles.imagechart} />
                           </button>
                         ) : (
                           <button
@@ -1459,11 +1375,7 @@ const StandardTraining = (props) => {
                           >
                             {/*onClick={handleDisabled} */}
                             <p>Customize</p>
-                            <img
-                              src="/images/course/customize.png"
-                              alt=""
-                              className={styles.imagechart}
-                            />
+                            <img src="/images/course/customize.png" alt="" className={styles.imagechart} />
                           </button>
                         )}
                       </React.Fragment>
@@ -1488,10 +1400,7 @@ const StandardTraining = (props) => {
                         }}
                       >
                         <div className={styles.ModalComponent}>
-                          <h2
-                            id="parent-modal-title"
-                            className={styles.ModalTitle}
-                          >
+                          <h2 id="parent-modal-title" className={styles.ModalTitle}>
                             Customize
                           </h2>
                           <p id="parent-modal-description">
@@ -1515,12 +1424,10 @@ const StandardTraining = (props) => {
                           />
 
                           {selectedOptions[0] &&
-                          selectedOptions[0].includes("Date") ? (
+                            selectedOptions[0].includes("Date") ? (
                             <div className={styles.Date}>
                               <div className={styles.DatePicker}>
-                                <LocalizationProvider
-                                  dateAdapter={AdapterDateFns}
-                                >
+                                <LocalizationProvider dateAdapter={AdapterDateFns}>
                                   <Stack spacing={2}>
                                     {mobile && (
                                       <MobileDateRangePicker
@@ -1570,12 +1477,10 @@ const StandardTraining = (props) => {
                           )}
 
                           {selectedOptions[0] &&
-                          selectedOptions[0].includes("Horaire") ? (
+                            selectedOptions[0].includes("Horaire") ? (
                             <div className={styles.Date}>
                               <div className={styles.DatePicker}>
-                                <LocalizationProvider
-                                  dateAdapter={AdapterDateFns}
-                                >
+                                <LocalizationProvider dateAdapter={AdapterDateFns}>
                                   <Stack spacing={2}>
                                     {mobile && (
                                       <MobileTimePicker
@@ -1616,9 +1521,7 @@ const StandardTraining = (props) => {
                           )}
 
                           {selectedOptions[0] &&
-                          selectedOptions[0].includes(
-                            "durée de la formation"
-                          ) ? (
+                            selectedOptions[0].includes("durée de la formation") ? (
                             <div className={styles.Date}>
                               <div className={styles.DatePicker}>
                                 <TextField
@@ -1642,7 +1545,7 @@ const StandardTraining = (props) => {
                             ""
                           )}
                           {selectedOptions[0] &&
-                          selectedOptions[0].includes("Autre...") ? (
+                            selectedOptions[0].includes("Autre...") ? (
                             <div className={styles.Date}>
                               <div className={styles.DatePicker}>
                                 <FormControl
@@ -1690,10 +1593,10 @@ const StandardTraining = (props) => {
                   </div>
                 </div>
               </div>
-            </div>
-          )}
-        </div>
-      </main>
+            </div>}
+          </div>
+        </main>
+      </div>
       <Footer />
     </React.Fragment>
   );

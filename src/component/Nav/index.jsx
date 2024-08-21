@@ -31,7 +31,7 @@ const Nav = () => {
       setMobileView(false);
     }
   }, []);
-  useEffect(() => {
+  useEffect(() => { 
     console.log(WindowWidth);
     if (WindowWidth <= 800) {
       setMobileView(true);
@@ -52,29 +52,23 @@ const Nav = () => {
   return (
     <React.Fragment>
       <nav className={styles.nav_container}>
-        {!mobileView ? (
+      {!mobileView ? (
           <div className={styles.nav_web_container}>
-            <Link to="/">
-              <img
-                src="/images/home/logoblanc.png"
-                alt=""
-                className={styles.logoimage}
-              />
-
+          <div className={styles.logo}>
+            <Link to="/" >
+            <img src="/images/home/logoblanc.png" alt=""   className={styles.logoimage}  />
               {/* <img
                 style={{ marginTop: "20px", width: "160px" }}
                 className={styles.LogoImg}
                 src={imgLogo}
               />{" "} */}
             </Link>
+            </div>
             <div className={styles.middle_nav}>
               <Link to="/">
-                <a
-                  type="button"
-                  className={styles.nav_btn}
-                  style={{ color: "white" }}
-                >
+                <a type="button" className={styles.nav_btn} style={{color: 'white'}}>
                   Home
+                
                 </a>
                 <p className={styles.underline}></p>
               </Link>
@@ -136,16 +130,16 @@ const Nav = () => {
                       330
                     </strong>
                     <a type="button" className={styles.nav_btn_profile}>
-                      <img
-                        src="/svg/bronze.svg"
-                        alt="bronze"
-                        style={{ height: 30 }}
-                      />
+                    <img
+                      src="/svg/bronze.svg"
+                      alt="bronze"
+                      style={{ height: 30 }}
+                    />
                       {/* {user.userType} */}
                       {user.image ? (
                         <Avatar
                           alt="icon"
-                          src={`${process.env.REACT_APP_API}${user.image.filePath}`}
+                          src={`${process.env.REACT_APP_API}/${user.image.filePath}`}
                           sx={{ width: 30, height: 30 }}
                         />
                       ) : (
@@ -175,11 +169,11 @@ const Nav = () => {
               </div>
             )}
           </div>
-        ) : (
-          <React.Fragment>
-            <SliderNav user={user} handleLogout={handleLogout} />
-          </React.Fragment>
-        )}
+      ) : (
+        <React.Fragment>
+          <SliderNav user={user} handleLogout={handleLogout} />
+        </React.Fragment>
+      )}
       </nav>
     </React.Fragment>
   );

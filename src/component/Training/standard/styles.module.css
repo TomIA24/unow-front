@@ -1,13 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 .backimage {
-    background: url('../../assets/quizbackground.png') no-repeat center center;
-    background-size: cover;
- 
-    height:18rem;
- 
-    border-radius: 0px 0px 50px 50px;
+  background: url('../../assets/quizbackground.png') no-repeat center center;
+  background-size: cover;
+  height: 18rem;
+  border-radius: 0px 0px 50px 50px;
+  display: flex;
+  justify-content: center; /* Horizontally centers .maincontainernav */
+  align-items: center; 
     
+  }
+  .maincontainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
   .logoimage {
     margin-left: 30%; /* Centre l'image horizontalement */
@@ -21,14 +28,12 @@
   .pdown{
     color: #FFFFFF;
     font-size: 40px;
- 
 font-weight: 900;
   }
   .course{
     color: #2C2C2C;
     font-size: 3rem;
 font-weight: 900;
- 
   }
 
   .underline{
@@ -43,22 +48,30 @@ font-weight: 900;
     font-size: 40px;
     color: white;
     font-weight: 600;
- 
+  
     font-family: "Lato";
 
 
   }
   .navContainer{
- 
     
   }
   .pdowncontainer{
-    padding-left: 8rem;
-    padding-right: 8rem;
- 
+    /* padding-left: 8rem;
+    padding-right: 8rem; */
     padding-top: 100px;
   }
-
+  .maincontainernav{
+  
+    width: 100%;
+    max-width: 1200px; /* Optional: Set a max-width to control layout */
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+ 
+  }
 /* a {
     text-decoration: none;
     margin: 0 5px;
@@ -144,7 +157,7 @@ align-items: center;
 }
 
 .search input {
-    height: 50%;
+    height: 100%;
     align-self: center;
     margin-right: 60px;
     border: 2.5px solid #9B0000;
@@ -237,7 +250,7 @@ align-items: center;
 
 .MotherDivCourse {
     /* background: url('../../assets/courseBack.png') no-repeat top; */
-    /* width: 100%; */
+    width: 100%;
    /* height: auto;
     margin-top: 20px; */
     display: flex;
@@ -246,13 +259,11 @@ align-items: center;
     align-items: center; */
     position: relative;
     align-items: center;
- 
     justify-self: space-between;
-    gap: 105px;
+ 
     /* padding-left: 5rem;
     padding-right: 5rem; */
 
- 
 }
 
 .MainDivCourse {
@@ -282,12 +293,13 @@ align-items: center;
 }
 
 .FirsSectionInfoCourse {
+  margin-top: 2rem;
     /* background-color: #6fd0b3; */
     display: flex;
     justify-content: start;
     align-items: start;
     /* width: 100%; */
-    margin-top: 4rem;
+
     margin-bottom: 20px;
     flex-direction: column;
 }
@@ -303,6 +315,9 @@ align-items: center;
 .FirsSectionInfoCourseTitle h1{
     margin: 20px;
     color: #2C2C2C;
+    font-size: 2rem;
+    font-weight:900;
+    text-transform: capitalize;
 }
 
 /* .imgCourse {
@@ -318,74 +333,70 @@ align-items: center;
 } */
 .imgCourse {
   width: 100%;  /* Make the container take up full width */
-  height: 28rem; /* Set the height to 28rem */
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden; 
-  border-radius: 3rem;/* Hide any overflow if the image is larger */
+  border-radius: 2rem;
+  position: relative;
+  padding-bottom: 64.5%; /* (498 / 772) * 100% to maintain aspect ratio */
 }
 
 .imgCourseImage {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;  /* Image takes full width of the container */
   height: 100%; /* Image takes full height of the container */
-  object-fit: fill; /* Ensure the image covers the container without stretching */
+  object-fit: cover; /* Ensure the image covers the container without stretching */
 }
-
 .imgCourse img {
     /* position: relative;
     height: 200px;
     margin: auto; */
+
+
+    
 }
 
 
 .rightSectionContainer {
-    position: relative; 
-    /* height: 2000px;  */
+  position: sticky;
+  top:0;
+  margin-bottom: 2rem;
 }
 
-
-.rightSectionContainer {
-    position: relative; /* Establishes a context for the sticky positioning */
-    height: 2000px; /* Height to allow scrolling */
-}
 
 .rightSectionCourse {
-    position: -webkit-sticky; /* For Safari */
-    position: sticky;
-    top: 30%;
-    right: 90px;
-    bottom: 30px;
-    height: auto;
-    overflow-y: auto;
-    margin-top: 8rem;
+    position: relative; /* Allows the element to scroll normally */
+    top: 0; /* Resets the top position */
+    right: 0; /* Aligns it to the right (if needed) */
+    height: auto; 
+    margin-top: 6rem; /* Keeps the top margin as needed */
 }
+
 .scndInfos {
- 
     padding: 3rem 4rem;
- 
     border-radius: 0px 40px 0px 40px;
     background-color: #3E4678;
-    /* height: 50%; */
-    /* width: 40rem; */
-    position: sticky;
     box-shadow: 0 0 7px rgba(0, 0, 0, 0.25);
-    display: block;
-    transition: margin-top 1s ease-out;
     display: flex;
- 
     flex-direction: column;   
     align-items: center;
     text-align: left;
-    gap:1rem;
+    gap: 1rem;
     color: #FFFFFF;
     font: bold 20px "Lato", sans-serif;
-
+    position: relative; /* Allows the element to scroll normally */
+    margin-top: 0; /* Adjust as needed */
 }
-
+.maincontainernav{
+  /* width: 1500px; */
+  /* align-items: center; */
+  width: 100%;
+}
 .InfosRefDur span {
     font:lighter 1rem "Lato", sans-serif;
- 
 }
 
 .InfosDates {
@@ -398,17 +409,14 @@ align-items: center;
     align-items: flex-start; */ 
 
     padding-bottom: 2rem;
- 
 }
 .InfosDates p{
   font: 1rem "Lato", sans-serif;
- 
 }
 
 
 .radioTitle {
     color: #FFFFFF;
- 
     font: bolder 2rem "Lato";
     padding-bottom: 1rem;
 }
@@ -429,14 +437,13 @@ align-items: center;
   margin-bottom: 10px;
   font-size: 1.2rem;
    /* Optional: add some space between list items for better readability */
- 
 }
 .radioLable {
     color: #FFFFFF;
     font: 400 20px "Lato", sans-serif;
 }
 
- 
+
 
 .price{
     color: #FFFFFF;
@@ -444,20 +451,17 @@ align-items: center;
     font-family: 'Lato';
     align-self: center;
     font-weight: 900;
- 
     text-align: center;
   
 }
 .price p{
- 
     width:50%;
     background-color: #CD6214;
     padding-top: 0.35rem;
     border-radius: 100px;
     margin-top: 0.5rem;
- 
     align-self: center;
-   
+  
 }
 
 .CourseButtonsInfoPage {
@@ -478,9 +482,7 @@ align-items: center;
     justify-content:center;
     align-items: center;
     flex-direction: row-reverse;
- 
     border-radius: 10px;     
- 
     border: none;
     color: #3E4678;
     font: 500 20px "Lato", sans-serif;
@@ -495,13 +497,11 @@ align-items: center;
 
 #CourseButtonsInfoPageB1Mod {
     background-color: white;
- 
     cursor: not-allowed;
 }
 #CourseButtonsInfoPageB1Mod:disabled{
 
     background-color: rgb(107, 106, 106);
- 
     cursor: not-allowed;
 }
 
@@ -583,20 +583,21 @@ align-items: center;
 .DescriptionInfoCourseTitle{
     padding-top: 1rem;
     padding-bottom: 1rem;
+   
 }
 .DescriptionInfoCourseTitle span{
   font-family: 'Lato';
   font-weight: 900;
   text-transform: uppercase;
-  font-size: 2rem;
+  font-size: 1.7rem;
   color: #2C2C2C;
 }
 
 .DescriptionInfoCourseTitle .underline{
   
-    width:6rem;
+    width:4.7rem;
     background-color: #CD6214;
-    padding: 0.15rem;
+    padding:0.25em;
     border-radius: 100px;
     margin-top: 10px;
   }
@@ -627,6 +628,8 @@ align-items: center;
     line-height: 1rem;
     color: #2C2C2C;
     border-radius: 5px;
+    margin-top: 5px;
+    margin-bottom: 19px;
 }
 
 
@@ -808,67 +811,59 @@ align-items: center;
     margin: 10px auto;
     height: .5px;
 }
-
-@media (max-width:810px) {
-  .MainDivCourse{
-    width: 100%;
-    height: auto;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: space-between;
-    padding-left: 5rem;
-    padding-right: 5rem;
-    padding-top: 5rem;
-    gap: 0;
-}
-
-.rightSectionCourse {
-    /* position: -webkit-sticky; / */
-    /* position:relative; */
-    top: 0;
-    right: 0;
-    bottom: 0;
-    height: auto;
-    /* overflow-y: auto; */
-    margin-top: 0rem;
-    width: 42%;
-}
-.ScndSectionInfoCourse{
+.nav_web_container {
   width: 100%;
-  padding-bottom: 5rem;
+  /* flex: 2; */
+  display: flex;
+  justify-content: space-between;
+  /* margin-inline: 60px; */
+  align-items: center;
+  background-color:#3e467800 ;
+  margin-top: 30px;
+  
+}
+.middle_nav{
   display: flex;
   flex-direction: row;
-  background-color: wheat;
-  justify-content: space-between;
-}
-.rightSectionContainer{
+  gap:35px
+ }
+ .videocontainer video {
   width: 100%;
+  height: auto; /* Maintain aspect ratio */
+  max-width: 800px;
+  border-radius: 2rem; /* Initial border radius */
+  transition: border-radius 0.3s ease-in-out;  /* Maximum size for larger screens */
 }
-.scndInfos {
-  padding: 0;
-  border-radius: 0px 2rem 0px 2rem;
-  background-color: #3E4678;
-  /* height: 50%; */
-  /* width: 40rem; */
-  position: sticky;
-  box-shadow: 0 0 7px rgba(0, 0, 0, 0.25);
-  display: block;
-  transition: margin-top 1s ease-out;
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-  gap: 1rem;
-  color: #FFFFFF;
-  font: bold 14px "Lato", sans-serif;
+
+.videocontainer {
+  max-width: 100%; /* Ensure container is responsive */
+  overflow: hidden; /* Hide any overflow */
 }
-.leftSectionCourse {
-  /* background-color: #6FC2D0; */
-  width: 100%;
-  /* height: 100%; */
-  display: flex;
-  flex-direction: column;
+.videocontainer video:hover {
+  border-radius: 1rem; /* Change to a smaller radius on hover */
 }
+
+
+/* For screens larger than 1200px */
+@media (min-width: 1200px) {
+  .video-container video {
+    max-width: 1000px; /* Larger size for larger screens */
+  }
+}
+
+/* For screens between 830px and 1200px */
+@media (min-width: 830px) and (max-width: 1199px) {
+  .video-container video {
+    max-width: 800px; /* Adjust size for medium screens */
+  }
+}
+
+/* For screens smaller than 830px */
+@media (max-width: 829px) {
+  .video-container video {
+    width: 100%; /* Full width for smaller screens */
+    max-width: none; /* Allow full width, removing max-width */
+  }
 }
 
 /**********************************************************************/ 
@@ -882,7 +877,7 @@ align-items: center;
 }
 
 /* For screens between 301px and 400px */
-@media (min-width: 301px) and (max-width: 400px) {
+@media (min-width: 301px) and (max-width: 326px) {
   .nav_container {
       height: 55px;
       /* padding-left: 2rem; */
@@ -890,65 +885,10 @@ align-items: center;
   }
 }
 
-/* For screens between 401px and 500px */
-@media (min-width: 401px) and (max-width: 500px) {
-  .nav_container {
-      height: 60px;
-      /* padding-left: 3rem; */
-      /* padding-right: 3rem; */
-  }
-}
 
-/* For screens between 501px and 600px */
-@media (min-width: 501px) and (max-width: 600px) {
-  .nav_container {
-      height: 65px;
-      /* padding-left: 4rem; */
-      /* padding-right: 4rem; */
-  }
-}
 
 /* For screens between 601px and 700px */
-@media (min-width: 601px) and (max-width: 700px) {
-  .nav_container {
-      width: 100%;
-      
-      display: flex;
-      justify-content: space-between;
-      align-items: center; /* Center items vertically */
-      background-color: #00000000;
-      padding-left: 0%;
-      padding-right: 0%;
-      line-height: center;
-  }
-}
 
-.nav_web_container {
-  width: 100%;
-  /* flex: 2; */
-  display: flex;
-  justify-content: space-between;
-  /* margin-inline: 60px; */
-  align-items: center;
-  background-color:#3e467800 ;
-  margin-top: 30px;
-  
-}
-
-
-.middle_nav{
-  display: flex;
-  flex-direction: row;
-  gap:35px
- }
- @media (max-width: 940px) {
-  .middle_nav {
-      display: flex;
-      flex-direction: row;
-      gap: 10px;
-      margin-left: 28px;
-  }
-}
 
 @media (max-width: 326px) {
   .radioTitle {
@@ -989,12 +929,12 @@ align-items: center;
 }
 
 
-.imgCourse {
+/* .imgCourse {
   width: 100%; 
   height:28rem;
   background-size: contain; 
   background-position: center;
-  background-repeat: no-repeat;}
+  background-repeat: no-repeat;} */
 
 .CourseButtonsInfoPage button {
     height: 4rem;
@@ -1036,6 +976,15 @@ font-weight: 900;
   }
   
   @media (min-width: 327px) and (max-width: 366px) {
+    .pdowncontainer{
+      /* padding-left: 8rem;
+      padding-right: 8rem; */
+      padding-top: 2rem;
+    }
+    .maincontainernav{
+      padding-left: 10rem;
+      padding-right: 10rem;
+     }
     .radioTitle {
       color: #FFFFFF;
       font: bolder 1.4rem "Lato";
@@ -1073,12 +1022,12 @@ font-weight: 900;
       color: #2C2C2C;
   }
 
-  .imgCourse {
+  /* .imgCourse { */
       /* width: 19rem; */
     
-      border-radius: 3rem;
+      /* border-radius: 3rem;
      
-      z-index: -1;}
+      z-index: -1;} */
 
   .CourseButtonsInfoPage button {
       height: 4rem;
@@ -1109,10 +1058,7 @@ font-weight: 900;
     font-size:1.7rem;
 
   }
-    .pdowncontainer{
-     
-      padding-top:2em;
-    }
+   
   
  
     .underline{
@@ -1135,10 +1081,7 @@ font-weight: 900;
   
     }
    
-    .pdowncontainer{
-     
-      padding-top:4em;
-    }
+ 
 
     .text{
       color: #FFFFFF;
@@ -1151,6 +1094,11 @@ font-weight: 900;
     }
   }
   @media (min-width: 367px) and (max-width: 469px) {
+    .pdowncontainer{
+      /* padding-left: 8rem;
+      padding-right: 8rem; */
+      padding-top: 4rem;
+    }
     .MainDivCourse{
       width: 100%;
       height: auto;
@@ -1196,16 +1144,16 @@ font-weight: 900;
         font-family: 'Lato';
         font-weight: 900;
         text-transform: uppercase;
-        font-size: 1rem;
+        font-size: 1.5rem;
         color: #2C2C2C;
     }
 
-    .imgCourse {
+    /* .imgCourse { */
         /* width: 19rem; */
       
-        border-radius: 3rem;
+        /* border-radius: 3rem;
        
-        z-index: -1;}
+        z-index: -1;} */
 
     .CourseButtonsInfoPage button {
         height: 4rem;
@@ -1236,10 +1184,7 @@ font-weight: 900;
       font-size:1.7rem;
   
     }
-    .pdowncontainer{
-     
-      padding-top:2.5em;
-    }
+
   
  
     .underline{
@@ -1269,10 +1214,7 @@ font-weight: 900;
       border-radius: 100px;
       margin-top:0.5rem;
     }
-    .pdowncontainer{
-     
-      padding-top:4em;
-    }
+   
 
     .text{
       color: #FFFFFF;
@@ -1302,6 +1244,27 @@ font-weight: 900;
   
   }   */
   @media (min-width: 469px) and (max-width: 576px) {
+    .DescriptionInfoCourseTitle span {
+      font-family: 'Lato';
+      font-weight: 900;
+      text-transform: uppercase;
+      font-size: 1.2rem;
+      color: #2C2C2C;
+  }
+  .DescriptionInfoCourseTitle .underline{
+  
+    width:3.7rem;
+    background-color: #CD6214;
+    padding:0.22em;
+    border-radius: 100px;
+    margin-top: 10px;
+  }
+
+    .pdowncontainer{
+      /* padding-left: 8rem;
+      padding-right: 8rem; */
+      padding-top: 4rem;
+    }
     .MainDivCourse{
       width: 100%;
       height: auto;
@@ -1344,20 +1307,14 @@ font-weight: 900;
         align-self: center;
         font-weight: 900;
     }
-    .DescriptionInfoCourseTitle span {
-        font-family: 'Lato';
-        font-weight: 900;
-        text-transform: uppercase;
-        font-size: 1rem;
-        color: #2C2C2C;
-    }
 
-    .imgCourse {
+
+    /* .imgCourse { */
         /* width: 19rem;
        */
-        border-radius: 3rem;
+        /* border-radius: 3rem;
        
-        z-index: -1;}
+        z-index: -1;} */
  
     .CourseButtonsInfoPage button {
         height: 4rem;
@@ -1388,11 +1345,7 @@ font-weight: 900;
       font-size:1.7rem;
   
     }
-    .pdowncontainer{
-     
-      padding-top:2.5em;
-    }
-  
+
  
 
     .backimage {
@@ -1407,10 +1360,7 @@ font-weight: 900;
   
     }
 
-    .pdowncontainer{
-     
-      padding-top:4em;
-    }
+   
 
     .text{
       margin-top: 10px;
@@ -1420,6 +1370,11 @@ font-weight: 900;
   
   
   @media (min-width: 576px) and (max-width: 625px) {
+    .pdowncontainer{
+      /* padding-left: 8rem;
+      padding-right: 8rem; */
+      padding-top: 4rem;
+    }
     .InfosRefDur {
       width: 60%;
     }
@@ -1460,13 +1415,13 @@ font-weight: 900;
         color: #2C2C2C;
     }
 
-    .imgCourse {
+    /* .imgCourse { */
         /* width: 19rem; */
-      
+/*       
         border-radius: 3rem;
        
        }
- 
+  */
     .CourseButtonsInfoPage button {
         height: 4rem;
         margin: 0.5rem 0rem;
@@ -1498,6 +1453,11 @@ font-weight: 900;
     }
   }
   @media (min-width: 625px) and (max-width: 700px) {
+    .pdowncontainer{
+      /* padding-left: 8rem;
+      padding-right: 8rem; */
+      padding-top: 4rem;
+    }
     
     .CourseButtonsInfoPage button{
       width: 70%;
@@ -1554,11 +1514,7 @@ font-weight: 900;
       font-size:1.8rem;
   
     }
-    .pdowncontainer{
-     
-      padding-top:3em;
-    }
-  
+
  
     .underline{
   
@@ -1587,10 +1543,7 @@ font-weight: 900;
       border-radius: 100px;
       margin-top: 10px;
     }
-    .pdowncontainer{
-     
-      padding-top:4em;
-    }
+
 
     .text{
       margin-top: 10px;
@@ -1600,119 +1553,18 @@ font-weight: 900;
      padding-right: 5%;
    }
   }
-  @media (min-width: 700px) and (max-width: 780px) {
-    .navContainer{
-      margin-left: 4rem; 
-      margin-right:8rem;
-    }
-    .scndInfos{
-      padding: 1rem 1rem;
-      border-radius: 0px 40px 0px 40px;
-      background-color: #3E4678;
-      /* height: 50%; */
-      /* width: 40rem; */
-      position: sticky;
-      box-shadow: 0 0 7px rgba(0, 0, 0, 0.25);
-      display: block;
-      transition: margin-top 1s ease-out;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: left;
-      gap: 1rem;
-      color: #FFFFFF;
-      font: bold 20px "Lato", sans-serif;
 
-    }    .InfosRefDur{
-     
-    }
-    .CourseButtonsInfoPage button{
-      width: 64%;
-      height: 4rem;
-      margin: 3px 6px;
-      padding: 0 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: row-reverse;
-      border-radius: 14px;
-      border: none;
-      color: #3E4678;
-      font: 500 20px "Lato", sans-serif;
-      cursor: pointer;
-      font-weight: bolder;
-    
-  
-}   
-
-.InfosRefDur {
-  width: 81%;
-}
-
-.imgCourse {
-     
-      height: 28rem;
-      border-radius: 3rem;
-     
- }
-
-
-
-
-    .pdown{
-      color: #ffffff;
-      font-size:2.1rem;
-  
-    }
-    .pdowncontainer{
-     
-      padding-top:3em;
-    }
-  
- 
-    .underline{
-  
-      width:25%;
-      background-color: #CD6214;
-      padding-top: 5px;
-      border-radius: 100px;
-      margin-top:0.5rem;
-    }
-    .backimage {
-   
-      height: 18rem;
-      border-radius: 0px 0px 22px 22px;
-      display: flex;
-      flex-direction: column;
-
-      
-    
-  
-    }
-    .underline{
-  
-      width:10%;
-      background-color: #CD6214;
-      padding-top: 5px;
-      border-radius: 100px;
-      margin-top: 10px;
-    }
-    .pdowncontainer{
-     
-      padding-top:4em;
-    }
-
-    .text{
-      margin-top: 10px;
-    }
-  }
   
   
   
   
   
   @media (min-width: 700px) and (max-width: 764px) {
-    
+    .pdowncontainer{
+      /* padding-left: 8rem;
+      padding-right: 8rem; */
+      padding-top: 4rem;
+    }
     .CourseButtonsInfoPage button{
       width: 70%;
       height: 3rem;
@@ -1768,10 +1620,7 @@ font-weight: 900;
       font-size:1.8rem;
   
     }
-    .pdowncontainer{
-     
-      padding-top:3em;
-    }
+  
   
  
     .underline{
@@ -1801,11 +1650,7 @@ font-weight: 900;
       border-radius: 100px;
       margin-top: 10px;
     }
-    .pdowncontainer{
-     
-      padding-top:4em;
-    }
-
+ 
     .text{
       margin-top: 10px;
     }
@@ -1814,13 +1659,20 @@ font-weight: 900;
      padding-right: 5%;
    }
   }
-  @media (min-width: 700px) and (max-width: 780px) {
+
+
+  @media (min-width: 764px) and (max-width: 780px) {
+    .pdowncontainer{
+      /* padding-left: 8rem;
+      padding-right: 8rem; */
+      padding-top: 4rem;
+    }
     .navContainer{
       margin-left: 4rem; 
       margin-right:8rem;
     }
     .scndInfos{
-      padding: 1rem 1rem;
+      padding: 1rem 0rem;
       border-radius: 0px 40px 0px 40px;
       background-color: #3E4678;
       /* height: 50%; */
@@ -1860,15 +1712,16 @@ font-weight: 900;
 }   
 
 .InfosRefDur {
+  
   width: 81%;
 }
 
-.imgCourse {
+/* .imgCourse {
      
       height: 28rem;
       border-radius: 3rem;
      
- }
+ } */
 
 
 
@@ -1878,10 +1731,7 @@ font-weight: 900;
       font-size:2.1rem;
   
     }
-    .pdowncontainer{
-     
-      padding-top:3em;
-    }
+  
   
  
     .underline{
@@ -1911,17 +1761,38 @@ font-weight: 900;
       border-radius: 100px;
       margin-top: 10px;
     }
-    .pdowncontainer{
-     
-      padding-top:4em;
-    }
+   
 
     .text{
       margin-top: 10px;
     }
   }
-  @media (min-width: 765px) and (max-width: 800px) {
-    
+  @media (min-width: 780px) and (max-width: 875px) {
+    .DescriptionInfoCourseTitle span {
+      font-family: 'Lato';
+      font-weight: 900;
+      text-transform: uppercase;
+      font-size: 1.4rem;
+      color: #2C2C2C;
+  }
+  .DescriptionInfoCourseTitle .underline{
+  
+    width:3.7rem;
+    background-color: #CD6214;
+    padding:0.22em;
+    border-radius: 100px;
+    margin-top: 10px;
+  }
+
+    .pdowncontainer{
+      /* padding-left: 8rem;
+      padding-right: 8rem; */
+      padding-top: 4rem;
+    }
+    /* .imgCourse{
+      height: 36vh
+
+    } */
     .CourseButtonsInfoPage button{
       width: 70%;
       height: 3rem;
@@ -1954,7 +1825,7 @@ font-weight: 900;
       
   }
     .scndInfos{
-      padding: 0rem 0rem;
+      padding: 1rem 0rem;
       border-radius: 0px 40px 0px 40px;
       background-color: #3E4678;
       /* height: 50%; */
@@ -1977,10 +1848,7 @@ font-weight: 900;
       font-size:1.8rem;
   
     }
-    .pdowncontainer{
-     
-      padding-top:3em;
-    }
+  
   
  
     .underline{
@@ -2010,10 +1878,7 @@ font-weight: 900;
       border-radius: 100px;
       margin-top: 10px;
     }
-    .pdowncontainer{
-     
-      padding-top:4em;
-    }
+
 
     .text{
       margin-top: 10px;
@@ -2023,120 +1888,104 @@ font-weight: 900;
      padding-right: 5%;
    }
   }
-  @media (min-width: 700px) and (max-width: 780px) {
-    .navContainer{
-      margin-left: 4rem; 
-      margin-right:8rem;
-    }
-    .scndInfos{
-      padding: 1rem 1rem;
-      border-radius: 0px 40px 0px 40px;
-      background-color: #3E4678;
-      /* height: 50%; */
-      /* width: 40rem; */
-      position: sticky;
-      box-shadow: 0 0 7px rgba(0, 0, 0, 0.25);
-      display: block;
-      transition: margin-top 1s ease-out;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: left;
-      gap: 1rem;
-      color: #FFFFFF;
-      font: bold 20px "Lato", sans-serif;
 
-    }    .InfosRefDur{
-     
-    }
-    .CourseButtonsInfoPage button{
-      width: 64%;
-      height: 4rem;
-      margin: 3px 6px;
-      padding: 0 20px;
+  @media (max-width:876px) {
+    /* .imgCourse{
+      height: 36vh
+
+    } */
+     .maincontainernav{
+      padding-left: 5rem;
+      padding-right: 5rem;
+     }
+    .MainDivCourse{
+      width: 100%;
+      height: auto;
       display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: row-reverse;
-      border-radius: 14px;
-      border: none;
-      color: #3E4678;
-      font: 500 20px "Lato", sans-serif;
-      cursor: pointer;
-      font-weight: bolder;
-    
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding-left: 5rem;
+      padding-right: 5rem;
+      padding-top: 5rem;
+      gap: 0;
+  }
   
-}   
-
-.InfosRefDur {
-  width: 81%;
+  .rightSectionCourse {
+      /* position: -webkit-sticky; / */
+      /* position:relative; */
+      transition: all 0.3s ease-in-out;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      height: auto;
+      /* overflow-y: auto; */
+      margin-top: 0rem;
+      width: 42%;
+  }
+  .ScndSectionInfoCourse{
+    width: 100%;
+    padding-bottom: 5rem;
+    display: flex;
+    flex-direction: row;
+    background-color: wheat;
+    justify-content: space-between;
+  }
+  .rightSectionContainer{
+    width: 100%;
+  }
+  .scndInfos {
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    padding: 1rem 0rem;
+    border-radius: 0px 2rem 0px 2rem;
+    background-color: #3E4678;
+    /* height: 50%; */
+    /* width: 40rem; */
+    position: sticky;
+    box-shadow: 0 0 7px rgba(0, 0, 0, 0.25);
+    display: block;
+    transition: margin-top 1s ease-out;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 1rem;
+    color: #FFFFFF;
+    font: bold 14px "Lato", sans-serif;
+  }
+  .leftSectionCourse {
+    /* background-color: #6FC2D0; */
+    width: 100%;
+    /* height: 100%; */
+    display: flex;
+    flex-direction: column;
+  }
+  .coursePart{
+    width:50%;
+  }
+  .rightSectionContainer {
+    position: relative;
+    top:0;
+    margin-bottom: 2rem;
 }
 
-.imgCourse {
-     
-      height: 28rem;
-      border-radius: 3rem;
-     
- }
-
-
-
-
-    .pdown{
-      color: #ffffff;
-      font-size:2.1rem;
-  
-    }
-    .pdowncontainer{
-     
-      padding-top:3em;
-    }
-  
- 
-    .underline{
-  
-      width:25%;
-      background-color: #CD6214;
-      padding-top: 5px;
-      border-radius: 100px;
-      margin-top:0.5rem;
-    }
-    .backimage {
-   
-      height: 18rem;
-      border-radius: 0px 0px 22px 22px;
-      display: flex;
-      flex-direction: column;
-
-      
-    
-  
-    }
-    .underline{
-  
-      width:10%;
-      background-color: #CD6214;
-      padding-top: 5px;
-      border-radius: 100px;
-      margin-top: 10px;
-    }
-    .pdowncontainer{
-     
-      padding-top:4em;
-    }
-
-    .text{
-      margin-top: 10px;
-    }
   }
-
-  @media (min-width: 811px) and (max-width: 1082px) {
+  
+  @media (min-width: 874px) and (max-width: 1020px) {
+    .pdowncontainer{
+      /* padding-left: 8rem;
+      padding-right: 8rem; */
+      padding-top: 4rem;
+    }
+    .maincontainernav{
+      padding-left: 5rem;
+      padding-right: 5rem;
+     }
     
     .rightSectionContainer{
       width: 32%;
     }
 .scndInfos {
-      padding: 0;
+  padding: 1rem 0rem;
       border-radius: 0px 2rem 0px 2rem;
       background-color: #3E4678;
       /* height: 50%; */
@@ -2154,7 +2003,7 @@ font-weight: 900;
   }
   .leftSectionCourse {
       /* background-color: #6FC2D0; */
-      width: 70%;
+      width: 66%;
       /* height: 100%; */
       display: flex;
       flex-direction: column;
@@ -2189,16 +2038,24 @@ font-weight: 900;
       font-family: 'Lato';
       font-weight: 900;
       text-transform: uppercase;
-      font-size: 1rem;
+      font-size: 1.4rem;
       color: #2C2C2C;
   }
-
+  .DescriptionInfoCourseTitle .underline{
+  
+    width:3.7rem;
+    background-color: #CD6214;
+    padding:0.22em;
+    border-radius: 100px;
+    margin-top: 10px;
+  }
+/* 
   .imgCourse {
     width: 100%;
       height: 26rem;
       border-radius: 3rem;
      
-      z-index: -1;}
+      z-index: -1;} */
   .MainDivCourse{
       width: 100%;
       height: auto;
@@ -2254,11 +2111,20 @@ font-weight: 900;
   }
     
   @media (min-width: 1020px) and (max-width:1082px) {
+    .pdowncontainer{
+      /* padding-left: 8rem;
+      padding-right: 8rem; */
+      padding-top: 4rem;
+    }
+    .maincontainernav{
+      padding-left: 5rem;
+      padding-right: 5rem;
+     }
     .rightSectionContainer{
       width: 32%;
     }
 .scndInfos {
-      padding: 0;
+  padding: 1rem 0rem;
       border-radius: 0px 2rem 0px 2rem;
       background-color: #3E4678;
       /* height: 50%; */
@@ -2292,12 +2158,12 @@ font-weight: 900;
       margin-top: 5rem;
       
   }
-    .imgCourse {
+    /* .imgCourse {
    
       height: 28rem;
       border-radius: 3rem;
      
-      z-index: -1;}
+      z-index: -1;} */
     .radioTitle {
       color: #FFFFFF;
       font: bolder 1.4rem "Lato";
@@ -2319,12 +2185,12 @@ font-weight: 900;
       color: #2C2C2C;
   }
 
-  .imgCourse {
+  /* .imgCourse {
     width: 100%;
       height: 26rem;
       border-radius: 3rem;
      
-      z-index: -1;}
+      z-index: -1;} */
   .MainDivCourse{
       width: 100%;
       height: auto;
@@ -2367,10 +2233,6 @@ font-weight: 900;
 
   }
  
-    .pdowncontainer{
-     
-      padding-top:3em;
-    }
   
  
 
@@ -2399,6 +2261,19 @@ font-weight: 900;
     }
   }
   @media (min-width: 1082px) and (max-width:1200px) {
+    .pdowncontainer{
+      /* padding-left: 8rem;
+      padding-right: 8rem; */
+      padding-top: 4rem;
+    }
+    .maincontainernav{
+      padding-left: 5rem;
+      padding-right: 5rem;
+     }
+    .maincontainernav{
+      padding-left: 5rem;
+      padding-right: 5rem;
+     }
     .rightSectionContainer{
       width: 32%;
     }
@@ -2408,7 +2283,7 @@ font-weight: 900;
       padding-bottom: 1rem;
   }
   .scndInfos {
-      padding: 0;
+    padding: 1rem 0rem;
       border-radius: 0px 2rem 0px 2rem;
       background-color: #3E4678;
       /* height: 50%; */
@@ -2445,12 +2320,12 @@ font-weight: 900;
       display: flex;
       flex-direction: column;
   }
-  .imgCourse {
+  /* .imgCourse {
     width: 100%;
       height: 28rem;
       border-radius: 3rem;
      
-      z-index: -1;}
+      z-index: -1;} */
 
   .MainDivCourse{
       /* width: 90%; */
@@ -2500,6 +2375,15 @@ font-weight: 900;
   }
   
   @media (min-width: 1200px) and (max-width:1300px) {
+    .pdowncontainer{
+      /* padding-left: 8rem;
+      padding-right: 8rem; */
+      padding-top: 4rem;
+    }
+    .maincontainernav{
+      padding-left: 5rem;
+      padding-right: 5rem;
+     }
     .radioTitle {
       color: #FFFFFF;
       font: bolder 1.4rem "Lato";
@@ -2543,12 +2427,12 @@ font-weight: 900;
       display: flex;
       flex-direction: column;
   }
-  .imgCourse {
+  /* .imgCourse {
       width: 100%;
       height: 28rem;
       border-radius: 3rem;
      
-      z-index: -1;}
+      z-index: -1;} */
 
   .MainDivCourse{
       /* width: 90%; */
@@ -2598,15 +2482,45 @@ font-weight: 900;
   }
   
 
-  @media (min-width: 1500px) and (max-width:1920px) {
+  @media (min-width: 1300px) and (max-width:1519px) {
+    .pdowncontainer{
+      /* padding-left: 8rem;
+      padding-right: 8rem; */
+      padding-top: 4rem;
+    }
+    .maincontainernav{
+      padding-left: 8rem;
+      padding-right: 8rem;
+     }
     
     .text{
       margin-top: 20px;
     }
  
-    .pdowncontainer{
-      padding-left: 13.5%;
-      padding-right: 13.5%;
-      padding-top:5em;
+   
+  }
+  @media(min-width:1520px) {
+    .maincontainer{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
+    .maincontainernav{
+      display: flex;
+   
+
+       align-items:flex-start;
+       flex-direction: column;
+    }
+   
+
+    .MotherDivCourse{
+      /* width: 100%; */
+      /* padding-left: 15rem;
+    padding-right: 15rem; */
+    }
+ .MainDivCourse{
+  width: 1500px;
+ }
   }
