@@ -359,22 +359,11 @@
 }
 @media (min-width: 900px) and (max-width: 1300px) {
   .card {
-    width: calc(15vw);
-    height: calc(15vw);
+    width: calc(13vw);
+    height: calc(13vw);
   }
 }
-@media (min-width: 1300px) and (max-width: 1500px) {
-  .card {
-    width: calc(17vw);
-    height: calc(17vw);
-  }
-}
-@media (min-width: 1500px) {
-  .card {
-    width: calc(17vw);
-    height: calc(17vw);
-  }
-}
+
 
 
 
