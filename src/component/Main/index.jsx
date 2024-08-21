@@ -76,34 +76,14 @@ const Main = () => {
     };
   }, []);
   const [itemsPerPage, setItemsPerPage] = useState(3);
-
-  //   useEffect(() => {
-  //     // Combine the GET and POST requests using Promise.all
-  //     const fetchData = async () => {
-  //         try {
-  //             const [trainingsResponse, coursesResponse] = await Promise.all([
-  //                 axios.get("http://localhost:5050/api/trainings"),
-  //                 axios.post("http://localhost:5050/api/courses")
-  //             ]);
-
-  //             // Set the data for trainings and courses
-  //             setTrainings(trainingsResponse.data.data);
-  //             setCourses(coursesResponse.data.data);
-
-  //         } catch (error) {
-  //             console.error("Error fetching data:", error);
-  //         }
-  //     };
-
-  //     fetchData();
-  // }, []);
+ 
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const [trainingsResponse, coursesResponse] = await Promise.all([
-          axios.get("http://localhost:5050/api/trainings"),
-          axios.get("http://localhost:5050/api/courses"),
+          axios.get(`${process.env.REACT_APP_API}api/trainings`),
+          axios.get(`${process.env.REACT_APP_API}api/courses`),
         ]);
 
         const combinedData = [
