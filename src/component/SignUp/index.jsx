@@ -6,6 +6,13 @@ import { IoIosArrowForward, IoMdArrowDropright } from "react-icons/io";
 import { signupState } from "../../recoil/signup.atom";
 import { useRecoilState } from "recoil";
 import { signup } from "./signup.utils";
+import unow from "./unow.png"
+import image from "./image.png";
+import divider from "./Divider.png";
+import facebook from "./imgMedia/Social media logo.png";
+import apple from "./imgMedia/Social media logo (1).png";
+import google from "./imgMedia/Social media logo (2).png";
+import twitter from "./imgMedia/Social media logo (3).png";
 
 const SignUp = () => {
   const [data, setData] = useRecoilState(signupState);
@@ -109,59 +116,31 @@ const SignUp = () => {
 };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        alignItems: "center",
-        backgroundImage: `url("/images/signup/wallpaper.png")`,
-        backgroundSize: "cover",
-        backgroundPosition: "right",
-        backgroundRepeat: "no-repeat",
-        flexDirection: "column",
-        minHeight: "100vh",
-      }}
-    >
-      <div
-        style={{
-          width: "50%",
-          height: "100vh",
-        }}
-      >
-        <form
-          style={{
-             display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        width: "100%",
-        height: "100%",
-          }}
-          onSubmit={handleSubmit}
-        >
-          <Link className={styles.Close} to="/">
-            Home
-            <IoIosArrowForward size={17} />
-          </Link>
-          <span
-            style={{
-              width: "80%",
-              fontSize: "2rem",
-              marginBottom: "1.5rem",
-              fontWeight: "bold",
-            }}
-          >
-            sign up
-          </span>
+    <div className={styles.backsignup}>
+    <div className={styles.container}>
+      <div className={styles.leftSection}>
+        <img src={unow} className={styles.logo} alt="Unow Logo" />
+        <div className={styles.loginContainer}>
+        <div className={styles.Title}>
+          
+          </div>
+          <div className={styles.Title}>
+              <p>Sign up</p>
+            </div>
 
-          <label
-            htmlFor="name"
-            style={{
-              width: "80%",
-              fontSize: "1.5rem",
-            }}
-          >
-            Name
-          </label>
+          <Link className={styles.Close} to="/">
+          <IoMdArrowDropright /> Home
+            
+            
+          </Link>
+        
+   
+       < form className={styles.form_container} onSubmit={handleSubmit}>
+         
+       
+          
+            <p className={styles.text}>Name</p>
+         
           <input
             type="text"
             id="Name"
@@ -171,15 +150,21 @@ const SignUp = () => {
             required
             className={styles.input}
           />
-          <label
-            htmlFor="name"
-            style={{
-              width: "80%",
-              fontSize: "1.5rem",
-            }}
-          >
-            Phone
-          </label>
+         
+            <p className={styles.text}>Username</p>
+          
+          <input
+            type="text"
+            id="UserName"
+            name="userName"
+            onChange={handleChange}
+            value={data.userName}
+            required
+            className={styles.input}
+          />
+        
+           <p className={styles.text}>Phone</p>
+         
           <input
             type="text"
             id="Phone"
@@ -192,33 +177,10 @@ const SignUp = () => {
           {phoneError && (
             <div className={styles.error_msg_Phone}>{phoneError}</div>
           )}
-          <label
-            htmlFor="name"
-            style={{
-              width: "80%",
-              fontSize: "1.5rem",
-            }}
-          >
-            Username
-          </label>
-          <input
-            type="text"
-            id="UserName"
-            name="userName"
-            onChange={handleChange}
-            value={data.userName}
-            required
-            className={styles.input}
-          />
-          <label
-            htmlFor="name"
-            style={{
-              width: "80%",
-              fontSize: "1.5rem",
-            }}
-          >
-            Email
-          </label>
+       
+           
+           <p className={styles.text}>E-mail</p>
+         
           <input
             type="email"
             id="Email"
@@ -228,15 +190,9 @@ const SignUp = () => {
             required
             className={styles.input}
           />
-          <label
-            htmlFor="name"
-            style={{
-              width: "80%",
-              fontSize: "1.5rem",
-            }}
-          >
-            Password
-          </label>
+          
+           <p className={styles.text}>Password</p>
+          
           <input
             type="password"
             id="Password"
@@ -246,17 +202,58 @@ const SignUp = () => {
             required
             className={styles.input}
           />
+            <div className={styles.options}>
+                <div className={styles.checkBox}>
+                  <input type="checkbox" name="remember" />
+                  </div>
+                  <label htmlFor="remember">
+                    <p className={styles.by}> By continuing, you agree to the <u>Terms of use</u> and <u> Privacy Policy.</u> </p></label>
+                  
+               
+               
+              </div>
 
           {error && <div className={styles.error_msg}>{error}</div>}
+          <div className={styles.sign}>
           <button type="submit" className={styles.Signup_btn}>
             Sign Up
           </button>
           <Link className={styles.login} to="/login">
-            You have already one ? <IoMdArrowDropright />
+          <p className={styles.forgetpsw}><u>You have already one ?<IoMdArrowDropright /></u> </p> 
           </Link>
+          </div>
+          <div className={styles.divider}>
+                <img src={divider} className={styles.dividerImage} alt="Divider" />
+                <img src={divider} className={styles.dividerImage} alt="Divider" />
+              </div>
+              <div className={styles.allsocialmedia}>
+                <img src={facebook} className={styles.socialmedia}/>
+                <img src={apple} className={styles.socialmedia}/>
+                <img src={google} className={styles.socialmedia}/>
+                <img src={twitter} className={styles.socialmedia}/>
+
+              </div>
         </form>
+        </div>
+        </div>
+        <div className={styles.rightSection}>
+          <img src={image} className={styles.loginImage} alt="Login" />
+          <div className={styles.textcontainer}>
+            <div className={styles.textsearchtitle}>
+              Let's build the future together
+            </div>
+            <div className={styles.textsearch}>
+              “Coming together is a beginning, keeping together is progress,
+              working together is success.”
+              <div className={styles.textsearch2}> Henry Ford</div>
+              <br /> 
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+    
+   
   );
 };
 

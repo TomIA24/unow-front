@@ -11,6 +11,7 @@ import facebook from "./imgMedia/Social media logo.png";
 import apple from "./imgMedia/Social media logo (1).png";
 import google from "./imgMedia/Social media logo (2).png";
 import twitter from "./imgMedia/Social media logo (3).png";
+import hide from "./icon.png"
 
 const Login = () => {
   const location = useLocation();
@@ -92,7 +93,7 @@ const Login = () => {
               <p>Login</p>
             </div>
             <Link className={styles.Close} to="/">
-              Home
+            <IoMdArrowDropright /> Home
               
               
             </Link>
@@ -101,17 +102,21 @@ const Login = () => {
               <p className={styles.text}>Email address or user name</p>
               <input
                 type="email"
-                placeholder="Email"
+                
                 name="email"
                 onChange={handleChange}
                 value={data.email}
                 required
                 className={styles.input}
               />
+              
               <p className={styles.text}>Password</p>
+             
+               
+              
               <input
                 type="password"
-                placeholder="Password"
+               
                 name="password"
                 onChange={handleChange}
                 value={data.password}
@@ -121,14 +126,16 @@ const Login = () => {
               <div className={styles.options}>
                 <div className={styles.checkBox}>
                   <input type="checkbox" name="remember" />
+                  </div>
                   <label htmlFor="remember">Remember me</label>
-                </div>
+                  
+               
                
               </div>
               <p className={styles.by}> By continuing, you agree to the <u>Terms of use</u> and <u> Privacy Policy.</u> </p>
               {error && <div className={styles.error_msg}>{error}</div>}
               <button type="submit" className={styles.Login_btn}>
-                Login
+                Log in
               </button>
               <p className={styles.forgetpsw}><u>Forget your password</u> </p>
               <p className={styles.nvaccount}>Don’t have an acount? <u> Sign up</u>  </p>

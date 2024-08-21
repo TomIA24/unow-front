@@ -1917,14 +1917,7 @@ margin-left: 200px; */
        }
    
    }
-   @media (min-width: 2500px)  {
-       .textsearchtitle {
-           font-size: 68px; /* Keep the original font size for large desktops */
-           margin: 12px 0; /* Add some vertical margin */
-           font-weight: 550; /* Augmentation du poids de la police */
-           margin-right: 0%;
-       }
-   }
+
    
    .features {
        color: white; /* White text color */
@@ -2260,9 +2253,9 @@ margin-left: 200px; */
                        
            
                    }}
-                   @media (min-width: 1500px)  {
+                   @media (min-width: 1500px) and (max-width:1730px)  {
                        .explore_container {
-                           width: 46%;
+                           width: 44%;
                            max-width: 875px;
                            height: 60px;
                            border-radius: 10px;
@@ -2275,10 +2268,47 @@ margin-left: 200px; */
                            margin-left: 3%;
                            margin-right: auto;
                            padding: 0; /* Added padding for better content spacing */
-                         
-                           
+                        }
+                           .textsearchtitle {
+                            color: white;
+                            font-size: 41px;
+                            font-weight: 600;
+                            text-align: center;
+                            margin: 0 auto;
+                        }
+                        .textsearch {
+                            font-size: 13px;
+                            padding-top: 0;
+                            padding-bottom: 6px;
+                        }
+                        .textsearch2 {
+                            color: white;
+                            font-size: 13px;
+                            padding-top: 2%;
+                            font-family: 'Lato';
+                        }
+                    }
                
-                       }}
+                   
+                       @media  (min-width:1730px)  {
+                        .explore_container {
+                            width: 46%;
+                            max-width: 875px;
+                            height: 60px;
+                            border-radius: 10px;
+                            box-shadow: 4px 4px 10.3px rgba(0, 0, 0, 0.1);
+                            background-color: white;
+                            display: flex;
+                            align-items: center;
+                            margin-top: -15px;
+                            border: 1px solid;
+                            margin-left: 3%;
+                            margin-right: auto;
+                            padding: 0; /* Added padding for better content spacing */
+                          
+                            
+                
+                        }}
                       
    
 
@@ -2366,13 +2396,21 @@ margin-left: 200px; */
    }
    
    /* For extra large screens (large desktops) */
-   @media (min-width: 1240px) {
+   @media (min-width: 1240px) and (max-width:1500px)
+    {
        .motivationImg {
          justify-content: left;
          width: 100%; 
        }
    }
-   
+   @media (min-width:1500px)
+    {
+       .motivationImg {
+         justify-content: left;
+         width: 100%;
+         flex-wrap: wrap;
+       }
+   }
 
     .topTrainingElements {
        display: flex;

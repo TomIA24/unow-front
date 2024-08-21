@@ -362,18 +362,7 @@
     height: calc(13vw);
   }
 }
-@media (min-width: 1300px) and (max-width: 1500px) {
-  .card {
-    width: calc(15vw);
-    height: calc(15vw);
-  }
-}
-@media (min-width: 1500px) {
-  .card {
-    width: calc(13vw);
-    height: calc(13vw);
-  }
-}
+
 
 
 
