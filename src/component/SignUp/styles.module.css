@@ -9,11 +9,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #FA8632; /* Couleur de fond pour plus de visibilité */
+    background: radial-gradient(circle, #FA8632 25%, #CD6214 100%);
 }
+
 .logo{
     margin-top: 0;
-    background-color:#FA8632 ;
+   
     margin-bottom: 20px;
     width: 18%;
 }
