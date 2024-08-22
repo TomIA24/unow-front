@@ -205,6 +205,7 @@ const AddCourse = () => {
 
   const [error, setError] = useState("");
 
+
   const handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
@@ -222,17 +223,22 @@ const AddCourse = () => {
         .post(url, data, config)
         .then(async (res) => {
           console.log("id---- :", res.data.id);
+          // setUploading(true);
           await uploadSingleFile(res.data.id);
           await UploadMultipleFiles();
           await UploadMultipleFilesRessources();
           window.scrollTo(0, 0);
           setSaved(true);
+          // setUploading(false);
           await new Promise((r) => {
             setTimeout(r, 2000);
           });
+          setMultipleFilesSelectedRessources([]);
+          setUploadProgress(0);
           setSaved(false);
           setData(initialData);
           setMultipleFilesSelected([]);
+          setPrev(null);
         })
         .catch((err) => {
           console.log(err);

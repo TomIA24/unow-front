@@ -104,7 +104,7 @@ const CompleteInfo = () => {
         authorization: `Bearer ${token}`,
       },
     };
-    axios.post(url, {}, config).then((response) => {
+    axios.get(url, config).then((response) => {
       localStorage.setItem("user", JSON.stringify(response.data.data));
       // setData(response.data.data);
     });
@@ -258,7 +258,7 @@ const CompleteInfo = () => {
               },
             };
             const url = `${process.env.REACT_APP_API}api/userData`;
-            axios.post(url, {}, config).then((response) => {
+            axios.get(url, config).then((response) => {
               console.log(response);
               localStorage.removeItem("user");
               localStorage.setItem("user", JSON.stringify(response.data.data));

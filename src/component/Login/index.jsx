@@ -41,7 +41,7 @@ const Login = () => {
           },
         };
         const url = `${process.env.REACT_APP_API}api/userData`;
-        await axios.post(url, {}, config).then((response) => {
+        await axios.get(url,  config).then((response) => {
           console.log("user data", response.data.data);
           localStorage.setItem("user", JSON.stringify(response.data.data));
           localStorage.setItem("login", true);
@@ -89,34 +89,28 @@ const Login = () => {
         <div className={styles.leftSection}>
           <img src={unow} className={styles.logo} alt="Unow Logo" />
           <div className={styles.loginContainer}>
-          <div className={styles.Title}>
+            <div className={styles.Title}>
               <p>Login</p>
             </div>
             <Link className={styles.Close} to="/">
-            <IoMdArrowDropright /> Home
-              
-              
+              <IoMdArrowDropright /> Home
             </Link>
-            
+
             <form className={styles.form_container} onSubmit={handleSubmit}>
               <p className={styles.text}>Email address or user name</p>
               <input
                 type="email"
-                
                 name="email"
                 onChange={handleChange}
                 value={data.email}
                 required
                 className={styles.input}
               />
-              
+
               <p className={styles.text}>Password</p>
-             
-               
-              
+
               <input
                 type="password"
-               
                 name="password"
                 onChange={handleChange}
                 value={data.password}
@@ -126,29 +120,43 @@ const Login = () => {
               <div className={styles.options}>
                 <div className={styles.checkBox}>
                   <input type="checkbox" name="remember" />
-                  </div>
-                  <label htmlFor="remember">Remember me</label>
-                  
-               
-               
+                </div>
+                <label htmlFor="remember">Remember me</label>
               </div>
-              <p className={styles.by}> By continuing, you agree to the <u>Terms of use</u> and <u> Privacy Policy.</u> </p>
+              <p className={styles.by}>
+                {" "}
+                By continuing, you agree to the <u>Terms of use</u> and{" "}
+                <u> Privacy Policy.</u>{" "}
+              </p>
               {error && <div className={styles.error_msg}>{error}</div>}
               <button type="submit" className={styles.Login_btn}>
                 Log in
               </button>
-              <p className={styles.forgetpsw}><u>Forget your password</u> </p>
-              <p className={styles.nvaccount}>Don’t have an acount? <u> Sign up</u>  </p>
+              <p className={styles.forgetpsw}>
+                <u>Forget your password</u>{" "}
+              </p>
+              <Link className={styles.login} to="/signup">
+                <p className={styles.nvaccount}>
+                  Don’t have an acount? <u> Sign up</u>
+                </p>
+              </Link>
               <div className={styles.divider}>
-                <img src={divider} className={styles.dividerImage} alt="Divider" />
-                <img src={divider} className={styles.dividerImage} alt="Divider" />
+                <img
+                  src={divider}
+                  className={styles.dividerImage}
+                  alt="Divider"
+                />
+                <img
+                  src={divider}
+                  className={styles.dividerImage}
+                  alt="Divider"
+                />
               </div>
               <div className={styles.allsocialmedia}>
-                <img src={facebook} className={styles.socialmedia}/>
-                <img src={apple} className={styles.socialmedia}/>
-                <img src={google} className={styles.socialmedia}/>
-                <img src={twitter} className={styles.socialmedia}/>
-
+                <img src={facebook} className={styles.socialmedia} />
+                <img src={apple} className={styles.socialmedia} />
+                <img src={google} className={styles.socialmedia} />
+                <img src={twitter} className={styles.socialmedia} />
               </div>
             </form>
           </div>
@@ -163,7 +171,7 @@ const Login = () => {
               “Coming together is a beginning, keeping together is progress,
               working together is success.”
               <div className={styles.textsearch2}> Henry Ford</div>
-              <br /> 
+              <br />
             </div>
           </div>
         </div>

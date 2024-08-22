@@ -54,7 +54,7 @@ const StandardTraining = (props) => {
       };
       const url2 = `${process.env.REACT_APP_API}api/userData`;
       try {
-        axios.post(url2, {}, config).then((response) => {
+        axios.get(url2, config).then((response) => {
           localStorage.setItem("user", JSON.stringify(response.data.data));
           SetUser(response.data.data);
           console.log(response.data.data.cartCourses);
@@ -149,7 +149,7 @@ const StandardTraining = (props) => {
 
   const [selectedOptions, setSelectedOptions] = useState([]);
 
-  useEffect(() => { }, [selectedOptions]);
+  useEffect(() => {}, [selectedOptions]);
 
   const handleChangeSelected = (e, newValue) => {
     setSelectedOptions([newValue]);
@@ -200,7 +200,6 @@ const StandardTraining = (props) => {
   const handleChange = (event) => {
     setDate(event.target.value);
   };
-
 
   const [scrollPosition, setScrollPosition] = useState(0);
   const handleScroll = () => {
@@ -278,7 +277,10 @@ const StandardTraining = (props) => {
     axios
       .get(
         `${process.env.REACT_APP_API}api/trainings/specific`,
-        { params: { id: id }, headers: { authorization: `Bearer ${localStorage.getItem("token")}` } },
+        {
+          params: { id: id },
+          headers: { authorization: `Bearer ${localStorage.getItem("token")}` },
+        },
         {}
       )
       .then((res) => {
@@ -288,7 +290,7 @@ const StandardTraining = (props) => {
       });
   };
 
-  const TimeperDay = new Date(Data.TimePerDay);
+  const TimeperDay = new Date(Data?.TimePerDay);
   const time = `${TimeperDay.getHours() < 10
     ? "0" + TimeperDay.getHours()
     : TimeperDay.getHours()
