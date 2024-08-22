@@ -18,6 +18,7 @@
         flex-direction: column;
         align-items: flex-start;
         justify-content: space-between;
+        /* background-color: #f9f9f9; */
      
       }
       .pdown{
@@ -33,6 +34,20 @@
     border-radius: 100px;
     margin-top: 10px;
   }
+  .buttonContainer {
+    position: relative;
+  }
+  
+  /* Rectangle styling */
+  .rectangle {
+    position: absolute;
+    top: 0;
+    right: -50px; /* Adjust to position the rectangle beside the button */
+    width: 40px;
+    height: 100%;
+    background-color: #3498db; /* Adjust as needed */
+  }
+
   .product{
     font-size: 40px;
     color: white;
@@ -53,8 +68,22 @@
     /* padding-right: 5rem; */
   align-items: center;
   }
+  .sectionindex{
+    
+  }
   .navContainer{
     
+  }
+  .sectionbutton{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+  }
+  .sectionToggle{
+    /* width: 100%; */
+    border: none;
+    background-color: #ffff0000
   }
   .pdowncontainer{
     /* padding-left: 8rem;
@@ -228,7 +257,159 @@ a {
     align-items: center;
    
 }
+.containerBt1{
+    width: 50%;
+}
+.containerBt2{
+    width: 50%;
+}
+.videoItem{
+    width: 100%;
+    height:auto;
+    border-radius:20px;
+    background-color: rgba(252, 253, 255, 0);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0);
+    border: none;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    color:#2C2C2C;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:left;
+    gap: 1rem;
+    font-family: 'Lato';
+    font-size: large;
+    font-weight: bold;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+}
 
+/* .videoList:hover{
+    width: 100%;
+    height: auto;
+    border-radius:20px;
+    background-color: #ebc7b0;
+    color: rgb(19, 17, 17);
+    cursor: pointer;
+  
+} */
+
+
+.startButtonContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .startButton {
+    background-color: #3e4678;
+    color: white;
+    /* padding: 1rem; */
+    border: none;
+    /* border-radius:50%; */
+    cursor: pointer;
+    display: flex;
+    
+  }
+  
+  .startButton:hover {
+    background-color: #3e4678;
+    border-radius:50%;
+  }
+  
+  .startButton.active {
+    background-color: #ffc107; 
+  }
+  .startIcon {
+    /* width: 20px;
+    height: 20px;
+    margin-right: 10px; */
+  }
+
+  .videoPlayerContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .videoPlayer {
+    position: relative;
+    /* Adjust to fit your layout */
+  }
+  
+  .videoElement {
+    width: 100%;
+    height: auto;
+    border-radius: 50px;
+  }
+  
+  .startButton {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding:1rem ;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  .videoPlayer:hover .startButton {
+    opacity: 1; /* Button appears when hovering over the video player */
+  }
+  
+  .startButton.playing {
+    background-color: rgba(255, 165, 0, 0.7); /* Different color when playing */
+  }
+  
+  .startIcon {
+    /* width: 24px;
+    height: 24px;
+    margin-right: 10px; */
+  }
+
+.sectionindex{
+    width: 50%;
+}
+.imagdown{
+    width: 100%;
+    height: auto;
+    border-radius:20px;
+    background-color: #ffff0000;
+    color: rgb(19, 17, 17);
+    cursor: pointer;
+  
+}
+.videoList{
+    width: 100%;
+    height: auto;
+    border-radius:20px;
+    background-color: rgba(252, 253, 255, 0);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0);
+    border: 1px solid  #CD6214;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    color:#2C2C2C;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:left;
+    gap: 1rem;
+    font-family: 'Lato';
+    font-size: large;
+    font-weight: bold;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+}
 .MainDivCourse {
     width: 100%;
     /* height: auto; */
@@ -260,14 +441,18 @@ a {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;  /* Video takes full width of the container */
-    height: 100%; /* Video takes full height of the container */
-    object-fit: cover; /* Ensure the video covers the container without stretching */}
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    margin-top: 4rem;
+    border-radius: 4rem;/* Ensure the video covers the container without stretching */}
+
+
 .FirsSectionInfoCourse {
     /* background-color: #ffffff; */
     /* border: 3px solid #0E2256; */
     /* box-shadow: inset 0 0 7px 2px #0e3dd93d, 0 0 5px 2px #0e3dd93d; */
-
+margin-top: 0.3rem;
 }
 
 .FirsSectionInfoCourseTitle {
@@ -283,13 +468,14 @@ a {
 
 .Btn_Div {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
+    justify-content:flex-start;
 
     gap: 10px;
-    width: 45%;
+    width: 100%;
     height: 100%;
     margin-bottom: 12rem;
+
 }
 .btncourse{
     width: 100%;
@@ -300,9 +486,54 @@ a {
     border: none;
     margin-top: 1rem;
     margin-bottom: 1rem;
-    color:white
-    
+    color:white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:left;
+    gap: 1rem;
+    font-family: 'Lato';
+    font-size: large;
+    font-weight: bold;
 }
+
+.imagefeatures{
+   width: 2rem;
+}
+.allbutton {
+    display: flex;
+    align-items: center;
+  }
+  
+  .btncourse {
+    background-color: #3E4678; /* Set initial background color */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+   
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .btncour {
+    background-color: transparent; /* Transparent background */
+    color: #3E4678; /* Same color as btncourse's background */
+    border: none;
+    cursor: pointer;
+
+    margin-left: 5px;
+    transition: color 0.3s ease;
+  }
+  
+  /* Hover effect */
+  .allbutton:hover .btncourse {
+    background-color: #CD6214; /* Change background color on hover */
+    color: white; /* Optional: Change text color on hover */
+  }
+  
+  .allbutton:hover .btncour {
+    color: #CD6214; /* Change arrow color to match new background color */
+  }
 .btncour{
     width: 10%;
     
@@ -321,6 +552,7 @@ a {
 .btncourse:hover {
     background-color: #CD6214;
     cursor: pointer;
+
 }
 .allbutton:hover{
 
