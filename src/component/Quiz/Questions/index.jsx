@@ -93,7 +93,7 @@ const Quiz = ({ startDate }) => {
 
       try {
         const response = await axios.get(
-          `http://localhost:5050/api/quizapi/quiz/${storedQuizId}/questions`
+          `http://localhost:5050/api/quiz/api/quiz/${storedQuizId}/questions`
         );
         setQuestions(response.data);
       } catch (error) {

@@ -26,6 +26,7 @@ import Nav from "../../Nav";
 import Footer from "../../Home/Footer";
 import Evaluate from "./Evaluate";
 import Ressources from "./RessourcesFiles";
+import { useNavigate } from 'react-router-dom'; 
 import styles from "./styles.module.css";
 
 const PaidCourse = () => {
@@ -61,49 +62,50 @@ const PaidCourse = () => {
     state: "",
     certificate: "",
     evaluate: [],
+    DurationQuiz:""
   });
   // const [Videos, setVideos] = useState([])
   const [Datavideo, setDatavideo] = useState({
-      _id:"",
-  Title: "",
-  Trainer: "",
-  Description: "",
-  Goals: "",
-  WhoShouldAttend: "",
-  CourseContent: "",
-  PracticalWork: "",
-  Category: "",
-  Price:"",
-  Thumbnail: {},
-  Videos: [],
+    _id: "",
+    Title: "",
+    Trainer: "",
+    Description: "",
+    Goals: "",
+    WhoShouldAttend: "",
+    CourseContent: "",
+    PracticalWork: "",
+    Category: "",
+    Price: "",
+    Thumbnail: {},
+    Videos: [],
     Level: "",
     Reference: "",
-  Date:[],
-      enrolled:[],
-      state:"",
-      certificate:""
-});
+    Date: [],
+    enrolled: [],
+    state: "",
+    certificate: ""
+  });
 
 
 
 
 
-const [VideoDisplay, setVideoDisplay] = useState("")
-const [isPlaying, setIsPlaying] = useState(false); // Track video play state
+  const [VideoDisplay, setVideoDisplay] = useState("")
+  const [isPlaying, setIsPlaying] = useState(false); // Track video play state
 
-const handleDisplay = (vid) => {
-  setVideoDisplay(vid.filePath);
-  setIsPlaying(true); // Set to playing when a video is selected
-  console.log(vid.filePath);
-};
+  const handleDisplay = (vid) => {
+    setVideoDisplay(vid.filePath);
+    setIsPlaying(true); // Set to playing when a video is selected
+    console.log(vid.filePath);
+  };
 
-const handlePlayPause = () => {
-  setIsPlaying(!isPlaying); // Toggle play/pause state
-};
-// const handleDisplay = (vid) =>{
-//   setVideoDisplay(vid.filePath)
-//   console.log(vid.filePath)
-// }
+  const handlePlayPause = () => {
+    setIsPlaying(!isPlaying); // Toggle play/pause state
+  };
+  // const handleDisplay = (vid) =>{
+  //   setVideoDisplay(vid.filePath)
+  //   console.log(vid.filePath)
+  // }
 
 
 
@@ -253,7 +255,7 @@ const handlePlayPause = () => {
     };
   }, []);
   const [mobileView, setMobileView] = useState(false);
-  console.log(mobileView);
+  console.log("mobileview", mobileView);
   useEffect(() => {
     //console.log(WindowWidth)
     if (WindowWidth <= 756) {
@@ -363,110 +365,132 @@ const handlePlayPause = () => {
 
   //activeButton
   const [preCourseData, setPreCourseData] = useState([]);
-const [quizData, setQuizData] = useState([]);
+  const [quizData, setQuizData] = useState([]);
 
-// const handleButtonClick = (index) => {
- 
-//   setActiveButton(index);
-//   console.log("herrrrrrrrrree",activeButton);
-  
-//   if (index === 0) {
-//     handleCourseVideo(); 
-//   }
-// };
-const [videos, setVideos] = useState([])
-const handleCourseVideo = () => {
-  const config = {
-    params: { id: id }, // Make sure `id` is defined
-  };
-  axios
-    .get(`${process.env.REACT_APP_API}api/courses/specific`, config)
-    .then((res) => {
-      setDatavideo(res.data.data);
-      setVideos(res.data.data.Videos); // Store the list of videos
-      console.log(res.data.data);
-      console.log(res.data.data.Videos);
-    })
-    .catch((error) => {
-      console.error("Error fetching course data:", error);
-    });
-}
-const handlePreCourseData = () => {
-  // Implement API call to fetch Pre-Course data
-  axios
-    .get(`${process.env.REACT_APP_API}api/courses/pre-course`, {
-      params: { id: id },
-    })
-    .then((res) => {
-      setPreCourseData(res.data.data);
-    })
-    .catch((error) => {
-      console.error("Error fetching pre-course data:", error);
-    });
-};
+  // const handleButtonClick = (index) => {
 
-const handleQuizData = () => {
-  // Implement API call to fetch Quiz data
-  axios
-    .get(`${process.env.REACT_APP_API}api/courses/quiz`, {
-      params: { id: id },
-    })
-    .then((res) => {
-      setQuizData(res.data.data);
-    })
-    .catch((error) => {
-      console.error("Error fetching quiz data:", error);
-    });
-};
-const [activeButton, setActiveButton] = useState(null);
-const[isOpenCourse,setOpenCourse]=useState(false);
-const[isOpenprcourse,setOpenprcourse]=useState(false);
-const[isOpenPDF,setOpenPDF]=useState(false);
+  //   setActiveButton(index);
+  //   console.log("herrrrrrrrrree",activeButton);
 
-const[isOpenQuiz,setOpenQuiz]=useState(false);
-const[isOpen,setOpen]=useState(false);
-
-const handleButtonClickcourse = () => {
-  setOpenCourse(!isOpenCourse)
-  
-};
-const handleButtonClickprcourse = () => {
-  setOpenprcourse(!isOpenprcourse)
-  
-};
-const handleButtonClickPDF = () => {
-  setOpenPDF(!isOpenPDF)
-  
-};
-const handleButtonClickQuiz = () => {
-  setOpenQuiz(!isOpenQuiz)
-  
-};
-
-const handleButtonClick = (index) => {
-  setActiveButton(index);
-  if (index === 0) {
-    console.log('course Video');
-    setOpen(true)
-    handleCourseVideo();
-  } else if (index === 1) {
-    handlePreCourseData();
-    setOpenPDF(true)
-  } else if (index === 2) {
-    handleQuizData(true);
-    setOpenQuiz(true)
+  //   if (index === 0) {
+  //     handleCourseVideo(); 
+  //   }
+  // };
+  const [videos, setVideos] = useState([])
+  const handleCourseVideo = () => {
+    const config = {
+      params: { id: id }, // Make sure `id` is defined
+    };
+    axios
+      .get(`${process.env.REACT_APP_API}api/courses/specific`, config)
+      .then((res) => {
+        setDatavideo(res.data.data);
+        setVideos(res.data.data.Videos); // Store the list of videos
+        console.log(res.data.data);
+        console.log(res.data.data.Videos);
+      })
+      .catch((error) => {
+        console.error("Error fetching course data:", error);
+      });
   }
-};
-// toggle for the showing the content of a section 
-const[isSectionOpen,setIsSectionOpen]=useState(false);
-
-const toggleSection = () => {
-  setIsSectionOpen((prev) => !prev); 
-// Toggle the section visibility
-  console.log(isSectionOpen);
-};
+  const handlePreCourseData = () => {
+    // Implement API call to fetch Pre-Course data
+    axios
+      .get(`${process.env.REACT_APP_API}api/courses/pre-course`, {
+        params: { id: id },
+      })
+      .then((res) => {
+        setPreCourseData(res.data.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching pre-course data:", error);
+      });
+  };
 
  
+  // const [activeButton, setActiveButton] = useState(null);
+  const [isOpenCourse, setOpenCourse] = useState(false);
+  const [isOpenprcourse, setOpenprcourse] = useState(false);
+  const [isOpenPDF, setOpenPDF] = useState(false);
+
+  const [isOpenQuiz, setOpenQuiz] = useState(false);
+  // const[isOpen,setOpen]=useState(false);
+
+  const handleButtonClickcourse = () => {
+    handleCourseVideo()
+    setOpenCourse(!isOpenCourse)
+    setOpenprcourse(false)
+    setOpenPDF(false)
+    setOpenQuiz(false)
+    console.log('course open', isOpenCourse);
+
+
+  };
+  const handleButtonClickprcourse = () => {
+    setOpenCourse(false)
+    setOpenprcourse(!isOpenprcourse)
+    setOpenPDF(false)
+    setOpenQuiz(false)
+
+  };
+  const handleButtonClickPDF = () => {
+    setOpenCourse(false)
+    setOpenprcourse(false)
+    setOpenPDF(!isOpenPDF)
+    setOpenQuiz(false)
+
+  };
+  const handleQuizData = async (courseID) => {
+    setOpenCourse(false)
+    setOpenprcourse(false)
+    setOpenPDF(false)
+    setOpenQuiz(!isOpenQuiz)
+    // Implement API call to fetch Quiz data
+    if (!isOpenQuiz) {
+      try {
+        // Fetch quizzes associated with the course
+        const response = await axios.get(`${process.env.REACT_APP_API}api/courses/${courseID}`);
+        setQuizData(response.data);
+        console.log('Quiz Data:', quizData);
+        // console.log('Quiz Data:',response.data);
+
+      } catch (error) {
+        console.error('Error fetching quizzes:', error);
+      }
+    }
+  };
+  // const handleButtonClickQuiz = () => {
+  //   setOpenQuiz(!isOpenQuiz)
+
+  // };
+
+  // const handleButtonClick = (index) => {
+  //   setActiveButton(index);
+  //   if (index === 0) {
+  //     console.log('course Video');
+  //     setOpen(true)
+  //     handleCourseVideo();
+  //   } else if (index === 1) {
+  //     handlePreCourseData();
+  //     setOpenPDF(true)
+  //   } else if (index === 2) {
+  //     handleQuizData();
+  //     setOpenQuiz(true)
+  //   }
+  // };
+  // toggle for the showing the content of a section 
+  const [isSectionOpen, setIsSectionOpen] = useState(false);
+
+  const toggleSection = () => {
+    setIsSectionOpen((prev) => !prev);
+    // Toggle the section visibility
+    console.log('section', isSectionOpen);
+  };
+  const navigate = useNavigate();
+  const handleQuizClick = (quizId) => {
+    navigate(`/quiz/${quizId}/${Data.DurationQuiz}`); // Navigate to the quiz route with quizId
+  };
+
   return (
     <React.Fragment>
 
@@ -487,224 +511,242 @@ const toggleSection = () => {
         <div className={styles.MainDivCourse}>
           <div className={styles.leftSectionCourse}>
             <div className={styles.FirsSectionInfoCourse}>
-            {VideoDisplay ? (
-  <div className={styles.videoPlayer}>
-    <video controls className={styles.videoElement}>
-      <source src={`${process.env.REACT_APP_API}${VideoDisplay}`} type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
-    <button onClick={handlePlayPause} className={`${styles.startButton} ${isPlaying ? styles.playing : ''}`}>
-              {isPlaying ? (
-                <>
-                  <img src="/images/course/paid/startvideo.png" alt="Pause Icon" className={styles.startIcon} />
-                  Pause
-                </>
+              {VideoDisplay ? (
+                <div className={styles.videoPlayer}>
+                  <video controls className={styles.videoElement}>
+                    <source src={`${process.env.REACT_APP_API}${VideoDisplay}`} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                  <button onClick={handlePlayPause} className={`${styles.startButton} ${isPlaying ? styles.playing : ''}`}>
+                    {isPlaying ? (
+                      <>
+                        <img src="/images/course/paid/startvideo.png" alt="Pause Icon" className={styles.startIcon} />
+                        Pause
+                      </>
+                    ) : (
+                      <>
+                        <img src="/images/course/paid/startvideo.png" alt="Play Icon" className={styles.startIcon} />
+
+                      </>
+                    )}
+                  </button>
+                </div>
               ) : (
-                <>
-                  <img src="/images/course/paid/startvideo.png" alt="Play Icon" className={styles.startIcon} />
-               
-                </>
+                (Data.Thumbnail === "qqq" || Data.Thumbnail === null || !Data.Thumbnail) ? (
+                  <div className={styles.imgCourse}>
+                    <img
+                      src={`${process.env.REACT_APP_API}uploads/courseImg.png`}
+                      alt=""
+                      className={styles.imgCourseImage}
+                    />
+                  </div>
+                ) : (
+                  <div className={styles.imgCourse}>
+                    <img
+                      src={`${process.env.REACT_APP_API}${Data.Thumbnail.filePath}`}
+                      alt=""
+                      className={styles.imgCourseImage}
+                    />
+                  </div>
+                )
               )}
-            </button>
-  </div>
-) : (
-  (Data.Thumbnail === "qqq" || Data.Thumbnail === null || !Data.Thumbnail) ? (
-    <div className={styles.imgCourse}>
-      <img
-        src={`${process.env.REACT_APP_API}uploads/courseImg.png`}
-        alt=""
-        className={styles.imgCourseImage}
-      />
-    </div>
-  ) : (
-    <div className={styles.imgCourse}>
-      <img
-        src={`${process.env.REACT_APP_API}${Data.Thumbnail.filePath}`}
-        alt=""
-        className={styles.imgCourseImage}
-      />
-    </div>
-  )
-)}
               <div className={styles.FirsSectionInfoCourseTitle}>
-                <h1>{Data.Title}</h1>  
-             
+                <div className={styles.courtitle}>{Data.Title}</div >
+
               </div>
               <div className={styles.FirsSectionInfoCourseTitle}>   <h4>{Data.Category}</h4>
                 {Data.rating
                   ? TextRating(Data.rating, Data.evaluate.length)
                   : TextRating(0, 0)}</div>
-              
+
               <div className={styles.Btn_Div}>
-              <div className={styles.containerBt1}>
+                <div className={styles.containerBt1}>
 
-              <div  className={styles.allbutton}>
-          <button
-           style={{
-            backgroundColor: isOpenCourse ? '#CD6214' : '#3E4678'
-          }}
-        className={styles.btncourse}
-            onClick={() =>  handleButtonClickcourse()}
-          >
-      <img
-              src={`/images/course/paid/startc.png`}
-              alt=''
-              className={styles.imagefeatures}
-            />
-           { isOpenCourse ?("yes"):("no")}
-           Course Content
+                  <div className={styles.allbutton}>
+                    <button
+                      style={{
+                        backgroundColor: isOpenCourse ? '#CD6214' : '#3E4678'
+                      }}
+                      className={styles.btncourse}
+                      onClick={handleButtonClickcourse}
+                    >
+                      <img
+                        src={`/images/course/paid/startc.png`}
+                        alt=''
+                        className={styles.imagefeatures}
+                      />
+                      {isOpenCourse ? ("yes") : ("no")}
+                      Course Content
 
-          </button>
-          <button className={styles.btncour}>
-           
-          </button>
-          <button className={styles.btncour}>
-            <img
-              src={`/images/course/paid/${isOpenCourse ? 'showsection' : 'hiddensection'}.png`}
-              alt=''
-            />
-          </button>
-        </div>
-        
-        <div  className={styles.allbutton}>
-          <button
-        style={{
-          backgroundColor: isOpenprcourse  ? '#CD6214' : '#3E4678'
-        }}
-      className={styles.btncourse}
-            onClick={() =>  handleButtonClickprcourse()}
-          >
-      <img
-              src={`/images/course/paid/prcours.png`}
-              alt=''
-              className={styles.imagefeatures}
-            />
-           { isOpenprcourse ?("yes"):("no")}
-           Pré-cours
+                    </button>
+                    <button className={styles.btncour}>
 
-          </button>
-          <button className={styles.btncour}>
-           
-          </button>
-          <button className={styles.btncour}>
-            <img
-              src={`/images/course/paid/${isOpenprcourse  ? 'showsection' : 'hiddensection'}.png`}
-              alt=''
-            />
-          </button>
-        </div>
-        
-        <div  className={styles.allbutton}>
-          <button
-        style={{
-          backgroundColor: isOpenPDF  ? '#CD6214' : '#3E4678'
-        }}
-      className={styles.btncourse}
-            onClick={() => handleButtonClickPDF()}
-          >
-      <img
-              src={`/images/course/paid/PDF.png`}
-              alt=''
-              className={styles.imagefeatures}
-            />
-           { isOpenPDF ?("yes"):("no")}
-      PDF
+                    </button>
+                    <button className={styles.btncour}>
+                      <img
+                        src={`/images/course/paid/${isOpenCourse ? 'showsection' : 'hiddensection'}.png`}
+                        alt=''
+                      />
+                    </button>
+                  </div>
 
-          </button>
-          <button className={styles.btncour}>
-           
-          </button>
-          <button className={styles.btncour}>
-            <img
-              src={`/images/course/paid/${isOpenPDF ? 'showsection' : 'hiddensection'}.png`}
-              alt=''
-            />
-          </button>
-        </div>
-        
-        <div  className={styles.allbutton}>
-          <button
-     style={{
-      backgroundColor: isOpenQuiz ? '#CD6214' : '#3E4678'
-    }}
-  className={styles.btncourse}
-            onClick={() =>  handleButtonClickQuiz()}
-          >
-      <img
-              src={`/images/course/paid/Quiz.png`}
-              alt=''
-              className={styles.imagefeatures}
-            />
-           { isOpenQuiz  ?("yes"):("no")}
-          Quiz
+                  <div className={styles.allbutton}>
+                    <button
+                      style={{
+                        backgroundColor: isOpenprcourse ? '#CD6214' : '#3E4678'
+                      }}
+                      className={styles.btncourse}
+                      onClick={() => handleButtonClickprcourse()}
+                    >
+                      <img
+                        src={`/images/course/paid/prcours.png`}
+                        alt=''
+                        className={styles.imagefeatures}
+                      />
+                      {isOpenprcourse ? ("yes") : ("no")}
+                      Pré-cours
 
-          </button>
-          <button className={styles.btncour}>
-           
-          </button>
-          <button className={styles.btncour}>
-            <img
-              src={`/images/course/paid/${isOpenQuiz ? 'showsection' : 'hiddensection'}.png`}
-              alt=''
-            />
-          </button>
-        </div>
+                    </button>
+                    <button className={styles.btncour}>
 
-  </div>
-  {isOpenCourse && videos.length > 0 ? (
-    <div className={styles.containerBt2}>
-      {videos.map((video, index) => (
-        <div className={styles.videoList} key={video.id}>
-          <div className={styles.sectionbutton}>
-            <div className={styles.sectionindex}>Section {index}</div>
-            <button
-              onClick={toggleSection}
-              className={styles.sectionToggle}
->
-              <img
-                src={`/images/course/paid/${isSectionOpen ? 'downsection' : 'upsection'}.png`}
-                alt=''
-                className={styles.imagdown}
-              />
-            </button>
-          </div>
-          {!isSectionOpen && (
-            <div>
-              <button onClick={() => handleDisplay(video)} className={styles.videoItem}>
-                {video.fileName}
-              </button>
-            </div>
-          )}
+                    </button>
+                    <button className={styles.btncour}>
+                      <img
+                        src={`/images/course/paid/${isOpenprcourse ? 'showsection' : 'hiddensection'}.png`}
+                        alt=''
+                      />
+                    </button>
+                  </div>
+
+                  <div className={styles.allbutton}>
+                    <button
+                      style={{
+                        backgroundColor: isOpenPDF ? '#CD6214' : '#3E4678'
+                      }}
+                      className={styles.btncourse}
+                      onClick={() => handleButtonClickPDF()}
+                    >
+                      <img
+                        src={`/images/course/paid/PDF.png`}
+                        alt=''
+                        className={styles.imagefeatures}
+                      />
+                      {isOpenPDF ? ("yes") : ("no")}
+                      PDF
+
+                    </button>
+                    <button className={styles.btncour}>
+
+                    </button>
+                    <button className={styles.btncour}>
+                      <img
+                        src={`/images/course/paid/${isOpenPDF ? 'showsection' : 'hiddensection'}.png`}
+                        alt=''
+                      />
+                    </button>
+                  </div>
+
+                  <div className={styles.allbutton}>
+                    <button
+                      style={{
+                        backgroundColor: isOpenQuiz ? '#CD6214' : '#3E4678'
+                      }}
+                      className={styles.btncourse}
+                      onClick={() => handleQuizData(Data._id)}
+                    >
+                      <img
+                        src={`/images/course/paid/Quiz.png`}
+                        alt=''
+                        className={styles.imagefeatures}
+                      />
+                      {isOpenQuiz ? ("yes") : ("no")}
+                      Quiz
+
+                    </button>
+                    <button className={styles.btncour}>
+
+                    </button>
+                    <button className={styles.btncour}>
+                      <img
+                        src={`/images/course/paid/${isOpenQuiz ? 'showsection' : 'hiddensection'}.png`}
+                        alt=''
+                      />
+                    </button>
+                  </div>
+
+                </div>
+                {isOpenCourse && videos.length > 0 ? (
+                  <div className={styles.containerBt2}>
+                    {videos.map((video, index) => (
+                      <div className={styles.videoList} key={video.id}>
+                        <div className={styles.sectionbutton}>
+                          <div className={styles.sectionindex}>Section {index}</div>
+                          <button
+                            onClick={toggleSection}
+                            className={styles.sectionToggle}
+                          >
+                            <img
+                              src={`/images/course/paid/${isSectionOpen ? 'downsection' : 'upsection'}.png`}
+                              alt=''
+                              className={styles.imagdown}
+                            />
+                          </button>
+                        </div>
+                        {!isSectionOpen && (
+                          <div>
+                            <button onClick={() => handleDisplay(video)} className={styles.videoItem}>
+                              {video.fileName}
+                            </button>
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                ) : (isOpenCourse && (<div className={styles.containerBt2}>
+                  <div  className={styles.videoList}>
+                    no content yet
+                  </div>
+                  </div>))}
+
+                {isOpenprcourse && preCourseData.length > 0 && (
+                  <div className={styles.preCourseDataContainer}>
+                    précours
+                  </div>
+                )}
+                {isOpenPDF && preCourseData.length > 0 && (
+                  <div className={styles.preCourseDataContainer}>
+                    précours
+                  </div>
+                )}
+                {isOpenQuiz && quizData.length > 0 ? (
+                  <div className={styles.containerBt2}>
+                    {quizData.map((quiz,index) => (
+        <div
+          key={quiz._id}
+          className={styles.videoList}
+          onClick={() => handleQuizClick(quiz._id)} // Handle click
+        >
+          Quiz {index} {/* Adjust the display as needed */}
         </div>
       ))}
-    </div>
-  ):( <div>No content</div> )}
-  {isOpenprcourse && preCourseData.length > 0 && (
-    <div className={styles.preCourseDataContainer}>
-          précours
-    </div>
-  )}
-    {isOpenPDF && preCourseData.length > 0 && (
-    <div className={styles.preCourseDataContainer}>
-          précours
-    </div>
-  )}
-  {isOpenQuiz  && quizData.length > 0 && (
-    <div className={styles.quizDataContainer}>
- 
-    </div>
-  )}
-      
-    
-      </div>
-      
-      <div>
+                  </div>
+                ) : (isOpenQuiz && (
+                  <div className={styles.containerBt2}>
+                <div  className={styles.videoList}>
+                  noquiz added
+                </div>
+                </div>))}
 
 
-     
-    </div>
+              </div>
+
+              <div>
+
+
+
+              </div>
             </div>
-           
+
           </div>
         </div>
       </main>

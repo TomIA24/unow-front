@@ -5,35 +5,40 @@ import Footer from '../Home/Footer';
 import QuizNav from "./nabar";
 import axios from 'axios';
 import { useQuiz } from '../../hooks/QuizContext';
-
+import { useNavigate } from 'react-router-dom'; 
 
 const MainQuiz = ({onStartQuiz}) => {
 
     const [started, setStarted] = useState(false);
-   
+    const navigate = useNavigate();
     const { quizId, setQuizId } = useQuiz();
-    const startStatment = async () => {
-        try {
-            const response = await axios.post(
-              "http://localhost:5050/api/quizapi/quiz/create/4",
-              { quizName: "Sample Quiz" }
-            );
-            const quizId = response.data._id;
-            localStorage.setItem('quizId', quizId);
-            console.log('quizId', quizId); // Save quizId to localStorage
-            setQuizId(quizId);
-            setStarted(true);
-        } catch (error) {
-            console.error('Error creating quiz:', error);
-        }
-    };
+    const { quizduration, setDurationQuiz } = useQuiz();
+
     useEffect(() => {
         const storedQuizId = localStorage.getItem('quizId');
         if (storedQuizId) {
             setQuizId(storedQuizId);
         
         }
-    }, [setQuizId]);
+    }, []);
+    const startStatment = async () => {
+        setStarted(true);
+        setQuizId(quizId);
+        setDurationQuiz(quizduration)
+        // try {
+        //     const response = await axios.post(
+        //       "http://localhost:5050/api/quizapi/quiz/create/4",
+        //       { quizName: "Sample Quiz" }
+        //     );
+        //     const quizId = response.data._id;
+        //     localStorage.setItem('quizId', quizId);
+        //     console.log('quizId', quizId); // Save quizId to localStorage
+        //     setQuizId(quizId);
+        //     setStarted(true);
+        // } catch (error) {
+        //     console.error('Error creating quiz:', error);
+        // }
+    };
     return (
         <>
             {!started ? (<div className={styles.containerQuiz}>
