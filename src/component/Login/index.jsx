@@ -24,6 +24,7 @@ const Login = () => {
     setData({ ...data, [input.name]: input.value });
   };
 
+  const isPasswordFilled = data.password.length > 0;
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -91,12 +92,12 @@ const Login = () => {
           <div className={styles.loginContainer}>
           <div className={styles.Title}>
               <p>Login</p>
+              <Link className={styles.Close} to="/">
+          Home<IoMdArrowDropright />
+            
+            
+          </Link>
             </div>
-            <Link className={styles.Close} to="/">
-            <IoMdArrowDropright /> Home
-              
-              
-            </Link>
             
             <form className={styles.form_container} onSubmit={handleSubmit}>
               <p className={styles.text}>Email address or user name</p>
@@ -134,22 +135,29 @@ const Login = () => {
               </div>
               <p className={styles.by}> By continuing, you agree to the <u>Terms of use</u> and <u> Privacy Policy.</u> </p>
               {error && <div className={styles.error_msg}>{error}</div>}
-              <button type="submit" className={styles.Login_btn}>
-                Log in
-              </button>
-              <p className={styles.forgetpsw}><u>Forget your password</u> </p>
-              <p className={styles.nvaccount}>Don’t have an acount? <u> Sign up</u>  </p>
+              <button 
+        type="submit" 
+        className={`${styles.Login_btn} ${isPasswordFilled ? styles.btnActive : ''}`}
+      >
+        Log in
+      </button>
+      <a href="/reset-password" className={styles.forgetpsw}><u>Forget your password</u></a>
+
+      <p className={styles.nvaccount}>
+  Don’t have an account? <a href="/signup" className={styles.signupLink}>Sign up</a>
+</p>
+
               <div className={styles.divider}>
                 <img src={divider} className={styles.dividerImage} alt="Divider" />
                 <img src={divider} className={styles.dividerImage} alt="Divider" />
               </div>
               <div className={styles.allsocialmedia}>
-                <img src={facebook} className={styles.socialmedia}/>
-                <img src={apple} className={styles.socialmedia}/>
-                <img src={google} className={styles.socialmedia}/>
-                <img src={twitter} className={styles.socialmedia}/>
+              <img src={facebook} alt="Facebook" className={styles.socialmediaF} />
+              <img src={apple} alt="Apple" className={styles.socialmedia} />
+              <img src={google} alt="Google" className={styles.socialmedia} />
+              <img src={twitter} alt="Twitter" className={styles.socialmedia} />
+            </div>
 
-              </div>
             </form>
           </div>
         </div>

@@ -121,18 +121,17 @@ const SignUp = () => {
       <div className={styles.leftSection}>
         <img src={unow} className={styles.logo} alt="Unow Logo" />
         <div className={styles.loginContainer}>
-        <div className={styles.Title}>
-          
-          </div>
+       
           <div className={styles.Title}>
               <p>Sign up</p>
-            </div>
-
-          <Link className={styles.Close} to="/">
-          <IoMdArrowDropright /> Home
+              <Link className={styles.Close} to="/">
+          Home<IoMdArrowDropright />
             
             
           </Link>
+            </div>
+
+          
         
    
        < form className={styles.form_container} onSubmit={handleSubmit}>
@@ -215,8 +214,8 @@ const SignUp = () => {
 
           {error && <div className={styles.error_msg}>{error}</div>}
           <div className={styles.sign}>
-          <button type="submit" className={styles.Signup_btn}>
-            Sign Up
+          <button type="submit" href="/login" className={styles.Signup_btn}>
+                  Sign Up
           </button>
           <Link className={styles.login} to="/login">
           <p className={styles.forgetpsw}><u>You have already one ?<IoMdArrowDropright /></u> </p> 
@@ -227,7 +226,7 @@ const SignUp = () => {
                 <img src={divider} className={styles.dividerImage} alt="Divider" />
               </div>
               <div className={styles.allsocialmedia}>
-                <img src={facebook} className={styles.socialmedia}/>
+                <img src={facebook} className={styles.socialmediaF}/>
                 <img src={apple} className={styles.socialmedia}/>
                 <img src={google} className={styles.socialmedia}/>
                 <img src={twitter} className={styles.socialmedia}/>

@@ -9,19 +9,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: radial-gradient(circle, #FA8632 25%, #CD6214 100%);
+    background: radial-gradient(circle, #e3833d 25%, #CD6214 100%);
 }
 
 .logo{
     margin-top: 0;
    
     margin-bottom: 20px;
-    width: 18%;
+    width: 22%;
 }
 .loginContainer {
     width: 100%;
     max-width: 556px;
-    padding: 2% 7% 0% 6%;
+    padding: 9% 6% 9% 6%;
     background-color: #fff;
     box-shadow: 0 1px 23px 2px rgba(0, 0, 0, 0.25);
     border-radius: 14px;
@@ -86,6 +86,11 @@
     padding-inline: 2%;
     margin-top: 3%;
 }
+.socialmediaF{
+    padding-inline: 2%;
+    margin-top: 3%;
+    padding-bottom: 2%;
+}
 
 .by{
     color: black;
@@ -99,26 +104,61 @@
 }
 
 .Close {
-    display: flex;
-    justify-content: end;
-    align-items: center;
+    
     font-size: larger;
     font-weight: bold;
     padding: 10px 10px;
-    color: #345AA4;
+    color: rgb(109, 109, 109);
     cursor: pointer;
-    width: 95%;
-    margin: 0 auto;
+    display: flex;
+    align-items: flex-end;
+   
+    
 }
 
+.Title  {
+    font-size: 15px;
+    color: rgb(109, 109, 109);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6%;
+}
+/* Styles par défaut */
 .Title p {
-    font-size: 23px;
-    color: black;
-
+    font-size: 24px;
+    color: #2c2c2c;
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
+    font-weight: 600;
 }
+
+/* Médias queries pour différents intervalles */
+@media (min-width: 300px) and (max-width: 599px) {
+    .Title p {
+        font-size: 18px; /* Ajustement pour petits écrans */
+    }
+}
+
+@media (min-width: 600px) and (max-width: 899px) {
+    .Title p {
+        font-size: 20px; /* Ajustement pour écrans moyens */
+    }
+}
+
+@media (min-width: 900px) and (max-width: 1199px) {
+    .Title p {
+        font-size: 22px; /* Ajustement pour grands écrans */
+    }
+}
+
+@media (min-width: 1200px) and (max-width: 1500px) {
+    .Title p {
+        font-size: 24px; /* Taille originale pour très grands écrans */
+    }
+}
+
 .loginContainer form {
     display: flex;
     flex-direction: column;
@@ -130,7 +170,7 @@
 .loginContainer input {
     padding: 10px;
     width: 100%;
-    margin: 2px 0;
+    margin: 8px 0;
     box-sizing: border-box;
 }
 .loginContainer button {
@@ -207,6 +247,7 @@
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-between;
+    margin-block: 2%;
   
 }
 .error_msg_Phone p {
@@ -216,7 +257,7 @@
 .Signup_btn {
     width: 105px;
     height: 43px;
-    border: 2px solid #a2b3d3;
+    border: 0px solid #ffffff;
     margin-top: 20px;
     background-color: white;
     border-radius: 50px;
@@ -224,8 +265,67 @@
     font-weight: bold;
     color: #345AA4;
     cursor: pointer;
-    box-shadow: 0 0px 4px 1px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, color 0.3s ease; /* Ajout de la transition pour un effet plus fluide */
 }
+
+.Signup_btn:hover {
+    background-color: #345AA4;
+    color: white; /* Changement de couleur du texte pour le contraste */
+}
+/* Styles de base pour .Signup_btn */
+.Signup_btn {
+    width: 105px;
+    height: 43px;
+    border: 0px solid #ffffff;
+    margin-top: 20px;
+    background-color: white;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #345AA4;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transition fluide */
+}
+
+/* Médias queries pour les écrans entre 300px et 599px */
+@media (min-width: 300px) and (max-width: 599px) {
+    .Signup_btn {
+        width: 90px; /* Ajustement pour les petits écrans */
+        height: 36px;
+        font-size: 16px;
+    }
+}
+
+/* Médias queries pour les écrans entre 600px et 899px */
+@media (min-width: 600px) and (max-width: 899px) {
+    .Signup_btn {
+        width: 100px; /* Ajustement pour les écrans moyens */
+        height: 40px;
+        font-size: 17px;
+    }
+}
+
+/* Médias queries pour les écrans entre 900px et 1199px */
+@media (min-width: 900px) and (max-width: 1199px) {
+    .Signup_btn {
+        width: 105px; /* Taille par défaut */
+        height: 43px;
+        font-size: 18px;
+    }
+}
+
+/* Médias queries pour les écrans entre 1200px et 1500px */
+@media (min-width: 1200px) and (max-width: 1500px) {
+    .Signup_btn {
+        width: 115px; /* Ajustement pour les grands écrans */
+        height: 46px;
+        font-size: 19px;
+    }
+}
+
+
 
 .login {
     display: flex;
@@ -260,7 +360,7 @@
     }
 }
 .textcontainer {
-    text-align: right;
+    text-align: center;
     margin-top: 20px;
 }
 
@@ -324,7 +424,7 @@
 }
 
 .textsearch {
-    font-size: 16px;
+    font-size: 15px;
     color: white;
     margin-top: 4%;
 }
