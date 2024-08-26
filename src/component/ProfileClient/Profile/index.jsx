@@ -1,96 +1,71 @@
 import React from "react";
 import styles from "./styles.module.css";
-import useProfile from "./use-profile";
+import useProfile from "../hooks/use-profile";
 import Loading from "../../Loading";
-
-import img from "../../assets/profileImgNoUp.svg";
-
-import IconButton from "@mui/material/IconButton";
-import PhotoCamera from "@mui/icons-material/PhotoCamera";
-import Badge from "@mui/material/Badge";
-import Avatar from "@mui/material/Avatar";
-import { Input, SmallAvatar } from "../../../shared";
+import OndemandVideoIcon from "@mui/icons-material/OndemandVideo";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import HistoryEduIcon from "@mui/icons-material/HistoryEdu";
+import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
+import UserInfo from "../UserInfo";
+import Trainings from "../Trainings";
+import Courses from "../Courses";
 
 const Profile = (props) => {
-  const { prev, singleFile, singleProgress, data, loading, SingleFileChange } =
-    useProfile();
+  const { handleBtn, profileState, data, loading } = useProfile();
   console.log(data);
   if (loading) {
     return <Loading />;
   } else {
     return (
       <div className={styles.profileContainer}>
-        <div className={styles.profileCapsule}>
-          <div className={styles.profileInfoContainer}>
-            <Badge
-              overlap="circular"
-              anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-              badgeContent={
-                <SmallAvatar alt="icon" sx={styleBox}>
-                  <label htmlFor="icon-button-file">
-                    <Input
-                      accept="image/*"
-                      id="icon-button-file"
-                      type="file"
-                      onChange={SingleFileChange}
-                    />
-                    <IconButton
-                      color="primary"
-                      aria-label="upload picture"
-                      component="span"
-                    >
-                      <PhotoCamera sx={{ width: 15, height: 15 }} />
-                    </IconButton>
-                  </label>
-                </SmallAvatar>
-              }
-            >
-              {prev ? (
-                <Avatar
-                  alt="icon"
-                  src={prev}
-                  sx={{ width: 150, height: 150 }}
-                />
-              ) : (
-                <div className={styles.progressCircle}>
-                  <div className={styles.progressInnerGap}>
-                    <div className={styles.progressInner}>
-                      {data.image ? (
-                        <Avatar
-                          alt="icon"
-                          src={`${process.env.REACT_APP_API}${data.image.filePath}`}
-                          sx={{ width: 150, height: 150 }}
-                        />
-                      ) : (
-                        <Avatar
-                          alt="icon"
-                          src={img}
-                          sx={{ width: 150, height: 150 }}
-                        />
-                      )}
-                    </div>
-                  </div>
-                </div>
-              )}
-            </Badge>
-            <div className={styles.FirsSectionInfoProfileName}>
-              <h1>{data.name} </h1>
+        {profileState===0 && <UserInfo />}
+        {profileState===1 && <Courses />}
+        {profileState===2 && <Trainings />}
+        {profileState===3 && <UserInfo />}
+  
+        <div className={styles.profileCapsule3}>
+          <button
+            onClick={() => handleBtn(0)}
+            className={profileState === 0 ? styles.btnActive : styles.btn}
+          >
+            <div className={styles.btnInner}>
+              <AccountCircleIcon />
+              <p>PERSONNAL INFORMATIONS</p>
             </div>
-          </div>
+          </button>
+          <button
+            onClick={() => handleBtn(1)}
+            className={profileState === 1 ? styles.btnActive : styles.btn}
+          >
+            <div className={styles.btnInner}>
+              <OndemandVideoIcon />
+              <p>COURSES</p>
+            </div>
+          </button>
+          <button
+            onClick={() => handleBtn(2)}
+            className={profileState === 2 ? styles.btnActive : styles.btn}
+          >
+            <div className={styles.btnInner}>
+              <HistoryEduIcon />
+              <p>TRAININGS</p>
+            </div>
+          </button>
+          <button
+            onClick={() => handleBtn(3)}
+            className={profileState === 3 ? styles.btnActive : styles.btn}
+          >
+            <div className={styles.btnInner}>
+              <ShoppingBasketIcon />
+              <p>CART</p>
+            </div>
+          </button>
         </div>
-        <div className={styles.profileCapsule}></div>
-        <div className={styles.profileCapsule}></div>
       </div>
     );
   }
 };
 
-const styleBox = {
-  boxShadow:
-    "0 0 4px 2px rgba(0,0,0,0.26),-1px -1px 4px 2px rgba(255,255,255,0.26) ",
-  backgroundColor: "white",
-  width: 30,
-  height: 30,
-};
+
 
 export default Profile;

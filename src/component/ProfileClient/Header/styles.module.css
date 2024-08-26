@@ -44,4 +44,15 @@ a {
 
 }
 
- 
+@media  (max-width:770px ) {
+    .title{
+        font-size: 30px; 
+         
+    }
+    
+    .underline{
+        width:80px;
+         
+    
+    }
+}
