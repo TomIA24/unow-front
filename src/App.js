@@ -65,7 +65,7 @@ function App() {
             />
             <Route
               exact
-         path="/quiz/:quizId/:duration"
+         path="/quiz"
               element={<MainQuiz onStartQuiz={handleStartQuiz} />}
             />
             <Route exact path="/timeout" element={<Timeout />} />

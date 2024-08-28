@@ -488,9 +488,8 @@ const PaidCourse = () => {
   };
   const navigate = useNavigate();
   const handleQuizClick = (quizId) => {
-    navigate(`/quiz/${quizId}/${Data.DurationQuiz}`); // Navigate to the quiz route with quizId
+    navigate(`/quiz`, { state: { quizId, durationQuiz: Data.DurationQuiz } });
   };
-
   return (
     <React.Fragment>
 

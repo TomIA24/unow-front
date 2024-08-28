@@ -6,25 +6,34 @@ import QuizNav from "./nabar";
 import axios from 'axios';
 import { useQuiz } from '../../hooks/QuizContext';
 import { useNavigate } from 'react-router-dom'; 
+import { useLocation } from 'react-router-dom';
 
-const MainQuiz = ({onStartQuiz}) => {
-
+const MainQuiz = ({ onStartQuiz}) => {
+    const location = useLocation();
+    const { quizId, durationQuiz } = location.state || {}; 
     const [started, setStarted] = useState(false);
-    const navigate = useNavigate();
-    const { quizId, setQuizId } = useQuiz();
-    const { quizduration, setDurationQuiz } = useQuiz();
+    // const { quizId, setQuizId } = useQuiz();
+    // const navigate = useNavigate();
+    // const { quizId, setQuizId } = useQuiz();
+    // const { quizduration, setDurationQuiz } = useQuiz();
 
-    useEffect(() => {
-        const storedQuizId = localStorage.getItem('quizId');
-        if (storedQuizId) {
-            setQuizId(storedQuizId);
+    // useEffect(() => {
+    //     const storedQuizId = localStorage.getItem('quizId');
+    //     if (storedQuizId) {
+    //         setQuizId(storedQuizId);
         
-        }
-    }, []);
-    const startStatment = async () => {
+    //     }
+    // }, []);
+    const startStatment =() => {
         setStarted(true);
-        setQuizId(quizId);
-        setDurationQuiz(quizduration)
+        // console.log(started);
+        
+        // setQuizId(quizId);
+        console.log("quizID",quizId);
+        console.log("time",durationQuiz);
+        
+        // setQuizId(quizId);
+        // setDurationQuiz(quizduration)
         // try {
         //     const response = await axios.post(
         //       "http://localhost:5050/api/quizapi/quiz/create/4",
@@ -39,6 +48,13 @@ const MainQuiz = ({onStartQuiz}) => {
         //     console.error('Error creating quiz:', error);
         // }
     };
+    // useEffect(() => {
+    //     const storedQuizId = localStorage.getItem('quizId');
+    //     if (storedQuizId) {
+    //         setQuizId(storedQuizId);
+        
+    //     }
+    // }, [setQuizId]);
     return (
         <>
             {!started ? (<div className={styles.containerQuiz}>
@@ -55,19 +71,19 @@ const MainQuiz = ({onStartQuiz}) => {
                     </div>
                 </div>
                 <div className={styles.footer}>
-                    <Footer />a
+                    <Footer />
                 </div>
             </div>) : (
                 <>
-                <div>
+             
                     
     <div className={styles.imgcontainer}>
-                        <img src="./images/quiz/assemt.png" alt="" className={styles.instructionimage} />
+                        <img src="images/quiz/assemt.png" alt="" className={styles.instructionimage} />
                     </div>
 
                     <div className={styles.backimage}>
                         <div className={styles.logo} style={{ margintop: '51' }}>
-                            <img src="./images/quiz/copywright.png" alt="" className={styles.logoimag} />
+                            <img src="images/quiz/copywright.png" alt="" className={styles.logoimag} />
 
                         </div>
                         <div className={styles.product}>PRODUCT OWNER OPEN</div>
@@ -83,7 +99,7 @@ const MainQuiz = ({onStartQuiz}) => {
                                 <div>
                                     <ul>
                                         <li>Number of questions: <b>15</b></li>
-                                        <li>Has a time limit of: <b>00:03:00</b></li>
+                                        <li>Has a time limit of: <b>{durationQuiz}</b></li>
                                         <li>Must be finished in one sitting. You cannot save and finish later.</li>
                                         <li>Questions displayed per page: <b>1</b></li>
                                         <li>Will allow you to go back and change your answers.</li>
@@ -95,12 +111,17 @@ const MainQuiz = ({onStartQuiz}) => {
 
                         </div>
                         <div className={styles.continuebutton}>
-                            <button className={styles.continue}>  <Link to={`/question`}  style={{ color: 'white' }}  onClick={onStartQuiz} >
-                                Continue
-                            </Link></button>
+                            <button className={styles.continue}>    <Link 
+        to={`/question`} 
+        style={{ color: 'white' }} 
+        onClick={onStartQuiz} 
+        state={{ quizId, durationQuiz }}
+      >
+        Continue
+      </Link></button>
                         </div>
                     </div>
-                    </div>
+                  
                 </>
             )}
 

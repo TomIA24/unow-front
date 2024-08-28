@@ -204,9 +204,11 @@ p{
    
 }
  
+@media (max-width: 326px) {
+  
+}
 
-
-@media (min-width: 300px) and (max-width: 366px) {
+@media (min-width: 327px) and (max-width: 366px) {
   .instructionimage{
     margin-top: 6vh;
     width: 17rem;
@@ -258,7 +260,7 @@ p{
     width: 8rem;
   }
   .instructionimage{
-   margin-top: 2.7vh;
+   margin-top: 4.5vh;
     width: 12rem;
 
     right: 0;
@@ -271,9 +273,8 @@ p{
   }
 
   .questiontext{
-    font-size: 2.5rem;      /* oussema */
+    font-size: 1.5rem;
  
-
   }
   .underline{
   
@@ -291,12 +292,11 @@ p{
 
   }
   .instructiontext li {
-    margin-bottom: 10px; /* Oussema */
-    font-size: 9.5px;
+    margin-bottom: 10px; /* Optional: add some space between list items for better readability */
 }
 .instructiontext li b{
   margin-bottom: 10px;
-  font-size: 11px; /* oussema */
+  font-size: 11px; /* Optional: add some space between list items for better readability */
 }
 .instructiontext ul {
   list-style-type: disc; /* Ensure the list style is set to bullets */
@@ -405,12 +405,11 @@ p{
 }
 
 .instructiontext li {
-    margin-bottom: 10px; /* Oussema */
-    font-size: 10px;
+    margin-bottom: 10px; /* Optional: add some space between list items for better readability */
 }
 .instructiontext li b{
   margin-bottom: 10px;
-  font-size: 11px; /* Oussema */
+  font-size: 11px; /* Optional: add some space between list items for better readability */
 }
 .continue{
   width:8rem;
@@ -456,7 +455,7 @@ p{
     width: 8rem;
   }
   .instructionimage{
-    margin-top: 5vh;
+    margin-top: 6vh;
     width: 15rem;
     margin-right: 9%;
     right: 0;
@@ -506,12 +505,11 @@ p{
 }
 
 .instructiontext li {
-    margin-bottom: 10px; /* Ooussema */
-    font-size: 10px;
+    margin-bottom: 10px; /* Optional: add some space between list items for better readability */
 }
 .instructiontext li b{
   margin-bottom: 10px;
-  font-size: 11px; /* Ooussema */
+  font-size: 11px; /* Optional: add some space between list items for better readability */
 }
 .continuebutton{
 
@@ -742,12 +740,10 @@ p{
 
 .instructiontext li {
     margin-bottom: 10px;
-     /* oussema */
-  
 }
 .instructiontext li b{
   margin-bottom: 10px;
-  font-size: 11px;     /* oussema */
+  font-size: 11px; 
 }
 .continuebutton{
 
@@ -778,14 +774,6 @@ p{
   
   
   }
-  .instructiontext li {
-    margin-bottom: 10px; /* Oussema */
-    font-size: 16px;
-  }
-.instructiontext li b{
-  margin-bottom: 10px;
-  font-size: 18px; /* Oussema */
-}
   .product{
     font-size: 1.6rem;
     padding-left: 10%;
@@ -855,14 +843,6 @@ p{
     right: 0;
     right: 0;
   }
-  .instructiontext li {
-    margin-bottom: 10px; /* Oussema */
-    font-size: 18px;
-  }
-.instructiontext li b{
-  margin-bottom: 10px;
-  font-size: 18px; /* Oussema */
-}
   .backimage {
   
     height: 17.5rem;
@@ -929,7 +909,7 @@ p{
 
 @media (min-width: 700px) and (max-width: 760px) {
   .logoimag{
-    width: 9rem;
+    width: 10rem;
   }
   .instructionimage{
     margin-top: 6vh;
@@ -944,14 +924,6 @@ p{
   
   
   }
-  .instructiontext li {
-    margin-bottom: 10px; /* Oussema */
-    font-size: 18px;
-  }
-.instructiontext li b{
-  margin-bottom: 10px;
-  font-size: 18px; /* Oussema */
-}
   .assessmentContainer{
     padding-left: 10%;
     padding-right: 10%;
@@ -1060,12 +1032,12 @@ p{
 }
 
 .instructiontext li {
-    margin-bottom: 10px; /* Oussema */
-    font-size: 20px;
+    margin-bottom: 10px; /* Optional: add some space between list items for better readability */
+    font-size: 15px;
   }
 .instructiontext li b{
   margin-bottom: 10px;
-  font-size: 20px; /* Oussema */
+  font-size: 15px; /* Optional: add some space between list items for better readability */
 }
 .continuebutton{
 
@@ -1179,12 +1151,12 @@ p{
 }
 
 .instructiontext li {
-    margin-bottom: 10px; /* Oussema */
-    font-size: 20px;
+    margin-bottom: 10px; /* Optional: add some space between list items for better readability */
+    font-size: 15px;
   }
 .instructiontext li b{
   margin-bottom: 10px;
-  font-size: 20px; /* Oussema */
+  font-size: 15px; /* Optional: add some space between list items for better readability */
 }
 .continuebutton{
 
@@ -1254,12 +1226,12 @@ p{
 }
 
 .instructiontext li {
-    margin-bottom: 10px; /* Oussema */
+    margin-bottom: 10px; /* Optional: add some space between list items for better readability */
     font-size: 15px;
   }
 .instructiontext li b{
   margin-bottom: 10px;
-  font-size: 15px; /* Oussema */
+  font-size: 15px; /* Optional: add some space between list items for better readability */
 }
 .continuebutton{
 
@@ -1324,12 +1296,12 @@ p{
 }
 
 .instructiontext li {
-    margin-bottom: 10px; /* Oussema */
+    margin-bottom: 10px; /* Optional: add some space between list items for better readability */
     font-size: 20px;
   }
 .instructiontext li b{
   margin-bottom: 10px;
-  font-size: 20px; /* Oussema */
+  font-size: 20px; /* Optional: add some space between list items for better readability */
 }
 .continuebutton{
 
@@ -1373,12 +1345,12 @@ p{
 }
 
 .instructiontext li {
-    margin-bottom: 10px; /* Ouseema */
+    margin-bottom: 10px; /* Optional: add some space between list items for better readability */
     font-size: 15px;
   }
 .instructiontext li b{
   margin-bottom: 10px;
-  font-size: 15px; /* Ouseema */
+  font-size: 15px; /* Optional: add some space between list items for better readability */
 }
 .continuebutton{
 
@@ -1443,12 +1415,12 @@ p{
 }
 
 .instructiontext li {
-    margin-bottom: 10px; /* oussema */
+    margin-bottom: 10px; /* Optional: add some space between list items for better readability */
     font-size: 20px;
   }
 .instructiontext li b{
   margin-bottom: 10px;
-  font-size: 20px; /* oussema */
+  font-size: 20px; /* Optional: add some space between list items for better readability */
 }
 .continuebutton{
 
@@ -1504,12 +1476,12 @@ p{
 }
 
 .instructiontext li {
-    margin-bottom: 10px; /* Oussema */
+    margin-bottom: 10px; /* Optional: add some space between list items for better readability */
     font-size: 20px;
   }
 .instructiontext li b{
   margin-bottom: 10px;
-  font-size: 17px; /* Oussema */
+  font-size: 17px; /* Optional: add some space between list items for better readability */
 }
 .continuebutton{
 
@@ -1575,12 +1547,12 @@ p{
 }
 
 .instructiontext li {
-    margin-bottom: 10px; /* Oussema */
-    font-size: 22px;
+    margin-bottom: 10px; /* Optional: add some space between list items for better readability */
+    font-size: 20px;
   }
 .instructiontext li b{
   margin-bottom: 10px;
-  font-size: 24px; /* Oussema */
+  font-size: 17px; /* Optional: add some space between list items for better readability */
 }
 .continuebutton{
 
@@ -1663,7 +1635,6 @@ p{
   .logoimag{
     width: 12rem;
   }
-  
   .product{
     margin-top: 0.2rem;
     font-size:2em;
@@ -1693,14 +1664,6 @@ p{
 
 
   }
-  .instructiontext li {
-    margin-bottom: 10px; /* Oussema */
-    font-size: 22px;
-  }
-.instructiontext li b{
-  margin-bottom: 10px;
-  font-size: 24px; /* Oussema */
-}
   .assessmentContainer{
     padding-left: 10%;
     padding-right: 10%;
@@ -1741,14 +1704,6 @@ p{
   .logoimag{
     width: 10rem;
   }
-  .instructiontext li {
-    margin-bottom: 10px; /* Oussema */
-    font-size: 22px;
-  }
-.instructiontext li b{
-  margin-bottom: 10px;
-  font-size: 24px; /* Oussema */
-}
   .container{
    
     gap: 5rem;
@@ -1772,14 +1727,6 @@ p{
  .logoimag{
   width: 7rem;
 }
-.instructiontext li {
-  margin-bottom: 10px; /* Oussema */
-  font-size: 22px;
-}
-.instructiontext li b{
-margin-bottom: 10px;
-font-size: 24px; /* Oussema */
-}
 }
 @media (min-width:1400px) and (max-width:1450px) {
   .instructionimage{
@@ -1788,14 +1735,6 @@ font-size: 24px; /* Oussema */
     position:absolute;
     right: 0;
   }
-  .instructiontext li {
-    margin-bottom: 10px; /* Oussema */
-    font-size: 22px;
-  }
-.instructiontext li b{
-  margin-bottom: 10px;
-  font-size: 24px; /* Oussema */
-}
   .logoimag{
     width: 13rem;
   }
@@ -1806,14 +1745,6 @@ font-size: 24px; /* Oussema */
     position:absolute;
     right: 0;
   }
-  .instructiontext li {
-    margin-bottom: 10px; /* Oussema */
-    font-size: 22px;
-  }
-.instructiontext li b{
-  margin-bottom: 10px;
-  font-size: 24px; /* Oussema */
-}
 }
 @media (min-width:1550px) and (max-width:1700px) {
   .instructionimage{
@@ -1829,14 +1760,6 @@ font-size: 24px; /* Oussema */
     position:absolute;
     right: 0;
   }
-  .instructiontext li {
-    margin-bottom: 10px; /* Oussema */
-    font-size: 22px;
-  }
-.instructiontext li b{
-  margin-bottom: 10px;
-  font-size: 24px; /* Oussema */
-}
 }
 
 @media (min-width:1810px) and (max-width:1848px){
@@ -1845,14 +1768,6 @@ font-size: 24px; /* Oussema */
     position:absolute;
     right: 0;
   }
-  .instructiontext li {
-    margin-bottom: 10px; /* Oussema */
-    font-size: 22px;
-  }
-.instructiontext li b{
-  margin-bottom: 10px;
-  font-size: 24px; /* Oussema */
-}
 }
 @media (min-width:1850px) and (max-width:2300px){
 
@@ -1875,11 +1790,11 @@ font-size: 24px; /* Oussema */
 
 .instructiontext li {
     margin-bottom: 10px;
-    font-size: 1.5em; /* Oussema */
+    font-size: 1.5em; /* Optional: add some space between list items for better readability */
 }
 .instructiontext li b{
   margin-bottom: 10px;
-  font-size: 1.4rem; /* Oussema */
+  font-size: 1.4rem; /* Optional: add some space between list items for better readability */
 }
 
 }
@@ -1912,11 +1827,11 @@ font-size: 24px; /* Oussema */
 
 .instructiontext li {
     margin-bottom: 10px;
-    font-size: 1.2em; /* Oussema */
+    font-size: 1.2em; /* Optional: add some space between list items for better readability */
 }
 .instructiontext li b{
   margin-bottom: 10px;
-  font-size: 1.2rem; /* Oussema */
+  font-size: 1.2rem; /* Optional: add some space between list items for better readability */
 }
 }
 
@@ -1937,10 +1852,10 @@ font-size: 24px; /* Oussema */
 
 .instructiontext li {
     margin-bottom: 10px;
-    font-size: 1.2em; /* Oussema */
+    font-size: 1.2em; /* Optional: add some space between list items for better readability */
 }
 .instructiontext li b{
   margin-bottom: 10px;
-  font-size: 1.2rem; /* Oussema */
+  font-size: 1.2rem; /* Optional: add some space between list items for better readability */
 }
 }
