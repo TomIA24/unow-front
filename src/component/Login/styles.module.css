@@ -78,7 +78,8 @@ html, body {
     border-radius: 9px;
     /* border-radius: 14px; */
     margin: 10px 0;
-    font-size: 14px;border-width: 1px;
+    font-size: 14px;
+    border-width: 1px;
     border-style: solid;
     border-color: #ccc;
 }
