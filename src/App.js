@@ -51,10 +51,10 @@ function App() {
             {!user && (
               <React.Fragment>
                 <Route exact path="/" element={<HomeInterface />} />
-                <Route exact path="/Personalize" element={<Personalize />} />
+              
               </React.Fragment>
             )}
-
+  <Route exact path="/personalize" element={<Personalize />} />
             <Route path="*" element={<MissingRoute />} />
             <Route exact path="/home" element={<HomeInterface />} />
 
