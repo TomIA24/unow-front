@@ -2,7 +2,7 @@
     margin: none;
     padding: none;
 }
-
+/* 
 .backSignup {
     width: 100%;
     height: 100%;
@@ -12,7 +12,7 @@
     flex-direction: column;
     overflow-y: auto;
     /* background-color: #28ceeb; */
-}
+/* } */
 
 .SignupContainer {
     margin: auto;
@@ -94,70 +94,141 @@
     height: 30%;
 }
 
-.form_container {
-    width: auto;
-    height: 100%;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    gap: 60px;
-    z-index: 6;
-    /* background-color: red; */
-}
 
-.form_container_scale_buttons {
-    width: auto;
-    height: 100%;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    gap: 60px;
-    /* background-color: red; */
-}
-
-.form_container_for_scale_up {
-    animation: scaleUpFormContainerScaleButton 1s ease-in-out forwards;
-}
-
-.form_container_for_scale_down {
-    animation: scaleDownFormContainerScaleButton 1s ease-in-out forwards;
-}
-
-.form-wizard {
-    position: relative;
+  .container {
+    max-width:100%;
+    margin: 0rem 3.5rem;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #ffffff;
+  }
+  .checkboxGroup {
+    margin-bottom: 10px;
+    width: 100%;
   }
   
-  .form-wizard-steps {
+  .hiddenCheckbox {
+    display: none;
+  }
+  
+  .customLabel {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 0.09px solid #CD6214;
+    border-radius: 23px;
+    cursor: pointer;
+    color: #FFFFFF;
+    background-color: #3E4678;
+    transition: background-color 0.3s ease;
+    width: 100%;
+  }
+  
+  .hiddenCheckbox:checked + .customLabel {
+    background-color: #CD6214;
+    color: #fff;
+    border-color: #CD6214;
+  }
+  .progressbar {
+    width: 100%;
+    height: 8px;
+    background-color: #e0e0e0;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+  
+  .progressline {
+    height: 100%;
+    background-color: #CD6214;
+    transition: width 0.3s ease-in-out;
+  }
+  
+  .formcontent {
+    margin-bottom: 20px;
+    font-size: 18px;
+    /* text-align: center; */
+  }
+  .formcontent h2{
+    margin-bottom: 20px;
+    font-size: 18px;
+    text-align: center;
+  }
+  
+  
+  .formnavigation {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    position: relative;
   }
   
-  .form-wizard-steps::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: #345AA4;
-    z-index: 0;
+  .backbutton,
+  .nextbutton {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
   }
   
-  .form-wizard-step {
-    position: relative;
-    z-index: 1;
-    background: white;
-    border-radius: 50%;
-    width: 24px;
-    height: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 2px solid #345AA4;
+  .backbutton {
+    background-color: #f0f0f0;
+  }
+  
+  .nextbutton {
+    background-color: #CD6214;
+    color: #fff;
+  }
+  
+  .backbutton:hover,
+  .nextbutton:hover {
+    opacity: 0.8;
   }
 
+  .personlizestep{
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    justify-content: space-around;
+
+  }
+  .personlizesquestion{
+    font-size: large;
+    font-weight: bold;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    
+  }
+  .personlizesquestion label{
+    font-size: large;
+    font-weight: bold;
+    padding: 1rem;
+    text-align: center;
+
+  }
+  .personlizesques{
+  
+  }
+  .backimagescore {
+    background: url('../assets/quizbackground.png') no-repeat center center;
+    background-size: cover;
+    height: 30vh;
+    border-radius: 0px 0px 50px 50px;
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+    padding-top: 50px;
+   
+  }
+  .logoscore {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    margin-bottom: 0;
+  }
 @keyframes scaleUpFormContainerScaleButton {
     from {
         gap: 60px;
