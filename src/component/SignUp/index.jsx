@@ -121,8 +121,7 @@ const SignUp = () => {
       <div className={styles.leftSection}>
         <img src={unow} className={styles.logo} alt="Unow Logo" />
         <div className={styles.loginContainer}>
-       
-          <div className={styles.Title}>
+        <div className={styles.Title}>
               <p>Sign up</p>
               <Link className={styles.Close} to="/">
           Home<IoMdArrowDropright />
@@ -130,110 +129,107 @@ const SignUp = () => {
             
           </Link>
             </div>
-
-          
-        
-   
-       < form className={styles.form_container} onSubmit={handleSubmit}>
+            < form className={styles.form_container} onSubmit={handleSubmit}>
          
        
           
-            <p className={styles.text}>Name</p>
-         
-          <input
-            type="text"
-            id="Name"
-            name="name"
-            onChange={handleChange}
-            value={data.name}
-            required
-            className={styles.input}
-          />
-         
-            <p className={styles.text}>Username</p>
-          
-          <input
-            type="text"
-            id="UserName"
-            name="userName"
-            onChange={handleChange}
-            value={data.userName}
-            required
-            className={styles.input}
-          />
-        
-           <p className={styles.text}>Phone</p>
-         
-          <input
-            type="text"
-            id="Phone"
-            name="phone"
-            onChange={handleChange}
-            value={data.phone}
-            required
-            className={styles.input}
-          />
-          {phoneError && (
-            <div className={styles.error_msg_Phone}>{phoneError}</div>
-          )}
+         <p className={styles.text}>Name</p>
+      
+       <input
+         type="text"
+         id="Name"
+         name="name"
+         onChange={handleChange}
+         value={data.name}
+         required
+         className={styles.input}
+       />
+      
+         <p className={styles.text}>Username</p>
        
-           
-           <p className={styles.text}>E-mail</p>
-         
-          <input
-            type="email"
-            id="Email"
-            name="email"
-            onChange={handleChange}
-            value={data.email}
-            required
-            className={styles.input}
-          />
-          
-           <p className={styles.text}>Password</p>
-          
-          <input
-            type="password"
-            id="Password"
-            name="password"
-            onChange={handleChange}
-            value={data.password}
-            required
-            className={styles.input}
-          />
-            <div className={styles.options}>
-                <div className={styles.checkBox}>
-                  <input type="checkbox" name="remember" />
-                  </div>
-                  <label htmlFor="remember">
-                    <p className={styles.by}> By continuing, you agree to the <u>Terms of use</u> and <u> Privacy Policy.</u> </p></label>
-                  
+       <input
+         type="text"
+         id="UserName"
+         name="userName"
+         onChange={handleChange}
+         value={data.userName}
+         required
+         className={styles.input}
+       />
+     
+        <p className={styles.text}>Phone</p>
+      
+       <input
+         type="text"
+         id="Phone"
+         name="phone"
+         onChange={handleChange}
+         value={data.phone}
+         required
+         className={styles.input}
+       />
+       {phoneError && (
+         <div className={styles.error_msg_Phone}>{phoneError}</div>
+       )}
+    
+        
+        <p className={styles.text}>E-mail</p>
+      
+       <input
+         type="email"
+         id="Email"
+         name="email"
+         onChange={handleChange}
+         value={data.email}
+         required
+         className={styles.input}
+       />
+       
+        <p className={styles.text}>Password</p>
+       
+       <input
+         type="password"
+         id="Password"
+         name="password"
+         onChange={handleChange}
+         value={data.password}
+         required
+         className={styles.input}
+       />
+         <div className={styles.options}>
+             <div className={styles.checkBox}>
+               <input type="checkbox" name="remember" />
+               </div>
+               <label htmlFor="remember">
+                 <p className={styles.by}> By continuing, you agree to the <u>Terms of use</u> and <u> Privacy Policy.</u> </p></label>
                
-               
-              </div>
+            
+            
+           </div>
 
-          {error && <div className={styles.error_msg}>{error}</div>}
-          <div className={styles.sign}>
-          <button type="submit" href="/login" className={styles.Signup_btn}>
-                  Sign Up
-          </button>
-          <Link className={styles.login} to="/login">
-          <p className={styles.forgetpsw}><u>You have already one ?<IoMdArrowDropright /></u> </p> 
-          </Link>
-          </div>
-          <div className={styles.divider}>
-                <img src={divider} className={styles.dividerImage} alt="Divider" />
-                <img src={divider} className={styles.dividerImage} alt="Divider" />
-              </div>
-              <div className={styles.allsocialmedia}>
-                <img src={facebook} className={styles.socialmediaF}/>
-                <img src={apple} className={styles.socialmedia}/>
-                <img src={google} className={styles.socialmedia}/>
-                <img src={twitter} className={styles.socialmedia}/>
+       {error && <div className={styles.error_msg}>{error}</div>}
+       <div className={styles.sign}>
+       <button type="submit" href="/login" className={styles.Signup_btn}>
+               Sign Up
+       </button>
+       <Link className={styles.login} to="/login">
+       <p className={styles.forgetpsw}><u>You have already one ?<IoMdArrowDropright /></u> </p> 
+       </Link>
+       </div>
+       <p className={styles.or}>Or</p>
+       <div className={styles.divider}>
+             <img src={divider} className={styles.dividerImage} alt="Divider" />
+             <img src={divider} className={styles.dividerImage} alt="Divider" />
+           </div>
+           <div className={styles.allsocialmedia}>
+             <img src={facebook} className={styles.socialmediaF}/>
+             <img src={apple} className={styles.socialmedia}/>
+             <img src={google} className={styles.socialmedia}/>
+             <img src={twitter} className={styles.socialmedia}/>
 
-              </div>
-        </form>
-        </div>
+           </div>
+     </form>
+     </div>
         </div>
         <div className={styles.rightSection}>
           <img src={image} className={styles.loginImage} alt="Login" />
@@ -251,8 +247,6 @@ const SignUp = () => {
         </div>
       </div>
     </div>
-    
-   
   );
 };
 
