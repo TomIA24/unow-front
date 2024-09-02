@@ -11,7 +11,7 @@ import facebook from "./imgMedia/Social media logo.png";
 import apple from "./imgMedia/Social media logo (1).png";
 import google from "./imgMedia/Social media logo (2).png";
 import twitter from "./imgMedia/Social media logo (3).png";
-import hide from "./icon.png"
+import hide from "./icon.png";
 
 const Login = () => {
   const location = useLocation();
@@ -24,6 +24,7 @@ const Login = () => {
     setData({ ...data, [input.name]: input.value });
   };
 
+  const isPasswordFilled = data.password.length > 0;
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -41,7 +42,7 @@ const Login = () => {
           },
         };
         const url = `${process.env.REACT_APP_API}api/userData`;
-        await axios.get(url,  config).then((response) => {
+        await axios.get(url, config).then((response) => {
           console.log("user data", response.data.data);
           localStorage.setItem("user", JSON.stringify(response.data.data));
           localStorage.setItem("login", true);
@@ -91,10 +92,11 @@ const Login = () => {
           <div className={styles.loginContainer}>
             <div className={styles.Title}>
               <p>Login</p>
+              <Link className={styles.Close} to="/">
+                Home
+                <IoMdArrowDropright />
+              </Link>
             </div>
-            <Link className={styles.Close} to="/">
-              <IoMdArrowDropright /> Home
-            </Link>
 
             <form className={styles.form_container} onSubmit={handleSubmit}>
               <p className={styles.text}>Email address or user name</p>
@@ -129,17 +131,25 @@ const Login = () => {
                 <u> Privacy Policy.</u>{" "}
               </p>
               {error && <div className={styles.error_msg}>{error}</div>}
-              <button type="submit" className={styles.Login_btn}>
+              <button
+                type="submit"
+                className={`${styles.Login_btn} ${
+                  isPasswordFilled ? styles.btnActive : ""
+                }`}
+              >
                 Log in
               </button>
-              <p className={styles.forgetpsw}>
-                <u>Forget your password</u>{" "}
+              <a href="/reset-password" className={styles.forgetpsw}>
+                <u>Forget your password</u>
+              </a>
+
+              <p className={styles.nvaccount}>
+                Don’t have an account?{" "}
+                <a href="/signup" className={styles.signupLink}>
+                  Sign up
+                </a>
               </p>
-              <Link className={styles.login} to="/signup">
-                <p className={styles.nvaccount}>
-                  Don’t have an acount? <u> Sign up</u>
-                </p>
-              </Link>
+
               <div className={styles.divider}>
                 <img
                   src={divider}
@@ -153,10 +163,18 @@ const Login = () => {
                 />
               </div>
               <div className={styles.allsocialmedia}>
-                <img src={facebook} className={styles.socialmedia} />
-                <img src={apple} className={styles.socialmedia} />
-                <img src={google} className={styles.socialmedia} />
-                <img src={twitter} className={styles.socialmedia} />
+                <img
+                  src={facebook}
+                  alt="Facebook"
+                  className={styles.socialmediaF}
+                />
+                <img src={apple} alt="Apple" className={styles.socialmedia} />
+                <img src={google} alt="Google" className={styles.socialmedia} />
+                <img
+                  src={twitter}
+                  alt="Twitter"
+                  className={styles.socialmedia}
+                />
               </div>
             </form>
           </div>

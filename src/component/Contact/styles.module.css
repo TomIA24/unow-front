@@ -18,30 +18,371 @@ a {
     height: auto;
     margin-top: 20px;
 }
+.nav{
+    background-image: url('Rectangle\ 175.png');
+    background-size: 100% 100%; /* Étire l'image pour couvrir tout le div */
+    background-position: center; /* Centre l'image dans le div */
+    background-repeat: no-repeat; /* Empêche la répétition de l'image */
+}
+.underline {
+    width: 15%;
+    background-color: #cd6214;
+    padding-top: 4px;
+    border-radius: 100px;
+    margin-top: 7px;
+    margin-left: 13%;
+   
+  }
+  .underline3 {
+    width: 15%;
+    background-color: #cd6214;
+    padding-top: 4px;
+    border-radius: 100px;
+    
+   
+  }
+  .send{
+    font-size: 38px;
+    font-weight: 800;
+    margin-left: 13%;
+    margin-top: 3%;
+  }
+  /* 300px to 450px */
+@media screen and (min-width: 300px) and (max-width: 450px) {
+    .send {
+      font-size: 22px;
+     
+    }
+  }
+  
+  /* 451px to 600px */
+  @media screen and (min-width: 451px) and (max-width: 600px) {
+    .send {
+      font-size: 26px;
+     
+    }
+  }
+  
+  /* 601px to 750px */
+  @media screen and (min-width: 601px) and (max-width: 750px) {
+    .send {
+      font-size: 30px;
+      
+    }
+  }
+  
+  /* 751px to 900px */
+  @media screen and (min-width: 751px) and (max-width: 900px) {
+    .send {
+      font-size: 34px;
+     
+    }
+  }
+  
+  /* 901px to 1050px */
+  @media screen and (min-width: 901px) and (max-width: 1050px) {
+    .send {
+      font-size: 37px;
+      
+    }
+  }
+  
+  /* 1051px to 1200px */
+  @media screen and (min-width: 1051px) and (max-width: 1200px) {
+    .send {
+      font-size: 40px;
+     
+    }
+  }
+  
+  /* 1201px to 1350px */
+  @media screen and (min-width: 1201px) and (max-width: 1350px) {
+    .send {
+      font-size: 44px;
+   
+    }
+  }
+  
+  /* 1351px to 1500px */
+  @media screen and (min-width: 1351px) and (max-width: 1500px) {
+    .send {
+      font-size: 46px;
+      
+    }
+  }
+  
+  .underline2 {
+    width: 7%;
+    background-color: #cd6214;
+    padding-top: 4px;
+    border-radius: 100px;
+    margin-top: 9px;
+    margin-left: 13%;
+   
+  }
 
+  .containerimage {
+    position: relative;
+    background-image: url();
+    background-size: cover; /* ou 100% 100% pour étirer */
+    background-position: center; /* Centrer l'image de fond */
+    background-repeat: no-repeat;
+    padding: 20px; /* Ajustez le padding si nécessaire */
+  }
+  
+  .contactus {
+    position: relative;
+    z-index: 2; /* Assurez que le texte reste au-dessus du fond */
+    color: white; /* Couleur du texte, ajustez selon le fond */
+  }
+  
+  .image {
+    position: absolute;
+    bottom: 0;
+    right: 40px;
+    z-index: 1;
+    width: 35%;
+    top: 2%;
+  }
+  /* 300px to 450px */
+@media screen and (min-width: 300px) and (max-width: 450px) {
+    .image {
+        position: absolute;
+        bottom: 0;
+        right: 14px;
+        z-index: 1;
+        width: 37%;
+        top: 26%;
+    }
+  }
+  
+  /* 451px to 600px */
+  @media screen and (min-width: 451px) and (max-width: 600px) {
+    .image {
+        position: absolute;
+        bottom: 0;
+        right: 0px;
+        z-index: 1;
+        width: 39%;
+        top: 16%;
+    
+    }
+  }
+  
+  /* 601px to 750px */
+  @media screen and (min-width: 601px) and (max-width: 750px) {
+    .image {
+        position: absolute;
+        bottom: 0;
+        right: 16px;
+        z-index: 1;
+        width: 38%;
+        top: 3%;
+    
+    }
+  }
+  
+  /* 751px to 900px */
+  @media screen and (min-width: 751px) and (max-width: 900px) {
+    .image {
+        position: absolute;
+        bottom: 0;
+        right: 31px;
+        z-index: 1;
+        width: 37%;
+        top: 2%;
+    }
+  }
+  
+  /* 901px to 1050px */
+  @media screen and (min-width: 901px) and (max-width: 1050px) {
+    .image {
+        position: absolute;
+        bottom: 0;
+        right: 38px;
+        z-index: 1;
+        width: 37%;
+        top: 1%;
+    }
+  }
+  
+  /* 1051px to 1200px */
+  @media screen and (min-width: 1051px) and (max-width: 1200px) {
+    .image {
+        position: absolute;
+        bottom: 0;
+        right: 26px;
+        z-index: 1;
+        width: 37%;
+        top: 0;
+    }
+  }
+  
+  /* 1201px to 1350px */
+  @media screen and (min-width: 1201px) and (max-width: 1350px) {
+    .image {
+        position: absolute;
+        bottom: 0;
+        right: 27px;
+        z-index: 1;
+        width: 37%;
+        top: 0;
+    }
+  }
+  
+  /* 1351px to 1500px */
+  @media screen and (min-width: 1351px) and (max-width: 1500px) {
+    .image {
+        position: absolute;
+        bottom: 0px;
+        right: 35px;
+        z-index: 1;
+        width: 37%;
+        top: 0;
+    }
+  }
+  
+  .contact{
+    font-size: 35px;
+    font-weight: 700;
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 8%;
+    margin-left: 13%;
+ 
+  }
+  .the{
+    font-size: 13px;
+    margin-top: 3%;
+    margin-left: 13%;
+    margin-bottom: 6%;
+    
+  }
+/* 300px to 450px */
+@media screen and (min-width: 300px) and (max-width: 450px) {
+    .contact {
+      font-size: 17px;
+    }
+  
+    .the {
+      font-size: 4px;
+    }
+  }
+  
+  /* 451px to 600px */
+  @media screen and (min-width: 451px) and (max-width: 600px) {
+    .contact {
+      font-size: 22px;
+    }
+  
+    .the {
+      font-size: 6px;
+    }
+  }
+  
+  /* 601px to 750px */
+  @media screen and (min-width: 601px) and (max-width: 750px) {
+    .contact {
+      font-size: 25px;
+    }
+  
+    .the {
+      font-size: 8px;
+    }
+  }
+  
+  /* 751px to 900px */
+  @media screen and (min-width: 751px) and (max-width: 900px) {
+    .contact {
+      font-size: 30px;
+    }
+  
+    .the {
+      font-size: 10px;
+    }
+  }
+  
+  /* 901px to 1050px */
+  @media screen and (min-width: 901px) and (max-width: 1050px) {
+    .contact {
+      font-size: 35px;
+    }
+  
+    .the {
+      font-size: 12px;
+    }
+  }
+  
+  /* 1051px to 1200px */
+  @media screen and (min-width: 1051px) and (max-width: 1200px) {
+    .contact {
+      font-size: 45px;
+    }
+  
+    .the {
+      font-size: 15px;
+    }
+  }
+  
+  /* 1201px to 1350px */
+  @media screen and (min-width: 1201px) and (max-width: 1350px) {
+    .contact {
+      font-size: 50px;
+    }
+  
+    .the {
+      font-size: 17px;
+    }
+  }
+  
+  /* 1351px to 1500px */
+  @media screen and (min-width: 1351px) and (max-width: 1500px) {
+    .contact {
+      font-size: 60px;
+    }
+  
+    .the {
+      font-size: 18px;
+    }
+  }
+  @media screen and (min-width: 1500px)  {
+    .contact {
+      font-size: 60px;
+    }
+  
+    .the {
+      font-size: 18px;
+    }
+  }
+  
+  
 .containerContactBlocks {
     width: 100%;
     min-height: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-inline: -8%;
+    padding-left: 11%;
 }
 
 .BorderSectionsContact1 {
-    width: 45%;
-    height: 500px;
-    margin: 50px auto;
+    width: 66%;
+    height: 57%;
+    margin-top: 3%;
+    padding: 5%;
     border-radius: 15px;
     background-color: #ffffff;
     box-shadow: -1px 0px 20px -7px rgba(156, 156, 156, 0.49);
 }
 
 .BorderSectionsContact {
-    width: 45%;
-    height: 500px;
-    margin: 50px auto;
+    width: 66%;
+    height: 55%;
+    padding: 0% 3% 0% 2%;
+    margin-bottom: 3%;
+    /* margin: 50px auto; */
     border-radius: 15px;
-    background-color: rgb(32, 83, 117);
     box-shadow: -1px 0px 20px -7px rgba(32, 83, 117, 0.49);
 }
 
@@ -50,44 +391,322 @@ a {
     margin-top: 5px;
     color: #000000;
 }
+.Fill{
+    color: #000000;
+    margin-top: 4%;
+}
+
+    .background {
+
+      }
+      .imagebackground{
+        position: relative;
+    z-index: 1;
+      }
+
+      .text{
+        color: gray;
+        align-self: flex-start;
+        margin-top: 13px;
+      }
 
 .ContactPartInfoTextField {
     width: 100%;
-    height: 20%;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
+    height: 50%;
+   
+}
+.InfoArea{
+
+    outline: none;
+    /* border: none; */
+    width: 100%;
+    padding: 15px;
+    border-radius: 9px;
+    /* border-radius: 14px; */
+    margin: 10px 0;
+    font-size: 14px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #ccc;
+}
+/* 300px to 450px */
+@media screen and (min-width: 300px) and (max-width: 450px) {
+    .InfoArea  {
+      padding: 3px;
+    }
+  }
+  
+  /* 451px to 600px */
+  @media screen and (min-width: 451px) and (max-width: 600px) {
+    .InfoArea {
+      padding: 6px;
+    }
+  }
+  
+  /* 601px to 750px */
+  @media screen and (min-width: 601px) and (max-width: 750px) {
+    .InfoArea {
+      padding: 9px;
+    }
+  }
+  
+  
+  
+  
+.InfoArea2 {
+    outline: none;
+    width: 100%;
+    padding: 15px;
+    border-radius: 9px;
+    margin: 10px 0;
+    font-size: 14px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #ccc;
+    height: 140px; /* Ajustez cette valeur pour augmenter la hauteur */
+    resize: vertical; /* Permet à l'utilisateur de redimensionner verticalement si nécessaire */
 }
 
+/* 300px to 450px */
+@media screen and (min-width: 300px) and (max-width: 450px) {
+    .InfoArea2 {
+        height: 75px; /* Ajustez cette valeur selon vos besoins */
+    }
+  }
+  
+  /* 451px to 600px */
+  @media screen and (min-width: 451px) and (max-width: 600px) {
+    .InfoArea2 {
+      height: 90px; /* Ajustez cette valeur selon vos besoins */
+    }
+  }
+  
+  /* 601px to 750px */
+  @media screen and (min-width: 601px) and (max-width: 750px) {
+    .InfoArea2 {
+      height: 110px; /* Ajustez cette valeur selon vos besoins */
+    }
+  }
+  
+  
+  
 .sendMessageDiv {
     width: 90%;
     height: 40%;
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-start;
     align-items: center;
+    margin-left: 21%;
+    margin-top: 3%;
+    margin-bottom: 5%;
+}
+
+/* 300px to 450px */
+@media screen and (min-width: 300px) and (max-width: 450px) {
+    .sendMessageDiv {
+        width: 95%;
+        height: 50%;
+        margin-left: 16%;
+        margin-top: 5%;
+        margin-bottom: 10%;
+    }
+  }
+  
+  /* 451px to 600px */
+  @media screen and (min-width: 451px) and (max-width: 600px) {
+    .sendMessageDiv {
+      width: 90%;
+      height: 45%;
+      margin-left: 10%;
+      margin-top: 4%;
+      margin-bottom: 8%;
+    }
+  }
+  
+  /* 601px to 750px */
+  @media screen and (min-width: 601px) and (max-width: 750px) {
+    .sendMessageDiv {
+        width: 85%;
+        height: 42%;
+        margin-left: 5%;
+        margin-top: 4%;
+        margin-bottom: 7%;
+    }
+  }
+  
+  /* 751px to 900px */
+  @media screen and (min-width: 751px) and (max-width: 900px) {
+    .sendMessageDiv {
+        width: 80%;
+        height: 40%;
+        margin-left: 0%;
+        margin-top: 4%;
+        margin-bottom: 6%;
+    }
+  }
+  
+  /* 901px to 1050px */
+  @media screen and (min-width: 901px) and (max-width: 1050px) {
+    .sendMessageDiv {
+        width: 75%;
+        height: 38%;
+        margin-left: -5%;
+        margin-top: 4%;
+        margin-bottom: 5%;
+    }
+  }
+  
+  /* 1051px to 1200px */
+  @media screen and (min-width: 1051px) and (max-width: 1200px) {
+    .sendMessageDiv {
+        width: 89%;
+        height: 38%;
+        margin-left: 9%;
+        margin-top: 4%;
+        margin-bottom: 4%;
+    }
+  }
+  
+  /* 1201px to 1350px */
+  @media screen and (min-width: 1201px) and (max-width: 1350px) {
+    .sendMessageDiv {
+        width: 100%;
+        height: 34%;
+        margin-left: 34%;
+        margin-top: 4%;
+        margin-bottom: 3%;
+    }
+  }
+  
+  /* 1351px to 1500px */
+  @media screen and (min-width: 1351px) and (max-width: 1500px) {
+    .sendMessageDiv {
+        width: 100%;
+        height: 32%;
+        margin-left: 34%;
+        margin-top: 4%;
+        margin-bottom: 2%;
+    }
+  }
+  @media screen and (min-width: 1500px)  {
+    .sendMessageDiv {
+        width: 65%;
+        height: 32%;
+        margin-left: -1%;
+        margin-top: 4%;
+        margin-bottom: 2%;
+  }}
+  
+.map{
+    width: 100%;
+    margin-top: 3%;
+    margin-bottom: 6%;
 }
 
 .btnSend {
-    width: 35%;
-    background-color: rgb(32, 83, 117);
+    width: 22%;
+    background-color: #3E4678;
     color: rgb(255, 255, 255);
     height: 50px;
     border-radius: 7px;
     border: none;
-    font-size: 15px;
+    font-size: 20px;
     cursor: pointer;
 }
 
-.TextArea {
-    width: 70%;
+/* 300px to 450px */
+@media screen and (min-width: 300px) and (max-width: 450px) {
+    .btnSend {
+        width: 27%;
+        height: 31px;
+        font-size: 14px;
+        border-radius: 5px;
+  }
 }
+  /* 451px to 600px */
+  @media screen and (min-width: 451px) and (max-width: 600px) {
+    .btnSend {
+      width: 35%;
+      height: 45px;
+      font-size: 18px;
+      border-radius: 6px;
+    }
+  }
+  
+  /* 601px to 750px */
+  @media screen and (min-width: 601px) and (max-width: 750px) {
+    .btnSend {
+      width: 30%;
+      height: 48px;
+      font-size: 19px;
+      border-radius: 6px;
+    }
+  }
+  
+  /* 751px to 900px */
+  @media screen and (min-width: 751px) and (max-width: 900px) {
+    .btnSend {
+      width: 25%;
+      height: 50px;
+      font-size: 20px;
+      border-radius: 7px;
+    }
+  }
+  
+  /* 901px to 1050px */
+  @media screen and (min-width: 901px) and (max-width: 1050px) {
+    .btnSend {
+      width: 22%;
+      height: 50px;
+      font-size: 20px;
+      border-radius: 7px;
+    }
+  }
+  
+  /* 1051px to 1200px */
+  @media screen and (min-width: 1051px) and (max-width: 1200px) {
+    .btnSend {
+      width: 20%;
+      height: 52px;
+      font-size: 21px;
+      border-radius: 8px;
+    }
+  }
+  
+  /* 1201px to 1350px */
+  @media screen and (min-width: 1201px) and (max-width: 1350px) {
+    .btnSend {
+      width: 18%;
+      height: 54px;
+      font-size: 22px;
+      border-radius: 8px;
+    }
+  }
+  
+  /* 1351px to 1500px */
+  @media screen and (min-width: 1351px) and (max-width: 1500px) {
+    .btnSend {
+      width: 16%;
+      height: 56px;
+      font-size: 23px;
+      border-radius: 9px;
+    }
+  }
+  
 
+.containerSend{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 .InfosContact {
     width: 100%;
     height: 90%;
     top: -100%;
     margin: 20px 30px;
-    color: #ffffff;
+    
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -96,25 +715,178 @@ a {
 
 .InfosContactHeader {
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
+
 }
 
 .InfosContactHeader h2 {
     margin: 10px 10px;
+    font-size: 27px;
+    font-weight: 800;
 }
+/* 300px to 450px */
+@media screen and (min-width: 300px) and (max-width: 450px) {
+    .InfosContactHeader h2 {
+        margin: 5px 5px;
+        font-size: 15px;
+    
+    }
+  }
+  
+  /* 451px to 600px */
+  @media screen and (min-width: 451px) and (max-width: 600px) {
+    .InfosContactHeader h2 {
+      margin: 7px 7px;
+      font-size: 18px;
+    
+    }
+  }
+  
+  /* 601px to 750px */
+  @media screen and (min-width: 601px) and (max-width: 750px) {
+    .InfosContactHeader h2 {
+      margin: 8px 8px;
+      font-size: 24px;
+    
+    }
+  }
+  
+  /* 751px to 900px */
+  @media screen and (min-width: 751px) and (max-width: 900px) {
+    .InfosContactHeader h2 {
+      margin: 9px 9px;
+      font-size: 26px;
+    
+    }
+  }
+  
+  /* 901px to 1050px */
+  @media screen and (min-width: 901px) and (max-width: 1050px) {
+    .InfosContactHeader h2 {
+      margin: 10px 10px;
+      font-size: 27px;
+     
+    }
+  }
+  
+  /* 1051px to 1200px */
+  @media screen and (min-width: 1051px) and (max-width: 1200px) {
+    .InfosContactHeader h2 {
+      margin: 12px 12px;
+      font-size: 29px;
+    
+    }
+  }
+  
+  /* 1201px to 1350px */
+  @media screen and (min-width: 1201px) and (max-width: 1350px) {
+    .InfosContactHeader h2 {
+      margin: 14px 14px;
+      font-size: 31px;
+ 
+    }
+  }
+  
+  /* 1351px to 1500px */
+  @media screen and (min-width: 1351px) and (max-width: 1500px) {
+    .InfosContactHeader h2 {
+      margin: 16px 16px;
+      font-size: 33px;
+      
+    }
+  }
+  
 
 .InfosContactHeader p {
     margin: 10px 10px;
     overflow-wrap: break-word;
     font-size: 15px;
-    color: #ffffffa8;
+   
 }
+.InfosContactHeader .Fill {
+    margin: 10px 10px;
+    overflow-wrap: break-word;
+    font-size: 15px;
+    margin-top: 5%;
+   
+}
+/* 300px to 450px */
+@media screen and (min-width: 300px) and (max-width: 450px) {
+    .InfosContactHeader .Fill {
+        margin: 5px 5px;
+        font-size: 9px;
+        margin-top: 6%;
+        padding-right: 20%;
+    }
+  }
+  
+  /* 451px to 600px */
+  @media screen and (min-width: 451px) and (max-width: 600px) {
+    .InfosContactHeader .Fill {
+        margin: 5px 5px;
+        font-size: 9px;
+        margin-top: 6%;
+        padding-right: 20%;
+    }
+  }
+  
+  /* 601px to 750px */
+  @media screen and (min-width: 601px) and (max-width: 750px) {
+    .InfosContactHeader .Fill {
+      margin: 8px 8px;
+      font-size: 14px;
+      margin-top: 7%;
+    }
+  }
+  
+  /* 751px to 900px */
+  @media screen and (min-width: 751px) and (max-width: 900px) {
+    .InfosContactHeader .Fill {
+      margin: 10px 10px;
+      font-size: 15px;
+      margin-top: 6%;
+    }
+  }
+  
+  /* 901px to 1050px */
+  @media screen and (min-width: 901px) and (max-width: 1050px) {
+    .InfosContactHeader .Fill {
+      margin: 10px 10px;
+      font-size: 15px;
+      margin-top: 5%;
+    }
+  }
+  
+  /* 1051px to 1200px */
+  @media screen and (min-width: 1051px) and (max-width: 1200px) {
+    .InfosContactHeader .Fill {
+      margin: 12px 12px;
+      font-size: 16px;
+      margin-top: 4%;
+    }
+  }
+  
+  /* 1201px to 1350px */
+  @media screen and (min-width: 1201px) and (max-width: 1350px) {
+    .InfosContactHeader .Fill {
+      margin: 14px 14px;
+      font-size: 17px;
+      margin-top: 3%;
+    }
+  }
+  
+  /* 1351px to 1500px */
+  @media screen and (min-width: 1351px) and (max-width: 1500px) {
+    .InfosContactHeader .Fill {
+      margin: 16px 16px;
+      font-size: 18px;
+      margin-top: 2%;
+    }
+  }
+  
 
 .InfosContactBody {
-    margin: 50px;
+    margin-inline: 50px;
+    margin-block: 6%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -133,12 +905,98 @@ a {
 }
 
 .Info h3 {
-    font-weight: 300;
+    font-weight: 700;
+    font-size: 20px;
 }
+/* 300px to 450px */
+@media screen and (min-width: 300px) and (max-width: 450px) {
+    .Info h3 {
+   
+      font-size: 8px;
+    }
+  }
+  
+  /* 451px to 600px */
+  @media screen and (min-width: 451px) and (max-width: 600px) {
+    .Info h3 {
+     
+      font-size: 12px;
+    }
+  }
+  
+  /* 601px to 750px */
+  @media screen and (min-width: 601px) and (max-width: 750px) {
+    .Info h3 {
+     
+      font-size: 14px;
+    }
+  }
+  
+  /* 751px to 900px */
+  @media screen and (min-width: 751px) and (max-width: 900px) {
+    .Info h3 {
+     
+      font-size: 20px;
+    }
+  }
+  
+  /* 901px to 1050px */
+  @media screen and (min-width: 901px) and (max-width: 1050px) {
+    .Info h3 {
+     
+      font-size: 21px;
+    }
+  }
+  
+  /* 1051px to 1200px */
+  @media screen and (min-width: 1051px) and (max-width: 1200px) {
+    .Info h3 {
+     
+      font-size: 22px;
+    }
+  }
+  
+  /* 1201px to 1350px */
+  @media screen and (min-width: 1201px) and (max-width: 1350px) {
+    .Info h3 {
+      
+      font-size: 23px;
+    }
+  }
+  
+  /* 1351px to 1500px */
+  @media screen and (min-width: 1351px) and (max-width: 1500px) {
+    .Info h3 {
+  
+      font-size: 24px;
+    }
+  }
+  
 
 .InfoIcon {
     color: #F66B0E;
 }
+/* 300px to 450px */
+@media screen and (min-width: 300px) and (max-width: 450px) {
+    .InfoIcon {
+        width: 20px;
+        height: 20px;
+        color: #F66B0E;
+    }
+  }
+  
+  /* 451px to 600px */
+  @media screen and (min-width: 451px) and (max-width: 600px) {
+    .InfoIcon {
+      width: 35px;
+      height: 35px;
+      color: #F66B0E;
+    }
+  }
+  
+  /* 601px to 750px */
+ 
+  
 
 .InfosContactFooter {
     width: 100%;
@@ -170,28 +1028,109 @@ a {
 }
 
 .infosForContactDivIntern {
-    width: 40%;
+    width: 100%;
     height: 100%;
-    color: #ffffff;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 10px;
 }
-
-.map {
-    margin: auto;
-    width: 40%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #ffffff;
-    background-image: url("../assets/pos.png");
-    background-repeat: repeat no-repeat;
-    background-size: cover;
+.logo {
+    width: 100%;
+    height: 30%;
+    margin-top: 7px;
+    margin-inline: 2%;
 }
+.logo2 {
+    width: 100%;
+    height: 30%;
+    margin-top: 7px;
+    margin-inline: 20%;
+}
+/* 300px to 450px */
+@media screen and (min-width: 300px) and (max-width: 450px) {
+    .logo , .logo2  {
+      width: 70%;
+      height: 40%;
+      margin-top: 5px;
+    }
+    .logo2  {
+      margin-inline: 8%;
+    }
+    .InfosContactFooter {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-end;
+        width: 80%;
+        height: 25%;
+        margin-right: 19%;
+    }
+  }
+  
+  /* 451px to 600px */
+  @media screen and (min-width: 451px) and (max-width: 600px) {
+    .logo , .logo2  {
+      width: 88%;
+      height: 35%;
+      margin-top: 6px;
+    }
+    .logo2  {
+      margin-inline: 7%;
+    }
+  }
+  
+  /* 601px to 750px */
+  @media screen and (min-width: 601px) and (max-width: 750px) {
+    .logo , .logo2  {
+      width: 90%;
+      height: 32%;
+      margin-top: 7px;
+    }
+    .logo2  {
+      margin-inline: 6%;
+    }
+  }
+  
+  /* 751px to 900px */
+  @media screen and (min-width: 751px) and (max-width: 900px) {
+    .logo , .logo2  {
+      width: 92%;
+      height: 30%;
+      margin-top: 7px;
+    }
+    .logo2  {
+      margin-inline: 5%;
+    }
+  }
+  
+  /* 901px to 1050px */
+  @media screen and (min-width: 901px) and (max-width: 1050px) {
+    .logo , .logo2  {
+      width: 95%;
+      height: 30%;
+      margin-top: 7px;
+    }
+    .logo2  {
+      margin-inline: 5%;
+    }
+  }
+  
+  /* 1051px to 1200px */
+  @media screen and (min-width: 1051px) and (max-width: 1200px) {
+    .logo , .logo2  {
+      width: 100%;
+      height: 28%;
+      margin-top: 8px;
+    }
+    .logo2  {
+      margin-inline: 4%;
+    }
+  }
+  
+
+  
+
 
 @media (max-width:1100px) {
     .containerContactBlocks {
