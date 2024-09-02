@@ -124,7 +124,12 @@
     width: 100%;
   }
   
-  .hiddenCheckbox:checked + .customLabel {
+  .checkboxGroup input[type="checkbox"]:checked + .customLabel{
+    background-color: #CD6214;
+    color: #fff;
+    border-color: #CD6214;
+  }
+  .checkboxGroup input[type="radio"]:checked + .customLabel{
     background-color: #CD6214;
     color: #fff;
     border-color: #CD6214;
