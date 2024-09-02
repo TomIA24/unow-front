@@ -3,7 +3,9 @@ import styles from "./styles.module.css";
 import useCategories from "../../hooks/use-categories";
 import send from "../../../assets/paper.png";
 import { StarRounded } from "@mui/icons-material";
-export default function CourseElement({ course }) {
+import CourseRating from "../../../../shared/rating";
+import { Link } from "react-router-dom";
+export default function CourseElement({ course, type }) {
   console.log(course);
   const { category } = useCategories(course.Category);
   console.log(category);
@@ -29,14 +31,28 @@ export default function CourseElement({ course }) {
         </div>
         <div className={styles.textCourseFooter}>
           <div className={styles.ratingContainer}>
-            <StarRounded style={{ color: "yellow", fontSize: 15 }} />
+            {/* <CourseRating
+              id={course?._id}
+              value={course?.rating}
+              avis={course?.evaluate.length}
+            /> */}
+            {CourseRating(course?._id, course?.rating, course?.evaluate.length)}
+            {/* <StarRounded style={{ color: "yellow", fontSize: 15 }} />
 
-            <p className={styles.ratingText}>({course?.rating})</p>
+            <p className={styles.ratingText}>({course?.rating})</p> */}
           </div>
-          <button className={styles.textCourseFooterBtn}>
-            <p>Go Course</p>
-            <img src={send} alt="send" />
-          </button>
+          <Link
+            key={course._id}
+            to={{ pathname: `/${type}/${course._id}` }}
+            onClick={() => {
+              window.scrollTo(0, 0);
+            }}
+          >
+            <button className={styles.textCourseFooterBtn}>
+              <p>Go Course</p>
+              <img src={send} alt="send" />
+            </button>
+          </Link>
         </div>
       </div>
     </div>

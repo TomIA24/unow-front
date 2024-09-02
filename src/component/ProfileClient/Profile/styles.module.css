@@ -13,7 +13,7 @@ a {
 
 .profileContainer{
     width:100%;
-    height: fit-content;  
+    height: 100%;  
     display: flex;
     justify-content: center;
     gap: 20px;

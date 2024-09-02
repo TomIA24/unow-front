@@ -98,3 +98,35 @@
    background-color: #102A54;
    color: #fff;
  }
+
+ @media  (max-width:1330px) {
+  .courseContainerElement{
+    width: 38rem; 
+    margin-inline: 20px;
+}
+.textCourseContainer{
+  width: 20rem; 
+
+}
+.imgCourseContainer{
+  width: 10rem;
+  height: 155px; 
+  
+}
+}
+
+/* @media  (max-width:1200px) {
+  .courseContainerElement{
+    width: 45rem; 
+    margin-inline: 20px;
+}
+.textCourseContainer{
+  width: 25rem; 
+
+}
+.imgCourseContainer{
+  width: 15rem;
+  height: 160px; 
+  
+}
+} */
