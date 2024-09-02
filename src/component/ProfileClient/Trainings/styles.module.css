@@ -4,7 +4,6 @@
     display: flex;
     justify-content: center;
     align-items: center; 
-    background-color: aquamarine;
 
  }
  .coursesContainerInner{
@@ -16,7 +15,6 @@
     align-items: flex-start;
     gap:30px; 
     margin:auto;
-    background-color:aqua;
 
  }
 .titleContainer h1{
@@ -71,7 +69,6 @@
      }
      .titleContainer {
         width:80%;
-        background-color: bisque;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -89,7 +86,6 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        background-color: red;
     }
  
 }
