@@ -216,9 +216,10 @@ const SignUp = () => {
        <p className={styles.forgetpsw}><u>You have already one ?<IoMdArrowDropright /></u> </p> 
        </Link>
        </div>
-       <p className={styles.or}>Or</p>
+       
        <div className={styles.divider}>
              <img src={divider} className={styles.dividerImage} alt="Divider" />
+             <p  className={styles.or}>Or</p>
              <img src={divider} className={styles.dividerImage} alt="Divider" />
            </div>
            <div className={styles.allsocialmedia}>

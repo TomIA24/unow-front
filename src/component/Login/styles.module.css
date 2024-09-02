@@ -214,12 +214,21 @@ html, body {
 .dividerImage{
     width: 30%;
     margin-top: 20px;
+    height: 100%;
+    
 }
     
 .divider{
     display: flex;
     justify-content: space-between;
+    margin-block: 2%;
 
+}
+.or{
+    color: black;
+    font-size: 13px;
+    
+    font-weight: 700;
 }
 .allsocialmedia{
     display: flex;
