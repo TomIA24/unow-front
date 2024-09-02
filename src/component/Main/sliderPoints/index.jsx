@@ -65,7 +65,7 @@ function CategorySlider() {
 
   const HandleCategories = async () => {
     await axios
-      .get(`${process.env.REACT_APP_API}/api/Category/getCategories`)
+      .get(`${process.env.REACT_APP_API}api/Category/getCategories`)
       .then(async (res) => {
         console.log(res.data.data);
         setCategoriesFromBd(res.data.data);

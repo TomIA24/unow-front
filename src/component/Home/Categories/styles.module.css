@@ -8,6 +8,7 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  filter: invert(50%) grayscale(50%) brightness(100%);
 }
 
 /* Media queries for different screen widths */

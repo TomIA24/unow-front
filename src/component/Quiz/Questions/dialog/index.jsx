@@ -15,21 +15,23 @@ const Dialog = ({ onClose, quizId,index, setCurrentQuestionIndex,currentQuestion
   const fetchQuestions = async () => {
     try {
       const endpoint = `http://localhost:5050/api/quiz/api/quiz/${quizId}/questions`;
-        const allresponse = await axios.get(`http://localhost:5050/api/quiz/api/quiz/${quizId}/questions`);
+      const allresponse = await axios.get(
+        `http://localhost:5050/api/quiz/api/quiz/${quizId}/questions`
+      );
       const response = await axios.get(endpoint);
       const fetchedQuestions = response.data;
 
       setQuestions(fetchedQuestions);
 
       // Update flags array based on fetched questions
-      const initialFlags = fetchedQuestions.map(question => question.flag || false);
+      const initialFlags = fetchedQuestions.map(
+        (question) => question.flag || false
+      );
       setFlags(initialFlags);
 
       // Store original indexes of the fetched questions if not bookmarked
-  
-
     } catch (error) {
-      console.error('Error fetching questions:', error);
+      console.error("Error fetching questions:", error);
     }
   };
   // Fetch questions whenever `quizId` or `showBookmarked` changes
@@ -38,12 +40,10 @@ const Dialog = ({ onClose, quizId,index, setCurrentQuestionIndex,currentQuestion
   }, [quizId, showBookmarked]);
 
   const handleGotoQuestion = (index) => {
-
-      setCurrentQuestionIndex(index);
-      onClose(); // Close the dialog if needed
-  
+    setCurrentQuestionIndex(index);
+    onClose(); // Close the dialog if needed
   };
-  const handleFlagQuestion = async questionIndex => {
+  const handleFlagQuestion = async (questionIndex) => {
     const questionId = questions[questionIndex]._id;
     const updatedFlags = [...flags];
     updatedFlags[questionIndex] = !updatedFlags[questionIndex];
@@ -51,11 +51,14 @@ const Dialog = ({ onClose, quizId,index, setCurrentQuestionIndex,currentQuestion
 
     // Update the flag status in the backend
     try {
-      await axios.put(`http://localhost:5050/api/quiz/api/updateQuiz/${quizId}/question/${questionId}`, {
-        flag: updatedFlags[questionIndex]
-      });
+      await axios.put(
+        `http://localhost:5050/api/quiz/api/updateQuiz/${quizId}/question/${questionId}`,
+        {
+          flag: updatedFlags[questionIndex],
+        }
+      );
     } catch (error) {
-      console.error('Error updating flag status:', error);
+      console.error("Error updating flag status:", error);
     }
   };
 

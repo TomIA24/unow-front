@@ -32,10 +32,11 @@ const FileUploadScreen = (props) => {
         const config = {
             headers: { authorization: `Bearer ${token}` }
         };
-        axios.post(`${process.env.REACT_APP_API}/api/trainings`,{},config)
-            .then(res => {
-                setCourses(res.data.data)
-            })
+        axios
+          .get(`${process.env.REACT_APP_API}api/trainings`, {}, config)
+          .then((res) => {
+            setCourses(res.data.data);
+          });
 
     }, [])
 

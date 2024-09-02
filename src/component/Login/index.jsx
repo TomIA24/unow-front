@@ -11,7 +11,7 @@ import facebook from "./imgMedia/Social media logo.png";
 import apple from "./imgMedia/Social media logo (1).png";
 import google from "./imgMedia/Social media logo (2).png";
 import twitter from "./imgMedia/Social media logo (3).png";
-import hide from "./icon.png"
+import hide from "./icon.png";
 
 const Login = () => {
   const location = useLocation();
@@ -28,10 +28,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const config = {
-        headers: {},
-      };
-      const url = `${process.env.REACT_APP_API}/api/auth`;
+      const url = `${process.env.REACT_APP_API}api/auth`;
       await axios.post(url, data).then(async (res) => {
         localStorage.setItem("token", res.data.data);
         console.log("success");
@@ -41,8 +38,8 @@ const Login = () => {
             authorization: `Bearer ${res.data.data}`,
           },
         };
-        const url = `${process.env.REACT_APP_API}/api/userData`;
-        await axios.post(url, {}, config).then((response) => {
+        const url = `${process.env.REACT_APP_API}api/userData`;
+        await axios.get(url, config).then((response) => {
           console.log("user data", response.data.data);
           localStorage.setItem("user", JSON.stringify(response.data.data));
           localStorage.setItem("login", true);
@@ -90,34 +87,29 @@ const Login = () => {
         <div className={styles.leftSection}>
           <img src={unow} className={styles.logo} alt="Unow Logo" />
           <div className={styles.loginContainer}>
-          <div className={styles.Title}>
+            <div className={styles.Title}>
               <p>Login</p>
               <Link className={styles.Close} to="/">
-          Home<IoMdArrowDropright />
-            
-            
-          </Link>
+                Home
+                <IoMdArrowDropright />
+              </Link>
             </div>
-            
+
             <form className={styles.form_container} onSubmit={handleSubmit}>
               <p className={styles.text}>Email address or user name</p>
               <input
                 type="email"
-                
                 name="email"
                 onChange={handleChange}
                 value={data.email}
                 required
                 className={styles.input}
               />
-              
+
               <p className={styles.text}>Password</p>
-             
-               
-              
+
               <input
                 type="password"
-               
                 name="password"
                 onChange={handleChange}
                 value={data.password}
@@ -127,25 +119,33 @@ const Login = () => {
               <div className={styles.options}>
                 <div className={styles.checkBox}>
                   <input type="checkbox" name="remember" />
-                  </div>
-                  <label htmlFor="remember">Remember me</label>
-                  
-               
-               
+                </div>
+                <label htmlFor="remember">Remember me</label>
               </div>
-              <p className={styles.by}> By continuing, you agree to the <u>Terms of use</u> and <u> Privacy Policy.</u> </p>
+              <p className={styles.by}>
+                {" "}
+                By continuing, you agree to the <u>Terms of use</u> and{" "}
+                <u> Privacy Policy.</u>{" "}
+              </p>
               {error && <div className={styles.error_msg}>{error}</div>}
-              <button 
-        type="submit" 
-        className={`${styles.Login_btn} ${isPasswordFilled ? styles.btnActive : ''}`}
-      >
-        Log in
-      </button>
-      <a href="/reset-password" className={styles.forgetpsw}><u>Forget your password</u></a>
+              <button
+                type="submit"
+                className={`${styles.Login_btn} ${
+                  isPasswordFilled ? styles.btnActive : ""
+                }`}
+              >
+                Log in
+              </button>
+              <a href="/reset-password" className={styles.forgetpsw}>
+                <u>Forget your password</u>
+              </a>
 
-      <p className={styles.nvaccount}>
-  Don’t have an account? <a href="/signup" className={styles.signupLink}>Sign up</a>
-</p>
+              <p className={styles.nvaccount}>
+                Don’t have an account?{" "}
+                <a href="/signup" className={styles.signupLink}>
+                  Sign up
+                </a>
+              </p>
 
               <div className={styles.divider}>
                 <img src={divider} className={styles.dividerImage} alt="Divider" />
@@ -153,12 +153,19 @@ const Login = () => {
                 <img src={divider} className={styles.dividerImage} alt="Divider" />
               </div>
               <div className={styles.allsocialmedia}>
-              <img src={facebook} alt="Facebook" className={styles.socialmediaF} />
-              <img src={apple} alt="Apple" className={styles.socialmedia} />
-              <img src={google} alt="Google" className={styles.socialmedia} />
-              <img src={twitter} alt="Twitter" className={styles.socialmedia} />
-            </div>
-
+                <img
+                  src={facebook}
+                  alt="Facebook"
+                  className={styles.socialmediaF}
+                />
+                <img src={apple} alt="Apple" className={styles.socialmedia} />
+                <img src={google} alt="Google" className={styles.socialmedia} />
+                <img
+                  src={twitter}
+                  alt="Twitter"
+                  className={styles.socialmedia}
+                />
+              </div>
             </form>
           </div>
         </div>
@@ -172,7 +179,7 @@ const Login = () => {
               “Coming together is a beginning, keeping together is progress,
               working together is success.”
               <div className={styles.textsearch2}> Henry Ford</div>
-              <br /> 
+              <br />
             </div>
           </div>
         </div>

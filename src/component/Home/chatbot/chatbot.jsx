@@ -18,7 +18,7 @@ const Chatbot = () => {
   const [isButtonClicked, setIsButtonClicked] = useState(false); // New state
 
   const API_KEY = '55ShM0TPpI19H14ZGDeeULP3hdm3ZGrs38rXXfDKbce8c511'; // Replace with your actual API key
-  const BASE_URL = 'https://getcody.ai/api/v1';
+  const BASE_URL = "https://getcody.aiapi/v1";
   const BOT_NAME = 'developer';
   const BOT_ID = 'kQBeXrKDobyK';
 

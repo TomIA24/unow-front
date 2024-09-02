@@ -4,11 +4,13 @@ export const QuizContext = createContext();
 
 export const QuizProvider = ({ children }) => {
     const [quizId, setQuizId] = useState(null);
+    const [quizduration, setDurationQuiz] = useState(null);
 
     return (
-        <QuizContext.Provider value={{ quizId, setQuizId }}>
+          <QuizContext.Provider value={{ quizId, setQuizId, quizduration, setDurationQuiz }}>
             {children}
         </QuizContext.Provider>
+    
     );
 };
 

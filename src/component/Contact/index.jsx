@@ -76,7 +76,7 @@ const Contact = (props) =>{
             headers: {    }, 
               
         };
-        const url=`${process.env.REACT_APP_API}/api/contact/SendMessage`
+        const url = `${process.env.REACT_APP_API}api/contact/SendMessage`;
         axios.post(url,Data )
         .then(async res=>{
             setSaved(true)

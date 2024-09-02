@@ -39,23 +39,22 @@ const PaidTraining = () => {
   const [urlRoom, setUrlRoom] = useState("");
 
   const handleRoom = async () => {
-    const config = {
-      headers: { authorization: `Bearer ${token}` },
-      params: { id: id },
-    };
-    await axios
-      .post(
-        `${process.env.REACT_APP_API}/api/trainings/getRoom`,
-        {
-          courseId: id,
-        },
-        config
-      )
-      .then(async (res) => {
-        setUrlRoom(res.data.data);
-        console.log(res.data.data);
-        setLoading(false);
-      });
+    // const config = {
+    //   headers: { authorization: `Bearer ${token}` },
+    // };
+    // await axios
+    //   .post(
+    //     `${process.env.REACT_APP_API}api/trainings/getRoom`,
+    //     {
+    //       courseId: id,
+    //     },
+    //     config
+    //   )
+    //   .then(async (res) => {
+    //     setUrlRoom(res.data.data);
+    //     console.log(res.data.data);
+    //     setLoading(false);
+    //   });
   };
 
   const [error, setError] = useState("");
@@ -107,11 +106,12 @@ const PaidTraining = () => {
       params: { id: id },
     };
     await axios
-      .get(`${process.env.REACT_APP_API}/api/trainings/specific`, config)
+      .get(`${process.env.REACT_APP_API}api/trainings/specific`, config)
       .then(async (res) => {
+        if(res?.data?.data?.evaluate){
         console.log("Data : -- ", res.data.data);
         setData(res.data.data);
-        setEvaluations(res.data.data.evaluate);
+        setEvaluations(res?.data?.data?.evaluate);
         setEvaluationResult({
           QCM: res.data.data.QuestionsQCM.map((qcm) => {
             return {
@@ -125,7 +125,8 @@ const PaidTraining = () => {
             return { id: qr.id, Question: qr.Question, Response: "" };
           }),
         });
-        console.log(Data);
+        console.log(Data);}
+        
       });
   };
   const [evaluationsFromBase, setEvaluationsFormBase] = useState([]);
@@ -138,7 +139,7 @@ const PaidTraining = () => {
     };
     await axios
       .post(
-        `${process.env.REACT_APP_API}/api/evaluations/getEvaluations`,
+        `${process.env.REACT_APP_API}api/evaluations/getEvaluations`,
         {
           courseId: id,
           student: user._id,
@@ -157,7 +158,7 @@ const PaidTraining = () => {
     };
     axios
       .post(
-        `${process.env.REACT_APP_API}/api/Candidat/returnCandidatForRatingInfo`,
+        `${process.env.REACT_APP_API}api/Candidat/returnCandidatForRatingInfo`,
         { ids: ids },
         config
       )
@@ -323,7 +324,7 @@ const PaidTraining = () => {
     console.log("data to save: ", evaluation.Evaluation);
     await axios
       .post(
-        `${process.env.REACT_APP_API}/api/evaluations/setEvaluation`,
+        `${process.env.REACT_APP_API}api/evaluations/setEvaluation`,
         {
           Data: evaluation,
         },
@@ -359,7 +360,7 @@ const PaidTraining = () => {
     return (
       <React.Fragment>
         <Nav />
-
+{/* //kitebda mafamesh tasiwra y7ut mta3 el categorie  */}
         <main className={styles.MotherDivCourse}>
           <div className={styles.MainDivCourse}>
             <div className={styles.leftSectionCourse}>
@@ -368,13 +369,13 @@ const PaidTraining = () => {
                 Data.Thumbnail == {} ||
                 !Data.Thumbnail ? (
                   <img
-                    src={`${process.env.REACT_APP_API}/uploads/courseImg.png`}
+                    src={`${process.env.REACT_APP_API}uploads/courseImg.png`}
                     alt=""
                     className={styles.imgCourse}
                   />
                 ) : (
                   <img
-                    src={`${process.env.REACT_APP_API}/${Data.Thumbnail.filePath}`}
+                    src={`${process.env.REACT_APP_API}${Data.Thumbnail.filePath}`}
                     alt=""
                     className={styles.imgCourse}
                   />
@@ -383,7 +384,7 @@ const PaidTraining = () => {
                   <h1>{Data.Title}</h1>
                   <h4>{Data.Category}</h4>
                   {Data.rating
-                    ? TextRating(Data.rating, Data.evaluate.length)
+                    ? TextRating(Data.rating, Data?.evaluate.length)
                     : TextRating(0, 0)}
                 </div>
                 <div className={styles.Btn_Div}>
@@ -721,7 +722,7 @@ const PaidTraining = () => {
                     <p>{Data.certificate}</p>
                   </div>
                 </div>
-                {Data.evaluate.length > 0 ? (
+                {Data?.evaluate.length > 0 ? (
                   <div className={styles.OpinionsCourse}>
                     <div className={styles.OpinionsCourseTitle}>
                       <BsArrowDownRightCircleFill color="#1C4B82" size={30} />
@@ -735,13 +736,13 @@ const PaidTraining = () => {
                               {e.image ? (
                                 <Avatar
                                   alt="Remy Sharp"
-                                  src={`${process.env.REACT_APP_API}/${e.image.filePath}`}
+                                  src={`${process.env.REACT_APP_API}${e.image.filePath}`}
                                   sx={{ width: 24, height: 24 }}
                                 />
                               ) : (
                                 <Avatar
                                   alt="Remy Sharp"
-                                  src={`${process.env.REACT_APP_API}/uploads/2022-03-25T09-59-55.836Z-avatar.png`}
+                                  src={`${process.env.REACT_APP_API}uploads/2022-03-25T09-59-55.836Z-avatar.png`}
                                   sx={{ width: 24, height: 24 }}
                                 />
                               )}

@@ -34,8 +34,8 @@ const ShowCourses = () => {
     const config = {
       headers: { authorization: `Bearer ${token}` },
     };
-    const url = `${process.env.REACT_APP_API}/api/courses`;
-    axios.post(url,config).then((res) => {
+    const url = `${process.env.REACT_APP_API}api/courses`;
+    axios.get(url, config).then((res) => {
       setData(res.data.data);
     });
   };
@@ -44,9 +44,9 @@ const ShowCourses = () => {
     const config = {
       headers: { authorization: `Bearer ${token}` },
     };
-    const url = `${process.env.REACT_APP_API}/api/courses/deleteCourse`;
+    const url = `${process.env.REACT_APP_API}api/courses/deleteCourse`;
     console.log(id);
-    axios.post(url, { idCourse: id },config).then((res) => {
+    axios.post(url, { idCourse: id }, config).then((res) => {
       handleData();
     });
   };
@@ -75,7 +75,7 @@ const ShowCourses = () => {
         <div className={styles.avatar}>
           {course.Thumbnail ? (
             <img
-              src={`${process.env.REACT_APP_API}/${course.Thumbnail.filePath}`}
+              src={`${process.env.REACT_APP_API}${course.Thumbnail.filePath}`}
               alt=""
               style={{ width: 180, height: 180 }}
               className={styles.imgTHMB}

@@ -53,7 +53,7 @@ const Details = ({ Course, setOpenChange, openChange }) => {
     const config = {
       headers: { authorization: `Bearer ${token}` },
     };
-    const url = `${process.env.REACT_APP_API}/api/trainings/updateTraining`;
+    const url = `${process.env.REACT_APP_API}api/trainings/updateTraining`;
     axios.post(url, course, config).then((res) => {
       handleCloseChange();
     });
@@ -71,7 +71,7 @@ const Details = ({ Course, setOpenChange, openChange }) => {
   //
   // };
 
-  //           const url= "${process.env.REACT_APP_API}/api/Trainer/getTrainer"
+  //           const url= "${process.env.REACT_APP_API}api/Trainer/getTrainer"
   //           await axios.post(url,{trainerId: notif.trainer} )
   //           .then(res=>{
   //               notif.trainer=res.data.trainer
@@ -84,7 +84,7 @@ const Details = ({ Course, setOpenChange, openChange }) => {
     const config = {
       headers: { authorization: `Bearer ${token}` },
     };
-    const url = `${process.env.REACT_APP_API}/api/Trainer/GetNotifTrainerByCourse`;
+    const url = `${process.env.REACT_APP_API}api/Trainer/GetNotifTrainerByCourse`;
     await axios.post(url, { CourseId: id }, config).then((res) => {
       setNotifs(res.data.data);
     });
@@ -175,7 +175,7 @@ const Details = ({ Course, setOpenChange, openChange }) => {
     };
 
     const urlId = uuidv4();
-    const url = `${process.env.REACT_APP_API}/api/Trainer/ConfirmNotif`;
+    const url = `${process.env.REACT_APP_API}api/Trainer/ConfirmNotif`;
     axios
       .post(
         url,
