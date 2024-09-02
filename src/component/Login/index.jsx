@@ -28,9 +28,6 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const config = {
-        headers: {},
-      };
       const url = `${process.env.REACT_APP_API}api/auth`;
       await axios.post(url, data).then(async (res) => {
         localStorage.setItem("token", res.data.data);
