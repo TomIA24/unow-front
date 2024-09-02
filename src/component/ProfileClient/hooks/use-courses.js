@@ -16,7 +16,7 @@ const useCourses = () => {
     try {
       const url = `${process.env.REACT_APP_API}api/courses/specificGroupe`;
       await axios
-        .post(url, { cardIds: coursesPaid }, config)
+        .post(url, { cartIds: coursesPaid }, config)
         .then(async (res) => {
           console.log("response: ", res.data.data);
           setCourses(res.data.data);
@@ -30,6 +30,9 @@ const useCourses = () => {
       ) {
       }
     }
+  };
+  const handleCourse = (id) => {
+    window.location = `/course/${id}`;
   };
 
   const fetchUserData = async () => {
@@ -61,6 +64,7 @@ const useCourses = () => {
     courses,
     loading,
     isCoursesLoading,
+    handleCourse,
   };
 };
 

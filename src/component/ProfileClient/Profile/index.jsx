@@ -9,6 +9,7 @@ import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 import UserInfo from "../UserInfo";
 import Trainings from "../Trainings";
 import Courses from "../Courses";
+import Cart from "../cart";
 
 const Profile = (props) => {
   const { handleBtn, profileState, data, loading } = useProfile();
@@ -18,12 +19,18 @@ const Profile = (props) => {
   } else {
     return (
       <div className={styles.profileContainer}>
-        {profileState===0 && <UserInfo />}
-        {profileState===1 && <Courses />}
-        {profileState===2 && <Trainings />}
-        {profileState===3 && <UserInfo />}
-  
-        <div className={styles.profileCapsule3}>
+        {profileState === 0 && <UserInfo />}
+        {profileState === 1 && <Courses />}
+        {profileState === 2 && <Trainings />}
+        {profileState === 3 && <Cart />}
+
+        <div
+          className={
+            profileState === 1 || profileState === 2 || profileState === 3
+              ? styles.profileCapsule3Special
+              : styles.profileCapsule3
+          }
+        >
           <button
             onClick={() => handleBtn(0)}
             className={profileState === 0 ? styles.btnActive : styles.btn}

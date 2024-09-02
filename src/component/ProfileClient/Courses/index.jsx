@@ -2,11 +2,11 @@ import React from "react";
 import styles from "./styles.module.css";
 
 import Loading from "../../Loading";
-import useProfile from "../hooks/use-profile";
 import Empty from "../../assets/empty.png";
 import CourseElement from "../components/CourseElement";
+import useCourses from "../hooks/use-courses";
 const Courses = () => {
-  const { courses, isCoursesLoading } = useProfile();
+  const { courses, isCoursesLoading } = useCourses();
 
   if (isCoursesLoading) {
     return <Loading />;

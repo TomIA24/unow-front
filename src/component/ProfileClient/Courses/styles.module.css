@@ -1,5 +1,6 @@
  .coursesContainer{
     width : 70%;
+    max-width: 1000px;
     height: auto;
     display: flex;
     justify-content: center;
@@ -39,6 +40,7 @@
     margin-inline: 20px;
     border-radius: 40px;
     box-shadow: 0px 0px 4px 0px  rgba(0, 0, 0, 0.28);
+    padding-block: 20px;
 
 }
 

@@ -21,7 +21,21 @@ a {
 
 }
 
+.profileCapsule3Special{
+    margin-top: 99px;
+    margin-bottom: 40px;
+    height:400px;
+    width: 28rem;
+    box-shadow: 0px 0px 4px 0px  rgba(0, 0, 0, 0.28);
+    background-color: white;
+    border-radius: 40px;
+    display: flex; 
+    justify-content: center;
+    align-items: center; 
+    flex-direction: column;
+    gap: 20px;
 
+}
 
 .profileCapsule3{
     margin-block: 40px;

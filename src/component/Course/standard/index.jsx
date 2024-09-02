@@ -311,7 +311,7 @@ const StandardCourse = () => {
       axios.post(url, { lastSeen: user.lastSeen }, config).then(async (res) => {
         const url = `${process.env.REACT_APP_API}api/userData`;
         try {
-          axios.post(url, {}, config).then((response) => {
+          axios.get(url, config).then((response) => {
             localStorage.setItem("user", JSON.stringify(response.data.data));
           });
         } catch (err) {}
@@ -345,7 +345,7 @@ const StandardCourse = () => {
           .then(async (res) => {
             const url = `${process.env.REACT_APP_API}api/userData`;
             try {
-              axios.post(url).then((response) => {
+              axios.get(url).then((response) => {
                 localStorage.setItem(
                   "user",
                   JSON.stringify(response.data.data)

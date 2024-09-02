@@ -9,7 +9,9 @@ const useTrainings = () => {
   const [isTrainingsLoading, setTrainingsLoading] = useState(true);
 
   const token = localStorage.getItem("token");
-
+  const handleTraining = (id) => {
+    window.location = `/training/${id}`;
+  };
   const handleCardTrainings = async (trainingsPaid) => {
     const config = {
       headers: { authorization: `Bearer ${token}` },
@@ -17,7 +19,7 @@ const useTrainings = () => {
     try {
       const url = `${process.env.REACT_APP_API}api/trainings/specificGroupe`;
       await axios
-        .post(url, { cardIds: trainingsPaid }, config)
+        .post(url, { cartIds: trainingsPaid }, config)
         .then(async (res) => {
           console.log("response: ", res.data.data);
           setTrainings(res.data.data);
@@ -64,6 +66,7 @@ const useTrainings = () => {
     trainings,
     loading,
     isTrainingsLoading,
+    handleTraining,
   };
 };
 

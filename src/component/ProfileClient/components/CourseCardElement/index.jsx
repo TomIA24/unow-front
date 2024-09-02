@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./styles.module.css";
 import useCategories from "../../hooks/use-categories";
 import send from "../../../assets/paper.png";
+import { StarRounded } from "@mui/icons-material";
 import CourseRating from "../../../../shared/rating";
 import { Link } from "react-router-dom";
 export default function CourseElement({ course, type }) {
@@ -29,15 +30,7 @@ export default function CourseElement({ course, type }) {
         </div>
         <div className={styles.textCourseFooter}>
           <div className={styles.ratingContainer}>
-            {/* <CourseRating
-              id={course?._id}
-              value={course?.rating}
-              avis={course?.evaluate.length}
-            /> */}
             {CourseRating(course?._id, course?.rating, course?.evaluate.length)}
-            {/* <StarRounded style={{ color: "yellow", fontSize: 15 }} />
-
-            <p className={styles.ratingText}>({course?.rating})</p> */}
           </div>
           <Link
             key={course._id}
@@ -46,7 +39,7 @@ export default function CourseElement({ course, type }) {
               window.scrollTo(0, 0);
             }}
           >
-            <button o className={styles.textCourseFooterBtn}>
+            <button className={styles.textCourseFooterBtn}>
               <p>Go Course</p>
               <img src={send} alt="send" />
             </button>

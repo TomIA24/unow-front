@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const useCard = () => {
+const useCart = () => {
   const [data, setData] = useState(null);
-  const [card, setCard] = useState([]);
+  const [cart, setCart] = useState([]);
 
   const [loading, setLoading] = useState(true);
   const [isCoursesLoading, setCoursesLoading] = useState(true);
@@ -11,25 +11,25 @@ const useCard = () => {
 
   const token = localStorage.getItem("token");
 
-  const handleCardContent = async (cardTrainings, cardCourses) => {
-    const coursesIds = [...new Set(cardCourses)];
-    const trainingsIds = [...new Set(cardTrainings)];
+  const handleCartContent = async (cartTrainings, cartCourses) => {
+    const coursesIds = [...new Set(cartCourses)];
+    const trainingsIds = [...new Set(cartTrainings)];
     const config = {
       headers: { authorization: `Bearer ${token}` },
     };
     try {
       const urlTrainings = `${process.env.REACT_APP_API}api/trainings/specificGroupe`;
       await axios
-        .post(urlTrainings, { cardIds: trainingsIds }, config)
+        .post(urlTrainings, { cartIds: trainingsIds }, config)
         .then((res) => {
-          setCard({ ...card, trainings: res.data.data });
+          setCart({ ...cart, trainings: res.data.data });
           setTrainingsLoading(false);
         });
       const urlCourses = `${process.env.REACT_APP_API}api/courses/specificGroupe`;
       await axios
-        .post(urlCourses, { cardIds: coursesIds }, config)
+        .post(urlCourses, { cartIds: coursesIds }, config)
         .then((res) => {
-          setCard({ ...card, courses: res.data.data });
+          setCart({ ...cart, courses: res.data.data });
           setCoursesLoading(false);
         });
     } catch (error) {
@@ -41,7 +41,13 @@ const useCard = () => {
       }
     }
   };
+  const handleCourse = (id) => {
+    window.location = `/course/${id}`;
+  };
 
+  const handleTraining = (id) => {
+    window.location = `/training/${id}`;
+  };
   const fetchUserData = async () => {
     try {
       const config = {
@@ -57,27 +63,42 @@ const useCard = () => {
       console.log("data: ", data);
       setData(response.data.data);
       setLoading(false);
-      handleCardContent(
-        response.data.data.cardTrainings,
-        response.data.data.cardCourses
+      handleCartContent(
+        response.data.data.cartTrainings,
+        response.data.data.cartCourses
       );
     } catch (err) {
       console.error("Failed to fetch user data", err);
       setLoading(false);
     }
   };
-
+  const handleBuySTRIPE = async (courseId) => {
+    const config = {
+      headers: { authorization: `Bearer ${token}` },
+    };
+    try {
+      const url = `${process.env.REACT_APP_API}api/payment/course`;
+      await axios.post(url, { courseId: courseId }, config).then((res) => {
+        window.location = res.data.url;
+      });
+    } catch (error) {
+      throw new Error(error);
+    }
+  };
   useEffect(() => {
     fetchUserData();
   }, []);
 
   return {
     data,
-    card,
+    cart,
     loading,
     isCoursesLoading,
     isTrainingsLoading,
+    handleCourse,
+    handleTraining,
+    handleBuySTRIPE,
   };
 };
 
-export default useCard;
+export default useCart;
