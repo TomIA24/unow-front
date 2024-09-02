@@ -6,9 +6,12 @@ import { useNavigate } from 'react-router-dom';
 import styles from "./styles.module.css";
 import CircularTimer from "./timer";
 import { useQuiz } from '../../../hooks/QuizContext';
+import { useLocation } from 'react-router-dom';
 
 
 const Quiz = ({ startDate }) => {
+  const location = useLocation();
+  const { quizId, durationQuiz } = location.state || {};
   // Save quizId to sessionStorage
   const storedQuizId = localStorage.getItem("quizId");
   console.log("Quiz ID:", storedQuizId);
@@ -27,7 +30,7 @@ const Quiz = ({ startDate }) => {
   const [timeRanOut, setTimeRanOut] = useState(false);
 
   const numb = 4; // Number of questions to fetch
-  let time = 5000;
+  let time = durationQuiz*60;
   const navigate = useNavigate();
 
   const handletimeout = () => {
@@ -89,11 +92,11 @@ const Quiz = ({ startDate }) => {
   // }, [numb, time]);
   useEffect(() => {
     const fetchQuestions = async () => {
-      if (!storedQuizId) return; // Skip fetching if quizId is not available
+      if (!quizId) return; // Skip fetching if quizId is not available
 
       try {
         const response = await axios.get(
-          `http://localhost:5050/api/quizapi/quiz/${storedQuizId}/questions`
+          `http://localhost:5050/api/quiz/api/quiz/${quizId}/questions`
         );
         setQuestions(response.data);
       } catch (error) {
@@ -102,7 +105,7 @@ const Quiz = ({ startDate }) => {
     };
 
     fetchQuestions();
-  }, [storedQuizId]);
+  }, [quizId]);
 
   const handleCheckboxChange = (questionIndex, answer) => {
     const updatedSelectedAnswers = { ...selectedAnswers };
@@ -135,7 +138,7 @@ const Quiz = ({ startDate }) => {
   const handleSubmit = async () => {
     let totalQuestions = questions.length;
     let correctAnswers = 0;
-    let newScore = 1000;
+    let newScore =0;
     handleFinishDate();
     const updatedQuestions = questions.map((question, index) => {
       let isCorrect = false;
@@ -175,10 +178,10 @@ const Quiz = ({ startDate }) => {
 
     try {
       await axios.put(
-        `http://127.0.0.1:5050/api/quizapi/updateQuiz/${storedQuizId}`,
+        `http://127.0.0.1:5050/api/quiz/updateQuiz/${quizId}`,
         {
           questions: updatedQuestions,
-          quizName: "My Quiz",
+          quizName: "My Quiz2",
           score: percentageCorrect,
         }
       );
@@ -222,7 +225,7 @@ const Quiz = ({ startDate }) => {
 
     try {
       await axios.put(
-        `http://127.0.0.1:5050/api/quiz/${storedQuizId}/question/${questionId}`,
+        `http://127.0.0.1:5050/api/quiz/${quizId}/question/${questionId}`,
         {
           question: question.question, // Include current data
           correctAnswers: question.correctAnswers,

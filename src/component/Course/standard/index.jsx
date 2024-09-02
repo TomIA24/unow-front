@@ -18,7 +18,6 @@ import Footer from "../../Home/Footer";
 import styles from "./styles.module.css";
 
 const StandardCourse = () => {
-
   const [down, setDown] = useState(false);
   let { id } = useParams();
   const token = localStorage.getItem("token");
@@ -154,7 +153,6 @@ const StandardCourse = () => {
 
   const handleDisabled = () => {
     // if(document.getElementById(styles.CourseButtonsInfoPageB1).disabled){
-
     //   document.getElementById(styles.CourseButtonsInfoPageB1).disabled = true;
     // }
     // document.getElementById(styles.CourseButtonsInfoPageB1).style.backgroundColor = 'grey'
@@ -163,7 +161,6 @@ const StandardCourse = () => {
 
   const handleDisabled2 = () => {
     // if(document.getElementById(styles.CourseButtonsInfoPageB2).disabled){
-
     //   document.getElementById(styles.CourseButtonsInfoPageB2).disabled = true;
     // }
     // document.getElementById(styles.CourseButtonsInfoPageB2).style.backgroundColor = 'grey'
@@ -314,10 +311,10 @@ const StandardCourse = () => {
       axios.post(url, { lastSeen: user.lastSeen }, config).then(async (res) => {
         const url = `${process.env.REACT_APP_API}api/userData`;
         try {
-          axios.get(url,  config).then((response) => {
+          axios.post(url, {}, config).then((response) => {
             localStorage.setItem("user", JSON.stringify(response.data.data));
           });
-        } catch (err) { }
+        } catch (err) {}
       });
     } catch (error) {
       if (
@@ -348,13 +345,13 @@ const StandardCourse = () => {
           .then(async (res) => {
             const url = `${process.env.REACT_APP_API}api/userData`;
             try {
-              axios.get(url).then((response) => {
+              axios.post(url).then((response) => {
                 localStorage.setItem(
                   "user",
                   JSON.stringify(response.data.data)
                 );
               });
-            } catch (err) { }
+            } catch (err) {}
           });
       } catch (error) {
         if (
@@ -477,7 +474,7 @@ const StandardCourse = () => {
                 Data.Thumbnail == {} ||
                 !Data.Thumbnail ? (
                   <img
-                    src={`${process.env.REACT_APP_API}/uploads/courseImg.png`}
+                    src={`${process.env.REACT_APP_API}uploads/courseImg.png`}
                     alt=""
                     className={styles.imgCourse}
                   />
@@ -485,7 +482,7 @@ const StandardCourse = () => {
                   <div
                     className={styles.imgCourse}
                     style={{
-                      backgroundImage: `url(${process.env.REACT_APP_API}/uploads/courseImg.png) !important`,
+                      backgroundImage: `url(${process.env.REACT_APP_API}uploads/courseImg.png) !important`,
                     }}
                   >
                     <img
@@ -595,7 +592,7 @@ const StandardCourse = () => {
                                     {e.image ? (
                                       <Avatar
                                         alt="Remy Sharp"
-                                        src={`${process.env.REACT_APP_API}/${e.image.filePath}`}
+                                        src={`${process.env.REACT_APP_API}${e.image.filePath}`}
                                         sx={{ width: 24, height: 24 }}
                                       />
                                     ) : (
@@ -839,18 +836,23 @@ const StandardCourse = () => {
               <div className={styles.rightSectionContainer}>
                 <div className={styles.rightSectionCourse}>
                   <div className={styles.scndInfos}>
+                    <div className={styles.CoursePriceInfoPage}>
+                      <div className={styles.price}>
+                        {Data.Price} TTC
+                        <p className={styles.underline}></p>
+                      </div>
+                    </div>
                     <div className={styles.InfosRefDur}>
-                      <p>
-                        Reference: <span>{Data.Reference}</span>
-                      </p>
-                      <p>
-                        Duration: <span> {duration} days (Data.Hours)</span>
-                      </p>
+                      <ul>
+                        <li>
+                          Reference: <span>{Data.Reference}</span>
+                        </li>
+                        <li>
+                          Duration: <span> {duration} days (Data.Hours)</span>
+                        </li>
+                      </ul>
                     </div>
 
-                    <div className={styles.CoursePriceInfoPage}>
-                      <p>{Data.Price} TTC</p>
-                    </div>
                     <br />
                     <div className={styles.CourseButtonsInfoPage}>
                       {user ? (
