@@ -3,7 +3,7 @@ import styles from "./styles.module.css";
 import useCategories from "../../hooks/use-categories";
 import send from "../../../assets/paper.png";
 import { StarRounded } from "@mui/icons-material";
-import CourseRating from "../../../../shared/rating";
+import { CourseRating } from "../../../../shared/rating";
 import { Link } from "react-router-dom";
 export default function CourseElement({ course, type }) {
   const { category } = useCategories(course.Category);
