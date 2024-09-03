@@ -16,7 +16,7 @@ const Featured = () => {
         // Handle the case when image is missing
         const updatedData = data.trainers.map((trainer) => ({
           ...trainer,
-          image:  `${process.env.REACT_APP_API}${trainer.image.filePath}` 
+          image: `${process.env.REACT_APP_API}${trainer.image.filePath}`,
         }));
         setTrainers(updatedData);
       })

@@ -1,0 +1,28 @@
+.container {
+  display: inline-flex;
+  margin-top: 3%;
+  margin-left: 5%;
+  margin-bottom: 4%;
+}
+.containerItem {
+  display: inline-flex;
+  align-items: center;
+}
+@media (min-width: 1320px) {
+  .textStyle {
+    font-size: 25px;
+  }
+}
+@media (min-width: 750) and(max-width:1310) {
+  .textStyle {
+    font-size: 15px;
+  }
+    }
+@media (max-width: 750) {
+  .textStyle {
+    font-size: 10px;
+  }
+}
+.arrowStyle {
+  color: #cd6214;
+}

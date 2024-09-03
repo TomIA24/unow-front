@@ -5,6 +5,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+
 import {
     RecoilRoot,
     useRecoilSnapshot
@@ -29,6 +30,7 @@ ReactDOM.render(
         <DebugObserver />
             <BrowserRouter>
                 <App />
+               
             </BrowserRouter>
         </RecoilRoot>
     </React.StrictMode>,

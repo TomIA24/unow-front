@@ -19,20 +19,20 @@ import Rating from "@mui/material/Rating";
 import Typography from "@mui/material/Typography";
 import { green, red } from "@mui/material/colors";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { BsArrowDownRightCircleFill } from "react-icons/bs";
 import { Link, useParams } from "react-router-dom";
 import Nav from "../../Nav";
-import Footer from "../../footer";
+import Footer from "../../Home/Footer";
 import Evaluate from "./Evaluate";
 import Ressources from "./RessourcesFiles";
+import { useNavigate } from 'react-router-dom'; 
 import styles from "./styles.module.css";
 
 const PaidCourse = () => {
   let { id } = useParams();
   const token = localStorage.getItem("token");
   const user = JSON.parse(localStorage.getItem("user"));
-  const [error, setError] = useState("");
   const [openEvaluate, setOpenEvaluate] = useState(false);
   const [Evaluations, setEvaluations] = useState([]);
   const [EvaluationsCompleated, setEvaluationsCompleated] = useState([]);
@@ -41,6 +41,7 @@ const PaidCourse = () => {
     QCM: [],
     QR: [],
   });
+
   const [Data, setData] = useState({
     _id: "",
     Title: "",
@@ -61,23 +62,71 @@ const PaidCourse = () => {
     state: "",
     certificate: "",
     evaluate: [],
+    DurationQuiz:""
+  });
+  // const [Videos, setVideos] = useState([])
+  const [Datavideo, setDatavideo] = useState({
+    _id: "",
+    Title: "",
+    Trainer: "",
+    Description: "",
+    Goals: "",
+    WhoShouldAttend: "",
+    CourseContent: "",
+    PracticalWork: "",
+    Category: "",
+    Price: "",
+    Thumbnail: {},
+    Videos: [],
+    Level: "",
+    Reference: "",
+    Date: [],
+    enrolled: [],
+    state: "",
+    certificate: ""
   });
 
-  useEffect(() => {
-    handleCourse();
+
+
+
+
+  const [VideoDisplay, setVideoDisplay] = useState("")
+  const [isPlaying, setIsPlaying] = useState(false); // Track video play state
+
+  const handleDisplay = (vid) => {
+    setVideoDisplay(vid.filePath);
+    setIsPlaying(true); // Set to playing when a video is selected
+    console.log(vid.filePath);
+  };
+
+  const handlePlayPause = () => {
+    setIsPlaying(!isPlaying); // Toggle play/pause state
+  };
+  // const handleDisplay = (vid) =>{
+  //   setVideoDisplay(vid.filePath)
+  //   console.log(vid.filePath)
+  // }
+
+
+
+  useEffect(async () => {
+    console.log("test")
+    await handleCourse();
   }, []);
 
   useEffect(() => {
     getEvaluations();
-  }, [Data]);
+  }, []);
 
   const handleCourse = () => {
+    console.log("test")
+
     const config = {
       headers: {},
       params: { id: id },
     };
     axios
-      .get(`${process.env.REACT_APP_API}/api/courses/specific`, config)
+      .get(`${process.env.REACT_APP_API}api/courses/specific`, config)
       .then((res) => {
         setData(res.data.data);
         setEvaluations(res.data.data.evaluate);
@@ -110,7 +159,7 @@ const PaidCourse = () => {
     };
     await axios
       .post(
-        `${process.env.REACT_APP_API}/api/evaluations/getEvaluations`,
+        `${process.env.REACT_APP_API}api/evaluations/getEvaluations`,
         { courseId: id, student: user._id },
         config
       )
@@ -128,7 +177,7 @@ const PaidCourse = () => {
     };
     axios
       .post(
-        `${process.env.REACT_APP_API}/api/Candidat/returnCandidatForRatingInfo`,
+        `${process.env.REACT_APP_API}api/Candidat/returnCandidatForRatingInfo`,
         { ids: ids },
         config
       )
@@ -137,23 +186,23 @@ const PaidCourse = () => {
       });
   };
 
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
-    window.location = "/login";
-  };
+  // const handleLogout = () => {
+  //   localStorage.removeItem("token");
+  //   localStorage.removeItem("user");
+  //   window.location = "/login";
+  // };
 
-  useEffect(async () => {
+  useEffect(() => {
     const ids = Evaluations.map((e) => {
       return e.id;
     });
     GetUsers(ids);
   }, [Evaluations]);
-
-  useEffect(async () => {
+  // 
+  useEffect(() => {
     var list = [];
-    await Evaluations.map((e) => {
-      usersLimited.map((u) => {
+    Evaluations.forEach((e) => {
+      usersLimited.forEach((u) => {
         if (u._id === e.id) {
           list.push({
             id: e.id,
@@ -166,8 +215,8 @@ const PaidCourse = () => {
       });
     });
     setEvaluationsCompleated(list);
-  }, [usersLimited]);
-
+  }, []);
+  // , [usersLimited]
   const TextRating = (value, avis) => {
     return (
       <Box
@@ -188,9 +237,9 @@ const PaidCourse = () => {
       </Box>
     );
   };
-  const [Enrolled, setEnrolled] = useState(false);
-  const [Paid, setPaid] = useState(false);
-  const [PaidBtn, setPaidBtn] = useState(false);
+  // const [Enrolled, setEnrolled] = useState(false);
+  // const [Paid, setPaid] = useState(false);
+  // const [PaidBtn, setPaidBtn] = useState(false);
   /************/ //////////////////////// */
   const [WindowWidth, setWindowWidth] = useState(0);
   const handleWidthChange = () => {
@@ -206,6 +255,7 @@ const PaidCourse = () => {
     };
   }, []);
   const [mobileView, setMobileView] = useState(false);
+  console.log("mobileview", mobileView);
   useEffect(() => {
     //console.log(WindowWidth)
     if (WindowWidth <= 756) {
@@ -213,7 +263,7 @@ const PaidCourse = () => {
     } else {
       setMobileView(false);
     }
-  }, []);
+  }, [WindowWidth]);
   useEffect(() => {
     console.log(WindowWidth);
     if (WindowWidth <= 756) {
@@ -301,7 +351,7 @@ const PaidCourse = () => {
     console.log("data to save: ", evaluation.Evaluation);
     await axios
       .post(
-        `${process.env.REACT_APP_API}/api/evaluations/setEvaluation`,
+        `${process.env.REACT_APP_API}api/evaluations/setEvaluation`,
         { Data: evaluation },
         config
       )
@@ -311,403 +361,391 @@ const PaidCourse = () => {
       });
   };
   const [openRessources, setOpenRessources] = useState(false);
+  const refHome = useRef(null);
 
+  //activeButton
+  const [preCourseData, setPreCourseData] = useState([]);
+  const [quizData, setQuizData] = useState([]);
+
+  // const handleButtonClick = (index) => {
+
+  //   setActiveButton(index);
+  //   console.log("herrrrrrrrrree",activeButton);
+
+  //   if (index === 0) {
+  //     handleCourseVideo(); 
+  //   }
+  // };
+  const [videos, setVideos] = useState([])
+  const handleCourseVideo = () => {
+    const config = {
+      params: { id: id }, // Make sure `id` is defined
+    };
+    axios
+      .get(`${process.env.REACT_APP_API}api/courses/specific`, config)
+      .then((res) => {
+        setDatavideo(res.data.data);
+        setVideos(res.data.data.Videos); // Store the list of videos
+        console.log(res.data.data);
+        console.log(res.data.data.Videos);
+      })
+      .catch((error) => {
+        console.error("Error fetching course data:", error);
+      });
+  }
+  const handlePreCourseData = () => {
+    // Implement API call to fetch Pre-Course data
+    axios
+      .get(`${process.env.REACT_APP_API}api/courses/pre-course`, {
+        params: { id: id },
+      })
+      .then((res) => {
+        setPreCourseData(res.data.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching pre-course data:", error);
+      });
+  };
+
+ 
+  // const [activeButton, setActiveButton] = useState(null);
+  const [isOpenCourse, setOpenCourse] = useState(false);
+  const [isOpenprcourse, setOpenprcourse] = useState(false);
+  const [isOpenPDF, setOpenPDF] = useState(false);
+
+  const [isOpenQuiz, setOpenQuiz] = useState(false);
+  // const[isOpen,setOpen]=useState(false);
+
+  const handleButtonClickcourse = () => {
+    handleCourseVideo()
+    setOpenCourse(!isOpenCourse)
+    setOpenprcourse(false)
+    setOpenPDF(false)
+    setOpenQuiz(false)
+    console.log('course open', isOpenCourse);
+
+
+  };
+  const handleButtonClickprcourse = () => {
+    setOpenCourse(false)
+    setOpenprcourse(!isOpenprcourse)
+    setOpenPDF(false)
+    setOpenQuiz(false)
+
+  };
+  const handleButtonClickPDF = () => {
+    setOpenCourse(false)
+    setOpenprcourse(false)
+    setOpenPDF(!isOpenPDF)
+    setOpenQuiz(false)
+
+  };
+  const handleQuizData = async (courseID) => {
+    setOpenCourse(false)
+    setOpenprcourse(false)
+    setOpenPDF(false)
+    setOpenQuiz(!isOpenQuiz)
+    // Implement API call to fetch Quiz data
+    if (!isOpenQuiz) {
+      try {
+        // Fetch quizzes associated with the course
+        const response = await axios.get(`${process.env.REACT_APP_API}api/courses/${courseID}`);
+        setQuizData(response.data);
+        console.log('Quiz Data:', quizData);
+        // console.log('Quiz Data:',response.data);
+
+      } catch (error) {
+        console.error('Error fetching quizzes:', error);
+      }
+    }
+  };
+  // const handleButtonClickQuiz = () => {
+  //   setOpenQuiz(!isOpenQuiz)
+
+  // };
+
+  // const handleButtonClick = (index) => {
+  //   setActiveButton(index);
+  //   if (index === 0) {
+  //     console.log('course Video');
+  //     setOpen(true)
+  //     handleCourseVideo();
+  //   } else if (index === 1) {
+  //     handlePreCourseData();
+  //     setOpenPDF(true)
+  //   } else if (index === 2) {
+  //     handleQuizData();
+  //     setOpenQuiz(true)
+  //   }
+  // };
+  // toggle for the showing the content of a section 
+  const [isSectionOpen, setIsSectionOpen] = useState(false);
+
+  const toggleSection = () => {
+    setIsSectionOpen((prev) => !prev);
+    // Toggle the section visibility
+    console.log('section', isSectionOpen);
+  };
+  const navigate = useNavigate();
+  const handleQuizClick = (quizId) => {
+    navigate(`/quiz`, { state: { quizId, durationQuiz: Data.DurationQuiz } });
+  };
   return (
     <React.Fragment>
-      <Nav />
+
+      <div className={styles.backimage}>
+        <div className={styles.maincontainernav}>
+          <div className={styles.nav_container}>
+            <Nav ref={refHome} />
+
+          </div>
+          <div className={styles.pdowncontainer}>
+            <div className={styles.pdown} >COURS
+              <p className={styles.underline}></p>
+            </div>
+          </div>
+        </div>
+      </div>
       <main className={styles.MotherDivCourse}>
         <div className={styles.MainDivCourse}>
           <div className={styles.leftSectionCourse}>
             <div className={styles.FirsSectionInfoCourse}>
-              {Data.Thumbnail === "qqq" ||
-              Data.Thumbnail == {} ||
-              !Data.Thumbnail ? (
-                <img
-                  src={`${process.env.REACT_APP_API}/uploads/courseImg.png`}
-                  alt=""
-                  className={styles.imgCourse}
-                />
-              ) : (
-                <img
-                  src={`${process.env.REACT_APP_API}${Data.Thumbnail.filePath}`}
-                  alt=""
-                  className={styles.imgCourse}
-                />
-              )}
-              <div className={styles.FirsSectionInfoCourseTitle}>
-                <h1>{Data.Title}</h1>
-                <h4>{Data.Category}</h4>
-                {Data.rating
-                  ? TextRating(Data.rating, Data.evaluate.length)
-                  : TextRating(0, 0)}
-              </div>
-              <div className={styles.Btn_Div}>
-                <Link to={{ pathname: `/Course/${id}/Videos` }}>
-                  <Button
-                    sx={{ width: "186px" }}
-                    variant="outlined"
-                    endIcon={<PlayArrowIcon />}
-                  >
-                    Start Course
-                  </Button>
-                </Link>
+              {VideoDisplay ? (
+                <div className={styles.videoPlayer}>
+                  <video controls className={styles.videoElement}>
+                    <source src={`${process.env.REACT_APP_API}${VideoDisplay}`} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                  <button onClick={handlePlayPause} className={`${styles.startButton} ${isPlaying ? styles.playing : ''}`}>
+                    {isPlaying ? (
+                      <>
+                        <img src="/images/course/paid/startvideo.png" alt="Pause Icon" className={styles.startIcon} />
+                        Pause
+                      </>
+                    ) : (
+                      <>
+                        <img src="/images/course/paid/startvideo.png" alt="Play Icon" className={styles.startIcon} />
 
-                <Button
-                  sx={{ width: "186px" }}
-                  onClick={() => {
-                    setOpenEvaluate(true);
-                  }}
-                  variant="outlined"
-                  endIcon={<StarIcon />}
-                >
-                  Evaluate course
-                </Button>
-
-                <Button
-                  sx={{ width: "200px" }}
-                  onClick={() => {
-                    setOpenRessources(true);
-                  }}
-                  variant="outlined"
-                  endIcon={<FolderIcon />}
-                >
-                  Ressources
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                </Button>
-              </div>
-            </div>
-            <div className={styles.ScndSectionInfoCourse}>
-              <div className={styles.DescriptionInfoCourse}>
-                <div className={styles.Accordion}>
-                  <Accordion disabled={TestState}>
-                    {/*  */}
-                    <AccordionSummary
-                      expandIcon={<ExpandMoreIcon />}
-                      aria-controls="panel1a-content"
-                      id="panel1a-header"
-                    >
-                      <Typography>Evaluation</Typography>
-                    </AccordionSummary>
-                    <AccordionDetails>
-                      <Accordion>
-                        {/* disabled */}
-                        <AccordionSummary
-                          expandIcon={<ExpandMoreIcon />}
-                          aria-controls="panel1a-content"
-                          id="panel1a-header"
-                        >
-                          <Typography>QCM</Typography>
-                        </AccordionSummary>
-                        <AccordionDetails>
-                          {Data.QuestionsQCM
-                            ? Data.QuestionsQCM.map((qcm, index) => {
-                                return (
-                                  <Accordion key={qcm.id}>
-                                    {/* disabled */}
-                                    <AccordionSummary
-                                      expandIcon={<ExpandMoreIcon />}
-                                      aria-controls="panel1a-content"
-                                      id="panel1a-header"
-                                    >
-                                      <Typography>
-                                        Question {index + 1}{" "}
-                                      </Typography>
-                                    </AccordionSummary>
-                                    <AccordionDetails>
-                                      <FormControl>
-                                        <FormLabel id="demo-radio-buttons-group-label">
-                                          <Typography>
-                                            {qcm.Question}{" "}
-                                          </Typography>
-                                        </FormLabel>
-                                        <RadioGroup
-                                          aria-labelledby="demo-radio-buttons-group-label"
-                                          defaultValue="No response"
-                                          name="radio-buttons-group"
-                                          onChange={async (e) =>
-                                            await handleResponseQCM(e, qcm.id)
-                                          }
-                                        >
-                                          {qcm.Responses
-                                            ? qcm.Responses.split(",").map(
-                                                (r, index) => {
-                                                  return (
-                                                    <FormControlLabel
-                                                      key={index}
-                                                      value={r}
-                                                      control={<Radio />}
-                                                      label={r}
-                                                    />
-                                                  );
-                                                }
-                                              )
-                                            : ""}
-                                        </RadioGroup>
-                                      </FormControl>
-                                    </AccordionDetails>
-                                  </Accordion>
-                                );
-                              })
-                            : ""}
-                        </AccordionDetails>
-                      </Accordion>
-                      {/* <Accordion >
-                                                <AccordionSummary
-                                                    expandIcon={<ExpandMoreIcon />}
-                                                    aria-controls="panel1a-content"
-                                                    id="panel1a-header"
-                                                    >
-                                                    <Typography>QR</Typography>
-                                                </AccordionSummary>
-                                                <AccordionDetails>
-                                                    {
-                                                        Data.QuestionsQR?
-                                                            Data.QuestionsQR.map((qr,index)=>{
-                                                                return(
-                                                                    <Accordion >
-                                                                        <AccordionSummary
-                                                                            expandIcon={<ExpandMoreIcon />}
-                                                                            aria-controls="panel1a-content"
-                                                                            id="panel1a-header"
-                                                                            >
-                                                                            <Typography>Question {index+1} </Typography>
-                                                                        </AccordionSummary>
-                                                                        <AccordionDetails>
-                                                                        
-                                                                        <FormControl>
-                                                                            <FormLabel id="demo-buttons-group-label">
-                                                                                <Typography>{qr.Question} </Typography>
-                                                                            </FormLabel>
-                                                                            <Box
-                                                                                component="form"
-                                                                                sx={{
-                                                                                    '& > :not(style)': {  width: '100%' },
-                                                                                }}
-                                                                                noValidate
-                                                                                autoComplete="off"
-                                                                            >
-                                                                                <TextField 
-                                                                                    multiline
-                                                                                    name="Response"
-                                                                                    id="outlined-basic" 
-                                                                                    label="Response" 
-                                                                                    value={evaluationResult.QR.map(qr=>{
-                                                                                        if(id === qr.id){
-                                                                                            if(qr.Response){
-                                                                                                return qr.Response
-                                                                                            }
-                                                                                            return " "
-                                                                                        }
-                                                                                    })} 
-                                                                                    onChange={(e)=>handleResponseQR(e,qr.id)}
-                                                                                    variant="outlined" 
-                                                                                />
-                                                                            </Box>
-                                                                        </FormControl>
-                                                                        </AccordionDetails>
-                                                                    </Accordion>
-                                                                )
-                                                            })
-
-                                                        :
-
-                                                            ""
-
-
-                                                    }
-
-                                                    
-                                                </AccordionDetails>
-                                            </Accordion> */}
-                      <Button
-                        sx={{ margin: "10px", float: "right" }}
-                        onClick={handleEvaluation}
-                        variant="contained"
-                      >
-                        Submit
-                      </Button>
-                    </AccordionDetails>
-                  </Accordion>
+                      </>
+                    )}
+                  </button>
                 </div>
-                {evaluationsFromBase.length > 0 ? (
-                  <div className={styles.AlertOfResult}>
-                    <div>
-                      <h2>Result:</h2>
-                      {evaluationsFromBase.map((ev) => {
-                        return (
-                          <React.Fragment>
-                            {ev.Evaluation.QCM.map((q, index) => {
-                              return (
-                                <div>
-                                  {q.Result === false ||
-                                  q.Result === "" ||
-                                  !q.Result ? (
-                                    <h3 className={styles.Danger}>
-                                      Question {index + 1}
-                                    </h3>
-                                  ) : (
-                                    <h3 className={styles.Success}>
-                                      Question {index + 1}
-                                    </h3>
-                                  )}
-
-                                  <h5>{q.Question}</h5>
-                                  <div className={styles.Reponse}>
-                                    <h5>Response:</h5>
-                                    <p>
-                                      {q.Response ? q.Response : "no response"}{" "}
-                                      -&#x3E;{" "}
-                                    </p>{" "}
-                                    {q.Result === false ||
-                                    q.Result === "" ||
-                                    !q.Result ? (
-                                      <p className={styles.Danger}>false</p>
-                                    ) : (
-                                      <p className={styles.Success}>true</p>
-                                    )}
-                                  </div>
-                                </div>
-                              );
-                            })}
-                          </React.Fragment>
-                        );
-                      })}
-                    </div>
-                    <div className={styles.note}>
-                      {evaluationsFromBase.map((ev) => {
-                        const result = ev.Evaluation.QCM.filter(
-                          (q) => q.Result === true
-                        ).length;
-                        const all = ev.Evaluation.QCM.length;
-                        const percent = (result / all) * 100;
-                        return (
-                          <React.Fragment>
-                            {percent > 60 ? (
-                              <div className={styles.percentSuccess}>
-                                <h1>{percent}%</h1>
-
-                                <CheckCircleOutlineIcon
-                                  fontSize="large"
-                                  sx={{ color: green[700] }}
-                                />
-                              </div>
-                            ) : (
-                              <div className={styles.percentDanger}>
-                                <h1>{percent}%</h1>
-                                <HighlightOffIcon
-                                  fontSize="large"
-                                  sx={{ color: red[900] }}
-                                />
-                              </div>
-                            )}
-                          </React.Fragment>
-                        );
-                      })}
-                    </div>
+              ) : (
+                (Data.Thumbnail === "qqq" || Data.Thumbnail === null || !Data.Thumbnail) ? (
+                  <div className={styles.imgCourse}>
+                    <img
+                      src={`${process.env.REACT_APP_API}uploads/courseImg.png`}
+                      alt=""
+                      className={styles.imgCourseImage}
+                    />
                   </div>
                 ) : (
-                  ""
-                )}
-              </div>
-              <div className={styles.DescriptionInfoCourse}>
-                <div className={styles.DescriptionInfoCourseTitle}>
-                  <BsArrowDownRightCircleFill color="#1C4B82" size={30} />
-                  <h1>Description</h1>
-                </div>
-                <div className={styles.DescriptionInfoCourseText}>
-                  <p>{Data.Description}</p>
-                </div>
-              </div>
-              <div className={styles.DescriptionInfoCourse}>
-                <div className={styles.DescriptionInfoCourseTitle}>
-                  <BsArrowDownRightCircleFill color="#1C4B82" size={30} />
-                  <h1>Goals</h1>
-                </div>
-                <div className={styles.DescriptionInfoCourseText}>
-                  <p>{Data.Goals}</p>
-                </div>
-              </div>
-              <div className={styles.DescriptionInfoCourse}>
-                <div className={styles.DescriptionInfoCourseTitle}>
-                  <BsArrowDownRightCircleFill color="#1C4B82" size={30} />
-                  <h1>Who Should Attend</h1>
-                </div>
-                <div className={styles.DescriptionInfoCourseText}>
-                  <p>{Data.WhoShouldAttend}</p>
-                </div>
-              </div>
-              <div className={styles.DescriptionInfoCourse}>
-                <div className={styles.DescriptionInfoCourseTitle}>
-                  <BsArrowDownRightCircleFill color="#1C4B82" size={30} />
-                  <h1>Course Content</h1>
-                </div>
-                <div className={styles.DescriptionInfoCourseText}>
-                  <p>{Data.CourseContent}</p>
-                </div>
-              </div>
-              <div className={styles.DescriptionInfoCourse}>
-                <div className={styles.DescriptionInfoCourseTitle}>
-                  <BsArrowDownRightCircleFill color="#1C4B82" size={30} />
-                  <h1>PracticalWork</h1>
-                </div>
-                <div className={styles.DescriptionInfoCourseText}>
-                  <p>{Data.PracticalWork}</p>
-                </div>
-              </div>
-              <div className={styles.DescriptionInfoCourse}>
-                <div className={styles.DescriptionInfoCourseTitle}>
-                  <BsArrowDownRightCircleFill color="#1C4B82" size={30} />
-                  <h1>Certificate</h1>
-                </div>
-                <div className={styles.DescriptionInfoCourseText}>
-                  <p>{Data.certificate}</p>
-                </div>
-              </div>
-              {Data.evaluate.length > 0 ? (
-                <div className={styles.OpinionsCourse}>
-                  <div className={styles.OpinionsCourseTitle}>
-                    <BsArrowDownRightCircleFill color="#1C4B82" size={30} />
-                    <h1>Users Opinion</h1>
+                  <div className={styles.imgCourse}>
+                    <img
+                      src={`${process.env.REACT_APP_API}${Data.Thumbnail.filePath}`}
+                      alt=""
+                      className={styles.imgCourseImage}
+                    />
                   </div>
-                  {EvaluationsCompleated.map((e) => {
-                    return (
-                      <React.Fragment>
-                        <div className={styles.opinion}>
-                          <div className={styles.opinionHeader}>
-                            {e.image ? (
-                              <Avatar
-                                alt="Remy Sharp"
-                                src={`${process.env.REACT_APP_API}${e.image.filePath}`}
-                                sx={{ width: 24, height: 24 }}
-                              />
-                            ) : (
-                              <Avatar
-                                alt="Remy Sharp"
-                                src={`${process.env.REACT_APP_API}/uploads/2022-03-25T09-59-55.836Z-avatar.png`}
-                                sx={{ width: 24, height: 24 }}
-                              />
-                            )}
-                            <h5>{e.name}</h5>
-                          </div>
-                          <div className={styles.opinionBody}>
-                            <p>{e.message}</p>
-                            <Rating
-                              name="read-only"
-                              value={e.rate}
-                              readOnly
-                              precision={0.5}
-                            />
-                          </div>
-                        </div>
-                        <hr className={styles.opinionHr} />
-                      </React.Fragment>
-                    );
-                  })}
-                </div>
-              ) : (
-                ""
+                )
               )}
+              <div className={styles.FirsSectionInfoCourseTitle}>
+                <div className={styles.courtitle}>{Data.Title}</div >
+
+              </div>
+              <div className={styles.FirsSectionInfoCourseTitle}>   <h4>{Data.Category}</h4>
+                {Data.rating
+                  ? TextRating(Data.rating, Data.evaluate.length)
+                  : TextRating(0, 0)}</div>
+
+              <div className={styles.Btn_Div}>
+                <div className={styles.containerBt1}>
+
+                  <div className={styles.allbutton}>
+                    <button
+                      style={{
+                        backgroundColor: isOpenCourse ? '#CD6214' : '#3E4678'
+                      }}
+                      className={styles.btncourse}
+                      onClick={handleButtonClickcourse}
+                    >
+                      <img
+                        src={`/images/course/paid/startc.png`}
+                        alt=''
+                        className={styles.imagefeatures}
+                      />
+                      {isOpenCourse ? ("yes") : ("no")}
+                      Course Content
+
+                    </button>
+                    <button className={styles.btncour}>
+
+                    </button>
+                    <button className={styles.btncour}>
+                      <img
+                        src={`/images/course/paid/${isOpenCourse ? 'showsection' : 'hiddensection'}.png`}
+                        alt=''
+                      />
+                    </button>
+                  </div>
+
+                  <div className={styles.allbutton}>
+                    <button
+                      style={{
+                        backgroundColor: isOpenprcourse ? '#CD6214' : '#3E4678'
+                      }}
+                      className={styles.btncourse}
+                      onClick={() => handleButtonClickprcourse()}
+                    >
+                      <img
+                        src={`/images/course/paid/prcours.png`}
+                        alt=''
+                        className={styles.imagefeatures}
+                      />
+                      {isOpenprcourse ? ("yes") : ("no")}
+                      Pré-cours
+
+                    </button>
+                    <button className={styles.btncour}>
+
+                    </button>
+                    <button className={styles.btncour}>
+                      <img
+                        src={`/images/course/paid/${isOpenprcourse ? 'showsection' : 'hiddensection'}.png`}
+                        alt=''
+                      />
+                    </button>
+                  </div>
+
+                  <div className={styles.allbutton}>
+                    <button
+                      style={{
+                        backgroundColor: isOpenPDF ? '#CD6214' : '#3E4678'
+                      }}
+                      className={styles.btncourse}
+                      onClick={() => handleButtonClickPDF()}
+                    >
+                      <img
+                        src={`/images/course/paid/PDF.png`}
+                        alt=''
+                        className={styles.imagefeatures}
+                      />
+                      {isOpenPDF ? ("yes") : ("no")}
+                      PDF
+
+                    </button>
+                    <button className={styles.btncour}>
+
+                    </button>
+                    <button className={styles.btncour}>
+                      <img
+                        src={`/images/course/paid/${isOpenPDF ? 'showsection' : 'hiddensection'}.png`}
+                        alt=''
+                      />
+                    </button>
+                  </div>
+
+                  <div className={styles.allbutton}>
+                    <button
+                      style={{
+                        backgroundColor: isOpenQuiz ? '#CD6214' : '#3E4678'
+                      }}
+                      className={styles.btncourse}
+                      onClick={() => handleQuizData(Data._id)}
+                    >
+                      <img
+                        src={`/images/course/paid/Quiz.png`}
+                        alt=''
+                        className={styles.imagefeatures}
+                      />
+                      {isOpenQuiz ? ("yes") : ("no")}
+                      Quiz
+
+                    </button>
+                    <button className={styles.btncour}>
+
+                    </button>
+                    <button className={styles.btncour}>
+                      <img
+                        src={`/images/course/paid/${isOpenQuiz ? 'showsection' : 'hiddensection'}.png`}
+                        alt=''
+                      />
+                    </button>
+                  </div>
+
+                </div>
+                {isOpenCourse && videos.length > 0 ? (
+                  <div className={styles.containerBt2}>
+                    {videos.map((video, index) => (
+                      <div className={styles.videoList} key={video.id}>
+                        <div className={styles.sectionbutton}>
+                          <div className={styles.sectionindex}>Section {index}</div>
+                          <button
+                            onClick={toggleSection}
+                            className={styles.sectionToggle}
+                          >
+                            <img
+                              src={`/images/course/paid/${isSectionOpen ? 'downsection' : 'upsection'}.png`}
+                              alt=''
+                              className={styles.imagdown}
+                            />
+                          </button>
+                        </div>
+                        {!isSectionOpen && (
+                          <div>
+                            <button onClick={() => handleDisplay(video)} className={styles.videoItem}>
+                              {video.fileName}
+                            </button>
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                ) : (isOpenCourse && (<div className={styles.containerBt2}>
+                  <div  className={styles.videoList}>
+                    no content yet
+                  </div>
+                  </div>))}
+
+                {isOpenprcourse && preCourseData.length > 0 && (
+                  <div className={styles.preCourseDataContainer}>
+                    précours
+                  </div>
+                )}
+                {isOpenPDF && preCourseData.length > 0 && (
+                  <div className={styles.preCourseDataContainer}>
+                    précours
+                  </div>
+                )}
+                {isOpenQuiz && quizData.length > 0 ? (
+                  <div className={styles.containerBt2}>
+                    {quizData.map((quiz,index) => (
+        <div
+          key={quiz._id}
+          className={styles.videoList}
+          onClick={() => handleQuizClick(quiz._id)} // Handle click
+        >
+          Quiz {index} {/* Adjust the display as needed */}
+        </div>
+      ))}
+                  </div>
+                ) : (isOpenQuiz && (
+                  <div className={styles.containerBt2}>
+                <div  className={styles.videoList}>
+                  noquiz added
+                </div>
+                </div>))}
+
+
+              </div>
+
+              <div>
+
+
+
+              </div>
             </div>
+
           </div>
         </div>
       </main>
@@ -738,6 +776,7 @@ const PaidCourse = () => {
       ) : (
         ""
       )}
+
     </React.Fragment>
   );
 };

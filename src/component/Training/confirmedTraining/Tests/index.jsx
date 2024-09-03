@@ -41,7 +41,7 @@ const Tests = ({ showTests, setShowTests, courseId }) => {
     };
     await axios
       .post(
-        `${process.env.REACT_APP_API}/api/evaluations/getEvaluations`,
+        `${process.env.REACT_APP_API}api/evaluations/getEvaluations`,
         { courseId: id, student: "" },
         config
       )
@@ -61,7 +61,7 @@ const Tests = ({ showTests, setShowTests, courseId }) => {
     };
     await axios
       .post(
-        `${process.env.REACT_APP_API}/api/Candidat/returnCandidatForRatingInfo`,
+        `${process.env.REACT_APP_API}api/Candidat/returnCandidatForRatingInfo`,
         { ids: usersids },
         config
       )
@@ -77,7 +77,7 @@ const Tests = ({ showTests, setShowTests, courseId }) => {
     };
     await axios
       .post(
-        `${process.env.REACT_APP_API}/api/Trainer/AllowTests`,
+        `${process.env.REACT_APP_API}api/Trainer/AllowTests`,
         { courseId: id, state: "closed" },
         config
       )

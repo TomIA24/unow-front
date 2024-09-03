@@ -80,6 +80,7 @@
   color: #cd6214;
   margin-bottom: 5%;
   text-align: center;
+  font-weight: 900;
 }
 
 .subtitle {
@@ -162,7 +163,7 @@
 
 .consultantsTitle {
   font-size: 30px;
-  font-weight: bold;
+  font-weight: 900;
   text-align: center;
   width: 100%;
   margin-bottom: 5%;
@@ -179,7 +180,8 @@
   align-items: center;
   width: 6.87rem;
   height: 2.5rem;
-  background-color: #1c4b82;
+  background-color: #3E4678;
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.4);
   color: white;
   font-size: 15px; /* Adjust font size as needed */
   font-weight: bold;
@@ -193,6 +195,7 @@
 
 .applyButton:hover {
   box-shadow: 0 3px 7px rgba(0, 0, 0, 0.503);
+  background-color: #CD6214;
 }
 
 .subtitle {
@@ -256,7 +259,7 @@
     align-items: center;
     width: 6.87rem;
     height: 2.5rem;
-    background-color: #1c4b82;
+    background-color: #3E4678;
     color: white;
     font-size: 12px; /* Adjust font size as needed */
     font-weight: bold;
@@ -297,7 +300,7 @@
   .applyButton {
     width: 6.87rem;
     height: 2.5rem;
-    background-color: #1c4b82;
+
     color: white;
     font-size: 10px;
     font-weight: bold;
@@ -439,7 +442,7 @@
     align-items: center;
     width: 6.87rem;
     height: 2.5rem;
-    background-color: #1c4b82;
+    
     color: white;
     font-size: 10px; /* Adjust font size as needed */
     font-weight: bold;

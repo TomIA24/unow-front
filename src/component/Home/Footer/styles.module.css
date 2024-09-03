@@ -4,13 +4,13 @@
   color: #fff;
   font-weight: bold;
   margin-bottom: 10px;
-  position: relative; 
-  display: inline-block; 
+  position: relative;
+  display: inline-block;
 }
 
 .underline {
   width: 20%;
-  background-color: #CD6214;
+  background-color: #cd6214;
   padding-top: 2px;
   border-radius: 100px;
   margin-top: 5px;
@@ -18,13 +18,12 @@
 
 .footer {
   background-color: #3e4678;
-  padding: 6% 0% 2% 8%;
   border-top-right-radius: 25px;
   border-top-left-radius: 25px;
-  width: 100%; 
-  box-sizing: border-box; 
+  width: 100%;
+  box-sizing: border-box;
 }
-@media (max-width: 350px)  {
+@media (max-width: 350px) {
   .footer {
     padding: 8% 4% 0% 15%;
   }
@@ -58,12 +57,12 @@
   }
 }
 
-
 .row {
   display: flex;
-  flex-wrap: wrap; 
-  
-  padding-bottom: 20px; 
+  flex-wrap: wrap;
+  margin-left: 50px;
+  margin-right: 50px;
+  padding-bottom: 20px;
 }
 
 ul {
@@ -71,10 +70,12 @@ ul {
 }
 
 .footercol {
-  flex: 1; 
-  min-width: 200px; 
-  max-width: 25%; 
-  text-align: left; 
+  flex: 1;
+  min-width: 200px;
+  margin-left: 5%;
+  max-width: 25%;
+  margin-top: 30px;
+  text-align: left;
 
   margin-bottom: 20px;
 }
@@ -83,7 +84,7 @@ ul {
   font-size: 18px;
   color: #fff;
   text-transform: capitalize;
-  margin-bottom: 25px; 
+  margin-bottom: 25px;
   font-weight: 500;
   position: relative;
 }
@@ -112,39 +113,42 @@ ul {
   color: #fff;
 }
 .footercol2 {
-  flex: 1; 
-  min-width: 200px; 
-  max-width: 25%; 
-  text-align: left; 
-  padding: 0 15px ;
+  flex: 1;
+  min-width: 200px;
+  max-width: 25%;
+  text-align: left;
+  margin-top: 30px;
+  padding: 0 15px;
   margin-bottom: 20px;
 }
 /* Base styles */
 .footercol2 {
-  flex: 1; 
-  min-width: 200px; 
-  max-width: 25%; 
-  text-align: left; 
-  
+  flex: 1;
+  min-width: 200px;
+  max-width: 25%;
+  text-align: left;
+  margin-top: 30px;
   margin-bottom: 20px;
 }
 .footercol2 {
-  flex: 1; 
-  min-width: 200px; 
-  max-width: 25%; 
-  text-align: left; 
-  
+  flex: 1;
+  min-width: 200px;
+  max-width: 25%;
+  text-align: left;
+  margin-top: 30px;
+
   margin-bottom: 20px;
 }
-@media (max-width: 300px)  {
+@media (max-width: 300px) {
   .footercol2 {
-    flex: 1; 
-    min-width: 100px; 
-    max-width: 50%; 
-    text-align: left; 
+    flex: 1;
+    min-width: 100px;
+    max-width: 50%;
+    margin-top: 30px;
+    text-align: left;
     margin-left: -37%;
     padding: 0px 0px;
-   
+
     margin-bottom: 10px;
   }
 }
@@ -152,12 +156,12 @@ ul {
 /* Media query for screens between 300px and 400px */
 @media (min-width: 300px) and (max-width: 400px) {
   .footercol2 {
-    flex: 1; 
-    min-width: 100px; 
-    max-width: 50%; 
-    text-align: left; 
+    flex: 1;
+    min-width: 100px;
+    max-width: 50%;
+    text-align: left;
     margin-left: -26%;
-   
+    margin-top: 30px;
     margin-bottom: 10px;
   }
 }
@@ -165,11 +169,12 @@ ul {
 /* Media query for screens between 401px and 500px */
 @media (min-width: 401px) and (max-width: 500px) {
   .footercol2 {
-    flex: 1; 
-    min-width: 120px; 
-    max-width: 45%; 
-    text-align: left; 
-    
+    flex: 1;
+    min-width: 120px;
+    max-width: 45%;
+    margin-top: 30px;
+    text-align: left;
+
     margin-bottom: 12px;
   }
 }
@@ -177,10 +182,11 @@ ul {
 /* Media query for screens between 501px and 600px */
 @media (min-width: 501px) and (max-width: 600px) {
   .footercol2 {
-    flex: 1; 
-    min-width: 150px; 
-    max-width: 35%; 
-    text-align: left; 
+    flex: 1;
+    min-width: 150px;
+    max-width: 35%;
+    margin-top: 30px;
+    text-align: left;
     margin-left: 6%;
     margin-bottom: 15px;
   }
@@ -189,10 +195,11 @@ ul {
 /* Media query for screens between 601px and 676px */
 @media (min-width: 601px) and (max-width: 696px) {
   .footercol2 {
-    flex: 1; 
-    min-width: 180px; 
-    max-width: 30%; 
-    text-align: left; 
+    flex: 1;
+    min-width: 180px;
+    max-width: 30%;
+    margin-top: 30px;
+    text-align: left;
     margin-left: 6%;
     margin-bottom: 18px;
     margin-left: 15%;
@@ -202,11 +209,12 @@ ul {
 /* Media query for screens between 687px and 750px */
 @media (min-width: 696px) and (max-width: 740px) {
   .footercol2 {
-    flex: 1; 
-    min-width: 180px; 
-    max-width: 30%; 
-    text-align: left; 
-    
+    flex: 1;
+    min-width: 180px;
+    max-width: 30%;
+    text-align: left;
+    margin-top: 30px;
+
     margin-bottom: 15px;
     margin-left: -10%;
   }
@@ -215,10 +223,11 @@ ul {
 /* Media query for screens between 751px and 820px */
 @media (min-width: 740px) and (max-width: 830px) {
   .footercol2 {
-    flex: 1; 
-    min-width: 190px; 
-    max-width: 28%; 
-    text-align: left; 
+    flex: 1;
+    min-width: 190px;
+    max-width: 28%;
+    margin-top: 30px;
+    text-align: left;
     margin-left: -10%;
     padding: 0px 26px;
     margin-bottom: 18px;
@@ -228,22 +237,22 @@ ul {
 /* Media query for screens between 821px and 888px */
 @media (min-width: 830px) and (max-width: 888px) {
   .footercol2 {
-    flex: 1; 
-    min-width: 200px; 
-    max-width: 25%; 
-    text-align: left; 
+    flex: 1;
+    min-width: 200px;
+    max-width: 25%;
+    margin-top: 30px;
+    text-align: left;
     margin-left: -5%;
     margin-bottom: 20px;
     padding: 0px 26px;
   }
 }
 
-
 .footercol2 h4 {
   font-size: 18px;
   color: #fff;
   text-transform: capitalize;
-  margin-bottom: 25px; 
+  margin-bottom: 25px;
   font-weight: 500;
   position: relative;
 }
@@ -298,46 +307,51 @@ ul {
 
 @media (max-width: 1200px) {
   .footercol {
-    width: 30%; 
+    width: 30%;
+    margin-top: 30px;
   }
 }
 
 @media (max-width: 992px) {
   .footercol {
-    width: 45%; 
+    width: 45%;
+    margin-top: 30px;
   }
 }
 @media (max-width: 488px) and (min-width: 300px) {
   .footercol {
-    width: 50%; 
+    width: 50%;
+    margin-top: 30px;
     text-align: left;
-    margin-bottom: 20px; 
+    margin-bottom: 20px;
   }
 
   .row {
-    display: flex; 
-    flex-wrap: wrap; 
+    display: flex;
+    margin-left: 50px;
+    margin-right: 50px;
+    flex-wrap: wrap;
     justify-content: space-between;
   }
 
   .title {
-    display: block; 
+    display: block;
     margin-bottom: 15px;
     font-size: 13px;
   }
 
   .content-block {
-    padding-bottom: 10px; 
+    padding-bottom: 10px;
   }
 
   .sociallinks {
     display: flex;
-    justify-content: center; 
-    margin-top: 20px; 
+    justify-content: center;
+    margin-top: 20px;
   }
 
   .sociallinks a {
-    margin-right: 20%; 
+    margin-right: 20%;
     margin-left: -5%;
   }
 
@@ -352,34 +366,37 @@ ul {
 
 @media (max-width: 700px) and (min-width: 488px) {
   .footercol {
-    width: 50%; 
+    width: 50%;
+    margin-top: 30px;
     text-align: left;
-    margin-bottom: 20px; 
+    margin-bottom: 20px;
   }
 
   .row {
-    display: flex; 
-    flex-wrap: wrap; 
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 50px;
+    margin-right: 50px;
   }
 
   .title {
-    display: block; 
+    display: block;
     margin-bottom: 15px;
     font-size: 15px;
   }
 
   .content-block {
-    padding-bottom: 10px; 
+    padding-bottom: 10px;
   }
 
   .sociallinks {
     display: flex;
-    justify-content: center; 
-    margin-top: 20px; 
+    justify-content: center;
+    margin-top: 20px;
   }
 
   .sociallinks a {
-    margin-right: 20%; 
+    margin-right: 20%;
     margin-left: -5%;
   }
 
@@ -394,22 +411,22 @@ ul {
 
 @media (max-width: 574px) {
   .footercol {
-    width: 50%; 
+    width: 50%;
+    margin-top: 30px;
   }
 }
 
 @media (max-width: 400px) {
- 
-
   .footercol {
-    width: 100%; 
+    width: 100%;
+    margin-top: 30px;
   }
 
   .footercol ul li a {
-    font-size: 8px; 
+    font-size: 8px;
   }
 
   .sociallinks {
-    justify-content: center; 
+    justify-content: center;
   }
 }

@@ -1,24 +1,10 @@
-import styles from "./styles.module.css";
-import { Link, useParams } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { SiFacebook, SiTwitter, SiLinkedin } from "react-icons/si";
-import imgUK from "../assets/UK.svg";
 
-import InfoUser from "./InfoUser";
-import Cart from "./cart";
-import Courses from "./Courses";
-import Trainings from "./Trainings";
+import Profile from "./Profile";
+import Header from "./Header";
 import Footer from "../footer";
-import SliderNav from "../slider";
 import Loading from "../Loading";
-import imgLogo from "../assets/logo.jpg";
-import Nav from "../Nav";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import OndemandVideoIcon from "@mui/icons-material/OndemandVideo";
-import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
-import HistoryEduIcon from "@mui/icons-material/HistoryEdu";
-import Button from "@mui/material/Button";
 const ProfileTrainer = (props) => {
   const [user, SetUser] = useState();
   const [isLoading, setLoading] = useState(true);
@@ -30,9 +16,9 @@ const ProfileTrainer = (props) => {
         authorization: `Bearer ${token}`,
       },
     };
-    const urlUserData = `${process.env.REACT_APP_API}/api/userData`;
+    const urlUserData = `${process.env.REACT_APP_API}api/userData`;
     try {
-      axios.post(urlUserData, {}, config).then((response) => {
+      axios.get(urlUserData, config).then((response) => {
         localStorage.setItem("user", JSON.stringify(response.data.data));
         SetUser(response.data.data);
         setLoading(false);
@@ -49,23 +35,10 @@ const ProfileTrainer = (props) => {
 
   const handleSubmit = async () => {
     try {
-      const url = `${process.env.REACT_APP_API}/api/courses`;
-      await axios
-        .post(
-          url
-          //   {
-          //     headers: {
-          //
-          //
-          //
-          //
-          //     },
-          //   },
-          //   {  }
-        )
-        .then((res) => {
-          setAllCourses(res.data.data);
-        });
+      const url = `${process.env.REACT_APP_API}api/courses`;
+      await axios.get(url).then((res) => {
+        setAllCourses(res.data.data);
+      });
     } catch (error) {
       if (
         error.response &&
@@ -175,127 +148,133 @@ const ProfileTrainer = (props) => {
   }
 
   return (
-    <React.Fragment>
-      <Nav />
-      <main className={styles.MotherDivProfile}>
-        <div className={styles.MainDivProfile}>
-          {profile ? (
-            <InfoUser user={user} allCourses={allCourses} />
-          ) : (
-            <React.Fragment>
-              {cart ? (
-                <Cart user={user} />
-              ) : (
-                <React.Fragment>
-                  {courses ? (
-                    <Courses user={user} />
-                  ) : (
-                    <React.Fragment>
-                      {trainings ? <Trainings user={user} /> : ""}
-                    </React.Fragment>
-                  )}
-                </React.Fragment>
-              )}
-            </React.Fragment>
-          )}
-          <div className={styles.rightSectionProfile}>
-            <div className={styles.scndInfos}>
-              <h5 className={styles.titleWelcome}>welcome {user.name}</h5>
-              <Button
-                onClick={handleProfile}
-                className={styles.Button}
-                variant="outlined"
-                startIcon={<AccountCircleIcon />}
-              >
-                Personnal Informations
-              </Button>
-
-              <Button
-                onClick={handleCart}
-                className={styles.Button}
-                variant="outlined"
-                startIcon={<ShoppingBasketIcon />}
-              >
-                Cart
-              </Button>
-
-              <Button
-                onClick={handleTrainings}
-                className={styles.Button}
-                variant="outlined"
-                startIcon={<HistoryEduIcon />}
-              >
-                Trainings
-              </Button>
-              <Button
-                onClick={handleCourses}
-                className={styles.Button}
-                variant="outlined"
-                startIcon={<OndemandVideoIcon />}
-              >
-                Courses
-              </Button>
-
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "space-around",
-                  width: "100%",
-                  padding: "2rem",
-                }}
-              >
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    border :'1px solid grey',
-                    borderRadius : 15,
-                    padding : '1rem'
-                  }}
-                >
-                  <img src="/svg/coins.svg" style={{ height: 50 }} alt="" />
-                  <strong
-                    variant="caption"
-                    component="div"
-                    color="text.secondary"
-                  >
-                    330
-                  </strong>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    border :'1px solid grey',
-                    borderRadius : 15,
-                    padding : '1rem'
-                  }}
-                >
-                  <img
-                    src="/svg/bronze.svg"
-                    alt="bronze"
-                    style={{ height: 50 }}
-                  />
-                  <strong
-                    variant="caption"
-                    component="div"
-                    color="text.secondary"
-                  >
-                    Bronze
-                  </strong>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </main>
+    <div>
+      <Header />
+      <Profile />
       <Footer />
-    </React.Fragment>
+    </div>
   );
 };
 
 export default ProfileTrainer;
+
+// <React.Fragment>
+//       <Nav />
+//       <main className={styles.MotherDivProfile}>
+//         <div className={styles.MainDivProfile}>
+//           {profile ? (
+//             <InfoUser user={user} allCourses={allCourses} />
+//           ) : (
+//             <React.Fragment>
+//               {cart ? (
+//                 <Cart user={user} />
+//               ) : (
+//                 <React.Fragment>
+//                   {courses ? (
+//                     <Courses user={user} />
+//                   ) : (
+//                     <React.Fragment>
+//                       {trainings ? <Trainings user={user} /> : ""}
+//                     </React.Fragment>
+//                   )}
+//                 </React.Fragment>
+//               )}
+//             </React.Fragment>
+//           )}
+//           <div className={styles.rightSectionProfile}>
+//             <div className={styles.scndInfos}>
+//               <h5 className={styles.titleWelcome}>welcome {user.name}</h5>
+//               <Button
+//                 onClick={handleProfile}
+//                 className={styles.Button}
+//                 variant="outlined"
+//                 startIcon={<AccountCircleIcon />}
+//               >
+//                 Personnal Informations
+//               </Button>
+
+//               <Button
+//                 onClick={handleCart}
+//                 className={styles.Button}
+//                 variant="outlined"
+//                 startIcon={<ShoppingBasketIcon />}
+//               >
+//                 Cart
+//               </Button>
+
+//               <Button
+//                 onClick={handleTrainings}
+//                 className={styles.Button}
+//                 variant="outlined"
+//                 startIcon={<HistoryEduIcon />}
+//               >
+//                 Trainings
+//               </Button>
+//               <Button
+//                 onClick={handleCourses}
+//                 className={styles.Button}
+//                 variant="outlined"
+//                 startIcon={<OndemandVideoIcon />}
+//               >
+//                 Courses
+//               </Button>
+
+//               <div
+//                 style={{
+//                   display: "flex",
+//                   justifyContent: "space-around",
+//                   width: "100%",
+//                   padding: "2rem",
+//                 }}
+//               >
+//                 <div
+//                   style={{
+//                     display: "flex",
+//                     flexDirection: "column",
+//                     alignItems: "center",
+//                     justifyContent: "center",
+//                     border :'1px solid grey',
+//                     borderRadius : 15,
+//                     padding : '1rem'
+//                   }}
+//                 >
+//                   <img src="/svg/coins.svg" style={{ height: 50 }} alt="" />
+//                   <strong
+//                     variant="caption"
+//                     component="div"
+//                     color="text.secondary"
+//                   >
+//                     330
+//                   </strong>
+//                 </div>
+//                 <div
+//                   style={{
+//                     display: "flex",
+//                     flexDirection: "column",
+//                     alignItems: "center",
+//                     justifyContent: "center",
+//                     border :'1px solid grey',
+//                     borderRadius : 15,
+//                     padding : '1rem'
+//                   }}
+//                 >
+//                   <img
+//                     src="/svg/bronze.svg"
+//                     alt="bronze"
+//                     style={{ height: 50 }}
+//                   />
+//                   <strong
+//                     variant="caption"
+//                     component="div"
+//                     color="text.secondary"
+//                   >
+//                     Bronze
+//                   </strong>
+//                 </div>
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+//       </main>
+//       <Footer />
+//     </React.Fragment>

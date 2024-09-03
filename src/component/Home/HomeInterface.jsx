@@ -8,6 +8,14 @@ import Main from "../Main";
 import styles from "./styles.module.css";
 import Join from "./Join";
 import Collab from "./Collab";
+import Chatbot from "./chatbot/chatbot"
+
+
+
+
+
+
+
 
 const HomeInterface = () => {
   return (
@@ -30,6 +38,7 @@ const HomeInterface = () => {
       <div className={styles.Featured}> 
         <Featured />
       </div>
+      
      
       <About />
       <UpSkill />
@@ -37,6 +46,7 @@ const HomeInterface = () => {
     </div>
   </div>
   <Footer />
+  <Chatbot />
 </div>
 
     </>

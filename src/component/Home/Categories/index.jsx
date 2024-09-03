@@ -14,6 +14,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Prev from "../../assets/prev.png";
 import Next from "../../assets/next.png";
+import { useNavigate } from "react-router-dom";
 
 const Categories = () => {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
@@ -21,7 +22,7 @@ const Categories = () => {
   const [showModal, setShowModal] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [categories, setCategories] = useState([]);
-
+ const navigate=useNavigate()
   useEffect(() => {
     const handleWidthChange = () => {
       setScreenWidth(window.innerWidth);
@@ -58,7 +59,7 @@ const Categories = () => {
 
   const handleCardClick = (category) => {
     setSelectedCategory(category);
-    setShowModal(true);
+    navigate(`/categoryCourses/${category._id}`);
   };
 
   const handleCloseModal = () => {

@@ -31,7 +31,7 @@ const Trainings = ({ user }) => {
     const config = {
       headers: { authorization: `Bearer ${token}` },
     };
-    const url = `${process.env.REACT_APP_API}/api/trainings/specificGroupe`;
+    const url = `${process.env.REACT_APP_API}api/trainings/specificGroupe`;
     await axios.post(url, { cardIds: idsTrainings }, config).then((res) => {
       setData(res.data.data);
       setLoadingTraining(false);

@@ -25,7 +25,7 @@ function AddRessources() {
     try {
       console.log(id);
       const result = await axios.post(
-        `${process.env.REACT_APP_API}/api/download/`,
+        `${process.env.REACT_APP_API}api/download/`,
         { params: { id: id } },
         { headers: {} },
         { responseType: "blob" },
@@ -70,7 +70,7 @@ function AddRessources() {
                         ) : (
                           <React.Fragment>
                             <img
-                              src={`${process.env.REACT_APP_API}/uploads/833px-PDF_file_icon.svg.png`}
+                              src={`${process.env.REACT_APP_API}uploads/833px-PDF_file_icon.svg.png`}
                               height="200"
                               className=""
                               alt="img"

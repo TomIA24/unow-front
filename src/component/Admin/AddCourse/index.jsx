@@ -171,7 +171,7 @@ const AddCourse = () => {
     //   headers: {},
     // };
     await axios
-      .get(`${process.env.REACT_APP_API}/api/Category/getCategories`)
+      .get(`${process.env.REACT_APP_API}api/Category/getCategories`)
       .then(async (res) => {
         setCategoriesFromBd(res.data.data);
       });
@@ -204,7 +204,8 @@ const AddCourse = () => {
   // });
 
   const [error, setError] = useState("");
-	console.log(error)
+
+
   const handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
@@ -217,22 +218,27 @@ const AddCourse = () => {
       headers: { authorization: `Bearer ${localStorage.getItem("token")}` },
     };
     try {
-      const url = `${process.env.REACT_APP_API}/api/courses/CreateCourse`;
+      const url = `${process.env.REACT_APP_API}api/courses/CreateCourse`;
       axios
         .post(url, data, config)
         .then(async (res) => {
           console.log("id---- :", res.data.id);
+          // setUploading(true);
           await uploadSingleFile(res.data.id);
           await UploadMultipleFiles();
           await UploadMultipleFilesRessources();
           window.scrollTo(0, 0);
           setSaved(true);
+          // setUploading(false);
           await new Promise((r) => {
             setTimeout(r, 2000);
           });
+          setMultipleFilesSelectedRessources([]);
+          setUploadProgress(0);
           setSaved(false);
           setData(initialData);
           setMultipleFilesSelected([]);
+          setPrev(null);
         })
         .catch((err) => {
           console.log(err);

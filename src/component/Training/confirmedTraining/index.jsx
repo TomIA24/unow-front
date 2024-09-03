@@ -32,7 +32,7 @@ const ConfirmedTraining = () => {
     };
     await axios
       .post(
-        `${process.env.REACT_APP_API}/api/trainings/getRoom`,
+        `${process.env.REACT_APP_API}api/trainings/getRoom`,
         { courseId: id },
         config
       )
@@ -84,7 +84,7 @@ const ConfirmedTraining = () => {
     };
     axios
       .post(
-        `${process.env.REACT_APP_API}/api/Trainer/AllowTests`,
+        `${process.env.REACT_APP_API}api/Trainer/AllowTests`,
         { courseId: Data._id, state: "allowed" },
         config
       )
@@ -101,7 +101,7 @@ const ConfirmedTraining = () => {
       params: { id: id },
     };
     axios
-      .get(`${process.env.REACT_APP_API}/api/trainings/specific`, config)
+      .get(`${process.env.REACT_APP_API}api/trainings/specific`, config)
       .then((res) => {
         setData(res.data.data);
         setEvaluations(res.data.data.evaluate);
@@ -115,7 +115,7 @@ const ConfirmedTraining = () => {
     };
     axios
       .post(
-        `${process.env.REACT_APP_API}/api/Candidat/returnCandidatForRatingInfo`,
+        `${process.env.REACT_APP_API}api/Candidat/returnCandidatForRatingInfo`,
         { ids: ids },
         config
       )
@@ -221,7 +221,7 @@ const ConfirmedTraining = () => {
               Data.Thumbnail == {} ||
               !Data.Thumbnail ? (
                 <img
-                  src={`${process.env.REACT_APP_API}/uploads/courseImg.png`}
+                  src={`${process.env.REACT_APP_API}uploads/courseImg.png`}
                   alt=""
                   className={styles.imgCourse}
                 />
@@ -383,7 +383,7 @@ const ConfirmedTraining = () => {
                             ) : (
                               <Avatar
                                 alt="Remy Sharp"
-                                src={`${process.env.REACT_APP_API}/uploads/2022-03-25T09-59-55.836Z-avatar.png`}
+                                src={`${process.env.REACT_APP_API}uploads/2022-03-25T09-59-55.836Z-avatar.png`}
                                 sx={{ width: 24, height: 24 }}
                               />
                             )}

@@ -76,7 +76,7 @@ const AddTrainer = () => {
     setData({ ...initialData });
     e.preventDefault();
     try {
-      const url = `${process.env.REACT_APP_API}/api/Trainer`;
+      const url = `${process.env.REACT_APP_API}api/Trainer`;
       const { data: res } = await axios.post(url, data, { headers: {} });
       console.log(res)
       // window.location.reload();

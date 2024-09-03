@@ -5,10 +5,11 @@
   background-position: bottom;
   background-repeat: no-repeat; 
 } */
+ 
 .container {
   position: relative;
-  
 }
+
 
 .background {
   position: absolute;
@@ -133,80 +134,13 @@
     height: 94%;
   }
 }
-@media (min-width: 1400px) and (max-width:1527px)  {
+@media (min-width: 1400px) {
   .background {
     height: 94%;
   }
 }
-@media (min-width: 1527px) and (max-width:1580px)  {
-  .background {
-    height: 94%;
-  }
-}
-@media (min-width: 1580px) and (max-width:1650px)  {
-  .background {
-    height: 94%;
-  }
-}
-@media (min-width: 1650px) and (max-width:1750px)  {
-  .background {
-    height: 88%;
-  }
-}
-@media (min-width: 1750px) and (max-width:1850px)  {
-  .background {
-    height: 88%;
-  }
-}
-@media (min-width: 1850px) and (max-width:1950px)  {
-  .background {
-    height: 88%;
-  }
-}
-@media (min-width: 1950px) and (max-width:2050px)  {
-  .background {
-    height: 88%;
-  }
-}
-@media (min-width: 2050px) and (max-width:2150px)  {
-  .background {
-    height: 89%;
-  }
-}
-@media (min-width: 2150px) and (max-width:2250px)  {
-  .background {
-    height: 89%;
-  }
-}
-@media (min-width: 2250px) and (max-width:2350px)  {
-  .background {
-    height: 89%;
-  }
-}
-@media (min-width: 2350px) and (max-width:2450px)  {
-  .background {
-    height: 89%;
-  }
-}
-@media (min-width: 2450px) and (max-width: 2800px)  {
-  .background {
-    height: 93%;
-  }
-}
-@media (min-width: 2800px) and (max-width: 3000px)  {
-  .background {
-    height: 93%;
-  }
-}
-@media (min-width: 3000px) and (max-width: 3500px)  {
-  .background {
-    height: 96%;
-  }
-}
-@media (min-width: 3500px)   {
-  .background {
-    height: 96%;
-}}
+
+
 
 
 
@@ -223,7 +157,7 @@
 .content {
   position: relative;
   z-index: 1; /* Ensure the content is above the background */
- 
+
 }
 .Featured{
 margin-top: 5%;
@@ -233,4 +167,63 @@ margin-top: 5%;
 .margin{
   margin-left: 50px;
   margin-right: 50px;
+}
+@media (min-width:1500px)and (max-width:1830px){
+  .margin{
+    padding-left: 11em;
+    padding-right: 11em;
+  }
+}
+@media (min-width:1830px)and (max-width:2000px){
+  .margin{
+    padding-left: 15em;
+    padding-right: 15em;
+  }
+}
+@media (min-width:2000px)and (max-width:2500px){
+  .margin{
+    padding-left: 19em;
+    padding-right: 19em;
+  }
+}
+@media (min-width:2500px)and (max-width:3000px){
+  .margin{
+    padding-left: 29em;
+    padding-right: 29em;
+  }
+  .textsearchtitle{
+    color: white;
+    font-size: 59px;
+    font-weight: 600;
+    text-align: center;
+    margin: 0 auto;
+}
+}
+@media (min-width:3000px)and (max-width:4000px){
+  .margin{
+    padding-left: 42em;
+    padding-right: 42em;
+
+  }
+  .textsearchtitle{
+    color: white;
+    font-size: 59px;
+    font-weight: 600;
+    text-align: center;
+    margin: 0 auto;
+}
+}
+@media (min-width:4000px){
+  .margin{
+    padding-left: 70em;
+    padding-right: 70em;
+
+  }
+  .textsearchtitle{
+    color: white;
+    font-size: 59px;
+    font-weight: 600;
+    text-align: center;
+    margin: 0 auto;
+}
 }

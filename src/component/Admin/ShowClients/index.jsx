@@ -24,8 +24,8 @@ const ShowCandidats = ({ setShowCandidats }) => {
     const config = {
       headers: { authorization: `Bearer ${token}` },
     };
-    const url = `${process.env.REACT_APP_API}/api/Candidat/showCandidat`;
-    axios.post(url, {},config).then((res) => {
+    const url = `${process.env.REACT_APP_API}api/Candidat/showCandidat`;
+    axios.post(url, {}, config).then((res) => {
       setData(res.data.users);
     });
   };
@@ -34,9 +34,9 @@ const ShowCandidats = ({ setShowCandidats }) => {
     const config = {
       headers: { authorization: `Bearer ${token}` },
     };
-    const url = `${process.env.REACT_APP_API}/api/Candidat/deleteCandidat`;
+    const url = `${process.env.REACT_APP_API}api/Candidat/deleteCandidat`;
     console.log(id);
-    await axios.post(url, { idUser: id },config).then((res) => {
+    await axios.post(url, { idUser: id }, config).then((res) => {
       handleData();
     });
   };
