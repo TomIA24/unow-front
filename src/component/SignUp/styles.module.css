@@ -68,13 +68,15 @@
    
 }
 .dividerImage{
-    width: 30%;
+    width: 27%;
     margin-top: 20px;
+    height: 100%;
 }
     
 .divider{
     display: flex;
     justify-content: space-between;
+    margin-bottom: 2%;
 
 }
 .allsocialmedia{
@@ -90,6 +92,12 @@
     padding-inline: 2%;
     margin-top: 3%;
     padding-bottom: 2%;
+}
+.or{
+    color: black;
+    font-size: 13px;
+    
+    font-weight: 700;
 }
 
 .by{

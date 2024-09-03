@@ -97,21 +97,16 @@ const Footer = () => {
             Follow Us <p className={styles.underline}></p>
           </p>
           <div class="content-block">
-            <div className={styles.sociallinks}>
-              <a href="#" aria-label="Facebook">
-                <FacebookIcon />
-              </a>
-              <a href="#" aria-label="Instagram">
-                <InstagramIcon />
-              </a>
-              <a href="#" aria-label="LinkedIn">
-                <LinkedInIcon />
-              </a>
-            </div>
+          <div className={styles.sociallinks}>
+            <a href="https://www.facebook.com/unow.tn" aria-label="Facebook"><FacebookIcon /></a>
+            <a href="https://www.instagram.com/unowelearning/" aria-label="Instagram"><InstagramIcon /></a>
+            <a href="https://www.linkedin.com/company/u-now-elearning-platform/" aria-label="LinkedIn"><LinkedInIcon /></a>
           </div>
         </div>
       </div>
     </div>
+    </div>
+    
   );
 };
 

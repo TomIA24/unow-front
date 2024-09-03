@@ -148,16 +148,9 @@ const Login = () => {
               </p>
 
               <div className={styles.divider}>
-                <img
-                  src={divider}
-                  className={styles.dividerImage}
-                  alt="Divider"
-                />
-                <img
-                  src={divider}
-                  className={styles.dividerImage}
-                  alt="Divider"
-                />
+                <img src={divider} className={styles.dividerImage} alt="Divider" />
+                <p  className={styles.or}>Or</p>
+                <img src={divider} className={styles.dividerImage} alt="Divider" />
               </div>
               <div className={styles.allsocialmedia}>
                 <img

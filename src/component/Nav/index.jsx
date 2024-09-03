@@ -8,6 +8,7 @@ import Avatar from "@mui/material/Avatar";
 import { CiUser } from "react-icons/ci";
 import { Typography } from "@mui/material";
 
+
 const Nav = () => {
   const [WindowWidth, setWindowWidth] = useState(0);
   const handleWidthChange = () => {
