@@ -50,6 +50,9 @@ import CategorySlider from "./sliderPoints";
 import Avatar from "@mui/material/Avatar";
 import AvatarGroup from "@mui/material/AvatarGroup";
 import { Header } from "./Header/header";
+import star from "./Star 4 (1).png"
+import mark from "./Group 1000001816 (1).png"
+import {CourseRatingSimpleView} from "../../shared/rating";
 
 
 const Main = () => {
@@ -231,7 +234,7 @@ const Main = () => {
                         />
                       </div>
                     )}
-                    <div>
+                    <div className={styles.containernote}>
                       <div className={styles.categorie}>
                         <div className={styles.categorietype}>
                           {training.Category}
@@ -239,6 +242,19 @@ const Main = () => {
                         <div className={styles.categoriprice}>
                           {training.Price} $
                         </div>
+                      </div>
+                      <p className={styles.niveau}>{training.Level}</p>
+                      <p className={styles.descr}>{training.Title}</p>
+                      <div className={styles.ravi}>
+                        <div className={styles.notes}>
+                      {/* <img src={star} alt="" className={styles.star} />
+                      <p className={styles.numnote}>0.0</p> */}
+                      {CourseRatingSimpleView(training?._id, training?.rating  || 0, training?.evaluate?.length)}
+                      </div>
+                      <div className={styles.markes}>
+                      <img src={mark} alt="" className={styles.mark} />
+                      <p className={styles.numnote2}>3k</p>
+                      </div>
                       </div>
                     </div>
                   </div>
