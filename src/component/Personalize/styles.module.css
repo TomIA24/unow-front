@@ -164,15 +164,35 @@
   .formnavigation {
     display: flex;
     justify-content: space-between;
+
+    flex-direction: row-reverse;
   }
   
+  .button {
+    display: flex;
+    justify-content: center;
+  }
+  .nextbuttonposition{
+    align-items: end;
+    right: 0;
+  }
+
   .backbutton,
   .nextbutton {
-    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 6.87rem;
+    height: 2.5rem;
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.4);
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    font-family: "Nunito";
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
     cursor: pointer;
-    font-size: 16px;
   }
   
   .backbutton {
@@ -180,8 +200,23 @@
   }
   
   .nextbutton {
+    right: 0;
+    width: 10rem;
+    height: 2.5rem;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  
     background-color: #CD6214;
-    color: #fff;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    font-family: "Nunito";
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 5px;
+    margin-bottom: 10px;
+  
   }
   
   .backbutton:hover,
@@ -381,7 +416,7 @@
 .input {
     outline: none;
     border: none;
-    width: 370px;
+    width: 100%;
     padding: 15px;
     border-radius: 50px;
     /* background-color: #daeff2; */
@@ -389,13 +424,14 @@
     font-size: 14px;
     /* font-family: Nunito; */
     font-weight: 800;
-    color: #3c065ece;
-    border : 1px solid rgba(128, 128, 128, 0.479);
+    color: #2C2C2C;
+    border : 1px solid #CD6214;
     /* font-style: italic; */
 }
 
 .input::placeholder {
-    color: #3c065e69;
+    color: #706F6F;
+    text-align: center;
     /* font-style: italic; */
     font-size: 14px;
     /* font-family: Nunito; */

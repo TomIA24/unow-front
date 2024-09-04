@@ -371,7 +371,7 @@ const Personalize = () => {
             <div >
               <div className={styles.personlizesquestion}>
                 <label>Which of the selected areas would you like to explore in-depth first?</label>
-                <input type="text" name="exploreFirst" value={formData.exploreFirst} onChange={handleInputChange} />
+                <input type="text" name="exploreFirst" className={styles.input} value={formData.exploreFirst} onChange={handleInputChange} placeholder="selected areas"/>
               </div>
               {/* <div className={styles.personlizesquestion}>
                 <label>Which of the selected areas would you like to explore in-depth first?</label>
@@ -391,21 +391,21 @@ const Personalize = () => {
               <div className={styles.personlizesquestion}>
                 <label>What are your main objectives for using this platform? (Select all that apply)</label>
                 <div className={styles.checkboxGroup}>
-                  <input type="checkbox" id="skill" name="goal" className={styles.hiddenCheckbox} checked={formData.goals.includes('Skill Development for Work')} value='Skill Development for Work' onChange={handleInputChange} />
+                  <input type="checkbox" id="skill" name="goals" className={styles.hiddenCheckbox} checked={Array.isArray(formData.goals) && formData.goals.includes('Skill Development for Work')} value='Skill Development for Work' onChange={handleInputChange} />
                   <label htmlFor="skill" className={styles.customLabel}>
                     Skill Development for Work
                   </label>
                 </div>
                 <div className={styles.checkboxGroup}>
-                  <input type="checkbox" id="newinterest" name="goal" className={styles.hiddenCheckbox} value='Exploring New Interests' checked={formData.goals.includes('Exploring New Interests')}onChange={handleInputChange} />
+                  <input type="checkbox" id="newinterest" name="goals" className={styles.hiddenCheckbox} value='Exploring New Interests' checked={Array.isArray(formData.goals) &&formData.goals.includes('Exploring New Interests')} onChange={handleInputChange} />
                   <label htmlFor="newinterest" className={styles.customLabel}>Exploring New Interests</label>
                 </div>
                 <div className={styles.checkboxGroup}>
-                  <input type="checkbox" id="specificproject" name="goal" className={styles.hiddenCheckbox} checked={formData.goals.includes('Preparing for a Specific Project ')} value='Preparing for a Specific Project ' onChange={handleInputChange} />
+                  <input type="checkbox" id="specificproject" name="goals" className={styles.hiddenCheckbox} checked={Array.isArray(formData.goals) &&formData.goals.includes('Preparing for a Specific Project ')} value='Preparing for a Specific Project ' onChange={handleInputChange} />
                   <label htmlFor="specificproject" className={styles.customLabel}>Preparing for a Specific Project </label>
                 </div>
                 <div className={styles.checkboxGroup}>
-                  <input type="checkbox" id="other" name="goal" className={styles.hiddenCheckbox} checked={formData.goals.includes('Other')} onChange={handleInputChange} />
+                  <input type="checkbox" id="other" name="goals" className={styles.hiddenCheckbox} checked={Array.isArray(formData.goals) &&formData.goals.includes('Other')} onChange={handleInputChange} />
                   <label htmlFor="other" className={styles.customLabel}>Other (Specify)</label>
                 </div>
               </div>
@@ -414,19 +414,19 @@ const Personalize = () => {
                   <label>What is your expected timeline to achieve these goals?</label>
                   <div className={styles.checkboxGroup}>
                     <input type="radio" id="month" name="timeline" className={styles.hiddenCheckbox} value='month' onChange={handleInputChange} />
-                    <label htmlFor="month" className={styles.customLabel} checked={formData.timeline.includes('month ')}> month </label>
+                    <label htmlFor="month" className={styles.customLabel} checked={ Array.isArray(formData.goals) && formData.timeline.includes('month ')}> month </label>
                   </div>
                   <div className={styles.checkboxGroup}>
                     <input type="radio" id="1months" name="timeline" className={styles.hiddenCheckbox} value='1-3 months ' onChange={handleInputChange} />
-                    <label htmlFor="1months" className={styles.customLabel} checked={formData.timeline.includes('1-3 months')}>1-3 months  </label>
+                    <label htmlFor="1months" className={styles.customLabel} checked={ Array.isArray(formData.goals) && formData.timeline.includes('1-3 months')}>1-3 months  </label>
                   </div>
                   <div className={styles.checkboxGroup}>
                     <input type="radio" id="3months" name="timeline" className={styles.hiddenCheckbox} value='3 - 6 months' onChange={handleInputChange} />
-                    <label htmlFor="3months" className={styles.customLabel} checked={formData.timeline.includes('3 - 6 months')}>3 - 6 months </label>
+                    <label htmlFor="3months" className={styles.customLabel} checked={ Array.isArray(formData.goals) && formData.timeline.includes('3 - 6 months')}>3 - 6 months </label>
                   </div>
                   <div className={styles.checkboxGroup}>
                     <input type="radio" id="6months" name="timeline" className={styles.hiddenCheckbox} value='6+months' onChange={handleInputChange} />
-                    <label htmlFor="6months" className={styles.customLabel} checked={formData.timeline.includes('6+months')}>6+months  </label>
+                    <label htmlFor="6months" className={styles.customLabel} checked={ Array.isArray(formData.goals) && formData.timeline.includes('6+months')}>6+months  </label>
                   </div>
                 </div>
               </div>
@@ -443,23 +443,23 @@ const Personalize = () => {
             <div className={styles.personlizesquestion}>
               <label>What is your preferred learning style? (Select all that apply)</label>
               <div className={styles.checkboxGroup}>
-                <input type="checkbox" id="videos" name="availability" className={styles.hiddenCheckbox} value='Interactive Videos 'checked={formData.availability.includes('Interactive Videos')} onChange={handleInputChange} />
-                <label htmlFor="videos" className={styles.customLabel}>Interactive Videos</label>
+                <input type="checkbox" id="videos" name="availability" className={styles.hiddenCheckbox} value='Interactive videos'  checked={Array.isArray(formData.availability) &&formData.availability.includes('Interactive videos')} onChange={handleInputChange} />
+                <label htmlFor="videos" className={styles.customLabel}>Interactive videos</label>
               </div>
               <div className={styles.checkboxGroup}>
-                <input type="checkbox" id="liveClasses" name="availability" className={styles.hiddenCheckbox} value='Live Classes with an Instructor'checked={formData.availability.includes('Live Classes with an Instructor')} onChange={handleInputChange} />
+                <input type="checkbox" id="liveClasses" name="availability" className={styles.hiddenCheckbox} value='Live Classes with an Instructor'checked={Array.isArray(formData.availability) &&formData.availability.includes('Live Classes with an Instructor')} onChange={handleInputChange} />
                 <label htmlFor="liveClasses" className={styles.customLabel}>Live Classes with an Instructor</label>
               </div>
               <div className={styles.checkboxGroup}>
-                <input type="checkbox" id="readingMaterials" name="availability" className={styles.hiddenCheckbox} value='Reading Materials & Texts'checked={formData.availability.includes('Reading Materials & Texts')} onChange={handleInputChange} />
+                <input type="checkbox" id="readingMaterials" name="availability" className={styles.hiddenCheckbox} value='Reading Materials & Texts'checked={Array.isArray(formData.availability) &&formData.availability.includes('Reading Materials & Texts')} onChange={handleInputChange} />
                 <label htmlFor="readingMaterials" className={styles.customLabel}>Reading Materials & Texts</label>
               </div>
               <div className={styles.checkboxGroup}>
-                <input type="checkbox" id="exercises" name="availability" className={styles.hiddenCheckbox} value='Practical Exercises & Quizzes'checked={formData.availability.includes('Practical Exercises & Quizzes')} onChange={handleInputChange} />
+                <input type="checkbox" id="exercises" name="availability" className={styles.hiddenCheckbox} value='Practical Exercises & Quizzes'checked={Array.isArray(formData.availability) &&formData.availability.includes('Practical Exercises & Quizzes')} onChange={handleInputChange} />
                 <label htmlFor="exercises" className={styles.customLabel}>Practical Exercises & Quizzes</label>
               </div>
               <div className={styles.checkboxGroup}>
-                <input type="checkbox" id="mixedFormats" name="availability" className={styles.hiddenCheckbox} value='Mixed Formats'checked={formData.availability.includes('Mixed Formats')} onChange={handleInputChange} />
+                <input type="checkbox" id="mixedFormats" name="availability" className={styles.hiddenCheckbox} value='Mixed Formats'checked={Array.isArray(formData.availability) &&formData.availability.includes('Mixed Formats')} onChange={handleInputChange} />
                 <label htmlFor="mixedFormats" className={styles.customLabel}>Mixed Formats</label>
               </div>
             </div>
@@ -475,7 +475,7 @@ const Personalize = () => {
     className={styles.hiddenCheckbox}
     value="Less than 5 hours"
     onChange={handleInputChange}
-    checked={formData.hoursperweek === 'Less than 5 hours'}
+    checked={Array.isArray(formData.hoursperweek) && formData.hoursperweek === 'Less than 5 hours'}
   />
   <label htmlFor="hours" className={styles.customLabel}>
     Less than 5 hours
@@ -490,7 +490,7 @@ const Personalize = () => {
     className={styles.hiddenCheckbox}
     value="5 to 10 hours"
     onChange={handleInputChange}
-    checked={formData.hoursperweek === '5 to 10 hours'}
+    checked={Array.isArray(formData.hoursperweek) && formData.hoursperweek === '5 to 10 hours'}
   />
   <label htmlFor="morehours" className={styles.customLabel}>
     5 to 10 hours
@@ -505,7 +505,7 @@ const Personalize = () => {
     className={styles.hiddenCheckbox}
     value="More than 10 hours"
     onChange={handleInputChange}
-    checked={formData.hoursperweek === 'More than 10 hours'}
+    checked={Array.isArray(formData.hoursperweek) && formData.hoursperweek === 'More than 10 hours'}
   />
   <label htmlFor="more" className={styles.customLabel}>
     More than 10 hours
@@ -518,7 +518,7 @@ const Personalize = () => {
                 <div className={styles.checkboxGroup}>
                   <div className={styles.checkboxGroup}>
                     <input type="radio" id="yes" name="learningother"
-                      className={styles.hiddenCheckbox} value='yes' onChange={handleInputChange} checked={formData.learningother === 'yes'} />
+                      className={styles.hiddenCheckbox} value='yes' onChange={handleInputChange} checked={Array.isArray(formData.learningother) && formData.learningother === 'yes'} />
                     <label htmlFor="yes" className={styles.customLabel}>
                       yes
                     </label>
@@ -528,7 +528,7 @@ const Personalize = () => {
                 <div>
                   <div className={styles.checkboxGroup}>
                     <input type="radio" id="no" name="learningother"
-                      className={styles.hiddenCheckbox} value='no' onChange={handleInputChange}     checked={formData.learningother === 'no'} />
+                      className={styles.hiddenCheckbox} value='no' onChange={handleInputChange}     checked={Array.isArray(formData.learningother) && formData.learningother === 'no'} />
                     <label htmlFor="no" className={styles.customLabel}>
                       No
                     </label>
@@ -557,7 +557,7 @@ const Personalize = () => {
     className={styles.hiddenCheckbox}
     value="Intensive (e.g., Bootcamp)"
     onChange={handleInputChange}
-    checked={formData.learningpace.includes('Intensive (e.g., Bootcamp)')}
+    checked={Array.isArray(formData.learningother) && formData.learningpace.includes('Intensive (e.g., Bootcamp)')}
   />
   <label htmlFor="intensive" className={styles.customLabel}>
     Intensive (e.g., Bootcamp)
@@ -572,7 +572,7 @@ const Personalize = () => {
     className={styles.hiddenCheckbox}
     value="Regular and Gradual"
     onChange={handleInputChange}
-    checked={formData.learningpace.includes('Regular and Gradual')}
+    checked={Array.isArray(formData.learningother) && formData.learningpace.includes('Regular and Gradual')}
   />
   <label htmlFor="regular" className={styles.customLabel}>
     Regular and Gradual
@@ -587,7 +587,7 @@ const Personalize = () => {
     className={styles.hiddenCheckbox}
     value="Self-paced (No time constraints)"
     onChange={handleInputChange}
-    checked={formData.learningpace.includes('Self-paced (No time constraints)')}
+    checked={Array.isArray(formData.learningother) && formData.learningpace.includes('Self-paced (No time constraints)')}
   />
   <label htmlFor="selfpaced" className={styles.customLabel}>
     Self-paced (No time constraints)
@@ -599,7 +599,7 @@ const Personalize = () => {
               <div>
                 <div className={styles.checkboxGroup}>
                   <input type="radio" id="weekend" name="dayslearning"
-                       checked={formData.dayslearning === 'weekend'} className={styles.hiddenCheckbox} value='weekend' onChange={handleInputChange} />
+                       checked={ Array.isArray(formData.dayslearning) && formData.dayslearning === 'weekend'} className={styles.hiddenCheckbox} value='weekend' onChange={handleInputChange} />
                   <label htmlFor="weekend" className={styles.customLabel}>
                     weekend
                   </label>
@@ -609,7 +609,7 @@ const Personalize = () => {
               <div>
                 <div className={styles.checkboxGroup}>
                   <input type="radio" id="weekdays" name="dayslearning"
-                    checked={formData.dayslearning === 'weekdays'} className={styles.hiddenCheckbox} value='weekdays' onChange={handleInputChange} />
+                    checked={  Array.isArray(formData.dayslearning) &&  formData.dayslearning === 'weekdays'} className={styles.hiddenCheckbox} value='weekdays' onChange={handleInputChange} />
                   <label htmlFor="weekdays" className={styles.customLabel}>
                     weekdays
                   </label>
@@ -618,7 +618,7 @@ const Personalize = () => {
               </div>
               <div>
                 <div className={styles.checkboxGroup}>
-                  <input type="radio" id="both" name="dayslearning" className={styles.hiddenCheckbox}checked={formData.dayslearning === 'both'}value='both' onChange={handleInputChange} />
+                  <input type="radio" id="both" name="dayslearning" className={styles.hiddenCheckbox}checked={ Array.isArray(formData.dayslearning) &&  formData.dayslearning === 'both'}value='both' onChange={handleInputChange} />
                   <label htmlFor="both" className={styles.customLabel}>
                     both
                   </label>
@@ -634,9 +634,10 @@ const Personalize = () => {
         name="timeOfDay"
         value="morning"
         onChange={handleInputChange}
-        checked={formData.timeOfDay === 'morning'}
+        checked={ Array.isArray(formData.timeOfDay) && formData.timeOfDay === 'morning'}
       />
       <label htmlFor="morning">Morning</label>
+
 
       <input
         type="radio"
@@ -644,7 +645,7 @@ const Personalize = () => {
         name="timeOfDay"
         value="afternoon"
         onChange={handleInputChange}
-        checked={formData.timeOfDay === 'afternoon'}
+        checked={ Array.isArray(formData.timeOfDay) && formData.timeOfDay === 'afternoon'}
       />
       <label htmlFor="afternoon">Afternoon</label>
 
@@ -654,7 +655,7 @@ const Personalize = () => {
         name="timeOfDay"
         value="evening"
         onChange={handleInputChange}
-        checked={formData.timeOfDay === 'evening'}
+        checked={ Array.isArray(formData.timeOfDay) && formData.timeOfDay === 'evening'}
       />
       <label htmlFor="evening">Evening</label>
     </div>
@@ -681,39 +682,39 @@ const Personalize = () => {
   };
   const handleNext = async () => {
     if (currentStep < steps.length - 1) {
-      setCurrentStep((prevStep) => prevStep + 1);
-    } else {
-      console.log('Submitting data:', formData);
       try {
+        console.log('Submitting data:', formData);
+  
+        // Make the API call to update the candidate
         const response = await axios.put(
           `${process.env.REACT_APP_API}api/candidat/66a22641a8d879e703dbe057`,
           formData
         );
         console.log('Updated candidate data:', response.data);
-
-        alert('Data submitted successfully');
-
+  
         // Clear form data
         setFormData({ interests: [], exploreFirst: '' });
-
-        // Optionally, reset step
-        setCurrentStep(0); // Reset to the first step or adjust as needed
-
+  
+        // Proceed to the next step
+        setCurrentStep((prevStep) => prevStep + 1);
+  
+        // Optionally, reset step to 0 after submission
+        // setCurrentStep(0); // Uncomment this line if you want to reset after submission
+  
       } catch (error) {
         console.error('Error updating candidate:', error.response ? error.response.data : error.message);
-
-        // Display specific error messages
-        if (error.response && error.response.status === 400) {
-          alert('Validation error: ' + error.response.data);
-        } else if (error.response && error.response.status === 404) {
-          alert('Candidate not found.');
-        } else {
-          alert('Failed to submit data. Please try again.');
-        }
+  
+        // Uncomment the alerts if you want to notify the user of specific errors
+        // if (error.response && error.response.status === 400) {
+        //   alert('Validation error: ' + error.response.data);
+        // } else if (error.response && error.response.status === 404) {
+        //   alert('Candidate not found.');
+        // } else {
+        //   alert('Failed to submit data. Please try again.');
+        // }
       }
     }
   };
-
 
   return (
     <div >
@@ -753,15 +754,20 @@ const Personalize = () => {
           </div>
 
           <div className={styles.formnavigation}>
-            {currentStep > 0 && (
-              <button onClick={handleBack} className={styles.backbutton}>
-                Back
-              </button>
-            )}
+         
             <button onClick={handleNext} className={styles.nextbutton}>
               {currentStep === steps.length - 1 ? "Finish" : "Next"}
             </button>
-          </div>
+            {currentStep > 0 && (
+              <div>
+              <button onClick={handleBack} className={styles.backbutton}>
+                Back
+              </button>
+              </div>
+            )}
+         
+            </div>
+  
         </div>
       </div>
 
