@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useRef } from "react";
 import { Link } from "react-router-dom";
 import SliderNav from "./slider";
 import styles from "./styles.module.css";
@@ -7,7 +7,8 @@ import imgicon from "../assets/usericon.png";
 import Avatar from "@mui/material/Avatar";
 import { CiUser } from "react-icons/ci";
 import { Typography } from "@mui/material";
-
+import { useNavigate } from 'react-router-dom'; 
+import { useLocation } from 'react-router-dom';
 
 const Nav = () => {
   const [WindowWidth, setWindowWidth] = useState(0);
@@ -15,7 +16,7 @@ const Nav = () => {
     const currentWidth = window.innerWidth;
     setWindowWidth(currentWidth);
   };
-
+  const dialogRef = useRef(null);
   useEffect(() => {
     handleWidthChange();
     window.addEventListener("resize", handleWidthChange);
@@ -49,6 +50,53 @@ const Nav = () => {
     localStorage.removeItem("user");
     window.location = "/login";
   };
+  const navigate = useNavigate();
+  const [opnpopup, setpopupopen] = useState(false);
+ const handlepopup= ()=> {
+
+  setpopupopen(!opnpopup)
+  console.log(opnpopup);
+  
+  };
+  const closepopup= ()=> {
+    navigate("/profile")
+    setpopupopen(!opnpopup)
+    console.log(opnpopup);
+    
+    };
+  const location = useLocation();
+  
+  const [Data, setData] = useState({
+    _id: "",
+    Title: "",
+    Trainer: "",
+    Description: "",
+    Goals: "",
+    WhoShouldAttend: "",
+    CourseContent: "",
+    PracticalWork: "",
+    Category: "",
+    Price: "",
+    Thumbnail: {},
+    Video: [],
+    Level: "",
+    Reference: "",
+    Date: [],
+    enrolled: [],
+    state: "",
+    certificate: "",
+    evaluate: [],
+    DurationQuiz:""
+  });
+
+  const handlpersonalized =(candiddId)=> {
+    console.log("id candat from nev",candiddId);
+    
+    navigate(`/personalize`, { state: {candiddId}} )
+    setpopupopen(!opnpopup)
+    console.log(opnpopup);
+    
+    };
 
   return (
     <React.Fragment>
@@ -124,8 +172,12 @@ const Nav = () => {
                     </a>
                   </Link>
                 ) : (
-                  <Link
-                    to="/profile"
+                  
+                  <div>
+                 
+                  <button
+                    // to="/profile"
+                    onClick={handlepopup}
                     style={{ display: "flex", alignItems: "center" }}
                   >
                     <img src="/svg/coins.svg" style={{ height: 30 }} alt="" />
@@ -159,7 +211,8 @@ const Nav = () => {
                       )}
                       Welcome, {user.name}
                     </a>
-                  </Link>
+                  </button>
+                  </div>
                 )}
                 <Link to="/">
                   <a
@@ -182,6 +235,17 @@ const Nav = () => {
           </React.Fragment>
         )}
       </nav>
+      {opnpopup && (
+        <>
+        <div className={styles.overlayStyles}>
+        <div  ref={dialogRef} className={styles.dialogStyles}>
+          <p>We want to know you better</p>
+          <button  onClick={closepopup}>Close</button>
+          <button onClick={()=>handlpersonalized(user._id)}>Continue</button>
+        </div >
+        </div>
+      </>
+      )}
     </React.Fragment>
   );
 };
