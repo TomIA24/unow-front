@@ -24,8 +24,8 @@ const responsive = {
 export const Header = () => {
   const images = [
     "/images/home/unw.jpeg",
-    "/images/home/header.png",
-    "/images/home/background-image.png",
+    // "/images/home/header.png",
+    // "/images/home/background-image.png",
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);

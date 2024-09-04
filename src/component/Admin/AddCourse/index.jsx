@@ -63,7 +63,7 @@ const AddCourse = () => {
 
   useEffect(() => {
     setData({ ...data, QuestionsQCM: QuestionsQCM, QuestionsQR: QuestionsQR });
-  }, [QuestionsQCM, QuestionsQR]);
+  }, [QuestionsQCM, QuestionsQR, data]);
   const initialData = {
     Title: "",
     Description: "",
@@ -167,9 +167,9 @@ const AddCourse = () => {
   const [categoriesFromBd, setCategoriesFromBd] = useState([]);
 
   const HandleCategories = async () => {
-    const config = {
-      headers: {},
-    };
+    // const config = {
+    //   headers: {},
+    // };
     await axios
       .get(`${process.env.REACT_APP_API}api/Category/getCategories`)
       .then(async (res) => {
@@ -195,15 +195,16 @@ const AddCourse = () => {
 
   const TrainersList = ["1", "2", "3"];
 
-  const Trainers = TrainersList.map((Trainer) => {
-    return (
-      <MenuItem key={Trainer} value={Trainer}>
-        {Trainer}
-      </MenuItem>
-    );
-  });
+  // const Trainers = TrainersList.map((Trainer) => {
+  //   return (
+  //     <MenuItem key={Trainer} value={Trainer}>
+  //       {Trainer}
+  //     </MenuItem>
+  //   );
+  // });
 
   const [error, setError] = useState("");
+
 
   const handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
@@ -222,17 +223,22 @@ const AddCourse = () => {
         .post(url, data, config)
         .then(async (res) => {
           console.log("id---- :", res.data.id);
+          // setUploading(true);
           await uploadSingleFile(res.data.id);
           await UploadMultipleFiles();
           await UploadMultipleFilesRessources();
           window.scrollTo(0, 0);
           setSaved(true);
+          // setUploading(false);
           await new Promise((r) => {
             setTimeout(r, 2000);
           });
+          setMultipleFilesSelectedRessources([]);
+          setUploadProgress(0);
           setSaved(false);
           setData(initialData);
           setMultipleFilesSelected([]);
+          setPrev(null);
         })
         .catch((err) => {
           console.log(err);
@@ -300,7 +306,7 @@ const AddCourse = () => {
         filesArrayRessources.push(file);
       });
     }
-  }, [multipleFilesSelectedRessources]);
+  }, [multipleFilesSelectedRessources, filesArrayRessources]);
 
   const [close, setClose] = useState(false);
 
@@ -369,7 +375,7 @@ const AddCourse = () => {
         filesArray.push(file);
       });
     }
-  }, [multipleFilesSelected]);
+  }, [multipleFilesSelected, filesArray]);
 
   const UploadMultipleFiles = async () => {
     const formData = new FormData();
@@ -404,6 +410,7 @@ const AddCourse = () => {
   };
 
   const OnAddQCM = async () => {
+	  setLoading(true)
     setQuestionsQCM([
       ...QuestionsQCM,
       {
@@ -419,6 +426,7 @@ const AddCourse = () => {
       Responses: "",
       ResAcceptable: "",
     });
+	  setLoading(false)
   };
 
   const OnAddQR = () => {

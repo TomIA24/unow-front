@@ -15,8 +15,16 @@
   width: 100%;
   
 }
+.container{
+  display: flex;
+  flex-direction: row; 
+  margin-left: 2%;
+  gap:10px
+}
 
-
+.containerDescription{
+  flex:2
+}
 .subtitleContainer {
   margin-top: 1%;
   margin-bottom: 2%;
@@ -45,13 +53,14 @@
 }
 
 .imageAboutUs {
+
   width: 100%;
   max-width: 100%;
-  height: auto;
   margin-top: 0%;
 }
 
 .imageWrapper {
+  flex:1;
   margin-bottom: 0%;
   display: flex;
   justify-content: center;
@@ -144,11 +153,19 @@
   }
 
   .imageAboutUs {
-    width: 50%;
+    width: 80%;
     height: auto;
     background-color: transparent;
     margin-bottom: 5%;
         margin-top: 2%;
+  }
+
+  .subtitle {
+    margin-left: 4%;
+    color: #1c4b82;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: -2%;
   }
  
 }
@@ -165,8 +182,7 @@
     font-weight: bold;
   }
   .imageAboutUs {
-    width: 50%;
-    height: 100%;
+    width: 80%; 
     margin-bottom: 5%;
   }
   .subtitle {
@@ -185,10 +201,10 @@
   
   .aboutTitle {
     font-size: 25px;
-        margin-top: 7%;
         margin-left: 4%;
         margin-bottom: 0%;
         font-weight: 800;
+        margin-top: 5%;
   }
  
 }
@@ -230,17 +246,15 @@
   
   .aboutTitle, .collaborateTitle, .consultantsTitle {
     font-size: 25px;
-        margin-top: 10%;
+ 
         margin-left: 4%;
         margin-bottom: 0%;
         font-weight: 800;
   }
 
   .readButton, .applyButton {
-    padding-top: 1.3%;
-    padding-bottom: 2%;
-    font-size: 12px;
-    margin-bottom: -2%;
+ 
+    font-size: 12px; 
   }
 
   .descriptionpar {
@@ -261,7 +275,8 @@
   }
 
   .imageAboutUs {
-    width: 50%;
+ 
+
     height: auto;
     background-color: transparent;
     margin-top: 0%;
@@ -273,13 +288,13 @@
 @media (max-width: 769px) {
   .aboutTitle, .collaborateTitle, .consultantsTitle {
     font-size: 21px;
-        margin-top: 14%;
+        margin-top: 5%;
         margin-left: 1%;
         font-weight: 800;
         margin-bottom: 0%;
   }
   .descriptionpar {
-    margin-top: 30%;
+    margin-top: 10%;
     font-size: 9px;
     line-height: 20px;
     font-weight: bold;
@@ -308,6 +323,7 @@
     margin-top: 5%;
     margin-left: 5%;
     border: none;
+
   }
 
   .aboutContainer, .aboutContainercollab, .consultantSection, .allParaghraphe {
@@ -321,8 +337,7 @@
     margin-top: 7px;
   }
   .imageAboutUs {
-    position: absolute;
-    width: 40%;
+ 
     background-color: transparent;
     z-index: -3;
     margin-top: 0%;
@@ -332,16 +347,11 @@
   }
 
   .readButton, .applyButton {
-    padding-top: 2%;
-    padding-bottom: 3.5%;
     width: 6rem;
-    
   }
 }
 
 @media (max-width: 576px) {
-  
-
   .descriptionpar {
     line-height: 15px;
     margin-right: 10%;
@@ -382,18 +392,12 @@
     padding: 0px;
   }
 
-  .applyButton, .readButton {
-    width: 17%;
-    padding-top: 1.7%;
-    padding-bottom: 3%;
-    height: 15%;
-    font-size: 8px;
+  .container{
+    gap:0px
   }
-
- 
+  
   .aboutTitle {
     font-size: 16px;
-        margin-top: 20%;
         margin-left: 1%;
         margin-bottom: 0%;
   }
@@ -404,9 +408,7 @@
   }
 }
 @media (max-width: 500px) and (min-width: 400px) {
-  .applyButton {
-    padding-top: 2.5%;
-  }
+ 
   .descriptionpar {
     line-height: 12px;
   }
@@ -424,8 +426,6 @@
     font-weight: bold;
     font-family: lato;
   }
- 
-
   .readButton {
     width: 4rem;
     height: 15%;
@@ -453,7 +453,7 @@
 /* Adjustments for iPhone 14 and SE (and similar small devices) */
 @media (max-width: 440px) {
   .aboutContainer {
-    padding: 10px;
+    padding-inline: 10px;
     width: 100%;
     margin: 0 auto;
   }
@@ -517,6 +517,7 @@
   .container {
     padding-left: 0%;
     padding-right: 0%;
+
   }
 
  
@@ -535,7 +536,7 @@
   }
   .aboutTitle {
     font-size: 12px;
-        margin-top: 32%;
+        
         margin-left: -3%;
         margin-bottom: 5%;
   }

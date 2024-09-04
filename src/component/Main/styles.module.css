@@ -316,6 +316,7 @@ background-color: #ffffff;
     font-weight: bold;
     padding: 10px;
     white-space: normal;
+    color: #2c2c2c;
     
 
 }
@@ -969,12 +970,7 @@ background-color: #ffffff;
 }
 
 
-
-.body {
-
-    background-color: aqua;
-
-}
+ 
 
 .features {
     color: white;
@@ -1315,20 +1311,20 @@ margin-left: 200px; */
    }
    @media (min-width: 320px) and (max-width: 370px)  {
        .categorietype {
-           font-size: 5px; /* Ajuster la taille de la police pour les tablettes */
+           font-size: 4px; /* Ajuster la taille de la police pour les tablettes */
            margin: 0px -13px 0px 1px; /* Ajuster les marges pour les tablettes */
        }
    }
     @media (min-width: 370px) and (max-width: 406px)  {
        .categorietype {
-           font-size: 6px; /* Ajuster la taille de la police pour les tablettes */
+           font-size: 4px; /* Ajuster la taille de la police pour les tablettes */
            margin: 0px -8px 0px 3px; /* Ajuster les marges pour les tablettes */
        }
    }
  
       @media (min-width: 406px) and (max-width: 436px) {
        .categorietype {
-           font-size: 6.5px; /* Ajuster la taille de la police pour les tablettes */
+           font-size: 4.5px; /* Ajuster la taille de la police pour les tablettes */
            margin: 0px -10px 0px 2px; /* Ajuster les marges pour les tablettes */
        }
    }
@@ -1342,7 +1338,7 @@ margin-left: 200px; */
     @media (min-width: 460px) and (max-width: 503px) {
        .categorietype {
            font-size: 6.5px; /* Ajuster la taille de la police pour les tablettes */
-           margin: 0px 0px 0px 2px; /* Ajuster les marges pour les tablettes */
+           margin: 0px 0px 0px 22px; /* Ajuster les marges pour les tablettes */
        }
    }
    
@@ -1350,7 +1346,7 @@ margin-left: 200px; */
    @media (min-width: 503px) and (max-width: 582px) {
        .categorietype {
            font-size: 7px; /* Ajuster la taille de la police pour les petits écrans */
-           margin: 0px 0px 0px 10px; /* Ajuster les marges pour les petits écrans */
+           margin: 0px 0px 0px 24px;
        }
    }
    
@@ -1358,19 +1354,19 @@ margin-left: 200px; */
    @media (min-width: 582px) and (max-width: 618px) {
        .categorietype {
            font-size: 7px; /* Ajuster la taille de la police pour les tablettes */
-           margin: 0px 0px 0px 12px; /* Ajuster les marges pour les tablettes */
+           margin: 0px 0px 0px 28px;
        }
    }
    @media (min-width: 618px) and (max-width: 700px) {
        .categorietype {
            font-size: 8.5px; /* Ajuster la taille de la police pour les tablettes */
-           margin: 0px 0px 0px 12px; /* Ajuster les marges pour les tablettes */
+           margin: 0px 0px 0px 28px;
        }
    }
      @media (min-width: 700px) and (max-width: 800px) {
        .categorietype {
            font-size: 8.5px; /* Ajuster la taille de la police pour les tablettes */
-           margin: 0px 0px 0px -9px; /* Ajuster les marges pour les tablettes */
+           margin: 0px 0px 0px 28px;
        }
    }
    
@@ -1378,7 +1374,7 @@ margin-left: 200px; */
    @media (min-width: 800px) and (max-width: 992px) {
        .categorietype {
            font-size: 7px; /* Ajuster la taille de la police pour les petits desktops */
-           margin: 0px -14px 0px -6px; /* Ajuster les marges pour les petits desktops */
+           margin: 0px 0px 0px 28px;
        }
    }
    
@@ -1386,7 +1382,7 @@ margin-left: 200px; */
    @media (min-width: 993px) and (max-width: 1200px) {
        .categorietype {
            font-size: 9px; /* Ajuster la taille de la police pour les moyens desktops */
-           margin: 0px 0px 0px -15px; /* Ajuster les marges pour les moyens desktops */
+           margin: 0px 0px 0px 28px;
        }
    }
    
@@ -1917,14 +1913,7 @@ margin-left: 200px; */
        }
    
    }
-   @media (min-width: 2500px)  {
-       .textsearchtitle {
-           font-size: 68px; /* Keep the original font size for large desktops */
-           margin: 12px 0; /* Add some vertical margin */
-           font-weight: 550; /* Augmentation du poids de la police */
-           margin-right: 0%;
-       }
-   }
+
    
    .features {
        color: white; /* White text color */
@@ -2260,9 +2249,9 @@ margin-left: 200px; */
                        
            
                    }}
-                   @media (min-width: 1500px) and (max-width: 1550px) {
+                   @media (min-width: 1500px) and (max-width:1730px)  {
                        .explore_container {
-                           width: 46%;
+                           width: 44%;
                            max-width: 875px;
                            height: 60px;
                            border-radius: 10px;
@@ -2275,211 +2264,48 @@ margin-left: 200px; */
                            margin-left: 3%;
                            margin-right: auto;
                            padding: 0; /* Added padding for better content spacing */
-                         
-                           
+                        }
+                           .textsearchtitle {
+                            color: white;
+                            font-size: 41px;
+                            font-weight: 600;
+                            text-align: center;
+                            margin: 0 auto;
+                        }
+                        .textsearch {
+                            font-size: 13px;
+                            padding-top: 0;
+                            padding-bottom: 6px;
+                        }
+                        .textsearch2 {
+                            color: white;
+                            font-size: 13px;
+                            padding-top: 2%;
+                            font-family: 'Lato';
+                        }
+                    }
                
-                       }}
-                       @media (min-width: 1550px) and (max-width: 1600px) {
-                           .explore_container {
-                               width: 47%;
-                               max-width: 875px;
-                               height: 70px;
-                               border-radius: 10px;
-                               box-shadow: 4px 4px 10.3px rgba(0, 0, 0, 0.1);
-                               background-color: white;
-                               display: flex;
-                               align-items: center;
-                               margin-top: -15px;
-                               border: 1px solid;
-                               margin-left: 3%;
-                               margin-right: auto;
-                               padding: 0; /* Added padding for better content spacing */
-                               margin-bottom: 1%;
-                             
-                               
                    
-                           }}
-                           @media (min-width: 1600px) and (max-width: 1650px) {
-                               .explore_container {
-                                   width: 48%;
-                                   max-width: 920px;
-                                   height: 70px;
-                                   border-radius: 10px;
-                                   box-shadow: 4px 4px 10.3px rgba(0, 0, 0, 0.1);
-                                   background-color: white;
-                                   display: flex;
-                                   align-items: center;
-                                   margin-top: -15px;
-                                   border: 1px solid;
-                                   margin-left: 3%;
-                                   margin-right: auto;
-                                   padding: 0; /* Added padding for better content spacing */
-                                   margin-bottom: 1%;
-                                 
-                                   
-                       
-                               }}
-   
-                            @media (min-width: 1650px) and (max-width: 1700px) {
-                                   .explore_container {
-                                       width: 49.5%;
-                                       max-width: 955px;
-                                       height: 70px;
-                                       border-radius: 10px;
-                                       box-shadow: 4px 4px 10.3px rgba(0, 0, 0, 0.1);
-                                       background-color: white;
-                                       display: flex;
-                                       align-items: center;
-                                       margin-top: -15px;
-                                       border: 1px solid;
-                                       margin-left: 3%;
-                                       margin-right: auto;
-                                       padding: 0; /* Added padding for better content spacing */
-                                       margin-bottom: 1%;
-                                     
-                                       
-                           
-                                   }}
-                                   @media (min-width: 1700px) and (max-width: 1750px) {
-                                       .explore_container {
-                                           width: 51%;
-                                           max-width: 1000px;
-                                           height: 70px;
-                                           border-radius: 10px;
-                                           box-shadow: 4px 4px 10.3px rgba(0, 0, 0, 0.1);
-                                           background-color: white;
-                                           display: flex;
-                                           align-items: center;
-                                           margin-top: -15px;
-                                           border: 1px solid;
-                                           margin-left: 3%;
-                                           margin-right: auto;
-                                           padding: 0; /* Added padding for better content spacing */
-                                           margin-bottom: 1%;
-                                         
-                                           
-                               
-                                       }}
-                                       @media (min-width: 1750px) and (max-width: 1849px) {
-                                           .explore_container {
-                                               width: 52.5%;
-                                               max-width: 1110px;
-                                               height: 70px;
-                                               border-radius: 10px;
-                                               box-shadow: 4px 4px 10.3px rgba(0, 0, 0, 0.1);
-                                               background-color: white;
-                                               display: flex;
-                                               align-items: center;
-                                               margin-top: -15px;
-                                               border: 1px solid;
-                                               margin-left: 3%;
-                                               margin-right: auto;
-                                               padding: 0; /* Added padding for better content spacing */
-                                               margin-bottom: 1%;
-                                             
-                                               
-                                   
-                                           }}
-                                           @media (min-width: 1850px) and (max-width: 1890px) {
-                                               .explore_container {
-                                                   width: 53%;
-                                                   max-width: 1150px;
-                                                   height: 70px;
-                                                   border-radius: 10px;
-                                                   box-shadow: 4px 4px 10.3px rgba(0, 0, 0, 0.1);
-                                                   background-color: white;
-                                                   display: flex;
-                                                   align-items: center;
-                                                   margin-top: -15px;
-                                                   border: 1px solid;
-                                                   margin-left: 3%;
-                                                   margin-right: auto;
-                                                   padding: 0; /* Added padding for better content spacing */
-                                                   margin-bottom: 1%;
-                                                 
-                                                   
-                                       
-                                               }}
-                                               @media (min-width: 1890px) and (max-width: 1930px) {
-                                                   .explore_container {
-                                                       width: 54%;
-                                                       max-width: 1180px;
-                                                       height: 70px;
-                                                       border-radius: 10px;
-                                                       box-shadow: 4px 4px 10.3px rgba(0, 0, 0, 0.1);
-                                                       background-color: white;
-                                                       display: flex;
-                                                       align-items: center;
-                                                       margin-top: -15px;
-                                                       border: 1px solid;
-                                                       margin-left: 3%;
-                                                       margin-right: auto;
-                                                       padding: 0; /* Added padding for better content spacing */
-                                                       margin-bottom: 1%;
-                                                     
-                                                       
-                                           
-                                                   }}
-                                                   @media  (min-width: 1930px) and (max-width: 1980px) {
-                                                       .explore_container {
-                                                           width: 44%;
-                                                           max-width: 1290px;
-                                                           height: 80px;
-                                                           border-radius: 10px;
-                                                           box-shadow: 4px 4px 10.3px rgba(0, 0, 0, 0.1);
-                                                           background-color: white;
-                                                           display: flex;
-                                                           align-items: center;
-                                                           margin-top: -15px;
-                                                           border: 1px solid;
-                                                           margin-left: 14%;
-                                                           margin-right: auto;
-                                                           padding: 0; /* Added padding for better content spacing */
-                                                           margin-bottom: 1%;
-                                                         
-                                                           
-                                               
-                                                       }}
-                                                        @media  (min-width: 1930px) and (max-width: 1980px) {
-                                                       .explore_container {
-                                                           width: 44%;
-                                                           max-width: 1290px;
-                                                           height: 80px;
-                                                           border-radius: 10px;
-                                                           box-shadow: 4px 4px 10.3px rgba(0, 0, 0, 0.1);
-                                                           background-color: white;
-                                                           display: flex;
-                                                           align-items: center;
-                                                           margin-top: -15px;
-                                                           border: 1px solid;
-                                                           margin-left: 14%;
-                                                           margin-right: auto;
-                                                           padding: 0; /* Added padding for better content spacing */
-                                                           margin-bottom: 1%;
-                                                         
-                                                           
-                                               
-                                                       }}
-                                                       @media  (min-width: 1981px) {
-                                                           .explore_container {
-                                                               width: 44%;
-                                                               max-width: 1290px;
-                                                               height: 80px;
-                                                               border-radius: 10px;
-                                                               box-shadow: 4px 4px 10.3px rgba(0, 0, 0, 0.1);
-                                                               background-color: white;
-                                                               display: flex;
-                                                               align-items: center;
-                                                               margin-top: -15px;
-                                                               border: 1px solid;
-                                                               margin-left: 14%;
-                                                               margin-right: auto;
-                                                               padding: 0; /* Added padding for better content spacing */
-                                                               margin-bottom: 1%;
-                                                             
-                                                               
-                                                   
-                                                           }}
+                       @media  (min-width:1730px)  {
+                        .explore_container {
+                            width: 46%;
+                            max-width: 875px;
+                            height: 60px;
+                            border-radius: 10px;
+                            box-shadow: 4px 4px 10.3px rgba(0, 0, 0, 0.1);
+                            background-color: white;
+                            display: flex;
+                            align-items: center;
+                            margin-top: -15px;
+                            border: 1px solid;
+                            margin-left: 3%;
+                            margin-right: auto;
+                            padding: 0; /* Added padding for better content spacing */
+                          
+                            
+                
+                        }}
+                      
    
 
     .explore_btn {
@@ -2566,13 +2392,21 @@ margin-left: 200px; */
    }
    
    /* For extra large screens (large desktops) */
-   @media (min-width: 1240px) {
+   @media (min-width: 1240px) and (max-width:1500px)
+    {
        .motivationImg {
          justify-content: left;
          width: 100%; 
        }
    }
-   
+   @media (min-width:1500px)
+    {
+       .motivationImg {
+         justify-content: left;
+         width: 100%;
+         flex-wrap: wrap;
+       }
+   }
 
     .topTrainingElements {
        display: flex;
@@ -2602,7 +2436,7 @@ margin-left: 200px; */
     .inner_carousel {
        width: clamp(120px, 23vw, 180px); /* Adjusts between 120px and 180px */
        height: clamp(100px, 20vw, 230px); /* Adjusts between 100px and 230px */
-       border-radius: 0px 10px 0px 10px;
+       border-radius: 0px 25px 0px 25px;
        display: flex;
        flex-direction: column;
        align-items: center;
@@ -2622,14 +2456,14 @@ margin-left: 200px; */
    }
    @media (min-width: 340px) and (max-width: 370px) {
        .inner_carousel {
-           width: clamp(100px, 20vw, 191px); /* Adjusts between 100px and 150px */
-           height: clamp(150px, 34vw, 217px); /* Adjusts between 150px and 200px */
+        width: clamp(129px, 23vw, 191px); /* Adjusts between 100px and 150px */
+        height: clamp(187px, 36vw, 217px); /* Adjusts between 150px and 200px */
        }
    }
     @media (min-width: 370px) and (max-width: 400px) {
        .inner_carousel {
-           width: clamp(106px, 20vw, 191px); /* Adjusts between 100px and 150px */
-           height: clamp(150px, 34vw, 217px); /* Adjusts between 150px and 200px */
+        width: clamp(129px, 23vw, 191px); /* Adjusts between 100px and 150px */
+        height: clamp(187px, 36vw, 217px); /* Adjusts between 150px and 200px */
        }
    }
    @media (min-width: 400px) and (max-width: 420px) {
@@ -2817,3 +2651,127 @@ margin-left: 200px; */
            width: 2rem; /* Largeur pour les grands desktops */
        }
    }
+
+   .niveau{
+    color: gray;
+    margin-left: 15px;
+    margin-top: 6%;
+    font-weight: 600;
+   }
+   .descr{
+    margin-left: 15px;
+    font-weight: 700;
+    color: black;
+    margin-top: 4%;
+   }
+   .notes{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+  margin-top: 4%;
+    margin-left: 15px;
+   }
+   .numnote{
+    font-size: 12px;
+    color: gray;
+    margin-left: 16%;
+    margin-top: 1%;
+    
+   }
+   .star{
+    width: 100%;
+    height: 95%;
+   }
+   .markes{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-right: 4%;
+    margin-top: 4%;
+   }
+   .ravi{
+    display: flex;
+    justify-content: space-between; 
+    margin-top: 2%;
+   }
+   .numnote2{
+    font-size: 12px;
+    color: gray;
+    margin-left: 16%;
+    margin-top: 1%;
+    
+   }
+   .containernote{
+    margin-left: -4%;
+   }
+   
+   @media (max-width: 480px) {
+    .niveau, .descr, .categorietype {
+      margin-left: 10px;
+      margin-top: 4%;
+      font-size: 6px; /* Adjust font size for small screens */
+    }
+    .ravi {
+      margin-top: 3%; /* Adjust margin for small screens */
+    }
+    .numnote{
+        font-size: 6px;
+    }
+    .numnote2{
+        font-size: 6px;
+    }
+  }
+  
+  @media (min-width: 481px) and (max-width: 768px) {
+    .niveau, .descr,  .categorietype {
+        margin-left: 21px;
+        margin-top: 5%;
+        font-size: 7px;
+    }
+    .ravi {
+        margin-block: 3%;
+        margin-inline: 5%;    }
+        .numnote{
+            font-size: 7px;
+        }
+        .numnote2{
+            font-size: 7px;
+        }
+        
+  }
+  
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .niveau, .descr, .categorietype {
+        margin-left: 13px;
+        margin-top: 5.5%;
+        font-size: 9px;
+    }
+    .ravi {
+      margin-block: 2.5%; /* Adjust margin for large screens */
+    }
+    .numnote{
+        font-size: 9px;
+    }
+    .numnote2{
+        font-size: 9px;
+    }
+  }
+  
+  @media (min-width: 1025px) and (max-width: 1320px) {
+    .niveau, .descr, .ravi {
+      margin-left: 15px;
+      margin-top: 6%;
+      font-size: 17px; /* Default size for larger screens */
+    }
+    .ravi {
+      margin-top: 2%; /* Default margin for larger screens */
+    }
+    .numnote{
+        font-size: 17px;
+    }
+    .numnote2{
+        font-size: 17px;
+    }
+  }
+  

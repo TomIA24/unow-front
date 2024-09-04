@@ -18,7 +18,6 @@ import Footer from "../../Home/Footer";
 import styles from "./styles.module.css";
 
 const StandardCourse = () => {
-
   const [down, setDown] = useState(false);
   let { id } = useParams();
   const token = localStorage.getItem("token");
@@ -154,7 +153,6 @@ const StandardCourse = () => {
 
   const handleDisabled = () => {
     // if(document.getElementById(styles.CourseButtonsInfoPageB1).disabled){
-
     //   document.getElementById(styles.CourseButtonsInfoPageB1).disabled = true;
     // }
     // document.getElementById(styles.CourseButtonsInfoPageB1).style.backgroundColor = 'grey'
@@ -163,7 +161,6 @@ const StandardCourse = () => {
 
   const handleDisabled2 = () => {
     // if(document.getElementById(styles.CourseButtonsInfoPageB2).disabled){
-
     //   document.getElementById(styles.CourseButtonsInfoPageB2).disabled = true;
     // }
     // document.getElementById(styles.CourseButtonsInfoPageB2).style.backgroundColor = 'grey'
@@ -314,10 +311,10 @@ const StandardCourse = () => {
       axios.post(url, { lastSeen: user.lastSeen }, config).then(async (res) => {
         const url = `${process.env.REACT_APP_API}api/userData`;
         try {
-          axios.post(url, {}, config).then((response) => {
+          axios.get(url, config).then((response) => {
             localStorage.setItem("user", JSON.stringify(response.data.data));
           });
-        } catch (err) { }
+        } catch (err) {}
       });
     } catch (error) {
       if (
@@ -348,13 +345,13 @@ const StandardCourse = () => {
           .then(async (res) => {
             const url = `${process.env.REACT_APP_API}api/userData`;
             try {
-              axios.post(url).then((response) => {
+              axios.get(url).then((response) => {
                 localStorage.setItem(
                   "user",
                   JSON.stringify(response.data.data)
                 );
               });
-            } catch (err) { }
+            } catch (err) {}
           });
       } catch (error) {
         if (
@@ -455,10 +452,10 @@ const StandardCourse = () => {
         <div className={styles.maincontainernav}>
           <div className={styles.nav_container}>
             <Nav ref={refHome} />
-
           </div>
           <div className={styles.pdowncontainer}>
-            <div className={styles.pdown} >COURSE DETAILS
+            <div className={styles.pdown}>
+              COURSE DETAILS
               <p className={styles.underline}></p>
             </div>
           </div>
@@ -468,48 +465,57 @@ const StandardCourse = () => {
         <main className={styles.MotherDivCourse}>
           <div className={styles.MainDivCourse}>
             <div className={styles.leftSectionCourse}>
-              <div className={styles.course} >COURSE
+              <div className={styles.course}>
+                COURSE
                 <p className={styles.underline}></p>
               </div>
               <div className={styles.FirsSectionInfoCourse}>
                 {Data.Thumbnail === "qqq" ||
-                  Data.Thumbnail == {} ||
-                  !Data.Thumbnail ? (
+                Data.Thumbnail == {} ||
+                !Data.Thumbnail ? (
                   <img
                     src={`${process.env.REACT_APP_API}uploads/courseImg.png`}
                     alt=""
                     className={styles.imgCourse}
                   />
                 ) : (
-                  <div 
-                  className={styles.imgCourse} 
-                  style={{  backgroundImage: `url(${process.env.REACT_APP_API}uploads/courseImg.png) !important` }}
-                >
-                        <img
-                    src={`${process.env.REACT_APP_API}${Data.Thumbnail.filePath}`}
-                    alt=""
-                    className={styles.imgCourseImage}
-                  />
-                </div>
-              
+                  <div
+                    className={styles.imgCourse}
+                    style={{
+                      backgroundImage: `url(${process.env.REACT_APP_API}uploads/courseImg.png) !important`,
+                    }}
+                  >
+                    <img
+                      src={`${process.env.REACT_APP_API}${Data.Thumbnail.filePath}`}
+                      alt=""
+                      className={styles.imgCourseImage}
+                    />
+                  </div>
                 )}
                 <div className={styles.FirsSectionInfoCourseTitle}>
                   {/* <h1>{Data.Title}</h1> */}
                   <h1>{Data.Title}</h1>
                 </div>
                 <div>
-                  <div className={styles.courseInfo}><span>Amira BACHA</span><span>enrolled number</span><span>{Data.rating
-                    ? TextRating(Data.rating, Data.evaluate.length)
-                    : TextRating(0, 0)}</span></div>
+                  <div className={styles.courseInfo}>
+                    <span>Amira BACHA</span>
+                    <span>enrolled number</span>
+                    <span>
+                      {Data.rating
+                        ? TextRating(Data.rating, Data.evaluate.length)
+                        : TextRating(0, 0)}
+                    </span>
+                  </div>
                 </div>
               </div>
               <div className={styles.ScndSectionInfoCourse}>
-
                 <div className={styles.coursePart}>
                   <div className={styles.DescriptionInfoCourse}>
                     <div className={styles.DescriptionInfoCourseTitle}>
-                    <span>DESCRIPTION
-                    <p className={styles.underline}></p></span>
+                      <span>
+                        DESCRIPTION
+                        <p className={styles.underline}></p>
+                      </span>
                     </div>
                     <div className={styles.DescriptionInfoCourseText}>
                       <p>{Data.Description}</p>
@@ -517,8 +523,10 @@ const StandardCourse = () => {
                   </div>
                   <div className={styles.DescriptionInfoCourse}>
                     <div className={styles.DescriptionInfoCourseTitle}>
-                    <span>Goals
-                    <p className={styles.underline}></p></span>
+                      <span>
+                        Goals
+                        <p className={styles.underline}></p>
+                      </span>
                     </div>
                     <div className={styles.DescriptionInfoCourseText}>
                       <p>{Data.Goals}</p>
@@ -526,8 +534,10 @@ const StandardCourse = () => {
                   </div>
                   <div className={styles.DescriptionInfoCourse}>
                     <div className={styles.DescriptionInfoCourseTitle}>
-                    <span>Who Should Attend
-                    <p className={styles.underline}></p></span>
+                      <span>
+                        Who Should Attend
+                        <p className={styles.underline}></p>
+                      </span>
                     </div>
                     <div className={styles.DescriptionInfoCourseText}>
                       <p>{Data.WhoShouldAttend}</p>
@@ -535,8 +545,10 @@ const StandardCourse = () => {
                   </div>
                   <div className={styles.DescriptionInfoCourse}>
                     <div className={styles.DescriptionInfoCourseTitle}>
-                    <span>Course Content
-                        <p className={styles.underline}></p></span>
+                      <span>
+                        Course Content
+                        <p className={styles.underline}></p>
+                      </span>
                     </div>
                     <div className={styles.DescriptionInfoCourseText}>
                       <p>{Data.CourseContent}</p>
@@ -544,8 +556,10 @@ const StandardCourse = () => {
                   </div>
                   <div className={styles.DescriptionInfoCourse}>
                     <div className={styles.DescriptionInfoCourseTitle}>
-                    <span>PracticalWork
-                    <p className={styles.underline}></p></span>
+                      <span>
+                        PracticalWork
+                        <p className={styles.underline}></p>
+                      </span>
                     </div>
                     <div className={styles.DescriptionInfoCourseText}>
                       <p>{Data.PracticalWork}</p>
@@ -553,8 +567,10 @@ const StandardCourse = () => {
                   </div>
                   <div className={styles.DescriptionInfoCourse}>
                     <div className={styles.DescriptionInfoCourseTitle}>
-                    <span>Certificate
-                    <p className={styles.underline}></p></span>
+                      <span>
+                        Certificate
+                        <p className={styles.underline}></p>
+                      </span>
                     </div>
                     <div className={styles.DescriptionInfoCourseText}>
                       <p>{Data.certificate}</p>
@@ -564,7 +580,6 @@ const StandardCourse = () => {
                   {Data.evaluate.length > 0 ? (
                     <div className={styles.OpinionsCourse}>
                       <div className={styles.OpinionsCourseTitle}>
-                    
                         <h1>Users Opinion</h1>
                       </div>
                       {EvaluationsCompleated.map((e) => {
@@ -618,30 +633,30 @@ const StandardCourse = () => {
                     ""
                   )}
                 </div>
-                {down && (<div className={styles.rightSectionCourse}>
-                <div className={styles.scndInfos}>
-                  <div className={styles.CoursePriceInfoPage}>
-                  <div className={styles.price}>{Data.Price} TTC
-                    <p className={styles.underline}></p>
-                  </div>
+                {down && (
+                  <div className={styles.rightSectionCourse}>
+                    <div className={styles.scndInfos}>
+                      <div className={styles.CoursePriceInfoPage}>
+                        <div className={styles.price}>
+                          {Data.Price} TTC
+                          <p className={styles.underline}></p>
+                        </div>
+                      </div>
 
-                  </div>
-                    
                       <div className={styles.InfosRefDur}>
                         <ul>
-                        <li>
-                          Reference: <span>{Data.Reference}</span>
-                        </li>
-                        <li>
-                          Duration: <span> {duration} days (Data.Hours)</span>
-                        </li>
-                    
+                          <li>
+                            Reference: <span>{Data.Reference}</span>
+                          </li>
+                          <li>
+                            Duration: <span> {duration} days (Data.Hours)</span>
+                          </li>
 
-                      {/* <div className={styles.CoursePriceInfoPage}>
+                          {/* <div className={styles.CoursePriceInfoPage}>
                        
                       </div> */}
-                      <li>{Data.Price} TTC</li>
-                      </ul>
+                          <li>{Data.Price} TTC</li>
+                        </ul>
                       </div>
                       <br />
                       <div className={styles.CourseButtonsInfoPage}>
@@ -656,7 +671,11 @@ const StandardCourse = () => {
                                 id={styles.CourseButtonsInfoPageB1}
                               >
                                 <p>Add To Cart</p>
-                                 <img src="/images/course/addchat.png" alt="" className={styles.imagechart} />
+                                <img
+                                  src="/images/course/addchat.png"
+                                  alt=""
+                                  className={styles.imagechart}
+                                />
                               </button>
                             ) : (
                               <Tooltip
@@ -669,7 +688,11 @@ const StandardCourse = () => {
                                   disabled
                                 >
                                   <p>Add To Cart</p>
-                                   <img src="/images/course/addchat.png" alt="" className={styles.imagechart} />
+                                  <img
+                                    src="/images/course/addchat.png"
+                                    alt=""
+                                    className={styles.imagechart}
+                                  />
                                 </button>
                               </Tooltip>
                             )}
@@ -684,7 +707,11 @@ const StandardCourse = () => {
                               id={styles.CourseButtonsInfoPageB1}
                             >
                               <p>Add To Cart</p>
-                               <img src="/images/course/addchat.png" alt="" className={styles.imagechart} />
+                              <img
+                                src="/images/course/addchat.png"
+                                alt=""
+                                className={styles.imagechart}
+                              />
                             </button>
                           </React.Fragment>
                         )}
@@ -708,15 +735,18 @@ const StandardCourse = () => {
                             }}
                           >
                             <div className={styles.ModalComponent}>
-                              <h3 id="parent-modal-title" className={styles.ModalTitle}>
+                              <h3
+                                id="parent-modal-title"
+                                className={styles.ModalTitle}
+                              >
                                 Course added to the cart successfully
                               </h3>
                               <p
                                 sx={{ textAlign: "center" }}
                                 id="parent-modal-description"
                               >
-                                Your registration request for this course is being
-                                processed.{" "}
+                                Your registration request for this course is
+                                being processed.{" "}
                               </p>
 
                               <Divider
@@ -728,8 +758,9 @@ const StandardCourse = () => {
                                 sx={{ textAlign: "center" }}
                                 id="parent-modal-description"
                               >
-                                you can track your registration status through your
-                                profile, <a href="/profile">quick access to profile</a>
+                                you can track your registration status through
+                                your profile,{" "}
+                                <a href="/profile">quick access to profile</a>
                               </p>
                             </div>
                           </Box>
@@ -796,37 +827,73 @@ const StandardCourse = () => {
                           </Box>
                         </Modal>
                       </div>
-                   
+                    </div>
                   </div>
-                </div>)}
+                )}
               </div>
             </div>
-            {!down &&
+            {!down && (
               <div className={styles.rightSectionContainer}>
-              <div className={styles.rightSectionCourse}>
-                <div className={styles.scndInfos}>
-                <div className={styles.CoursePriceInfoPage}>
-                <div className={styles.price}>{Data.Price} TTC
-                    <p className={styles.underline}></p>
-                  </div>
-                  </div>
-                  <div className={styles.InfosRefDur}>
-                    <ul>
-                    <li>
-                      Reference: <span>{Data.Reference}</span>
-                    </li>
-                    <li>
-                      Duration: <span> {duration} days (Data.Hours)</span>
-                    </li>
-                    </ul>
-                  </div>
+                <div className={styles.rightSectionCourse}>
+                  <div className={styles.scndInfos}>
+                    <div className={styles.CoursePriceInfoPage}>
+                      <div className={styles.price}>
+                        {Data.Price} TTC
+                        <p className={styles.underline}></p>
+                      </div>
+                    </div>
+                    <div className={styles.InfosRefDur}>
+                      <ul>
+                        <li>
+                          Reference: <span>{Data.Reference}</span>
+                        </li>
+                        <li>
+                          Duration: <span> {duration} days (Data.Hours)</span>
+                        </li>
+                      </ul>
+                    </div>
 
-               
-                  <br />
-                  <div className={styles.CourseButtonsInfoPage}>
-                    {user ? (
-                      <React.Fragment>
-                        {!Data.enrolled.includes(user._id) ? (
+                    <br />
+                    <div className={styles.CourseButtonsInfoPage}>
+                      {user ? (
+                        <React.Fragment>
+                          {!Data.enrolled.includes(user._id) ? (
+                            <button
+                              onClick={() => {
+                                handleEnroll();
+                                handleCart();
+                              }}
+                              id={styles.CourseButtonsInfoPageB1}
+                            >
+                              <p>Add To Cart</p>
+                              <img
+                                src="/images/course/addchat.png"
+                                alt=""
+                                className={styles.imagechart}
+                              />
+                            </button>
+                          ) : (
+                            <Tooltip
+                              title="You don't have permission to do this"
+                              followCursor
+                            >
+                              <button
+                                onClick={handleDisabled}
+                                id={styles.CourseButtonsInfoPageB1Disabled}
+                                disabled
+                              >
+                                <p>Add To Cart</p>
+                                <img
+                                  src="/images/course/addchat.png"
+                                  alt=""
+                                  className={styles.imagechart}
+                                />
+                              </button>
+                            </Tooltip>
+                          )}
+                        </React.Fragment>
+                      ) : (
+                        <React.Fragment>
                           <button
                             onClick={() => {
                               handleEnroll();
@@ -835,88 +902,87 @@ const StandardCourse = () => {
                             id={styles.CourseButtonsInfoPageB1}
                           >
                             <p>Add To Cart</p>
-                             <img src="/images/course/addchat.png" alt="" className={styles.imagechart} />
+                            <img
+                              src="/images/course/addchat.png"
+                              alt=""
+                              className={styles.imagechart}
+                            />
                           </button>
-                        ) : (
-                          <Tooltip
-                            title="You don't have permission to do this"
-                            followCursor
-                          >
-                            <button
-                              onClick={handleDisabled}
-                              id={styles.CourseButtonsInfoPageB1Disabled}
-                              disabled
-                            >
-                              <p>Add To Cart</p>
-                               <img src="/images/course/addchat.png" alt="" className={styles.imagechart} />
-                            </button>
-                          </Tooltip>
-                        )}
-                      </React.Fragment>
-                    ) : (
-                      <React.Fragment>
-                        <button
-                          onClick={() => {
-                            handleEnroll();
-                            handleCart();
-                          }}
-                          id={styles.CourseButtonsInfoPageB1}
-                        >
-                          <p>Add To Cart</p>
-                           <img src="/images/course/addchat.png" alt="" className={styles.imagechart} />
-                        </button>
-                      </React.Fragment>
-                    )}
-                    <Modal
-                      sx={{ p: 1 }}
-                      open={Enrolled}
-                      onClose={handleCloseEnrolled}
-                      aria-labelledby="parent-modal-title"
-                      aria-describedby="parent-modal-description"
-                    >
-                      <Box
-                        sx={{
-                          ...style,
-                          width: 450,
-                          display: "flex",
-                          flexDirection: "column",
-                          overflowY: "auto",
-                          overflowX: "hidden",
-                          maxHeight: "85vh",
-                          alignItems: "center",
-                        }}
+                        </React.Fragment>
+                      )}
+                      <Modal
+                        sx={{ p: 1 }}
+                        open={Enrolled}
+                        onClose={handleCloseEnrolled}
+                        aria-labelledby="parent-modal-title"
+                        aria-describedby="parent-modal-description"
                       >
-                        <div className={styles.ModalComponent}>
-                          <h3 id="parent-modal-title" className={styles.ModalTitle}>
-                            Course added to the cart successfully
-                          </h3>
-                          <p
-                            sx={{ textAlign: "center" }}
-                            id="parent-modal-description"
-                          >
-                            Your registration request for this course is being
-                            processed.{" "}
-                          </p>
+                        <Box
+                          sx={{
+                            ...style,
+                            width: 450,
+                            display: "flex",
+                            flexDirection: "column",
+                            overflowY: "auto",
+                            overflowX: "hidden",
+                            maxHeight: "85vh",
+                            alignItems: "center",
+                          }}
+                        >
+                          <div className={styles.ModalComponent}>
+                            <h3
+                              id="parent-modal-title"
+                              className={styles.ModalTitle}
+                            >
+                              Course added to the cart successfully
+                            </h3>
+                            <p
+                              sx={{ textAlign: "center" }}
+                              id="parent-modal-description"
+                            >
+                              Your registration request for this course is being
+                              processed.{" "}
+                            </p>
 
-                          <Divider
-                            variant="inset"
-                            sx={{ width: "100%", height: "3px", margin: 0 }}
-                          />
+                            <Divider
+                              variant="inset"
+                              sx={{ width: "100%", height: "3px", margin: 0 }}
+                            />
 
-                          <p
-                            sx={{ textAlign: "center" }}
-                            id="parent-modal-description"
-                          >
-                            you can track your registration status through your
-                            profile, <a href="/profile">quick access to profile</a>
-                          </p>
-                        </div>
-                      </Box>
-                    </Modal>
+                            <p
+                              sx={{ textAlign: "center" }}
+                              id="parent-modal-description"
+                            >
+                              you can track your registration status through
+                              your profile,{" "}
+                              <a href="/profile">quick access to profile</a>
+                            </p>
+                          </div>
+                        </Box>
+                      </Modal>
 
-                    {user ? (
-                      <React.Fragment>
-                        {!Data.enrolledPaid.includes(user._id) ? (
+                      {user ? (
+                        <React.Fragment>
+                          {!Data.enrolledPaid.includes(user._id) ? (
+                            <button
+                              onClick={handlePay}
+                              id={styles.CourseButtonsInfoPageB2}
+                            >
+                              <p>Subscribe Now</p>
+                              <RiSecurePaymentLine size={20} />
+                            </button>
+                          ) : (
+                            <button
+                              onClick={handleDisabled2}
+                              id={styles.CourseButtonsInfoPageB2Disabled}
+                            >
+                              <p>Subscribe Now</p>
+                              <RiSecurePaymentLine size={20} />
+                            </button>
+                          )}
+                        </React.Fragment>
+                      ) : (
+                        <React.Fragment>
                           <button
                             onClick={handlePay}
                             id={styles.CourseButtonsInfoPageB2}
@@ -924,61 +990,42 @@ const StandardCourse = () => {
                             <p>Subscribe Now</p>
                             <RiSecurePaymentLine size={20} />
                           </button>
-                        ) : (
-                          <button
-                            onClick={handleDisabled2}
-                            id={styles.CourseButtonsInfoPageB2Disabled}
-                          >
-                            <p>Subscribe Now</p>
-                            <RiSecurePaymentLine size={20} />
-                          </button>
-                        )}
-                      </React.Fragment>
-                    ) : (
-                      <React.Fragment>
-                        <button
-                          onClick={handlePay}
-                          id={styles.CourseButtonsInfoPageB2}
-                        >
-                          <p>Subscribe Now</p>
-                          <RiSecurePaymentLine size={20} />
-                        </button>
-                      </React.Fragment>
-                    )}
+                        </React.Fragment>
+                      )}
 
-                    <Modal
-                      sx={{ p: 1 }}
-                      open={Paid}
-                      onClose={handleClosePaid}
-                      aria-labelledby="parent-modal-title"
-                      aria-describedby="parent-modal-description"
-                    >
-                      <Box
-                        sx={{
-                          ...style,
-                          width: 450,
-                          display: "flex",
-                          flexDirection: "column",
-                          overflowY: "auto",
-                          overflowX: "hidden",
-                          maxHeight: "85vh",
-                          alignItems: "center",
-                        }}
+                      <Modal
+                        sx={{ p: 1 }}
+                        open={Paid}
+                        onClose={handleClosePaid}
+                        aria-labelledby="parent-modal-title"
+                        aria-describedby="parent-modal-description"
                       >
-                        <Button
-                          variant="contained"
-                          endIcon={<PaymentIcon />}
-                          onClick={Pay}
+                        <Box
+                          sx={{
+                            ...style,
+                            width: 450,
+                            display: "flex",
+                            flexDirection: "column",
+                            overflowY: "auto",
+                            overflowX: "hidden",
+                            maxHeight: "85vh",
+                            alignItems: "center",
+                          }}
                         >
-                          Pay
-                        </Button>
-                      </Box>
-                    </Modal>
+                          <Button
+                            variant="contained"
+                            endIcon={<PaymentIcon />}
+                            onClick={Pay}
+                          >
+                            Pay
+                          </Button>
+                        </Box>
+                      </Modal>
+                    </div>
                   </div>
                 </div>
               </div>
-              </div>
-            }
+            )}
           </div>
         </main>
       </div>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
- 
+
 import Personalize from "./component/Personalize";
 import Login from "./component/Login";
 import ResetPassword from "./component/ResetPassword";
@@ -28,8 +28,7 @@ import CoursesSection from "./component/CoursesSection";
 
 import Timeout from "./component/Quiz/Questions/timeout";
 import { QuizProvider } from "./hooks/QuizContext";
- 
- 
+
 function App() {
   const [startDate, setStartDate] = useState(null);
   const handleStartQuiz = () => {
@@ -51,10 +50,9 @@ function App() {
             {!user && (
               <React.Fragment>
                 <Route exact path="/" element={<HomeInterface />} />
-              
               </React.Fragment>
             )}
-  <Route exact path="/personalize" element={<Personalize />} />
+            <Route exact path="/personalize" element={<Personalize />} />
             <Route path="*" element={<MissingRoute />} />
             <Route exact path="/home" element={<HomeInterface />} />
 
@@ -65,7 +63,7 @@ function App() {
             />
             <Route
               exact
-         path="/quiz"
+              path="/quiz"
               element={<MainQuiz onStartQuiz={handleStartQuiz} />}
             />
             <Route exact path="/timeout" element={<Timeout />} />
