@@ -49,7 +49,7 @@
     width: 100%;
     min-height: 80%;
     overflow: auto;
-    padding: 0 20px;
+    padding: 0 2px;
     background: #fff;
     border-radius: 40px;
 }
@@ -169,37 +169,7 @@
     height: 100%;
 }
 
-.stateField {
-    margin: 20px;
-    width: 80px;
-    height: 15px;
-    border: 2px solid #8f8f8f;
-    color: #8f8f8f;
-    border-radius: 50px;
-    font-size: x-small;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 2px;
-}
 
-.statePrimary {
-    composes: stateField;
-    border: 2px solid #00a50e;
-    color: #00a50e;
-}
-
-.stateSecondary {
-    composes: stateField;
-    border: 2px solid #ffae00;
-    color: #ffae00;
-}
-
-.stateDanger {
-    composes: stateField;
-    border: 2px solid #a50000;
-    color: #a50000;
-}
 
 .ListCoursesFooter {
     display: flex;

@@ -61,9 +61,6 @@ const AddCourse = () => {
   const [ShowAddQCMElement, setShowAddQCMElement] = useState(false);
   const [ShowAddQRElement, setShowAddQRElement] = useState(false);
 
-  useEffect(() => {
-    setData({ ...data, QuestionsQCM: QuestionsQCM, QuestionsQR: QuestionsQR });
-  }, [QuestionsQCM, QuestionsQR, data]);
   const initialData = {
     Title: "",
     Description: "",
@@ -111,6 +108,9 @@ const AddCourse = () => {
     // repeatpassword:""
   });
 
+  useEffect(() => {
+    setData({ ...data, QuestionsQCM: QuestionsQCM, QuestionsQR: QuestionsQR });
+  }, [QuestionsQCM, QuestionsQR]);
   const [singleFile, setSingleFile] = useState("");
   const [prev, setPrev] = useState(null);
 
