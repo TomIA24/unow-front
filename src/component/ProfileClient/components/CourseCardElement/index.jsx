@@ -12,7 +12,7 @@ export default function CourseElement({ course, type }) {
   const { category } = useCategories(course.Category);
   const {data} = useProfile()
   const {courses} = useCourses()
-  
+  console.log("courses",course?.Price)
   return (
     <div className={styles.courseContainerElement}>
       <div className={styles.imgCourseContainer}>
@@ -44,8 +44,10 @@ export default function CourseElement({ course, type }) {
               window.scrollTo(0, 0);
             }}
           >
-              {/* <div className={styles.buttonsContainer}>
-                
+              <div className={styles.buttonsContainer}>
+            
+              <p>{course?.Price}DT</p>
+              <div className={styles.underline}/>
               {data?.CoursesPaid.includes(course._id)?
             <div className={styles.statePrimary}>
               <FiberManualRecordIcon sx={{ fontSize: 10 }} />
@@ -56,13 +58,13 @@ export default function CourseElement({ course, type }) {
             <p>unpaid</p>
           </div>
             
-            }  */}
+            } 
             <button className={styles.textCourseFooterBtn}>
             <img src={pay} alt="send" />
               <p>Pay now</p>
              
             </button>
-            {/* </div> */}
+            </div>
           </Link>
         </div>
       </div>

@@ -4,7 +4,7 @@
     /* border-radius: 40px;
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.28); */
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     gap: 7px;
     background-color: #fff;
@@ -86,9 +86,21 @@
   display: flex;
   flex-direction: column;
   /* justify-content: center; */
-  align-items: end;
- 
-  gap: 3px;
+  align-items: center;
+  margin-top: -5.5rem;
+    gap: 3px;
+}
+.underline{
+  width:22%;
+  height: 5px;
+  margin-top: 2px;
+  margin-right: 1.5rem
+  
+  ;
+  display: flex;
+  flex-wrap: wrap-reverse;
+  background-color: #CD6214;
+  border-radius:20px;
 }
  .ratingText{
    font-weight: bold;
@@ -112,9 +124,9 @@
  }
 
  .stateField {
-  margin: 20px;
-  width: 80px;
-  height: 15px;
+  margin: 10px;
+  width: 92px;
+  height: 5px;
   border: 2px solid #8f8f8f;
   color: #8f8f8f;
   border-radius: 50px;
@@ -132,10 +144,10 @@
   height: 1.5rem; */
   justify-content: center;
   align-items: center;
-  gap: 6px;
-  padding: 5px 10px;
+  gap: 8px;
+  padding: 11px 10px;
   border: none;
-  border-radius: 8px;
+  border-radius: 12px;
   font-size: 10px;
   border: 2px solid #00a50e;
   color: #00a50e;
@@ -149,9 +161,9 @@
   justify-content: center;
   align-items: center;
   gap: 6px;
-  padding: 5px 10px;
+  padding: 11px 10px;
   border: none;
-  border-radius: 8px;
+  border-radius: 12px;
   font-size: 10px;
   border: 2px solid #ffae00;
   color: #ffae00;
@@ -167,18 +179,14 @@
 
  @media  (max-width:1330px) {
   .courseContainerElement{
-    width: 38rem; 
+    width: 30rem; 
     margin-inline: 20px;
 }
 .textCourseContainer{
-  width: 20rem; 
+  width: 23rem; 
 
 }
-.imgCourseContainer{
-  width: 10rem;
-  height: 155px; 
-  
-}
+
 }
 
 /* @media  (max-width:1200px) {
