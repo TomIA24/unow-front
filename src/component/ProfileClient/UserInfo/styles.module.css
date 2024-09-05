@@ -35,7 +35,7 @@
 .progressCircle{
     width: 160px;  
     height: 160px;
-    border-radius: 50%;
+    border-radius: 100%;
     display: flex; 
     justify-content: center;
     align-items: center; 

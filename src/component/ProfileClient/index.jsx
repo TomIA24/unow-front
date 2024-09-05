@@ -3,8 +3,10 @@ import axios from "axios";
 
 import Profile from "./Profile";
 import Header from "./Header";
-import Footer from "../footer";
+// import Footer from "../footer";
 import Loading from "../Loading";
+import Footer from '../Home/Footer';
+
 const ProfileTrainer = (props) => {
   const [user, SetUser] = useState();
   const [isLoading, setLoading] = useState(true);

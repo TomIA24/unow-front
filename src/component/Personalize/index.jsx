@@ -145,9 +145,53 @@ const Personalize = () => {
     learningpace: [],
     dayslearning: '',
     timeOfDay: '',
-
-
+    profilecomplited:0,
   });
+  
+  const [candidatdata, setcandidatdata] = useState({
+    interests: [],
+    exploreFirst: '',
+    goals: [],
+    timeline: '',
+    availability: [],
+    style: [],
+    hoursperweek: '',
+    learningother: '',
+    learningpace: [],
+    dayslearning: '',
+    timeOfDay: '',
+    profilecomplited:0,
+  });
+  const [missingFields, setMissingFields] = useState([]);
+  
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // Fetch the full candidate data
+        const candidateResponse = await axios.get(`${process.env.REACT_APP_API}api/candidat/candidates/${candiddId}`);
+        const candidateData = candidateResponse.data;
+console.log(candidateData);
+
+
+        setcandidatdata(prevState => ({
+          ...prevState,
+          ...candidateData,
+        }));
+
+        const checkFieldsResponse = await axios.get(`${process.env.REACT_APP_API}api/candidat/checkfields/${candiddId}`);
+        
+        if (checkFieldsResponse.data.message === 'Some fields are missing or incomplete') {
+          setMissingFields(checkFieldsResponse.data.missingFields);
+        } else {
+          setMissingFields([]); 
+        }
+      } catch (error) {
+        console.error("Error fetching candidate data:", error);
+      }
+    };
+
+    fetchData();
+  }, [candiddId]);
 
   const handleOptionChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -181,6 +225,7 @@ const Personalize = () => {
   console.log(e.target.value);
   
     setFormData((prevData) => {
+      
       if (type === 'checkbox') {
         const currentValues = Array.isArray(prevData[name]) ? prevData[name] : [];
         return {
@@ -197,149 +242,20 @@ const Personalize = () => {
       }
     });
   };
-  // const handleInputChange = (event) => {
-  //   const { name, value, checked } = event.target;
-  //   console.log("value", value);
-  //   if (name === 'interests') {
-  //     setFormData((prevState) => {
-  //       const updatedInterests = checked
-  //         ? [...prevState.interests, value] // Add selected value
-  //         : prevState.interests.filter((interest) => interest !== value); // Remove unselected value
-
-  //       return {
-  //         ...prevState,
-  //         interests: updatedInterests,
-  //       };
-  //     });
-  //   } else if (name === 'exploreFirst') {
-  //     setFormData((prevState) => ({
-  //       ...prevState,
-  //       exploreFirst: value,
-  //     }));
-  //   } else if (name === 'goal') {
-  //     setFormData((prevState) => {
-  //       const updatedgoals = checked
-  //         ? [...prevState.goals, value] // Add selected value
-  //         : prevState.goals.filter((goal) => goal !== value); // Remove unselected value
-
-  //       return {
-  //         ...prevState,
-  //         goals: updatedgoals,
-  //       };
-  //     });
-  //   } else if (name === 'timeline') {
-  //     setFormData((prevState) => ({
-  //       ...prevState,
-  //       timeline: value,
-  //     }));
-  //   }
-  //   if (name === 'availability') {
-  //     setFormData((prevState) => {
-  //       const updatedavail = checked
-  //         ? [...prevState.availability, value] // Add selected value
-  //         : prevState.availability.filter((interest) => interest !== value); // Remove unselected value
-
-  //       return {
-  //         ...prevState,
-  //         availability: updatedavail,
-  //       };
-  //     });
-  //   }
-  //   if (name === 'style') {
-  //     setFormData((prevState) => {
-  //       const updatedstyle = checked
-  //         ? [...prevState.style, value] // Add selected value
-  //         : prevState.style.filter((interest) => interest !== value); // Remove unselected value
-
-  //       return {
-  //         ...prevState,
-  //         style: updatedstyle,
-  //       };
-  //     });
-  //   }
-  //   if (name === 'hoursperweek') {
-  //     setFormData((prevState) => {
-  //       const updatedshoursperweek = checked
-  //         ? [...prevState.hoursperweek, value] // Add selected value
-  //         : prevState.hoursperweek.filter((interest) => interest !== value); // Remove unselected value
-
-  //       return {
-  //         ...prevState,
-  //         hoursperweek: updatedshoursperweek,
-  //       };
-  //     });
-  //   }
-  //   if (name === 'learningother') {
-  //     setFormData((prevState) => {
-  //       const updatedother
-  //         = checked
-  //           ? [...prevState.learningother, value] // Add selected value
-  //           : prevState.learningother.filter((interest) => interest !== value); // Remove unselected value
-
-  //       return {
-  //         ...prevState,
-  //         learningother: updatedother,
-  //       };
-  //     });
-  //   }
-  //   if (name === 'learningpace') {
-
-  //     setFormData((prevState) => {
-  //       const updatedlearningpace = checked
-  //         ? [...prevState.learningpace, value] // Add selected value
-  //         : prevState.learningpace.filter((interest) => interest !== value); // Remove unselected value
-
-  //       return {
-  //         ...prevState,
-  //         learningpace: updatedlearningpace,
-  //       };
-  //     });
-  //   }
-  //   if (name === 'dayslearning') {
-  //     setSelectedOption(true)
-  //     setFormData((prevState) => {
-  //       const updateddayslearning = checked
-  //         ? [...prevState.dayslearning, value] // Add selected value
-  //         : prevState.dayslearning.filter((interest) => interest !== value); // Remove unselected value
-
-  //       return {
-  //         ...prevState,
-  //         dayslearning: updateddayslearning,
-  //       };
-  //     });
-  //   }
-  //   if (name === 'timeOfDay') {
-  //     setFormData((prevState) => {
-  //       const updatedtimeOfDay = checked
-  //         ? [...prevState.timeOfDay, value] // Add selected value
-  //         : prevState.timeOfDay.filter((interest) => interest !== value); // Remove unselected value
-
-  //       return {
-  //         ...prevState,
-  //         timeOfDay: updatedtimeOfDay,
-  //       };
-  //     });
-  //   }
-  // };
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-
-  //   try {
-  //     const response = await axios.put(`/api/candidate/66a22641a8d879e703dbe057`, formData);
-  //     console.log('Candidate updated successfully:', response.data);
-  //   } catch (error) {
-  //     console.error('Error updating candidate:', error.response?.data || error.message);
-  //   }
-  // };
-
 
   const steps = [
     {
       title: "Interest Areas",
       content: (
         <>
-          <div className={styles.personlizestep}>
-            <div className={styles.personlizesquestion}>
+       {(!candidatdata.interests || candidatdata.interests.length === 0 || !candidatdata.exploreFirst ) &&  (  <div className={styles.personlizestep}>
+        <div className={styles.personlizesquestion}>
+            {candidatdata.interests.length }
+            {formData.interests.map((interest, index) => (
+        <div key={index}>
+          {interest}
+        </div>
+      ))}
               <label>What subjects interest you most? (Select up to three)</label>
               <div className={styles.checkboxGroup}>
                 <input type="checkbox" id="sciences" name="interests" value="Sciences & Technology" className={styles.hiddenCheckbox} checked={Array.isArray(formData.interests) && formData.interests.includes('Sciences & Technology')} onChange={handleInputChange} />
@@ -373,7 +289,7 @@ const Personalize = () => {
               </div>
             </div>
             <div >
-              <div className={styles.personlizesquestion}>
+            <div className={styles.personlizesquestion}>
                 <label>Which of the selected areas would you like to explore in-depth first?</label>
                 <input type="text" name="exploreFirst" className={styles.input} value={formData.exploreFirst} onChange={handleInputChange} placeholder="selected areas"/>
               </div>
@@ -382,7 +298,7 @@ const Personalize = () => {
                 <input type="text" name="exploreFirst" value={formData.exploreFirst}onChange={handleInputChange} />
               </div> */}
             </div>
-          </div>
+          </div>)}
         </>
       ),
     },
@@ -417,20 +333,20 @@ const Personalize = () => {
                 <div className={styles.personlizesquestion}>
                   <label>What is your expected timeline to achieve these goals?</label>
                   <div className={styles.checkboxGroup}>
-                    <input type="radio" id="month" name="timeline" className={styles.hiddenCheckbox} value='month' onChange={handleInputChange} />
-                    <label htmlFor="month" className={styles.customLabel} checked={ Array.isArray(formData.goals) && formData.timeline.includes('month ')}> month </label>
+                    <input type="radio" id="month" name="timeline" className={styles.hiddenCheckbox} value='month' onChange={handleInputChange}  checked={formData.timeline === 'month'}/>
+                    <label htmlFor="month" className={styles.customLabel} > month </label>
                   </div>
                   <div className={styles.checkboxGroup}>
-                    <input type="radio" id="1months" name="timeline" className={styles.hiddenCheckbox} value='1-3 months ' onChange={handleInputChange} />
-                    <label htmlFor="1months" className={styles.customLabel} checked={ Array.isArray(formData.goals) && formData.timeline.includes('1-3 months')}>1-3 months  </label>
+                    <input type="radio" id="1months" name="timeline" className={styles.hiddenCheckbox} value='1-3 months ' onChange={handleInputChange} checked={formData.timeline === '1-3 months'}/>
+                    <label htmlFor="1months" className={styles.customLabel} >1-3 months  </label>
                   </div>
                   <div className={styles.checkboxGroup}>
-                    <input type="radio" id="3months" name="timeline" className={styles.hiddenCheckbox} value='3 - 6 months' onChange={handleInputChange} />
-                    <label htmlFor="3months" className={styles.customLabel} checked={ Array.isArray(formData.goals) && formData.timeline.includes('3 - 6 months')}>3 - 6 months </label>
+                    <input type="radio" id="3months" name="timeline" className={styles.hiddenCheckbox} value='3 - 6 months' onChange={handleInputChange} checked={formData.timeline === '3 - 6 months'}/>
+                    <label htmlFor="3months" className={styles.customLabel} >3 - 6 months </label>
                   </div>
                   <div className={styles.checkboxGroup}>
-                    <input type="radio" id="6months" name="timeline" className={styles.hiddenCheckbox} value='6+months' onChange={handleInputChange} />
-                    <label htmlFor="6months" className={styles.customLabel} checked={ Array.isArray(formData.goals) && formData.timeline.includes('6+months')}>6+months  </label>
+                    <input type="radio" id="6months" name="timeline" className={styles.hiddenCheckbox} value='6+months' onChange={handleInputChange} checked={formData.timeline === '6+months'}/>
+                    <label htmlFor="6months" className={styles.customLabel} >6+months  </label>
                   </div>
                 </div>
               </div>
@@ -673,11 +589,7 @@ const Personalize = () => {
 
   const [currentStep, setCurrentStep] = useState(0);
 
-  // const handleNext = () => {
-  //   if (currentStep < steps.length - 1) {
-  //     setCurrentStep((prevStep) => prevStep + 1);
-  //   }
-  // };
+
 
   const handleBack = () => {
     if (currentStep > 0) {
@@ -685,19 +597,32 @@ const Personalize = () => {
     }
   };
   const handleNext = async () => {
+  
+    const updatedProfilecomplited = candidatdata.profilecomplited + 20;
+
+    // Make sure to include the updated profilecomplited in the formData
+    const updatedFormData = {
+      ...formData,
+      profilecomplited: updatedProfilecomplited,
+    };
+  
     if (currentStep < steps.length - 1) {
       try {
-        console.log('Submitting data:', formData);
+        console.log('Submitting data:', updatedFormData,updatedFormData.profilecomplited);
   
         // Make the API call to update the candidate
         const response = await axios.put(
           `${process.env.REACT_APP_API}api/candidat/${candiddId}`,
-          formData
+          updatedFormData
+          
         );
         console.log('Updated candidate data:', response.data);
   
         // Clear form data
-        setFormData({ interests: [], exploreFirst: '' });
+        setcandidatdata({
+          ...formData,
+          profilecomplited: updatedProfilecomplited, // Ensure profilecomplited is updated
+        });
   
         // Proceed to the next step
         setCurrentStep((prevStep) => prevStep + 1);
@@ -708,29 +633,22 @@ const Personalize = () => {
       } catch (error) {
         console.error('Error updating candidate:', error.response ? error.response.data : error.message);
   
-        // Uncomment the alerts if you want to notify the user of specific errors
-        // if (error.response && error.response.status === 400) {
-        //   alert('Validation error: ' + error.response.data);
-        // } else if (error.response && error.response.status === 404) {
-        //   alert('Candidate not found.');
-        // } else {
-        //   alert('Failed to submit data. Please try again.');
-        // }
+     
       }
-    } else if (currentStep =steps.length - 1) {
+    } else if (currentStep == steps.length - 1) {
       try {
-        console.log('Submitting data:', formData);
+        console.log('Submitting data:', updatedFormData);
   
       
         const response = await axios.put(
           `${process.env.REACT_APP_API}api/candidat/${candiddId}`,
-          formData
+          updatedFormData
         );
         navigate("/profile")
         console.log('Updated candidate data:', response.data);
   
         // Clear form data
-        setFormData({ interests: [], exploreFirst: '' });
+        // setFormData({ interests: [], exploreFirst: '' });
   
         // Proceed to the next step
         setCurrentStep((prevStep) => prevStep + 1);
@@ -774,10 +692,10 @@ const Personalize = () => {
             ></div>
           </div>
 
-          <div className={styles.formcontent}>
+        {(steps[currentStep].content) && (  <div className={styles.formcontent}>
             <h2>{steps[currentStep].title}</h2>
             {steps[currentStep].content}
-          </div>
+          </div>)}
 
           <div className={styles.formnavigation}>
          

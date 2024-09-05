@@ -175,43 +175,77 @@ const Nav = () => {
                   
                   <div>
                  
-                  <button
-                    // to="/profile"
-                    onClick={handlepopup}
-                    style={{ display: "flex", alignItems: "center" }}
-                  >
-                    <img src="/svg/coins.svg" style={{ height: 30 }} alt="" />
-                    <strong
-                      variant="caption"
-                      component="div"
-                      color="text.secondary"
-                    >
-                      330
-                    </strong>
-                    <a type="button" className={styles.nav_btn_profile}>
-                      <img
-                        src="/svg/bronze.svg"
-                        alt="bronze"
-                        style={{ height: 30 }}
-                      />
-                      {/* {user.userType} */}
-                      {user.image ? (
-                        <Avatar
-                          alt="icon"
-                          src={`${process.env.REACT_APP_API}${user.image.filePath}`}
-                          sx={{ width: 30, height: 30 }}
-                        />
-                      ) : (
-                        <Avatar
-                          alt="icon"
-                          src={imgicon}
-                          // src={<CiUser size={10} />}
-                          sx={{ width: 30, height: 30 }}
-                        />
-                      )}
-                      Welcome, {user.name}
-                    </a>
-                  </button>
+                 {user.profilecomplited === 100 ?  (
+  <Link
+    to="/profile"
+    style={{ display: "flex", alignItems: "center" }}
+  >
+    <img src="/svg/coins.svg" style={{ height: 30 }} alt="" />
+    <strong
+      variant="caption"
+      component="div"
+      color="text.secondary"
+    >
+      330
+    </strong>
+    <a type="button" className={styles.nav_btn_profile}>
+      <img
+        src="/svg/bronze.svg"
+        alt="bronze"
+        style={{ height: 30 }}
+      />
+      {user.image ? (
+        <Avatar
+          alt="icon"
+          src={`${process.env.REACT_APP_API}${user.image.filePath}`}
+          sx={{ width: 30, height: 30 }}
+        />
+      ) : (
+        <Avatar
+          alt="icon"
+          src={imgicon}
+          sx={{ width: 30, height: 30 }}
+        />
+      )}
+      Welcome, {user.name}
+    </a>
+  </Link>
+):(
+  <button
+    onClick={handlepopup}
+    style={{ display: "flex", alignItems: "center" }}
+  >
+    <img src="/svg/coins.svg" style={{ height: 30 }} alt="" />
+    <strong
+      variant="caption"
+      component="div"
+      color="text.secondary"
+    >
+      330
+    </strong>
+    <a type="button" className={styles.nav_btn_profile}>
+      <img
+        src="/svg/bronze.svg"
+        alt="bronze"
+        style={{ height: 30 }}
+      />
+      {user.image ? (
+        <Avatar
+          alt="icon"
+          src={`${process.env.REACT_APP_API}${user.image.filePath}`}
+          sx={{ width: 30, height: 30 }}
+        />
+      ) : (
+        <Avatar
+          alt="icon"
+          src={imgicon}
+          sx={{ width: 30, height: 30 }}
+        />
+      )}
+      Welcome, {user.name}
+    </a>
+  </button>
+) }
                   </div>
                 )}
                 <Link to="/">
@@ -238,10 +272,24 @@ const Nav = () => {
       {opnpopup && (
         <>
         <div className={styles.overlayStyles}>
+     
         <div  ref={dialogRef} className={styles.dialogStyles}>
-          <p>We want to know you better</p>
-          <button  onClick={closepopup}>Close</button>
-          <button onClick={()=>handlpersonalized(user._id)}>Continue</button>
+          <div className={styles.closbutton}>       <button  onClick={closepopup}>     <img
+        src="/images/personalize/close.png"
+        alt="bronze"
+
+      /></button></div>
+  
+        <div className={styles.iamgedialog}>
+        <img
+        src="/images/personalize/wannaknowmoreabouyou.png"
+        alt="bronze"
+
+      />
+      <div className={styles.continuebutton}> <button onClick={()=>handlpersonalized(user._id)}>Continue</button></div>
+         
+        </div>
+      
         </div >
         </div>
       </>

@@ -13,8 +13,8 @@ const Quiz = ({ startDate }) => {
   const location = useLocation();
   const { quizId, durationQuiz } = location.state || {};
   // Save quizId to sessionStorage
-  const storedQuizId = localStorage.getItem("quizId");
-  console.log("Quiz ID:", storedQuizId);
+  // const storedQuizId = localStorage.getItem("quizId");
+  // console.log("Quiz ID:", storedQuizId);
 
   const [questions, setQuestions] = useState([]);
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -338,7 +338,7 @@ const Quiz = ({ startDate }) => {
                   <div className={styles.menudialog}>
                     <Dialog
                       onClose={handleCloseDialog}
-                      quizId={storedQuizId}
+                      quizId={quizId}
                       setCurrentQuestionIndex={setCurrentQuestion}
                       currentQuestion={currentQuestion}
                       isAnyAnswerSelected={isAnyAnswerSelected}

@@ -40,13 +40,10 @@ const Footer = () => {
               <a href="#">About Us</a>
             </li>
             <li>
-              <a href="#">Our Services</a>
+              <a href="/home">Home</a>
             </li>
             <li>
-              <a href="#">Privacy Policy</a>
-            </li>
-            <li>
-              <a href="#">Visit Website</a>
+              <a href="/">Contact</a>
             </li>
           </ul>
         </div>
@@ -59,14 +56,9 @@ const Footer = () => {
               <a href="#">FAQ</a>
             </li>
             <li>
-              <a href="#">Learning</a>
+              <a href="#">Order Status</a>
             </li>
-            <li>
-              <a href="#">Courses</a>
-            </li>
-            <li>
-              <a href="#">Status</a>
-            </li>
+          
             <li>
               <a href="#">Payment Options</a>
             </li>
@@ -74,20 +66,17 @@ const Footer = () => {
         </div>
         <div className={styles.footercol}>
           <p className={styles.title}>
-            Online Classrooms <p className={styles.underline}></p>
+            U§NOW <p className={styles.underline}></p>
           </p>
           <ul>
             <li>
-              <a href="#">Download</a>
+              <a href="#">(+216) 50 09 99 09</a>
             </li>
             <li>
-              <a href="#">Changelog</a>
+              <a href="#">Cyber Parc, Hammam Sousse, Tunisia</a>
             </li>
             <li>
-              <a href="#">Rooms</a>
-            </li>
-            <li>
-              <a href="#">All Versions</a>
+              <a href="#">Www.unow.tn</a>
             </li>
           </ul>
         </div>
