@@ -2444,8 +2444,8 @@ margin-left: 200px; */
    }
     @media (max-width: 320px) {
        .inner_carousel {
-           width: clamp(81px, 20vw, 191px); /* Adjusts between 100px and 150px */
-           height: clamp(129px, 34vw, 217px); /* Adjusts between 150px and 200px */
+        width: clamp(104px, 20vw, 191px);
+        height: clamp(162px, 34vw, 217px);
        }
    }
    @media (min-width: 320px) and (max-width: 340px) {
@@ -2482,7 +2482,7 @@ margin-left: 200px; */
    /* For small screens (phones) */
    @media (min-width: 460px) and (max-width: 576px) {
        .inner_carousel {
-           width: clamp(123px, 27vw, 191px); /* Adjusts between 100px and 150px */
+            width: clamp(123px, 29vw, 191px);
            height: clamp(150px, 41vw, 217px); /* Adjusts between 150px and 200px */
        }
    }
@@ -2490,24 +2490,24 @@ margin-left: 200px; */
    /* For medium screens (tablets) */
    @media (min-width: 577px) and (max-width: 819px) {
        .inner_carousel {
-           width: clamp(120px, 29vw, 211px); /* Adjusts between 120px and 180px */
-           height: clamp(170px, 38vw, 260px); /* Adjusts between 170px and 230px */
+        width: clamp(120px, 29vw, 219px);
+        height: clamp(170px, 38vw, 297px);
        }
    }
    
    /* For large screens (small desktops) */
    @media (min-width: 819px) and (max-width: 1024px) {
        .inner_carousel {
-           width: clamp(140px, 21vw, 230px); /* Adjusts between 140px and 200px */
-           height: clamp(180px, 29vw, 285px); /* Adjusts between 180px and 250px */
+        width: clamp(141px, 25vw, 235px);
+        height: clamp(180px, 32vw, 316px);
        }
    }
    
    /* For extra large screens (large desktops) */
    @media (min-width: 1025px)and (max-width: 1240px) {
        .inner_carousel {
-           width: clamp(160px, 21vw, 324px); /* Adjusts between 160px and 220px */
-           height: clamp(200px, 29vw, 337px); /* Adjusts between 200px and 270px */
+        width: clamp(160px, 23vw, 325px);
+        height: clamp(200px, 32vw, 337px);
        }
    }
    @media (min-width: 1240px)and (max-width: 1380px) {
@@ -2774,4 +2774,12 @@ margin-left: 200px; */
         font-size: 17px;
     }
   }
-  
+  .plus{
+  width: 100%;
+  }
+  .pluses {
+    display: flex;
+    justify-content: flex-end;
+    margin-left: 90%;
+     }
+     
