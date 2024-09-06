@@ -41,8 +41,18 @@ const Categories = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
+        const config = {
+          headers: {
+            "X-Requested-With": "XMLHttpRequest",
+            "Access-Control-Allow-Origin": `${process.env.REACT_APP_API}`,
+            "Access-control-request-methods":
+              "POST, GET, DELETE, PUT, PATCH, COPY, HEAD, OPTIONS",
+          },
+          withCredentials: true,
+        };
         const response = await fetch(
-          `${process.env.REACT_APP_API}api/Category/getCategories`
+          `${process.env.REACT_APP_API}api/Category/getCategories`,
+          config
         );
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);

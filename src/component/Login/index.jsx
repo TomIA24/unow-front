@@ -12,8 +12,10 @@ import apple from "./imgMedia/Social media logo (1).png";
 import google from "./imgMedia/Social media logo (2).png";
 import twitter from "./imgMedia/Social media logo (3).png";
 import hide from "./icon.png";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate();
   const location = useLocation();
   const { signup } = location.state || {};
   const [signupState, setSignupState] = useState(signup);
@@ -44,9 +46,9 @@ const Login = () => {
           localStorage.setItem("user", JSON.stringify(response.data.data));
           localStorage.setItem("login", true);
           if (response.data.data.firstConnection) {
-            window.location = "/completeInfo";
+            navigate(`/completeInfo`);
           } else {
-            window.location = "/profile";
+            navigate(`/profile`);
           }
 
           if (response.data.data.userType === "Admin") {
@@ -148,9 +150,17 @@ const Login = () => {
               </p>
 
               <div className={styles.divider}>
-                <img src={divider} className={styles.dividerImage} alt="Divider" />
-                <p  className={styles.or}>Or</p>
-                <img src={divider} className={styles.dividerImage} alt="Divider" />
+                <img
+                  src={divider}
+                  className={styles.dividerImage}
+                  alt="Divider"
+                />
+                <p className={styles.or}>Or</p>
+                <img
+                  src={divider}
+                  className={styles.dividerImage}
+                  alt="Divider"
+                />
               </div>
               <div className={styles.allsocialmedia}>
                 <img

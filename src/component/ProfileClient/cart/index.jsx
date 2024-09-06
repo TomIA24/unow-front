@@ -140,7 +140,7 @@ const Cart = ({ user }) => {
                 {cart?.trainings?.length > 0 ? (
                   <div className={styles.coursesInner}>
                     {cart?.trainings?.map((course) => (
-                      <CourseElement course={course} type="Course" />
+                      <CourseElement course={course} type="Training" />
                     ))}
                   </div>
                 ) : (

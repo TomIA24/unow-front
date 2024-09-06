@@ -23,7 +23,9 @@ const responsive = {
 
 export const Header = () => {
   const images = [
-    "/images/home/unw.jpeg",
+    // "/images/home/unw.jpeg",
+    "/images/home/explore-banner.jpg",
+    "/images/home/build-banner.png",
     // "/images/home/header.png",
     // "/images/home/background-image.png",
   ];
