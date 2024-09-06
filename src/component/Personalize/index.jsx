@@ -27,8 +27,12 @@ import "react-form-wizard-component/dist/style.css";
 import { useRecoilState } from "recoil";
 import { signupState } from "../../recoil/signup.atom";
 import { set } from "date-fns";
+import img from "../assets/profileImgNoUp.svg";
+import imgicon from "../assets/usericon.png";
+import Avatar from "@mui/material/Avatar";
 
 const Personalize = () => {
+  const location = useLocation();
   const [signup, setSignup] = useRecoilState(signupState);
   const [customDomain, setCustomDomain] = useState("");
 
@@ -36,7 +40,10 @@ const Personalize = () => {
   const [learningReason, setLearningReason] = useState("");
   const [learningDomain, setLearningDomain] = useState("");
   const [learningCertif, setLearningCertif] = useState("");
-
+  const { candiddId ,data } = location.state || {};
+  console.log("idcdnadt",candiddId);
+  
+  // Save quizId to sessionStorage
   const addDomain = (domain, e) => {
     if (e.target.checked) {
       setSignup({
@@ -80,8 +87,8 @@ const Personalize = () => {
     setSignup({ ...data, [input.name]: input.value });
   };
 
-  const location = useLocation();
-  const { data } = location.state || {};
+  
+
 
   const navigate = useNavigate();
 
@@ -89,29 +96,29 @@ const Personalize = () => {
     setLearningReason(input.value);
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    console.log("login");
-    try {
-      const config = {
-        headers: {},
-      };
-      const url = `${process.env.REACT_APP_API}api/Candidat/Signup`;
-      const { data: res } = await axios.post(url, signup);
-      navigate("/login", { state: { signup: true } });
-      console.log(res.message);
-    } catch (error) {
-      if (
-        error.response &&
-        error.response.status >= 400 &&
-        error.response.status <= 500
-      ) {
-        navigate("/signup", {
-          state: { errorState: error.response.data.message },
-        });
-      }
-    }
-  };
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   console.log("login");
+  //   try {
+  //     const config = {
+  //       headers: {},
+  //     };
+  //     const url = `${process.env.REACT_APP_API}api/Candidat/Signup`;
+  //     const { data: res } = await axios.post(url, signup);
+  //     navigate("/login", { state: { signup: true } });
+  //     console.log(res.message);
+  //   } catch (error) {
+  //     if (
+  //       error.response &&
+  //       error.response.status >= 400 &&
+  //       error.response.status <= 500
+  //     ) {
+  //       navigate("/signup", {
+  //         state: { errorState: error.response.data.message },
+  //       });
+  //     }
+  //   }
+  // };
 
   const handleComplete = () => {
     console.log("Form completed!");
@@ -128,8 +135,115 @@ const Personalize = () => {
 
   const [selectedOption, setSelectedOption] = useState('');
 
-  const handleOptionChange = (event) => {
-    setSelectedOption(event.target.id);
+
+  const [formData, setFormData] = useState({
+    interests: [],
+    exploreFirst: '',
+    goals: [],
+    timeline: '',
+    availability: [],
+    style: [],
+    hoursperweek: '',
+    learningother: '',
+    learningpace: [],
+    dayslearning: '',
+    timeOfDay: '',
+    profilecomplited:0,
+  });
+  
+  const [candidatdata, setcandidatdata] = useState({
+    interests: [],
+    exploreFirst: '',
+    goals: [],
+    timeline: '',
+    availability: [],
+    style: [],
+    hoursperweek: '',
+    learningother: '',
+    learningpace: [],
+    dayslearning: '',
+    timeOfDay: '',
+    profilecomplited:0,
+  });
+  const [missingFields, setMissingFields] = useState([]);
+  
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // Fetch the full candidate data
+        const candidateResponse = await axios.get(`${process.env.REACT_APP_API}api/candidat/candidates/${candiddId}`);
+        const candidateData = candidateResponse.data;
+console.log(candidateData);
+
+
+        setcandidatdata(prevState => ({
+          ...prevState,
+          ...candidateData,
+        }));
+
+        const checkFieldsResponse = await axios.get(`${process.env.REACT_APP_API}api/candidat/checkfields/${candiddId}`);
+        
+        if (checkFieldsResponse.data.message === 'Some fields are missing or incomplete') {
+          setMissingFields(checkFieldsResponse.data.missingFields);
+        } else {
+          setMissingFields([]); 
+        }
+      } catch (error) {
+        console.error("Error fetching candidate data:", error);
+      }
+    };
+
+    fetchData();
+  }, [candiddId]);
+
+  const handleOptionChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    if (type === 'checkbox') {
+      setFormData((prevData) => ({
+        ...prevData,
+        interests: checked
+          ? [...prevData.interests, value]
+          : prevData.interests.filter((item) => item !== value),
+      }));
+    } else {
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: value,
+      }));
+    }
+  };
+
+
+  const handleCheckboxChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: prevData[name].includes(value)
+        ? prevData[name].filter((item) => item !== value)
+        : [...prevData[name], value],
+    }));
+  };
+  const handleInputChange = (e) => {
+    const { name, value, type, checked } = e.target;
+  console.log(e.target.value);
+  
+    setFormData((prevData) => {
+      
+      if (type === 'checkbox') {
+        const currentValues = Array.isArray(prevData[name]) ? prevData[name] : [];
+        return {
+          ...prevData,
+          [name]: checked
+            ? [...currentValues, value]
+            : currentValues.filter((item) => item !== value),
+        };
+      } else {
+        return {
+          ...prevData,
+          [name]: value, // For radio and other input types, simply set the value
+        };
+      }
+    });
   };
 
   const steps = [
@@ -137,47 +251,57 @@ const Personalize = () => {
       title: "Interest Areas",
       content: (
         <>
-          <div className={styles.personlizestep}>
-            <div className={styles.personlizesquestion}>
+       {(!candidatdata.interests || candidatdata.interests.length === 0 || !candidatdata.exploreFirst ) &&  (  <div className={styles.personlizestep}>
+        <div className={styles.personlizesquestion}>
+            {candidatdata.interests.length }
+            {formData.interests.map((interest, index) => (
+        <div key={index}>
+          {interest}
+        </div>
+      ))}
               <label>What subjects interest you most? (Select up to three)</label>
               <div className={styles.checkboxGroup}>
-                <input type="checkbox" id="sciences" name="interest" className={styles.hiddenCheckbox} />
-                <label htmlFor="sciences"  className={styles.customLabel}>
+                <input type="checkbox" id="sciences" name="interests" value="Sciences & Technology" className={styles.hiddenCheckbox} checked={Array.isArray(formData.interests) && formData.interests.includes('Sciences & Technology')} onChange={handleInputChange} />
+                <label htmlFor="sciences" className={styles.customLabel}>
                   Sciences & Technology
                 </label>
               </div>
-              <div  className={styles.checkboxGroup}>
-                <input type="checkbox" id="arts" name="interest" className={styles.hiddenCheckbox} />
+              <div className={styles.checkboxGroup}>
+                <input type="checkbox" id="arts" name="interests" className={styles.hiddenCheckbox} value="Arts & Creativity"
+                  checked={Array.isArray(formData.interests) && formData.interests.includes('Arts & Creativity')} onChange={handleInputChange} />
                 <label htmlFor="arts" className={styles.customLabel}>Arts & Creativity</label>
               </div>
               <div className={styles.checkboxGroup}>
-                <input type="checkbox" id="history" name="interest" className={styles.hiddenCheckbox} />
+                <input type="checkbox" id="history" name="interests" className={styles.hiddenCheckbox} value="History & Culture" checked={Array.isArray(formData.interests) && formData.interests.includes('History & Culture')} onChange={handleInputChange} />
                 <label htmlFor="history" className={styles.customLabel}>History & Culture</label>
               </div>
               <div className={styles.checkboxGroup}>
-                <input type="checkbox" id="languages" name="interest" className={styles.hiddenCheckbox} />
+                <input type="checkbox" id="languages" name="interests" className={styles.hiddenCheckbox}
+                  checked={Array.isArray(formData.interests) && formData.interests.includes('Languages & Communication')} value="Languages & Communication" onChange={handleInputChange} />
                 <label htmlFor="languages" className={styles.customLabel}>Languages & Communication</label>
               </div>
               <div className={styles.checkboxGroup}>
-                <input type="checkbox" id="development" name="interest" className={styles.hiddenCheckbox} />
+                <input type="checkbox" id="development" name="interests" className={styles.hiddenCheckbox}
+                  checked={Array.isArray(formData.interests) && formData.interests.includes('Personal Development')} value="Personal Development" onChange={handleInputChange} />
                 <label htmlFor="development" className={styles.customLabel}>Personal Development</label>
               </div>
               <div className={styles.checkboxGroup}>
-                <input type="checkbox" id="other" name="interest" className={styles.hiddenCheckbox} />
+                <input type="checkbox" id="other" name="other" className={styles.hiddenCheckbox}
+                  checked={Array.isArray(formData.interests) && formData.interests.includes('Other')} />
                 <label htmlFor="other" className={styles.customLabel}>Other (Specify)</label>
               </div>
             </div>
             <div >
             <div className={styles.personlizesquestion}>
-              <label>Which of the selected areas would you like to explore in-depth first?</label>
-              <input type="text" name="exploreFirst" />
+                <label>Which of the selected areas would you like to explore in-depth first?</label>
+                <input type="text" name="exploreFirst" className={styles.input} value={formData.exploreFirst} onChange={handleInputChange} placeholder="selected areas"/>
+              </div>
+              {/* <div className={styles.personlizesquestion}>
+                <label>Which of the selected areas would you like to explore in-depth first?</label>
+                <input type="text" name="exploreFirst" value={formData.exploreFirst}onChange={handleInputChange} />
+              </div> */}
             </div>
-            <div className={styles.personlizesquestion}>
-              <label>Which of the selected areas would you like to explore in-depth first?</label>
-              <input type="text" name="exploreFirst" />
-            </div>
-            </div>
-          </div>
+          </div>)}
         </>
       ),
     },
@@ -185,52 +309,52 @@ const Personalize = () => {
       title: "Goals and Aspirations",
       content: (
         <>
-            <>
-          <div className={styles.personlizestep}>
-            <div className={styles.personlizesquestion}>
-              <label>What are your main objectives for using this platform? (Select all that apply)</label>
-              <div className={styles.checkboxGroup}>
-                <input type="checkbox" id="sciences" name="interest" className={styles.hiddenCheckbox} />
-                <label htmlFor="sciences"  className={styles.customLabel}>
-                Skill Development for Work
-                </label>
+          <>
+            <div className={styles.personlizestep}>
+              <div className={styles.personlizesquestion}>
+                <label>What are your main objectives for using this platform? (Select all that apply)</label>
+                <div className={styles.checkboxGroup}>
+                  <input type="checkbox" id="skill" name="goals" className={styles.hiddenCheckbox} checked={Array.isArray(formData.goals) && formData.goals.includes('Skill Development for Work')} value='Skill Development for Work' onChange={handleInputChange} />
+                  <label htmlFor="skill" className={styles.customLabel}>
+                    Skill Development for Work
+                  </label>
+                </div>
+                <div className={styles.checkboxGroup}>
+                  <input type="checkbox" id="newinterest" name="goals" className={styles.hiddenCheckbox} value='Exploring New Interests' checked={Array.isArray(formData.goals) &&formData.goals.includes('Exploring New Interests')} onChange={handleInputChange} />
+                  <label htmlFor="newinterest" className={styles.customLabel}>Exploring New Interests</label>
+                </div>
+                <div className={styles.checkboxGroup}>
+                  <input type="checkbox" id="specificproject" name="goals" className={styles.hiddenCheckbox} checked={Array.isArray(formData.goals) &&formData.goals.includes('Preparing for a Specific Project ')} value='Preparing for a Specific Project ' onChange={handleInputChange} />
+                  <label htmlFor="specificproject" className={styles.customLabel}>Preparing for a Specific Project </label>
+                </div>
+                <div className={styles.checkboxGroup}>
+                  <input type="checkbox" id="other" name="goals" className={styles.hiddenCheckbox} checked={Array.isArray(formData.goals) &&formData.goals.includes('Other')} onChange={handleInputChange} />
+                  <label htmlFor="other" className={styles.customLabel}>Other (Specify)</label>
+                </div>
               </div>
-              <div  className={styles.checkboxGroup}>
-                <input type="checkbox" id="arts" name="interest" className={styles.hiddenCheckbox} />
-                <label htmlFor="arts" className={styles.customLabel}>Exploring New Interests</label>
-              </div>
-              <div className={styles.checkboxGroup}>
-                <input type="checkbox" id="history" name="interest" className={styles.hiddenCheckbox} />
-                <label htmlFor="history" className={styles.customLabel}>Preparing for a Specific Project </label>
-              </div>
-              <div className={styles.checkboxGroup}>
-                <input type="checkbox" id="other" name="interest" className={styles.hiddenCheckbox} />
-                <label htmlFor="other" className={styles.customLabel}>Other (Specify)</label>
+              <div>
+                <div className={styles.personlizesquestion}>
+                  <label>What is your expected timeline to achieve these goals?</label>
+                  <div className={styles.checkboxGroup}>
+                    <input type="radio" id="month" name="timeline" className={styles.hiddenCheckbox} value='month' onChange={handleInputChange}  checked={formData.timeline === 'month'}/>
+                    <label htmlFor="month" className={styles.customLabel} > month </label>
+                  </div>
+                  <div className={styles.checkboxGroup}>
+                    <input type="radio" id="1months" name="timeline" className={styles.hiddenCheckbox} value='1-3 months ' onChange={handleInputChange} checked={formData.timeline === '1-3 months'}/>
+                    <label htmlFor="1months" className={styles.customLabel} >1-3 months  </label>
+                  </div>
+                  <div className={styles.checkboxGroup}>
+                    <input type="radio" id="3months" name="timeline" className={styles.hiddenCheckbox} value='3 - 6 months' onChange={handleInputChange} checked={formData.timeline === '3 - 6 months'}/>
+                    <label htmlFor="3months" className={styles.customLabel} >3 - 6 months </label>
+                  </div>
+                  <div className={styles.checkboxGroup}>
+                    <input type="radio" id="6months" name="timeline" className={styles.hiddenCheckbox} value='6+months' onChange={handleInputChange} checked={formData.timeline === '6+months'}/>
+                    <label htmlFor="6months" className={styles.customLabel} >6+months  </label>
+                  </div>
+                </div>
               </div>
             </div>
-            <div>
-            <div className={styles.personlizesquestion}>
-            <label>What is your expected timeline to achieve these goals?</label>
-              <div  className={styles.checkboxGroup}>
-                <input type="checkbox" id="arts" name="interest" className={styles.hiddenCheckbox} />
-                <label htmlFor="arts" className={styles.customLabel}> month </label>
-              </div>
-              <div className={styles.checkboxGroup}>
-                <input type="checkbox" id="history" name="interest" className={styles.hiddenCheckbox} />
-                <label htmlFor="history" className={styles.customLabel}>1-3 months  </label>
-              </div>
-              <div className={styles.checkboxGroup}>
-                <input type="checkbox" id="other" name="interest" className={styles.hiddenCheckbox} />
-                <label htmlFor="other" className={styles.customLabel}>3 - 6 months </label>
-              </div>
-              <div className={styles.checkboxGroup}>
-                <input type="checkbox" id="other" name="interest" className={styles.hiddenCheckbox} />
-                <label htmlFor="other" className={styles.customLabel}>6+months  </label>
-              </div>
-            </div>
-            </div>
-          </div>
-        </>
+          </>
         </>
       ),
     },
@@ -239,152 +363,226 @@ const Personalize = () => {
       content: (
         <>
           <div className={styles.personlizestep}>
-          <div className={styles.personlizesquestion}>
-            <label>What is your preferred learning style? (Select all that apply)</label>
-            <div className={styles.checkboxGroup}>
-              <input type="checkbox" id="videos" name="learningStyle"  className={styles.hiddenCheckbox}/>
-              <label htmlFor="videos" className={styles.customLabel}>Interactive Videos</label>
-            </div>
-            <div className={styles.checkboxGroup}>
-              <input type="checkbox" id="liveClasses" name="learningStyle" className={styles.hiddenCheckbox} />
-              <label htmlFor="liveClasses" className={styles.customLabel}>Live Classes with an Instructor</label>
-            </div>
-            <div className={styles.checkboxGroup}>
-              <input type="checkbox" id="readingMaterials" name="learningStyle"  className={styles.hiddenCheckbox}/>
-              <label htmlFor="readingMaterials" className={styles.customLabel}>Reading Materials & Texts</label>
-            </div>
-            <div className={styles.checkboxGroup}>
-              <input type="checkbox" id="exercises" name="learningStyle"  className={styles.hiddenCheckbox}/>
-              <label htmlFor="exercises" className={styles.customLabel}>Practical Exercises & Quizzes</label>
-            </div>
-            <div className={styles.checkboxGroup}>
-              <input type="checkbox" id="mixedFormats" name="learningStyle"  className={styles.hiddenCheckbox}/>
-              <label htmlFor="mixedFormats" className={styles.customLabel}>Mixed Formats</label>
-            </div>
-          </div>
-          <div>
-          <div className={styles.personlizesquestion}>
-              <label>What is your preferred learning style? (Select all that apply)      
-              </label>
+            <div className={styles.personlizesquestion}>
+              <label>What is your preferred learning style? (Select all that apply)</label>
               <div className={styles.checkboxGroup}>
-                <input type="checkbox" id="sciences" name="interest" className={styles.hiddenCheckbox} />
-                <label htmlFor="sciences"  className={styles.customLabel}>
-                  Sciences & Technology
+                <input type="checkbox" id="videos" name="availability" className={styles.hiddenCheckbox} value='Interactive videos'  checked={Array.isArray(formData.availability) &&formData.availability.includes('Interactive videos')} onChange={handleInputChange} />
+                <label htmlFor="videos" className={styles.customLabel}>Interactive videos</label>
+              </div>
+              <div className={styles.checkboxGroup}>
+                <input type="checkbox" id="liveClasses" name="availability" className={styles.hiddenCheckbox} value='Live Classes with an Instructor'checked={Array.isArray(formData.availability) &&formData.availability.includes('Live Classes with an Instructor')} onChange={handleInputChange} />
+                <label htmlFor="liveClasses" className={styles.customLabel}>Live Classes with an Instructor</label>
+              </div>
+              <div className={styles.checkboxGroup}>
+                <input type="checkbox" id="readingMaterials" name="availability" className={styles.hiddenCheckbox} value='Reading Materials & Texts'checked={Array.isArray(formData.availability) &&formData.availability.includes('Reading Materials & Texts')} onChange={handleInputChange} />
+                <label htmlFor="readingMaterials" className={styles.customLabel}>Reading Materials & Texts</label>
+              </div>
+              <div className={styles.checkboxGroup}>
+                <input type="checkbox" id="exercises" name="availability" className={styles.hiddenCheckbox} value='Practical Exercises & Quizzes'checked={Array.isArray(formData.availability) &&formData.availability.includes('Practical Exercises & Quizzes')} onChange={handleInputChange} />
+                <label htmlFor="exercises" className={styles.customLabel}>Practical Exercises & Quizzes</label>
+              </div>
+              <div className={styles.checkboxGroup}>
+                <input type="checkbox" id="mixedFormats" name="availability" className={styles.hiddenCheckbox} value='Mixed Formats'checked={Array.isArray(formData.availability) &&formData.availability.includes('Mixed Formats')} onChange={handleInputChange} />
+                <label htmlFor="mixedFormats" className={styles.customLabel}>Mixed Formats</label>
+              </div>
+            </div>
+            <div>
+              <div className={styles.personlizesquestion}>
+                <label>How much time can you dedicate to learning each week ?
                 </label>
+                <div className={styles.checkboxGroup}>
+  <input
+    type="radio"
+    id="hours"
+    name="hoursperweek"
+    className={styles.hiddenCheckbox}
+    value="Less than 5 hours"
+    onChange={handleInputChange}
+    checked={Array.isArray(formData.hoursperweek) && formData.hoursperweek === 'Less than 5 hours'}
+  />
+  <label htmlFor="hours" className={styles.customLabel}>
+    Less than 5 hours
+  </label>
+</div>
+
+<div className={styles.checkboxGroup}>
+  <input
+    type="radio"
+    id="morehours"
+    name="hoursperweek"
+    className={styles.hiddenCheckbox}
+    value="5 to 10 hours"
+    onChange={handleInputChange}
+    checked={Array.isArray(formData.hoursperweek) && formData.hoursperweek === '5 to 10 hours'}
+  />
+  <label htmlFor="morehours" className={styles.customLabel}>
+    5 to 10 hours
+  </label>
+</div>
+
+<div className={styles.checkboxGroup}>
+  <input
+    type="radio"
+    id="more"
+    name="hoursperweek"
+    className={styles.hiddenCheckbox}
+    value="More than 10 hours"
+    onChange={handleInputChange}
+    checked={Array.isArray(formData.hoursperweek) && formData.hoursperweek === 'More than 10 hours'}
+  />
+  <label htmlFor="more" className={styles.customLabel}>
+    More than 10 hours
+  </label>
+                </div>
+
               </div>
-              <div  className={styles.checkboxGroup}>
-                <input type="checkbox" id="arts" name="interest" className={styles.hiddenCheckbox} />
-                <label htmlFor="arts" className={styles.customLabel}>Arts & Creativity</label>
-              </div>
-              <div className={styles.checkboxGroup}>
-                <input type="checkbox" id="history" name="interest" className={styles.hiddenCheckbox} />
-                <label htmlFor="history" className={styles.customLabel}>History & Culture</label>
-              </div>
-              <div className={styles.checkboxGroup}>
-                <input type="checkbox" id="languages" name="interest" className={styles.hiddenCheckbox} />
-                <label htmlFor="languages" className={styles.customLabel}>Languages & Communication</label>
-              </div>
-              <div className={styles.checkboxGroup}>
-                <input type="checkbox" id="development" name="interest" className={styles.hiddenCheckbox} />
-                <label htmlFor="development" className={styles.customLabel}>Personal Development</label>
-              </div>
-              <div className={styles.checkboxGroup}>
-                <input type="checkbox" id="other" name="interest" className={styles.hiddenCheckbox} />
-                <label htmlFor="other" className={styles.customLabel}>Other (Specify)</label>
+              <div className={styles.personlizesquestion}>
+                <label >Are you willing to participate in collaborative activities with other learners?</label>
+                <div className={styles.checkboxGroup}>
+                  <div className={styles.checkboxGroup}>
+                    <input type="radio" id="yes" name="learningother"
+                      className={styles.hiddenCheckbox} value='yes' onChange={handleInputChange} checked={Array.isArray(formData.learningother) && formData.learningother === 'yes'} />
+                    <label htmlFor="yes" className={styles.customLabel}>
+                      yes
+                    </label>
+                  </div>
+
+                </div>
+                <div>
+                  <div className={styles.checkboxGroup}>
+                    <input type="radio" id="no" name="learningother"
+                      className={styles.hiddenCheckbox} value='no' onChange={handleInputChange}     checked={Array.isArray(formData.learningother) && formData.learningother === 'no'} />
+                    <label htmlFor="no" className={styles.customLabel}>
+                      No
+                    </label>
+                  </div>
+                </div>
               </div>
             </div>
-          <div>
-            <label>Do you have any specific needs regarding accessibility or additional support for your learning?</label>
-            <input type="text" name="accessibilityNeeds" />
-          </div>
-          </div>
           </div>
         </>
       ),
     },
-   
-  
+
+
     {
       title: "Learning Pace",
       content: (
         <>
-            <div className={styles.personlizestep}>
+          <div className={styles.personlizestep}>
             <div className={styles.personlizesquestion}>
               <label>What pace of learning do you prefer?</label>
               <div className={styles.checkboxGroup}>
-                <input type="checkbox" id="sciences" name="interest" className={styles.hiddenCheckbox} />
-                <label htmlFor="sciences"  className={styles.customLabel}>
-                Intensive (e.g., Bootcamp)
-                </label>
-              </div>
-              <div>
-              <div  className={styles.checkboxGroup}>
-                <input type="checkbox" id="arts" name="interest" className={styles.hiddenCheckbox}   />
-                <label htmlFor="arts" className={styles.customLabel}>Regular and Gradual </label>
-              </div>
-          
-              </div>
-              <div className={styles.checkboxGroup}>
-                <input type="checkbox" id="history" name="interest" className={styles.hiddenCheckbox}   />
-                <label htmlFor="history" className={styles.customLabel}>Self-paced (No time constraints)</label>
-              </div>
+  <input
+    type="checkbox"
+    id="intensive"
+    name="learningpace"
+    className={styles.hiddenCheckbox}
+    value="Intensive (e.g., Bootcamp)"
+    onChange={handleInputChange}
+    checked={Array.isArray(formData.learningother) && formData.learningpace.includes('Intensive (e.g., Bootcamp)')}
+  />
+  <label htmlFor="intensive" className={styles.customLabel}>
+    Intensive (e.g., Bootcamp)
+  </label>
+</div>
+
+<div className={styles.checkboxGroup}>
+  <input
+    type="checkbox"
+    id="regular"
+    name="learningpace"
+    className={styles.hiddenCheckbox}
+    value="Regular and Gradual"
+    onChange={handleInputChange}
+    checked={Array.isArray(formData.learningother) && formData.learningpace.includes('Regular and Gradual')}
+  />
+  <label htmlFor="regular" className={styles.customLabel}>
+    Regular and Gradual
+  </label>
+</div>
+
+<div className={styles.checkboxGroup}>
+  <input
+    type="checkbox"
+    id="selfpaced"
+    name="learningpace"
+    className={styles.hiddenCheckbox}
+    value="Self-paced (No time constraints)"
+    onChange={handleInputChange}
+    checked={Array.isArray(formData.learningother) && formData.learningpace.includes('Self-paced (No time constraints)')}
+  />
+  <label htmlFor="selfpaced" className={styles.customLabel}>
+    Self-paced (No time constraints)
+  </label>
+</div>
             </div>
             <div className={styles.personlizesquestion}>
               <label>Do you have specific preferences for learning times ?</label>
               <div>
-              <div className={styles.checkboxGroup}>
-                <input type="radio" id="weekend" name="weekend"
-                 checked={selectedOption === 'weekend'} className={styles.hiddenCheckbox}  onChange={handleOptionChange} />
-                <label htmlFor="weekend"  className={styles.customLabel}>
-                weekend
-                </label>
-              </div>
-       
-              </div>
-              <div>
-              <div className={styles.checkboxGroup}>
-                <input type="radio" id="weekdays" name="weekdays"
-                  checked={selectedOption === 'weekdays'} className={styles.hiddenCheckbox}  onChange={handleOptionChange} />
-                <label htmlFor="weekdays"  className={styles.customLabel}>
-                weekdays
-                </label>
-              </div>
-         
+                <div className={styles.checkboxGroup}>
+                  <input type="radio" id="weekend" name="dayslearning"
+                       checked={ Array.isArray(formData.dayslearning) && formData.dayslearning === 'weekend'} className={styles.hiddenCheckbox} value='weekend' onChange={handleInputChange} />
+                  <label htmlFor="weekend" className={styles.customLabel}>
+                    weekend
+                  </label>
+                </div>
+
               </div>
               <div>
-              <div className={styles.checkboxGroup}>
-                <input type="radio" id="both" name="both" className={styles.hiddenCheckbox}   checked={selectedOption === 'both'} onChange={handleOptionChange} />
-                <label htmlFor="both"  className={styles.customLabel}>
-               both
-                </label>
+                <div className={styles.checkboxGroup}>
+                  <input type="radio" id="weekdays" name="dayslearning"
+                    checked={  Array.isArray(formData.dayslearning) &&  formData.dayslearning === 'weekdays'} className={styles.hiddenCheckbox} value='weekdays' onChange={handleInputChange} />
+                  <label htmlFor="weekdays" className={styles.customLabel}>
+                    weekdays
+                  </label>
+                </div>
+
               </div>
-         
+              <div>
+                <div className={styles.checkboxGroup}>
+                  <input type="radio" id="both" name="dayslearning" className={styles.hiddenCheckbox}checked={ Array.isArray(formData.dayslearning) &&  formData.dayslearning === 'both'}value='both' onChange={handleInputChange} />
+                  <label htmlFor="both" className={styles.customLabel}>
+                    both
+                  </label>
+                </div>
+
               </div>
 
-         {selectedOption && (
-  <div className={styles.additionalInfo}>
-    <input 
-      type="radio" 
-      id="morning" 
-      name="timeOfDay" 
-    />
-    <label htmlFor="morning">Morning</label>
-    
-    <input 
-      type="radio" 
-      id="afternoon" 
-      name="timeOfDay" 
-    />
-    <label htmlFor="afternoon">Afternoon</label>
-    
-    <input 
-      type="radio" 
-      id="evening" 
-      name="timeOfDay" 
-    />
-    <label htmlFor="evening">Evening</label>
-  </div>
-)}
+              {(formData.dayslearning === 'weekend' || formData.dayslearning === 'weekdays' || formData.dayslearning === 'both') && (
+    <div className={styles.additionalInfo}>
+      <input
+        type="radio"
+        id="morning"
+        name="timeOfDay"
+        value="morning"
+        onChange={handleInputChange}
+        checked={ Array.isArray(formData.timeOfDay) && formData.timeOfDay === 'morning'}
+      />
+      <label htmlFor="morning">Morning</label>
+
+
+      <input
+        type="radio"
+        id="afternoon"
+        name="timeOfDay"
+        value="afternoon"
+        onChange={handleInputChange}
+        checked={ Array.isArray(formData.timeOfDay) && formData.timeOfDay === 'afternoon'}
+      />
+      <label htmlFor="afternoon">Afternoon</label>
+
+      <input
+        type="radio"
+        id="evening"
+        name="timeOfDay"
+        value="evening"
+        onChange={handleInputChange}
+        checked={ Array.isArray(formData.timeOfDay) && formData.timeOfDay === 'evening'}
+      />
+      <label htmlFor="evening">Evening</label>
+    </div>
+  )}
             </div>
           </div>
         </>
@@ -394,18 +592,100 @@ const Personalize = () => {
 
   const [currentStep, setCurrentStep] = useState(0);
 
-  const handleNext = () => {
-    if (currentStep < steps.length - 1) {
-      setCurrentStep((prevStep) => prevStep + 1);
-    }
-  };
+
 
   const handleBack = () => {
     if (currentStep > 0) {
       setCurrentStep((prevStep) => prevStep - 1);
     }
   };
+  const handleNext = async () => {
   
+    const updatedProfilecomplited = candidatdata.profilecomplited + 20;
+
+    // Make sure to include the updated profilecomplited in the formData
+    const updatedFormData = {
+      ...formData,
+      profilecomplited: updatedProfilecomplited,
+    };
+  
+    if (currentStep < steps.length - 1) {
+      try {
+        console.log('Submitting data:', updatedFormData,updatedFormData.profilecomplited);
+  
+        // Make the API call to update the candidate
+        const response = await axios.put(
+          `${process.env.REACT_APP_API}api/candidat/${candiddId}`,
+          updatedFormData
+          
+        );
+        console.log('Updated candidate data:', response.data);
+  
+        // Clear form data
+        setcandidatdata({
+          ...formData,
+          profilecomplited: updatedProfilecomplited, // Ensure profilecomplited is updated
+        });
+  
+        // Proceed to the next step
+        setCurrentStep((prevStep) => prevStep + 1);
+  
+        // Optionally, reset step to 0 after submission
+        // setCurrentStep(0); // Uncomment this line if you want to reset after submission
+  
+      } catch (error) {
+        console.error('Error updating candidate:', error.response ? error.response.data : error.message);
+  
+     
+      }
+    } else if (currentStep == steps.length - 1) {
+      try {
+        console.log('Submitting data:', updatedFormData);
+  
+      
+        const response = await axios.put(
+          `${process.env.REACT_APP_API}api/candidat/${candiddId}`,
+          updatedFormData
+        );
+        navigate("/profile")
+        console.log('Updated candidate data:', response.data);
+  
+        // Clear form data
+        // setFormData({ interests: [], exploreFirst: '' });
+  
+        // Proceed to the next step
+        setCurrentStep((prevStep) => prevStep + 1);
+
+      } catch (error) {
+        console.error('Error updating candidate:', error.response ? error.response.data : error.message);
+  
+      }
+    }
+  };
+  const [completedPercentage, setCompletedPercentage] = useState('0%');
+
+const [progressGradient, setProgressGradient] = useState('');
+const [mainColorRgb, setMainColorRgb] = useState('');
+useEffect(() => {
+  if (candidatdata?.profilecomplited != null) {
+    const percentage = candidatdata.profilecomplited;
+    setCompletedPercentage(`${percentage}%`);
+
+    if (percentage <= 20) {
+      setProgressGradient(`#E74C3C`);
+      setMainColorRgb('255, 152, 0');
+    } else if (percentage < 50) {
+      setProgressGradient(`#F39D6E`);
+      setMainColorRgb('76, 175, 80');
+    } else if (percentage == 50){
+      setProgressGradient(`#49C382`);
+    }
+  } else {
+    setCompletedPercentage('0%');
+    setProgressGradient('conic-gradient(#ff9800 0%, #ffffff00 0%)');
+    setMainColorRgb('255, 152, 0');
+  }
+}, [candidatdata?.profilecomplited]);
   return (
     <div >
       {/* <img
@@ -414,13 +694,50 @@ const Personalize = () => {
         alt="Your SVG"
       /> */}
       <div className={styles.backimagescore}>
+        <div className={styles.padding}>
         <div className={styles.logoscore}>
           <img
             src="./images/quiz/copywright.png"
             alt=""
             className={styles.logoimag}
           />
+
+          
         </div>
+        <div>
+        <a type="button" className={styles.nav_btn_profile}>
+                <div className={styles.progressCircle}
+                style={{ 
+                  '--completed-percentage': completedPercentage, 
+                  '--progress-gradient': progressGradient,
+                  '--main-color-rgb': mainColorRgb}}
+                >
+                  <div className={styles.progressInnerGap}>
+                    <div className={styles.progressInner}>
+                      {candidatdata.image ? (
+                        <Avatar
+                          alt="icon"
+                          src={`${process.env.REACT_APP_API}${candidatdata.image.filePath}`}
+                          sx={{ width: 150, height: 150 }}
+                        />
+                      ) : (
+                        <Avatar
+                          alt="icon"
+                          src={img}
+                          sx={{ width: 150, height: 150 }}
+                        />
+                      )}
+                    </div>
+                  </div>
+                </div>
+     <span>{candidatdata.name}
+     <p className={styles.underline}></p>
+     </span>
+    </a>
+                </div>
+        
+                </div>
+   
       </div>
       <Link className={styles.Close} to="/">
         Home
@@ -438,21 +755,26 @@ const Personalize = () => {
             ></div>
           </div>
 
-          <div className={styles.formcontent}>
+        {(steps[currentStep].content) && (  <div className={styles.formcontent}>
             <h2>{steps[currentStep].title}</h2>
             {steps[currentStep].content}
-          </div>
+          </div>)}
 
           <div className={styles.formnavigation}>
-            {currentStep > 0 && (
-              <button onClick={handleBack} className={styles.backbutton}>
-                Back
-              </button>
-            )}
+         
             <button onClick={handleNext} className={styles.nextbutton}>
               {currentStep === steps.length - 1 ? "Finish" : "Next"}
             </button>
-          </div>
+            {currentStep > 0 && (
+              <div>
+              <button onClick={handleBack} className={styles.backbutton}>
+                Back
+              </button>
+              </div>
+            )}
+         
+            </div>
+  
         </div>
       </div>
 

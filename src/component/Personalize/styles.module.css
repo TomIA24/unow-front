@@ -124,7 +124,12 @@
     width: 100%;
   }
   
-  .hiddenCheckbox:checked + .customLabel {
+  .checkboxGroup input[type="checkbox"]:checked + .customLabel{
+    background-color: #CD6214;
+    color: #fff;
+    border-color: #CD6214;
+  }
+  .checkboxGroup input[type="radio"]:checked + .customLabel{
     background-color: #CD6214;
     color: #fff;
     border-color: #CD6214;
@@ -137,7 +142,19 @@
     overflow: hidden;
     margin-bottom: 20px;
   }
-  
+  .padding{
+    padding-left: 5rem;
+    padding-right: 5rem;
+    padding-top: 2rem;
+  }
+  .padding span{
+color: white;
+font-family: "Lato";
+font-size: 4rem;
+font-weight: 900;
+margin-left:1rem ;
+text-transform: capitalize;
+  }
   .progressline {
     height: 100%;
     background-color: #CD6214;
@@ -155,19 +172,47 @@
     text-align: center;
   }
   
-  
+  .underline {
+    background-color: #CD6214;
+    padding-top: 0.35em;
+    border-radius: 5px;
+    margin-top: 5px;
+    margin-left: 5px;
+    width: 50%;
+}
+
   .formnavigation {
     display: flex;
     justify-content: space-between;
+
+    flex-direction: row-reverse;
   }
   
+  .button {
+    display: flex;
+    justify-content: center;
+  }
+  .nextbuttonposition{
+    align-items: end;
+    right: 0;
+  }
+
   .backbutton,
   .nextbutton {
-    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 6.87rem;
+    height: 2.5rem;
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.4);
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    font-family: "Nunito";
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
     cursor: pointer;
-    font-size: 16px;
   }
   
   .backbutton {
@@ -175,10 +220,69 @@
   }
   
   .nextbutton {
-    background-color: #CD6214;
-    color: #fff;
-  }
+    right: 0;
+    width: 10rem;
+    height: 2.5rem;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   
+    background-color: #CD6214;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    font-family: "Nunito";
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 5px;
+    margin-bottom: 10px;
+  
+  }
+  .progressCircle {
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background:  conic-gradient(
+      var(--progress-gradient) var(--completed-percentage, 0%),
+      rgba(var(--main-color-rgb), 0.5) calc(var(--completed-percentage, 0%) + 1%),
+      #ffffff00 calc(var(--completed-percentage, 0%) + 3%)
+    );
+    padding: 0.25rem;
+  }
+.progressInnerGap{
+    width: 155px;  
+    height: 155px;
+    border-radius: 50%;
+    background-color: #3E4678;
+    display: flex; 
+    justify-content: center;
+    align-items: center; 
+}
+.progressInner{
+    width: 150px;  
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden; 
+    background-color: white; 
+    display: flex; 
+    justify-content: center;
+    align-items: center; 
+    
+}
+
+.nav_btn_profile {
+    border-radius: 4px;
+    /* height: 34px; */
+    /* padding: 0 10px; */
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    gap: 5px;
+}
+
+
+
   .backbutton:hover,
   .nextbutton:hover {
     opacity: 0.8;
@@ -213,20 +317,20 @@
   .backimagescore {
     background: url('../assets/quizbackground.png') no-repeat center center;
     background-size: cover;
-    height: 30vh;
+    height: 35vh;
     border-radius: 0px 0px 50px 50px;
     display: flex;
     flex-direction: column;
     z-index: 1;
-    padding-top: 50px;
+    /* padding-top: 50px; */
    
   }
   .logoscore {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
-    width: 100%;
+    /* height: 100%; */
+    /* width: 100%; */
     margin-bottom: 0;
   }
 @keyframes scaleUpFormContainerScaleButton {
@@ -376,7 +480,7 @@
 .input {
     outline: none;
     border: none;
-    width: 370px;
+    width: 100%;
     padding: 15px;
     border-radius: 50px;
     /* background-color: #daeff2; */
@@ -384,13 +488,14 @@
     font-size: 14px;
     /* font-family: Nunito; */
     font-weight: 800;
-    color: #3c065ece;
-    border : 1px solid rgba(128, 128, 128, 0.479);
+    color: #2C2C2C;
+    border : 1px solid #CD6214;
     /* font-style: italic; */
 }
 
 .input::placeholder {
-    color: #3c065e69;
+    color: #706F6F;
+    text-align: center;
     /* font-style: italic; */
     font-size: 14px;
     /* font-family: Nunito; */

@@ -32,10 +32,10 @@
 
 }
 
-.progressCircle{
+/* .progressCircle{
     width: 160px;  
     height: 160px;
-    border-radius: 50%;
+    border-radius: 100%;
     display: flex; 
     justify-content: center;
     align-items: center; 
@@ -46,15 +46,27 @@
   );
 
  
-}
+} */
+.progressCircle {
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background:  conic-gradient(
+      var(--progress-gradient) var(--completed-percentage, 0%),
+      rgba(var(--main-color-rgb), 0.5) calc(var(--completed-percentage, 0%) + 1%),
+      #ffffff00 calc(var(--completed-percentage, 0%) + 3%)
+    );
+    padding: 0.25rem;
+  }
 .progressInnerGap{
-    width: 155px;  
+    width: 155px;
     height: 155px;
     border-radius: 50%;
-    background-color: #fff;
-    display: flex; 
+    background-color: #ffffff;
+    display: flex;
     justify-content: center;
-    align-items: center; 
+    align-items: center;
 }
 .progressInner{
     width: 150px;  

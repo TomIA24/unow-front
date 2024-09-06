@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState }  from "react";
 import styles from "./styles.module.css";
 import img from "../../assets/profileImgNoUp.svg";
 import badgeProfile from "../../assets/badgeProfile.png";
@@ -13,14 +13,43 @@ import useProfile from "../hooks/use-profile";
 
 export default function UserInfo() {
   const { prev, data, loading, SingleFileChange } = useProfile();
-  if (loading) {
+console.log("data?.profilecomplited",);
+
+const [completedPercentage, setCompletedPercentage] = useState('0%');
+
+const [progressGradient, setProgressGradient] = useState('');
+const [mainColorRgb, setMainColorRgb] = useState('');
+useEffect(() => {
+  if (data?.profilecomplited != null) {
+    const percentage = data.profilecomplited;
+    setCompletedPercentage(`${percentage}%`);
+
+    if (percentage <= 20) {
+      setProgressGradient(`#E74C3C`);
+      setMainColorRgb('255, 152, 0');
+    } else if (percentage < 50) {
+      setProgressGradient(`#F39D6E`);
+      setMainColorRgb('76, 175, 80');
+    } else if (percentage == 50){
+      setProgressGradient(`#49C382`);
+    }
+  } else {
+    setCompletedPercentage('0%');
+    setProgressGradient('conic-gradient(#ff9800 0%, #ffffff00 0%)');
+    setMainColorRgb('255, 152, 0');
+  }
+}, [data?.profilecomplited]);
+
+if (loading) {
     return <Loading />;
   } else {
+
+    
     return (
       <>
         <div className={styles.profileCapsule}>
           <div className={styles.profileInfoContainer}>
-            <Badge
+          <Badge
               overlap="circular"
               anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
               badgeContent={
@@ -50,7 +79,12 @@ export default function UserInfo() {
                   sx={{ width: 150, height: 150 }}
                 />
               ) : (
-                <div className={styles.progressCircle}>
+                <div className={styles.progressCircle}
+                style={{ 
+                  '--completed-percentage': completedPercentage, 
+                  '--progress-gradient': progressGradient,
+                  '--main-color-rgb': mainColorRgb}}
+                >
                   <div className={styles.progressInnerGap}>
                     <div className={styles.progressInner}>
                       {data.image ? (
@@ -74,14 +108,14 @@ export default function UserInfo() {
             <div className={styles.ProfileTitle}>
               <h1>{data.name} </h1>
               <h2>Candidat</h2>
-              <div className={styles.badgesContainer}>
+              {/* <div className={styles.badgesContainer}>
                 <div className={styles.badgeContainer}>
                   <img src={badgeProfile} alt="badge profile" />
                 </div>
                 <div className={styles.badgeContainer}>
                   <img src={badgeProfile} alt="badge profile" />
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

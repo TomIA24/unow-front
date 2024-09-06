@@ -11,12 +11,6 @@ import Collab from "./Collab";
 import Chatbot from "./chatbot/chatbot"
 
 
-
-
-
-
-
-
 const HomeInterface = () => {
   return (
     <>
