@@ -53,6 +53,7 @@ import { Header } from "./Header/header";
 import star from "./Star 4 (1).png"
 import mark from "./Group 1000001816 (1).png"
 import {CourseRatingSimpleView} from "../../shared/rating";
+import plus from "./Group 1000001816.png"
 
 
 const Main = () => {
@@ -256,7 +257,13 @@ const Main = () => {
                       <p className={styles.numnote2}>3k</p>
                       </div>
                       </div>
+                     
                     </div>
+                    <div className={styles.pluses}>
+                        
+                        <img src={plus} alt="" className={styles.plus} />
+                        
+                      </div>
                   </div>
                 </Link>
               ))}
