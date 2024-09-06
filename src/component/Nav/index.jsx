@@ -12,6 +12,10 @@ import { useLocation } from 'react-router-dom';
 
 const Nav = () => {
   const [WindowWidth, setWindowWidth] = useState(0);
+  const navState = localStorage.getItem('navState')
+
+  const navigate = useNavigate();
+
   const handleWidthChange = () => {
     const currentWidth = window.innerWidth;
     setWindowWidth(currentWidth);
@@ -33,7 +37,7 @@ const Nav = () => {
       setMobileView(false);
     }
   }, []);
-  useEffect(() => { 
+  useEffect(() => {
     console.log(WindowWidth);
     if (WindowWidth <= 800) {
       setMobileView(true);
@@ -48,24 +52,18 @@ const Nav = () => {
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
-    window.location = "/login";
+    navigate(`/login`);
   };
-  const navigate = useNavigate();
   const [opnpopup, setpopupopen] = useState(false);
- const handlepopup= ()=> {
-
-  setpopupopen(!opnpopup)
-  console.log(opnpopup);
-  
+  const handlepopup = () => {
+    setpopupopen(!opnpopup);
   };
-  const closepopup= ()=> {
-    navigate("/profile")
-    setpopupopen(!opnpopup)
-    console.log(opnpopup);
-    
-    };
+  const closepopup = () => {
+    navigate("/profile");
+    setpopupopen(!opnpopup);
+  };
   const location = useLocation();
-  
+
   const [Data, setData] = useState({
     _id: "",
     Title: "",
@@ -86,43 +84,42 @@ const Nav = () => {
     state: "",
     certificate: "",
     evaluate: [],
-    DurationQuiz:""
+    DurationQuiz: "",
   });
 
-  const handlpersonalized =(candiddId)=> {
-    console.log("id candat from nev",candiddId);
-    
-    navigate(`/personalize`, { state: {candiddId}} )
-    setpopupopen(!opnpopup)
-    console.log(opnpopup);
-    
-    };
+  const handlpersonalized = (candiddId) => {
+    console.log("id candat from nev", candiddId);
 
-    const [completedPercentage, setCompletedPercentage] = useState('0%');
-    
-    const [progressGradient, setProgressGradient] = useState('');
-    const [mainColorRgb, setMainColorRgb] = useState('');
-    useEffect(() => {
-      if (user?.profilecomplited != null) {
-        const percentage = user.profilecomplited;
-        setCompletedPercentage(`${percentage}%`);
-    
-        if (percentage <= 20) {
-          setProgressGradient(`#E74C3C`);
-          setMainColorRgb('255, 152, 0');
-        } else if (percentage < 50) {
-          setProgressGradient(`#F39D6E`);
-          setMainColorRgb('76, 175, 80');
-        } else if (percentage == 50){
-          setProgressGradient(`#49C382`);
-        }
-      } else {
-        setCompletedPercentage('0%');
-        setProgressGradient('conic-gradient(#ff9800 0%, #ffffff00 0%)');
-        setMainColorRgb('255, 152, 0');
+    navigate(`/personalize`, { state: { candiddId } });
+    setpopupopen(!opnpopup);
+    console.log(opnpopup);
+  };
+
+  const [completedPercentage, setCompletedPercentage] = useState("0%");
+
+  const [progressGradient, setProgressGradient] = useState("");
+  const [mainColorRgb, setMainColorRgb] = useState("");
+  useEffect(() => {
+    if (user?.profilecomplited != null) {
+      const percentage = user.profilecomplited;
+      setCompletedPercentage(`${percentage}%`);
+
+      if (percentage <= 20) {
+        setProgressGradient(`#E74C3C`);
+        setMainColorRgb("255, 152, 0");
+      } else if (percentage < 50) {
+        setProgressGradient(`#F39D6E`);
+        setMainColorRgb("76, 175, 80");
+      } else if (percentage === 50) {
+        setProgressGradient(`#49C382`);
       }
-    }, [user?.profilecomplited]);
-    
+    } else {
+      setCompletedPercentage("0%");
+      setProgressGradient("conic-gradient(#ff9800 0%, #ffffff00 0%)");
+      setMainColorRgb("255, 152, 0");
+    }
+  }, [user?.profilecomplited]);
+
   return (
     <React.Fragment>
       <nav className={styles.nav_container}>
@@ -133,7 +130,7 @@ const Nav = () => {
                 src="/images/home/logoblanc.png"
                 alt=""
                 className={styles.logoimage}
-               />
+              />
 
               {/* <img
                 style={{ marginTop: "20px", width: "160px" }}
@@ -142,7 +139,12 @@ const Nav = () => {
               />{" "} */}
             </Link>
             <div className={styles.middle_nav}>
-              <Link to="/">
+              <Link
+                onClick={() => {
+                    localStorage.setItem('navState', 1);
+                }}
+                to="/"
+              >
                 <a
                   type="button"
                   className={styles.nav_btn}
@@ -150,17 +152,29 @@ const Nav = () => {
                 >
                   Home
                 </a>
-                <p className={styles.underline}></p>
+                {navState === 1 && <p className={styles.underline}></p>}
               </Link>
-              <Link to="/about">
+              <Link
+                onClick={() => {
+                    localStorage.setItem('navState', 2);
+                }}
+                to="/about"
+              >
                 <a type="button" className={styles.nav_btn}>
                   About
                 </a>
+                {navState === 2 && <p className={styles.underline}></p>}
               </Link>
-              <Link to="/contact">
+              <Link
+                onClick={() => {
+                    localStorage.setItem('navState', 3);
+                }}
+                to="/contact"
+              >
                 <a type="button" className={styles.nav_btn}>
                   Contact
                 </a>
+                {navState === 3 && <p className={styles.underline}></p>}
               </Link>
               {/* <Link to="/blog">
                 <a type="button" className={styles.nav_btn}>
@@ -197,105 +211,113 @@ const Nav = () => {
                     </a>
                   </Link>
                 ) : (
-                  
                   <div>
-                 
-                 {user.profilecomplited === 100 ?  (
-  <Link
-    to="/profile"
-    style={{ display: "flex", alignItems: "center" }}
-  >
-    <img src="/svg/coins.svg" style={{ height: 30 }} alt="" />
-    <strong
-      variant="caption"
-      component="div"
-      color="text.secondary"
-    >
-      330
-    </strong>
+                    {user.profilecomplited === 100 ? (
+                      <Link
+                        to="/profile"
+                        style={{ display: "flex", alignItems: "center" }}
+                      >
+                        <img
+                          src="/svg/coins.svg"
+                          style={{ height: 30 }}
+                          alt=""
+                        />
+                        <strong
+                          variant="caption"
+                          component="div"
+                          color="text.secondary"
+                        >
+                          330
+                        </strong>
 
-    <a type="button" className={styles.nav_btn_profile}>
-      <img
-        src="/svg/bronze.svg"
-        alt="bronze"
-        style={{ height: 30 }}
-      />
-      {user.image ? (
-            <div className={styles.progressCircle}
-            style={{ 
-              '--completed-percentage': completedPercentage, 
-              '--progress-gradient': progressGradient,
-              '--main-color-rgb': mainColorRgb}}
-            >
-               <div className={styles.progressInnerGap}>
-               <div className={styles.progressInner}>
-        <Avatar
-          alt="icon"
-          src={`${process.env.REACT_APP_API}${user.image.filePath}`}
-          sx={{ width: 30, height: 30 }}
-        />
-         </div>
-         </div>
-         </div>
-      ) : (
-        <Avatar
-          alt="icon"
-          src={imgicon}
-          sx={{ width: 30, height: 30 }}
-        />
-      )}
-      Welcome, {user.name}
-    </a>
-    
-  </Link>
-
-):(
-  <button
-    onClick={handlepopup}
-    style={{ display: "flex", alignItems: "center" }}
-  >
-    <img src="/svg/coins.svg" style={{ height: 30 }} alt="" />
-    <strong
-      variant="caption"
-      component="div"
-      color="text.secondary"
-    >
-      330
-    </strong>
-    <a type="button" className={styles.nav_btn_profile}>
-      <img
-        src="/svg/bronze.svg"
-        alt="bronze"
-        style={{ height: 30 }}
-      />
-      {user.image ? (
-            <div className={styles.progressCircle}
-            style={{ 
-              '--completed-percentage': completedPercentage, 
-              '--progress-gradient': progressGradient,
-              '--main-color-rgb': mainColorRgb}}
-            >
-               <div className={styles.progressInnerGap}>
-               <div className={styles.progressInner}>
-        <Avatar
-          alt="icon"
-          src={`${process.env.REACT_APP_API}${user.image.filePath}`}
-          sx={{ width: 30, height: 30 }}
-        />
-         </div>
-         </div>
-         </div>
-      ) : (
-        <Avatar
-          alt="icon"
-          src={imgicon}
-          sx={{ width: 30, height: 30 }}
-        />
-      )}
-      Welcome, {user.name}
-    </a>
-  </button>
-) }
+                        <a type="button" className={styles.nav_btn_profile}>
+                          <img
+                            src="/svg/bronze.svg"
+                            alt="bronze"
+                            style={{ height: 30 }}
+                          />
+                          {user.image ? (
+                            <div
+                              className={styles.progressCircle}
+                              style={{
+                                "--completed-percentage": completedPercentage,
+                                "--progress-gradient": progressGradient,
+                                "--main-color-rgb": mainColorRgb,
+                              }}
+                            >
+                              <div className={styles.progressInnerGap}>
+                                <div className={styles.progressInner}>
+                                  <Avatar
+                                    alt="icon"
+                                    src={`${process.env.REACT_APP_API}${user.image.filePath}`}
+                                    sx={{ width: 30, height: 30 }}
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                          ) : (
+                            <Avatar
+                              alt="icon"
+                              src={imgicon}
+                              sx={{ width: 30, height: 30 }}
+                            />
+                          )}
+                          Welcome, {user.name}
+                        </a>
+                      </Link>
+                    ) : (
+                      <button
+                        onClick={handlepopup}
+                        style={{ display: "flex", alignItems: "center" }}
+                      >
+                        <img
+                          src="/svg/coins.svg"
+                          style={{ height: 30 }}
+                          alt=""
+                        />
+                        <strong
+                          variant="caption"
+                          component="div"
+                          color="text.secondary"
+                        >
+                          330
+                        </strong>
+                        <a type="button" className={styles.nav_btn_profile}>
+                          <img
+                            src="/svg/bronze.svg"
+                            alt="bronze"
+                            style={{ height: 30 }}
+                          />
+                          {user.image ? (
+                            <div
+                              className={styles.progressCircle}
+                              style={{
+                                "--completed-percentage": completedPercentage,
+                                "--progress-gradient": progressGradient,
+                                "--main-color-rgb": mainColorRgb,
+                              }}
+                            >
+                              <div className={styles.progressInnerGap}>
+                                <div className={styles.progressInner}>
+                                  <Avatar
+                                    alt="icon"
+                                    src={`${process.env.REACT_APP_API}${user.image.filePath}`}
+                                    sx={{ width: 30, height: 30 }}
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                          ) : (
+                            <Avatar
+                              alt="icon"
+                              src={imgicon}
+                              sx={{ width: 30, height: 30 }}
+                            />
+                          )}
+                          Welcome, {user.name}
+                        </a>
+                      </button>
+                    )}
                   </div>
                 )}
                 <Link to="/">
@@ -321,28 +343,31 @@ const Nav = () => {
       </nav>
       {opnpopup && (
         <>
-        <div className={styles.overlayStyles}>
-     
-        <div  ref={dialogRef} className={styles.dialogStyles}>
-          <div className={styles.closbutton}>       <button  onClick={closepopup}>     <img
-        src="/images/personalize/close.png"
-        alt="bronze"
+          <div className={styles.overlayStyles}>
+            <div ref={dialogRef} className={styles.dialogStyles}>
+              <div className={styles.closbutton}>
+                {" "}
+                <button onClick={closepopup}>
+                  {" "}
+                  <img src="/images/personalize/close.png" alt="bronze" />
+                </button>
+              </div>
 
-      /></button></div>
-  
-        <div className={styles.iamgedialog}>
-        <img
-        src="/images/personalize/wannaknowmoreabouyou.png"
-        alt="bronze"
-
-      />
-      <div className={styles.continuebutton}> <button onClick={()=>handlpersonalized(user._id)}>Continue</button></div>
-         
-        </div>
-      
-        </div >
-        </div>
-      </>
+              <div className={styles.iamgedialog}>
+                <img
+                  src="/images/personalize/wannaknowmoreabouyou.png"
+                  alt="bronze"
+                />
+                <div className={styles.continuebutton}>
+                  {" "}
+                  <button onClick={() => handlpersonalized(user._id)}>
+                    Continue
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </>
       )}
     </React.Fragment>
   );

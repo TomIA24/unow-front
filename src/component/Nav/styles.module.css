@@ -259,7 +259,6 @@ button{
 .nav_btn:hover {
   
     color: white;
-  
     font-size: 20px;
 
 
@@ -268,7 +267,6 @@ button{
 .nav_btn.active{
     font-size: 19px;
     color: white;
-  
     font-family:'Lato';
     font-weight:normal;
 
@@ -349,11 +347,8 @@ button{
 }
 
 .nav_btn_special_light {
-    composes: nav_btn;
-   
-
-
-    /* color: rgba(62, 70, 120, 1); */
+    composes: nav_btn; 
+     color: #3e4678; 
     font-size: 22px;
     line-height: 91%;
     font-family: Lato, sans-serif;
@@ -365,8 +360,12 @@ button{
     padding: 7px 29px 10px 30px;
     border-radius: 6px;
     box-sizing: border-box;
-    background-color: rgba(255, 255, 255, 1);
+    background-color: #ffffff;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1), 0px 3px 4px rgba(0, 0, 0, 0.09);
+}
+
+.nav_btn_special_light:hover {  
+    background-color: #3e4678; 
 }
 
 .nav_btn_special_dark {
@@ -494,7 +493,7 @@ button{
 
     .nav_btn_special_light {
         composes: nav_btn;
-        color: rgba(62, 70, 120, 1);
+        color: #3e4678;
         font-size: 15px;
         line-height: 91%;
         font-family: Lato, sans-serif;
@@ -506,7 +505,7 @@ button{
         padding: 7px 29px 10px 20px;
         border-radius: 6px;
         box-sizing: border-box;
-        background-color: rgba(255, 255, 255, 1);
+        background-color: #ffffff;
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1), 0px 3px 4px rgba(0, 0, 0, 0.09);
     }
     
