@@ -173,10 +173,8 @@ text-transform: capitalize;
   }
   
   .underline {
-
-   
     background-color: #CD6214;
-    padding-top: 0.2rem;
+    padding-top: 0.35em;
     border-radius: 5px;
     margin-top: 5px;
     margin-left: 5px;
@@ -241,23 +239,22 @@ text-transform: capitalize;
   
   }
   .progressCircle {
-    width: 160px;
-    height: 160px;
     border-radius: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: conic-gradient(
-      #4caf50 var(--completed-percentage, 0%), /* Main color up to completion percentage */
-      rgba(76, 175, 80, 0.5) calc(var(--completed-percentage, 0%) + 1%), /* Slightly transparent color for degradation */
-      #ffffff00 calc(var(--completed-percentage, 0%) + 3%) /* White or background color after degradation */
+    background:  conic-gradient(
+      var(--progress-gradient) var(--completed-percentage, 0%),
+      rgba(var(--main-color-rgb), 0.5) calc(var(--completed-percentage, 0%) + 1%),
+      #ffffff00 calc(var(--completed-percentage, 0%) + 3%)
     );
+    padding: 0.25rem;
   }
 .progressInnerGap{
     width: 155px;  
     height: 155px;
     border-radius: 50%;
-    background-color: #ffffff00;
+    background-color: #3E4678;
     display: flex; 
     justify-content: center;
     align-items: center; 
@@ -320,7 +317,7 @@ text-transform: capitalize;
   .backimagescore {
     background: url('../assets/quizbackground.png') no-repeat center center;
     background-size: cover;
-    height: 32vh;
+    height: 35vh;
     border-radius: 0px 0px 50px 50px;
     display: flex;
     flex-direction: column;

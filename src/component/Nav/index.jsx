@@ -99,12 +99,27 @@ const Nav = () => {
     };
 
     const [completedPercentage, setCompletedPercentage] = useState('0%');
-
+    
+    const [progressGradient, setProgressGradient] = useState('');
+    const [mainColorRgb, setMainColorRgb] = useState('');
     useEffect(() => {
       if (user?.profilecomplited != null) {
-        setCompletedPercentage(`${user.profilecomplited}%`);
+        const percentage = user.profilecomplited;
+        setCompletedPercentage(`${percentage}%`);
+    
+        if (percentage <= 20) {
+          setProgressGradient(`#E74C3C`);
+          setMainColorRgb('255, 152, 0');
+        } else if (percentage < 50) {
+          setProgressGradient(`#F39D6E`);
+          setMainColorRgb('76, 175, 80');
+        } else if (percentage == 50){
+          setProgressGradient(`#49C382`);
+        }
       } else {
         setCompletedPercentage('0%');
+        setProgressGradient('conic-gradient(#ff9800 0%, #ffffff00 0%)');
+        setMainColorRgb('255, 152, 0');
       }
     }, [user?.profilecomplited]);
     
@@ -207,7 +222,10 @@ const Nav = () => {
       />
       {user.image ? (
             <div className={styles.progressCircle}
-            style={{ '--completed-percentage': completedPercentage }}
+            style={{ 
+              '--completed-percentage': completedPercentage, 
+              '--progress-gradient': progressGradient,
+              '--main-color-rgb': mainColorRgb}}
             >
                <div className={styles.progressInnerGap}>
                <div className={styles.progressInner}>
@@ -252,7 +270,10 @@ const Nav = () => {
       />
       {user.image ? (
             <div className={styles.progressCircle}
-            style={{ '--completed-percentage': completedPercentage }}
+            style={{ 
+              '--completed-percentage': completedPercentage, 
+              '--progress-gradient': progressGradient,
+              '--main-color-rgb': mainColorRgb}}
             >
                <div className={styles.progressInnerGap}>
                <div className={styles.progressInner}>

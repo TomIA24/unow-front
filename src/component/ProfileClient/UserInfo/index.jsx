@@ -17,11 +17,26 @@ console.log("data?.profilecomplited",);
 
 const [completedPercentage, setCompletedPercentage] = useState('0%');
 
+const [progressGradient, setProgressGradient] = useState('');
+const [mainColorRgb, setMainColorRgb] = useState('');
 useEffect(() => {
   if (data?.profilecomplited != null) {
-    setCompletedPercentage(`${data.profilecomplited}%`);
+    const percentage = data.profilecomplited;
+    setCompletedPercentage(`${percentage}%`);
+
+    if (percentage <= 20) {
+      setProgressGradient(`#E74C3C`);
+      setMainColorRgb('255, 152, 0');
+    } else if (percentage < 50) {
+      setProgressGradient(`#F39D6E`);
+      setMainColorRgb('76, 175, 80');
+    } else if (percentage == 50){
+      setProgressGradient(`#49C382`);
+    }
   } else {
     setCompletedPercentage('0%');
+    setProgressGradient('conic-gradient(#ff9800 0%, #ffffff00 0%)');
+    setMainColorRgb('255, 152, 0');
   }
 }, [data?.profilecomplited]);
 
@@ -65,7 +80,10 @@ if (loading) {
                 />
               ) : (
                 <div className={styles.progressCircle}
-                style={{ '--completed-percentage': completedPercentage }}
+                style={{ 
+                  '--completed-percentage': completedPercentage, 
+                  '--progress-gradient': progressGradient,
+                  '--main-color-rgb': mainColorRgb}}
                 >
                   <div className={styles.progressInnerGap}>
                     <div className={styles.progressInner}>
@@ -90,14 +108,14 @@ if (loading) {
             <div className={styles.ProfileTitle}>
               <h1>{data.name} </h1>
               <h2>Candidat</h2>
-              <div className={styles.badgesContainer}>
+              {/* <div className={styles.badgesContainer}>
                 <div className={styles.badgeContainer}>
                   <img src={badgeProfile} alt="badge profile" />
                 </div>
                 <div className={styles.badgeContainer}>
                   <img src={badgeProfile} alt="badge profile" />
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

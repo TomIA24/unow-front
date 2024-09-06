@@ -664,13 +664,28 @@ console.log(candidateData);
   };
   const [completedPercentage, setCompletedPercentage] = useState('0%');
 
-  useEffect(() => {
-    if (candidatdata?.profilecomplited != null) {
-      setCompletedPercentage(`${candidatdata.profilecomplited}%`);
-    } else {
-      setCompletedPercentage('0%');
+const [progressGradient, setProgressGradient] = useState('');
+const [mainColorRgb, setMainColorRgb] = useState('');
+useEffect(() => {
+  if (candidatdata?.profilecomplited != null) {
+    const percentage = candidatdata.profilecomplited;
+    setCompletedPercentage(`${percentage}%`);
+
+    if (percentage <= 20) {
+      setProgressGradient(`#E74C3C`);
+      setMainColorRgb('255, 152, 0');
+    } else if (percentage < 50) {
+      setProgressGradient(`#F39D6E`);
+      setMainColorRgb('76, 175, 80');
+    } else if (percentage == 50){
+      setProgressGradient(`#49C382`);
     }
-  }, [candidatdata?.profilecomplited]);
+  } else {
+    setCompletedPercentage('0%');
+    setProgressGradient('conic-gradient(#ff9800 0%, #ffffff00 0%)');
+    setMainColorRgb('255, 152, 0');
+  }
+}, [candidatdata?.profilecomplited]);
   return (
     <div >
       {/* <img
@@ -692,7 +707,10 @@ console.log(candidateData);
         <div>
         <a type="button" className={styles.nav_btn_profile}>
                 <div className={styles.progressCircle}
-                style={{ '--completed-percentage': completedPercentage }}
+                style={{ 
+                  '--completed-percentage': completedPercentage, 
+                  '--progress-gradient': progressGradient,
+                  '--main-color-rgb': mainColorRgb}}
                 >
                   <div className={styles.progressInnerGap}>
                     <div className={styles.progressInner}>

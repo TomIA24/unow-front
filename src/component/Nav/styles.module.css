@@ -124,22 +124,22 @@ a {
     line-height: center;
 }
 .progressCircle {
-
     border-radius: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: conic-gradient(
-      #4caf50 var(--completed-percentage, 0%), /* Main color up to completion percentage */
-      rgba(76, 175, 80, 0.5) calc(var(--completed-percentage, 0%) + 1%), /* Slightly transparent color for degradation */
-      #ffffff00 calc(var(--completed-percentage, 0%) + 3%) /* White or background color after degradation */
+    background:  conic-gradient(
+      var(--progress-gradient) var(--completed-percentage, 0%),
+      rgba(var(--main-color-rgb), 0.5) calc(var(--completed-percentage, 0%) + 1%),
+      #ffffff00 calc(var(--completed-percentage, 0%) + 3%)
     );
+    padding: 0.2rem;
   }
   .progressInnerGap{
     width: 2.2rem;
     height: 2.2rem;
     border-radius: 50%;
-    background-color: #ffffff00;
+    background-color: #3E4678;
     display: flex; 
     justify-content: center;
     align-items: center; 
