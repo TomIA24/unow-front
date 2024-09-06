@@ -142,7 +142,19 @@
     overflow: hidden;
     margin-bottom: 20px;
   }
-  
+  .padding{
+    padding-left: 5rem;
+    padding-right: 5rem;
+    padding-top: 2rem;
+  }
+  .padding span{
+color: white;
+font-family: "Lato";
+font-size: 4rem;
+font-weight: 900;
+margin-left:1rem ;
+text-transform: capitalize;
+  }
   .progressline {
     height: 100%;
     background-color: #CD6214;
@@ -160,7 +172,17 @@
     text-align: center;
   }
   
-  
+  .underline {
+
+   
+    background-color: #CD6214;
+    padding-top: 0.2rem;
+    border-radius: 5px;
+    margin-top: 5px;
+    margin-left: 5px;
+    width: 50%;
+}
+
   .formnavigation {
     display: flex;
     justify-content: space-between;
@@ -218,7 +240,52 @@
     margin-bottom: 10px;
   
   }
-  
+  .progressCircle {
+    width: 160px;
+    height: 160px;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: conic-gradient(
+      #4caf50 var(--completed-percentage, 0%), /* Main color up to completion percentage */
+      rgba(76, 175, 80, 0.5) calc(var(--completed-percentage, 0%) + 1%), /* Slightly transparent color for degradation */
+      #ffffff00 calc(var(--completed-percentage, 0%) + 3%) /* White or background color after degradation */
+    );
+  }
+.progressInnerGap{
+    width: 155px;  
+    height: 155px;
+    border-radius: 50%;
+    background-color: #ffffff00;
+    display: flex; 
+    justify-content: center;
+    align-items: center; 
+}
+.progressInner{
+    width: 150px;  
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden; 
+    background-color: white; 
+    display: flex; 
+    justify-content: center;
+    align-items: center; 
+    
+}
+
+.nav_btn_profile {
+    border-radius: 4px;
+    /* height: 34px; */
+    /* padding: 0 10px; */
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    gap: 5px;
+}
+
+
+
   .backbutton:hover,
   .nextbutton:hover {
     opacity: 0.8;
@@ -253,20 +320,20 @@
   .backimagescore {
     background: url('../assets/quizbackground.png') no-repeat center center;
     background-size: cover;
-    height: 30vh;
+    height: 32vh;
     border-radius: 0px 0px 50px 50px;
     display: flex;
     flex-direction: column;
     z-index: 1;
-    padding-top: 50px;
+    /* padding-top: 50px; */
    
   }
   .logoscore {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
-    width: 100%;
+    /* height: 100%; */
+    /* width: 100%; */
     margin-bottom: 0;
   }
 @keyframes scaleUpFormContainerScaleButton {

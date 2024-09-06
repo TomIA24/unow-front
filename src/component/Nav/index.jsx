@@ -206,14 +206,19 @@ const Nav = () => {
         style={{ height: 30 }}
       />
       {user.image ? (
-      
-
+            <div className={styles.progressCircle}
+            style={{ '--completed-percentage': completedPercentage }}
+            >
+               <div className={styles.progressInnerGap}>
+               <div className={styles.progressInner}>
         <Avatar
           alt="icon"
           src={`${process.env.REACT_APP_API}${user.image.filePath}`}
           sx={{ width: 30, height: 30 }}
         />
-       
+         </div>
+         </div>
+         </div>
       ) : (
         <Avatar
           alt="icon"

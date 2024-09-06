@@ -27,6 +27,9 @@ import "react-form-wizard-component/dist/style.css";
 import { useRecoilState } from "recoil";
 import { signupState } from "../../recoil/signup.atom";
 import { set } from "date-fns";
+import img from "../assets/profileImgNoUp.svg";
+import imgicon from "../assets/usericon.png";
+import Avatar from "@mui/material/Avatar";
 
 const Personalize = () => {
   const location = useLocation();
@@ -659,7 +662,15 @@ console.log(candidateData);
       }
     }
   };
+  const [completedPercentage, setCompletedPercentage] = useState('0%');
 
+  useEffect(() => {
+    if (candidatdata?.profilecomplited != null) {
+      setCompletedPercentage(`${candidatdata.profilecomplited}%`);
+    } else {
+      setCompletedPercentage('0%');
+    }
+  }, [candidatdata?.profilecomplited]);
   return (
     <div >
       {/* <img
@@ -668,13 +679,47 @@ console.log(candidateData);
         alt="Your SVG"
       /> */}
       <div className={styles.backimagescore}>
+        <div className={styles.padding}>
         <div className={styles.logoscore}>
           <img
             src="./images/quiz/copywright.png"
             alt=""
             className={styles.logoimag}
           />
+
+          
         </div>
+        <div>
+        <a type="button" className={styles.nav_btn_profile}>
+                <div className={styles.progressCircle}
+                style={{ '--completed-percentage': completedPercentage }}
+                >
+                  <div className={styles.progressInnerGap}>
+                    <div className={styles.progressInner}>
+                      {candidatdata.image ? (
+                        <Avatar
+                          alt="icon"
+                          src={`${process.env.REACT_APP_API}${candidatdata.image.filePath}`}
+                          sx={{ width: 150, height: 150 }}
+                        />
+                      ) : (
+                        <Avatar
+                          alt="icon"
+                          src={img}
+                          sx={{ width: 150, height: 150 }}
+                        />
+                      )}
+                    </div>
+                  </div>
+                </div>
+     <span>{candidatdata.name}
+     <p className={styles.underline}></p>
+     </span>
+    </a>
+                </div>
+        
+                </div>
+   
       </div>
       <Link className={styles.Close} to="/">
         Home
