@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useRef } from "react";
 import styles from "./styles.module.css";
 import Icon1 from "../../assets/icon1.png";
 import Icon2 from "../../assets/icon2.png";
@@ -106,9 +106,21 @@ const Categories = () => {
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
   };
-
+  const dialogRef = useRef(null);
   const images = [Icon1, Icon2, Icon3, Icon4, Icon5, Icon6, Icon7, Icon8];
+  const [opnpopup, setpopupopen] = useState(false);
+ const handlepopup= ()=> {
 
+  setpopupopen(!opnpopup)
+  console.log(opnpopup);
+  
+  };
+  const closepopup= ()=> {
+   
+    setpopupopen(!opnpopup)
+    console.log(opnpopup);
+    
+    };
   return (
     <div className={styles.categorieTitle}>
       CATEGORIES
@@ -122,7 +134,8 @@ const Categories = () => {
                 key={category._id}
                 className={styles.card}
                 style={{ backgroundColor: category.color }}
-                onClick={() => handleCardClick(category)}
+                // onClick={() => handleCardClick(category)}
+     onClick={()=>handlepopup()}
               >
                 <img
                   src={images[index % images.length]}
@@ -153,6 +166,28 @@ const Categories = () => {
             </div>
           ))}
         </Slider>
+      )}
+
+      {opnpopup && (
+        <>
+        <div className={styles.overlayStyles}>
+     
+        <div  ref={dialogRef} className={styles.dialogStyles}>
+          <div className={styles.closbutton}>       <button  onClick={closepopup}>     <img
+        src="/images/personalize/close.png"
+        alt="bronze"
+
+      /></button></div>
+  
+        <div className={styles.iamgedialog}>
+        Stay Tuneed for more !
+      <div className={styles.continuebutton}> </div>
+         
+        </div>
+      
+        </div >
+        </div>
+      </>
       )}
       <Modal
         show={showModal}
