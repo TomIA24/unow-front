@@ -15,13 +15,13 @@
 .logo{
     margin-top: 0;
    
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     width: 22%;
 }
 .loginContainer {
     width: 100%;
     max-width: 556px;
-    padding: 9% 6% 9% 6%;
+    padding: 6%;
     background-color: #fff;
     box-shadow: 0 1px 23px 2px rgba(0, 0, 0, 0.25);
     border-radius: 14px;
@@ -75,7 +75,7 @@
 .divider{
     display: flex;
     justify-content: space-between;
-    margin-bottom: 2%;
+    
 
 }
 .allsocialmedia{
@@ -119,9 +119,42 @@
     cursor: pointer;
     display: flex;
     align-items: flex-end;
-   
+    font-size: 18px;
+
     
 }
+/* For screens between 300px and 600px */
+@media (min-width: 300px) and (max-width: 600px) {
+    .Close {
+      font-size: 14px;
+      padding: 8px;
+    }
+  }
+  
+  /* For screens between 601px and 900px */
+  @media (min-width: 601px) and (max-width: 900px) {
+    .Close {
+      font-size: 16px;
+      padding: 9px;
+    }
+  }
+  
+  /* For screens between 901px and 1200px */
+  @media (min-width: 901px) and (max-width: 1200px) {
+    .Close {
+      font-size: 18px;
+      padding: 10px;
+    }
+  }
+  
+  /* For screens between 1201px and 1500px */
+  @media (min-width: 1201px) and (max-width: 1500px) {
+    .Close {
+      font-size: 20px;
+      padding: 12px;
+    }
+  }
+  
 
 .Title  {
     font-size: 15px;
@@ -129,7 +162,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 6%;
+    margin-bottom: 2%;
 }
 /* Styles par défaut */
 .Title p {
@@ -175,9 +208,9 @@
     margin-left: 10px;
 }
 .loginContainer input {
-    padding: 10px;
+    padding: 7px;
     width: 100%;
-    margin: 8px 0;
+    margin: 2px 0;
     box-sizing: border-box;
 }
 .loginContainer button {
@@ -255,7 +288,6 @@
     flex-direction: row-reverse;
     justify-content: space-between;
  
-    margin-block: 2%; 
 }
 .error_msg_Phone p {
     margin-top: -5px;
@@ -576,13 +608,13 @@
   .text{
     color: gray;
     align-self: flex-start;
-    margin-bottom: 7px;
+    margin-bottom: 2px;
     font-size: 16px;
     margin-top: 2px;
 }
 @media (min-width:570px) and (max-width:840px){
     .text {
-        margin-top: 10px;
+        margin-top: 3px;
         font-size: 12px;
     }
     .by {
