@@ -4,11 +4,12 @@
 }
 
 .leftSectionProfile {
-    /* background-color: #6FC2D0; */
-    width: 80%;
-    max-width: 1400px;  
+    margin-right: 20px;
+    height: 100%;
+   
+     /* max-width: 1400px;   */
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; 
     align-items: flex-start;
 }
 
@@ -26,7 +27,8 @@
 
 }
 .titleContainer  {
-   height: 140px;
+   height: 102px;
+   margin-left: 12px;
    display: flex;
    flex-direction: column;
    justify-content: center;
@@ -44,22 +46,29 @@
 }
  
 .carouselDivContainer{
+    margin-block: 40px;
+    height: 400px;
+    width: 32rem;
+    margin: auto;
+    align-items: center;
+    flex-direction: column;
     display: flex;
     justify-content: center; 
-    width: 100%;
-    min-height: 80%;
+    /* width: 37.5rem;
+    min-height: 80%; */
     overflow: auto;
     padding: 0 2px;
     background: #fff;
     border-radius: 40px;
-    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.28);
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.28); 
 }
 .carouselDiv { 
     display: flex;
     justify-content: center;
     width: 100%;
     min-height: 100%;
-    overflow: auto; 
+    overflow-y: auto; 
+    overflow-x: hidden; 
     padding: 0 20px;  
     
 }

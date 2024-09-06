@@ -46,12 +46,12 @@ export default function CourseElement({ course, type }) {
           >
               <div className={styles.buttonsContainer}>
             
-              <p>{course?.Price}DT</p>
+              <p className={styles.price}>{course?.Price}DT</p>
               <div className={styles.underline}/>
               {data?.CoursesPaid.includes(course._id)?
             <div className={styles.statePrimary}>
               <FiberManualRecordIcon sx={{ fontSize: 10 }} />
-              <p>paid</p>
+              <p >paid</p>
             </div>:
             <div className={styles.stateSecondary}>
             <FiberManualRecordIcon sx={{ fontSize: 10 }} />
