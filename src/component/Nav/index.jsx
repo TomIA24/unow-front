@@ -98,6 +98,16 @@ const Nav = () => {
     
     };
 
+    const [completedPercentage, setCompletedPercentage] = useState('0%');
+
+    useEffect(() => {
+      if (user?.profilecomplited != null) {
+        setCompletedPercentage(`${user.profilecomplited}%`);
+      } else {
+        setCompletedPercentage('0%');
+      }
+    }, [user?.profilecomplited]);
+    
   return (
     <React.Fragment>
       <nav className={styles.nav_container}>
@@ -188,6 +198,7 @@ const Nav = () => {
     >
       330
     </strong>
+
     <a type="button" className={styles.nav_btn_profile}>
       <img
         src="/svg/bronze.svg"
@@ -195,11 +206,14 @@ const Nav = () => {
         style={{ height: 30 }}
       />
       {user.image ? (
+      
+
         <Avatar
           alt="icon"
           src={`${process.env.REACT_APP_API}${user.image.filePath}`}
           sx={{ width: 30, height: 30 }}
         />
+       
       ) : (
         <Avatar
           alt="icon"
@@ -209,7 +223,9 @@ const Nav = () => {
       )}
       Welcome, {user.name}
     </a>
+    
   </Link>
+
 ):(
   <button
     onClick={handlepopup}
@@ -230,11 +246,19 @@ const Nav = () => {
         style={{ height: 30 }}
       />
       {user.image ? (
+            <div className={styles.progressCircle}
+            style={{ '--completed-percentage': completedPercentage }}
+            >
+               <div className={styles.progressInnerGap}>
+               <div className={styles.progressInner}>
         <Avatar
           alt="icon"
           src={`${process.env.REACT_APP_API}${user.image.filePath}`}
           sx={{ width: 30, height: 30 }}
         />
+         </div>
+         </div>
+         </div>
       ) : (
         <Avatar
           alt="icon"

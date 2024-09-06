@@ -54,7 +54,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
- 
+    background: conic-gradient(
+      #4caf50 var(--completed-percentage, 0%), /* Main color up to completion percentage */
+      rgba(76, 175, 80, 0.5) calc(var(--completed-percentage, 0%) + 1%), /* Slightly transparent color for degradation */
+      #fff calc(var(--completed-percentage, 0%) + 3%) /* White or background color after degradation */
+    );
   }
 .progressInnerGap{
     width: 155px;  

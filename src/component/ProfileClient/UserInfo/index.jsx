@@ -1,4 +1,4 @@
-import React, { useEffect }  from "react";
+import React, { useEffect, useState }  from "react";
 import styles from "./styles.module.css";
 import img from "../../assets/profileImgNoUp.svg";
 import badgeProfile from "../../assets/badgeProfile.png";
@@ -13,20 +13,19 @@ import useProfile from "../hooks/use-profile";
 
 export default function UserInfo() {
   const { prev, data, loading, SingleFileChange } = useProfile();
-  useEffect(() => {
-    const progressCircle = document.querySelector(`.${styles.progressCircle}`);
-    if (progressCircle && data?.profilecomplited != null) {
-      const completedPercentage = data.profilecomplited;
-      const backgroundStyle = `conic-gradient(
-        #4caf50 ${completedPercentage - 2}%, 
-        rgba(76, 175, 80, 0.5) ${completedPercentage}%, 
-        rgba(255, 255, 255, 0.5) ${completedPercentage + 2}%, 
-        #fff ${completedPercentage + 2}% 100%
-      )`;
-      progressCircle.style.background = backgroundStyle;
-    }
-  }, [data?.profilecomplited]);
-  if (loading) {
+console.log("data?.profilecomplited",);
+
+const [completedPercentage, setCompletedPercentage] = useState('0%');
+
+useEffect(() => {
+  if (data?.profilecomplited != null) {
+    setCompletedPercentage(`${data.profilecomplited}%`);
+  } else {
+    setCompletedPercentage('0%');
+  }
+}, [data?.profilecomplited]);
+
+if (loading) {
     return <Loading />;
   } else {
 
@@ -35,7 +34,7 @@ export default function UserInfo() {
       <>
         <div className={styles.profileCapsule}>
           <div className={styles.profileInfoContainer}>
-            <Badge
+          <Badge
               overlap="circular"
               anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
               badgeContent={
@@ -65,7 +64,9 @@ export default function UserInfo() {
                   sx={{ width: 150, height: 150 }}
                 />
               ) : (
-                <div className={styles.progressCircle}>
+                <div className={styles.progressCircle}
+                style={{ '--completed-percentage': completedPercentage }}
+                >
                   <div className={styles.progressInnerGap}>
                     <div className={styles.progressInner}>
                       {data.image ? (

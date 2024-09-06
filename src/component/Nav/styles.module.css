@@ -123,7 +123,42 @@ a {
     padding-right: 5rem; */
     line-height: center;
 }
+.progressCircle {
 
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: conic-gradient(
+      #4caf50 var(--completed-percentage, 0%), /* Main color up to completion percentage */
+      rgba(76, 175, 80, 0.5) calc(var(--completed-percentage, 0%) + 1%), /* Slightly transparent color for degradation */
+      #ffffff00 calc(var(--completed-percentage, 0%) + 3%) /* White or background color after degradation */
+    );
+  }
+  .progressInnerGap{
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: 50%;
+    background-color: #ffffff00;
+    display: flex; 
+    justify-content: center;
+    align-items: center; 
+}
+.progressInner{
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    overflow: hidden; 
+    background-color: rgba(255, 255, 255, 0); 
+    display: flex; 
+    justify-content: center;
+    align-items: center; 
+    
+}
+button{
+    background-color: #ffffff00;
+    border: none;
+}
 /* For screens up to 300px */
 @media (max-width: 300px) {
     .nav_container {
