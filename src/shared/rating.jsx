@@ -20,7 +20,7 @@ export function CourseRating(id, value, avis) {
         emptyIcon={<StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />}
       />
       <Box>
-        <p>({avis} avis)</p>
+        <p style={{fontSize:12}}>({avis} avis)</p>
       </Box>
     </Box>
   );
