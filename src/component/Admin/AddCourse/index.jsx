@@ -61,7 +61,6 @@ const AddCourse = () => {
   const [ShowAddQCMElement, setShowAddQCMElement] = useState(false);
   const [ShowAddQRElement, setShowAddQRElement] = useState(false);
 
-
   const initialData = {
     Title: "",
     Description: "",
@@ -108,6 +107,7 @@ const AddCourse = () => {
     testState: "allowed",
     // repeatpassword:""
   });
+
   useEffect(() => {
     setData({ ...data, QuestionsQCM: QuestionsQCM, QuestionsQR: QuestionsQR });
   }, [QuestionsQCM, QuestionsQR]);
@@ -204,7 +204,6 @@ const AddCourse = () => {
   // });
 
   const [error, setError] = useState("");
-
 
   const handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
@@ -382,7 +381,12 @@ const AddCourse = () => {
     for (let i = 0; i < multipleFilesSelected.length; i++) {
       formData?.append("files", multipleFilesSelected[i]);
     }
-    await multipleFilesUploadWithName(formData, data?.Title, user._id, "Videos");
+    await multipleFilesUploadWithName(
+      formData,
+      data?.Title,
+      user._id,
+      "Videos"
+    );
     // getMultipleFilesList();
   };
 
@@ -410,7 +414,7 @@ const AddCourse = () => {
   };
 
   const OnAddQCM = async () => {
-	  setLoading(true)
+    setLoading(true);
     setQuestionsQCM([
       ...QuestionsQCM,
       {
@@ -426,7 +430,7 @@ const AddCourse = () => {
       Responses: "",
       ResAcceptable: "",
     });
-	  setLoading(false)
+    setLoading(false);
   };
 
   const OnAddQR = () => {

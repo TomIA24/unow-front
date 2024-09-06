@@ -4,9 +4,10 @@ import useCategories from "../../hooks/use-categories";
 import send from "../../../assets/paper.png";
 import { Link } from "react-router-dom";
 import { CourseRating } from "../../../../shared/rating";
+
 export default function CourseElement({ course, type }) {
   const { category } = useCategories(course.Category);
-
+  
   return (
     <div className={styles.courseContainerElement}>
       <div className={styles.imgCourseContainer}>
@@ -46,6 +47,7 @@ export default function CourseElement({ course, type }) {
               window.scrollTo(0, 0);
             }}
           >
+         
             <button o className={styles.textCourseFooterBtn}>
               <p>Go Course</p>
               <img src={send} alt="send" />

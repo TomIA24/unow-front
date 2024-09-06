@@ -71,6 +71,7 @@ const AddTraining = () => {
   const [ShowAddQCMElement, setShowAddQCMElement] = useState(false);
   const [ShowAddQRElement, setShowAddQRElement] = useState(false);
 
+ 
   const SaveDate = () => {
     setDatesPicked([value]);
     // setDatesPicked([...DatesPicked , value])
@@ -162,6 +163,10 @@ const AddTraining = () => {
     QuestionsQR: [],
     testState: "allowed", //closed
   });
+  
+  useEffect(() => {
+    setData({ ...data, QuestionsQCM: QuestionsQCM, QuestionsQR: QuestionsQR });
+  }, [QuestionsQCM, QuestionsQR]);
 
   const [loading, setLoading] = React.useState(false);
   // function handleClick() {
