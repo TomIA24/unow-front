@@ -15,7 +15,7 @@ const Footer = () => {
 
   const handleNewsletter = async () => {
     try {
-      const url = `${process.env.REACT_APP_API}api/newsletter/`;
+      const url = `${process.env.REACT_APP_API}/api/newsletter/`;
       await axios.post(url, { email });
       setSaved(true);
       setEmail("");
@@ -40,10 +40,13 @@ const Footer = () => {
               <a href="#">About Us</a>
             </li>
             <li>
-              <a href="/home">Home</a>
+              <a href="#">Our Services</a>
             </li>
             <li>
-              <a href="/">Contact</a>
+              <a href="#">Privacy Policy</a>
+            </li>
+            <li>
+              <a href="#">Visit Website</a>
             </li>
           </ul>
         </div>
@@ -56,9 +59,14 @@ const Footer = () => {
               <a href="#">FAQ</a>
             </li>
             <li>
-              <a href="#">Order Status</a>
+              <a href="#">Learning</a>
             </li>
-          
+            <li>
+              <a href="#">Courses</a>
+            </li>
+            <li>
+              <a href="#">Status</a>
+            </li>
             <li>
               <a href="#">Payment Options</a>
             </li>
@@ -66,17 +74,20 @@ const Footer = () => {
         </div>
         <div className={styles.footercol}>
           <p className={styles.title}>
-            U§NOW <p className={styles.underline}></p>
+            Online Classrooms <p className={styles.underline}></p>
           </p>
           <ul>
             <li>
-              <a href="#">(+216) 50 09 99 09</a>
+              <a href="#">Download</a>
             </li>
             <li>
-              <a href="#">Cyber Parc, Hammam Sousse, Tunisia</a>
+              <a href="#">Changelog</a>
             </li>
             <li>
-              <a href="#">Www.unow.tn</a>
+              <a href="#">Rooms</a>
+            </li>
+            <li>
+              <a href="#">All Versions</a>
             </li>
           </ul>
         </div>
@@ -86,16 +97,21 @@ const Footer = () => {
             Follow Us <p className={styles.underline}></p>
           </p>
           <div class="content-block">
-          <div className={styles.sociallinks}>
-            <a href="https://www.facebook.com/unow.tn" aria-label="Facebook"><FacebookIcon /></a>
-            <a href="https://www.instagram.com/unowelearning/" aria-label="Instagram"><InstagramIcon /></a>
-            <a href="https://www.linkedin.com/company/u-now-elearning-platform/" aria-label="LinkedIn"><LinkedInIcon /></a>
+            <div className={styles.sociallinks}>
+              <a href="#" aria-label="Facebook">
+                <FacebookIcon />
+              </a>
+              <a href="#" aria-label="Instagram">
+                <InstagramIcon />
+              </a>
+              <a href="#" aria-label="LinkedIn">
+                <LinkedInIcon />
+              </a>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    </div>
-    
   );
 };
 
