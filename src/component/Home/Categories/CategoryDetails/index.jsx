@@ -148,22 +148,22 @@ const CategoryDetails = (props) => {
           <img className="imagestyle" src={image} />
         </div>
         <br />
-        <TopListItem
+        {/* <TopListItem
           items={[
             { id: 0, title: "Products" },
             { id: 1, title: "Categories" },
             { id: 2, title: "Subcategories" },
           ]}
         />
-        <TopBarComponent
-          items={[
+        <TopBarComponent */}
+          {/* items={[
             { id: 0, title: "Design" },
             { id: 1, title: "Conception Web" },
             { id: 2, title: "Conception Graphique et Illustration" },
             { id: 3, title: "Outil de conception" },
             { id: 4, title: "Conception d'une expérience utilisateur" },
           ]}
-        />
+        /> */}
         <GenericSwitcher
           items={[
             { icon: imageCourse, title: "COURSES" },

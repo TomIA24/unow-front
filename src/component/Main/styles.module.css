@@ -234,7 +234,7 @@
    flex-direction:row;
    justify-content:space-evenly;
    flex-wrap: nowrap; 
-   gap: calc(4vw + 20px);
+   gap: calc(4vw + 5px);
    /* flex-direction: row; */
    align-self: center;
     /* width: 1400px; */
@@ -281,7 +281,7 @@
    flex-direction:row;
    justify-content:space-evenly;
    flex-wrap: nowrap; 
-   gap: calc(4vw + 20px);
+   gap: calc(4vw + 5px);
    /* flex-direction: row; */
    align-self: center;
 
@@ -1382,7 +1382,7 @@ margin-left: 200px; */
    @media (min-width: 993px) and (max-width: 1200px) {
        .categorietype {
            font-size: 9px; /* Ajuster la taille de la police pour les moyens desktops */
-           margin: 0px 0px 0px 28px;
+           margin-left: 8px;
        }
    }
    
@@ -2507,7 +2507,7 @@ margin-left: 200px; */
    @media (min-width: 1025px)and (max-width: 1240px) {
        .inner_carousel {
         width: clamp(160px, 23vw, 325px);
-        height: clamp(200px, 32vw, 337px);
+        height: clamp(200px, 36vw, 372px);
        }
    }
    @media (min-width: 1240px)and (max-width: 1380px) {

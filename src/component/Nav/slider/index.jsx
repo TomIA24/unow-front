@@ -59,6 +59,11 @@ export default function SliderNav({ user, handleLogout }) {
             AboutUs
           </a>
         </Link>
+        <Link to="/contact">
+          <a type="button" className={styles.nav_btn}>
+            Contact Us
+          </a>
+        </Link>
         {!user ? (
           <React.Fragment>
             <Link to="/login">
