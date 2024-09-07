@@ -169,22 +169,25 @@ const Personalize = () => {
     
   const [candidateData, setcandidateData] = useState([]);
   const [missingFields, setMissingFields] = useState([]);
-  
+  const user = JSON.parse(localStorage.getItem("user"));
   useEffect(() => {
     const fetchData = async () => {
       try {
         // Fetch the full candidate data
         const candidateResponse = await axios.get(`${process.env.REACT_APP_API}api/candidat/candidates/${candiddId}`);
         const candidateData = candidateResponse.data;
+  
+        // Set the candidate data
         setcandidateData(candidateData);
-        console.log("bringingdata",candidateData);
-
-
-        setcandidatdata(prevState => ({
-          ...prevState,
-          ...candidateData,
+  
+        // Merge candidate data into formData (optional, if you need initial form state to be pre-filled)
+        setFormData(prevFormData => ({
+          ...prevFormData,
+          ...candidateData, // Pre-fill the form with existing data
         }));
-
+  
+        console.log("Existing candidate data:", candidateData);
+  
         const checkFieldsResponse = await axios.get(`${process.env.REACT_APP_API}api/candidat/checkfields/${candiddId}`);
         
         if (checkFieldsResponse.data.message === 'Some fields are missing or incomplete') {
@@ -196,7 +199,7 @@ const Personalize = () => {
         console.error("Error fetching candidate data:", error);
       }
     };
-
+  
     fetchData();
   }, [candiddId]);
 
@@ -608,69 +611,65 @@ const Personalize = () => {
     }
   };
   const handleNext = async () => {
-  
-    const updatedProfilecomplited = candidatdata.profilecomplited + 20;
-
-    // Make sure to include the updated profilecomplited in the formData
-
+    // Merge the existing data from the candidate with new form data
+    const updatedProfilecomplited = candidateData.profilecomplited + 20;
+    
+    // Merge the old candidate data with new form data
     const updatedFormData = {
-      ...candidatdata,
-      profilecomplited: updatedProfilecomplited,
+      ...candidateData, // Retain the original data fetched from the database
+      ...formData, // Overwrite or add the new form data values
+      profilecomplited: updatedProfilecomplited, // Update the profile completion value
     };
-  console.log("updatedFormData",updatedFormData);
+    
+    // Remove fields that are not allowed by the API schema
+    const {
+      password,
+      _id,
+      cartTrainings,
+      TrainingsPaid,
+      cartCourses,
+      CoursesPaid,
+      __v,
+      ...dataToSubmit
+    } = updatedFormData; // Exclude the fields that are not part of the validation schema
+  
+    console.log("Data to be submitted:", dataToSubmit);
   
     if (currentStep < steps.length - 1) {
       try {
-        console.log('Submitting data:', updatedFormData,updatedFormData.profilecomplited);
-        console.log("idcdnadt",candiddId);
-        // Make the API call to update the candidate
+        // Send the merged data to the API
         const response = await axios.put(
           `${process.env.REACT_APP_API}api/candidat/${candiddId}`,
-          updatedFormData
-          
+          dataToSubmit
         );
-       
-        console.log('Updated candidate data:', response.data);
   
-        // Clear form data
-        setcandidatdata({
-          ...formData,
-          profilecomplited: updatedProfilecomplited, // Ensure profilecomplited is updated
+        console.log("Updated candidate data:", response.data);
+  
+        // Update the local state with the new candidate data
+        setcandidateData({
+          ...updatedFormData, // Use the merged data to update the state
         });
-   console.log("updated",candidatdata);
-   
+  
         // Proceed to the next step
-        setCurrentStep((prevStep) => prevStep + 1);
-  
-        // Optionally, reset step to 0 after submission
-        // setCurrentStep(0); // Uncomment this line if you want to reset after submission
-  
+        setCurrentStep(prevStep => prevStep + 1);
       } catch (error) {
-        console.error('Error updating candidate:', error.response ? error.response.data : error.message);
-  
-     
+        console.error("Error updating candidate:", error.response ? error.response.data : error.message);
       }
-    } else if (currentStep == steps.length - 1) {
+    } else if (currentStep === steps.length - 1) {
       try {
-        console.log('Submitting data:', updatedFormData);
-  
-      
+        // Submit the final form data
         const response = await axios.put(
           `${process.env.REACT_APP_API}api/candidat/${candiddId}`,
-          updatedFormData
+          dataToSubmit
         );
-        navigate("/profile")
-        console.log('Updated candidate data:', response.data);
   
-        // Clear form data
-        // setFormData({ interests: [], exploreFirst: '' });
+        console.log("Final updated candidate data:", response.data);
+        navigate("/profile");
   
         // Proceed to the next step
-        setCurrentStep((prevStep) => prevStep + 1);
-
+        setCurrentStep(prevStep => prevStep + 1);
       } catch (error) {
-        console.error('Error updating candidate:', error.response ? error.response.data : error.message);
-  
+        console.error("Error updating candidate:", error.response ? error.response.data : error.message);
       }
     }
   };
@@ -707,7 +706,7 @@ const gotohome=()=>{
   navigate("/")
   console.log("candidat",{...data,candidatdata});
   
-  localStorage.setItem("user", JSON.stringify({...candidateData,candidatdata}));
+  localStorage.setItem("user", JSON.stringify({...candidateData}));
 }
   return (
     <div >
@@ -740,7 +739,7 @@ const gotohome=()=>{
                       {candidatdata.image ? (
                         <Avatar
                           alt="icon"
-                          src={`${process.env.REACT_APP_API}${candidatdata.image.filePath}`}
+                          src={`${process.env.REACT_APP_API}${user.image.filePath}`}
                           sx={{ width: 150, height: 150 }}
                         />
                       ) : (
@@ -753,7 +752,7 @@ const gotohome=()=>{
                     </div>
                   </div>
                 </div>
-     <span>{candidatdata.name}
+     <span>{user.name}
      <p className={styles.underline}></p>
      </span>
     </a>
