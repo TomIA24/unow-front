@@ -165,6 +165,9 @@ const Personalize = () => {
     timeOfDay: '',
     profilecomplited:0,
   });
+
+    
+  const [candidateData, setcandidateData] = useState([]);
   const [missingFields, setMissingFields] = useState([]);
   
   useEffect(() => {
@@ -173,7 +176,8 @@ const Personalize = () => {
         // Fetch the full candidate data
         const candidateResponse = await axios.get(`${process.env.REACT_APP_API}api/candidat/candidates/${candiddId}`);
         const candidateData = candidateResponse.data;
-console.log(candidateData);
+        setcandidateData(candidateData);
+        console.log("bringingdata",candidateData);
 
 
         setcandidatdata(prevState => ({
@@ -240,7 +244,7 @@ console.log(candidateData);
       } else {
         return {
           ...prevData,
-          [name]: value, // For radio and other input types, simply set the value
+          [name]: value, 
         };
       }
     });
@@ -304,13 +308,14 @@ console.log(candidateData);
           </div>)}
         </>
       ),
+      isCompleted: candidatdata.interests && candidatdata.interests.length > 0 && candidatdata.exploreFirst
     },
     {
       title: "Goals and Aspirations",
       content: (
         <>
-          <>
-            <div className={styles.personlizestep}>
+          
+          {(!candidatdata.goals || candidatdata.goals.length === 0 || !candidatdata.timeline ) &&  ( <div className={styles.personlizestep}>
               <div className={styles.personlizesquestion}>
                 <label>What are your main objectives for using this platform? (Select all that apply)</label>
                 <div className={styles.checkboxGroup}>
@@ -353,16 +358,17 @@ console.log(candidateData);
                   </div>
                 </div>
               </div>
-            </div>
-          </>
+            </div>)}
+        
         </>
       ),
+      isCompleted:candidatdata.goals && candidatdata.goals.length > 0 && candidatdata.timeline
     },
     {
       title: "Availability and Commitment:",
       content: (
         <>
-          <div className={styles.personlizestep}>
+        {(!candidatdata.availability || candidatdata.availability.length === 0 || !candidatdata.hoursperweek ) &&  ( <div className={styles.personlizestep}>
             <div className={styles.personlizesquestion}>
               <label>What is your preferred learning style? (Select all that apply)</label>
               <div className={styles.checkboxGroup}>
@@ -459,9 +465,10 @@ console.log(candidateData);
                 </div>
               </div>
             </div>
-          </div>
+          </div>)}
         </>
       ),
+      isCompleted:candidatdata.availability && candidatdata.availability.length > 0 && candidatdata.hoursperweek
     },
 
 
@@ -469,7 +476,7 @@ console.log(candidateData);
       title: "Learning Pace",
       content: (
         <>
-          <div className={styles.personlizestep}>
+      { (!candidatdata.learningpace || candidatdata.learningpace.length === 0 || !candidatdata.dayslearning  ) &&  (  <div className={styles.personlizestep}>
             <div className={styles.personlizesquestion}>
               <label>What pace of learning do you prefer?</label>
               <div className={styles.checkboxGroup}>
@@ -584,10 +591,11 @@ console.log(candidateData);
     </div>
   )}
             </div>
-          </div>
+          </div>)}
         </>
       ),
-    },
+      isCompleted:candidatdata.learningpace && candidatdata.learningpace.length > 0 && candidatdata.dayslearning
+    }
   ];
 
   const [currentStep, setCurrentStep] = useState(0);
@@ -604,21 +612,24 @@ console.log(candidateData);
     const updatedProfilecomplited = candidatdata.profilecomplited + 20;
 
     // Make sure to include the updated profilecomplited in the formData
+
     const updatedFormData = {
-      ...formData,
+      ...candidatdata,
       profilecomplited: updatedProfilecomplited,
     };
+  console.log("updatedFormData",updatedFormData);
   
     if (currentStep < steps.length - 1) {
       try {
         console.log('Submitting data:', updatedFormData,updatedFormData.profilecomplited);
-  
+        console.log("idcdnadt",candiddId);
         // Make the API call to update the candidate
         const response = await axios.put(
           `${process.env.REACT_APP_API}api/candidat/${candiddId}`,
           updatedFormData
           
         );
+       
         console.log('Updated candidate data:', response.data);
   
         // Clear form data
@@ -626,7 +637,8 @@ console.log(candidateData);
           ...formData,
           profilecomplited: updatedProfilecomplited, // Ensure profilecomplited is updated
         });
-  
+   console.log("updated",candidatdata);
+   
         // Proceed to the next step
         setCurrentStep((prevStep) => prevStep + 1);
   
@@ -674,10 +686,11 @@ useEffect(() => {
     if (percentage <= 20) {
       setProgressGradient(`#E74C3C`);
       setMainColorRgb('255, 152, 0');
-    } else if (percentage < 50) {
+    } else if (20 < percentage <= 80) {
       setProgressGradient(`#F39D6E`);
       setMainColorRgb('76, 175, 80');
-    } else if (percentage == 100){
+    } 
+     if (percentage == 100){
       setProgressGradient(`#49C382`);
     }
   } else {
@@ -686,8 +699,16 @@ useEffect(() => {
     setMainColorRgb('255, 152, 0');
   }
 }, [candidatdata?.profilecomplited]);
-const stepsWithContent = steps.filter((step) => step.content);
+const stepsWithContent = steps.filter((step) => !step.isCompleted);
+console.log('steps',stepsWithContent);
 
+
+const gotohome=()=>{
+  navigate("/")
+  console.log("candidat",{...data,candidatdata});
+  
+  localStorage.setItem("user", JSON.stringify({...candidateData,candidatdata}));
+}
   return (
     <div >
       {/* <img
@@ -741,10 +762,10 @@ const stepsWithContent = steps.filter((step) => step.content);
                 </div>
    
       </div>
-      <Link className={styles.Close} to="/">
+      <button className={styles.Close} onClick={gotohome}>
         Home
         <IoIosArrowForward size={30} />
-      </Link>
+      </button>
       <div>
 
       <div className={styles.container}>
