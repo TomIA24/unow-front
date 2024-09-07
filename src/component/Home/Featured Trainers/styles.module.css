@@ -448,10 +448,18 @@
   object-fit: cover;
 }
 
+.uppercase {
+  text-transform: uppercase;
+  
+}
+
 .titleName {
   font-size: 14px;
   text-align: center;
   margin: 0.5rem 0;
+}
+.titleName::first-letter {
+  text-transform: uppercase;
 }
 @media (max-width: 300px)  {
   .titleName {

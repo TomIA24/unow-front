@@ -59,7 +59,7 @@ const Featured = () => {
   };
 
   const currentData = trainers.slice(currentIndex, currentIndex + itemsPerPage);
-
+console.log("trainer.surname",trainers)
   return (
     <>
       <div className={styles.featuredTitle} >
@@ -86,7 +86,11 @@ const Featured = () => {
                   />
                 </div>
                 <div className={styles.cardContent}>
-                  <h3 className={styles.titleName}>{trainer.name}</h3>
+                  <h3 className={styles.titleName}>
+                    {trainer.surname} {trainer.name} 
+                    
+                  </h3>
+                  
                   <p className={styles.description}>{trainer.description}</p>
                 </div>
               </div>
