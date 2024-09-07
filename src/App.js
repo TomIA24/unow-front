@@ -31,6 +31,8 @@ import { QuizProvider } from "./hooks/QuizContext";
 
 function App() {
   const [startDate, setStartDate] = useState(null);
+    localStorage.setItem("navState", 1);
+
   const handleStartQuiz = () => {
     const now = new Date();
     setStartDate(now.toLocaleString());
