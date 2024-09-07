@@ -27,6 +27,7 @@ const About = () => {
                 U!NOW an innovative, holistic e-learning platform
               </p>
             </div>
+            <div className={styles.containeraboutus}>
             <div className={styles.imageWrapper}>
               {" "}
               <img src={Team} alt="" className={styles.imageAboutUs} />{" "}
@@ -59,6 +60,7 @@ const About = () => {
                   Read More
                 </button>
               </div>
+            </div>
             </div>
           </div>
         </div>
