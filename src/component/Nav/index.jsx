@@ -256,11 +256,20 @@ const Nav = () => {
                               </div>
                             </div>
                           ) : (
-                            <Avatar
-                              alt="icon"
-                              src={imgicon}
-                              sx={{ width: 30, height: 30 }}
-                            />
+                            <div
+                              className={styles.progressCircle}
+                              style={{
+                                "--completed-percentage": completedPercentage,
+                                "--progress-gradient": progressGradient,
+                                "--main-color-rgb": mainColorRgb,
+                              }}
+                            >
+                              <Avatar
+                                alt="icon"
+                                src={imgicon}
+                                sx={{ width: 30, height: 30 }}
+                              />
+                            </div>
                           )}
                           Welcome, {user.name}
                         </a>
@@ -308,11 +317,20 @@ const Nav = () => {
                               </div>
                             </div>
                           ) : (
-                            <Avatar
-                              alt="icon"
-                              src={imgicon}
-                              sx={{ width: 30, height: 30 }}
-                            />
+                            <div
+                              className={styles.progressCircle}
+                              style={{
+                                "--completed-percentage": completedPercentage,
+                                "--progress-gradient": progressGradient,
+                                "--main-color-rgb": mainColorRgb,
+                              }}
+                            >
+                              <Avatar
+                                alt="icon"
+                                src={imgicon}
+                                sx={{ width: 30, height: 30 }}
+                              />
+                            </div>
                           )}
                           Welcome, {user.name}
                         </a>
@@ -361,7 +379,7 @@ const Nav = () => {
                 <div className={styles.continuebutton}>
                   {" "}
                   <button onClick={() => handlpersonalized(user._id)}>
-                    Continue
+                    Proceed
                   </button>
                 </div>
               </div>
