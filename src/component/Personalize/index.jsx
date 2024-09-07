@@ -677,7 +677,7 @@ useEffect(() => {
     } else if (percentage < 50) {
       setProgressGradient(`#F39D6E`);
       setMainColorRgb('76, 175, 80');
-    } else if (percentage == 50){
+    } else if (percentage == 100){
       setProgressGradient(`#49C382`);
     }
   } else {
@@ -686,6 +686,8 @@ useEffect(() => {
     setMainColorRgb('255, 152, 0');
   }
 }, [candidatdata?.profilecomplited]);
+const stepsWithContent = steps.filter((step) => step.content);
+
   return (
     <div >
       {/* <img
@@ -745,37 +747,38 @@ useEffect(() => {
       </Link>
       <div>
 
-        <div className={styles.container}>
-          <div className={styles.progressbar}>
-            <div
-              className={styles.progressline}
-              style={{
-                width: `${((currentStep + 1) / steps.length) * 100}%`,
-              }}
-            ></div>
-          </div>
+      <div className={styles.container}>
+    {stepsWithContent.length > 0 && (
+      <>
+        <div className={styles.progressbar}>
+          <div
+            className={styles.progressline}
+            style={{
+              width: `${((currentStep + 1) / stepsWithContent.length) * 100}%`,
+            }}
+          ></div>
+        </div>
 
-        {(steps[currentStep]?.content) && (  <div className={styles.formcontent}>
-            <h2>{steps[currentStep].title}</h2>
-            {steps[currentStep]?.content}
-          </div>)}
+        <div className={styles.formcontent}>
+          <h2>{stepsWithContent[currentStep].title}</h2>
+          {stepsWithContent[currentStep]?.content}
+        </div>
 
-          <div className={styles.formnavigation}>
-         
-            <button onClick={handleNext} className={styles.nextbutton}>
-              {currentStep === steps.length - 1 ? "Finish" : "Next"}
-            </button>
-            {currentStep > 0 && (
-              <div>
+        <div className={styles.formnavigation}>
+          <button onClick={handleNext} className={styles.nextbutton}>
+            {currentStep === stepsWithContent.length - 1 ? "Finish" : "Next"}
+          </button>
+          {currentStep > 0 && (
+            <div>
               <button onClick={handleBack} className={styles.backbutton}>
                 Back
               </button>
-              </div>
-            )}
-         
             </div>
-  
+          )}
         </div>
+      </>
+    )}
+  </div>
       </div>
 
 

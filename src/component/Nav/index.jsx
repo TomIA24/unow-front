@@ -97,29 +97,29 @@ const Nav = () => {
 
   const [completedPercentage, setCompletedPercentage] = useState("0%");
 
-  const [progressGradient, setProgressGradient] = useState("");
-  const [mainColorRgb, setMainColorRgb] = useState("");
+  const [progressGradient, setProgressGradient] = useState('');
+  const [mainColorRgb, setMainColorRgb] = useState('');
   useEffect(() => {
     if (user?.profilecomplited != null) {
       const percentage = user.profilecomplited;
       setCompletedPercentage(`${percentage}%`);
-
+  
       if (percentage <= 20) {
         setProgressGradient(`#E74C3C`);
-        setMainColorRgb("255, 152, 0");
+        setMainColorRgb('255, 152, 0');
       } else if (percentage < 50) {
         setProgressGradient(`#F39D6E`);
-        setMainColorRgb("76, 175, 80");
-      } else if (percentage === 50) {
+        setMainColorRgb('76, 175, 80');
+      } else if (percentage == 100){
         setProgressGradient(`#49C382`);
       }
     } else {
-      setCompletedPercentage("0%");
-      setProgressGradient("conic-gradient(#ff9800 0%, #ffffff00 0%)");
-      setMainColorRgb("255, 152, 0");
+      setCompletedPercentage('0%');
+      setProgressGradient('conic-gradient(#ff9800 0%, #ffffff00 0%)');
+      setMainColorRgb('255, 152, 0');
     }
   }, [user?.profilecomplited]);
-
+  
   return (
     <React.Fragment>
       <nav className={styles.nav_container}>
@@ -212,7 +212,7 @@ const Nav = () => {
                   </Link>
                 ) : (
                   <div>
-                    {user.profilecomplited === 100 ? (
+                    {user.profilecomplited >= 100 ? (
                       <Link
                         to="/profile"
                         style={{ display: "flex", alignItems: "center" }}
@@ -239,11 +239,10 @@ const Nav = () => {
                           {user.image ? (
                             <div
                               className={styles.progressCircle}
-                              style={{
-                                "--completed-percentage": completedPercentage,
-                                "--progress-gradient": progressGradient,
-                                "--main-color-rgb": mainColorRgb,
-                              }}
+                              style={{ 
+                                '--completed-percentage': completedPercentage, 
+                                '--progress-gradient': progressGradient,
+                                '--main-color-rgb': mainColorRgb}}
                             >
                               <div className={styles.progressInnerGap}>
                                 <div className={styles.progressInner}>
@@ -256,11 +255,19 @@ const Nav = () => {
                               </div>
                             </div>
                           ) : (
+                            <div
+                            className={styles.progressCircle}
+                            style={{ 
+                              '--completed-percentage': completedPercentage, 
+                              '--progress-gradient': progressGradient,
+                              '--main-color-rgb': mainColorRgb}}
+                          >
                             <Avatar
                               alt="icon"
                               src={imgicon}
                               sx={{ width: 30, height: 30 }}
                             />
+                              </div>
                           )}
                           Welcome, {user.name}
                         </a>
@@ -291,11 +298,10 @@ const Nav = () => {
                           {user.image ? (
                             <div
                               className={styles.progressCircle}
-                              style={{
-                                "--completed-percentage": completedPercentage,
-                                "--progress-gradient": progressGradient,
-                                "--main-color-rgb": mainColorRgb,
-                              }}
+                              style={{ 
+                                '--completed-percentage': completedPercentage, 
+                                '--progress-gradient': progressGradient,
+                                '--main-color-rgb': mainColorRgb}}
                             >
                               <div className={styles.progressInnerGap}>
                                 <div className={styles.progressInner}>
@@ -308,11 +314,19 @@ const Nav = () => {
                               </div>
                             </div>
                           ) : (
+                            <div
+                            className={styles.progressCircle}
+                            style={{ 
+                              '--completed-percentage': completedPercentage, 
+                              '--progress-gradient': progressGradient,
+                              '--main-color-rgb': mainColorRgb}}
+                          >
                             <Avatar
                               alt="icon"
                               src={imgicon}
                               sx={{ width: 30, height: 30 }}
                             />
+                              </div>
                           )}
                           Welcome, {user.name}
                         </a>
@@ -361,7 +375,7 @@ const Nav = () => {
                 <div className={styles.continuebutton}>
                   {" "}
                   <button onClick={() => handlpersonalized(user._id)}>
-                    Continue
+                    Proceed
                   </button>
                 </div>
               </div>

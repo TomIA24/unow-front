@@ -18,7 +18,7 @@ a {
     top: 0;
     left: 0;
     /* transform: translate(-50%, -50%); */
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(249, 249, 249, 0.06);
     width: 100%;
     height: 100%;
     -webkit-backdrop-filter: blur(10px);
@@ -34,16 +34,16 @@ a {
 }
 
 .dialogStyles {
-    background-color: #fff;
+    background-color: #F9F9F9;
     /* top: 50%; */
     /* left: 50%; */
     border: none;
-    border-radius: 8px;
+    border-radius: 30px;
     padding: 20px;
     width: 35%;
     /* max-width: 90vw; */
     /* max-height: 90vh; */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 100px rgba(0, 0, 0, 0.2);
     align-self: center;
     align-items: center;
     align-content: center;
@@ -55,7 +55,7 @@ a {
 
 
 .iamgedialog{
-    background-color: #fff;
+    background-color: #F9F9F9;
     /* top: 50%; */
     /* left: 50%; */
     border: none;
@@ -133,7 +133,7 @@ a {
       rgba(var(--main-color-rgb), 0.5) calc(var(--completed-percentage, 0%) + 1%),
       #ffffff00 calc(var(--completed-percentage, 0%) + 3%)
     );
-    padding: 0.2rem;
+    padding: 0.25rem;
   }
   .progressInnerGap{
     width: 2.2rem;

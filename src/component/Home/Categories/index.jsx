@@ -173,15 +173,22 @@ const Categories = () => {
         <div className={styles.overlayStyles}>
      
         <div  ref={dialogRef} className={styles.dialogStyles}>
-          <div className={styles.closbutton}>       <button  onClick={closepopup}>     <img
+          {/* <div className={styles.closbutton}>       <button  onClick={closepopup}>     <img
         src="/images/personalize/close.png"
         alt="bronze"
 
-      /></button></div>
+      /></button></div> */}
   
         <div className={styles.iamgedialog}>
-        Stay Tuneed for more !
-      <div className={styles.continuebutton}> </div>
+        <img
+        src="/images/home/comingSoon.png"
+        alt="bronze"
+
+      />
+      <div className={styles.continuebutton}>
+      <button onClick={closepopup}>
+                Ok
+                  </button> </div>
          
         </div>
       
