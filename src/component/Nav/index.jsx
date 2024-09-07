@@ -92,7 +92,8 @@ const Nav = () => {
 
   const handlpersonalized = (candiddId) => {
     console.log("id candat from nev", candiddId);
-    navigate(`/personalize`, { state: { candiddId } });
+    navigate('/profile');
+    // navigate(`/personalize`, { state: { candiddId } });
     setpopupopen(!opnpopup);
     console.log(opnpopup);
   };
