@@ -2,7 +2,6 @@ import React from "react";
 import styles from "./styles.module.css";
 import useCategories from "../../hooks/use-categories";
 import useProfile from "../../hooks/use-profile";
-import useCourses from "../../hooks/use-courses";
 import pay from "../../../assets/pay.png";
 import { CourseRating } from "../../../../shared/rating";
 import { Link } from "react-router-dom";
@@ -11,8 +10,7 @@ import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 export default function CourseElement({ course, type }) {
   const { category } = useCategories(course.Category);
   const {data} = useProfile()
-  const {courses} = useCourses()
-  console.log("courses",course?.Price)
+  
   return (
     <div className={styles.courseContainerElement}>
       <div className={styles.imgCourseContainer}>
