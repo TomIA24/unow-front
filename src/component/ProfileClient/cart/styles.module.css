@@ -56,7 +56,8 @@
     justify-content: center; 
     /* width: 37.5rem;
     min-height: 80%; */
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
     padding: 0 2px;
     background: #fff;
     border-radius: 40px;
