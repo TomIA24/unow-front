@@ -253,12 +253,12 @@ console.log(candidateData);
         <>
        {(!candidatdata.interests || candidatdata.interests.length === 0 || !candidatdata.exploreFirst ) &&  (  <div className={styles.personlizestep}>
         <div className={styles.personlizesquestion}>
-            {candidatdata.interests.length }
+            {/* {candidatdata.interests.length }
             {formData.interests.map((interest, index) => (
         <div key={index}>
           {interest}
         </div>
-      ))}
+      ))} */}
               <label>What subjects interest you most? (Select up to three)</label>
               <div className={styles.checkboxGroup}>
                 <input type="checkbox" id="sciences" name="interests" value="Sciences & Technology" className={styles.hiddenCheckbox} checked={Array.isArray(formData.interests) && formData.interests.includes('Sciences & Technology')} onChange={handleInputChange} />
@@ -340,8 +340,8 @@ console.log(candidateData);
                     <label htmlFor="month" className={styles.customLabel} > month </label>
                   </div>
                   <div className={styles.checkboxGroup}>
-                    <input type="radio" id="1months" name="timeline" className={styles.hiddenCheckbox} value='1-3 months ' onChange={handleInputChange} checked={formData.timeline === '1-3 months'}/>
-                    <label htmlFor="1months" className={styles.customLabel} >1-3 months  </label>
+                    <input type="radio" id="1months" name="timeline" className={styles.hiddenCheckbox} value='1-3 months' onChange={handleInputChange} checked={formData.timeline === '1-3 months'}/>
+                    <label htmlFor="1months" className={styles.customLabel} >1-3 months </label>
                   </div>
                   <div className={styles.checkboxGroup}>
                     <input type="radio" id="3months" name="timeline" className={styles.hiddenCheckbox} value='3 - 6 months' onChange={handleInputChange} checked={formData.timeline === '3 - 6 months'}/>
@@ -398,7 +398,7 @@ console.log(candidateData);
     className={styles.hiddenCheckbox}
     value="Less than 5 hours"
     onChange={handleInputChange}
-    checked={Array.isArray(formData.hoursperweek) && formData.hoursperweek === 'Less than 5 hours'}
+    checked={formData.hoursperweek === 'Less than 5 hours'}
   />
   <label htmlFor="hours" className={styles.customLabel}>
     Less than 5 hours
@@ -413,7 +413,7 @@ console.log(candidateData);
     className={styles.hiddenCheckbox}
     value="5 to 10 hours"
     onChange={handleInputChange}
-    checked={Array.isArray(formData.hoursperweek) && formData.hoursperweek === '5 to 10 hours'}
+    checked={formData.hoursperweek === '5 to 10 hours'}
   />
   <label htmlFor="morehours" className={styles.customLabel}>
     5 to 10 hours
@@ -428,7 +428,7 @@ console.log(candidateData);
     className={styles.hiddenCheckbox}
     value="More than 10 hours"
     onChange={handleInputChange}
-    checked={Array.isArray(formData.hoursperweek) && formData.hoursperweek === 'More than 10 hours'}
+    checked={formData.hoursperweek === 'More than 10 hours'}
   />
   <label htmlFor="more" className={styles.customLabel}>
     More than 10 hours
@@ -441,7 +441,7 @@ console.log(candidateData);
                 <div className={styles.checkboxGroup}>
                   <div className={styles.checkboxGroup}>
                     <input type="radio" id="yes" name="learningother"
-                      className={styles.hiddenCheckbox} value='yes' onChange={handleInputChange} checked={Array.isArray(formData.learningother) && formData.learningother === 'yes'} />
+                      className={styles.hiddenCheckbox} value='yes' onChange={handleInputChange} checked={formData.learningother === 'yes'} />
                     <label htmlFor="yes" className={styles.customLabel}>
                       yes
                     </label>
@@ -451,7 +451,7 @@ console.log(candidateData);
                 <div>
                   <div className={styles.checkboxGroup}>
                     <input type="radio" id="no" name="learningother"
-                      className={styles.hiddenCheckbox} value='no' onChange={handleInputChange}     checked={Array.isArray(formData.learningother) && formData.learningother === 'no'} />
+                      className={styles.hiddenCheckbox} value='no' onChange={handleInputChange}     checked={formData.learningother === 'no'} />
                     <label htmlFor="no" className={styles.customLabel}>
                       No
                     </label>
@@ -480,7 +480,7 @@ console.log(candidateData);
     className={styles.hiddenCheckbox}
     value="Intensive (e.g., Bootcamp)"
     onChange={handleInputChange}
-    checked={Array.isArray(formData.learningother) && formData.learningpace.includes('Intensive (e.g., Bootcamp)')}
+    checked={Array.isArray(formData.learningpace) && formData.learningpace.includes('Intensive (e.g., Bootcamp)')}
   />
   <label htmlFor="intensive" className={styles.customLabel}>
     Intensive (e.g., Bootcamp)
@@ -495,7 +495,7 @@ console.log(candidateData);
     className={styles.hiddenCheckbox}
     value="Regular and Gradual"
     onChange={handleInputChange}
-    checked={Array.isArray(formData.learningother) && formData.learningpace.includes('Regular and Gradual')}
+    checked={Array.isArray(formData.learningpace) && formData.learningpace.includes('Regular and Gradual')}
   />
   <label htmlFor="regular" className={styles.customLabel}>
     Regular and Gradual
@@ -510,7 +510,7 @@ console.log(candidateData);
     className={styles.hiddenCheckbox}
     value="Self-paced (No time constraints)"
     onChange={handleInputChange}
-    checked={Array.isArray(formData.learningother) && formData.learningpace.includes('Self-paced (No time constraints)')}
+    checked={Array.isArray(formData.learningpace) && formData.learningpace.includes('Self-paced (No time constraints)')}
   />
   <label htmlFor="selfpaced" className={styles.customLabel}>
     Self-paced (No time constraints)
@@ -522,7 +522,7 @@ console.log(candidateData);
               <div>
                 <div className={styles.checkboxGroup}>
                   <input type="radio" id="weekend" name="dayslearning"
-                       checked={ Array.isArray(formData.dayslearning) && formData.dayslearning === 'weekend'} className={styles.hiddenCheckbox} value='weekend' onChange={handleInputChange} />
+                       checked={ formData.dayslearning === 'weekend'} className={styles.hiddenCheckbox} value='weekend' onChange={handleInputChange} />
                   <label htmlFor="weekend" className={styles.customLabel}>
                     weekend
                   </label>
@@ -532,7 +532,7 @@ console.log(candidateData);
               <div>
                 <div className={styles.checkboxGroup}>
                   <input type="radio" id="weekdays" name="dayslearning"
-                    checked={  Array.isArray(formData.dayslearning) &&  formData.dayslearning === 'weekdays'} className={styles.hiddenCheckbox} value='weekdays' onChange={handleInputChange} />
+                    checked={formData.dayslearning === 'weekdays'} className={styles.hiddenCheckbox} value='weekdays' onChange={handleInputChange} />
                   <label htmlFor="weekdays" className={styles.customLabel}>
                     weekdays
                   </label>
@@ -541,7 +541,7 @@ console.log(candidateData);
               </div>
               <div>
                 <div className={styles.checkboxGroup}>
-                  <input type="radio" id="both" name="dayslearning" className={styles.hiddenCheckbox}checked={ Array.isArray(formData.dayslearning) &&  formData.dayslearning === 'both'}value='both' onChange={handleInputChange} />
+                  <input type="radio" id="both" name="dayslearning" className={styles.hiddenCheckbox} checked={formData.dayslearning === 'both'} value='both' onChange={handleInputChange} />
                   <label htmlFor="both" className={styles.customLabel}>
                     both
                   </label>
@@ -557,7 +557,7 @@ console.log(candidateData);
         name="timeOfDay"
         value="morning"
         onChange={handleInputChange}
-        checked={ Array.isArray(formData.timeOfDay) && formData.timeOfDay === 'morning'}
+        checked={formData.timeOfDay === 'morning'}
       />
       <label htmlFor="morning">Morning</label>
 
@@ -568,7 +568,7 @@ console.log(candidateData);
         name="timeOfDay"
         value="afternoon"
         onChange={handleInputChange}
-        checked={ Array.isArray(formData.timeOfDay) && formData.timeOfDay === 'afternoon'}
+        checked={formData.timeOfDay === 'afternoon'}
       />
       <label htmlFor="afternoon">Afternoon</label>
 
@@ -578,7 +578,7 @@ console.log(candidateData);
         name="timeOfDay"
         value="evening"
         onChange={handleInputChange}
-        checked={ Array.isArray(formData.timeOfDay) && formData.timeOfDay === 'evening'}
+        checked={formData.timeOfDay === 'evening'}
       />
       <label htmlFor="evening">Evening</label>
     </div>
@@ -755,9 +755,9 @@ useEffect(() => {
             ></div>
           </div>
 
-        {(steps[currentStep].content) && (  <div className={styles.formcontent}>
+        {(steps[currentStep]?.content) && (  <div className={styles.formcontent}>
             <h2>{steps[currentStep].title}</h2>
-            {steps[currentStep].content}
+            {steps[currentStep]?.content}
           </div>)}
 
           <div className={styles.formnavigation}>

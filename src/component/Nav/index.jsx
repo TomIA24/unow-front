@@ -59,8 +59,9 @@ const Nav = () => {
   
   };
   const closepopup= ()=> {
-    navigate("/profile")
+  
     setpopupopen(!opnpopup)
+    navigate("/profile")
     console.log(opnpopup);
     
     };
@@ -113,7 +114,7 @@ const Nav = () => {
         } else if (percentage < 50) {
           setProgressGradient(`#F39D6E`);
           setMainColorRgb('76, 175, 80');
-        } else if (percentage == 50){
+        } else if (percentage === 100){
           setProgressGradient(`#49C382`);
         }
       } else {
@@ -200,7 +201,7 @@ const Nav = () => {
                   
                   <div>
                  
-                 {user.profilecomplited === 100 ?  (
+                 {user?.profilecomplited === 100 ?  (
   <Link
     to="/profile"
     style={{ display: "flex", alignItems: "center" }}

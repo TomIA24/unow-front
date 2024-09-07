@@ -102,7 +102,9 @@ const SignUp = () => {
     }
 
     try {
-        const res = await signup(data);
+        const res = await signup({...data,
+          profilecomplited:20
+          });
 
         navigate("/login", { state: { signup: true } });
         console.log(res.message);

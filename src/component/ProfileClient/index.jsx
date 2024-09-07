@@ -18,7 +18,7 @@ const ProfileTrainer = (props) => {
         authorization: `Bearer ${token}`,
       },
     };
-    const urlUserData = `${process.env.REACT_APP_API}api/userData`;
+    const urlUserData = `${process.env.REACT_APP_API}api/userData/`;
     try {
       axios.get(urlUserData, config).then((response) => {
         localStorage.setItem("user", JSON.stringify(response.data.data));
