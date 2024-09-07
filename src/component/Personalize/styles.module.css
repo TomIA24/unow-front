@@ -317,7 +317,7 @@ text-transform: capitalize;
   .backimagescore {
     background: url('../assets/quizbackground.png') no-repeat center center;
     background-size: cover;
-    height: 35vh;
+    height: 40vh;
     border-radius: 0px 0px 50px 50px;
     display: flex;
     flex-direction: column;

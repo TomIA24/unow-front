@@ -1,4 +1,4 @@
-import React, { useEffect, useState,useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import SliderNav from "./slider";
 import styles from "./styles.module.css";
@@ -7,12 +7,12 @@ import imgicon from "../assets/usericon.png";
 import Avatar from "@mui/material/Avatar";
 import { CiUser } from "react-icons/ci";
 import { Typography } from "@mui/material";
-import { useNavigate } from 'react-router-dom'; 
-import { useLocation } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const Nav = () => {
   const [WindowWidth, setWindowWidth] = useState(0);
-  const navState = localStorage.getItem('navState')
+  const navState = localStorage.getItem("navState");
 
   const navigate = useNavigate();
 
@@ -58,9 +58,11 @@ const Nav = () => {
   const handlepopup = () => {
     setpopupopen(!opnpopup);
   };
+
   const closepopup = () => {
-    navigate("/profile");
     setpopupopen(!opnpopup);
+    navigate("/profile");
+    console.log(opnpopup);
   };
   const location = useLocation();
 
@@ -89,12 +91,10 @@ const Nav = () => {
 
   const handlpersonalized = (candiddId) => {
     console.log("id candat from nev", candiddId);
-
     navigate(`/personalize`, { state: { candiddId } });
     setpopupopen(!opnpopup);
     console.log(opnpopup);
   };
-
   const [completedPercentage, setCompletedPercentage] = useState("0%");
 
   const [progressGradient, setProgressGradient] = useState("");
@@ -110,7 +110,7 @@ const Nav = () => {
       } else if (percentage < 50) {
         setProgressGradient(`#F39D6E`);
         setMainColorRgb("76, 175, 80");
-      } else if (percentage === 50) {
+      } else if (percentage === 100) {
         setProgressGradient(`#49C382`);
       }
     } else {
@@ -141,7 +141,7 @@ const Nav = () => {
             <div className={styles.middle_nav}>
               <Link
                 onClick={() => {
-                    localStorage.setItem('navState', 1);
+                  localStorage.setItem("navState", 1);
                 }}
                 to="/"
               >
@@ -156,7 +156,7 @@ const Nav = () => {
               </Link>
               <Link
                 onClick={() => {
-                    localStorage.setItem('navState', 2);
+                  localStorage.setItem("navState", 2);
                 }}
                 to="/about"
               >
@@ -167,7 +167,7 @@ const Nav = () => {
               </Link>
               <Link
                 onClick={() => {
-                    localStorage.setItem('navState', 3);
+                  localStorage.setItem("navState", 3);
                 }}
                 to="/contact"
               >
@@ -212,7 +212,7 @@ const Nav = () => {
                   </Link>
                 ) : (
                   <div>
-                    {user.profilecomplited === 100 ? (
+                    {user?.profilecomplited === 100 ? (
                       <Link
                         to="/profile"
                         style={{ display: "flex", alignItems: "center" }}

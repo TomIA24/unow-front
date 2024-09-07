@@ -129,14 +129,7 @@ export default function SliderNav({ user, handleLogout }) {
               />{" "} */}
             </Link>
             </div>
-      <Link to="/">
-      <img src="./images/home/logoblanc.png" alt=""   className={styles.logoimage}  />
-        {/* <img
-                style={{ marginTop: "20px", width: "160px" }}
-                className={styles.LogoImg}
-                src={imgLogo}
-              />{" "} */}
-      </Link>
+
       {!user ? (
         <Link to="/login">
           <button type="button" className={styles.nav_btn_special_light}>
