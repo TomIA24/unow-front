@@ -55,8 +55,9 @@ const Nav = () => {
     navigate(`/login`);
   };
   const [opnpopup, setpopupopen] = useState(false);
+
   const handlepopup = () => {
-    setpopupopen(!opnpopup);
+    setpopupopen(true);
   };
 
   const closepopup = () => {
@@ -107,10 +108,11 @@ const Nav = () => {
       if (percentage <= 20) {
         setProgressGradient(`#E74C3C`);
         setMainColorRgb("255, 152, 0");
-      } else if (percentage < 50) {
+      } else if (20 < percentage <= 50) {
         setProgressGradient(`#F39D6E`);
         setMainColorRgb("76, 175, 80");
-      } else if (percentage === 100) {
+      }
+      if (percentage == 100) {
         setProgressGradient(`#49C382`);
       }
     } else {
@@ -131,12 +133,6 @@ const Nav = () => {
                 alt=""
                 className={styles.logoimage}
               />
-
-              {/* <img
-                style={{ marginTop: "20px", width: "160px" }}
-                className={styles.LogoImg}
-                src={imgLogo}
-              />{" "} */}
             </Link>
             <div className={styles.middle_nav}>
               <Link
