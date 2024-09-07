@@ -38,7 +38,7 @@ a {
     /* top: 50%; */
     /* left: 50%; */
     border: none;
-    border-radius: 30px;
+    border-radius:30px;
     padding: 20px;
     width: 35%;
     /* max-width: 90vw; */
@@ -61,7 +61,7 @@ a {
     border: none;
     border-radius: 8px;
     padding: 20px;
-    width: 27rem;
+    width: 97%;
     /* max-width: 90vw; */
     /* max-height: 90vh; */
     /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */

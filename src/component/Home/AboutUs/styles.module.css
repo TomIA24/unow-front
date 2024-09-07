@@ -155,7 +155,7 @@
   .imageAboutUs {
     width: 80%;
     height: auto;
-    background-color: transparent;
+    /* background-color: transparent; */
     margin-bottom: 5%;
         margin-top: 2%;
   }

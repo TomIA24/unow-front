@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import SliderNav from "./slider";
 import styles from "./styles.module.css";
 import img from "../assets/profileImgNoUp.svg";
-import imgicon from "../assets/usericon.png";
+import imgicon from "../assets/profileuser.png";
 import Avatar from "@mui/material/Avatar";
 import { CiUser } from "react-icons/ci";
 import { Typography } from "@mui/material";
@@ -108,13 +108,12 @@ const Nav = () => {
       if (percentage <= 20) {
         setProgressGradient(`#E74C3C`);
         setMainColorRgb('255, 152, 0');
-      } else if (20 < percentage <= 50) {
+      } else if (20 < percentage <= 80) {
         setProgressGradient(`#F39D6E`);
         setMainColorRgb('76, 175, 80');
       } 
-     if (percentage == 100){
+       if (percentage == 100){
         setProgressGradient(`#49C382`);
-   
       }
     } else {
       setCompletedPercentage('0%');
@@ -259,11 +258,15 @@ const Nav = () => {
                               '--progress-gradient': progressGradient,
                               '--main-color-rgb': mainColorRgb}}
                           >
+                                   <div className={styles.progressInnerGap}>
+                                   <div className={styles.progressInner}>
                             <Avatar
                               alt="icon"
                               src={imgicon}
                               sx={{ width: 30, height: 30 }}
                             />
+                              </div>
+                              </div>
                               </div>
                           )}
                           Welcome, {user.name}
