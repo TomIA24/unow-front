@@ -234,7 +234,7 @@
    flex-direction:row;
    justify-content:space-evenly;
    flex-wrap: nowrap; 
-   gap: calc(4vw + 20px);
+   gap: calc(4vw + 5px);
    /* flex-direction: row; */
    align-self: center;
     /* width: 1400px; */
@@ -281,7 +281,7 @@
    flex-direction:row;
    justify-content:space-evenly;
    flex-wrap: nowrap; 
-   gap: calc(4vw + 20px);
+   gap: calc(4vw + 5px);
    /* flex-direction: row; */
    align-self: center;
 
