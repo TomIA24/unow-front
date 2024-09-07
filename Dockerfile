@@ -68,18 +68,4 @@ CMD ["nginx", "-g", "daemon off;"]
 
 
 
-# Stage 2: Serve the React app using Apache
 
-#FROM httpd:alpine
-
-
-
-# Copy the build folder from Stage 1 into the Apache public directory
-
-#COPY --from=build /app/build/ /usr/local/apache2/htdocs/
-
-
-
-# Expose port 80
-
-#EXPOSE 80
