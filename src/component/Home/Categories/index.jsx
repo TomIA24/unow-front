@@ -154,7 +154,7 @@ const Categories = () => {
               <div
                 className={styles.card}
                 style={{ backgroundColor: category.color }}
-                onClick={() => handleCardClick(category)}
+                onClick={()=>handlepopup()}
               >
                 <img
                   src={images[index % images.length]}
@@ -196,11 +196,12 @@ const Categories = () => {
         </div>
       </>
       )}
+{/*       
       <Modal
         show={showModal}
         onClose={handleCloseModal}
         category={selectedCategory}
-      />
+      /> */}
     </div>
   );
 };
