@@ -4,19 +4,36 @@ import useCategories from "../../hooks/use-categories";
 import useProfile from "../../hooks/use-profile";
 import pay from "../../../assets/pay.png";
 import { CourseRating } from "../../../../shared/rating";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import x from "./+.png";
+import axios from "axios";
 
 export default function CourseElement({ course, type }) {
   const { category } = useCategories(course.Category);
   const { data } = useProfile();
   const [openPopup, setOpenPopup] = useState(false);
   const dialogRef = useRef();
-
+  const token = localStorage.getItem("token");
+  const handleBuySTRIPE = async () => {
+    const config = {
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    };
+    try {
+      const url = `${process.env.REACT_APP_API}api/payment/course`;
+      await axios.post(url, { courseId: course._id }, config).then((res) => {
+        window.location = res.data.url;
+      });
+    } catch (error) {
+      // console.error(error)
+    }
+  };
   const togglePopup = () => {
     setOpenPopup(!openPopup);
   };
+  const navigate = useNavigate();
 
   return (
     <div className={styles.courseContainerElement}>
@@ -75,7 +92,7 @@ export default function CourseElement({ course, type }) {
           <div className={styles.buttonsContainer}>
             <p className={styles.price}>{course?.Price}DT</p>
             <div className={styles.underline} />
-            {data?.CoursesPaid.includes(course._id) ? (
+            {data?.CoursesPaid?.includes(course._id) ? (
               <div className={styles.statePrimary}>
                 <FiberManualRecordIcon sx={{ fontSize: 10 }} />
                 <p>paid</p>
@@ -86,13 +103,26 @@ export default function CourseElement({ course, type }) {
                 <p>unpaid</p>
               </div>
             )}
-            <button
-              className={styles.textCourseFooterBtn}
-              onClick={togglePopup}
-            >
-              <img src={pay} alt="send" />
-              <p>Pay now</p>
-            </button>
+
+            {data?.CoursesPaid?.includes(course._id) ? (
+              <Link
+                to={{
+                  pathname: `/${type}/${course._id}`,
+                }}
+                className={styles.textCourseFooterBtn}
+              >
+                <img src={pay} alt="send" />
+                <p>Go Course</p>
+              </Link>
+            ) : (
+              <button
+                className={styles.textCourseFooterBtn}
+                onClick={course.Price === "0" ? handleBuySTRIPE : togglePopup}
+              >
+                <img src={pay} alt="send" />
+                <p>Pay now</p>
+              </button>
+            )}
           </div>
           {/* </Link> */}
         </div>

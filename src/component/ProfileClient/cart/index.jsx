@@ -37,7 +37,7 @@ const Cart = ({ user }) => {
                 {cart?.courses?.length > 0 ? (
                   <div className={styles.coursesInner}>
                     {cart?.courses?.map((course) => (
-                      <CourseElement course={course} type="Course" />
+                      <CourseElement course={course} type="course" />
                     ))}
                   </div>
                 ) : (

@@ -128,7 +128,7 @@ const StandardCourse = () => {
   useEffect(() => {
     if (token) {
       if (user.cartCourses) {
-        if (user.cartCourses.includes(Data._id)) {
+        if (user.cartCourses?.includes(Data._id)) {
           setEnrollementButtonState(false);
         }
       }
@@ -145,7 +145,7 @@ const StandardCourse = () => {
   // },[buyButtonState])
   // useEffect(()=>{
   //     if(user.cart){
-  //         if(user.cart.includes(Data._id)){
+  //         if(user.cart?.includes(Data._id)){
   //             setBuyButtonState(false)
   //         }
   //     }
@@ -662,7 +662,7 @@ const StandardCourse = () => {
                       <div className={styles.CourseButtonsInfoPage}>
                         {user ? (
                           <React.Fragment>
-                            {!Data.enrolled.includes(user._id) ? (
+                            {!Data?.enrolled?.includes(user._id) ? (
                               <button
                                 onClick={() => {
                                   handleEnroll();
@@ -768,7 +768,7 @@ const StandardCourse = () => {
 
                         {user ? (
                           <React.Fragment>
-                            {!Data.enrolledPaid.includes(user._id) ? (
+                            {!Data.enrolledPaid?.includes(user._id) ? (
                               <button
                                 onClick={handlePay}
                                 id={styles.CourseButtonsInfoPageB2}
@@ -857,7 +857,7 @@ const StandardCourse = () => {
                     <div className={styles.CourseButtonsInfoPage}>
                       {user ? (
                         <React.Fragment>
-                          {!Data.enrolled.includes(user._id) ? (
+                          {!Data.enrolled?.includes(user._id) ? (
                             <button
                               onClick={() => {
                                 handleEnroll();
@@ -963,7 +963,7 @@ const StandardCourse = () => {
 
                       {user ? (
                         <React.Fragment>
-                          {!Data.enrolledPaid.includes(user._id) ? (
+                          {!Data.enrolledPaid?.includes(user._id) ? (
                             <button
                               onClick={handlePay}
                               id={styles.CourseButtonsInfoPageB2}
