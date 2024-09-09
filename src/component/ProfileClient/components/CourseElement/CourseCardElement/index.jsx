@@ -6,7 +6,7 @@ import pay from "../../../assets/pay.png";
 import { CourseRating } from "../../../../shared/rating";
 import { Link } from "react-router-dom";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
-import x from "./+.png";
+import x from "./+.png"
 
 export default function CourseElement({ course, type }) {
   const { category } = useCategories(course.Category);
@@ -46,54 +46,31 @@ export default function CourseElement({ course, type }) {
             key={course._id}
             to={{ pathname: `/${type}/${course._id}` }}
             onClick={() => {
-          >
-            
-              <p className={styles.price}>{course?.Price}DT</p>
-              <div className={styles.underline}/>
-              {data?.CoursesPaid.includes(course._id)?
-            <div className={styles.statePrimary}>
-              <FiberManualRecordIcon sx={{ fontSize: 10 }} />
-              <p >paid</p>
-            </div>:
-            <div className={styles.stateSecondary}>
-            <FiberManualRecordIcon sx={{ fontSize: 10 }} />
-            <p>unpaid</p>
-          </div>
-            
-            } 
-            <button className={styles.textCourseFooterBtn}>
-            <img src={pay} alt="send" />
-              <p>Pay now</p>
-             
-            </button>
-            </div>
-          </Link>
-        </div>
-      </div>
- 
+              window.scrollTo(0, 0);
+            }}
           > */}
-          <div className={styles.buttonsContainer}>
-            <p className={styles.price}>{course?.Price}DT</p>
-            <div className={styles.underline} />
-            {data?.CoursesPaid.includes(course._id) ? (
-              <div className={styles.statePrimary}>
-                <FiberManualRecordIcon sx={{ fontSize: 10 }} />
-                <p>paid</p>
-              </div>
-            ) : (
-              <div className={styles.stateSecondary}>
-                <FiberManualRecordIcon sx={{ fontSize: 10 }} />
-                <p>unpaid</p>
-              </div>
-            )}
-            <button
-              className={styles.textCourseFooterBtn}
-              onClick={togglePopup}
-            >
-              <img src={pay} alt="send" />
-              <p>Pay now</p>
-            </button>
-          </div>
+            <div className={styles.buttonsContainer}>
+              <p className={styles.price}>{course?.Price}DT</p>
+              <div className={styles.underline} />
+              {data?.CoursesPaid.includes(course._id) ? (
+                <div className={styles.statePrimary}>
+                  <FiberManualRecordIcon sx={{ fontSize: 10 }} />
+                  <p>paid</p>
+                </div>
+              ) : (
+                <div className={styles.stateSecondary}>
+                  <FiberManualRecordIcon sx={{ fontSize: 10 }} />
+                  <p>unpaid</p>
+                </div>
+              )}
+              <button
+                className={styles.textCourseFooterBtn}
+                onClick={togglePopup}
+              >
+                <img src={pay} alt="send" />
+                <p>Pay now</p>
+              </button>
+            </div>
           {/* </Link> */}
         </div>
       </div>
@@ -102,18 +79,17 @@ export default function CourseElement({ course, type }) {
       {openPopup && (
         <div className={styles.overlayStyles}>
           <div ref={dialogRef} className={styles.dialogStyles}>
-            <div className={styles.iamgedialog}>
-              <a href="/profile">
-                <img src={x} alt="" className={styles.back} />
+           <div className={styles.iamgedialog}>
+            <a href="/profile">
+            <img src={x} alt="" className={styles.back} />
+            </a>
+              <p>To proceed to payment Please <a href="/contact">
+              <button>Contact us</button>
               </a>
-              <p>
-                To proceed to payment Please{" "}
-                <a href="/contact">
-                  <button>Contact us</button>
-                </a>
-                And will be get to you ASAP
-              </p>
-              <div className={styles.continuebutton}></div>
+              And will be get to you ASAP</p>
+              <div className={styles.continuebutton}>
+               
+              </div>
             </div>
           </div>
         </div>
