@@ -18,9 +18,9 @@ const Chatbot = () => {
   const [isButtonClicked, setIsButtonClicked] = useState(false); // New state
 
   const API_KEY = '55ShM0TPpI19H14ZGDeeULP3hdm3ZGrs38rXXfDKbce8c511'; // Replace with your actual API key
-  const BASE_URL = "https://getcody.aiapi/v1";
-  const BOT_NAME = 'developer';
-  const BOT_ID = 'kQBeXrKDobyK';
+  const BASE_URL = "https://getcody.ai/api/v1";
+  const BOT_NAME = "developer";
+  const BOT_ID = "kQBeXrKDobyK";
 
   const openConversation = async () => {
     try {
@@ -28,13 +28,13 @@ const Chatbot = () => {
         `${BASE_URL}/conversations`,
         {
           name: BOT_NAME,
-          bot_id: BOT_ID
+          bot_id: BOT_ID,
         },
         {
           headers: {
             Authorization: `Bearer ${API_KEY}`,
-            'Content-Type': 'application/json'
-          }
+            "Content-Type": "application/json",
+          },
         }
       );
       setConversationId(response.data.data.id);
@@ -49,33 +49,37 @@ const Chatbot = () => {
   }, []);
 
   const sendMessage = async () => {
-    if (input.trim() === '') return;
+    const inputData = input;
+    setInput("");
+    if (inputData.trim() === "") return;
 
-    const newMessage = { user: 'User', text: input };
+    const newMessage = { user: "User", text: inputData };
     setMessages([...messages, newMessage]);
 
     try {
       const response = await axios.post(
         `${BASE_URL}/messages`,
         {
-          content: input,
-          conversation_id: conversationId
+          content: inputData,
+          conversation_id: conversationId,
         },
         {
           headers: {
             Authorization: `Bearer ${API_KEY}`,
-            'Content-Type': 'application/json'
-          }
+            "Content-Type": "application/json",
+          },
         }
       );
 
-      setInput('');
       setIsButtonClicked(true); // Update the state to indicate the button was clicked
-      const botMessage = { user: 'Bot', text: response.data.data.content };
+      const botMessage = { user: "Bot", text: response.data.data.content };
       setMessages((prevMessages) => [...prevMessages, botMessage]);
     } catch (error) {
-      console.error('Error sending message:', error);
-      const errorMessage = { user: 'Bot', text: 'There was an error sending your message. Please try again.' };
+      console.error("Error sending message:", error);
+      const errorMessage = {
+        user: "Bot",
+        text: "There was an error sending your message. Please try again.",
+      };
       setMessages((prevMessages) => [...prevMessages, errorMessage]);
     }
   };
