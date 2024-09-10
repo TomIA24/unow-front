@@ -53,6 +53,8 @@ const Nav = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
     navigate(`/login`);
+
+    
   };
   const [opnpopup, setpopupopen] = useState(false);
 
@@ -90,8 +92,8 @@ const Nav = () => {
 
   const handlpersonalized = (candiddId) => {
     console.log("id candat from nev", candiddId);
-    navigate('/profile');
-    // navigate(`/personalize`, { state: { candiddId } });
+    // navigate('/profile');
+    navigate(`/personalize`, { state: { candiddId } });
     setpopupopen(!opnpopup);
     console.log(opnpopup);
   };
@@ -112,7 +114,7 @@ const Nav = () => {
         setProgressGradient(`#F39D6E`);
         setMainColorRgb('76, 175, 80');
       } 
-       if (percentage == 100){
+       if (percentage >= 100){
         setProgressGradient(`#49C382`);
       }
     } else {
@@ -208,7 +210,7 @@ const Nav = () => {
                   </Link>
                 ) : (
                   <div>
-                    {user.profilecomplited == 100 ? (
+                    {user.profilecomplited >=100 ? (
                       <Link
                         to="/profile"
                         style={{ display: "flex", alignItems: "center" }}
