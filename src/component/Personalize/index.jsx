@@ -173,29 +173,30 @@ const Personalize = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Fetch the full candidate data
+     
         const candidateResponse = await axios.get(`${process.env.REACT_APP_API}api/candidat/candidates/${candiddId}`);
         const candidateData = candidateResponse.data;
+        setcandidatdata(candidateResponse.data)
+        setcandidateData(candidateResponse.data);
   
-        // Set the candidate data
-        setcandidateData(candidateData);
-  
-        // Merge candidate data into formData (optional, if you need initial form state to be pre-filled)
+      
         setFormData(prevFormData => ({
           ...prevFormData,
-          ...candidateData, // Pre-fill the form with existing data
+          ...candidateData, 
         }));
   
-        console.log("Existing candidate data:", candidateData);
-  
-        const checkFieldsResponse = await axios.get(`${process.env.REACT_APP_API}api/candidat/checkfields/${candiddId}`);
+        console.log("Existing candidate candidateData:", candidateData);
+        console.log("Existing candidate candidatdata:", candidatdata);
+        console.log("Existing candidate FormData:", formData);
+        // const checkFieldsResponse = await axios.get(`${process.env.REACT_APP_API}api/candidat/checkfields/${candiddId}`);
         
-        if (checkFieldsResponse.data.message === 'Some fields are missing or incomplete') {
-          setMissingFields(checkFieldsResponse.data.missingFields);
-        } else {
-          setMissingFields([]); 
-        }
-      } catch (error) {
+        // if (checkFieldsResponse.data.message === 'Some fields are missing or incomplete') {
+        //   setMissingFields(checkFieldsResponse.data.missingFields);
+        // } else {
+        //   setMissingFields([]); 
+        // }
+      } 
+      catch (error) {
         console.error("Error fetching candidate data:", error);
       }
     };
@@ -253,6 +254,142 @@ const Personalize = () => {
     });
   };
 
+  const [currentStep, setCurrentStep] = useState(0);
+
+
+
+  const handleBack = () => {
+    if (currentStep > 0) {
+      setCurrentStep((prevStep) => prevStep - 1);
+    }
+  };
+  const handleNext = async () => {
+
+    const updatedProfilecomplited = candidateData.profilecomplited + 20;
+    
+    
+    const updatedFormData = {
+      ...candidateData, 
+      ...formData,
+      profilecomplited: updatedProfilecomplited, 
+    };
+   
+    const {
+      password,
+      _id,
+      cartTrainings,
+      TrainingsPaid,
+      cartCourses,
+      CoursesPaid,
+      __v,
+      ...dataToSubmit
+    } = updatedFormData; 
+  
+    console.log("Data to be submitted:", dataToSubmit);
+    try {
+    if (currentStep < steps.length - 1) {
+   
+      
+        const response = await axios.put(
+          `${process.env.REACT_APP_API}api/candidat/${candiddId}`,
+          dataToSubmit
+        );
+  
+        console.log("Updated candidate data:", response.data);
+  
+       
+        setcandidateData({
+          ...updatedFormData,
+        });
+  
+      
+        setCurrentStep(prevStep => prevStep + 1);
+   
+    } 
+ 
+  } catch (error) {
+    console.error("Error updating last candidate:", error.response ? error.response.data : error.message);
+  };
+}
+
+const handleFinish = async () => {
+
+  const updatedProfilecomplited = candidateData.profilecomplited + 20;
+  
+  
+  const updatedFormData = {
+    ...candidateData, 
+    ...formData,
+    profilecomplited: updatedProfilecomplited, 
+  };
+ 
+  const {
+    password,
+    _id,
+    cartTrainings,
+    TrainingsPaid,
+    cartCourses,
+    CoursesPaid,
+    __v,
+    ...dataToSubmit
+  } = updatedFormData; 
+
+  console.log("Data to be submitted:", dataToSubmit);
+  try {
+   
+      const response = await axios.put(
+        `${process.env.REACT_APP_API}api/candidat/${candiddId}`,
+        dataToSubmit
+      );
+      navigate("/profile");
+      console.log("Final updated candidate data:", response.data);
+      setCurrentStep(prevStep => prevStep + 1);
+
+  
+  
+} catch (error) {
+  console.error("Error updating last candidate:", error.response ? error.response.data : error.message);
+};
+}
+  const [completedPercentage, setCompletedPercentage] = useState('0%');
+
+const [progressGradient, setProgressGradient] = useState('');
+const [mainColorRgb, setMainColorRgb] = useState('');
+useEffect(() => {
+  if (candidatdata?.profilecomplited != null) {
+    const percentage = candidatdata.profilecomplited;
+    console.log('candidatdata',candidatdata.profilecomplited);
+    console.log('candidateData',candidateData.profilecomplited);
+    
+    setCompletedPercentage(`${percentage}%`);
+
+    if (percentage <= 20) {
+      setProgressGradient(`#E74C3C`);
+      setMainColorRgb('255, 152, 0');
+    } else if (20 < percentage <= 80) {
+      setProgressGradient(`#F39D6E`);
+      setMainColorRgb('76, 175, 80');
+    } 
+     if (percentage >= 100){
+      setProgressGradient(`#49C382`);
+    }
+  } else {
+    setCompletedPercentage('0%');
+    setProgressGradient('conic-gradient(#ff9800 0%, #ffffff00 0%)');
+    setMainColorRgb('255, 152, 0');
+  }
+}, [candidatdata?.profilecomplited]);
+
+
+
+
+const gotohome=()=>{
+  navigate("/")
+  console.log("candidat",{...data,candidatdata});
+  
+  localStorage.setItem("user", JSON.stringify({...candidateData}));
+}
+
   const steps = [
     {
       title: "Interest Areas",
@@ -260,12 +397,6 @@ const Personalize = () => {
         <>
        {(!candidatdata.interests || candidatdata.interests.length === 0 || !candidatdata.exploreFirst ) &&  (  <div className={styles.personlizestep}>
         <div className={styles.personlizesquestion}>
-            {/* {candidatdata.interests.length }
-            {formData.interests.map((interest, index) => (
-        <div key={index}>
-          {interest}
-        </div>
-      ))} */}
               <label>What subjects interest you most? (Select up to three)</label>
               <div className={styles.checkboxGroup}>
                 <input type="checkbox" id="sciences" name="interests" value="Sciences & Technology" className={styles.hiddenCheckbox} checked={Array.isArray(formData.interests) && formData.interests.includes('Sciences & Technology')} onChange={handleInputChange} />
@@ -303,10 +434,6 @@ const Personalize = () => {
                 <label>Which of the selected areas would you like to explore in-depth first?</label>
                 <input type="text" name="exploreFirst" className={styles.input} value={formData.exploreFirst} onChange={handleInputChange} placeholder="selected areas"/>
               </div>
-              {/* <div className={styles.personlizesquestion}>
-                <label>Which of the selected areas would you like to explore in-depth first?</label>
-                <input type="text" name="exploreFirst" value={formData.exploreFirst}onChange={handleInputChange} />
-              </div> */}
             </div>
           </div>)}
         </>
@@ -600,121 +727,11 @@ const Personalize = () => {
       isCompleted:candidatdata.learningpace && candidatdata.learningpace.length > 0 && candidatdata.dayslearning
     }
   ];
-
-  const [currentStep, setCurrentStep] = useState(0);
-
-
-
-  const handleBack = () => {
-    if (currentStep > 0) {
-      setCurrentStep((prevStep) => prevStep - 1);
-    }
-  };
-  const handleNext = async () => {
-    // Merge the existing data from the candidate with new form data
-    const updatedProfilecomplited = candidateData.profilecomplited + 20;
-    
-    // Merge the old candidate data with new form data
-    const updatedFormData = {
-      ...candidateData, // Retain the original data fetched from the database
-      ...formData, // Overwrite or add the new form data values
-      profilecomplited: updatedProfilecomplited, // Update the profile completion value
-    };
-    
-    // Remove fields that are not allowed by the API schema
-    const {
-      password,
-      _id,
-      cartTrainings,
-      TrainingsPaid,
-      cartCourses,
-      CoursesPaid,
-      __v,
-      ...dataToSubmit
-    } = updatedFormData; // Exclude the fields that are not part of the validation schema
-  
-    console.log("Data to be submitted:", dataToSubmit);
-  
-    if (currentStep < steps.length - 1) {
-      try {
-        // Send the merged data to the API
-        const response = await axios.put(
-          `${process.env.REACT_APP_API}api/candidat/${candiddId}`,
-          dataToSubmit
-        );
-  
-        console.log("Updated candidate data:", response.data);
-  
-        // Update the local state with the new candidate data
-        setcandidateData({
-          ...updatedFormData, // Use the merged data to update the state
-        });
-  
-        // Proceed to the next step
-        setCurrentStep(prevStep => prevStep + 1);
-      } catch (error) {
-        console.error("Error updating candidate:", error.response ? error.response.data : error.message);
-      }
-    } else if (currentStep === steps.length - 1) {
-      try {
-        // Submit the final form data
-        const response = await axios.put(
-          `${process.env.REACT_APP_API}api/candidat/${candiddId}`,
-          dataToSubmit
-        );
-  
-        console.log("Final updated candidate data:", response.data);
-        navigate("/profile");
-  
-        // Proceed to the next step
-        setCurrentStep(prevStep => prevStep + 1);
-      } catch (error) {
-        console.error("Error updating candidate:", error.response ? error.response.data : error.message);
-      }
-    }
-  };
-  const [completedPercentage, setCompletedPercentage] = useState('0%');
-
-const [progressGradient, setProgressGradient] = useState('');
-const [mainColorRgb, setMainColorRgb] = useState('');
-useEffect(() => {
-  if (candidatdata?.profilecomplited != null) {
-    const percentage = candidatdata.profilecomplited;
-    setCompletedPercentage(`${percentage}%`);
-
-    if (percentage <= 20) {
-      setProgressGradient(`#E74C3C`);
-      setMainColorRgb('255, 152, 0');
-    } else if (20 < percentage <= 80) {
-      setProgressGradient(`#F39D6E`);
-      setMainColorRgb('76, 175, 80');
-    } 
-     if (percentage == 100){
-      setProgressGradient(`#49C382`);
-    }
-  } else {
-    setCompletedPercentage('0%');
-    setProgressGradient('conic-gradient(#ff9800 0%, #ffffff00 0%)');
-    setMainColorRgb('255, 152, 0');
-  }
-}, [candidatdata?.profilecomplited]);
-const stepsWithContent = steps.filter((step) => !step.isCompleted);
-console.log('steps',stepsWithContent);
-
-
-const gotohome=()=>{
-  navigate("/")
-  console.log("candidat",{...data,candidatdata});
-  
-  localStorage.setItem("user", JSON.stringify({...candidateData}));
-}
+  const stepsWithContent = steps.filter((step) => !step.isCompleted);
+  console.log('steps',stepsWithContent);
   return (
     <div >
-      {/* <img
-        style={{ position: "absolute", top: "0", right: "0", zIndex: "-1" }}
-        src="/images/personalize/topRight.svg"
-        alt="Your SVG"
-      /> */}
+
       <div className={styles.backimagescore}>
         <div className={styles.padding}>
         <div className={styles.logoscore}>
@@ -780,12 +797,12 @@ const gotohome=()=>{
         </div>
 
         <div className={styles.formcontent}>
-          <h2>{stepsWithContent[currentStep].title}</h2>
+          <h2>{stepsWithContent[currentStep]?.title}</h2>
           {stepsWithContent[currentStep]?.content}
         </div>
 
         <div className={styles.formnavigation}>
-          <button onClick={handleNext} className={styles.nextbutton}>
+          <button onClick={currentStep === stepsWithContent.length - 1 ? handleFinish :handleNext} className={styles.nextbutton}>
             {currentStep === stepsWithContent.length - 1 ? "Finish" : "Next"}
           </button>
           {currentStep > 0 && (
