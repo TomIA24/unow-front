@@ -232,7 +232,19 @@
     border-radius: 5px;
     text-align: center;
 }
-
+.inputPasswordContainer{
+    position: relative;
+    display: flex; 
+}
+.password_visibility {
+    position: absolute;
+    color: grey;
+    text-align: left;
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin-top: 0.95rem;
+    margin-left: -2rem;
+}
 
 .error_msg_Phone {
     width: 370px;

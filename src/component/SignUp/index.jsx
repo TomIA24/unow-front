@@ -13,10 +13,11 @@ import facebook from "./imgMedia/Social media logo.png";
 import apple from "./imgMedia/Social media logo (1).png";
 import google from "./imgMedia/Social media logo (2).png";
 import twitter from "./imgMedia/Social media logo (3).png";
-
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 const SignUp = () => {
   const [data, setData] = useRecoilState(signupState);
-
+  const [showPassword, setShowPassword] = useState(false);
   const location = useLocation();
   const { errorState } = location.state || {};
   // const [data, setData] = useState({
@@ -30,6 +31,8 @@ const SignUp = () => {
   // });
   const [error, setError] = useState(errorState);
   const [phoneError, setPhoneError] = useState("");
+
+  const [isValidEmail, setIsValidEmail] = useState(true);
   const navigate = useNavigate();
 
   const handleChange = ({ currentTarget: input }) => {
@@ -37,6 +40,17 @@ const SignUp = () => {
     if (input.name === "phone") {
       handleVerifPhone(input.value);
     }
+    if (input.name === "email") {
+      console.log("email",input.value,input.name)
+     
+      setIsValidEmail(handleVerifEmail(input.value));
+    }
+  };
+
+  const handleVerifEmail = (email) => {
+    // Expression régulière pour valider l'email
+    const regex =/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
+    return regex.test(email);
   };
 
   const handleVerifPhone = (phone) => {
@@ -92,6 +106,7 @@ const SignUp = () => {
       }
     }
   };
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -114,7 +129,6 @@ const SignUp = () => {
         }
     }
 };
-
   return (
     <div className={styles.backsignup}>
     <div className={styles.container}>
@@ -176,7 +190,7 @@ const SignUp = () => {
         <p className={styles.text}>E-mail</p>
       
        <input
-         type="email"
+         type="text"
          id="Email"
          name="email"
          onChange={handleChange}
@@ -184,18 +198,26 @@ const SignUp = () => {
          required
          className={styles.input}
        />
+       {!isValidEmail && <div className={styles.error_msg_Phone}>Invalid email</div>}
        
         <p className={styles.text}>Password</p>
        
-       <input
-         type="password"
+      
+                  
+      <div className={styles.inputPasswordContainer}> 
+      <input
+          type={showPassword ? 'text' : 'password'}
          id="Password"
          name="password"
          onChange={handleChange}
          value={data.password}
          required
          className={styles.input}
-       />
+       />  
+        <div onClick={handleClickShowPassword}>  
+          {showPassword ? <Visibility  className={styles.password_visibility} /> : <VisibilityOff   className={styles.password_visibility}/>}
+        </div> 
+      </div> 
          <div className={styles.options}>
              <div className={styles.checkBox}>
                <input type="checkbox" name="remember" />
