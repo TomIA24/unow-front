@@ -240,10 +240,11 @@ const Personalize = () => {
   console.log(e.target.value);
   
     setFormData((prevData) => {
-      
+      setHasChanges(true);
+      console.log("haschanged",hasChanges);
       if (type === 'checkbox') {
-        setHasChanges(true);
-        console.log(hasChanges);
+        
+       
         const currentValues = Array.isArray(prevData[name]) ? prevData[name] : [];
         return {
           ...prevData,
@@ -714,19 +715,18 @@ const gotohome=()=>{
   const handleNext = async () => {
 
     const currentStepData = steps[currentStep];
-  
-   
+
     const isStepCompleted = stepCompletionStatus[currentStep];
     const hasStepBeenCompleted = isStepCompleted || currentStepData.isCompleted;
-  
+
 console.log("hasChanges ",hasChanges );
 console.log("hasStepBeenCompleted ",hasStepBeenCompleted );
-console.log(hasStepBeenCompleted && hasChanges);
+console.log(hasStepBeenCompleted && !hasChanges);
 
-    const updatedProfilecomplited = !(hasStepBeenCompleted && hasChanges )? (candidateData.profilecomplited): (candidateData.profilecomplited + 20);
+  const updatedProfilecomplited = (hasStepBeenCompleted && !hasChanges ) ? (candidateData.profilecomplited ):(candidateData.profilecomplited + 20 );
   console.log('updatedProfilecomplited',updatedProfilecomplited);
   
-
+   
     const updatedFormData = {
       ...candidateData,
       ...formData,
