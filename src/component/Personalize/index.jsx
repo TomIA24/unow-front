@@ -264,32 +264,31 @@ const Personalize = () => {
     }
   };
   const handleNext = async () => {
-
-    const updatedProfilecomplited = candidateData.profilecomplited + 20;
-    
-    
-    const updatedFormData = {
-      ...candidateData, 
-      ...formData,
-      profilecomplited: updatedProfilecomplited, 
-    };
-   
-    const {
-      password,
-      _id,
-      cartTrainings,
-      TrainingsPaid,
-      cartCourses,
-      CoursesPaid,
-      __v,
-      ...dataToSubmit
-    } = updatedFormData; 
-  
-    console.log("Data to be submitted:", dataToSubmit);
     try {
-    if (currentStep < steps.length - 1) {
-   
-      
+      // Check if the profile completion should be updated
+      let updatedProfilecomplited = candidateData.profilecomplited;
+  
+     
+      const fieldsToCheck = ['field1', 'field2', 'field3']; // Replace these with actual fields to check
+  
+      const isFormIncomplete = fieldsToCheck.some(field => !candidateData[field]);
+  
+      // Only increment profile completion if some fields are incomplete
+      if (isFormIncomplete) {
+        updatedProfilecomplited += 20;
+      }
+  
+      const updatedFormData = {
+        ...candidateData,
+        ...formData,
+        profilecomplited: updatedProfilecomplited,
+      };
+  
+      const { password, _id, cartTrainings, TrainingsPaid, cartCourses, CoursesPaid, __v, ...dataToSubmit } = updatedFormData;
+  
+      console.log("Data to be submitted:", dataToSubmit);
+  
+      if (currentStep < steps.length - 1) {
         const response = await axios.put(
           `${process.env.REACT_APP_API}api/candidat/${candiddId}`,
           dataToSubmit
@@ -297,20 +296,17 @@ const Personalize = () => {
   
         console.log("Updated candidate data:", response.data);
   
-       
         setcandidateData({
           ...updatedFormData,
         });
   
-      
         setCurrentStep(prevStep => prevStep + 1);
-   
-    } 
- 
-  } catch (error) {
-    console.error("Error updating last candidate:", error.response ? error.response.data : error.message);
+      }
+    } catch (error) {
+      console.error("Error updating candidate:", error.response ? error.response.data : error.message);
+    }
   };
-}
+  
 
 const handleFinish = async () => {
 
