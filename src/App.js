@@ -43,7 +43,6 @@ function App() {
   if (localStorage.getItem("user") != null) {
     user = JSON.parse(localStorage.getItem("user"));
   }
-
   return (
     <LanguageProvider>
       <QuizProvider>
@@ -346,19 +345,20 @@ function App() {
               element={<CoursesSection />}
             /> */}
 
-            {user && (
-              <React.Fragment>
+            {/* {user && (
+              <React.Fragment>*/}
                 {user.userType === "Admin" && (
                   <Route exact path="/admin" element={<Admin />} />
                 )}
 
-                {user.userType === "Trainer" ? (
+                {user.userType === "Trainer" && (
                   <Route exact path="/profile" element={<ProfileTrainer />} />
-                ) : (
-                  <Route exact path="/profile" element={<ProfileClient />} />
+                ) }
+                {user.userType === "Student" &&  (
+                  <Route exact path="/profileClient" element={<ProfileClient />} />
                 )}
-              </React.Fragment>
-            )}
+                 {/*   </React.Fragment>
+            )} */}
           </Routes>
         </div>
       </QuizProvider>

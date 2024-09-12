@@ -62,7 +62,7 @@ const Nav = () => {
     setpopupopen(true);
   };
   const closepopup = () => {
-    navigate('/profile');
+    navigate('/profileClient');
     setpopupopen(false);
   };
   const location = useLocation();
