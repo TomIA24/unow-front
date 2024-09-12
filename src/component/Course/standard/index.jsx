@@ -182,14 +182,14 @@ const StandardCourse = () => {
       });
   };
 
-  useEffect(async () => {
+  useEffect(() => {
     const ids = Evaluations.map((e) => {
       return e.id;
     });
     GetUsers(ids);
   }, [Evaluations]);
 
-  useEffect(async () => {
+  useEffect( () => {
     var list = [];
     Evaluations.map((e) => {
       usersLimited.map((u) => {
@@ -403,14 +403,14 @@ const StandardCourse = () => {
     }
   };
 
-  const [tool, setTool] = useState(false);
-  const toolClose = () => {
-    setTool(false);
-  };
+  // const [tool, setTool] = useState(false);
+  // const toolClose = () => {
+  //   setTool(false);
+  // };
 
-  const toolOpen = () => {
-    setTool(true);
-  };
+  // const toolOpen = () => {
+  //   setTool(true);
+  // };
 
   /************/ //////////////////////// */
   const [WindowWidth, setWindowWidth] = useState(0);

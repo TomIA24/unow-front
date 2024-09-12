@@ -109,9 +109,9 @@ const PaidCourse = () => {
 
 
 
-  useEffect(async () => {
-    console.log("test")
-    await handleCourse();
+  useEffect(() => {
+    console.log("test");
+    handleCourse();
   }, []);
 
   useEffect(() => {
