@@ -263,54 +263,8 @@ const Personalize = () => {
       setCurrentStep((prevStep) => prevStep - 1);
     }
   };
-  const handleNext = async () => {
-
-    const updatedProfilecomplited = candidateData.profilecomplited + 20;
-    
-    
-    const updatedFormData = {
-      ...candidateData, 
-      ...formData,
-      profilecomplited: updatedProfilecomplited, 
-    };
-   
-    const {
-      password,
-      _id,
-      cartTrainings,
-      TrainingsPaid,
-      cartCourses,
-      CoursesPaid,
-      __v,
-      ...dataToSubmit
-    } = updatedFormData; 
-  
-    console.log("Data to be submitted:", dataToSubmit);
-    try {
-    if (currentStep < steps.length - 1) {
-   
-      
-        const response = await axios.put(
-          `${process.env.REACT_APP_API}api/candidat/${candiddId}`,
-          dataToSubmit
-        );
-  
-        console.log("Updated candidate data:", response.data);
-  
-       
-        setcandidateData({
-          ...updatedFormData,
-        });
-  
-      
-        setCurrentStep(prevStep => prevStep + 1);
-   
-    } 
  
-  } catch (error) {
-    console.error("Error updating last candidate:", error.response ? error.response.data : error.message);
-  };
-}
+  
 
 const handleFinish = async () => {
 
@@ -323,6 +277,8 @@ const handleFinish = async () => {
     profilecomplited: updatedProfilecomplited, 
   };
  
+
+
   const {
     password,
     _id,
@@ -354,7 +310,8 @@ const handleFinish = async () => {
   const [completedPercentage, setCompletedPercentage] = useState('0%');
 
 const [progressGradient, setProgressGradient] = useState('');
-const [mainColorRgb, setMainColorRgb] = useState('');
+const [mainColorRgb, setMainColorRgb] = useState(''); 
+
 useEffect(() => {
   if (candidatdata?.profilecomplited != null) {
     const percentage = candidatdata.profilecomplited;
@@ -729,6 +686,76 @@ const gotohome=()=>{
   ];
   const stepsWithContent = steps.filter((step) => !step.isCompleted);
   console.log('steps',stepsWithContent);
+
+  const [stepCompletionStatus, setStepCompletionStatus] = useState(
+    steps.map(() => false) // Initialize with all steps incomplete
+  )
+  const handleNext = async () => {
+    // Access the current step's data
+    const currentStepData = steps[currentStep];
+  
+    // Retrieve current step completion status
+    const isStepCompleted = stepCompletionStatus[currentStep];
+    const hasStepBeenCompleted = isStepCompleted || currentStepData.isCompleted;
+  
+    // Determine if profilecomplited should be updated
+    const updatedProfilecomplited = hasStepBeenCompleted
+      ? candidateData.profilecomplited
+      : candidateData.profilecomplited + 20;
+  console.log('updatedProfilecomplited',updatedProfilecomplited);
+  
+    // Prepare data to submit
+    const updatedFormData = {
+      ...candidateData,
+      ...formData,
+      profilecomplited: updatedProfilecomplited,
+    };
+  
+    const {
+      password,
+      _id,
+      cartTrainings,
+      TrainingsPaid,
+      cartCourses,
+      CoursesPaid,
+      __v,
+      ...dataToSubmit
+    } = updatedFormData;
+  
+    console.log("Data to be submitted:", dataToSubmit);
+  
+    try {
+      if (currentStep < steps.length - 1) {
+        // If not the last step, proceed to the next step
+        const response = await axios.put(
+          `${process.env.REACT_APP_API}api/candidat/${candiddId}`,
+          dataToSubmit
+        );
+  
+        console.log("Updated candidate data:", response.data);
+  
+        // Update candidate data in state
+        setcandidateData({
+          ...updatedFormData,
+        });
+  
+        // Mark the current step as completed
+        setStepCompletionStatus(prevStatus => {
+          const newStatus = [...prevStatus];
+          newStatus[currentStep] = true; // Mark current step as completed
+          return newStatus;
+        });
+  
+        // Move to the next step
+        setCurrentStep(prevStep => prevStep + 1);
+      } else {
+        // If on the last step, call the finish handler
+        handleFinish();
+      }
+    } catch (error) {
+      console.error("Error updating candidate:", error.response ? error.response.data : error.message);
+    }
+  };
   return (
     <div >
 
