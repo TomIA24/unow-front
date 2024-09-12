@@ -109,16 +109,21 @@ const PaidCourse = () => {
 
 
 
-  useEffect(async () => {
+  useEffect( () => {
     console.log("test")
-    await handleCourse();
+    
+    const handleCourseFunction = async () => { 
+      await handleCourse();
+    
+    };
+    handleCourseFunction();
   }, []);
 
   useEffect(() => {
     getEvaluations();
   }, []);
 
-  const handleCourse = () => {
+  const handleCourse = async () => {
     console.log("test")
 
     const config = {

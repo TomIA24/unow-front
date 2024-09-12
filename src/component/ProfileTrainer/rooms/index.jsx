@@ -56,10 +56,11 @@ const Rooms = ({ user }) => {
     window.open(`${process.env.REACT_APP_DOMAIN}/room/${url}`, "_blank");
   };
 
-  useEffect(async () => {
+  useEffect( () => {
+    const fetchData = async () => {
     await getRooms();
-    //getNotifTrainer()
-    //("hello from useEffect")
+  };
+  fetchData();
   }, []);
 
   const getRooms = async () => {

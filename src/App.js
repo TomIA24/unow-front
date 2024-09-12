@@ -346,19 +346,16 @@ function App() {
               element={<CoursesSection />}
             /> */}
 
-            {user && (
-              <React.Fragment>
-                {user.userType === "Admin" && (
+      {user.userType === "Admin" && (
                   <Route exact path="/admin" element={<Admin />} />
                 )}
 
-                {user.userType === "Trainer" ? (
+                {user.userType === "Trainer" && (
                   <Route exact path="/profile" element={<ProfileTrainer />} />
-                ) : (
-                  <Route exact path="/profile" element={<ProfileClient />} />
+                ) }
+                {user.userType === "Student" &&  (
+                  <Route exact path="/profileClient" element={<ProfileClient />} />
                 )}
-              </React.Fragment>
-            )}
           </Routes>
         </div>
       </QuizProvider>

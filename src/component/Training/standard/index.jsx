@@ -224,7 +224,7 @@ const StandardTraining = (props) => {
   // },[scrollPosition])
   /*///////////////////////////////////*/
 
-  const GetUsers = (ids) => {
+  const GetUsers = async (ids) => {
     const config = {
       headers: {},
     };
@@ -239,14 +239,18 @@ const StandardTraining = (props) => {
       });
   };
 
-  useEffect(async () => {
+  useEffect( () => {
+    const fetchData = async () => {
     const ids = Evaluations.map((e) => {
       return e.id;
     });
-    GetUsers(ids);
+    await GetUsers(ids);
+  };
+  fetchData();
   }, [Evaluations]);
 
-  useEffect(async () => {
+  useEffect( () => {
+    const fetchData = async () => {
     var list = [];
     Evaluations.map((e) => {
       usersLimited.map((u) => {
@@ -262,6 +266,8 @@ const StandardTraining = (props) => {
       });
     });
     setEvaluationsCompleated(list);
+  };
+  fetchData();
   }, [usersLimited]);
 
   /*********************************************** */
