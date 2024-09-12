@@ -170,6 +170,7 @@ const Personalize = () => {
   const [candidateData, setcandidateData] = useState([]);
   const [missingFields, setMissingFields] = useState([]);
   const user = JSON.parse(localStorage.getItem("user"));
+  const [hasChanges, setHasChanges] = useState(false);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -188,6 +189,8 @@ const Personalize = () => {
         console.log("Existing candidate candidateData:", candidateData);
         console.log("Existing candidate candidatdata:", candidatdata);
         console.log("Existing candidate FormData:", formData);
+        console.log("hasChanges:", hasChanges);
+        
         // const checkFieldsResponse = await axios.get(`${process.env.REACT_APP_API}api/candidat/checkfields/${candiddId}`);
         
         // if (checkFieldsResponse.data.message === 'Some fields are missing or incomplete') {
@@ -231,6 +234,7 @@ const Personalize = () => {
         : [...prevData[name], value],
     }));
   };
+
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
   console.log(e.target.value);
@@ -238,6 +242,8 @@ const Personalize = () => {
     setFormData((prevData) => {
       
       if (type === 'checkbox') {
+        setHasChanges(true);
+        console.log(hasChanges);
         const currentValues = Array.isArray(prevData[name]) ? prevData[name] : [];
         return {
           ...prevData,
@@ -245,13 +251,17 @@ const Personalize = () => {
             ? [...currentValues, value]
             : currentValues.filter((item) => item !== value),
         };
+      
       } else {
         return {
           ...prevData,
           [name]: value, 
         };
       }
+    
     });
+   
+    
   };
 
   const [currentStep, setCurrentStep] = useState(0);
@@ -268,7 +278,18 @@ const Personalize = () => {
 
 const handleFinish = async () => {
 
-  const updatedProfilecomplited = candidateData.profilecomplited + 20;
+  const currentStepData = steps[currentStep];
+  
+   
+  const isStepCompleted = stepCompletionStatus[currentStep];
+  const hasStepBeenCompleted = isStepCompleted || currentStepData.isCompleted;
+
+console.log("hasChanges ",hasChanges );
+console.log("hasStepBeenCompleted ",hasStepBeenCompleted );
+console.log(hasStepBeenCompleted && hasChanges);
+
+  const updatedProfilecomplited = !(hasStepBeenCompleted && hasChanges )? (candidateData.profilecomplited): (candidateData.profilecomplited + 20);
+console.log('updatedProfilecomplited',updatedProfilecomplited);
   
   
   const updatedFormData = {
@@ -691,20 +712,21 @@ const gotohome=()=>{
     steps.map(() => false) // Initialize with all steps incomplete
   )
   const handleNext = async () => {
-    // Access the current step's data
+
     const currentStepData = steps[currentStep];
   
-    // Retrieve current step completion status
+   
     const isStepCompleted = stepCompletionStatus[currentStep];
     const hasStepBeenCompleted = isStepCompleted || currentStepData.isCompleted;
   
-    // Determine if profilecomplited should be updated
-    const updatedProfilecomplited = hasStepBeenCompleted
-      ? candidateData.profilecomplited
-      : candidateData.profilecomplited + 20;
+console.log("hasChanges ",hasChanges );
+console.log("hasStepBeenCompleted ",hasStepBeenCompleted );
+console.log(hasStepBeenCompleted && hasChanges);
+
+    const updatedProfilecomplited = !(hasStepBeenCompleted && hasChanges )? (candidateData.profilecomplited): (candidateData.profilecomplited + 20);
   console.log('updatedProfilecomplited',updatedProfilecomplited);
   
-    // Prepare data to submit
+
     const updatedFormData = {
       ...candidateData,
       ...formData,
@@ -726,15 +748,14 @@ const gotohome=()=>{
   
     try {
       if (currentStep < steps.length - 1) {
-        // If not the last step, proceed to the next step
+
         const response = await axios.put(
           `${process.env.REACT_APP_API}api/candidat/${candiddId}`,
           dataToSubmit
         );
   
         console.log("Updated candidate data:", response.data);
-  
-        // Update candidate data in state
+
         setcandidateData({
           ...updatedFormData,
         });
@@ -748,6 +769,7 @@ const gotohome=()=>{
   
         // Move to the next step
         setCurrentStep(prevStep => prevStep + 1);
+        setHasChanges(false);
       } else {
         // If on the last step, call the finish handler
         handleFinish();

@@ -182,30 +182,34 @@ const StandardCourse = () => {
       });
   };
 
-  useEffect(async () => {
-    const ids = Evaluations.map((e) => {
-      return e.id;
-    });
-    GetUsers(ids);
-  }, [Evaluations]);
+  useEffect(() => {
+    const fetchUsers = async () => {
+      const ids = Evaluations.map(e => e.id);
+      await GetUsers(ids);
+    };
+  
+    fetchUsers();
+  }, [Evaluations])
 
-  useEffect(async () => {
-    var list = [];
-    Evaluations.map((e) => {
-      usersLimited.map((u) => {
-        if (u._id === e.id) {
-          list.push({
-            id: e.id,
-            message: e.message,
-            rate: e.rate,
-            name: u.userName,
-            image: u.image,
-          });
-        }
-      });
-    });
-    setEvaluationsCompleated(list);
+  useEffect(() => {
+    const processEvaluations = async () => {
+      const list = Evaluations.map(e => {
+        const user = usersLimited.find(u => u._id === e.id);
+        return user ? {
+          id: e.id,
+          message: e.message,
+          rate: e.rate,
+          name: user.userName,
+          image: user.image,
+        } : null;
+      }).filter(Boolean); // Remove any null entries
+  
+      setEvaluationsCompleated(list);
+    };
+  
+    processEvaluations();
   }, [usersLimited]);
+  
 
   const TextRating = (value, avis) => {
     return (
