@@ -46,9 +46,9 @@ const Login = () => {
           localStorage.setItem("user", JSON.stringify(response.data.data));
           localStorage.setItem("login", true);
           if (response.data.data.firstConnection) {
-            navigate(`/completeInfo`);
+            navigate("/trainer/informations");
           } else {
-            navigate(`/profile`);
+            navigate("/profile");
           }
 
           if (response.data.data.userType === "Admin") {

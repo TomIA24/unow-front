@@ -85,7 +85,11 @@ function App() {
               path="/Training/Ressources/:id"
               element={<Training />}
             />
-            <Route exact path="/completeInfo" element={<CompleteInfo />} />
+            <Route
+              exact
+              path="/trainer/informations"
+              element={<CompleteInfo />}
+            />
             <Route exact path="/room/:url" element={<Room />} />
             <Route
               exact
