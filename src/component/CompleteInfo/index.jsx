@@ -232,8 +232,11 @@ const CompleteInfo = () => {
   };
 
   const [changeImage, setChangeImage] = useState(false);
-  useEffect(async () => {
+  useEffect( () => {
+    const fetchData = async () => {
     await uploadSingleFile();
+  };
+  fetchData();
   }, [singleFile]);
 
   const handleSubmit = async (e) => {

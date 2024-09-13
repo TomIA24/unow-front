@@ -167,7 +167,7 @@ const StandardCourse = () => {
     // document.getElementById(styles.CourseButtonsInfoPageB2).style.cursor= 'not-allowed'
   };
 
-  const GetUsers = (ids) => {
+  const GetUsers = async (ids) => {
     const config = {
       headers: {},
     };
@@ -183,28 +183,34 @@ const StandardCourse = () => {
   };
 
   useEffect(() => {
-    const ids = Evaluations.map((e) => {
-      return e.id;
-    });
-    GetUsers(ids);
+    const fetchUsers = async () => {
+      const ids = Evaluations.map((e) => e.id);
+      await GetUsers(ids);
+    };
+
+    fetchUsers();
   }, [Evaluations]);
 
-  useEffect( () => {
-    var list = [];
-    Evaluations.map((e) => {
-      usersLimited.map((u) => {
-        if (u._id === e.id) {
-          list.push({
-            id: e.id,
-            message: e.message,
-            rate: e.rate,
-            name: u.userName,
-            image: u.image,
-          });
-        }
+  useEffect(() => {
+    const fetchEvaluationsCompleated = async () => {
+      var list = [];
+      Evaluations.map((e) => {
+        usersLimited.map((u) => {
+          if (u._id === e.id) {
+            list.push({
+              id: e.id,
+              message: e.message,
+              rate: e.rate,
+              name: u.userName,
+              image: u.image,
+            });
+          }
+        });
       });
-    });
-    setEvaluationsCompleated(list);
+      setEvaluationsCompleated(list);
+    };
+
+    fetchEvaluationsCompleated();
   }, [usersLimited]);
 
   const TextRating = (value, avis) => {

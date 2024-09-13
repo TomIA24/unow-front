@@ -73,9 +73,12 @@ const ConfirmedTraining = () => {
     testState: "",
   });
 
-  useEffect(async () => {
+  useEffect( () => {
+    const fetchData = async () => {
     await handleCourse();
     await handleRoom();
+  };
+  fetchData();
   }, []);
 
   const HandleTest = () => {
@@ -109,7 +112,7 @@ const ConfirmedTraining = () => {
       });
   };
 
-  const GetUsers = (ids) => {
+  const GetUsers = async (ids) => {
     const config = {
       headers: { authorization: `Bearer ${token}` },
     };
@@ -130,16 +133,20 @@ const ConfirmedTraining = () => {
     window.location = "/login";
   };
 
-  useEffect(async () => {
+  useEffect( () => {
+    const fetchData = async () => {
     const ids = Evaluations.map((e) => {
       return e.id;
     });
-    GetUsers(ids);
+    await GetUsers(ids);
+  };
+  fetchData();
   }, [Evaluations]);
 
-  useEffect(async () => {
+  useEffect( () => {
+    const fetchData = async () => {
     var list = [];
-    await Evaluations.map((e) => {
+     Evaluations.map((e) => {
       usersLimited.map((u) => {
         if (u._id === e.id) {
           list.push({
@@ -153,6 +160,8 @@ const ConfirmedTraining = () => {
       });
     });
     setEvaluationsCompleated(list);
+  };
+  fetchData();
   }, [usersLimited]);
 
   const TextRating = (value, avis) => {

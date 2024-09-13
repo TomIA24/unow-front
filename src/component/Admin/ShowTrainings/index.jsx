@@ -25,8 +25,11 @@ const ShowTrainings = () => {
   const [courseDetails, setCourseDetails] = useState();
   const [openDetails, setOpenDetails] = useState(false);
 
-  useEffect(async () => {
+  useEffect( () => {
+    const fetchData = async () => {
     await handleData();
+    };
+    fetchData();
   }, [, openChange]);
 
   const handleData = async () => {
