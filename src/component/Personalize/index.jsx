@@ -170,6 +170,7 @@ const Personalize = () => {
   const [candidateData, setcandidateData] = useState([]);
   const [missingFields, setMissingFields] = useState([]);
   const user = JSON.parse(localStorage.getItem("user"));
+  const [hasChanges, setHasChanges] = useState(false);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -188,6 +189,8 @@ const Personalize = () => {
         console.log("Existing candidate candidateData:", candidateData);
         console.log("Existing candidate candidatdata:", candidatdata);
         console.log("Existing candidate FormData:", formData);
+        console.log("hasChanges:", hasChanges);
+        
         // const checkFieldsResponse = await axios.get(`${process.env.REACT_APP_API}api/candidat/checkfields/${candiddId}`);
         
         // if (checkFieldsResponse.data.message === 'Some fields are missing or incomplete') {
@@ -231,13 +234,17 @@ const Personalize = () => {
         : [...prevData[name], value],
     }));
   };
+
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
   console.log(e.target.value);
   
     setFormData((prevData) => {
-      
+      setHasChanges(true);
+      console.log("haschanged",hasChanges);
       if (type === 'checkbox') {
+        
+       
         const currentValues = Array.isArray(prevData[name]) ? prevData[name] : [];
         return {
           ...prevData,
@@ -245,13 +252,17 @@ const Personalize = () => {
             ? [...currentValues, value]
             : currentValues.filter((item) => item !== value),
         };
+      
       } else {
         return {
           ...prevData,
           [name]: value, 
         };
       }
+    
     });
+   
+    
   };
 
   const [currentStep, setCurrentStep] = useState(0);
@@ -263,58 +274,23 @@ const Personalize = () => {
       setCurrentStep((prevStep) => prevStep - 1);
     }
   };
-  const handleNext = async () => {
-
-    const updatedProfilecomplited = candidateData.profilecomplited + 20;
-    
-    
-    const updatedFormData = {
-      ...candidateData, 
-      ...formData,
-      profilecomplited: updatedProfilecomplited, 
-    };
-   
-    const {
-      password,
-      _id,
-      cartTrainings,
-      TrainingsPaid,
-      cartCourses,
-      CoursesPaid,
-      __v,
-      ...dataToSubmit
-    } = updatedFormData; 
-  
-    console.log("Data to be submitted:", dataToSubmit);
-    try {
-    if (currentStep < steps.length - 1) {
-   
-      
-        const response = await axios.put(
-          `${process.env.REACT_APP_API}api/candidat/${candiddId}`,
-          dataToSubmit
-        );
-  
-        console.log("Updated candidate data:", response.data);
-  
-       
-        setcandidateData({
-          ...updatedFormData,
-        });
-  
-      
-        setCurrentStep(prevStep => prevStep + 1);
-   
-    } 
  
-  } catch (error) {
-    console.error("Error updating last candidate:", error.response ? error.response.data : error.message);
-  };
-}
+  
 
 const handleFinish = async () => {
 
-  const updatedProfilecomplited = candidateData.profilecomplited + 20;
+  const currentStepData = steps[currentStep];
+  
+   
+  const isStepCompleted = stepCompletionStatus[currentStep];
+  const hasStepBeenCompleted = isStepCompleted || currentStepData.isCompleted;
+
+console.log("hasChanges ",hasChanges );
+console.log("hasStepBeenCompleted ",hasStepBeenCompleted );
+console.log(hasStepBeenCompleted && hasChanges);
+
+  const updatedProfilecomplited = !(hasStepBeenCompleted && hasChanges )? (candidateData.profilecomplited): (candidateData.profilecomplited + 20);
+console.log('updatedProfilecomplited',updatedProfilecomplited);
   
   
   const updatedFormData = {
@@ -323,6 +299,8 @@ const handleFinish = async () => {
     profilecomplited: updatedProfilecomplited, 
   };
  
+
+
   const {
     password,
     _id,
@@ -354,7 +332,8 @@ const handleFinish = async () => {
   const [completedPercentage, setCompletedPercentage] = useState('0%');
 
 const [progressGradient, setProgressGradient] = useState('');
-const [mainColorRgb, setMainColorRgb] = useState('');
+const [mainColorRgb, setMainColorRgb] = useState(''); 
+
 useEffect(() => {
   if (candidatdata?.profilecomplited != null) {
     const percentage = candidatdata.profilecomplited;
@@ -729,6 +708,76 @@ const gotohome=()=>{
   ];
   const stepsWithContent = steps.filter((step) => !step.isCompleted);
   console.log('steps',stepsWithContent);
+
+  const [stepCompletionStatus, setStepCompletionStatus] = useState(
+    steps.map(() => false) // Initialize with all steps incomplete
+  )
+  const handleNext = async () => {
+
+    const currentStepData = steps[currentStep];
+
+    const isStepCompleted = stepCompletionStatus[currentStep];
+    const hasStepBeenCompleted = isStepCompleted || currentStepData.isCompleted;
+
+console.log("hasChanges ",hasChanges );
+console.log("hasStepBeenCompleted ",hasStepBeenCompleted );
+console.log(hasStepBeenCompleted && !hasChanges);
+
+  const updatedProfilecomplited = (hasStepBeenCompleted && !hasChanges ) ? (candidateData.profilecomplited ):(candidateData.profilecomplited + 20 );
+  console.log('updatedProfilecomplited',updatedProfilecomplited);
+  
+   
+    const updatedFormData = {
+      ...candidateData,
+      ...formData,
+      profilecomplited: updatedProfilecomplited,
+    };
+  
+    const {
+      password,
+      _id,
+      cartTrainings,
+      TrainingsPaid,
+      cartCourses,
+      CoursesPaid,
+      __v,
+      ...dataToSubmit
+    } = updatedFormData;
+  
+    console.log("Data to be submitted:", dataToSubmit);
+  
+    try {
+      if (currentStep < steps.length - 1) {
+
+        const response = await axios.put(
+          `${process.env.REACT_APP_API}api/candidat/${candiddId}`,
+          dataToSubmit
+        );
+  
+        console.log("Updated candidate data:", response.data);
+
+        setcandidateData({
+          ...updatedFormData,
+        });
+  
+        // Mark the current step as completed
+        setStepCompletionStatus(prevStatus => {
+          const newStatus = [...prevStatus];
+          newStatus[currentStep] = true; // Mark current step as completed
+          return newStatus;
+        });
+  
+        // Move to the next step
+        setCurrentStep(prevStep => prevStep + 1);
+        setHasChanges(false);
+      } else {
+        // If on the last step, call the finish handler
+        handleFinish();
+      }
+    } catch (error) {
+      console.error("Error updating candidate:", error.response ? error.response.data : error.message);
+    }
+  };
   return (
     <div >
 
