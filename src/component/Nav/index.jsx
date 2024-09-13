@@ -62,7 +62,7 @@ const Nav = () => {
     setpopupopen(true);
   };
   const closepopup = () => {
-    navigate('/profile');
+    navigate('/profileClient');
     setpopupopen(false);
   };
   const location = useLocation();
@@ -212,7 +212,7 @@ const Nav = () => {
                   <div>
                     {user.profilecomplited >=100 ? (
                       <Link
-                        to="/profile"
+                        to="/profileClient"
                         style={{ display: "flex", alignItems: "center" }}
                       >
                         <img
