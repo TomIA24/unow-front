@@ -48,7 +48,7 @@ export default function CourseElement({ course, type }) {
             }}
           >
          
-            <button o className={styles.textCourseFooterBtn}>
+            <button className={styles.textCourseFooterBtn}>
               <p>Go Course</p>
               <img src={send} alt="send" />
             </button>
