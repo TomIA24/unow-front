@@ -25,7 +25,9 @@ import SendIcon from '@mui/icons-material/Send';
 import "./Room.css"
 
 // const server_url = process.env.NODE_ENV === 'production' ? `${process.env.REACT_APP_API}` : "localhost:8080"
-const server_url = "http://localhost:5050";
+// const server_url = "http://localhost:5050";
+console.log(process.env.REACT_APP_API)
+const server_url = process.env.REACT_APP_API;
 
 const style = {
   position: "absolute",
@@ -74,6 +76,7 @@ class Room extends Component {
       this.state = {
         video: true,
         audio: true,
+        speaking:false,
         screen: false,
         showModal: false,
         screenAvailable: false,
@@ -81,12 +84,32 @@ class Room extends Component {
         message: "",
         newmessages: 0,
         askForUsername: true,
-        username: JSON.parse(localStorage.getItem("user")).name,
+        user : JSON.parse(localStorage.getItem("user")),
+        // username: JSON.parse(localStorage.getItem("user")).name,
       };
       this.getPermissions();
+
+      console.log("user: ", JSON.parse(localStorage.getItem("user")))
     }
 
     connections = {};
+    
+  }
+
+   componentDidMount() {
+    this.scrollToBottom();
+
+  }
+
+  scrollToBottom = () => {
+    const messageBody = document.querySelector('.MessagesBody');
+    if (messageBody) {
+      messageBody.scrollTop = messageBody.scrollHeight;
+      // Use requestAnimationFrame to ensure the DOM has updated
+      requestAnimationFrame(() => {
+        messageBody.scrollTop = messageBody.scrollHeight;
+      });
+    }
   }
 
   getPermissions = async () => {
@@ -102,9 +125,9 @@ class Room extends Component {
         .catch(() => (this.audioAvailable = false));
 
       if (navigator.mediaDevices.getDisplayMedia) {
-        this.setState({ screenAvailable: true });
+        this.state.screenAvailable = true ;
       } else {
-        this.setState({ screenAvailable: false });
+        this.state.screenAvailable = false ;
       }
 
       if (this.videoAvailable || this.audioAvailable) {
@@ -153,6 +176,8 @@ class Room extends Component {
   getUserMediaSuccess = (stream) => {
     try {
       window.localStream.getTracks().forEach((track) => track.stop());
+    this.setupVoiceActivityDetection();
+
     } catch (e) {
       console.log(e);
     }
@@ -520,10 +545,34 @@ class Room extends Component {
 
   handleUsername = (e) => this.setState({ username: e.target.value });
 
-  sendMessage = () => {
-    socket.emit("chat-message", this.state.message, this.state.username);
-    this.setState({ message: "", sender: this.state.username });
+  sendMessage = () => { 
+      console.log("test messages: ",this.state.message, this.state.user.name)
+      socket.emit("chat-message", this.state.message, this.state.user.name);
+      this.setState({ message: "", sender: this.state.user.name }, () => {
+          // After the state has been updated, scroll the message body to the bottom
+          const messageBody = document.querySelector('.MessagesBody');
+          if (messageBody) {
+            console.log("height messages body: ",messageBody.scrollHeight)
+              messageBody.scrollTop = messageBody.scrollHeight;
+          }
+      });
+
   };
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.message !== this.state.message) {
+      const messageBody = document.querySelector('.MessagesBody');
+      if (messageBody) {
+        console.log("height messages body: ", messageBody.scrollHeight);
+        messageBody.scrollTop = messageBody.scrollHeight;
+        
+        // Use setTimeout to ensure scrolling happens after DOM update
+        setTimeout(() => {
+          messageBody.scrollTop = messageBody.scrollHeight;
+        }, 0);
+      }
+    }
+  }
   /*/////////////////////////////////////////////////////////////////////////////////////*/
   copyUrl = () => {
     let text = window.location.href;
@@ -558,16 +607,16 @@ class Room extends Component {
       console.log(this.state.video);
     });
 
-  isChrome = function () {
-    let userAgent = (navigator && (navigator.userAgent || "")).toLowerCase();
-    let vendor = (navigator && (navigator.vendor || "")).toLowerCase();
-    let matchChrome = /google inc/.test(vendor)
-      ? userAgent.match(/(?:chrome|crios)\/(\d+)/)
-      : null;
-    // let matchFirefox = userAgent.match(/(?:firefox|fxios)\/(\d+)/)
-    // return matchChrome !== null || matchFirefox !== null
-    return matchChrome !== null;
-  };
+  // isChrome = function () {
+  //   let userAgent = (navigator && (navigator.userAgent || "")).toLowerCase();
+  //   let vendor = (navigator && (navigator.vendor || "")).toLowerCase();
+  //   let matchChrome = /google inc/.test(vendor)
+  //     ? userAgent.match(/(?:chrome|crios)\/(\d+)/)
+  //     : null;
+  //   // let matchFirefox = userAgent.match(/(?:firefox|fxios)\/(\d+)/)
+  //   // return matchChrome !== null || matchFirefox !== null
+  //   return matchChrome !== null;
+  // };
 
   render() {
     // if (this.isChrome() === false) {
@@ -612,9 +661,7 @@ class Room extends Component {
 
             <div className="InfoSpace">
               <div className="ConnectButton">
-                {/* <p style={{ margin: 0, fontWeight: "bold", paddingRight: "50px" }}>Set your username</p> */}
-                {/* <Input placeholder="Username" value={this.state.username} onChange={e => this.handleUsername(e)} /> */}
-                <h3>{this.state.username}</h3>
+                <h3>{this.state.user.name}</h3>
                 <Button
                   variant="contained"
                   color="primary"
@@ -879,7 +926,7 @@ class Room extends Component {
               <div className="MessagesBody">
                 {this.state.messages.length > 0 ? (
                   this.state.messages.map((item, index) =>
-                    item.sender === this.state.username ? (
+                    item.sender === this.state.user.name ? (
                       <div
                         key={index}
                         className="message"
@@ -932,9 +979,16 @@ class Room extends Component {
                   value={this.state.message}
                   className="InputMessage"
                   onChange={(e) => this.handleMessage(e)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' && this.state.message.trim() !== '') {
+                      e.preventDefault();
+                      this.sendMessage();
+                    }
+                  }}
                 />
 
                 <IconButton
+                  disabled={this.state.message.trim() === ""}
                   aria-label="delete"
                   Message-btn
                   onClick={this.sendMessage}
