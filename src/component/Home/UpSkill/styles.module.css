@@ -4,7 +4,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #3E4678;
+  background-color: #3e4678;
   margin-bottom: 3rem;
   margin-top: 7rem;
   border-bottom-right-radius: 25px;
@@ -53,17 +53,17 @@
   font-weight: bold;
   margin-bottom: 0%;
   text-align: center;
-  font-family: 'Lato';
+  font-family: "Lato";
   margin-top: 0%;
   width: 100%;
 }
 
 .paragraph {
-  color: #E0E0E0;
+  color: #e0e0e0;
   font-size: 15px;
   text-align: center;
   line-height: 1.2;
-  font-family: 'Lato';
+  font-family: "Lato";
   margin-top: 5%;
   margin-bottom: 5%;
   width: 70%;
@@ -108,11 +108,12 @@
     font-size: 10px;
     margin-top: -1%;
   }
-  .image, .image1 {
+  .image,
+  .image1 {
     width: 100%;
   }
   .paragraph {
-    font-size: 6px;  
+    font-size: 6px;
     margin-top: 1rem;
     margin-bottom: 1rem;
     width: 60%;
@@ -122,10 +123,9 @@
     font-size: 6px;
     margin-bottom: 20%;
     width: 6rem;
-
   }
 }
-@media (max-width: 550px) and (min-width: 430px){
+@media (max-width: 550px) and (min-width: 430px) {
   .allContainer {
     margin: 3rem 0px;
     padding: 0rem;
@@ -134,14 +134,15 @@
   }
   .title {
     font-size: 15px;
-   margin-top: -2%;
+    margin-top: -2%;
   }
-  .image, .image1 {
+  .image,
+  .image1 {
     width: 100%;
   }
-  
+
   .paragraph {
-    font-size: 7px;  
+    font-size: 7px;
     margin-top: 1rem;
     margin-bottom: 1rem;
     width: 60%;
@@ -155,7 +156,7 @@
   }
 }
 
-@media (min-width: 550px) and (max-width: 600px){
+@media (min-width: 550px) and (max-width: 600px) {
   .allContainer {
     margin: 3rem 0px;
     padding: 3rem;
@@ -171,7 +172,7 @@
   }
 
   .paragraph {
-    font-size: 8px;  
+    font-size: 8px;
     margin-top: 1rem;
     margin-bottom: 1rem;
     width: 65%;
@@ -189,7 +190,8 @@
     margin-top: 1rem;
   }
 
-  .image, .image1 {
+  .image,
+  .image1 {
     width: 100%;
   }
 }
@@ -197,7 +199,6 @@
 @media (min-width: 600px) and (max-width: 700px) {
   .title {
     font-size: 23px;
-    width: 200%;
     margin-top: -10%;
   }
 
@@ -217,7 +218,8 @@
     width: 75%;
   }
 
-  .image, .image1 {
+  .image,
+  .image1 {
     width: 100%;
   }
   .allContainer {
@@ -229,10 +231,8 @@
 @media (min-width: 700px) and (max-width: 800px) {
   .title {
     font-size: 25px;
-    width: 200%;
     margin-bottom: -10%;
     margin-top: -7%;
-    
   }
   .allContainer {
     margin-left: 1%;
@@ -270,7 +270,6 @@
   .title {
     font-size: 30px;
     margin-top: -5%;
-    
   }
   .allContainer {
     margin-top: 5rem;
@@ -279,13 +278,14 @@
     margin-left: 0%;
   }
 
-  .image, .image1 {
+  .image,
+  .image1 {
     width: 100%;
   }
 
   .paragraph {
     font-size: 15px;
-    margin-top: 2rem;
+    /* margin-top: 2rem; */
   }
 }
 @media (max_width: 1025px) and (min-width: 992px) {
@@ -314,11 +314,10 @@
     width: 60%;
   }
 
- .image, .image1 {
-  width: 100%;
- }
- 
-
+  .image,
+  .image1 {
+    width: 100%;
+  }
 }
 
 @media (min-width: 1201px) {
