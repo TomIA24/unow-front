@@ -26,6 +26,7 @@ export const Header = () => {
     // "/images/home/unw.jpeg",
     "/images/home/explore-banner.jpg",
     "/images/home/build-banner.png",
+    "/images/home/webinar.png",
     // "/images/home/header.png",
     // "/images/home/background-image.png",
   ];
