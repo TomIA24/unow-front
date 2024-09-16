@@ -23,7 +23,7 @@ const ConfirmedTraining = () => {
   const token = localStorage.getItem("token");
   const user = JSON.parse(localStorage.getItem("user"));
 
-  var [urlRoom, setUrlRoom] = useState("");
+  var [room, setRoom] = useState("");
 
   const handleRoom = async () => {
     const config = {
@@ -38,7 +38,7 @@ const ConfirmedTraining = () => {
       )
       .then((res) => {
         console.log(res);
-        setUrlRoom(res.data.data);
+        setRoom(res.data.data);
       });
   };
 
@@ -73,12 +73,12 @@ const ConfirmedTraining = () => {
     testState: "",
   });
 
-  useEffect( () => {
+  useEffect(() => {
     const fetchData = async () => {
-    await handleCourse();
-    await handleRoom();
-  };
-  fetchData();
+      await handleCourse();
+      await handleRoom();
+    };
+    fetchData();
   }, []);
 
   const HandleTest = () => {
@@ -133,35 +133,35 @@ const ConfirmedTraining = () => {
     window.location = "/login";
   };
 
-  useEffect( () => {
+  useEffect(() => {
     const fetchData = async () => {
-    const ids = Evaluations.map((e) => {
-      return e.id;
-    });
-    await GetUsers(ids);
-  };
-  fetchData();
+      const ids = Evaluations.map((e) => {
+        return e.id;
+      });
+      await GetUsers(ids);
+    };
+    fetchData();
   }, [Evaluations]);
 
-  useEffect( () => {
+  useEffect(() => {
     const fetchData = async () => {
-    var list = [];
-     Evaluations.map((e) => {
-      usersLimited.map((u) => {
-        if (u._id === e.id) {
-          list.push({
-            id: e.id,
-            message: e.message,
-            rate: e.rate,
-            name: u.userName,
-            image: u.image,
-          });
-        }
+      var list = [];
+      Evaluations.map((e) => {
+        usersLimited.map((u) => {
+          if (u._id === e.id) {
+            list.push({
+              id: e.id,
+              message: e.message,
+              rate: e.rate,
+              name: u.userName,
+              image: u.image,
+            });
+          }
+        });
       });
-    });
-    setEvaluationsCompleated(list);
-  };
-  fetchData();
+      setEvaluationsCompleated(list);
+    };
+    fetchData();
   }, [usersLimited]);
 
   const TextRating = (value, avis) => {
@@ -253,7 +253,7 @@ const ConfirmedTraining = () => {
                   sx={{ width: "200px" }}
                   onClick={() =>
                     window.open(
-                      `${process.env.REACT_APP_DOMAIN}/room/${urlRoom}`,
+                      `${process.env.REACT_APP_DOMAIN}/room/${room.urlId}`,
                       "_blank"
                     )
                   }
@@ -262,7 +262,7 @@ const ConfirmedTraining = () => {
                 >
                   Start Training &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 </Button> */}
-                <Link to={{ pathname: `/room/${urlRoom}` }}>
+                <Link to={{ pathname: `/room/${room.urlId}` }}>
                   <Button
                     sx={{ width: "200px" }}
                     variant="outlined"

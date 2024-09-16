@@ -2,7 +2,7 @@ import styles from "./styles.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import Update from "./update";
-import Details from "./details2";
+import Details from "./details";
 import avatar from "../../assets/avatar.svg";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import MoreVertIcon from "@mui/icons-material/MoreVert";

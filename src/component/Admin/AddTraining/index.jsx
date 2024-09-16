@@ -140,7 +140,16 @@ const AddTraining = () => {
   };
 
   const [mobile, setMobile] = useState(false);
-  setMobile(false);
+  useEffect(() => {
+    const handleResize = () => {
+      setMobile(window.innerWidth < 768); // Set to true if width is less than 768px
+    };
+
+    window.addEventListener("resize", handleResize);
+    handleResize(); // Call once to set initial state
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   const [data, setData] = useState({
     Title: "",
     Trainer: "",
@@ -163,7 +172,7 @@ const AddTraining = () => {
     QuestionsQR: [],
     testState: "allowed", //closed
   });
-  
+
   useEffect(() => {
     setData({ ...data, QuestionsQCM: QuestionsQCM, QuestionsQR: QuestionsQR });
   }, [QuestionsQCM, QuestionsQR]);
@@ -278,10 +287,12 @@ const AddTraining = () => {
     );
   });
 
-  const Trainers = categoriesFromBd.map((Trainer) => {
+  const Trainers = trainersFromBd.map((Trainer) => {
     return (
       <MenuItem key={Trainer._id} value={Trainer._id}>
-        {Trainer.name}
+        {`${
+          Trainer.surname.charAt(0).toUpperCase() + Trainer.surname.slice(1)
+        } ${Trainer.name} `}
       </MenuItem>
     );
   });
@@ -323,6 +334,7 @@ const AddTraining = () => {
           setSaved(false);
           setData(initialData);
           setUploadProgress(0);
+          setPrev(null);
         })
         .catch((err) => {});
     } catch (error) {
@@ -425,6 +437,7 @@ const AddTraining = () => {
   useEffect(() => {
     setData({ ...data, Date: DatesPicked });
   }, [DatesPicked]);
+
   const UploadRessources = async () => {
     const formData = new FormData();
     for (let i = 0; i < selectedFiles.length; i++) {
@@ -778,13 +791,6 @@ const AddTraining = () => {
                             {index + 1}- {e.Question} :{" "}
                           </p>
                           <p>[{e.Responses}]</p>
-
-                          {/* .split(",").map((element,index) => {
-																				if(e.Responses.split(",")[index+1]!=='undefined'){
-																					return(<p>{element}-</p>)
-																				}
-																				return(<p>{element}</p>)
-																			}) */}
                         </div>
                       );
                     })}

@@ -43,7 +43,12 @@ var connections = {};
 const peerConnectionConfig = {
   iceServers: [
     // { 'urls': 'stun:stun.services.mozilla.com' },
-    { urls: "stun:stun.l.google.com:19302" },
+    // { 'urls': "stun:stun.l.google.com:19302" },
+    {
+      urls: "stun:98.67.167.71:3478",
+      username: "username1",
+      credential: "key1",
+    },
   ],
 };
 var socket = null;
@@ -59,37 +64,29 @@ class Room extends Component {
     this.videoAvailable = false;
     this.audioAvailable = false;
 
-    connections = {};
-  }
-  static getDerivedStateFromProps(props, state) {
     const token = localStorage.getItem("token");
     if (!token) {
       const currentPath = window.location.pathname;
       console.log(currentPath);
       localStorage.setItem("redirectPath", currentPath);
       window.location.href = "/login";
-      return null;
-    }
-
-    return {
-      video: true,
-      audio: true,
-      screen: false,
-      showModal: false,
-      screenAvailable: false,
-      messages: [],
-      message: "",
-      newmessages: 0,
-      askForUsername: true,
-      username: JSON.parse(localStorage.getItem("user")).name,
-    };
-  }
-
-  componentDidMount() {
-    const token = localStorage.getItem("token");
-    if (token) {
+    } else {
+      this.state = {
+        video: true,
+        audio: true,
+        screen: false,
+        showModal: false,
+        screenAvailable: false,
+        messages: [],
+        message: "",
+        newmessages: 0,
+        askForUsername: true,
+        username: JSON.parse(localStorage.getItem("user")).name,
+      };
       this.getPermissions();
     }
+
+    connections = {};
   }
 
   getPermissions = async () => {
@@ -573,25 +570,25 @@ class Room extends Component {
   };
 
   render() {
-    if (this.isChrome() === false) {
-      return (
-        <div
-          style={{
-            background: "white",
-            width: "30%",
-            height: "auto",
-            padding: "20px",
-            minWidth: "400px",
-            textAlign: "center",
-            margin: "auto",
-            marginTop: "50px",
-            justifyContent: "center",
-          }}
-        >
-          <h1>Sorry, this works only with Google Chrome</h1>
-        </div>
-      );
-    }
+    // if (this.isChrome() === false) {
+    //   return (
+    //     <div
+    //       style={{
+    //         background: "white",
+    //         width: "30%",
+    //         height: "auto",
+    //         padding: "20px",
+    //         minWidth: "400px",
+    //         textAlign: "center",
+    //         margin: "auto",
+    //         marginTop: "50px",
+    //         justifyContent: "center",
+    //       }}
+    //     >
+    //       <h1>Sorry, this works only with Google Chrome</h1>
+    //     </div>
+    //   );
+    // }
     return (
       <div className="Room">
         {this.state.askForUsername === true ? (
