@@ -256,14 +256,14 @@ const Personalize = () => {
         setFormData(prevState => {
           // Update the goals array based on checkbox state
           const updatedGoals = checked
-            ? [...prevState.stepPersonalize_2.goals, value] // Add to array if checked
-            : prevState.stepPersonalize_2.goals.filter(goal => goal !== value); // Remove from array if unchecked
+            ? [...prevState.stepPersonalize_2.step2_goals, value] // Add to array if checked
+            : prevState.stepPersonalize_2.step2_goals.filter(goal => goal !== value); // Remove from array if unchecked
 
           return {
             ...prevState,
             stepPersonalize_2: {
               ...prevState.stepPersonalize_2,
-              goals: updatedGoals
+              step2_goals: updatedGoals
             }
           };
         });
@@ -389,8 +389,8 @@ console.log(e.target.value);
         setFormData(prevState => {
           // Update the goals array based on checkbox state
           const updatedGoals = checked
-            ? [...prevState.stepPersonalize_2.goals, value] // Add to array if checked
-            : prevState.stepPersonalize_2.goals.filter(goal => goal !== value); // Remove from array if unchecked
+            ? [...prevState.stepPersonalize_2.step2_goals, value] // Add to array if checked
+            : prevState.stepPersonalize_2.step2_goals.filter(goal => goal !== value); // Remove from array if unchecked
 
           return {
             ...prevState,
@@ -648,21 +648,21 @@ console.log(e.target.value);
             <div className={styles.personlizesquestion}>
               <label>What are your main objectives for using this platform? (Select all that apply)</label>
               <div className={styles.checkboxGroup}>
-                <input type="checkbox" id="skill" name="goals" className={styles.hiddenCheckbox} checked={Array.isArray(formData.stepPersonalize_2.goals) && formData.stepPersonalize_2.goals.includes('Skill Development for Work')} value='Skill Development for Work' onChange={handleInputChange2} />
+                <input type="checkbox" id="skill" name="goals" className={styles.hiddenCheckbox} checked={Array.isArray(formData.stepPersonalize_2.step2_goals) && formData.stepPersonalize_2.step2_goals.includes('Skill Development for Work')} value='Skill Development for Work' onChange={handleInputChange2} />
                 <label htmlFor="skill" className={styles.customLabel}>
                   Skill Development for Work
                 </label>
               </div>
               <div className={styles.checkboxGroup}>
-                <input type="checkbox" id="newinterest" name="goals" className={styles.hiddenCheckbox} value='Exploring New Interests' checked={Array.isArray(formData.stepPersonalize_2.goals) && formData.stepPersonalize_2.goals.includes('Exploring New Interests')} onChange={handleInputChange2} />
+                <input type="checkbox" id="newinterest" name="goals" className={styles.hiddenCheckbox} value='Exploring New Interests' checked={Array.isArray(formData.stepPersonalize_2.step2_goals) && formData.stepPersonalize_2.step2_goals.includes('Exploring New Interests')} onChange={handleInputChange2} />
                 <label htmlFor="newinterest" className={styles.customLabel}>Exploring New Interests</label>
               </div>
               <div className={styles.checkboxGroup}>
-                <input type="checkbox" id="specificproject" name="goals" className={styles.hiddenCheckbox} checked={Array.isArray(formData.stepPersonalize_2.goals) && formData.stepPersonalize_2.goals.includes('Preparing for a Specific Project ')} value='Preparing for a Specific Project ' onChange={handleInputChange2} />
+                <input type="checkbox" id="specificproject" name="goals" className={styles.hiddenCheckbox} checked={Array.isArray(formData.stepPersonalize_2.step2_goals) && formData.stepPersonalize_2.step2_goals.includes('Preparing for a Specific Project ')} value='Preparing for a Specific Project ' onChange={handleInputChange2} />
                 <label htmlFor="specificproject" className={styles.customLabel}>Preparing for a Specific Project </label>
               </div>
               <div className={styles.checkboxGroup}>
-                <input type="checkbox" id="other" name="goals" className={styles.hiddenCheckbox} checked={Array.isArray(formData.stepPersonalize_2.goals) && formData.stepPersonalize_2.goals.includes('Other')} onChange={handleInputChange2} />
+                <input type="checkbox" id="other" name="goals" className={styles.hiddenCheckbox} checked={Array.isArray(formData.stepPersonalize_2.step2_goals) && formData.stepPersonalize_2.step2_goals.includes('Other')} onChange={handleInputChange2} />
                 <label htmlFor="other" className={styles.customLabel}>Other (Specify)</label>
               </div>
             </div>
@@ -976,7 +976,7 @@ console.log(e.target.value);
         }
 
         apiUrl = `${process.env.REACT_APP_API}api/candidat/step2/${candiddId}`;
-        stepData = { stepPersonalize_2: { goals: filteredGoals, timeline } };
+        stepData = { stepPersonalize_2: { step2_goals: filteredGoals, timeline } };
       } else if (currentStep === 2) {
         const { availability
          , hoursperweek
