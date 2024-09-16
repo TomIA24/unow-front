@@ -51,19 +51,19 @@ const CategoryDetails = (props) => {
   const getAllTraining = () => {
     // e.preventDefault();
     const urlTrainings = `${process.env.REACT_APP_API}api/Category/specificGroupeFromCategory`;
-   
+
     // if (selectedType === "COURSES") {
     //   axios.post(urlCourses, { id: id, type: "courses" }).then(async (res) => {
     //     setCourses(res.data.data);
     //   });
     // } else {
-      axios
-        .post(urlTrainings, { id: id, type: "trainings" })
-        .then(async (res) => {
-          setTrainings(res.data.data);
-          // setTotalPages(res.data.totalPages);
-        });
-  //  }
+    axios
+      .post(urlTrainings, { id: id, type: "trainings" })
+      .then(async (res) => {
+        setTrainings(res.data.data);
+        // setTotalPages(res.data.totalPages);
+      });
+    //  }
 
     // axios
     //   .get(
@@ -78,15 +78,13 @@ const CategoryDetails = (props) => {
   };
   const getAllCourses = () => {
     // e.preventDefault();
-    
+
     const urlCourses = `${process.env.REACT_APP_API}api/Category/specificGroupeFromCategory`;
     if (selectedType === "COURSES") {
       axios.post(urlCourses, { id: id, type: "courses" }).then(async (res) => {
         setCourses(res.data.data);
       });
-    } 
-
-  
+    }
   };
   useEffect(() => {
     getAllTraining();
@@ -129,13 +127,14 @@ const CategoryDetails = (props) => {
   const refHome = useRef();
   const arrayOnlineCourses =
     windowWidth > 900 ? groupIntoRows(courses, 3) : groupIntoRows(courses, 2);
-    const arrayOnlineTrainings =
-    windowWidth > 900 ? groupIntoRows(trainings, 3) : groupIntoRows(trainings, 2);
+  const arrayOnlineTrainings =
+    windowWidth > 900
+      ? groupIntoRows(trainings, 3)
+      : groupIntoRows(trainings, 2);
   // const arrayOffline =
   //   windowWidth > 900
   //     ? groupIntoRows(props.offlineCourses, 3)
   //     : groupIntoRows(props.onlineCourses, 2);
-console.log("selectedType",arrayOnlineCourses,arrayOnlineTrainings)
   return (
     <div className="backimage">
       <div style={{ marginLeft: "50px", marginRight: "50px" }}>
@@ -173,7 +172,7 @@ console.log("selectedType",arrayOnlineCourses,arrayOnlineTrainings)
           ]}
         />
         <TopBarComponent */}
-          {/* items={[
+        {/* items={[
             { id: 0, title: "Design" },
             { id: 1, title: "Web Design" },
             { id: 2, title: "Graphic Design and Illustration" },
@@ -193,49 +192,45 @@ console.log("selectedType",arrayOnlineCourses,arrayOnlineTrainings)
           {/* <br /> */}
 
           <Container className="container-grid">
-            {selectedType==="COURSES" ?
-             ( arrayOnlineCourses.slice(0, windowWidth > 900 ? indexItems / 3 : indexItems / 2)
-              .map((itemnested) => (
-              
-                <div key={itemnested[0].id}>
-                  <Row className="row1">
-                    {itemnested.length > 0 ? (console.log("itemnested",itemnested),
-                    itemnested.map((course) => (
-                      <Col xs={6} md={4} className="col" key={course.id}>
-                        <CourseItem course={course} />
-                      </Col>
-                    )))
-                  :(
-                    <Empty/>
-                   
-                 )
-                  }
-                  </Row>
-                  <br />
-                </div>
-              ))):(
-                arrayOnlineTrainings.slice(0, windowWidth > 900 ? indexItems / 3 : indexItems / 2)
-                .map((itemnested) => (
-                
-                  <div key={itemnested[0].id}>
-                    <Row className="row1">
-                      {itemnested.length > 0 ? (console.log("itemnested",itemnested),
-                      itemnested.map((course) => (
-                        <Col xs={6} md={4} className="col" key={course.id}>
-                          <CourseItem course={course} />
-                        </Col>
-                      )))
-                    :(
-                      <Empty/>
-                     
-                   )
-                    }
-                    </Row>
-                    <br />
-                  </div>
-                ))
-
-              )}
+            {selectedType === "COURSES"
+              ? arrayOnlineCourses
+                  .slice(0, windowWidth > 900 ? indexItems / 3 : indexItems / 2)
+                  .map((itemnested) => (
+                    <div key={itemnested[0].id}>
+                      <Row className="row1">
+                        {itemnested.length > 0 ? (
+                          (console.log("itemnested", itemnested),
+                          itemnested.map((course) => (
+                            <Col xs={6} md={4} className="col" key={course.id}>
+                              <CourseItem course={course} />
+                            </Col>
+                          )))
+                        ) : (
+                          <Empty />
+                        )}
+                      </Row>
+                      <br />
+                    </div>
+                  ))
+              : arrayOnlineTrainings
+                  .slice(0, windowWidth > 900 ? indexItems / 3 : indexItems / 2)
+                  .map((itemnested) => (
+                    <div key={itemnested[0].id}>
+                      <Row className="row1">
+                        {itemnested.length > 0 ? (
+                          (console.log("itemnested", itemnested),
+                          itemnested.map((course) => (
+                            <Col xs={6} md={4} className="col" key={course.id}>
+                              <CourseItem course={course} />
+                            </Col>
+                          )))
+                        ) : (
+                          <Empty />
+                        )}
+                      </Row>
+                      <br />
+                    </div>
+                  ))}
             <div
               style={{
                 display: "flex",

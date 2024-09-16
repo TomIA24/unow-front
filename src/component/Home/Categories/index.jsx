@@ -1,4 +1,4 @@
-import React, { useState, useEffect,useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styles from "./styles.module.css";
 import Icon1 from "../../assets/icon1.png";
 import Icon2 from "../../assets/icon2.png";
@@ -22,7 +22,7 @@ const Categories = () => {
   const [showModal, setShowModal] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [categories, setCategories] = useState([]);
- const navigate=useNavigate()
+  const navigate = useNavigate();
   useEffect(() => {
     const handleWidthChange = () => {
       setScreenWidth(window.innerWidth);
@@ -109,18 +109,14 @@ const Categories = () => {
   const dialogRef = useRef(null);
   const images = [Icon1, Icon2, Icon3, Icon4, Icon5, Icon6, Icon7, Icon8];
   const [opnpopup, setpopupopen] = useState(false);
- const handlepopup= ()=> {
-
-  setpopupopen(!opnpopup)
-  console.log(opnpopup);
-  
-  };
-  const closepopup= ()=> {
-   
-    setpopupopen(!opnpopup)
+  const handlepopup = () => {
+    setpopupopen(!opnpopup);
     console.log(opnpopup);
-    
-    };
+  };
+  const closepopup = () => {
+    setpopupopen(!opnpopup);
+    console.log(opnpopup);
+  };
   return (
     <div className={styles.categorieTitle}>
       CATEGORIES
@@ -135,7 +131,7 @@ const Categories = () => {
                 className={styles.card}
                 style={{ backgroundColor: category.color }}
                 // onClick={() => handleCardClick(category)}
-     onClick={()=>handlepopup()}
+                onClick={() => handlepopup()}
               >
                 <img
                   src={images[index % images.length]}
@@ -151,7 +147,7 @@ const Categories = () => {
         <Slider {...settings} className={styles.slider}>
           {categories.map((category, index) => (
             <div key={category._id} className={styles.cardWrapper}>
-              <div
+              {/* <div
                 className={styles.card}
                 style={{ backgroundColor: category.color }}
                 onClick={()=>handlepopup()}
@@ -162,41 +158,32 @@ const Categories = () => {
                   className={styles.cardImage}
                 />
                 <p className={styles.titleName}>{category.Title}</p>
-              </div>
+              </div> */}
             </div>
           ))}
         </Slider>
       )}
-
       {opnpopup && (
         <>
-        <div className={styles.overlayStyles}>
-     
-        <div  ref={dialogRef} className={styles.dialogStyles}>
-          {/* <div className={styles.closbutton}>       <button  onClick={closepopup}>     <img
+          <div className={styles.overlayStyles}>
+            <div ref={dialogRef} className={styles.dialogStyles}>
+              {/* <div className={styles.closbutton}>       <button  onClick={closepopup}>     <img
         src="/images/personalize/close.png"
         alt="bronze"
 
       /></button></div> */}
-  
-        <div className={styles.iamgedialog}>
-        <img
-        src="/images/home/comingSoon.png"
-        alt="bronze"
 
-      />
-      <div className={styles.continuebutton}>
-      <button onClick={closepopup}>
-                Ok
-                  </button> </div>
-         
-        </div>
-      
-        </div >
-        </div>
-      </>
+              <div className={styles.iamgedialog}>
+                <img src="/images/home/comingSoon.png" alt="bronze" />
+                <div className={styles.continuebutton}>
+                  <button onClick={closepopup}>Ok</button>{" "}
+                </div>
+              </div>
+            </div>
+          </div>
+        </>
       )}
-{/*       
+      {/*       
       <Modal
         show={showModal}
         onClose={handleCloseModal}

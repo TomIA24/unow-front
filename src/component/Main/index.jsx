@@ -50,11 +50,10 @@ import CategorySlider from "./sliderPoints";
 import Avatar from "@mui/material/Avatar";
 import AvatarGroup from "@mui/material/AvatarGroup";
 import { Header } from "./Header/header";
-import star from "./Star 4 (1).png"
-import mark from "./Group 1000001816 (1).png"
-import {CourseRatingSimpleView} from "../../shared/rating";
-import plus from "./Group 1000001816.png"
-
+import star from "./Star 4 (1).png";
+import mark from "./Group 1000001816 (1).png";
+import { CourseRatingSimpleView } from "../../shared/rating";
+import plus from "./Group 1000001816.png";
 
 const Main = () => {
   const [currentTrainings, setCurrentTrainings] = useState([]);
@@ -80,7 +79,6 @@ const Main = () => {
     };
   }, []);
   const [itemsPerPage, setItemsPerPage] = useState(3);
- 
 
   useEffect(() => {
     const fetchData = async () => {
@@ -210,13 +208,15 @@ const Main = () => {
               </button>
             </div>
             <div className={styles.carousel} ref={carouselRef}>
-              {currentTrainings.map((training) => (      
-                      <Link
-              to={{
-                pathname: `/${training.type === 'course' ? 'Course' : 'Training'}/${training._id}`,
-              }}
-              key={training._id}
-            >
+              {currentTrainings.map((training) => (
+                <Link
+                  to={{
+                    pathname: `/${
+                      training.type === "course" ? "Course" : "Training"
+                    }/${training._id}`,
+                  }}
+                  key={training._id}
+                >
                   <div className={styles.inner_carousel} key={training._id}>
                     {training.Thumbnail && training.Thumbnail.filePath ? (
                       <div className={styles.image}>
@@ -248,22 +248,23 @@ const Main = () => {
                       <p className={styles.descr}>{training.Title}</p>
                       <div className={styles.ravi}>
                         <div className={styles.notes}>
-                      {/* <img src={star} alt="" className={styles.star} />
+                          {/* <img src={star} alt="" className={styles.star} />
                       <p className={styles.numnote}>0.0</p> */}
-                      {CourseRatingSimpleView(training?._id, training?.rating  || 0, training?.evaluate?.length)}
+                          {CourseRatingSimpleView(
+                            training?._id,
+                            training?.rating || 0,
+                            training?.evaluate?.length
+                          )}
+                        </div>
+                        <div className={styles.markes}>
+                          <img src={mark} alt="" className={styles.mark} />
+                          <p className={styles.numnote2}>3k</p>
+                        </div>
                       </div>
-                      <div className={styles.markes}>
-                      <img src={mark} alt="" className={styles.mark} />
-                      <p className={styles.numnote2}>3k</p>
-                      </div>
-                      </div>
-                     
                     </div>
                     <div className={styles.pluses}>
-                        
-                        <img src={plus} alt="" className={styles.plus} />
-                        
-                      </div>
+                      <img src={plus} alt="" className={styles.plus} />
+                    </div>
                   </div>
                 </Link>
               ))}
