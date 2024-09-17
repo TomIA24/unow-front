@@ -260,7 +260,7 @@
 }
 
 .underline {
-  width: 7%;
+  width: 10%;
   background-color: #cd6214;
   padding-top: 3px;
   border-radius: 100px;
@@ -450,16 +450,21 @@
 }
 
 .cardImage {
-  width: 30%;
+  width: 35%;
 }
 
-
+.titleName {
+  font-size: 10px;
+  text-align: center;
+  margin-top: 1rem;
+  font-weight: 600;
+  max-width: 50%;
+}
 /* Base styles */
 .titleName {
   font-size: 10px;
   text-align: center;
   margin-top: 1rem;
-  padding: 0 15% 0 15% 
 }
 @media (max-width: 300px) {
   .titleName {
@@ -535,7 +540,7 @@
 /* Media query for screens between 1101px and 1200px */
 @media (min-width: 1101px) and (max-width: 1200px) {
   .titleName {
-    font-size: 12px;
+    font-size: 20px;
     
   }
 }
@@ -543,7 +548,7 @@
 /* Media query for screens between 1201px and 1300px */
 @media (min-width: 1201px) and (max-width: 1300px) {
   .titleName {
-    font-size: 12px;
+    font-size: 20px;
 
   }
 }
@@ -551,7 +556,7 @@
 /* Media query for screens between 1301px and 1400px */
 @media (min-width: 1301px) and (max-width: 1400px) {
   .titleName {
-    font-size: 12px;
+    font-size: 20px;
 
   }
 }
@@ -559,11 +564,17 @@
 /* Media query for screens between 1401px and 1500px */
 @media (min-width: 1401px) and (max-width: 1500px) {
   .titleName {
-    font-size: 13px;
+    font-size: 20px;
    
   }
 }
-
+/* Media query for screens up than 1500px */
+@media (min-width: 1500px) {
+  .titleName {
+    font-size: 20px;
+   
+  }
+}
 
 
 .slider {
