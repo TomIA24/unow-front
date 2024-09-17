@@ -177,7 +177,23 @@ body {
     height: 80%;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: flex-start;  
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+}
+
+.MessagesBody::-webkit-scrollbar {
+    width: 6px;
+}
+
+.MessagesBody::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.MessagesBody::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
 }
 
 .message {

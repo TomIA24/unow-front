@@ -34,7 +34,7 @@ const Actu = ({ user, setActu }) => {
     };
     try {
       await axios
-        .get(`${process.env.REACT_APP_API}/api/Trainer/GetNotifTrainer`, config)
+        .get(`${process.env.REACT_APP_API}api/Trainer/GetNotifTrainer`, config)
         .then((res) => {
           setData(res.data.data);
         });
@@ -88,7 +88,7 @@ const Actu = ({ user, setActu }) => {
       },
     };
     try {
-      const url = `${process.env.REACT_APP_API}/api/Trainer/UpdateNotifTrainer`;
+      const url = `${process.env.REACT_APP_API}api/Trainer/UpdateNotifTrainer`;
 
       await axios
         .post(
@@ -420,7 +420,7 @@ const Actu = ({ user, setActu }) => {
       },
     };
     try {
-      const url = `${process.env.REACT_APP_API}/api/Trainer/UpdateCommentsNotifTrainer`;
+      const url = `${process.env.REACT_APP_API}api/Trainer/UpdateCommentsNotifTrainer`;
       await axios
         .post(
           url,

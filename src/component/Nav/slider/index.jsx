@@ -59,6 +59,11 @@ export default function SliderNav({ user, handleLogout }) {
             AboutUs
           </a>
         </Link>
+        <Link to="/contact">
+          <a type="button" className={styles.nav_btn}>
+            Contact Us
+          </a>
+        </Link>
         {!user ? (
           <React.Fragment>
             <Link to="/login">
@@ -74,6 +79,7 @@ export default function SliderNav({ user, handleLogout }) {
           </React.Fragment>
         ) : (
           <React.Fragment>
+          
             {user.userType === "Admin" ? (
               <Link to="/admin">
                 <a type="button" className={styles.nav_btn}>
@@ -108,7 +114,9 @@ export default function SliderNav({ user, handleLogout }) {
     <React.Fragment>
       <Button onClick={toggleDrawer(true)}>
       <MenuIcon className={styles.menuIcon} />
+      
       </Button>
+      
       <SwipeableDrawer
         open={toggle}
         onClose={toggleDrawer(false)}
@@ -116,14 +124,17 @@ export default function SliderNav({ user, handleLogout }) {
       >
         {list()}
       </SwipeableDrawer>
-      <Link to="/">
-      <img src="./images/home/logoblanc 1.png" alt=""   className={styles.logoimage}  />
-        {/* <img
+      <div className={styles.logo}>
+            <Link to="/" >
+            <img src="/images/home/logoblanc.png" alt=""   className={styles.logoimage}  />
+              {/* <img
                 style={{ marginTop: "20px", width: "160px" }}
                 className={styles.LogoImg}
                 src={imgLogo}
               />{" "} */}
-      </Link>
+            </Link>
+            </div>
+
       {!user ? (
         <Link to="/login">
           <button type="button" className={styles.nav_btn_special_light}>
@@ -142,7 +153,7 @@ export default function SliderNav({ user, handleLogout }) {
             {user?.image ? (
               <Avatar
                 alt="icon"
-                src={`${process.env.REACT_APP_API}/${user.image.filePath}`}
+                src={`${process.env.REACT_APP_API}${user.image.filePath}`}
                 sx={{ width: 30, height: 30 }}
               />
             ) : (

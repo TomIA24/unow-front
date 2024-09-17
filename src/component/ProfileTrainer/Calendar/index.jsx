@@ -21,7 +21,7 @@ const Calendar = ({ user }) => {
     const config = {
       headers: { authorization: `Bearer ${token}` },
     };
-    const url = `${process.env.REACT_APP_API}/api/trainings/specificGroupe`;
+    const url = `${process.env.REACT_APP_API}api/trainings/specificGroupe`;
     await axios.post(url, { cardIds: idsTrainings },config).then(async (res) => {
       setData(res.data.data);
       localStorage.setItem("calendarData", JSON.stringify(res.data.data));

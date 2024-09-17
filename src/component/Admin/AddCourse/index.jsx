@@ -61,9 +61,6 @@ const AddCourse = () => {
   const [ShowAddQCMElement, setShowAddQCMElement] = useState(false);
   const [ShowAddQRElement, setShowAddQRElement] = useState(false);
 
-  useEffect(() => {
-    setData({ ...data, QuestionsQCM: QuestionsQCM, QuestionsQR: QuestionsQR });
-  }, [QuestionsQCM, QuestionsQR]);
   const initialData = {
     Title: "",
     Description: "",
@@ -111,6 +108,9 @@ const AddCourse = () => {
     // repeatpassword:""
   });
 
+  useEffect(() => {
+    setData({ ...data, QuestionsQCM: QuestionsQCM, QuestionsQR: QuestionsQR });
+  }, [QuestionsQCM, QuestionsQR]);
   const [singleFile, setSingleFile] = useState("");
   const [prev, setPrev] = useState(null);
 
@@ -125,10 +125,10 @@ const AddCourse = () => {
 
   const uploadSingleFile = async (id) => {
     const formData = new FormData();
-    formData.append("file", singleFile);
+    formData?.append("file", singleFile);
     await singleFileUploadWithName(
       formData,
-      data.Title,
+      data?.Title,
       user._id,
       id,
       setUploadProgress
@@ -167,13 +167,13 @@ const AddCourse = () => {
   const [categoriesFromBd, setCategoriesFromBd] = useState([]);
 
   const HandleCategories = async () => {
-    const config = {
-      headers: {},
-    };
+    // const config = {
+    //   headers: {},
+    // };
     await axios
-      .get(`${process.env.REACT_APP_API}/api/Category/getCategories`)
+      .get(`${process.env.REACT_APP_API}api/Category/getCategories`)
       .then(async (res) => {
-        setCategoriesFromBd(res.data.data);
+        setCategoriesFromBd(res.data?.data);
       });
   };
 
@@ -195,13 +195,13 @@ const AddCourse = () => {
 
   const TrainersList = ["1", "2", "3"];
 
-  const Trainers = TrainersList.map((Trainer) => {
-    return (
-      <MenuItem key={Trainer} value={Trainer}>
-        {Trainer}
-      </MenuItem>
-    );
-  });
+  // const Trainers = TrainersList.map((Trainer) => {
+  //   return (
+  //     <MenuItem key={Trainer} value={Trainer}>
+  //       {Trainer}
+  //     </MenuItem>
+  //   );
+  // });
 
   const [error, setError] = useState("");
 
@@ -217,22 +217,27 @@ const AddCourse = () => {
       headers: { authorization: `Bearer ${localStorage.getItem("token")}` },
     };
     try {
-      const url = `${process.env.REACT_APP_API}/api/courses/CreateCourse`;
+      const url = `${process.env.REACT_APP_API}api/courses/CreateCourse`;
       axios
         .post(url, data, config)
         .then(async (res) => {
-          console.log("id---- :", res.data.id);
-          await uploadSingleFile(res.data.id);
+          console.log("id---- :", res.data?.id);
+          // setUploading(true);
+          await uploadSingleFile(res.data?.id);
           await UploadMultipleFiles();
           await UploadMultipleFilesRessources();
           window.scrollTo(0, 0);
           setSaved(true);
+          // setUploading(false);
           await new Promise((r) => {
             setTimeout(r, 2000);
           });
+          setMultipleFilesSelectedRessources([]);
+          setUploadProgress(0);
           setSaved(false);
           setData(initialData);
           setMultipleFilesSelected([]);
+          setPrev(null);
         })
         .catch((err) => {
           console.log(err);
@@ -243,7 +248,7 @@ const AddCourse = () => {
         error.response.status >= 400 &&
         error.response.status <= 500
       ) {
-        setError(error.response.data.message);
+        setError(error.response.data?.message);
       }
     }
   };
@@ -300,7 +305,7 @@ const AddCourse = () => {
         filesArrayRessources.push(file);
       });
     }
-  }, [multipleFilesSelectedRessources]);
+  }, [multipleFilesSelectedRessources, filesArrayRessources]);
 
   const [close, setClose] = useState(false);
 
@@ -313,11 +318,11 @@ const AddCourse = () => {
   const UploadMultipleFilesRessources = async () => {
     const formData = new FormData();
     for (let i = 0; i < multipleFilesSelectedRessources.length; i++) {
-      formData.append("files", multipleFilesSelectedRessources[i]);
+      formData?.append("files", multipleFilesSelectedRessources[i]);
     }
     await multipleFilesUploadWithName(
       formData,
-      data.Title,
+      data?.Title,
       user._id,
       "Ressources"
     );
@@ -369,14 +374,19 @@ const AddCourse = () => {
         filesArray.push(file);
       });
     }
-  }, [multipleFilesSelected]);
+  }, [multipleFilesSelected, filesArray]);
 
   const UploadMultipleFiles = async () => {
     const formData = new FormData();
     for (let i = 0; i < multipleFilesSelected.length; i++) {
-      formData.append("files", multipleFilesSelected[i]);
+      formData?.append("files", multipleFilesSelected[i]);
     }
-    await multipleFilesUploadWithName(formData, data.Title, user._id, "Videos");
+    await multipleFilesUploadWithName(
+      formData,
+      data?.Title,
+      user._id,
+      "Videos"
+    );
     // getMultipleFilesList();
   };
 
@@ -404,6 +414,7 @@ const AddCourse = () => {
   };
 
   const OnAddQCM = async () => {
+    setLoading(true);
     setQuestionsQCM([
       ...QuestionsQCM,
       {
@@ -419,6 +430,7 @@ const AddCourse = () => {
       Responses: "",
       ResAcceptable: "",
     });
+    setLoading(false);
   };
 
   const OnAddQR = () => {
@@ -504,10 +516,10 @@ const AddCourse = () => {
                 }
               >
                 {/* {
-								data.Thumbnail!==null ? 
+								data?.Thumbnail!==null ? 
 									
 									<React.Fragment>
-										<Avatar alt="icon" src={`localhost:8080/uploads/${data.Thumbnail.fileName}`} sx={{ width: 200, height: 200 }}/>
+										<Avatar alt="icon" src={`localhost:8080/uploads/${data?.Thumbnail.fileName}`} sx={{ width: 200, height: 200 }}/>
 									</React.Fragment>
 
 								: */}
@@ -625,7 +637,7 @@ const AddCourse = () => {
                     name="Title"
                     id="outlined-basic"
                     label="Title"
-                    value={data.Title}
+                    value={data?.Title}
                     onChange={(e) => handleChange(e)}
                     variant="outlined"
                   />
@@ -639,7 +651,7 @@ const AddCourse = () => {
                 <Select
                   labelId="demo-simple-select-autowidth-label"
                   id="demo-simple-select-autowidth"
-                  value={data.Category}
+                  value={data?.Category}
                   onChange={(e) => handleChange(e)}
                   name="Category"
                   label="Category"
@@ -655,7 +667,7 @@ const AddCourse = () => {
 								<Select
 									labelId="demo-simple-select-autowidth-label"
 									id="demo-simple-select-autowidth"
-									value={data.Trainer}
+									value={data?.Trainer}
 									onChange={(e)=>handleChange(e)}
 									name="Trainer"
 									label="Trainer"
@@ -673,7 +685,7 @@ const AddCourse = () => {
                 <Select
                   labelId="demo-simple-select-autowidth-label"
                   id="demo-simple-select-autowidth"
-                  value={data.Level}
+                  value={data?.Level}
                   onChange={(e) => handleChange(e)}
                   name="Level"
                   label="Level"
@@ -701,7 +713,7 @@ const AddCourse = () => {
                     name="Description"
                     id="outlined-basic"
                     label="Description"
-                    value={data.Description}
+                    value={data?.Description}
                     onChange={(e) => handleChange(e)}
                     variant="outlined"
                   />
@@ -724,7 +736,7 @@ const AddCourse = () => {
                     name="Goals"
                     id="outlined-basic"
                     label="Goals"
-                    value={data.Goals}
+                    value={data?.Goals}
                     onChange={(e) => handleChange(e)}
                     variant="outlined"
                   />
@@ -747,7 +759,7 @@ const AddCourse = () => {
                     name="WhoShouldAttend"
                     id="outlined-basic"
                     label="Who Should Attend"
-                    value={data.WhoShouldAttend}
+                    value={data?.WhoShouldAttend}
                     onChange={(e) => handleChange(e)}
                     variant="outlined"
                   />
@@ -770,7 +782,7 @@ const AddCourse = () => {
                     name="CourseContent"
                     id="outlined-basic"
                     label="Course Content"
-                    value={data.CourseContent}
+                    value={data?.CourseContent}
                     onChange={(e) => handleChange(e)}
                     variant="outlined"
                   />
@@ -793,7 +805,7 @@ const AddCourse = () => {
                     name="PracticalWork"
                     id="outlined-basic"
                     label="Practical Work"
-                    value={data.PracticalWork}
+                    value={data?.PracticalWork}
                     onChange={(e) => handleChange(e)}
                     variant="outlined"
                   />
@@ -806,7 +818,7 @@ const AddCourse = () => {
                 <Select
                   labelId="demo-simple-select-autowidth-label"
                   id="demo-simple-select-autowidth"
-                  value={data.certificate}
+                  value={data?.certificate}
                   onChange={(e) => handleChange(e)}
                   name="certificate"
                   label="certificate"
@@ -1100,7 +1112,7 @@ const AddCourse = () => {
                     name="Reference"
                     id="outlined-basic"
                     label="Reference"
-                    value={data.Reference}
+                    value={data?.Reference}
                     onChange={(e) => handleChange(e)}
                     variant="outlined"
                   />
@@ -1122,7 +1134,7 @@ const AddCourse = () => {
                     name="Price"
                     id="outlined-basic"
                     label="Price"
-                    value={data.Price}
+                    value={data?.Price}
                     onChange={(e) => handleChange(e)}
                     variant="outlined"
                   />
@@ -1173,7 +1185,7 @@ export default AddCourse;
 // 										name="Title"
 // 										id="outlined-basic"
 // 										label="Title"
-// 										value={data.Title}
+// 										value={data?.Title}
 // 										onChange={(e)=>handleChange(e)}
 // 										variant="outlined"
 // 									/>
@@ -1184,7 +1196,7 @@ export default AddCourse;
 // 								<Select
 // 								labelId="demo-simple-select-autowidth-label"
 // 								id="demo-simple-select-autowidth"
-// 								value={data.Category}
+// 								value={data?.Category}
 // 								onChange={(e)=>handleChange(e)}
 // 								name="Category"
 // 								label="Category"
@@ -1200,7 +1212,7 @@ export default AddCourse;
 // 								<Select
 // 								labelId="demo-simple-select-autowidth-label"
 // 								id="demo-simple-select-autowidth"
-// 								value={data.Trainer}
+// 								value={data?.Trainer}
 // 								onChange={(e)=>handleChange(e)}
 // 								name="Trainer"
 // 								label="Trainer"
@@ -1228,7 +1240,7 @@ export default AddCourse;
 // 									name="Description"
 // 									id="outlined-basic"
 // 									label="Description"
-// 									value={data.Description}
+// 									value={data?.Description}
 // 									onChange={(e)=>handleChange(e)}
 // 									variant="outlined"
 // 								/>
@@ -1248,7 +1260,7 @@ export default AddCourse;
 // 									name="Goals"
 // 									id="outlined-basic"
 // 									label="Goals"
-// 									value={data.Goals}
+// 									value={data?.Goals}
 // 									onChange={(e)=>handleChange(e)}
 // 									variant="outlined"
 // 								/>
@@ -1268,7 +1280,7 @@ export default AddCourse;
 // 									name="WhoShouldAttend"
 // 									id="outlined-basic"
 // 									label="Who Should Attend"
-// 									value={data.WhoShouldAttend}
+// 									value={data?.WhoShouldAttend}
 // 									onChange={(e)=>handleChange(e)}
 // 									variant="outlined"
 // 								/>
@@ -1288,7 +1300,7 @@ export default AddCourse;
 // 									name="CourseContent"
 // 									id="outlined-basic"
 // 									label="Course Content"
-// 									value={data.CourseContent}
+// 									value={data?.CourseContent}
 // 									onChange={(e)=>handleChange(e)}
 // 									variant="outlined"
 // 								/>
@@ -1308,7 +1320,7 @@ export default AddCourse;
 // 									name="PracticalWork"
 // 									id="outlined-basic"
 // 									label="Practical Work"
-// 									value={data.PracticalWork}
+// 									value={data?.PracticalWork}
 // 									onChange={(e)=>handleChange(e)}
 // 									variant="outlined"
 // 								/>

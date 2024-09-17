@@ -23,7 +23,7 @@ const ConfirmedTraining = () => {
   const token = localStorage.getItem("token");
   const user = JSON.parse(localStorage.getItem("user"));
 
-  var [urlRoom, setUrlRoom] = useState("");
+  var [room, setRoom] = useState("");
 
   const handleRoom = async () => {
     const config = {
@@ -32,13 +32,13 @@ const ConfirmedTraining = () => {
     };
     await axios
       .post(
-        `${process.env.REACT_APP_API}/api/trainings/getRoom`,
+        `${process.env.REACT_APP_API}api/trainings/getRoom`,
         { courseId: id },
         config
       )
       .then((res) => {
         console.log(res);
-        setUrlRoom(res.data.data);
+        setRoom(res.data.data);
       });
   };
 
@@ -73,9 +73,12 @@ const ConfirmedTraining = () => {
     testState: "",
   });
 
-  useEffect(async () => {
-    await handleCourse();
-    await handleRoom();
+  useEffect(() => {
+    const fetchData = async () => {
+      await handleCourse();
+      await handleRoom();
+    };
+    fetchData();
   }, []);
 
   const HandleTest = () => {
@@ -84,7 +87,7 @@ const ConfirmedTraining = () => {
     };
     axios
       .post(
-        `${process.env.REACT_APP_API}/api/Trainer/AllowTests`,
+        `${process.env.REACT_APP_API}api/Trainer/AllowTests`,
         { courseId: Data._id, state: "allowed" },
         config
       )
@@ -101,7 +104,7 @@ const ConfirmedTraining = () => {
       params: { id: id },
     };
     axios
-      .get(`${process.env.REACT_APP_API}/api/trainings/specific`, config)
+      .get(`${process.env.REACT_APP_API}api/trainings/specific`, config)
       .then((res) => {
         setData(res.data.data);
         setEvaluations(res.data.data.evaluate);
@@ -109,13 +112,13 @@ const ConfirmedTraining = () => {
       });
   };
 
-  const GetUsers = (ids) => {
+  const GetUsers = async (ids) => {
     const config = {
       headers: { authorization: `Bearer ${token}` },
     };
     axios
       .post(
-        `${process.env.REACT_APP_API}/api/Candidat/returnCandidatForRatingInfo`,
+        `${process.env.REACT_APP_API}api/Candidat/returnCandidatForRatingInfo`,
         { ids: ids },
         config
       )
@@ -130,29 +133,35 @@ const ConfirmedTraining = () => {
     window.location = "/login";
   };
 
-  useEffect(async () => {
-    const ids = Evaluations.map((e) => {
-      return e.id;
-    });
-    GetUsers(ids);
+  useEffect(() => {
+    const fetchData = async () => {
+      const ids = Evaluations.map((e) => {
+        return e.id;
+      });
+      await GetUsers(ids);
+    };
+    fetchData();
   }, [Evaluations]);
 
-  useEffect(async () => {
-    var list = [];
-    await Evaluations.map((e) => {
-      usersLimited.map((u) => {
-        if (u._id === e.id) {
-          list.push({
-            id: e.id,
-            message: e.message,
-            rate: e.rate,
-            name: u.userName,
-            image: u.image,
-          });
-        }
+  useEffect(() => {
+    const fetchData = async () => {
+      var list = [];
+      Evaluations.map((e) => {
+        usersLimited.map((u) => {
+          if (u._id === e.id) {
+            list.push({
+              id: e.id,
+              message: e.message,
+              rate: e.rate,
+              name: u.userName,
+              image: u.image,
+            });
+          }
+        });
       });
-    });
-    setEvaluationsCompleated(list);
+      setEvaluationsCompleated(list);
+    };
+    fetchData();
   }, [usersLimited]);
 
   const TextRating = (value, avis) => {
@@ -221,13 +230,13 @@ const ConfirmedTraining = () => {
               Data.Thumbnail == {} ||
               !Data.Thumbnail ? (
                 <img
-                  src={`${process.env.REACT_APP_API}/uploads/courseImg.png`}
+                  src={`${process.env.REACT_APP_API}uploads/courseImg.png`}
                   alt=""
                   className={styles.imgCourse}
                 />
               ) : (
                 <img
-                  src={`${process.env.REACT_APP_API}/${Data.Thumbnail.filePath}`}
+                  src={`${process.env.REACT_APP_API}${Data.Thumbnail.filePath}`}
                   alt=""
                   className={styles.imgCourse}
                 />
@@ -244,7 +253,7 @@ const ConfirmedTraining = () => {
                   sx={{ width: "200px" }}
                   onClick={() =>
                     window.open(
-                      `${process.env.REACT_APP_DOMAIN}/room/${urlRoom}`,
+                      `${process.env.REACT_APP_DOMAIN}/room/${room.urlId}`,
                       "_blank"
                     )
                   }
@@ -253,7 +262,7 @@ const ConfirmedTraining = () => {
                 >
                   Start Training &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 </Button> */}
-                <Link to={{ pathname: `/room/${urlRoom}` }}>
+                <Link to={{ pathname: `/room/${room.urlId}` }}>
                   <Button
                     sx={{ width: "200px" }}
                     variant="outlined"
@@ -377,13 +386,13 @@ const ConfirmedTraining = () => {
                             {e.image ? (
                               <Avatar
                                 alt="Remy Sharp"
-                                src={`${process.env.REACT_APP_API}/${e.image.filePath}`}
+                                src={`${process.env.REACT_APP_API}${e.image.filePath}`}
                                 sx={{ width: 24, height: 24 }}
                               />
                             ) : (
                               <Avatar
                                 alt="Remy Sharp"
-                                src={`${process.env.REACT_APP_API}/uploads/2022-03-25T09-59-55.836Z-avatar.png`}
+                                src={`${process.env.REACT_APP_API}uploads/2022-03-25T09-59-55.836Z-avatar.png`}
                                 sx={{ width: 24, height: 24 }}
                               />
                             )}

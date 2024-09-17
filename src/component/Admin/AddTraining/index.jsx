@@ -23,7 +23,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import Stack from "@mui/material/Stack";
 import TextField from "@mui/material/TextField";
-import CircularProgressWithLabel from "../../../Custom/CircularProgressWithLabel";
+// import CircularProgressWithLabel from "../../../Custom/CircularProgressWithLabel";
 import { styled } from "@mui/material/styles";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
@@ -54,7 +54,7 @@ const AddTraining = () => {
   const user = JSON.parse(localStorage.getItem("user"));
   const [DatesPicked, setDatesPicked] = useState([]);
   const [value, setValue] = useState([null, null]);
-  const [count, setCount] = useState(0);
+  // const [count, setCount] = useState(0);
   const [QuestionsQCM, setQuestionsQCM] = useState([]);
   const [QuestionsQR, setQuestionsQR] = useState([]);
   const [QCMQuestionValues, setQCMQuestionValues] = useState({
@@ -71,19 +71,13 @@ const AddTraining = () => {
   const [ShowAddQCMElement, setShowAddQCMElement] = useState(false);
   const [ShowAddQRElement, setShowAddQRElement] = useState(false);
 
-  useEffect(() => {
-    setData({ ...data, QuestionsQCM: QuestionsQCM, QuestionsQR: QuestionsQR });
-  }, [QuestionsQCM, QuestionsQR]);
-
+ 
   const SaveDate = () => {
     setDatesPicked([value]);
     // setDatesPicked([...DatesPicked , value])
     setValue([null, null]);
   };
 
-  useEffect(() => {
-    console.log(DatesPicked);
-  }, [DatesPicked]);
   const Dates = DatesPicked.map((D, i) => {
     var months = [
       "Jan",
@@ -103,10 +97,13 @@ const AddTraining = () => {
     // Parse ISO 8601 formatted strings into Date objects
     const startDate = new Date(D[0]);
     const endDate = new Date(D[1]);
-   console.log(startDate.getUTCMonth() );
     return (
       <p key={i}>
-        {`from ${months[startDate.getUTCMonth()]}, ${startDate.getUTCDate()} ${startDate.getUTCFullYear()} to ${months[endDate.getUTCMonth()]}, ${endDate.getUTCDate()} ${endDate.getUTCFullYear()}`}
+        {`from ${
+          months[startDate.getUTCMonth()]
+        }, ${startDate.getUTCDate()} ${startDate.getUTCFullYear()} to ${
+          months[endDate.getUTCMonth()]
+        }, ${endDate.getUTCDate()} ${endDate.getUTCFullYear()}`}
         <AiOutlineCloseCircle
           size={20}
           onClick={() => {
@@ -118,7 +115,6 @@ const AddTraining = () => {
       </p>
     );
   });
-
 
   const initialData = {
     Title: "",
@@ -144,6 +140,16 @@ const AddTraining = () => {
   };
 
   const [mobile, setMobile] = useState(false);
+  useEffect(() => {
+    const handleResize = () => {
+      setMobile(window.innerWidth < 768); // Set to true if width is less than 768px
+    };
+
+    window.addEventListener("resize", handleResize);
+    handleResize(); // Call once to set initial state
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   const [data, setData] = useState({
     Title: "",
     Trainer: "",
@@ -167,10 +173,14 @@ const AddTraining = () => {
     testState: "allowed", //closed
   });
 
+  useEffect(() => {
+    setData({ ...data, QuestionsQCM: QuestionsQCM, QuestionsQR: QuestionsQR });
+  }, [QuestionsQCM, QuestionsQR]);
+
   const [loading, setLoading] = React.useState(false);
-  function handleClick() {
-    setLoading(true);
-  }
+  // function handleClick() {
+  //   setLoading(true);
+  // }
 
   const LevelsList = [
     "Beginner",
@@ -202,7 +212,6 @@ const AddTraining = () => {
   const [prev, setPrev] = useState(null);
 
   const SingleFileChange = async (e) => {
-    console.log(e.target.files[0]);
     setSingleFile(e.target.files[0]);
     const reader = new FileReader();
     reader.onload = () => {
@@ -219,19 +228,20 @@ const AddTraining = () => {
 
   const uploadSingleFile = async (id) => {
     const formData = new FormData();
-    formData.append("file", singleFile);
+    formData?.append("file", singleFile);
     await singleFileUploadWithName(
       formData,
-      data.Title,
+      data?.Title,
       user._id,
       id,
       setUploadProgress
     );
   };
-
+  useEffect(() => {
+    setData({ ...data, QuestionsQCM: QuestionsQCM, QuestionsQR: QuestionsQR });
+  }, [QuestionsQCM, QuestionsQR]);
   const [categoriesFromBd, setCategoriesFromBd] = useState([]);
   const [trainersFromBd, setTrainersFromBd] = useState([]);
-
   const HandleCategoriesAndTrainers = async () => {
     const config = {
       headers: {
@@ -239,14 +249,14 @@ const AddTraining = () => {
       },
     };
     await axios
-      .get(`${process.env.REACT_APP_API}/api/Category/getCategories`, config)
+      .get(`${process.env.REACT_APP_API}api/Category/getCategories`, config)
       .then(async (res) => {
-        setCategoriesFromBd(res.data.data);
+        setCategoriesFromBd(res.data?.data);
       });
     await axios
-      .post(`${process.env.REACT_APP_API}/api/Trainer/showTrainers`, {}, config)
+      .post(`${process.env.REACT_APP_API}api/Trainer/showTrainers`, {}, config)
       .then(async (res) => {
-        setTrainersFromBd(res.data.trainers);
+        setTrainersFromBd(res.data?.trainers);
       });
   };
 
@@ -256,6 +266,17 @@ const AddTraining = () => {
 
   useEffect(() => {
     HandleCategoriesAndTrainers();
+    if (selectedFiles.length > 0) {
+      selectedFiles.forEach((element) => {
+        const file = {
+          fileName: element.name,
+          // filePath: element.filePath,
+          // fileType: element.mimetype,
+          fileSize: fileSizeFormatter(element.size, 2),
+        };
+        filesArray.push(file);
+      });
+    }
   }, []);
 
   const categories = categoriesList.map((category) => {
@@ -266,26 +287,25 @@ const AddTraining = () => {
     );
   });
 
-  const Trainers = categoriesFromBd.map((Trainer) => {
+  const Trainers = trainersFromBd.map((Trainer) => {
     return (
       <MenuItem key={Trainer._id} value={Trainer._id}>
-        {Trainer.name}
+        {`${
+          Trainer.surname.charAt(0).toUpperCase() + Trainer.surname.slice(1)
+        } ${Trainer.name} `}
       </MenuItem>
     );
   });
 
   const token = localStorage.getItem("token");
   const [error, setError] = useState("");
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
 
   const [saved, setSaved] = useState(false);
-  useEffect(() => {
-    setData({ ...data, Date: DatesPicked });
-  }, [DatesPicked]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -295,11 +315,11 @@ const AddTraining = () => {
       },
     };
     try {
-      const url = `${process.env.REACT_APP_API}/api/trainings/CreateTraining`;
+      const url = `${process.env.REACT_APP_API}api/trainings/CreateTraining`;
       await axios
         .post(url, data, config)
         .then(async (res) => {
-          await uploadSingleFile(res.data.id);
+          await uploadSingleFile(res.data?.id);
           if (selectedFiles.length > 0) {
             await UploadRessources();
           }
@@ -314,6 +334,7 @@ const AddTraining = () => {
           setSaved(false);
           setData(initialData);
           setUploadProgress(0);
+          setPrev(null);
         })
         .catch((err) => {});
     } catch (error) {
@@ -324,7 +345,7 @@ const AddTraining = () => {
         error.response.status >= 400 &&
         error.response.status <= 500
       ) {
-        setError(error.response.data.message);
+        setError(error.response.data?.message);
       }
     }
   };
@@ -414,27 +435,17 @@ const AddTraining = () => {
   };
 
   useEffect(() => {
-    if (selectedFiles.length > 0) {
-      selectedFiles.forEach((element) => {
-        const file = {
-          fileName: element.name,
-          // filePath: element.filePath,
-          // fileType: element.mimetype,
-          fileSize: fileSizeFormatter(element.size, 2),
-        };
-        filesArray.push(file);
-      });
-    }
-  }, [selectedFiles]);
+    setData({ ...data, Date: DatesPicked });
+  }, [DatesPicked]);
 
   const UploadRessources = async () => {
     const formData = new FormData();
     for (let i = 0; i < selectedFiles.length; i++) {
-      formData.append("files", selectedFiles[i]);
+      formData?.append("files", selectedFiles[i]);
     }
     await multipleFilesUploadWithName(
       formData,
-      data.Title,
+      data?.Title,
       user._id,
       "Ressources"
     );
@@ -498,10 +509,10 @@ const AddTraining = () => {
                 }
               >
                 {/* {
-								data.Thumbnail!==null ? 
+								data?.Thumbnail!==null ? 
 									
 									<React.Fragment>
-										<Avatar alt="icon" src={`localhost:8080/uploads/${data.Thumbnail.fileName}`} sx={{ width: 200, height: 200 }}/>
+										<Avatar alt="icon" src={`localhost:8080/uploads/${data?.Thumbnail.fileName}`} sx={{ width: 200, height: 200 }}/>
 									</React.Fragment>
 
 								: */}
@@ -571,7 +582,7 @@ const AddTraining = () => {
                     name="Title"
                     id="outlined-basic"
                     label="Title"
-                    value={data.Title}
+                    value={data?.Title}
                     onChange={(e) => handleChange(e)}
                     variant="outlined"
                   />
@@ -585,7 +596,7 @@ const AddTraining = () => {
                 <Select
                   labelId="demo-simple-select-autowidth-label"
                   id="demo-simple-select-autowidth"
-                  value={data.Category}
+                  value={data?.Category}
                   onChange={(e) => handleChange(e)}
                   name="Category"
                   label="Category"
@@ -603,7 +614,7 @@ const AddTraining = () => {
                 <Select
                   labelId="demo-simple-select-autowidth-label"
                   id="demo-simple-select-autowidth"
-                  value={data.Trainer}
+                  value={data?.Trainer}
                   onChange={(e) => handleChange(e)}
                   name="Trainer"
                   label="Trainer"
@@ -621,7 +632,7 @@ const AddTraining = () => {
                 <Select
                   labelId="demo-simple-select-autowidth-label"
                   id="demo-simple-select-autowidth"
-                  value={data.Level}
+                  value={data?.Level}
                   onChange={(e) => handleChange(e)}
                   name="Level"
                   label="Level"
@@ -649,7 +660,7 @@ const AddTraining = () => {
                     name="Description"
                     id="outlined-basic"
                     label="Description"
-                    value={data.Description}
+                    value={data?.Description}
                     onChange={(e) => handleChange(e)}
                     variant="outlined"
                   />
@@ -672,7 +683,7 @@ const AddTraining = () => {
                     name="Goals"
                     id="outlined-basic"
                     label="Goals"
-                    value={data.Goals}
+                    value={data?.Goals}
                     onChange={(e) => handleChange(e)}
                     variant="outlined"
                   />
@@ -695,7 +706,7 @@ const AddTraining = () => {
                     name="WhoShouldAttend"
                     id="outlined-basic"
                     label="Who Should Attend"
-                    value={data.WhoShouldAttend}
+                    value={data?.WhoShouldAttend}
                     onChange={(e) => handleChange(e)}
                     variant="outlined"
                   />
@@ -718,7 +729,7 @@ const AddTraining = () => {
                     name="CourseContent"
                     id="outlined-basic"
                     label="Course Content"
-                    value={data.CourseContent}
+                    value={data?.CourseContent}
                     onChange={(e) => handleChange(e)}
                     variant="outlined"
                   />
@@ -741,7 +752,7 @@ const AddTraining = () => {
                     name="PracticalWork"
                     id="outlined-basic"
                     label="Practical Work"
-                    value={data.PracticalWork}
+                    value={data?.PracticalWork}
                     onChange={(e) => handleChange(e)}
                     variant="outlined"
                   />
@@ -754,7 +765,7 @@ const AddTraining = () => {
                 <Select
                   labelId="demo-simple-select-autowidth-label"
                   id="demo-simple-select-autowidth"
-                  value={data.certificate}
+                  value={data?.certificate}
                   onChange={(e) => handleChange(e)}
                   name="certificate"
                   label="certificate"
@@ -780,13 +791,6 @@ const AddTraining = () => {
                             {index + 1}- {e.Question} :{" "}
                           </p>
                           <p>[{e.Responses}]</p>
-
-                          {/* .split(",").map((element,index) => {
-																				if(e.Responses.split(",")[index+1]!=='undefined'){
-																					return(<p>{element}-</p>)
-																				}
-																				return(<p>{element}</p>)
-																			}) */}
                         </div>
                       );
                     })}
@@ -1048,7 +1052,7 @@ const AddTraining = () => {
                     name="Reference"
                     id="outlined-basic"
                     label="Reference"
-                    value={data.Reference}
+                    value={data?.Reference}
                     onChange={(e) => handleChange(e)}
                     variant="outlined"
                   />
@@ -1070,7 +1074,7 @@ const AddTraining = () => {
                     name="Price"
                     id="outlined-basic"
                     label="Price"
-                    value={data.Price}
+                    value={data?.Price}
                     onChange={(e) => handleChange(e)}
                     variant="outlined"
                   />
@@ -1129,7 +1133,7 @@ const AddTraining = () => {
                       <DesktopTimePicker
                         name="time"
                         label="Select Time"
-                        value={data.TimePerDay}
+                        value={data?.TimePerDay}
                         onChange={(newTime) => {
                           setData({ ...data, TimePerDay: newTime });
                         }}
@@ -1164,180 +1168,3 @@ const AddTraining = () => {
 };
 
 export default AddTraining;
-
-// <div className={styles.FirstFormSection}>
-// 						<div  className={styles.ImgSelector}>
-
-// 						</div>
-// 						<div  className={styles.PrimaryInfos}>
-// 							<FormControl  sx={{ m: 1, minWidth: "80%" }}>
-// 								<Box
-// 									component="form"
-// 									sx={{
-// 										'& > :not(style)': {  width: '100%' },
-// 									}}
-// 									Validate
-// 									autoComplete="off"
-// 								>
-// 									<TextField
-// 										name="Title"
-// 										id="outlined-basic"
-// 										label="Title"
-// 										value={data.Title}
-// 										onChange={(e)=>handleChange(e)}
-// 										variant="outlined"
-// 									/>
-// 								</Box>
-// 							</FormControl>
-// 							<FormControl sx={{ m: 1, minWidth: "80%" }}>
-// 								<InputLabel id="demo-simple-select-autowidth-label">Category</InputLabel>
-// 								<Select
-// 								labelId="demo-simple-select-autowidth-label"
-// 								id="demo-simple-select-autowidth"
-// 								value={data.Category}
-// 								onChange={(e)=>handleChange(e)}
-// 								name="Category"
-// 								label="Category"
-// 								>
-// 								<MenuItem value="">
-// 									<em>None</em>
-// 								</MenuItem>
-// 									{categories}
-// 								</Select>
-// 							</FormControl>
-// 							<FormControl sx={{ m: 1, minWidth: "80%" }}>
-// 								<InputLabel id="demo-simple-select-autowidth-label">Trainer</InputLabel>
-// 								<Select
-// 								labelId="demo-simple-select-autowidth-label"
-// 								id="demo-simple-select-autowidth"
-// 								value={data.Trainer}
-// 								onChange={(e)=>handleChange(e)}
-// 								name="Trainer"
-// 								label="Trainer"
-// 								>
-// 								<MenuItem value="">
-// 									<em>None</em>
-// 								</MenuItem>
-// 									{Trainers}
-// 								</Select>
-// 							</FormControl>
-// 						</div>
-// 					</div>
-// 					<div className={styles.SecondFormSection}>
-// 						<FormControl className={styles.FormControl} sx={{ m: 1, minWidth: "89%" }}>
-// 							<Box
-// 								component="form"
-// 								sx={{
-// 									'& > :not(style)': {  width: '100%' },
-// 								}}
-// 								noValidate
-// 								autoComplete="off"
-// 							>
-// 								<TextField
-// 									multiline
-// 									name="Description"
-// 									id="outlined-basic"
-// 									label="Description"
-// 									value={data.Description}
-// 									onChange={(e)=>handleChange(e)}
-// 									variant="outlined"
-// 								/>
-// 							</Box>
-// 						</FormControl>
-// 						<FormControl className={styles.FormControl} sx={{ m: 1, minWidth: "89%" }}>
-// 							<Box
-// 								component="form"
-// 								sx={{
-// 									'& > :not(style)': {  width: '100%' },
-// 								}}
-// 								noValidate
-// 								autoComplete="off"
-// 							>
-// 								<TextField
-// 									multiline
-// 									name="Goals"
-// 									id="outlined-basic"
-// 									label="Goals"
-// 									value={data.Goals}
-// 									onChange={(e)=>handleChange(e)}
-// 									variant="outlined"
-// 								/>
-// 							</Box>
-// 						</FormControl>
-// 						<FormControl className={styles.FormControl} sx={{ m: 1, minWidth: "89%" }}>
-// 							<Box
-// 								component="form"
-// 								sx={{
-// 									'& > :not(style)': {  width: '100%' },
-// 								}}
-// 								noValidate
-// 								autoComplete="off"
-// 							>
-// 								<TextField
-// 									multiline
-// 									name="WhoShouldAttend"
-// 									id="outlined-basic"
-// 									label="Who Should Attend"
-// 									value={data.WhoShouldAttend}
-// 									onChange={(e)=>handleChange(e)}
-// 									variant="outlined"
-// 								/>
-// 							</Box>
-// 						</FormControl>
-// 						<FormControl className={styles.FormControl} sx={{ m: 1, minWidth: "89%" }}>
-// 							<Box
-// 								component="form"
-// 								sx={{
-// 									'& > :not(style)': {  width: '100%' },
-// 								}}
-// 								noValidate
-// 								autoComplete="off"
-// 							>
-// 								<TextField
-// 									multiline
-// 									name="CourseContent"
-// 									id="outlined-basic"
-// 									label="Course Content"
-// 									value={data.CourseContent}
-// 									onChange={(e)=>handleChange(e)}
-// 									variant="outlined"
-// 								/>
-// 							</Box>
-// 						</FormControl>
-// 						<FormControl className={styles.FormControl} sx={{ m: 1, minWidth: "89%" }}>
-// 							<Box
-// 								component="form"
-// 								sx={{
-// 									'& > :not(style)': {  width: '100%' },
-// 								}}
-// 								noValidate
-// 								autoComplete="off"
-// 							>
-// 								<TextField
-// 									multiline
-// 									name="PracticalWork"
-// 									id="outlined-basic"
-// 									label="Practical Work"
-// 									value={data.PracticalWork}
-// 									onChange={(e)=>handleChange(e)}
-// 									variant="outlined"
-// 								/>
-// 							</Box>
-// 						</FormControl>
-// 					</div>
-// 					<Box sx={{ '& > button': { m: 1 } }}>
-
-// 						<LoadingButton
-// 							color="success"
-// 							onClick={handleSubmit}
-// 							loading={loading}
-// 							loadingPosition="start"
-// 							startIcon={<SaveIcon />}
-// 							variant="contained"
-// 						>
-// 							Save
-// 						</LoadingButton>
-// 					</Box>
-// 					{/* <button className={styles.FirstFormSection}>
-
-// 					</button> */}

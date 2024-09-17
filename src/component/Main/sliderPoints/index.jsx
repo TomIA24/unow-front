@@ -65,15 +65,18 @@ function CategorySlider() {
 
   const HandleCategories = async () => {
     await axios
-      .get(`${process.env.REACT_APP_API}/api/Category/getCategories`)
+      .get(`${process.env.REACT_APP_API}api/Category/getCategories`)
       .then(async (res) => {
         console.log(res.data.data);
         setCategoriesFromBd(res.data.data);
         setMaxSteps(divideAndAddOneIfNeeded(res.data.data.length, 6));
       });
   };
-  useEffect(async () => {
+  useEffect( () => {
+    const fetchData = async () => {
     await HandleCategories();
+  };
+  fetchData();
   }, []);
   const categories = splitListIntoSublists(
     categoriesFromBd.map((c) => {

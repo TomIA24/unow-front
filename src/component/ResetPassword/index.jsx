@@ -40,100 +40,85 @@ const ResetPassword = () =>{
 	const [PassVerificationError, setPassVerificationError] = useState()
 
 	const handleSubmit = async (e) => {
-		e.preventDefault();
-		try {
-			const config = {
-				headers: {
-					    
-				}, 
-				  
-			}
-			const url = `${process.env.REACT_APP_API}/api/auth/VerifyEmailForPassword`;
-			await axios.post(url,{email:email} )
-			.then(async res => {
-				if(res.data.status){
-					setResetEmailStatus(true)
-					setVerificationCode()
-					setVerificationCode("")
-				}else{
-					setEmailError(res.data.message)
-				}
+    e.preventDefault();
+    try {
+      const config = {
+        headers: {},
+      };
+      const url = `${process.env.REACT_APP_API}api/auth/VerifyEmailForPassword`;
+      await axios.post(url, { email: email }).then(async (res) => {
+        if (res.data.status) {
+          setResetEmailStatus(true);
+          setVerificationCode();
+          setVerificationCode("");
+        } else {
+          setEmailError(res.data.message);
+        }
+      });
+    } catch (error) {
+      if (
+        error.response &&
+        error.response.status >= 400 &&
+        error.response.status <= 500
+      ) {
+        setEmailError(error.response.data.message);
+      }
+    }
+  };
 
-			})
-		} catch (error) {
-			if (
-				error.response &&
-				error.response.status >= 400 &&
-				error.response.status <= 500
-			) {
-				setEmailError(error.response.data.message);
-			}
-		}
-	};
+  const handleVerifCode = async (e) => {
+    e.preventDefault();
+    try {
+      const config = {
+        headers: {},
+      };
+      const url = `${process.env.REACT_APP_API}api/auth/VerifyCodeForPassword`;
+      await axios.post(url, { code: verificationCode }).then(async (res) => {
+        if (res.data.status) {
+          setPasswordForm(true);
+        }
+      });
+    } catch (error) {
+      if (
+        error.response &&
+        error.response.status >= 400 &&
+        error.response.status <= 500
+      ) {
+        setEmailError(error.response.data.message);
+      }
+    }
+  };
 
-	const handleVerifCode = async (e) => {
-		e.preventDefault();
-		try {
-			const config = {
-				headers: {
-					    
-				}, 
-				  
-			}
-			const url = `${process.env.REACT_APP_API}/api/auth/VerifyCodeForPassword`;
-			await axios.post(url,{code:verificationCode} )
-			.then(async res => {
-
-					if(res.data.status){
-						setPasswordForm(true)
-					}
-
-			})
-		} catch (error) {
-			if (
-				error.response &&
-				error.response.status >= 400 &&
-				error.response.status <= 500
-			) {
-				setEmailError(error.response.data.message);
-			}
-		}
-	};
-
-	const handleResetPassword = async (e) => {
-		e.preventDefault();
-		if(ConfirmPassword === newPassword){
-
-			try {
-				const config = {
-					headers: {
-						    
-					}, 
-					  
-				}
-				const url = `${process.env.REACT_APP_API}/api/auth/ResetPassword`;
-				await axios.post(url,{new: newPassword, email: email} )
-				.then(async res => {
-
-						if(res.data.status){
-							window.location.replace(`${process.env.REACT_APP_DOMAIN}/Login`)
-						}
-
-				})
-			} catch (error) {
-				if (
-					error.response &&
-					error.response.status >= 400 &&
-					error.response.status <= 500
-				) {
-					setEmailError(error.response.data.message);
-				}
-			}
-
-		}else{
-			setPassVerificationError("password verification error ! retype your password")
-		}
-	};
+  const handleResetPassword = async (e) => {
+    e.preventDefault();
+    if (ConfirmPassword === newPassword) {
+      try {
+        const config = {
+          headers: {},
+        };
+        const url = `${process.env.REACT_APP_API}api/auth/ResetPassword`;
+        await axios
+          .post(url, { new: newPassword, email: email })
+          .then(async (res) => {
+            if (res.data.status) {
+              window.location.replace(`${process.env.REACT_APP_DOMAIN}/Login`);
+            }
+          });
+      } catch (error) {
+        if (
+          error.response &&
+          error.response.status >= 400 &&
+          error.response.status <= 500
+        ) {
+          setEmailError(error.response.data.message);
+        }
+      }
+    } else {
+      setPassVerificationError(
+        "password verification error ! retype your password"
+      );
+    }
+  };
 
 
     return (

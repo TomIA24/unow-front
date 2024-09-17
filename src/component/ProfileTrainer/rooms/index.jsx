@@ -26,7 +26,7 @@ const Rooms = ({ user }) => {
   //
   // };
   //     try {
-  //             await axios.get("${process.env.REACT_APP_API}/api/Trainer/GetNotifTrainer" ).then((res)=>{
+  //             await axios.get("${process.env.REACT_APP_API}api/Trainer/GetNotifTrainer" ).then((res)=>{
   //                 (res.data.data)
   //                 var list = res.data.data.map(notif=>{
   //                     if(notif.StatusMandate==="confirmed")
@@ -56,10 +56,11 @@ const Rooms = ({ user }) => {
     window.open(`${process.env.REACT_APP_DOMAIN}/room/${url}`, "_blank");
   };
 
-  useEffect(async () => {
+  useEffect( () => {
+    const fetchData = async () => {
     await getRooms();
-    //getNotifTrainer()
-    //("hello from useEffect")
+  };
+  fetchData();
   }, []);
 
   const getRooms = async () => {
@@ -69,7 +70,7 @@ const Rooms = ({ user }) => {
     };
     try {
       await axios
-        .post(`${process.env.REACT_APP_API}/api/Room/getRooms`, {}, config)
+        .post(`${process.env.REACT_APP_API}api/Room/getRooms`, {}, config)
         .then((res) => {
           setData(res.data.data)(res.data.data);
         });

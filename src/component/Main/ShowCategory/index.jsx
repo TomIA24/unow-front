@@ -12,24 +12,31 @@ const ShowCategory = ({ openCategory, setOpenCategory, categoryData }) => {
   const [loadingCourses, setLoadingCourses] = useState(true);
   const [loadingTrainings, setLoadingTrainings] = useState(true);
 
-  useEffect(async () => {
+  useEffect(() => {
+    const fetchData = async () => {
+
     await handleData();
+    
+  };
+  fetchData();
   }, [openCategory]);
 
   const handleData = async () => {
     // e.preventDefault();
-    const urlTrainings = `${process.env.REACT_APP_API}/api/trainings/specificGroupeFromCategory`;
+    const urlTrainings = `${process.env.REACT_APP_API}api/Category/specificGroupeFromCategory`;
     axios
-      .post(urlTrainings, categoryData.trainings)
+      .post(urlTrainings, { id: categoryData._id, type: "trainings" })
       .then(async (res) => {
         setTrainings(res.data.data);
         setLoadingTrainings(false);
       });
-    const urlCourses = `${process.env.REACT_APP_API}/api/courses/specificGroupeFromCategory`;
-    axios.post(urlCourses, categoryData.courses).then(async (res) => {
-      setCourses(res.data.data);
-      setLoadingCourses(false);
-    });
+    const urlCourses = `${process.env.REACT_APP_API}api/Category/specificGroupeFromCategory`;
+    axios
+      .post(urlCourses, { id: categoryData._id, type: "courses" })
+      .then(async (res) => {
+        setCourses(res.data.data);
+        setLoadingCourses(false);
+      });
   };
 
   // const handleSend = async (e) => {
@@ -37,14 +44,14 @@ const ShowCategory = ({ openCategory, setOpenCategory, categoryData }) => {
   //   console.log(Data);
   //   const config = {
   //     headers: {
-  //        
-  //        
-  //        
-  //          
+  //
+  //
+  //
+  //
   //     },
   //     ,
   //   };
-  //   const url = `${process.env.REACT_APP_API}/api/contact/SendRequestTrainer`;
+  //   const url = `${process.env.REACT_APP_API}api/contact/SendRequestTrainer`;
   //   axios.post(url, Data ).then(async (res) => {
   //     setData({
   //       name: "",

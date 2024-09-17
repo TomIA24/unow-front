@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styles from "./styles.module.css";
 import Icon1 from "../../assets/icon1.png";
 import Icon2 from "../../assets/icon2.png";
@@ -14,6 +14,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Prev from "../../assets/prev.png";
 import Next from "../../assets/next.png";
+import { useNavigate } from "react-router-dom";
 
 const Categories = () => {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
@@ -21,7 +22,7 @@ const Categories = () => {
   const [showModal, setShowModal] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [categories, setCategories] = useState([]);
-
+  const navigate = useNavigate();
   useEffect(() => {
     const handleWidthChange = () => {
       setScreenWidth(window.innerWidth);
@@ -40,8 +41,18 @@ const Categories = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
+        const config = {
+          headers: {
+            "X-Requested-With": "XMLHttpRequest",
+            "Access-Control-Allow-Origin": `${process.env.REACT_APP_API}`,
+            "Access-control-request-methods":
+              "POST, GET, DELETE, PUT, PATCH, COPY, HEAD, OPTIONS",
+          },
+          withCredentials: true,
+        };
         const response = await fetch(
-          "http://localhost:5050/api/Category/getCategories"
+          `${process.env.REACT_APP_API}api/Category/getCategories`,
+          config
         );
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
@@ -58,7 +69,7 @@ const Categories = () => {
 
   const handleCardClick = (category) => {
     setSelectedCategory(category);
-    setShowModal(true);
+    navigate(`/categoryCourses/${category._id}`);
   };
 
   const handleCloseModal = () => {
@@ -95,9 +106,17 @@ const Categories = () => {
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
   };
-
+  const dialogRef = useRef(null);
   const images = [Icon1, Icon2, Icon3, Icon4, Icon5, Icon6, Icon7, Icon8];
-
+  const [opnpopup, setpopupopen] = useState(false);
+  const handlepopup = () => {
+    setpopupopen(!opnpopup);
+    console.log(opnpopup);
+  };
+  const closepopup = () => {
+    setpopupopen(!opnpopup);
+    console.log(opnpopup);
+  };
   return (
     <div className={styles.categorieTitle}>
       CATEGORIES
@@ -111,7 +130,8 @@ const Categories = () => {
                 key={category._id}
                 className={styles.card}
                 style={{ backgroundColor: category.color }}
-                onClick={() => handleCardClick(category)}
+                // onClick={() => handleCardClick(category)}
+                onClick={() => handlepopup()}
               >
                 <img
                   src={images[index % images.length]}
@@ -127,10 +147,10 @@ const Categories = () => {
         <Slider {...settings} className={styles.slider}>
           {categories.map((category, index) => (
             <div key={category._id} className={styles.cardWrapper}>
-              <div
+              {/* <div
                 className={styles.card}
                 style={{ backgroundColor: category.color }}
-                onClick={() => handleCardClick(category)}
+                onClick={()=>handlepopup()}
               >
                 <img
                   src={images[index % images.length]}
@@ -138,16 +158,37 @@ const Categories = () => {
                   className={styles.cardImage}
                 />
                 <p className={styles.titleName}>{category.Title}</p>
-              </div>
+              </div> */}
             </div>
           ))}
         </Slider>
       )}
+      {opnpopup && (
+        <>
+          <div className={styles.overlayStyles}>
+            <div ref={dialogRef} className={styles.dialogStyles}>
+              {/* <div className={styles.closbutton}>       <button  onClick={closepopup}>     <img
+        src="/images/personalize/close.png"
+        alt="bronze"
+
+      /></button></div> */}
+
+              <div className={styles.iamgedialog}>
+                <img src="/images/home/comingSoon.png" alt="bronze" />
+                <div className={styles.continuebutton}>
+                  <button onClick={closepopup}>Ok</button>{" "}
+                </div>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
+      {/*       
       <Modal
         show={showModal}
         onClose={handleCloseModal}
         category={selectedCategory}
-      />
+      /> */}
     </div>
   );
 };

@@ -123,8 +123,8 @@ const Update = ({ Course, setOpenChange, openChange }) => {
     const config = {
       headers: { authorization: `Bearer ${token}` },
     };
-    const url = `${process.env.REACT_APP_API}/api/courses/updateCourse`;
-    axios.post(url, course,config).then(async (res) => {
+    const url = `${process.env.REACT_APP_API}api/courses/updateCourse`;
+    axios.post(url, course, config).then(async (res) => {
       if (singleFile !== "") {
         await uploadSingleFile();
       }
@@ -165,7 +165,7 @@ const Update = ({ Course, setOpenChange, openChange }) => {
       headers: {},
     };
     await axios
-      .get(`${process.env.REACT_APP_API}/api/Category/getCategories`)
+      .get(`${process.env.REACT_APP_API}api/Category/getCategories`)
       .then(async (res) => {
         setCategoriesFromBd(res.data.data);
         console.log(res.data.data);
@@ -464,7 +464,7 @@ const Update = ({ Course, setOpenChange, openChange }) => {
             {course.Thumbnail ? (
               <Avatar
                 alt="icon"
-                src={`${process.env.REACT_APP_API}/${course.Thumbnail.filePath}`}
+                src={`${process.env.REACT_APP_API}${course.Thumbnail.filePath}`}
                 sx={{
                   boxShadow: "0 0 4px 2.5px rgba(0, 0, 0, 0.315)",
                   width: 200,

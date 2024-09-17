@@ -8,6 +8,84 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  filter: invert(50%) grayscale(50%) brightness(100%);
+}
+.overlayStyles{
+  position: fixed;
+  top: 0;
+  left: 0;
+  /* transform: translate(-50%, -50%); */
+  background-color: rgba(249, 249, 249, 0.06);
+  width: 100%;
+  height: 100%;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  z-index: 999;
+  justify-content: center;
+  align-content: center;
+  display: flex;
+  align-self: center;
+  flex-direction: row;
+
+
+}
+
+.continuebutton{
+  align-self: center;
+}
+.continuebutton button{
+
+  width: 8rem;
+  height: 2.5rem;
+  box-shadow: 0px 10px 18px rgba(36, 33, 33, 0.1);
+
+  background-color: #3E4678;
+  color: white;
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-align: center;
+  font-family: "Nunito";
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 5px;
+  margin-bottom: 10px;  
+}
+.iamgedialog{
+  background-color: #F9F9F9;
+  /* top: 50%; */
+  /* left: 50%; */
+  border: none;
+  border-radius: 8px;
+  padding: 20px;
+  width: 27rem;
+  /* max-width: 90vw; */
+  /* max-height: 90vh; */
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
+  align-self: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+}
+
+.dialogStyles {
+  background-color: #F9F9F9;
+  /* top: 50%; */
+  /* left: 50%; */
+  border: none;
+  border-radius: 30px;
+  padding: 20px;
+  /* width: 50%; */
+  /* max-width: 90vw; */
+  /* max-height: 90vh; */
+  box-shadow: 0 4px 100px rgba(0, 0, 0, 0.2);
+  align-self: center;
+  align-items: center;
+  align-content: center;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
 }
 
 /* Media queries for different screen widths */
@@ -358,22 +436,11 @@
 }
 @media (min-width: 900px) and (max-width: 1300px) {
   .card {
-    width: calc(15vw);
-    height: calc(15vw);
+    width: calc(13vw);
+    height: calc(13vw);
   }
 }
-@media (min-width: 1300px) and (max-width: 1500px) {
-  .card {
-    width: calc(17vw);
-    height: calc(17vw);
-  }
-}
-@media (min-width: 1500px) {
-  .card {
-    width: calc(17vw);
-    height: calc(17vw);
-  }
-}
+
 
 
 
@@ -704,4 +771,3 @@
   }
 } */
  
-

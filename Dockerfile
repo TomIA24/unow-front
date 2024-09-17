@@ -1,16 +1,71 @@
-# from imagetag from docker hub
-from node:16-alpine3.15 AS build
-#specify work dir in the container 
-workdir /usr/local/project
-#copy package json 
-copy package.json .
-# install nodemodules 
-run npm install --f 
-copy . .
-#build angular project 
-run npm run build
+# Stage 1: Build the React app
 
-FROM nginx:1.17.1-alpine
+FROM node:20 AS build
 
-COPY nginx.conf /etc/nginx/nginx.conf
-COPY --from=build /usr/local/project/build /usr/share/nginx/html
+
+
+# Set working directory
+
+WORKDIR /app
+
+
+
+# Copy package.json and package-lock.json into the container
+
+COPY package*.json ./
+
+
+
+# Install dependencies
+
+RUN npm install --force
+
+
+
+# Copy the rest of the application into the container
+
+COPY . .
+
+
+
+# Build the React app
+
+RUN npm run build
+
+
+
+# Stage 2: Serve the React app with nginx
+
+FROM nginx:alpine
+
+
+
+# Copy the Nginx configuration file
+
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+
+
+# Copy the build output from the first stage to the Nginx public directory
+
+COPY --from=build /app/build /usr/share/nginx/html
+
+
+
+# Expose port 80 to the outside world
+
+EXPOSE 80
+
+
+
+# Start Nginx when the container starts
+
+CMD ["nginx", "-g", "daemon off;"]
+
+
+
+
+
+
+
+

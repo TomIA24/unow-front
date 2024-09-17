@@ -30,8 +30,8 @@ const ShowRessources = () => {
     const config = {
       headers: { authorization: `Bearer ${token}` },
     };
-    const url = `${process.env.REACT_APP_API}/api/trainings`;
-    axios.post(url, {}, config).then((res) => {
+    const url = `${process.env.REACT_APP_API}api/trainings`;
+    axios.get(url, config).then((res) => {
       setData(res.data.data);
     });
   };
@@ -40,7 +40,7 @@ const ShowRessources = () => {
     const config = {
       headers: { authorization: `Bearer ${token}` },
     };
-    const url = `${process.env.REACT_APP_API}/api/trainings/deleteTraining`;
+    const url = `${process.env.REACT_APP_API}api/trainings/deleteTraining`;
     console.log(id);
     axios.post(url, { idCourse: id }, config).then((res) => {
       handleData();

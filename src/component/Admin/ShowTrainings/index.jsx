@@ -2,7 +2,7 @@ import styles from "./styles.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import Update from "./update";
-import Details from "./details2";
+import Details from "./details";
 import avatar from "../../assets/avatar.svg";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
@@ -25,8 +25,11 @@ const ShowTrainings = () => {
   const [courseDetails, setCourseDetails] = useState();
   const [openDetails, setOpenDetails] = useState(false);
 
-  useEffect(async () => {
+  useEffect( () => {
+    const fetchData = async () => {
     await handleData();
+    };
+    fetchData();
   }, [, openChange]);
 
   const handleData = async () => {
@@ -35,8 +38,8 @@ const ShowTrainings = () => {
         authorization: `Bearer ${token}`,
       },
     };
-    const url = `${process.env.REACT_APP_API}/api/trainings`;
-    axios.post(url, {}, config).then((res) => {
+    const url = `${process.env.REACT_APP_API}api/trainings`;
+    axios.get(url, config).then((res) => {
       setData(res.data.data);
     });
   };
@@ -47,7 +50,7 @@ const ShowTrainings = () => {
         authorization: `Bearer ${token}`,
       },
     };
-    const url = `${process.env.REACT_APP_API}/api/trainings/deleteTraining`;
+    const url = `${process.env.REACT_APP_API}api/trainings/deleteTraining`;
     console.log(id);
     axios.post(url, { idTraining: id }, config).then(async (res) => {
       await handleData();
@@ -79,14 +82,14 @@ const ShowTrainings = () => {
         <div className={styles.avatar}>
           {course.Thumbnail ? (
             <img
-              src={`${process.env.REACT_APP_API}/${course.Thumbnail.filePath}`}
+              src={`${process.env.REACT_APP_API}${course.Thumbnail.filePath}`}
               alt=""
               style={{ width: 180, height: 180, objectFit: "cover" }}
               className={styles.imgTHMB}
             />
           ) : (
             <img
-              src={`${process.env.REACT_APP_API}/uploads/courseImg.png`}
+              src={`${process.env.REACT_APP_API}uploads/courseImg.png`}
               alt=""
               style={{ width: 180, height: 180 }}
               className={styles.imgTHMB}

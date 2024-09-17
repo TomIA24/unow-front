@@ -3,68 +3,235 @@
     padding: none;
 }
 
-.backSignup {
+.backsignup {
     width: 100%;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow-y: auto;
+    background: radial-gradient(circle, #e3833d 25%, #CD6214 100%);
 }
 
-.SignupContainer {
-    margin: auto;
-    width: 40%;
-    height: 70%;
-    min-height: 580px;
-    padding-bottom: 20px;
+.logo{
+    margin-top: 0;
+   
+    margin-bottom: 10px;
+    width: 22%;
+}
+.loginContainer {
+    width: 100%;
+    max-width: 556px;
+    padding: 6%;
+    background-color: #fff;
     box-shadow: 0 1px 23px 2px rgba(0, 0, 0, 0.25);
     border-radius: 14px;
+}
+.container {
+    display: flex;
+    width: 90%; 
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Container{
+    display: flex;
+    flex-direction: row;
+    /* justify-content: center; */
+    align-items: center;
+    height: 100vh;
+    background-color: #3E4678;
+    justify-content: space-between;
+}
+.rightSection {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+   
+    justify-content: space-evenly;
+    align-items: flex-end;
+}
+.leftSection, .rightSection {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    flex: 1;
 }
-
-.Close {
-    display: flex;
-    justify-content: end;
-    align-items: center;
-    font-size: larger;
-    font-weight: bold;
-    padding: 20px 20px;
-    color: #345AA4;
-    cursor: pointer;
-    width: 95%;
-    margin: 0 auto;
+.loginImage {
+    max-width: 100%;
+    height: auto;
 }
-
-.Title {
-    font-size: 35px;
-    color: #345AA4;
-    font-weight: 700;
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .form_container {
     display: flex;
     flex-direction: column;
+   
+}
+.dividerImage{
+    width: 27%;
+    margin-top: 20px;
+    height: 100%;
+}
+    
+.divider{
+    display: flex;
+    justify-content: space-between;
+    
+
+}
+.allsocialmedia{
+    display: flex;
     align-items: center;
+    justify-content: center;
+}
+.socialmedia{
+    padding-inline: 2%;
+    margin-top: 3%;
+}
+.socialmediaF{
+    padding-inline: 2%;
+    margin-top: 3%;
+    padding-bottom: 2%;
+}
+.or{
+    color: black;
+    font-size: 13px;
+    
+    font-weight: 700;
+}
+
+.by{
+    color: black;
+    font-size: 12px;
+    align-self: start;
+}
+.by u{
+    color: black;
+    font-size: 12px;
+    align-self: start;
+}
+
+.Close {
+    
+    font-size: larger;
+    font-weight: bold;
+    padding: 10px 10px;
+    color: rgb(109, 109, 109);
+    cursor: pointer;
+    display: flex;
+    align-items: flex-end;
+    font-size: 18px;
+
+    
+}
+/* For screens between 300px and 600px */
+@media (min-width: 300px) and (max-width: 600px) {
+    .Close {
+      font-size: 14px;
+      padding: 8px;
+    }
+  }
+  
+  /* For screens between 601px and 900px */
+  @media (min-width: 601px) and (max-width: 900px) {
+    .Close {
+      font-size: 16px;
+      padding: 9px;
+    }
+  }
+  
+  /* For screens between 901px and 1200px */
+  @media (min-width: 901px) and (max-width: 1200px) {
+    .Close {
+      font-size: 18px;
+      padding: 10px;
+    }
+  }
+  
+  /* For screens between 1201px and 1500px */
+  @media (min-width: 1201px) and (max-width: 1500px) {
+    .Close {
+      font-size: 20px;
+      padding: 12px;
+    }
+  }
+  
+
+.Title  {
+    font-size: 15px;
+    color: rgb(109, 109, 109);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2%;
+}
+/* Styles par défaut */
+.Title p {
+    font-size: 24px;
+    color: #2c2c2c;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    font-weight: 600;
+}
+
+/* Médias queries pour différents intervalles */
+@media (min-width: 300px) and (max-width: 599px) {
+    .Title p {
+        font-size: 18px; /* Ajustement pour petits écrans */
+    }
+}
+
+@media (min-width: 600px) and (max-width: 899px) {
+    .Title p {
+        font-size: 20px; /* Ajustement pour écrans moyens */
+    }
+}
+
+@media (min-width: 900px) and (max-width: 1199px) {
+    .Title p {
+        font-size: 22px; /* Ajustement pour grands écrans */
+    }
+}
+
+@media (min-width: 1200px) and (max-width: 1500px) {
+    .Title p {
+        font-size: 24px; /* Taille originale pour très grands écrans */
+    }
+}
+
+.loginContainer form {
+    display: flex;
+    flex-direction: column;
+}
+.loginContainer label {
+    
+    margin-left: 10px;
+}
+.loginContainer input {
+    padding: 7px;
+    width: 100%;
+    margin: 2px 0;
+    box-sizing: border-box;
+}
+.loginContainer button {
+   
+    padding: 10px;
+    margin-top: 20px;
+    box-sizing: border-box; /* Assure que le padding est inclus dans la largeur */
 }
 
 .input {
     outline: none;
-    border: none;
-    width: 80%;
-    padding: 15px;
-    border-radius: 15px;
-    height: 60px;
-    border: 1px solid rgba(128, 128, 128, 0.479);
-    margin: 10px 0;
+    /* border: none; */
+    width: 370px;
+   
+    border-radius: 9px;
+    /* border-radius: 14px; */
+   
     font-size: 14px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #ccc;
 }
 
 .select {
@@ -74,10 +241,9 @@
 
 .options {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
     width: 370px;
     height: 20px;
+    align-items: baseline;
 }
 
 .checkBox label {
@@ -98,6 +264,19 @@
     border-radius: 5px;
     text-align: center;
 }
+.inputPasswordContainer{
+    position: relative;
+    display: flex; 
+}
+.password_visibility {
+    position: absolute;
+    color: grey;
+    text-align: left;
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin-top: 0.95rem;
+    margin-left: -2rem;
+}
 
 .error_msg_Phone {
     width: 370px;
@@ -109,14 +288,27 @@
     align-items: flex-start;
 }
 
+.forgetpsw u{
+    color: black;
+    font-size: 13px;
+    /* align-self: start; */
+    /* margin-top: 10px; */
+    font-weight: 700;
+}
+.sign{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+ 
+}
 .error_msg_Phone p {
     margin-top: -5px;
 }
 
 .Signup_btn {
-    width: 150px;
-    height: 50px;
-    border: 2px solid #345AA4;
+    width: 105px;
+    height: 43px;
+    border: 0px solid #ffffff;
     margin-top: 20px;
     background-color: white;
     border-radius: 50px;
@@ -124,7 +316,67 @@
     font-weight: bold;
     color: #345AA4;
     cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, color 0.3s ease; /* Ajout de la transition pour un effet plus fluide */
 }
+
+.Signup_btn:hover {
+    background-color: #345AA4;
+    color: white; /* Changement de couleur du texte pour le contraste */
+}
+/* Styles de base pour .Signup_btn */
+.Signup_btn {
+    width: 105px;
+    height: 43px;
+    border: 0px solid #ffffff;
+    margin-top: 20px;
+    background-color: white;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #345AA4;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transition fluide */
+}
+
+/* Médias queries pour les écrans entre 300px et 599px */
+@media (min-width: 300px) and (max-width: 599px) {
+    .Signup_btn {
+        width: 90px; /* Ajustement pour les petits écrans */
+        height: 36px;
+        font-size: 16px;
+    }
+}
+
+/* Médias queries pour les écrans entre 600px et 899px */
+@media (min-width: 600px) and (max-width: 899px) {
+    .Signup_btn {
+        width: 100px; /* Ajustement pour les écrans moyens */
+        height: 40px;
+        font-size: 17px;
+    }
+}
+
+/* Médias queries pour les écrans entre 900px et 1199px */
+@media (min-width: 900px) and (max-width: 1199px) {
+    .Signup_btn {
+        width: 105px; /* Taille par défaut */
+        height: 43px;
+        font-size: 18px;
+    }
+}
+
+/* Médias queries pour les écrans entre 1200px et 1500px */
+@media (min-width: 1200px) and (max-width: 1500px) {
+    .Signup_btn {
+        width: 115px; /* Ajustement pour les grands écrans */
+        height: 46px;
+        font-size: 19px;
+    }
+}
+
+
 
 .login {
     display: flex;
@@ -144,11 +396,7 @@
         min-height: 500px;
     }
 
-    .input {
-        width: 100%;
-        height: 40px; /* Diminuer la hauteur pour les petits appareils */
-        font-size: 12px; /* Réduire la taille de la police pour les petits appareils */
-    }
+   
 
     .select {
         width: 100%;
@@ -159,6 +407,280 @@
     }
 
     .Signup_btn {
-        width: 100%;
+      
     }
+}
+.textcontainer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.textsearchtitle {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: white;
+    font-family: lato;
+    margin-top: -4%;
+}
+
+/* For small screens (phones) */
+@media (min-width: 570px) and (max-width: 640px) {
+    .textsearchtitle {
+        font-size: 18px; /* Adjust font size for small screens */
+       
+    }
+}
+@media (min-width: 640px) and (max-width: 750px) {
+    .textsearchtitle {
+        font-size: 20px; /* Adjust font size for tablets */
+      
+    }
+}
+
+/* For medium screens (tablets) */
+@media (min-width: 750px) and (max-width: 850px) {
+    .textsearchtitle {
+        font-size: 24px; /* Adjust font size for tablets */
+      
+    }
+}
+@media (min-width: 850px) and (max-width: 950px) {
+    .textsearchtitle {
+        font-size: 27px; /* Adjust font size for small desktops */
+        
+    }
+}
+
+/* For large screens (small desktops) */
+@media (min-width: 950px) and (max-width: 1024px) {
+    .textsearchtitle {
+        font-size: 29px; /* Adjust font size for small desktops */
+        
+    }
+}
+
+/* For extra large screens (large desktops) */
+@media (min-width: 1025px) and (max-width: 1240px) {
+    .textsearchtitle {
+        font-size: 32px; /* Keep the original font size for large desktops */
+        
+    }
+}
+@media (min-width: 1240px) and (max-width: 1300px) {
+    .textsearchtitle {
+        font-size: 40px; /* Keep the original font size for large desktops */
+     
+    }
+
+}
+
+.textsearch {
+    font-size: 15px;
+    color: white;
+    margin-top: 4%;
+}
+/* For small screens (phones) */
+@media (min-width: 570px) and (max-width: 640px) {
+    .textsearch {
+        font-size: 6px; /* Adjust font size for small screens */
+       
+    }
+}
+@media (min-width: 640px) and (max-width: 750px) {
+    .textsearch {
+        font-size: 7px; /* Adjust font size for tablets */
+      
+    }
+}
+
+/* For medium screens (tablets) */
+@media (min-width: 750px) and (max-width: 850px) {
+   .textsearch {
+        font-size: 8px; /* Adjust font size for tablets */
+      
+    }
+}
+@media (min-width: 850px) and (max-width: 950px) {
+   .textsearch {
+        font-size: 9px; /* Adjust font size for small desktops */
+        
+    }
+}
+
+/* For large screens (small desktops) */
+@media (min-width: 950px) and (max-width: 1024px) {
+   .textsearch {
+        font-size: 10px; /* Adjust font size for small desktops */
+        
+    }
+}
+
+/* For extra large screens (large desktops) */
+@media (min-width: 1025px) and (max-width: 1240px) {
+   .textsearch {
+        font-size: 11px; /* Keep the original font size for large desktops */
+        
+    }
+}
+@media (min-width: 1240px) and (max-width: 1300px) {
+   .textsearch {
+        font-size: 13px; /* Keep the original font size for large desktops */
+     
+    }
+
+}
+
+.textsearch2 {
+    font-size: 14px;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    /* align-content: center; */
+    justify-content: center;
+    margin-top: 4%;
+}
+/* For small screens (phones) */
+@media (min-width: 570px) and (max-width: 640px) {
+   .textsearch2 {
+        font-size: 6px; /* Adjust font size for small screens */
+       
+    }
+}
+@media (min-width: 640px) and (max-width: 750px) {
+   .textsearch2 {
+        font-size: 7px; /* Adjust font size for tablets */
+      
+    }
+}
+
+/* For medium screens (tablets) */
+@media (min-width: 750px) and (max-width: 850px) {
+  .textsearch2 {
+        font-size: 8px; /* Adjust font size for tablets */
+      
+    }
+}
+@media (min-width: 850px) and (max-width: 950px) {
+  .textsearch2 {
+        font-size: 9px; /* Adjust font size for small desktops */
+        
+    }
+}
+
+/* For large screens (small desktops) */
+@media (min-width: 950px) and (max-width: 1024px) {
+  .textsearch2 {
+        font-size: 10px; /* Adjust font size for small desktops */
+        
+    }
+}
+
+/* For extra large screens (large desktops) */
+@media (min-width: 1025px) and (max-width: 1240px) {
+  .textsearch2 {
+        font-size: 11px; /* Keep the original font size for large desktops */
+        
+    }
+}
+@media (min-width: 1240px) and (max-width: 1300px) {
+  .textsearch2 {
+        font-size: 13px; /* Keep the original font size for large desktops */
+     
+    }
+
+}
+@media (min-width:570px) and (max-width:840px){
+    .text {
+        margin-top: 10px;
+        font-size: 12px;
+    }
+    .by {
+        font-size: 8px;
+        
+    }
+    .by u {
+        font-size: 8px;
+        
+    }
+    .loginContainer label {
+        font-size: 11px;
+
+}
+.input {
+    width: 100%;
+    height: 30px; /* Diminuer la hauteur pour les petits appareils */
+    font-size: 12px; /* Réduire la taille de la police pour les petits appareils */
+}
+}
+@media (max-width: 570px) {
+    .rightSection {
+      display: none;
+    }
+  }
+  .text{
+    color: gray;
+    align-self: flex-start;
+    margin-bottom: 2px;
+    font-size: 16px;
+    margin-top: 2px;
+}
+@media (min-width:570px) and (max-width:840px){
+    .text {
+        margin-top: 3px;
+        font-size: 12px;
+    }
+    .by {
+        font-size: 8px;
+        
+    }
+    .by u {
+        font-size: 8px;
+        
+    }
+    .loginContainer label {
+        font-size: 11px;
+
+}
+.forgetpsw u {
+    color: black;
+    font-size: 10px;
+    /* align-self: start; */
+    /* margin-top: 10px; */
+    font-weight: 700;
+}
+.input {
+    width: 100%;
+    height: 30px; /* Diminuer la hauteur pour les petits appareils */
+    font-size: 12px; /* Réduire la taille de la police pour les petits appareils */
+}
+}
+@media (max-width:420px){
+    .text {
+        margin-top: 10px;
+        font-size: 12px;
+    }
+    .by {
+        font-size: 8px;
+        
+    }
+    .by u {
+        font-size: 8px;
+        
+    }
+    .loginContainer label {
+        font-size: 11px;
+
+}
+.forgetpsw u {
+    color: black;
+    font-size: 10px;
+    /* align-self: start; */
+    /* margin-top: 10px; */
+    font-weight: 700;
+}
+.input {
+    width: 100%;
+    height: 30px; /* Diminuer la hauteur pour les petits appareils */
+    font-size: 12px; /* Réduire la taille de la police pour les petits appareils */
+}
 }

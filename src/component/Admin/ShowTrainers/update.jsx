@@ -92,7 +92,7 @@ const Update = ({ User, setOpenChange, openChange }) => {
     const config = {
       headers: { authorization: `Bearer ${token}` },
     };
-    const url = `${process.env.REACT_APP_API}/api/Trainer/updateTrainers`;
+    const url = `${process.env.REACT_APP_API}api/Trainer/updateTrainers`;
     axios.post(url, user, config).then(async (res) => {
       if (singleFile !== "") {
         await uploadSingleFile();
@@ -195,7 +195,7 @@ const Update = ({ User, setOpenChange, openChange }) => {
                 {user.image ? (
                   <Avatar
                     alt="icon"
-                    src={`${process.env.REACT_APP_API}/${user.image.filePath}`}
+                    src={`${process.env.REACT_APP_API}${user.image.filePath}`}
                     sx={{ width: 200, height: 200 }}
                   />
                 ) : (

@@ -31,6 +31,7 @@
   margin-bottom: -2%;
 }
 
+
 .description {
   margin-top: -2%;
   color: black;
@@ -108,7 +109,7 @@
     font-size: 20px;
   }
   .subtitle {
-    font-size: 35px;
+    font-size: 18px;
     font-weight: 800;
   }
   .aboutTitle {
@@ -143,11 +144,11 @@
   }
 
   .imageAboutUs {
-    width: 50%;
-    height: auto;
-    background-color: transparent;
-    margin-bottom: 5%;
-        margin-top: 2%;
+    width: 73%;
+        height: auto;
+        background-color: transparent;
+        margin-bottom: 0%;
+        margin-top: -5%;
   }
  
 }
@@ -169,7 +170,7 @@
     margin-bottom: 5%;
   }
   .subtitle {
-    font-size: 30px;
+    font-size: 24px;
     font-weight: 800;
     margin-bottom: 3%;
   }
@@ -213,7 +214,7 @@
     padding-right: 15px;
   }
   .subtitle {
-    font-size: 30px;
+    font-size: 19px;
     font-weight: 800;
   }
 }
@@ -268,6 +269,24 @@
   }
   
 }
+@media (max-width:769px) and (min-width:420px){
+  .subtitle{
+    font-size: 14px;
+    margin-left: 1%;
+    font-weight: 800;
+    margin-bottom: -2%;
+    margin-top: 4%;
+  }
+}
+@media (max-width:420px) and (min-width:300px){
+  .subtitle{
+    font-size: 8px;
+    margin-left: 1%;
+    font-weight: 800;
+    margin-bottom: -2%;
+    margin-top: 4%;
+  }
+}
 
 @media (max-width: 769px) {
   .aboutTitle, .collaborateTitle, .consultantsTitle {
@@ -291,12 +310,7 @@
   }
 
   
-  .subtitle {
-    margin-left: 1%;
-    font-weight: 800;
-    margin-bottom: -2%;
-    margin-top: 4%;
-  }
+ 
 
   .allParaghraphe {
     padding: 0px;
@@ -371,11 +385,7 @@
     background-color: transparent;
     padding: 0px;
   }
-  .subtitle {
-    margin-bottom: -7%;
-    margin-top: 4%;
-    
-  }
+
 
   .aboutContainer {
     padding: 0px;
@@ -525,9 +535,9 @@
 @media (max-width: 350px) {
   
   .readButton {
-    padding-top: 2.4%;
-    padding-bottom: 2%;
+    padding-bottom: 0%;
     width: 20%;
+    font-size: 5px;
   }
   .descriptionpar {
     line-height: 10px;
@@ -545,4 +555,14 @@
    margin-left: -3%;
    font-weight: 800;
  }
+}
+.containeraboutus{
+ 
+}
+@media (min-width:1025px){
+  .containeraboutus{
+    display: flex;
+      flex-direction: row-reverse;
+      margin-top: 7%;
+  }
 }

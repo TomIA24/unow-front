@@ -1,142 +1,117 @@
-import styles from "./styles.module.css";
-import axios from "axios";
 import React, { useState } from "react";
+import axios from "axios";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
-const Footer = ({ refHome }) => {
-  const style = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: 400,
-    bgcolor: "background.paper",
-    borderRadius: 2,
-    boxShadow: 24,
-    pt: 2,
-    px: 4,
-    pb: 3,
-  };
+import styles from "./styles.module.css";
 
+const Footer = () => {
   const [saved, setSaved] = useState(false);
-  const [email, setEmail] = useState({ email: "" });
+  const [email, setEmail] = useState("");
 
-  const handleChange = async (e) => {
-    setEmail({ email: e.target.value });
+  const handleChange = (e) => {
+    setEmail(e.target.value);
   };
 
   const handleNewsletter = async () => {
-    const config = {
-      headers: {},
-    };
     try {
       const url = `${process.env.REACT_APP_API}/api/newsletter/`;
-      await axios.post(url, { email: email }).then(async (res) => {
-        setSaved(true);
-        setEmail({ email: "" });
-        await new Promise((r) => {
-          setTimeout(r, 2000);
-        });
+      await axios.post(url, { email });
+      setSaved(true);
+      setEmail("");
+      setTimeout(() => {
         setSaved(false);
-      });
-    } catch (error) {}
+      }, 2000);
+    } catch (error) {
+      console.error("Error subscribing to newsletter", error);
+    }
   };
 
   return (
-    <footer className={styles.footer}>
-      <div className={[styles.container, styles.row].join(" ")}>
+    <div className={styles.footer}>
+      <div className={styles.row}>
         <div className={styles.footercol}>
-          <h4>company</h4>
+          <p className={styles.title}>
+            Company
+            <p className={styles.underline}></p>
+          </p>
           <ul>
             <li>
-              <a href="#">about us</a>
+              <a href="#">About Us</a>
             </li>
             <li>
-              <a href="#">our services</a>
+              <a href="#">Our Services</a>
             </li>
             <li>
-              <a href="#">privacy policy</a>
+              <a href="#">Privacy Policy</a>
             </li>
             <li>
-              <a href="#">visit website</a>
+              <a href="#">Visit Website</a>
             </li>
           </ul>
         </div>
-        <div className={styles.footercol}>
-          <h4>get help</h4>
+        <div className={styles.footercol2}>
+          <p className={styles.title}>
+            Get Help <p className={styles.underline}></p>
+          </p>
           <ul>
             <li>
               <a href="#">FAQ</a>
             </li>
             <li>
-              <a href="#">learning</a>
+              <a href="#">Learning</a>
             </li>
             <li>
-              <a href="#">courses</a>
+              <a href="#">Courses</a>
             </li>
             <li>
-              <a href="#">status</a>
+              <a href="#">Status</a>
             </li>
             <li>
-              <a href="#">payment options</a>
+              <a href="#">Payment Options</a>
             </li>
           </ul>
         </div>
         <div className={styles.footercol}>
-          <h4>online classrooms</h4>
+          <p className={styles.title}>
+            Online Classrooms <p className={styles.underline}></p>
+          </p>
           <ul>
             <li>
-              <a href="#">download</a>
+              <a href="#">Download</a>
             </li>
             <li>
-              <a href="#">changelog</a>
+              <a href="#">Changelog</a>
             </li>
             <li>
-              <a href="#">rooms</a>
+              <a href="#">Rooms</a>
             </li>
             <li>
-              <a href="#">all version</a>
+              <a href="#">All Versions</a>
             </li>
           </ul>
         </div>
-        <div className={styles.footercol}>
-          <h4>follow us</h4>
-          <div className={styles.sociallinks} style={{ display: "flex" }}>
-            <a
-              href="#"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              <FacebookIcon />
-            </a>
-            <a
-              href="#"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              <InstagramIcon />
-            </a>
-            <a
-              href="#"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              <LinkedInIcon />
-            </a>
+
+        <div className={styles.footercol2}>
+          <p className={styles.title}>
+            Follow Us <p className={styles.underline}></p>
+          </p>
+          <div class="content-block">
+            <div className={styles.sociallinks}>
+              <a href="#" aria-label="Facebook">
+                <FacebookIcon />
+              </a>
+              <a href="#" aria-label="Instagram">
+                <InstagramIcon />
+              </a>
+              <a href="#" aria-label="LinkedIn">
+                <LinkedInIcon />
+              </a>
+            </div>
           </div>
         </div>
       </div>
-    </footer>
+    </div>
   );
 };
 

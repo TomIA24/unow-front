@@ -1,108 +1,411 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 
-
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-
-*,
-*::before,
-*::after {
-	box-sizing: border-box;
+.title {
+  color: #fff;
+  font-weight: bold;
+  margin-bottom: 10px;
+  position: relative;
+  display: inline-block;
 }
 
-* {
-	margin: 0;
-	padding: 0;
+.underline {
+  width: 20%;
+  background-color: #cd6214;
+  padding-top: 2px;
+  border-radius: 100px;
+  margin-top: 5px;
 }
 
 .footer {
-	background-color: #151515a6;
-	padding: 80px 0;
+  background-color: #3e4678;
+  padding: 6% 0% 2% 8%;
+  border-top-right-radius: 25px;
+  border-top-left-radius: 25px;
+  width: 100%;
+  box-sizing: border-box;
+}
+@media (max-width: 350px) {
+  .footer {
+    padding: 8% 4% 0% 15%;
+  }
 }
 
-.container {
-	max-width: 1170px;
-	margin: auto;
+/* Media query for screens between 300px and 400px */
+@media (min-width: 350px) and (max-width: 400px) {
+  .footer {
+    padding: 8% 4% 0% 15%;
+  }
+}
+
+/* Media query for screens between 401px and 500px */
+@media (min-width: 401px) and (max-width: 500px) {
+  .footer {
+    padding: 7% 0% 2.5% 10%;
+  }
+}
+
+/* Media query for screens between 501px and 600px */
+@media (min-width: 501px) and (max-width: 600px) {
+  .footer {
+    padding: 6% 0% 2.5% 8%;
+  }
+}
+
+/* Media query for screens between 601px and 700px */
+@media (min-width: 601px) and (max-width: 700px) {
+  .footer {
+    padding: 6% 0% 2% 7%;
+  }
 }
 
 .row {
-	display: flex;
-	flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
+
+  padding-bottom: 20px;
 }
 
 ul {
-	list-style: none;
+  list-style: none;
 }
 
 .footercol {
-	width: 25%;
-	padding: 0 15px;
+  flex: 1;
+  min-width: 200px;
+  max-width: 25%;
+  text-align: left;
+
+  margin-bottom: 20px;
 }
 
 .footercol h4 {
-	font-size: 18px;
-	color: #FFF;
-	text-transform: capitalize;
-	margin-bottom: 35px;
-	font-weight: 500;
-	position: relative;
+  font-size: 18px;
+  color: #fff;
+  text-transform: capitalize;
+  margin-bottom: 25px;
+  font-weight: 500;
+  position: relative;
 }
 
 .footercol h4::before {
-	content: "";
-	position: absolute;
-	left: 0;
-	bottom: -10px;
-	background-color: #E91E63;
-	width: 50px;
-	height: 2px;
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 50px;
+  height: 2px;
+  background-color: #e91e63;
 }
 
 .footercol ul li:not(:last-child) {
-	margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .footercol ul li a {
-	color: #DDD;
-	display: block;
-	font-size: 1rem;
-	font-weight: 300;
-	text-transform: capitalize;
-	text-decoration: none;
-	transition: all 0.3s ease;
+  color: #ddd;
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
 
 .footercol ul li a:hover {
-	color: #FFF;
-	padding-left: 7px;
+  color: #fff;
+}
+.footercol2 {
+  flex: 1;
+  min-width: 200px;
+  max-width: 25%;
+  text-align: left;
+  padding: 0 15px;
+  margin-bottom: 20px;
+}
+/* Base styles */
+.footercol2 {
+  flex: 1;
+  min-width: 200px;
+  max-width: 25%;
+  text-align: left;
+
+  margin-bottom: 20px;
+}
+.footercol2 {
+  flex: 1;
+  min-width: 200px;
+  max-width: 25%;
+  text-align: left;
+
+  margin-bottom: 20px;
+}
+@media (max-width: 300px) {
+  .footercol2 {
+    flex: 1;
+    min-width: 100px;
+    max-width: 50%;
+    text-align: left;
+    margin-left: -37%;
+    padding: 0px 0px;
+
+    margin-bottom: 10px;
+  }
 }
 
-.footercol .sociallinks a {
-	color: #FFF;
-	background-color: rgba(255, 255, 255, 0.2);
-	display: inline-block;
-	height: 40px;
-	width: 40px;
-	border-radius: 50%;
-	text-align: center;
-	margin: 0 10px 10px 0;
-	line-height: 40px;
-	transition: all 0.5s ease;
-   
+/* Media query for screens between 300px and 400px */
+@media (min-width: 300px) and (max-width: 400px) {
+  .footercol2 {
+    flex: 1;
+    min-width: 100px;
+    max-width: 50%;
+    text-align: left;
+    margin-left: -26%;
+
+    margin-bottom: 10px;
+  }
 }
 
-.footercol .sociallinks a:hover {
-	color: #151515;
-	background-color: #FFF;
+/* Media query for screens between 401px and 500px */
+@media (min-width: 401px) and (max-width: 500px) {
+  .footercol2 {
+    flex: 1;
+    min-width: 120px;
+    max-width: 45%;
+    text-align: left;
+
+    margin-bottom: 12px;
+  }
 }
 
-@media(max-width: 767px) {
-	.footercol {
-		width: 50%;
-		margin-bottom: 30px;
-	}
+/* Media query for screens between 501px and 600px */
+@media (min-width: 501px) and (max-width: 600px) {
+  .footercol2 {
+    flex: 1;
+    min-width: 150px;
+    max-width: 35%;
+    text-align: left;
+    margin-left: 6%;
+    margin-bottom: 15px;
+  }
 }
 
-@media(max-width: 574px) {
-	.footercol {
-		width: 100%;
-	}
+/* Media query for screens between 601px and 676px */
+@media (min-width: 601px) and (max-width: 696px) {
+  .footercol2 {
+    flex: 1;
+    min-width: 180px;
+    max-width: 30%;
+    text-align: left;
+    margin-left: 6%;
+    margin-bottom: 18px;
+    margin-left: 15%;
+  }
+}
+
+/* Media query for screens between 687px and 750px */
+@media (min-width: 696px) and (max-width: 740px) {
+  .footercol2 {
+    flex: 1;
+    min-width: 180px;
+    max-width: 30%;
+    text-align: left;
+
+    margin-bottom: 15px;
+    margin-left: -10%;
+  }
+}
+
+/* Media query for screens between 751px and 820px */
+@media (min-width: 740px) and (max-width: 830px) {
+  .footercol2 {
+    flex: 1;
+    min-width: 190px;
+    max-width: 28%;
+    text-align: left;
+    margin-left: -10%;
+    padding: 0px 26px;
+    margin-bottom: 18px;
+  }
+}
+
+/* Media query for screens between 821px and 888px */
+@media (min-width: 830px) and (max-width: 888px) {
+  .footercol2 {
+    flex: 1;
+    min-width: 200px;
+    max-width: 25%;
+    text-align: left;
+    margin-left: -5%;
+    margin-bottom: 20px;
+    padding: 0px 26px;
+  }
+}
+
+.footercol2 h4 {
+  font-size: 18px;
+  color: #fff;
+  text-transform: capitalize;
+  margin-bottom: 25px;
+  font-weight: 500;
+  position: relative;
+}
+
+.footercol2 h4::before {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 50px;
+  height: 2px;
+  background-color: #e91e63;
+}
+
+.footercol2 ul li:not(:last-child) {
+  margin-bottom: 8px;
+}
+
+.footercol2 ul li a {
+  color: #ddd;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footercol2 ul li a:hover {
+  color: #fff;
+}
+
+.sociallinks {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 10px;
+}
+
+.sociallinks a {
+  color: #fff;
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 40px;
+  margin-right: 20%;
+  margin-left: -5%;
+  transition: all 0.3s ease;
+}
+
+.sociallinks a:hover {
+  color: #151515;
+  background-color: #fff;
+}
+
+@media (max-width: 1200px) {
+  .footercol {
+    width: 30%;
+  }
+}
+
+@media (max-width: 992px) {
+  .footercol {
+    width: 45%;
+  }
+}
+@media (max-width: 488px) and (min-width: 300px) {
+  .footercol {
+    width: 50%;
+    text-align: left;
+    margin-bottom: 20px;
+  }
+
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .title {
+    display: block;
+    margin-bottom: 15px;
+    font-size: 13px;
+  }
+
+  .content-block {
+    padding-bottom: 10px;
+  }
+
+  .sociallinks {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .sociallinks a {
+    margin-right: 20%;
+    margin-left: -5%;
+  }
+
+  .sociallinks a:hover {
+    border-radius: 5px;
+  }
+
+  .underline {
+    width: 15%;
+  }
+}
+
+@media (max-width: 700px) and (min-width: 488px) {
+  .footercol {
+    width: 50%;
+    text-align: left;
+    margin-bottom: 20px;
+  }
+
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .title {
+    display: block;
+    margin-bottom: 15px;
+    font-size: 15px;
+  }
+
+  .content-block {
+    padding-bottom: 10px;
+  }
+
+  .sociallinks {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .sociallinks a {
+    margin-right: 20%;
+    margin-left: -5%;
+  }
+
+  .sociallinks a:hover {
+    border-radius: 5px;
+  }
+
+  .underline {
+    width: 15%;
+  }
+}
+
+@media (max-width: 574px) {
+  .footercol {
+    width: 50%;
+  }
+}
+
+@media (max-width: 400px) {
+  .footercol {
+    width: 100%;
+  }
+
+  .footercol ul li a {
+    font-size: 8px;
+  }
+
+  .sociallinks {
+    justify-content: center;
+  }
 }

@@ -8,16 +8,7 @@ import Exin from "../../assets/partners/exin.svg";
 import PMI from "../../assets/partners/pmi_new_logo.png";
 import SAFe from "../../assets/partners/SAFe.png";
 
-const partners = [
-  Scrum,
-  Peoplecert,
-  Axelos,
-  DevOps,
-  Exin,
-  PMI,
-  SAFe,
-];
-
+const partners = [Scrum, Peoplecert, Axelos, DevOps, Exin, PMI, SAFe];
 
 const Collab = () => {
   const containerRef = useRef(null);
@@ -38,7 +29,7 @@ const Collab = () => {
   }, []);
 
   return (
-    <section>
+    <section className={styles.collabSection}>
       <div className={styles.aboutContainercollab}>
         <div className={styles.ourPartners}>
           <div className={styles.ourPartners_container} ref={containerRef}>
@@ -46,18 +37,13 @@ const Collab = () => {
             {partners.concat(partners).map((partner, index) => (
               <div key={index}>
                 <img src={partner} alt={`partner ${index}`} />
-               
               </div>
-           
             ))}
             {/* Liste des partenaires */}
             {partners.concat(partners).map((partner, index) => (
               <div key={index}>
                 <img src={partner} alt={`partner ${index}`} />
-               
               </div>
-              
-           
             ))}
           </div>
         </div>
