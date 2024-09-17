@@ -1,5 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
-import styles from "./styles.module.css";
+import React, { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
 import Icon1 from "../../assets/icon1.png";
 import Icon2 from "../../assets/icon2.png";
 import Icon3 from "../../assets/icon3.png";
@@ -8,13 +11,9 @@ import Icon5 from "../../assets/icon5.png";
 import Icon6 from "../../assets/icon6.png";
 import Icon7 from "../../assets/icon7.png";
 import Icon8 from "../../assets/icon8.png";
-import Modal from "./Categoriemodal";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import Prev from "../../assets/prev.png";
 import Next from "../../assets/next.png";
-import { useNavigate } from "react-router-dom";
+import Prev from "../../assets/prev.png";
+import styles from "./styles.module.css";
 
 const Categories = () => {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
@@ -147,10 +146,10 @@ const Categories = () => {
         <Slider {...settings} className={styles.slider}>
           {categories.map((category, index) => (
             <div key={category._id} className={styles.cardWrapper}>
-              {/* <div
+              <div
                 className={styles.card}
                 style={{ backgroundColor: category.color }}
-                onClick={()=>handlepopup()}
+                onClick={() => handlepopup()}
               >
                 <img
                   src={images[index % images.length]}
@@ -158,7 +157,7 @@ const Categories = () => {
                   className={styles.cardImage}
                 />
                 <p className={styles.titleName}>{category.Title}</p>
-              </div> */}
+              </div>
             </div>
           ))}
         </Slider>
