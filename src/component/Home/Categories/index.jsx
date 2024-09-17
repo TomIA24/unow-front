@@ -150,7 +150,7 @@ const Categories = () => {
         <Slider {...settings} className={styles.slider}>
           {categories.map((category, index) => (
             <div key={category._id} className={styles.cardWrapper}>
-              <div
+              {/* <div
                 className={styles.card}
                 style={{ backgroundColor: category.color }}
                 onClick={() => handlepopup()}
@@ -161,7 +161,7 @@ const Categories = () => {
                   className={styles.cardImage}
                 />
                 <p className={styles.titleName}>{category.Title}</p>
-              </div>
+              </div> */}
             </div>
           ))}
         </Slider>

@@ -113,7 +113,6 @@ const CategoryDetails = () => {
   }, [loadMoreOnline, loadMoreOffline]);
 
   const refHome = useRef();
-
   return (
     <>
       <div className="backimage">
