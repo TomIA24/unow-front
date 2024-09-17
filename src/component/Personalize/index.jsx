@@ -1008,7 +1008,7 @@ console.log(e.target.value);
 
 
         if (!Array.isArray(filteredlearningpace) || filteredlearningpace.length === 0 || !dayslearning || !timeOfDay) {
-          navigate('/profileClient');
+          navigate('/candidate/profile');
           console.error("learningpace or dayslearning , are invalid.");
           return; // Prevent sending invalid data
         }
@@ -1025,7 +1025,7 @@ console.log(e.target.value);
 
       if (response.status === 200) {
         if (currentStep === 3){
-          navigate('/profileClient');
+          navigate('/candidate/profile');
         }else {
           setCurrentStep(prevStep => prevStep + 1);
         }
