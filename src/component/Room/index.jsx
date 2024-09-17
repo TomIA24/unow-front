@@ -176,8 +176,6 @@ class Room extends Component {
   getUserMediaSuccess = (stream) => {
     try {
       window.localStream.getTracks().forEach((track) => track.stop());
-    this.setupVoiceActivityDetection();
-
     } catch (e) {
       console.log(e);
     }
