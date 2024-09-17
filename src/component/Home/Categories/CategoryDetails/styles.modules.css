@@ -83,7 +83,11 @@ hr {
   justify-content: center;
   align-items: center;
 }
-
+@media (max-width: 600px) {
+  .search_btn {
+    width: 80px;
+  }
+}
 @media (max-width: 600px) {
   .explore_input {
     background-color: white;
@@ -237,4 +241,16 @@ b {
   .imagestyle {
     display: none;
   }
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+}
+.breadcrumb p {
+  font-size: 16px;
+  font-weight: 500;
+}
+.breadcrumb img {
+  margin: 0 5px;
 }

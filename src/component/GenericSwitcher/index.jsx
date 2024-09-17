@@ -1,30 +1,23 @@
-import { AddPhotoAlternate } from "@mui/icons-material";
-import { useState } from "react";
-import imageCourse from "../assets/icon_course.png";
-import imageTraining from "../assets/icon_training.png";
-
+import { Box } from "@mui/material";
 import styles from "./styles.module.css";
 const GenericSwitcher = (props) => {
-
   return (
-    <div className={styles.container}>
+    <Box sx={{ display: "flex" }}>
       {props?.items.map((item, i) => {
         return (
           <button
-            className={
-              props.selectedItem !== item.title
-                ? styles.btnstyle
-                : styles.btnselectedstyle
-            }
+            className={`${styles.btnstyle} ${
+              props.selectedItem === item.title ? styles.btnselectedstyle : null
+            }`}
             onClick={() => props.setSelectedItem(item.title)}
           >
-            <img className={styles.image} src={item.icon} />
+            <img className={styles.image} src={item.icon} alt="" />
 
-            <h2 className={styles.textstyle}>{item.title}</h2>
+            <p className={styles.textstyle}>{item.title}</p>
           </button>
         );
       })}
-    </div>
+    </Box>
   );
 };
 export default GenericSwitcher;

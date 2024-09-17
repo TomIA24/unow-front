@@ -67,8 +67,12 @@ const Categories = () => {
   }, []);
 
   const handleCardClick = (category) => {
-    setSelectedCategory(category);
-    navigate(`/categoryCourses/${category._id}`);
+    // setSelectedCategory(category);
+    navigate(
+      `/categoryCourses/${category._id}/${category.Title.split(" ")
+        .join("_")
+        .toLowerCase()}`
+    );
   };
 
   const handleCloseModal = () => {
@@ -129,8 +133,8 @@ const Categories = () => {
                 key={category._id}
                 className={styles.card}
                 style={{ backgroundColor: category.color }}
-                // onClick={() => handleCardClick(category)}
-                onClick={() => handlepopup()}
+                onClick={() => handleCardClick(category)}
+                // onClick={() => handlepopup()}
               >
                 <img
                   src={images[index % images.length]}

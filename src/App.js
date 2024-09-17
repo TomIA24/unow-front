@@ -1,37 +1,36 @@
 import React, { useState } from "react";
 
-import Personalize from "./component/Personalize";
-import Login from "./component/Login";
-import ResetPassword from "./component/ResetPassword";
-import SignUp from "./component/SignUp";
-import Room from "./component/Room";
-import Course from "./component/Course";
-import Contact from "./component/Contact";
-import Training from "./component/Training";
+import Admin from "./component/Admin";
 import CompleteInfo from "./component/CompleteInfo";
+import Contact from "./component/Contact";
+import Course from "./component/Course";
+import Videos from "./component/Course/paid/Ressources/Videos";
+import Login from "./component/Login";
+import { Accept, Refuse } from "./component/Payment";
+import Personalize from "./component/Personalize";
 import ProfileClient from "./component/ProfileClient";
 import ProfileTrainer from "./component/ProfileTrainer";
-import Admin from "./component/Admin";
-import Videos from "./component/Course/paid/Ressources/Videos";
-import { Accept, Refuse } from "./component/Payment";
+import ResetPassword from "./component/ResetPassword";
+import Room from "./component/Room";
+import SignUp from "./component/SignUp";
+import Training from "./component/Training";
 
 import { Route, Routes } from "react-router-dom";
 import MissingRoute from "./secure/MissingRoute";
 
-import { LanguageProvider } from "./hooks/LanguageContext";
 import HomeInterface from "./component/Home/HomeInterface";
 import MainQuiz from "./component/Quiz";
+import { LanguageProvider } from "./hooks/LanguageContext";
 
-import Quiz from "./component/Quiz/Questions";
 import CategoryDetails from "./component/Home/Categories/CategoryDetails";
-import CoursesSection from "./component/CoursesSection";
+import Quiz from "./component/Quiz/Questions";
 
 import Timeout from "./component/Quiz/Questions/timeout";
 import { QuizProvider } from "./hooks/QuizContext";
 
 function App() {
   const [startDate, setStartDate] = useState(null);
-    localStorage.setItem("navState", 1);
+  localStorage.setItem("navState", 1);
 
   const handleStartQuiz = () => {
     const now = new Date();
@@ -93,7 +92,7 @@ function App() {
             <Route exact path="/room/:url" element={<Room />} />
             <Route
               exact
-              path="/categoryCourses/:id"
+              path="/categoryCourses/:id/:categoryName"
               element={<CategoryDetails />}
             />
 
