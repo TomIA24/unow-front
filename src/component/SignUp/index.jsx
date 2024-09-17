@@ -234,78 +234,7 @@ const SignUp = () => {
                 </label>
               </div>
 
-              <input
-                type="text"
-                id="Name"
-                name="name"
-                onChange={handleChange}
-                value={data.name}
-                required
-                className={styles.input}
-              />
-
-              <p className={styles.text}>Username</p>
-
-              <input
-                type="text"
-                id="UserName"
-                name="userName"
-                onChange={handleChange}
-                value={data.userName}
-                required
-                className={styles.input}
-              />
-
-              <p className={styles.text}>Phone</p>
-
-              <input
-                type="text"
-                id="Phone"
-                name="phone"
-                onChange={handleChange}
-                value={data.phone}
-                required
-                className={styles.input}
-              />
-              {phoneError && (
-                <div className={styles.error_msg_Phone}>{phoneError}</div>
-              )}
-
-              <p className={styles.text}>E-mail</p>
-
-              <input
-                type="email"
-                id="Email"
-                name="email"
-                onChange={handleChange}
-                value={data.email}
-                required
-                className={styles.input}
-              />
-
-              <p className={styles.text}>Password</p>
-
-              <input
-                type="password"
-                id="Password"
-                name="password"
-                onChange={handleChange}
-                value={data.password}
-                required
-                className={styles.input}
-              />
-              <div className={styles.options}>
-                <div className={styles.checkBox}>
-                  <input type="checkbox" name="remember" />
-                </div>
-                <label htmlFor="remember">
-                  <p className={styles.by}>
-                    {" "}
-                    By continuing, you agree to the <u>Terms of use</u> and{" "}
-                    <u> Privacy Policy.</u>{" "}
-                  </p>
-                </label>
-              </div>
+              
 
               {error && <div className={styles.error_msg}>{error}</div>}
               <div className={styles.sign}>

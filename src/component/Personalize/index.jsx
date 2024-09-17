@@ -1022,7 +1022,8 @@ console.log(e.target.value);
       console.log("Data being sent:", stepData);
 
       const response = await axios.put(apiUrl, stepData);
-
+      const candidateResponse = await axios.get(`${process.env.REACT_APP_API}api/candidat/candidates/${candiddId}`);
+      setcandidatdata(candidateResponse.data)
       if (response.status === 200) {
         if (currentStep === 3){
           navigate('/candidate/profile');
@@ -1033,6 +1034,7 @@ console.log(e.target.value);
       } else {
         console.error("Something went wrong with the API call.");
       }
+
     } catch (error) {
       console.error("Error while updating candidate data:", error);
     }

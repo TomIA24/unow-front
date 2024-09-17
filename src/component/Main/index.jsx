@@ -152,7 +152,7 @@ const Main = () => {
     <React.Fragment className={styles.body}>
       <div style={{ backgroundColor: "background: #f9f9f9;" }}>
         {/* <div className={styles.containerimage}><img src="./images/home/background.png" alt="" className={styles.imagebackground} /></div> */}
-        <Nav ref={refHome} />
+        <Nav  />
         <div className={styles.motivationImg}>
           <div className={styles.textcontainer}>
             <div className={styles.textsearchtitle}>

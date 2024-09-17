@@ -9,6 +9,7 @@ import { CiUser } from "react-icons/ci";
 import { Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import axios from "axios";
 
 const Nav = () => {
   const [WindowWidth, setWindowWidth] = useState(0);
@@ -49,6 +50,27 @@ const Nav = () => {
   const token = localStorage.getItem("token");
   const user = JSON.parse(localStorage.getItem("user"));
 
+
+
+  const [candidateData, setcandidateData] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+
+        const candidateResponse = await axios.get(`${process.env.REACT_APP_API}api/candidat/candidates/${user._id}`);
+        const candidateData = candidateResponse.data;
+   
+        setcandidateData(candidateResponse.data);
+
+      }
+      catch (error) {
+        console.error("Error fetching candidate data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
@@ -61,7 +83,9 @@ const Nav = () => {
   };
 
   const closepopup = () => {
-    navigate("/candidate/profile");
+    console.log('close popup');
+    
+    navigate('/candidate/profile');
     setpopupopen(false);
   };
   const location = useLocation();
@@ -101,8 +125,8 @@ const Nav = () => {
   const [progressGradient, setProgressGradient] = useState("");
   const [mainColorRgb, setMainColorRgb] = useState("");
   useEffect(() => {
-    if (user?.profilecomplited != null) {
-      const percentage = user.profilecomplited;
+    if (candidateData?.profilecomplited != null) {
+      const percentage = candidateData.profilecomplited;
       setCompletedPercentage(`${percentage}%`);
 
       if (percentage <= 20) {
@@ -120,7 +144,7 @@ const Nav = () => {
       setProgressGradient("conic-gradient(#ff9800 0%, #ffffff00 0%)");
       setMainColorRgb("255, 152, 0");
     }
-  }, [user?.profilecomplited]);
+  }, [candidateData?.profilecomplited]);
 
   return (
     <React.Fragment>
@@ -444,7 +468,7 @@ const Nav = () => {
               <div className={styles.closbutton}>
                 {" "}
                 <button onClick={closepopup}>
-                  {" "}
+               
                   <img src="/images/personalize/close.png" alt="bronze" />
                 </button>
               </div>
