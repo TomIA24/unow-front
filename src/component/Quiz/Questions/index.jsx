@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Dialog from './dialog';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate } from 'react-router-dom';
 import styles from "./styles.module.css";
 import CircularTimer from "./timer";
 import { useQuiz } from '../../../hooks/QuizContext';
@@ -30,7 +30,7 @@ const Quiz = ({ startDate }) => {
   const [timeRanOut, setTimeRanOut] = useState(false);
 
   const numb = 4; // Number of questions to fetch
-  let time = durationQuiz*60;
+  let time = durationQuiz * 60;
   const navigate = useNavigate();
 
   const handletimeout = () => {
@@ -90,6 +90,7 @@ const Quiz = ({ startDate }) => {
 
   //   fetchQuestions();
   // }, [numb, time]);
+  const [quiz, setQuiz] = useState([])
   useEffect(() => {
     const fetchQuestions = async () => {
       if (!quizId) return; // Skip fetching if quizId is not available
@@ -107,6 +108,7 @@ const Quiz = ({ startDate }) => {
     fetchQuestions();
   }, [quizId]);
 
+ 
   const handleCheckboxChange = (questionIndex, answer) => {
     const updatedSelectedAnswers = { ...selectedAnswers };
     if (!updatedSelectedAnswers[questionIndex]) {
@@ -138,7 +140,7 @@ const Quiz = ({ startDate }) => {
   const handleSubmit = async () => {
     let totalQuestions = questions.length;
     let correctAnswers = 0;
-    let newScore =0;
+    let newScore = 0;
     handleFinishDate();
     const updatedQuestions = questions.map((question, index) => {
       let isCorrect = false;
@@ -178,7 +180,7 @@ const Quiz = ({ startDate }) => {
 
     try {
       await axios.put(
-        `http://127.0.0.1:5050/api/quiz/updateQuiz/${quizId}`,
+        `${process.env.REACT_APP_API}api/quiz/updateQuiz/${quizId}`,
         {
           questions: updatedQuestions,
           quizName: "My Quiz2",
@@ -225,7 +227,7 @@ const Quiz = ({ startDate }) => {
 
     try {
       await axios.put(
-        `http://127.0.0.1:5050/api/quiz/${quizId}/question/${questionId}`,
+        `${process.env.REACT_APP_API}api/quiz/${quizId}/question/${questionId}`,
         {
           question: question.question, // Include current data
           correctAnswers: question.correctAnswers,
@@ -506,53 +508,53 @@ const Quiz = ({ startDate }) => {
                     <div className={styles.answersection}>
                       {questions[currentQuestion].correctAnswers.length === 1
                         ? questions[currentQuestion].correctAnswers
-                            .concat(questions[currentQuestion].wrongAnswers)
-                            .map((answer, index) => (
-                              <label
-                                key={index}
-                                className={styles.rdiocontainer}
-                              >
-                                <input
-                                  type="radio"
-                                  name={`question-${currentQuestion}`}
-                                  checked={
-                                    selectedAnswers[currentQuestion] === answer
-                                  }
-                                  onChange={() =>
-                                    handleRadioChange(currentQuestion, answer)
-                                  }
-                                />
-                                {answer}
-                                <span className={styles.radio}></span>
-                              </label>
-                            ))
+                          .concat(questions[currentQuestion].wrongAnswers)
+                          .map((answer, index) => (
+                            <label
+                              key={index}
+                              className={styles.rdiocontainer}
+                            >
+                              <input
+                                type="radio"
+                                name={`question-${currentQuestion}`}
+                                checked={
+                                  selectedAnswers[currentQuestion] === answer
+                                }
+                                onChange={() =>
+                                  handleRadioChange(currentQuestion, answer)
+                                }
+                              />
+                              {answer}
+                              <span className={styles.radio}></span>
+                            </label>
+                          ))
                         : questions[currentQuestion].correctAnswers
-                            .concat(questions[currentQuestion].wrongAnswers)
-                            .map((answer, index) => (
-                              <label
-                                key={index}
-                                className={styles.checkmarkcontainer}
-                              >
-                                <input
-                                  type="checkbox"
-                                  name={`question-${currentQuestion}`}
-                                  checked={
-                                    selectedAnswers[currentQuestion] &&
-                                    selectedAnswers[currentQuestion].includes(
-                                      answer
-                                    )
-                                  }
-                                  onChange={() =>
-                                    handleCheckboxChange(
-                                      currentQuestion,
-                                      answer
-                                    )
-                                  }
-                                />
-                                <span className={styles.checkmark}></span>
-                                {answer}
-                              </label>
-                            ))}
+                          .concat(questions[currentQuestion].wrongAnswers)
+                          .map((answer, index) => (
+                            <label
+                              key={index}
+                              className={styles.checkmarkcontainer}
+                            >
+                              <input
+                                type="checkbox"
+                                name={`question-${currentQuestion}`}
+                                checked={
+                                  selectedAnswers[currentQuestion] &&
+                                  selectedAnswers[currentQuestion].includes(
+                                    answer
+                                  )
+                                }
+                                onChange={() =>
+                                  handleCheckboxChange(
+                                    currentQuestion,
+                                    answer
+                                  )
+                                }
+                              />
+                              <span className={styles.checkmark}></span>
+                              {answer}
+                            </label>
+                          ))}
                     </div>
 
                     <div className={styles.submitSection}>

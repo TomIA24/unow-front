@@ -59,7 +59,7 @@ const MainQuiz = ({ onStartQuiz}) => {
         <>
             {!started ? (<div className={styles.containerQuiz}>
                 <div className={styles.quiNav}>
-                    <QuizNav />
+                    <QuizNav quizId={quizId} />
                 </div>
                 <div className={styles.container}>
                     <div className={styles.textContainer}>
