@@ -279,7 +279,8 @@
 }
 
 .inner_carousel {
-  width: clamp(300px, 20vw, 400px); /* Adjusts between 150px and 255px */
+  /* width: clamp(300px, 20vw, 400px);  */
+  width: 400px;
   height: clamp(200px, 20vw, 300px);
   border-radius: 0px 10px 0px 10px;
   display: flex;
@@ -290,7 +291,7 @@
 }
 
 .inner_carousel:last-child {
-  margin-right: 0; /* Remove margin from the last item */
+  margin-right: 0;
   height: auto;
   margin-top: 10px;
 }
@@ -302,19 +303,8 @@
   font-size: 13px;
   font-weight: bold;
   padding: 10px;
-  white-space: normal;
-}
-
-.categoridomain {
-  color: #343434;
-  border-radius: 8px;
-  font-family: "Lato";
-  font-size: 13px;
   font-weight: bold;
-  float: left;
-  padding: 5px;
-  margin: 20px;
-  justify-content: space-between;
+  white-space: normal;
 }
 
 .categoriniveau {
@@ -325,7 +315,6 @@
   align-items: center;
   display: flex;
   font-weight: bold;
-  margin-left: 20px;
   justify-content: space-between;
 }
 
@@ -1210,7 +1199,6 @@ margin-left: 200px; */
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-left: 22px;
 }
 
 .categorietype {
@@ -1297,92 +1285,6 @@ margin-left: 200px; */
 @media (min-width: 1201px) {
   .categorietype {
     font-size: 9px; /* Ajuster la taille de la police pour les grands desktops */
-  }
-}
-
-/* Pour les petits appareils (téléphones) */
-@media (max-width: 576px) {
-  .categoridomain {
-    font-size: 10px; /* Ajuster la taille de la police pour les petits écrans */
-  }
-}
-
-/* Pour les tablettes et petits appareils */
-@media (min-width: 577px) and (max-width: 700px) {
-  .categoridomain {
-    font-size: 12px; /* Ajuster la taille de la police pour les tablettes */
-  }
-}
-@media (min-width: 700px) and (max-width: 800px) {
-  .categoridomain {
-    font-size: 12px; /* Ajuster la taille de la police pour les tablettes */
-  }
-}
-
-/* Pour les petits desktops */
-@media (min-width: 800px) and (max-width: 992px) {
-  .categoridomain {
-    font-size: 13px; /* Ajuster la taille de la police pour les petits desktops */
-  }
-}
-
-/* Pour les moyens desktops */
-@media (min-width: 993px) and (max-width: 1200px) {
-  .categoridomain {
-    font-size: 13px; /* Ajuster la taille de la police pour les moyens desktops */
-  }
-}
-
-/* Pour les grands desktops */
-@media (min-width: 1201px) {
-  .categoridomain {
-    font-size: 13px; /* Ajuster la taille de la police pour les grands desktops */
-  }
-}
-
-/* Pour les petits appareils (téléphones) */
-@media (max-width: 576px) {
-  .categoriniveau {
-    font-size: 8px; /* Ajuster la taille de la police pour les petits écrans */
-    padding: 4px; /* Ajuster le padding pour les petits écrans */
-  }
-}
-
-/* Pour les tablettes et petits appareils */
-@media (min-width: 577px) and (max-width: 700px) {
-  .categoriniveau {
-    font-size: 8px; /* Ajuster la taille de la police pour les tablettes */
-    padding: 5px; /* Ajuster le padding pour les tablettes */
-  }
-}
-@media (min-width: 700px) and (max-width: 800px) {
-  .categoriniveau {
-    font-size: 11px; /* Ajuster la taille de la police pour les petits desktops */
-    padding: 5px; /* Ajuster le padding pour les petits desktops */
-  }
-}
-
-/* Pour les petits desktops */
-@media (min-width: 800px) and (max-width: 992px) {
-  .categoriniveau {
-    font-size: 11px; /* Ajuster la taille de la police pour les petits desktops */
-    padding: 5px; /* Ajuster le padding pour les petits desktops */
-  }
-}
-
-/* Pour les moyens desktops */
-@media (min-width: 993px) and (max-width: 1200px) {
-  .categoriniveau {
-    font-size: 10px; /* Ajuster la taille de la police pour les moyens desktops */
-    padding: 5px; /* Ajuster le padding pour les moyens desktops */
-  }
-}
-
-/* Pour les grands desktops */
-@media (min-width: 1201px) {
-  .categoriniveau {
-    font-size: 9px; /* Ajuster la taille de la police pour les grands desktops */
-    padding: 5px; /* Ajuster le padding pour les grands desktops */
   }
 }
 
@@ -2376,7 +2278,8 @@ margin-left: 200px; */
 }
 
 .inner_carousel {
-  width: clamp(120px, 23vw, 180px); /* Adjusts between 120px and 180px */
+  width: 17rem;
+  min-width: 14rem;
   height: clamp(100px, 20vw, 230px); /* Adjusts between 100px and 230px */
   border-radius: 0px 10px 0px 10px;
   display: flex;
@@ -2384,90 +2287,7 @@ margin-left: 200px; */
   align-items: center;
   /* justify-content: center; */
 }
-@media (max-width: 320px) {
-  .inner_carousel {
-    width: clamp(81px, 20vw, 191px); /* Adjusts between 100px and 150px */
-    height: clamp(129px, 34vw, 217px); /* Adjusts between 150px and 200px */
-  }
-}
-@media (min-width: 320px) and (max-width: 340px) {
-  .inner_carousel {
-    width: clamp(95px, 20vw, 191px); /* Adjusts between 100px and 150px */
-    height: clamp(145px, 34vw, 217px); /* Adjusts between 150px and 200px */
-  }
-}
-@media (min-width: 340px) and (max-width: 370px) {
-  .inner_carousel {
-    width: clamp(100px, 20vw, 191px); /* Adjusts between 100px and 150px */
-    height: clamp(150px, 34vw, 217px); /* Adjusts between 150px and 200px */
-  }
-}
-@media (min-width: 370px) and (max-width: 400px) {
-  .inner_carousel {
-    width: clamp(106px, 20vw, 191px); /* Adjusts between 100px and 150px */
-    height: clamp(150px, 34vw, 217px); /* Adjusts between 150px and 200px */
-  }
-}
-@media (min-width: 400px) and (max-width: 420px) {
-  .inner_carousel {
-    width: clamp(112px, 20vw, 191px); /* Adjusts between 100px and 150px */
-    height: clamp(155px, 34vw, 217px); /* Adjusts between 150px and 200px */
-  }
-}
-@media (min-width: 420px) and (max-width: 460px) {
-  .inner_carousel {
-    width: clamp(129px, 23vw, 191px); /* Adjusts between 100px and 150px */
-    height: clamp(187px, 36vw, 217px); /* Adjusts between 150px and 200px */
-  }
-}
 
-/* For small screens (phones) */
-@media (min-width: 460px) and (max-width: 576px) {
-  .inner_carousel {
-    width: clamp(123px, 27vw, 191px); /* Adjusts between 100px and 150px */
-    height: clamp(150px, 41vw, 217px); /* Adjusts between 150px and 200px */
-  }
-}
-
-/* For medium screens (tablets) */
-@media (min-width: 577px) and (max-width: 819px) {
-  .inner_carousel {
-    width: clamp(120px, 29vw, 211px); /* Adjusts between 120px and 180px */
-    height: clamp(170px, 38vw, 260px); /* Adjusts between 170px and 230px */
-  }
-}
-
-/* For large screens (small desktops) */
-@media (min-width: 819px) and (max-width: 1024px) {
-  .inner_carousel {
-    width: clamp(140px, 21vw, 230px); /* Adjusts between 140px and 200px */
-    height: clamp(180px, 29vw, 285px); /* Adjusts between 180px and 250px */
-  }
-}
-
-/* For extra large screens (large desktops) */
-@media (min-width: 1025px) and (max-width: 1240px) {
-  .inner_carousel {
-    width: clamp(160px, 21vw, 324px); /* Adjusts between 160px and 220px */
-    height: clamp(200px, 29vw, 337px); /* Adjusts between 200px and 270px */
-  }
-}
-@media (min-width: 1240px) and (max-width: 1380px) {
-  .inner_carousel {
-    width: clamp(160px, 22vw, 324px); /* Adjusts between 160px and 220px */
-    height: clamp(200px, 36vw, 400px); /* Adjusts between 200px and 270px */
-  }
-}
-@media (min-width: 1380px) {
-  .inner_carousel {
-    width: clamp(160px, 40vw, 300px); /* Adjusts between 160px and 220px */
-    height: clamp(200px, 30vw, 410px); /* Adjusts between 200px and 270px */
-  }
-}
-
-.inner_carousel:last-child {
-  margin-right: 0; /* Remove margin from the last item */
-}
 .image {
   width: 100%; /* Exemple de largeur */
   height: 100px;
@@ -2617,8 +2437,7 @@ margin-left: 200px; */
 }
 .containercard {
   width: 100%;
-  margin: 1px 3px 0px 3px;
-  display: inline-block;
+  margin: 10px 3px 0px 3px;
 }
 .containerplus {
   display: flex;
@@ -2627,6 +2446,21 @@ margin-left: 200px; */
   border-radius: 10px 0px 0px;
   bottom: 10px;
   cursor: pointer;
+}
+.categoriedetails {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 10px 20px;
+}
+.categoriedetails > div:nth-child(2) {
+  font-size: 10px;
+  color: #706f6f;
+}
+.categoriedetails > div:nth-child(3) {
+  color: black;
+  font-size: 16px;
+  font-weight: 600;
 }
 .plusstyle {
   font-size: 15px !important;

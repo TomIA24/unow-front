@@ -1,9 +1,7 @@
 import { Box, Container, Typography } from "@mui/material";
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
-import { Col, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-import Empty from "../../../assets/empty.png";
 import imageCourse from "../../../assets/icon_course.png";
 import imageTraining from "../../../assets/icon_training.png";
 import image from "../../../assets/image_training.png";
@@ -11,27 +9,26 @@ import loupe from "../../../assets/loupe.png";
 import GenericSwitcher from "../../../GenericSwitcher";
 import Nav from "../../../Nav";
 import PaginationComponent from "../../../Pagination";
-import TopBarComponent from "../../../TopBar";
 import Footer from "../../Footer";
 import CourseItem from "./CourseItem";
 import "./styles.modules.css";
 
 const fetchData = (type, setter, id) => {
-  const url = `${process.env.REACT_APP_API}api/Category/specificGroupeFromCategory`;
+  const url = `${process.env.REACT_APP_API}api/Category/specificGroupeFromCategory/${id}?type=${type}&page=1&limit=10`;
   axios
-    .post(url, { id, type })
+    .get(url)
     .then((res) => setter(res.data.data))
     .catch((err) => console.error(err));
 };
 
-const Breadcrumb = () => (
+const Breadcrumb = ({ categoryName }) => (
   <Box sx={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
     <Typography variant="body1" fontWeight={500}>
       Home
     </Typography>
     <img src="/svg/polygon.svg" alt="Breadcrumb separator" />
     <Typography variant="body1" fontWeight={500}>
-      Design
+      {categoryName?.split("_").join(" ")}
     </Typography>
   </Box>
 );
@@ -66,17 +63,11 @@ const CourseList = ({ courses, windowWidth, indexItems }) => {
         .slice(0, windowWidth > 900 ? indexItems / 3 : indexItems / 2)
         .map((itemnested) => (
           <div key={itemnested[0].id}>
-            <Row className="row1">
-              {itemnested.length > 0 ? (
-                itemnested.map((course) => (
-                  <Col xs={6} md={4} className="col" key={course.id}>
-                    <CourseItem course={course} />
-                  </Col>
-                ))
-              ) : (
-                <Empty />
-              )}
-            </Row>
+            <Box sx={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
+              {itemnested.map((course) => (
+                <CourseItem key={course.id} course={course} />
+              ))}
+            </Box>
             <br />
           </div>
         ))}
@@ -85,7 +76,7 @@ const CourseList = ({ courses, windowWidth, indexItems }) => {
 };
 
 const CategoryDetails = () => {
-  const { id } = useParams();
+  const { id, categoryName } = useParams();
   const [loadMoreOnline, setLoadMoreOnline] = useState(false);
   const [loadMoreOffline, setLoadMoreOffline] = useState(false);
   const [indexItems, setIndexItems] = useState(6);
@@ -113,6 +104,7 @@ const CategoryDetails = () => {
   }, [loadMoreOnline, loadMoreOffline]);
 
   const refHome = useRef();
+
   return (
     <>
       <div className="backimage">
@@ -141,15 +133,15 @@ const CategoryDetails = () => {
             marginTop: "50px",
           }}
         >
-          <Breadcrumb />
-          <TopBarComponent
+          <Breadcrumb categoryName={categoryName} />
+          {/* <TopBarComponent
             items={[
               { id: 1, title: "Web Design" },
               { id: 2, title: "Graphic Design and Illustration" },
               { id: 3, title: "Design Tool" },
               { id: 4, title: "UX Design" },
             ]}
-          />
+          /> */}
           <GenericSwitcher
             items={[
               { icon: imageCourse, title: "COURSES" },

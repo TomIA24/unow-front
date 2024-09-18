@@ -69,9 +69,7 @@ const Categories = () => {
   const handleCardClick = (category) => {
     // setSelectedCategory(category);
     navigate(
-      `/categoryCourses/${category._id}/${category.Title.split(" ")
-        .join("_")
-        .toLowerCase()}`
+      `/categoryCourses/${category._id}/${category.Title.split(" ").join("_")}`
     );
   };
 

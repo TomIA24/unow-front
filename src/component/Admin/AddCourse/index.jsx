@@ -24,6 +24,7 @@ import Avatar from "@mui/material/Avatar";
 import Badge from "@mui/material/Badge";
 import IconButton from "@mui/material/IconButton";
 import { styled } from "@mui/material/styles";
+import { getBase64 } from "../../../shared/image.service";
 import {
   multipleFilesUploadWithName,
   singleFileUploadWithName,
@@ -31,7 +32,6 @@ import {
 import Programs from "../../res/programs";
 import VideoSelected from "./VideoSelected";
 import "./styles.css";
-import { getBase64 } from "../../../shared/image.service";
 
 const SmallAvatar = styled(Avatar)(({ theme }) => ({
   width: 22,
@@ -501,9 +501,13 @@ const AddCourse = () => {
                         id="icon-button-file"
                         type="file"
                         onChange={(e) => {
+                          console.log(e.target.files[0]);
                           SingleFileChange(e);
                         }}
                       />
+                      <button onClick={() => console.log(singleFile)}>
+                        click
+                      </button>
                       <IconButton
                         color="primary"
                         aria-label="upload picture"
