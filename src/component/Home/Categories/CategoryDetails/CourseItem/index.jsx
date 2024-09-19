@@ -3,9 +3,16 @@ import AddIcon from "@mui/icons-material/Add";
 import stylesItem from "./styles.module.css";
 
 import { Avatar, AvatarGroup } from "@mui/material";
+import { Link, useParams } from "react-router-dom";
 const CourseItem = ({ course }) => {
+  const { contentType } = useParams();
+  const url = `/${
+    contentType.charAt(0).toUpperCase() +
+    contentType.slice(1, contentType.length - 1)
+  }/${course._id}`;
+
   return (
-    <div>
+    <Link to={url} key={course._id}>
       <div className={stylesItem.topTrainingElements}>
         <div className={stylesItem.inner_carousel}>
           {course.Thumbnail?.filePath ? (
@@ -100,7 +107,7 @@ const CourseItem = ({ course }) => {
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 export default CourseItem;

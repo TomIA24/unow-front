@@ -17,7 +17,6 @@ import styles from "./styles.module.css";
 
 const Categories = () => {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-  console.log(screenWidth);
   const [showModal, setShowModal] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [categories, setCategories] = useState([]);
@@ -69,7 +68,7 @@ const Categories = () => {
   const handleCardClick = (category) => {
     const categoryId = category._id;
     const formattedTitle = category.Title.split(" ").join("_");
-    const categoryUrl = `/categoryCourses/${categoryId}/${formattedTitle}`;
+    const categoryUrl = `/categoryCourses/${categoryId}/${formattedTitle}/courses`;
 
     navigate(categoryUrl);
   };

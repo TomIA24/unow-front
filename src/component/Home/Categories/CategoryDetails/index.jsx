@@ -47,10 +47,10 @@ const CourseList = ({ courses }) => {
 };
 
 const CategoryDetails = () => {
-  const { id, categoryName, contentType, page } = useParams();
+  const { id, categoryName, contentType } = useParams();
   const [courses, setCourses] = useState([]);
   const [trainings, setTrainings] = useState([]);
-  const [currentPage, setCurrentPage] = useState(page ? parseInt(page) : 1);
+  const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [selectedType, setSelectedType] = useState(
     contentType ? contentType.toUpperCase() : "COURSES"

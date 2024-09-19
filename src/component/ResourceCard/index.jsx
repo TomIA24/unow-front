@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import React, { memo } from "react";
 import { Link } from "react-router-dom";
 import { CourseRatingSimpleView } from "../../shared/rating";
@@ -26,7 +25,6 @@ const ResourceCard = memo(({ training }) => {
       `${process.env.REACT_APP_API}${Thumbnail.filePath}`
     );
   };
-
   return (
     <Link to={`/${type === "course" ? "Course" : "Training"}/${_id}`} key={_id}>
       <div className={styles.inner_carousel}>
@@ -61,32 +59,5 @@ const ResourceCard = memo(({ training }) => {
     </Link>
   );
 });
-
-ResourceCard.propTypes = {
-  training: PropTypes.shape({
-    _id: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired,
-    Thumbnail: PropTypes.shape({
-      filePath: PropTypes.string,
-    }),
-    Title: PropTypes.string,
-    Category: PropTypes.string,
-    Price: PropTypes.number,
-    Level: PropTypes.string,
-    rating: PropTypes.number,
-    evaluate: PropTypes.arrayOf(PropTypes.object),
-  }).isRequired,
-};
-
-ResourceCard.defaultProps = {
-  training: {
-    Title: "No Title Available",
-    Category: "Uncategorized",
-    Price: 0,
-    Level: "Beginner",
-    rating: 0,
-    evaluate: [],
-  },
-};
 
 export default ResourceCard;
