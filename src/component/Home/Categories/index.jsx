@@ -67,10 +67,11 @@ const Categories = () => {
   }, []);
 
   const handleCardClick = (category) => {
-    // setSelectedCategory(category);
-    navigate(
-      `/categoryCourses/${category._id}/${category.Title.split(" ").join("_")}`
-    );
+    const categoryId = category._id;
+    const formattedTitle = category.Title.split(" ").join("_");
+    const categoryUrl = `/categoryCourses/${categoryId}/${formattedTitle}`;
+
+    navigate(categoryUrl);
   };
 
   const handleCloseModal = () => {

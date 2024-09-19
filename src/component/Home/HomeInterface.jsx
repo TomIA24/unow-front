@@ -1,14 +1,14 @@
 import React from "react";
-import Categories from "./Categories";
-import Featured from "./Featured Trainers";
-import About from "./AboutUs";
-import UpSkill from "./UpSkill";
-import Footer from "./Footer";
 import Main from "../Main";
-import styles from "./styles.module.css";
-import Join from "./Join";
-import Collab from "./Collab";
+import About from "./AboutUs";
+import Categories from "./Categories";
 import Chatbot from "./chatbot/chatbot";
+import Collab from "./Collab";
+import Featured from "./Featured Trainers";
+import Footer from "./Footer";
+import Join from "./Join";
+import styles from "./styles.module.css";
+import UpSkill from "./UpSkill";
 
 const HomeInterface = () => {
   return (

@@ -4,7 +4,6 @@ import stylesItem from "./styles.module.css";
 
 import { Avatar, AvatarGroup } from "@mui/material";
 const CourseItem = ({ course }) => {
-  console.log(course);
   return (
     <div>
       <div className={stylesItem.topTrainingElements}>
