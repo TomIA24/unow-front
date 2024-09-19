@@ -85,7 +85,9 @@ const Nav = () => {
   const closepopup = () => {
     console.log('close popup');
     
-    navigate('/candidate/profile');
+    setTimeout(() => {
+      navigate('/candidate/profile'); // Navigate after state update
+    }, 100);
     setpopupopen(false);
   };
   const location = useLocation();

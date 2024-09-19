@@ -104,7 +104,7 @@ function App() {
             {user.userType === "Trainer" && (
               <Route exact path="/profile" element={<ProfileTrainer />} />
             )}
-            {user.userType === "Student" && (
+            {user.userType !== "Admin" &&  user.userType !== "Trainer"  &&  (
               <Route
                 exact
                 path="/candidate/profile"

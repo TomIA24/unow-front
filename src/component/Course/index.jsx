@@ -7,6 +7,7 @@ import PaidCourse from "./paid"
 const  Course = () =>{
 
     let { id } = useParams();
+    console.log('Course ID:', id);
     const token = localStorage.getItem("token")
 	const user = JSON.parse(localStorage.getItem("user"));
     const [paid, setPaid] = useState(false)

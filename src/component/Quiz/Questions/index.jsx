@@ -255,19 +255,25 @@ const Quiz = ({ startDate }) => {
   };
 
   const handleNextQuestion = () => {
+ 
     const nextQuestion = currentQuestion + 1;
+
     if (nextQuestion < questions.length) {
+
       setCurrentQuestion(nextQuestion);
       if (nextQuestion === questions.length - 1) {
         setFinishButton(true);
       }
+ 
+    } else {
+      handleSubmit();
+    }
+    window.setTimeout(() => {
       window.scrollTo({
         top: 0,
         behavior: "smooth",
       });
-    } else {
-      handleSubmit();
-    }
+    }, 100);
   };
   const isAnyAnswerSelected = (questionIndex) => {
     const answers = selectedAnswers[questionIndex];
