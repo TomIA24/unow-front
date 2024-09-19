@@ -124,6 +124,10 @@ const CategoryDetails = () => {
             </Typography>
             <img src="/svg/polygon.svg" alt="Breadcrumb separator" />
             <Typography variant="body1" fontWeight={500}>
+              Categories
+            </Typography>
+            <img src="/svg/polygon.svg" alt="Breadcrumb separator" />
+            <Typography variant="body1" fontWeight={500}>
               {categoryName?.split("_").join(" ")}
             </Typography>
           </Box>
