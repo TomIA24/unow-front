@@ -6,14 +6,9 @@ import SliderNav from "./slider";
 import styles from "./styles.module.css";
 
 import img from "../assets/profileImgNoUp.svg";
-import imgicon from "../assets/profileuser.png";
-import Avatar from "@mui/material/Avatar";
 import { CiUser } from "react-icons/ci";
 import { Typography } from "@mui/material";
-import { useNavigate } from "react-router-dom";
-import { useLocation } from "react-router-dom";
 import axios from "axios";
-
 
 const Nav = () => {
   const [WindowWidth, setWindowWidth] = useState(0);
@@ -42,7 +37,6 @@ const Nav = () => {
     }
   }, []);
   useEffect(() => {
-
     if (WindowWidth <= 800) {
       setMobileView(true);
     } else {
@@ -53,20 +47,17 @@ const Nav = () => {
   const token = localStorage.getItem("token");
   const user = JSON.parse(localStorage.getItem("user"));
 
-
-
   const [candidateData, setcandidateData] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
       try {
-
-        const candidateResponse = await axios.get(`${process.env.REACT_APP_API}api/candidat/candidates/${user._id}`);
+        const candidateResponse = await axios.get(
+          `${process.env.REACT_APP_API}api/candidat/candidates/${user._id}`
+        );
         const candidateData = candidateResponse.data;
-   
-        setcandidateData(candidateResponse.data);
 
-      }
-      catch (error) {
+        setcandidateData(candidateResponse.data);
+      } catch (error) {
         console.error("Error fetching candidate data:", error);
       }
     };
@@ -86,9 +77,9 @@ const Nav = () => {
   };
 
   const closepopup = () => {
-   
-    
-    navigate('/candidate/profile');
+    setTimeout(() => {
+      navigate("/candidate/profile"); // Navigate after state update
+    }, 100);
     setPopupOpen(false);
   };
   const location = useLocation();
@@ -117,12 +108,8 @@ const Nav = () => {
   });
 
   const handlpersonalized = (candiddId) => {
-
-
     navigate(`/personalize`, { state: { candiddId } });
     setPopupOpen(!opnpopup);
-
-
   };
   const [completedPercentage, setCompletedPercentage] = useState("0%");
 
@@ -470,10 +457,7 @@ const Nav = () => {
           <div className={styles.overlayStyles}>
             <div ref={dialogRef} className={styles.dialogStyles}>
               <div className={styles.closbutton}>
-               
-               
                 <button onClick={closepopup}>
-               
                   <img src="/images/personalize/close.png" alt="bronze" />
                 </button>
               </div>
@@ -484,8 +468,6 @@ const Nav = () => {
                   alt="bronze"
                 />
                 <div className={styles.continuebutton}>
-                 
-                 
                   <button onClick={() => handlpersonalized(user._id)}>
                     Proceed
                   </button>
