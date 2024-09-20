@@ -1182,7 +1182,6 @@ margin-left: 200px; */
 }
 
 .inner_carousel {
-  /* width: clamp(120px, 21vw, 180px); */
   height: clamp(215px, 20vw, 100px);
   border-radius: 0px 10px 0px 10px;
   height: auto;
