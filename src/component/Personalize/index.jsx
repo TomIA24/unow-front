@@ -154,7 +154,7 @@ const Personalize = () => {
     profilecomplited: 0,
  });
 
-  const [candidatdata, setcandidatdata] = useState({
+  const [candidatdata, setCandidatData] = useState({
    
     stepPersonalize_1: {
       interests: [],
@@ -188,7 +188,7 @@ const Personalize = () => {
 
         const candidateResponse = await axios.get(`${process.env.REACT_APP_API}api/candidat/candidates/${candiddId}`);
         const candidateData = candidateResponse.data;
-        setcandidatdata(candidateResponse.data)
+        setCandidatData(candidateResponse.data)
         setcandidateData(candidateResponse.data);
 
 
@@ -1023,7 +1023,7 @@ console.log(e.target.value);
 
       const response = await axios.put(apiUrl, stepData);
       const candidateResponse = await axios.get(`${process.env.REACT_APP_API}api/candidat/candidates/${candiddId}`);
-      setcandidatdata(candidateResponse.data)
+      setCandidatData(candidateResponse.data)
       if (response.status === 200) {
         if (currentStep === 3){
           navigate('/candidate/profile');
