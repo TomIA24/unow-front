@@ -19,7 +19,7 @@ console.log("quizId",quizId);
        <Nav   />
        </div>
 
-       <div className={styles.pdcontainer}>
+       <div className={styles.pdContainer}>
 <div className={styles.pdowncontainer}> 
     <div className={styles.pdown} >PRODUCT OWNER OPEN
     <p className={styles.underline}></p>

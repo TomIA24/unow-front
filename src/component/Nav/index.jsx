@@ -76,10 +76,10 @@ const Nav = () => {
     localStorage.removeItem("user");
     navigate(`/login`);
   };
-  const [opnpopup, setpopupopen] = useState(false);
+  const [opnpopup, setPopupOpen] = useState(false);
 
   const handlepopup = () => {
-    setpopupopen(true);
+    setPopupOpen(true);
   };
 
   const closepopup = () => {
@@ -88,7 +88,7 @@ const Nav = () => {
     setTimeout(() => {
       navigate('/candidate/profile'); // Navigate after state update
     }, 100);
-    setpopupopen(false);
+    setPopupOpen(false);
   };
   const location = useLocation();
 
@@ -119,7 +119,7 @@ const Nav = () => {
     console.log("id candat from nev", candiddId);
     // navigate('/profile');
     navigate(`/personalize`, { state: { candiddId } });
-    setpopupopen(!opnpopup);
+    setPopupOpen(!opnpopup);
     console.log(opnpopup);
   };
   const [completedPercentage, setCompletedPercentage] = useState("0%");
@@ -468,7 +468,7 @@ const Nav = () => {
           <div className={styles.overlayStyles}>
             <div ref={dialogRef} className={styles.dialogStyles}>
               <div className={styles.closbutton}>
-                {" "}
+                
                 <button onClick={closepopup}>
                
                   <img src="/images/personalize/close.png" alt="bronze" />
@@ -481,7 +481,7 @@ const Nav = () => {
                   alt="bronze"
                 />
                 <div className={styles.continuebutton}>
-                  {" "}
+                  
                   <button onClick={() => handlpersonalized(user._id)}>
                     Proceed
                   </button>
