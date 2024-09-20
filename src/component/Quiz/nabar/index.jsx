@@ -15,7 +15,7 @@ const QuizNav = () => {
   <div className={styles.navContainer}>
        <Nav   />
        </div>
-<div className={styles.pdowncontainer}> 
+<div className={styles.pdownContainer}> 
     <div className={styles.pdown} >PRODUCT OWNER OPEN
     <p className={styles.underline}></p>
     </div>
