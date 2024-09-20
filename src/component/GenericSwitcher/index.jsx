@@ -1,30 +1,30 @@
-import { AddPhotoAlternate } from "@mui/icons-material";
-import { useState } from "react";
-import imageCourse from "../assets/icon_course.png";
-import imageTraining from "../assets/icon_training.png";
-
+import { Box } from "@mui/material";
+import { Link, useParams } from "react-router-dom";
 import styles from "./styles.module.css";
-const GenericSwitcher = (props) => {
+
+const GenericSwitcher = ({ items, selectedItem, setSelectedItem }) => {
+  const { id, contentType } = useParams();
+  const content = contentType === "courses" ? "trainings" : "courses";
 
   return (
-    <div className={styles.container}>
-      {props?.items.map((item, i) => {
-        return (
-          <button
-            className={
-              props.selectedItem !== item.title
-                ? styles.btnstyle
-                : styles.btnselectedstyle
-            }
-            onClick={() => props.setSelectedItem(item.title)}
-          >
-            <img className={styles.image} src={item.icon} />
+    <Link to={`/category/${id}/${content}`}>
+      <Box sx={{ display: "flex" }}>
+        {items.map((item, i) => {
+          return (
+            <button
+              className={`${styles.btnstyle} ${
+                selectedItem === item.title ? styles.btnselectedstyle : null
+              }`}
+              onClick={() => setSelectedItem(item.title)}
+            >
+              <img className={styles.image} src={item.icon} alt="" />
 
-            <h2 className={styles.textstyle}>{item.title}</h2>
-          </button>
-        );
-      })}
-    </div>
+              <p className={styles.textstyle}>{item.title}</p>
+            </button>
+          );
+        })}
+      </Box>
+    </Link>
   );
 };
 export default GenericSwitcher;

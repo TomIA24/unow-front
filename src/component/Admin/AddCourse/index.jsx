@@ -24,6 +24,7 @@ import Avatar from "@mui/material/Avatar";
 import Badge from "@mui/material/Badge";
 import IconButton from "@mui/material/IconButton";
 import { styled } from "@mui/material/styles";
+import { getBase64 } from "../../../shared/image.service";
 import {
   multipleFilesUploadWithName,
   singleFileUploadWithName,
@@ -31,7 +32,6 @@ import {
 import Programs from "../../res/programs";
 import VideoSelected from "./VideoSelected";
 import "./styles.css";
-import { getBase64 } from "../../../shared/image.service";
 
 const SmallAvatar = styled(Avatar)(({ theme }) => ({
   width: 22,
@@ -126,6 +126,7 @@ const AddCourse = () => {
   const uploadSingleFile = async (id) => {
     const formData = new FormData();
     formData?.append("file", singleFile);
+    console.log("formData",formData.get("file"),id)
     await singleFileUploadWithName(
       formData,
       data?.Title,
@@ -218,14 +219,12 @@ const AddCourse = () => {
     };
     try {
       const url = `${process.env.REACT_APP_API}api/courses/CreateCourse`;
-      axios
-        .post(url, data, config)
-        .then(async (res) => {
-          console.log("id---- :", res.data?.id);
+    const res = await axios.post(url, data, config);
+    const courseId = res.data?.id;
           // setUploading(true);
           await uploadSingleFile(res.data?.id);
-          await UploadMultipleFiles();
-          await UploadMultipleFilesRessources();
+         // await UploadMultipleFiles();
+         // await UploadMultipleFilesRessources(res.data?.id);
           window.scrollTo(0, 0);
           setSaved(true);
           // setUploading(false);
@@ -238,10 +237,11 @@ const AddCourse = () => {
           setData(initialData);
           setMultipleFilesSelected([]);
           setPrev(null);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+       //}
+      //)
+        // .catch((err) => {
+        //   console.log(err);
+        // });
     } catch (error) {
       if (
         error.response &&
@@ -315,16 +315,19 @@ const AddCourse = () => {
     );
   };
 
-  const UploadMultipleFilesRessources = async () => {
+  const UploadMultipleFilesRessources = async (id) => {
     const formData = new FormData();
     for (let i = 0; i < multipleFilesSelectedRessources.length; i++) {
       formData?.append("files", multipleFilesSelectedRessources[i]);
     }
-    await multipleFilesUploadWithName(
+    console.log("formData",formData.get("files"))
+    //modif here
+    await singleFileUploadWithName(
       formData,
       data?.Title,
       user._id,
-      "Ressources"
+      id,
+      setUploadProgress
     );
     // getMultipleFilesList();
   };
@@ -495,12 +498,13 @@ const AddCourse = () => {
                       height: 50,
                     }}
                   >
-                    <label htmlFor="icon-button-file">
+                    {/* <label htmlFor="icon-button-file">
                       <Input
                         accept="image/*"
                         id="icon-button-file"
                         type="file"
                         onChange={(e) => {
+                          console.log(e.target.files[0]);
                           SingleFileChange(e);
                         }}
                       />
@@ -511,7 +515,7 @@ const AddCourse = () => {
                       >
                         <PhotoCamera sx={{ width: 35, height: 35 }} />
                       </IconButton>
-                    </label>
+                    </label> */}
                   </SmallAvatar>
                 }
               >
@@ -586,7 +590,7 @@ const AddCourse = () => {
                     id="contained-button-file"
                     multiple
                     type="file"
-                    onChange={(e) => MultipleFileChange(e)}
+                   // onChange={(e) => MultipleFileChange(e)}
                   />
                   <div
                     style={{
@@ -1076,7 +1080,8 @@ const AddCourse = () => {
                       id="contained-button-file-Ressource"
                       multiple
                       type="file"
-                      onChange={(e) => MultipleFileChangeRessources(e)}
+                      onChange={(e)=>SingleFileChange(e)}
+                      //onChange={(e) => MultipleFileChangeRessources(e)}
                     />
                     <IconButton
                       onClick={() => {

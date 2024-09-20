@@ -200,7 +200,6 @@
   background-color: rgba(0, 255, 255, 0);
   /* width: 100%; */
   padding-bottom: 5%;
-  margin-bottom: 6%;
 }
 
 .topTrainingElements {
@@ -991,7 +990,6 @@
     /* width: 100%; */
 
     /* padding-right: 30px; */
-    min-height: 450px;
     /* margin: 0px auto; */
     display: flex;
     flex-direction: column;
@@ -1118,7 +1116,6 @@ margin-left: 200px; */
     .sectionThree {
       padding-left: 25px; /* Adjust padding for tablets */
       padding-right: 25px;
-      margin-bottom: 9%; /* Adjust margin for tablets */
     }
   }
 
@@ -1126,7 +1123,6 @@ margin-left: 200px; */
     .sectionThree {
       padding-left: 30px; /* Adjust padding for small desktops */
       padding-right: 30px;
-      margin-bottom: 1rem; /* Adjust margin for small desktops */
     }
   }
 
@@ -1135,7 +1131,6 @@ margin-left: 200px; */
       padding-left: 30px; /* Keep original padding for large desktops */
       padding-right: 30px;
       margin-top: 0%;
-      margin-bottom: 0%; /* Keep original margin for large desktops */
     }
   }
 }
