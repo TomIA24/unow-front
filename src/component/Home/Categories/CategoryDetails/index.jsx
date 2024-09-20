@@ -1,4 +1,4 @@
-import { Box, CircularProgress, Container, Typography } from "@mui/material";
+import { Box, CircularProgress, Container } from "@mui/material";
 import { useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import imageCourse from "../../../assets/icon_course.png";
@@ -79,19 +79,15 @@ const CategoryDetails = () => {
             marginTop: "50px",
           }}
         >
-          <Box sx={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-            <Typography variant="body1" fontWeight={500}>
-              Home
-            </Typography>
-            <img src="/svg/polygon.svg" alt="Breadcrumb separator" />
-            <Typography variant="body1" fontWeight={500}>
-              Categories
-            </Typography>
-            <img src="/svg/polygon.svg" alt="Breadcrumb separator" />
-            <Typography variant="body1" fontWeight={500}>
-              {category.Title}
-            </Typography>
-          </Box>
+          <div className="breadcrumb-container">
+            <div className="breadcrumb-header">
+              <span className="breadcrumb-text">Home</span>
+              <img src="/svg/polygon.svg" alt="Breadcrumb separator" />
+              <span className="breadcrumb-text">Categories</span>
+              <img src="/svg/polygon.svg" alt="Breadcrumb separator" />
+              <span className="breadcrumb-text">{category.Title}</span>
+            </div>
+          </div>
 
           {/* TapBarComponent exists, you just need to implement the subcategory in the backend */}
           <GenericSwitcher
@@ -106,16 +102,9 @@ const CategoryDetails = () => {
 
         <div className="d-flex justify-content-center align-items-center mt-4 paddingbottom">
           {loading && (
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                minHeight: "40vh",
-              }}
-            >
+            <div className="center" style={{ minHeight: "40vh" }}>
               <CircularProgress />
-            </Box>
+            </div>
           )}
           {!loading && (
             <Box sx={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
@@ -124,21 +113,14 @@ const CategoryDetails = () => {
               ))}
             </Box>
           )}
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              paddingTop: "2%",
-            }}
-          >
+          <div className="center" style={{ paddingTop: "2%" }}>
             <PaginationComponent
               currentPage={currentPage}
               totalPages={totalPages}
               onPageChange={handlePageChange}
             />
             <br />
-          </Box>
+          </div>
         </div>
       </Container>
       <Footer />
