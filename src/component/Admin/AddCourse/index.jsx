@@ -505,9 +505,6 @@ const AddCourse = () => {
                           SingleFileChange(e);
                         }}
                       />
-                      <button onClick={() => console.log(singleFile)}>
-                        click
-                      </button>
                       <IconButton
                         color="primary"
                         aria-label="upload picture"
