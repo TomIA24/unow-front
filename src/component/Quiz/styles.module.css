@@ -37,7 +37,7 @@ body{
 .goback{
   width:15rem;
   height: 2.5rem;
-  box-shadow: #3E4678;
+  box-shadow: 0 2px 7px 0 rgba(0, 0, 0, 0.1), 0 1px 7px 0 rgba(117, 113, 113, 0.19);
   background-color: white;
   color: #3E4678;
   font-size: 15px;
@@ -1875,7 +1875,7 @@ p{
 
 .instructiontext li {
     margin-bottom: 10px;
-    font-size: 1.2em; /* Optional: add some space between list items for better readability */
+    font-size: 1.2em; /* Optional: add some spacbuttoncontainere between list items for better readability */
 }
 .instructiontext li b{
   margin-bottom: 10px;

@@ -83,7 +83,11 @@ hr {
   justify-content: center;
   align-items: center;
 }
-
+@media (max-width: 600px) {
+  .search_btn {
+    width: 80px;
+  }
+}
 @media (max-width: 600px) {
   .explore_input {
     background-color: white;
@@ -224,7 +228,7 @@ b {
   background: url("../../../assets/background-image.png") no-repeat center
     center;
   background-size: cover;
-  height: 40vh;
+  height: 30vh;
   border-radius: 0px 0px 50px 50px;
 }
 
@@ -237,4 +241,33 @@ b {
   .imagestyle {
     display: none;
   }
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+}
+.breadcrumb p {
+  font-size: 16px;
+  font-weight: 500;
+}
+.breadcrumb img {
+  margin: 0 5px;
+}
+
+.breadcrumb-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 50px;
+}
+
+.breadcrumb-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.breadcrumb-text {
+  font-weight: 500;
 }

@@ -1,21 +1,24 @@
-import React from "react";
 import Pagination from "@mui/material/Pagination";
-import Stack from "@mui/material/Stack";
+import React from "react";
 
 const PaginationComponent = ({ currentPage, totalPages, onPageChange }) => {
   return (
-    <Stack spacing={2}>
-      <Pagination
-        count={totalPages}
-        page={currentPage}
-        onChange={(event, value) => onPageChange(value)}
-        color="primary"
-        shape="rounded"
-        variant="outlined"
-        showFirstButton
-        showLastButton
-      />
-    </Stack>
+    <>
+      {totalPages > 1 && currentPage > 1 && (
+        <Pagination
+          count={totalPages}
+          page={currentPage}
+          onChange={(event, value) => {
+            onPageChange(value);
+          }}
+          color="primary"
+          shape="rounded"
+          variant="outlined"
+          showFirstButton
+          showLastButton
+        />
+      )}
+    </>
   );
 };
 

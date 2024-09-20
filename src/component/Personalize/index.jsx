@@ -41,7 +41,7 @@ const Personalize = () => {
   const [learningDomain, setLearningDomain] = useState("");
   const [learningCertif, setLearningCertif] = useState("");
   const { candiddId, data } = location.state || {};
-  console.log("idcdnadt", candiddId);
+
 
   // Save quizId to sessionStorage
   const addDomain = (domain, e) => {
@@ -83,7 +83,7 @@ const Personalize = () => {
   };
 
   const handleChangeSignup = ({ currentTarget: input }) => {
-    console.log(input.name, input.value);
+
     setSignup({ ...data, [input.name]: input.value });
   };
 
@@ -121,7 +121,7 @@ const Personalize = () => {
   // };
 
   const handleComplete = () => {
-    console.log("Form completed!");
+ 
     // Handle form completion logic here
   };
 
@@ -197,10 +197,6 @@ const Personalize = () => {
           ...candidateData,
         }));
 
-        console.log("Existing candidate candidateData:", candidateData);
-        console.log("Existing candidate candidatdata:", candidatdata);
-        console.log("Existing candidate FormData:", formData);
-        console.log("hasChanges:", hasChanges);
       }
       catch (error) {
         console.error("Error fetching candidate data:", error);
@@ -282,7 +278,6 @@ const Personalize = () => {
 
   const handleInputChange3 = (e) => {
     const { name, value, checked, type } = e.target;
-  console.log(e.target.value);
   
     if (type === 'checkbox') {
       setFormData(prevState => {
@@ -480,7 +475,7 @@ console.log(e.target.value);
 
     try {
       const response = await axios.put(`${process.env.REACT_APP_API}api/candidat/step1/${candiddId}`, candidatdata);
-      console.log('Response:', response.data);
+    
     } catch (error) {
       console.error('Error updating candidat data:', error);
     }
@@ -503,12 +498,12 @@ console.log(e.target.value);
     // const isStepCompleted = stepCompletionStatus[currentStep];
     const hasStepBeenCompleted = currentStepData.isCompleted;
 
-    console.log("hasChanges ", hasChanges);
+    // console.log("hasChanges ", hasChanges);
     // console.log("hasStepBeenCompleted ",hasStepBeenCompleted );
-    console.log(hasStepBeenCompleted && hasChanges);
+    // console.log(hasStepBeenCompleted && hasChanges);
 
     const updatedProfilecomplited = (hasStepBeenCompleted && hasChanges) ? (candidateData.profilecomplited) : (candidateData.profilecomplited + 20);
-    console.log('updatedProfilecomplited', updatedProfilecomplited);
+    // console.log('updatedProfilecomplited', updatedProfilecomplited);
 
 
     const updatedFormData = {
@@ -530,7 +525,7 @@ console.log(e.target.value);
       ...dataToSubmit
     } = updatedFormData;
 
-    console.log("Data to be submitted:", dataToSubmit);
+    // console.log("Data to be submitted:", dataToSubmit);
     try {
 
       const response = await axios.put(
@@ -538,7 +533,7 @@ console.log(e.target.value);
         dataToSubmit
       );
       navigate("/profile");
-      console.log("Final updated candidate data:", response.data);
+      // console.log("Final updated candidate data:", response.data);
       setCurrentStep(prevStep => prevStep + 1);
 
 
@@ -555,8 +550,8 @@ console.log(e.target.value);
   useEffect(() => {
     if (candidatdata?.profilecomplited != null) {
       const percentage = candidatdata.profilecomplited;
-      console.log('candidatdata', candidatdata.profilecomplited);
-      console.log('candidateData', candidateData.profilecomplited);
+      // console.log('candidatdata', candidatdata.profilecomplited);
+      // console.log('candidateData', candidateData.profilecomplited);
 
       setCompletedPercentage(`${percentage}%`);
 
@@ -582,7 +577,7 @@ console.log(e.target.value);
 
   const gotohome = () => {
     navigate("/")
-    console.log("candidat", { ...data, candidatdata });
+    // console.log("candidat", { ...data, candidatdata });
 
     localStorage.setItem("user", JSON.stringify({ ...candidateData }));
   }
@@ -933,7 +928,7 @@ console.log(e.target.value);
 
   const stepsWithContent = steps
 
-  console.log('steps', stepsWithContent[0].content);
+  // console.log('steps', stepsWithContent[0].content);
 
 
   const handleNext = async () => {
@@ -948,7 +943,7 @@ console.log(e.target.value);
         const filteredInterests = interests.filter(i => i.trim() !== '');
 
         // Log data before validation
-        console.log("Step 1 Data:", { filteredInterests, exploreFirst });
+        // console.log("Step 1 Data:", { filteredInterests, exploreFirst });
 
         // Validate that interests array is not empty and exploreFirst is not empty
         if (!Array.isArray(filteredInterests) || filteredInterests.length === 0 || !exploreFirst.trim()) {
@@ -966,7 +961,7 @@ console.log(e.target.value);
 
         const filteredGoals = goals.filter(g => g.trim() !== '');
 
-        console.log("Step 2 Data:", { filteredGoals, timeline });
+        // console.log("Step 2 Data:", { filteredGoals, timeline });
 
 
         if (!Array.isArray(filteredGoals) || filteredGoals.length === 0 || !timeline) {
@@ -985,7 +980,7 @@ console.log(e.target.value);
 
         const filteredavailability = availability.filter(g => g.trim() !== '');
 
-        console.log("Step 3 Data:", { filteredavailability, hoursperweek ,learningother });
+        // console.log("Step 3 Data:", { filteredavailability, hoursperweek ,learningother });
 
 
         if (!Array.isArray(filteredavailability) || filteredavailability.length === 0 || !hoursperweek || !learningother) {
@@ -1004,7 +999,7 @@ console.log(e.target.value);
 
         const filteredlearningpace = learningpace.filter(g => g.trim() !== '');
 
-        console.log("Step 4 Data:", { filteredlearningpace, dayslearning ,timeOfDay });
+        // console.log("Step 4 Data:", { filteredlearningpace, dayslearning ,timeOfDay });
 
 
         if (!Array.isArray(filteredlearningpace) || filteredlearningpace.length === 0 || !dayslearning || !timeOfDay) {
@@ -1018,8 +1013,8 @@ console.log(e.target.value);
       }
 
       // Log API URL and data being sent
-      console.log("API URL:", apiUrl);
-      console.log("Data being sent:", stepData);
+      // console.log("API URL:", apiUrl);
+      // console.log("Data being sent:", stepData);
 
       const response = await axios.put(apiUrl, stepData);
       const candidateResponse = await axios.get(`${process.env.REACT_APP_API}api/candidat/candidates/${candiddId}`);

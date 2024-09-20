@@ -1,120 +1,23 @@
-.container {
-  display: inline-flex;
-  width: 60%;
-  margin-top: 60px;
-  margin-left: 5%;
-  margin-right: 5%;
-}
-@media (min-width:650px) and (max-width:900px){
-  .container {
-    margin-top: 22%;
-  }
-}
-@media (min-width:572px) and (max-width:650px){
-  .container {
-    margin-top: 31%;
-  }
-}
-@media (min-width:500px) and (max-width:572px){
-  .container {
-    margin-top: 40%;
-  }
-}
-@media (min-width:450px) and (max-width:500px){
-  .container {
-    margin-top: 47%;
-  }
-}
-@media (min-width:410px) and (max-width:450px){
-  .container {
-    margin-top: 54%;
-  }
-}
-@media (min-width:350px) and (max-width:410px){
-  .container {
-    margin-top: 75%;
-  }
-}
-@media (min-width:300px) and (max-width:350px){
-  .container {
-    margin-top: 80%;
-  }
-}
 .btnstyle {
   border: none;
-  font-weight: bold;
+  min-width: 5rem;
   border-bottom: 0.2px gray;
-  display: inline-flex;
-  color:#9C9B9B;
+  color: #9c9b9b;
   background-color: transparent;
+  padding: 10px 30px;
+  display: flex;
   align-items: center;
-  padding-left: 30px;
-  padding-right: 30px;
-  padding-top: 10px;
-  padding-bottom: 10px;
   justify-content: center;
+  gap: 10px;
+  font-size: 20px;
+}
+.image {
+  width: 30px;
+  height: 30px;
 }
 .btnselectedstyle {
   border: none;
   background-color: #eaeaea;
   border-bottom: 5px solid #cd6214;
-  display: inline-flex;
-  align-items: center;
-  padding-left: 30px;
-  padding-right: 30px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  justify-content: center;
-}
-@media (max-width:500px){
-  .btnselectedstyle{
-    padding: 5% 5% 5% 5%;
-  }
-}
-
-@media (min-width: 900px) {
-  .iconstyle {
-    font-size: 50px;
-  }
-  @media (min-width: 850px) {
-    .iconstyle {
-      font-size: 50px;
-    }
-  }
-  .textstyle {
-    font-weight: bold;
-    font-size: 45px;
-  }
-}
-@media (min-width: 900px) and (max-width: 1300px) {
-  .iconstyle {
-    font-size: 30px;
-  }
-
-.textstyle {
-  font-weight: bold;
-  font-size: 25px;
-}
-}
-@media (max-width: 900px) {
-  .iconstyle {
-    font-size: 20px; /* Largeur ajustée pour les petits écrans */
-  }
-}
-@media (min-width:500px) and (max-width: 900px) {
-  .textstyle {
-    font-weight: bold;
-    font-size: 15px;
-  }
-}
-@media (max-width:500px)  {
-  .textstyle {
-    font-weight: bold;
-    font-size: 11px;
-  }
-}
-@media (max-width: 900px) {
-  .image {
-    width: 23px; /* Largeur ajustée pour les petits écrans */
-  }
+  color: black;
 }
