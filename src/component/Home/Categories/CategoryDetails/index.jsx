@@ -55,13 +55,13 @@ const CategoryDetails = () => {
             }}
           >
             <SearchBar />
-            <Box sx={{ width: "200px", height: "200px" }}>
+            <Box sx={{ width: "13rem", height: "13rem" }}>
               <img
                 className="imagestyle"
                 src={`/svg/categories/${category.Title?.split(" ")
                   .join("_")
                   .toLocaleLowerCase()}.svg`}
-                style={{ width: "100%", height: "100%" }}
+                style={{ width: "100%", height: "100%", objectFit: "cover" }}
                 alt=""
               />
             </Box>
