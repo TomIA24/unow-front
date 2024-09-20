@@ -228,7 +228,7 @@ b {
   background: url("../../../assets/background-image.png") no-repeat center
     center;
   background-size: cover;
-  height: 40vh;
+  height: 30vh;
   border-radius: 0px 0px 50px 50px;
 }
 
@@ -253,4 +253,21 @@ b {
 }
 .breadcrumb img {
   margin: 0 5px;
+}
+
+.breadcrumb-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 50px;
+}
+
+.breadcrumb-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.breadcrumb-text {
+  font-weight: 500;
 }

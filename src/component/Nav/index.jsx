@@ -1,14 +1,9 @@
-import React, { useEffect, useState, useRef } from "react";
-import { Link } from "react-router-dom";
+import Avatar from "@mui/material/Avatar";
+import React, { useEffect, useRef, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import imgicon from "../assets/profileuser.png";
 import SliderNav from "./slider";
 import styles from "./styles.module.css";
-import img from "../assets/profileImgNoUp.svg";
-import imgicon from "../assets/profileuser.png";
-import Avatar from "@mui/material/Avatar";
-import { CiUser } from "react-icons/ci";
-import { Typography } from "@mui/material";
-import { useNavigate } from "react-router-dom";
-import { useLocation } from "react-router-dom";
 
 const Nav = () => {
   const [WindowWidth, setWindowWidth] = useState(0);
@@ -30,7 +25,6 @@ const Nav = () => {
   }, []);
   const [mobileView, setMobileView] = useState(false);
   useEffect(() => {
-    //console.log(WindowWidth)
     if (WindowWidth <= 800) {
       setMobileView(true);
     } else {
@@ -38,7 +32,6 @@ const Nav = () => {
     }
   }, []);
   useEffect(() => {
-    console.log(WindowWidth);
     if (WindowWidth <= 800) {
       setMobileView(true);
     } else {
@@ -90,11 +83,9 @@ const Nav = () => {
   });
 
   const handlpersonalized = (candiddId) => {
-    console.log("id candat from nev", candiddId);
     // navigate('/profile');
     navigate(`/personalize`, { state: { candiddId } });
     setpopupopen(!opnpopup);
-    console.log(opnpopup);
   };
   const [completedPercentage, setCompletedPercentage] = useState("0%");
 
