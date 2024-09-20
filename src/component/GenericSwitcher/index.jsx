@@ -3,14 +3,11 @@ import { Link, useParams } from "react-router-dom";
 import styles from "./styles.module.css";
 
 const GenericSwitcher = ({ items, selectedItem, setSelectedItem }) => {
-  const {
-    id: categoryId,
-    categoryName: formattedTitle,
-    contentType,
-  } = useParams();
+  const { id, contentType } = useParams();
   const content = contentType === "courses" ? "trainings" : "courses";
+
   return (
-    <Link to={`/category/${categoryId}/${formattedTitle}/${content}`}>
+    <Link to={`/category/${id}/${content}`}>
       <Box sx={{ display: "flex" }}>
         {items.map((item, i) => {
           return (
