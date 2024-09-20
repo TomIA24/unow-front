@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
+import { request } from "../../../core/api/request";
 import Icon1 from "../../assets/icon1.png";
 import Icon2 from "../../assets/icon2.png";
 import Icon3 from "../../assets/icon3.png";
@@ -38,32 +39,9 @@ const Categories = () => {
   }, []);
 
   useEffect(() => {
-    const fetchCategories = async () => {
-      try {
-        const config = {
-          headers: {
-            "X-Requested-With": "XMLHttpRequest",
-            "Access-Control-Allow-Origin": `${process.env.REACT_APP_API}`,
-            "Access-control-request-methods":
-              "POST, GET, DELETE, PUT, PATCH, COPY, HEAD, OPTIONS",
-          },
-          withCredentials: true,
-        };
-        const response = await fetch(
-          `${process.env.REACT_APP_API}api/Category/getCategories`,
-          config
-        );
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const result = await response.json();
-        setCategories(result.data.slice(0, 8)); // Only take the first 8 categories
-      } catch (error) {
-        console.error("Error fetching categories:", error);
-      }
-    };
-
-    fetchCategories();
+    request
+      .list("Category/getCategories")
+      .then((data) => setCategories(data.data.slice(0, 8)));
   }, []);
 
   const handleCardClick = (category) => {
