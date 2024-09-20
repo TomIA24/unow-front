@@ -92,7 +92,7 @@ function App() {
             <Route exact path="/room/:url" element={<Room />} />
             <Route
               exact
-              path="/categoryCourses/:id/:categoryName/:contentType"
+              path="/category/:id/:categoryName/:contentType"
               element={<CategoryDetails />}
             />
 

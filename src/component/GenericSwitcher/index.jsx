@@ -10,7 +10,7 @@ const GenericSwitcher = ({ items, selectedItem, setSelectedItem }) => {
   } = useParams();
   const content = contentType === "courses" ? "trainings" : "courses";
   return (
-    <Link to={`/categoryCourses/${categoryId}/${formattedTitle}/${content}`}>
+    <Link to={`/category/${categoryId}/${formattedTitle}/${content}`}>
       <Box sx={{ display: "flex" }}>
         {items.map((item, i) => {
           return (

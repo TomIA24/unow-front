@@ -68,7 +68,7 @@ const Categories = () => {
   const handleCardClick = (category) => {
     const categoryId = category._id;
     const formattedTitle = category.Title.split(" ").join("_");
-    const categoryUrl = `/categoryCourses/${categoryId}/${formattedTitle}/courses`;
+    const categoryUrl = `/category/${categoryId}/${formattedTitle}/courses`;
 
     navigate(categoryUrl);
   };

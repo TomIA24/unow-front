@@ -60,6 +60,20 @@ const CategoryDetails = () => {
 
   const handlePageChange = (pageNumber) => setCurrentPage(pageNumber);
 
+  const [category, setCategory] = useState({});
+  useEffect(() => {
+    const fetchCategory = async () => {
+      try {
+        const urlUserData = `${process.env.REACT_APP_API}api/Category/${id}`;
+        const response = await axios.get(urlUserData);
+        setCategory(response.data.data);
+      } catch (err) {
+        console.error("Failed to fetch category", err);
+      }
+    };
+    fetchCategory();
+  }, [id]);
+
   useEffect(() => {
     setLoading(true);
     if (selectedType === "TRAININGS")
@@ -99,7 +113,7 @@ const CategoryDetails = () => {
             <Box sx={{ width: "200px", height: "200px" }}>
               <img
                 className="imagestyle"
-                src={`/svg/categories/${categoryName.toLocaleLowerCase()}.svg`}
+                src={`/svg/categories/${category.Title.toLocaleLowerCase()}.svg`}
                 style={{ width: "100%", height: "100%" }}
                 alt=""
               />
