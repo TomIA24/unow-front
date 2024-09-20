@@ -21,7 +21,7 @@ const QuizNav = () => {
     </div>
    <div  className={styles.text}>Assess Your Knowledge Of The Product Owner Accountabilities</div> 
 </div>
-<div> <button>Go Back</button></div>
+
   
 </div>  
 
