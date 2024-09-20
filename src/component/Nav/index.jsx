@@ -38,8 +38,9 @@ const Nav = () => {
       setMobileView(false);
     }
   }, []);
+  
   useEffect(() => {
-    console.log(WindowWidth);
+   
     if (WindowWidth <= 800) {
       setMobileView(true);
     } else {
@@ -83,7 +84,7 @@ const Nav = () => {
   };
 
   const closepopup = () => {
-    console.log('close popup');
+   
     
     navigate('/candidate/profile');
     setPopupOpen(false);
@@ -114,11 +115,11 @@ const Nav = () => {
   });
 
   const handlpersonalized = (candiddId) => {
-    console.log("id candat from nev", candiddId);
+
     // navigate('/profile');
     navigate(`/personalize`, { state: { candiddId } });
     setPopupOpen(!opnpopup);
-    console.log(opnpopup);
+
   };
   const [completedPercentage, setCompletedPercentage] = useState("0%");
 
