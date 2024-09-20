@@ -15,13 +15,13 @@ const QuizNav = () => {
   <div className={styles.navContainer}>
        <Nav   />
        </div>
-<div className={styles.pdowncontainer}> 
+<div className={styles.pdownContainer}> 
     <div className={styles.pdown} >PRODUCT OWNER OPEN
     <p className={styles.underline}></p>
     </div>
    <div  className={styles.text}>Assess Your Knowledge Of The Product Owner Accountabilities</div> 
 </div>
-<div> <button>Go Back</button></div>
+
   
 </div>  
 
