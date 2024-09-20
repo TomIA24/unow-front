@@ -8,43 +8,7 @@ const QuizNav = ({quizId}) => {
 console.log("quizId",quizId);
 
 
-  const [quiz, setQuiz] = useState({
-    questions: [],
-    quizName: '',
-    score: '',
-    incorrectlyAnsweredQuestions: [],
-    flaggedQuestions: [],
-    courseID:   ''
-  })
-
-  useEffect(() => {
  
-    const fetchQuiz = async () => {
-      try {
-        const response = await axios.get(`${process.env.REACT_APP_API}api/quiz/${quizId}`);
-    
-        
-        setQuiz(response.data);
-        console.log("current quiz",response.data.courseID);
-
-      } catch (error) {
-        console.error("Error fetching candidate data:", error);
-      }
-
-
-
-    };
-    fetchQuiz();
-  }, [quizId]);
-  console.log(`${process.env.REACT_APP_API}api/quiz/${quizId}`);
-  const navigate = useNavigate();
-
-function goToHome() {
-  console.log("quiz.courseID",quiz.courseID);
-  
-  navigate(`/Course/${quiz.courseID}`);
-}
-
   return (
     <>
     {/* <div className={ styles.background}>
@@ -62,7 +26,7 @@ function goToHome() {
     </div>
    <div  className={styles.text}>Assess Your Knowledge Of The Product Owner Accountabilities</div> 
 </div>
-<div> <button onClick={goToHome}>Go Back</button></div>
+
 </div>
 </div>  
 

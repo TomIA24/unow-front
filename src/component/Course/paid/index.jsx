@@ -583,7 +583,7 @@ const PaidCourse = () => {
                         alt=""
                         className={styles.imagefeatures}
                       />
-                      {isOpenCourse ? "yes" : "no"}
+                    
                       Course Content
                     </button>
                     <button className={styles.btncour}></button>
@@ -610,7 +610,7 @@ const PaidCourse = () => {
                         alt=""
                         className={styles.imagefeatures}
                       />
-                      {isOpenprcourse ? "yes" : "no"}
+                    
                       Pré-cours
                     </button>
                     <button className={styles.btncour}></button>
@@ -637,7 +637,7 @@ const PaidCourse = () => {
                         alt=""
                         className={styles.imagefeatures}
                       />
-                      {isOpenPDF ? "yes" : "no"}
+                  
                       PDF
                     </button>
                     <button className={styles.btncour}></button>
@@ -664,7 +664,7 @@ const PaidCourse = () => {
                         alt=""
                         className={styles.imagefeatures}
                       />
-                      {isOpenQuiz ? "yes" : "no"}
+                     
                       Quiz
                     </button>
                     <button className={styles.btncour}></button>

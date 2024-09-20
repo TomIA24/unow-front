@@ -19,8 +19,8 @@ body{
 .start{
   width:15rem;
   height: 2.5rem;
-  box-shadow: #1c4b82;
-  background-color: #1c4b82;
+  box-shadow: #3E4678;
+  background-color: #3E4678;
   color: white;
   font-size: 15px;
   font-weight: bold;
@@ -29,9 +29,30 @@ body{
   border-radius: 6px;
   cursor: pointer;
   align-items: center;
-  align-self: center;
+  /* align-self: center; */
 }
-
+.start:hover{
+  background-color: #CD6214;
+}
+.goback{
+  width:15rem;
+  height: 2.5rem;
+  box-shadow: #3E4678;
+  background-color: white;
+  color: #3E4678;
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  align-items: center;
+  /* align-self: center; */
+}
+.buttoncontainer{
+  display: flex;
+  flex-direction: row;
+}
 p{
   
   align-self: center;
@@ -62,13 +83,14 @@ p{
    flex-direction: column;
    /* flex: 1; */
    justify-content: center;
-   align-items: center;
+   /* align-items: center; */
    margin-top: 5%;
    margin-bottom:10%;
    gap: 90px;
     padding-left: 12%; 
    padding-right:  12%;
 }
+
 .imagebackground {
   width: 100%;
   height: 70%;
@@ -151,7 +173,7 @@ p{
     width:10rem;
     height:3rem;
  
-    background-color: #1c4b82;
+    background-color: #3E4678;
     color: white;
     font-size: 15px;
     font-weight: bold;
@@ -233,8 +255,8 @@ p{
   .start{  
     width:15rem;
     height: 2.5rem;
-    box-shadow: #1c4b82;
-    background-color: #1c4b82;
+    box-shadow: #3E4678;
+    background-color: #3E4678;
     color: white;
     font-size: 1em;
     font-weight: bold;
@@ -525,8 +547,8 @@ p{
 .start{  
   width:15rem;
   height: 3rem;
-  box-shadow: #1c4b82;
-  background-color: #1c4b82;
+  box-shadow: #3E4678;
+  background-color: #3E4678;
   color: white;
   font-size: 1.2em;
  
@@ -633,8 +655,8 @@ p{
 .start{  
   width:15rem;
   height: 2.5rem;
-  box-shadow: #1c4b82;
-  background-color: #1c4b82;
+  box-shadow: #3E4678;
+  background-color: #3E4678;
   color: white;
   font-size: 1em;
   font-weight: bold;
@@ -810,8 +832,8 @@ p{
   .start{  
     width:15rem;
     height: 2.5rem;
-    box-shadow: #1c4b82;
-    background-color: #1c4b82;
+    box-shadow: #3E4678;
+    background-color: #3E4678;
     color: white;
     font-size: 1em;
     font-weight: bold;
@@ -886,8 +908,8 @@ p{
   .start{  
     width:15rem;
     height: 2.5rem;
-    box-shadow: #1c4b82;
-    background-color: #1c4b82;
+    box-shadow: #3E4678;
+    background-color: #3E4678;
     color: white;
     font-size: 1em;
     font-weight: bold;
