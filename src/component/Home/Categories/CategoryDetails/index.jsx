@@ -8,7 +8,7 @@ import GenericSwitcher from "../../../GenericSwitcher";
 import Nav from "../../../Nav";
 import PaginationComponent from "../../../Pagination";
 import Footer from "../../Footer";
-import CourseItem from "./CourseItem";
+import CourseTrainingCard from "./CourseTrainingCard";
 import useFetchCategory from "./hooks/useFetchcategory";
 import useFetchData from "./hooks/useFetchData";
 import "./styles.modules.css";
@@ -106,13 +106,14 @@ const CategoryDetails = () => {
               <CircularProgress />
             </div>
           )}
-          {!loading && (
+          {/* {!loading && (
             <Box sx={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
               {data.map((course) => (
                 <CourseItem key={course.id} course={course} />
               ))}
             </Box>
-          )}
+          )} */}
+          <CourseTrainingCard />
           <div className="center" style={{ paddingTop: "2%" }}>
             <PaginationComponent
               currentPage={currentPage}
