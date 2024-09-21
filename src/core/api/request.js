@@ -7,8 +7,13 @@ const api = axios.create({
   withCredentials: true,
   headers: {
     "Content-Type": "application/json",
+     "X-Requested-With": "XMLHttpRequest",
+     "Access-Control-Allow-Origin": `${process.env.REACT_APP_API}`,
+     "Access-control-request-methods": "POST, GET, DELETE, PUT, PATCH, COPY, HEAD, OPTIONS",
   },
 });
+
+ 
 
 api.interceptors.request.use(
   (config) => {
