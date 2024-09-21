@@ -126,7 +126,7 @@ const AddCourse = () => {
   const uploadSingleFile = async (id) => {
     const formData = new FormData();
     formData?.append("file", singleFile);
-    console.log("formData",formData.get("file"),id)
+   
     await singleFileUploadWithName(
       formData,
       data?.Title,
@@ -222,9 +222,21 @@ const AddCourse = () => {
     const res = await axios.post(url, data, config);
     const courseId = res.data?.id;
           // setUploading(true);
-          await uploadSingleFile(res.data?.id);
-         // await UploadMultipleFiles();
-         // await UploadMultipleFilesRessources(res.data?.id);
+          await uploadSingleFile(courseId);
+           const videosData =  UploadMultipleVideos();
+           const ressourcesData =  UploadMultipleRessources();
+          await multipleFilesUploadWithName(
+            ressourcesData,
+            data?.Title,
+            user._id,
+            "Ressources"
+          );
+          await multipleFilesUploadWithName(
+            videosData,
+            data?.Title,
+            user._id,
+            "Videos"
+          );
           window.scrollTo(0, 0);
           setSaved(true);
           // setUploading(false);
@@ -235,7 +247,7 @@ const AddCourse = () => {
           setUploadProgress(0);
           setSaved(false);
           setData(initialData);
-          setMultipleFilesSelected([]);
+          setMultipleVideosSelected([]);
           setPrev(null);
        //}
       //)
@@ -282,7 +294,7 @@ const AddCourse = () => {
 
   let filesArrayRessources = [];
 
-  const MultipleFileChangeRessources = (e) => {
+  const MultipleRessourcesChange = (e) => {
     for (let i = 0; i < Object.values(e.target.files).length; i++) {
       setMultipleFilesSelectedRessources((oldSelected) => [
         ...oldSelected,
@@ -315,28 +327,21 @@ const AddCourse = () => {
     );
   };
 
-  const UploadMultipleFilesRessources = async (id) => {
+  const UploadMultipleRessources =  () => {
     const formData = new FormData();
     for (let i = 0; i < multipleFilesSelectedRessources.length; i++) {
       formData?.append("files", multipleFilesSelectedRessources[i]);
     }
-    console.log("formData",formData.get("files"))
-    //modif here
-    await singleFileUploadWithName(
-      formData,
-      data?.Title,
-      user._id,
-      id,
-      setUploadProgress
-    );
-    // getMultipleFilesList();
+  
+    return formData;
+   
   };
 
   /////////////////////////////////////////////////
   /////////////////////////////////////////////////
   /////////////////////////////////////////////////
 
-  const [multipleFilesSelected, setMultipleFilesSelected] = useState([]);
+  const [multipleFilesSelected, setMultipleVideosSelected] = useState([]);
 
   let filesArray = [];
 
@@ -354,15 +359,15 @@ const AddCourse = () => {
     );
   };
 
-  const MultipleFileChange = (e) => {
+  const MultipleVideoChange = (e) => {
     for (let i = 0; i < Object.values(e.target.files).length; i++) {
-      setMultipleFilesSelected((oldSelected) => [
+      setMultipleVideosSelected((oldSelected) => [
         ...oldSelected,
         Object.values(e.target.files)[i],
       ]);
     }
 
-    //setMultipleFilesSelected([Object.values().concat(multipleFilesSelected)]);
+    //setMultipleVideosSelected([Object.values().concat(multipleFilesSelected)]);
   };
 
   useEffect(() => {
@@ -379,24 +384,27 @@ const AddCourse = () => {
     }
   }, [multipleFilesSelected, filesArray]);
 
-  const UploadMultipleFiles = async () => {
+  const UploadMultipleVideos =  () => {
     const formData = new FormData();
     for (let i = 0; i < multipleFilesSelected.length; i++) {
-      formData?.append("files", multipleFilesSelected[i]);
+      formData?.append("videos", multipleFilesSelected[i]);
     }
-    await multipleFilesUploadWithName(
-      formData,
-      data?.Title,
-      user._id,
-      "Videos"
-    );
-    // getMultipleFilesList();
+    console.log("videos",formData.get("videos"))
+    // await multipleFilesUploadWithName(
+    //   formData,
+    //   data?.Title,
+    //   user._id,
+    //   "Videos"
+    // );
+    return formData;
+   
   };
 
   var selected = multipleFilesSelected.map((element, index) => {
     return (
       <VideoSelected
-        setMultipleFilesSelected={setMultipleFilesSelected}
+       // key={index}
+        setMultipleVideosSelected={setMultipleVideosSelected}
         multipleFilesSelected={multipleFilesSelected}
         element={element}
       />
@@ -498,7 +506,7 @@ const AddCourse = () => {
                       height: 50,
                     }}
                   >
-                    {/* <label htmlFor="icon-button-file">
+                    <label htmlFor="icon-button-file">
                       <Input
                         accept="image/*"
                         id="icon-button-file"
@@ -515,7 +523,7 @@ const AddCourse = () => {
                       >
                         <PhotoCamera sx={{ width: 35, height: 35 }} />
                       </IconButton>
-                    </label> */}
+                    </label> 
                   </SmallAvatar>
                 }
               >
@@ -586,11 +594,11 @@ const AddCourse = () => {
                   htmlFor="contained-button-file"
                 >
                   <Input
-                    accept="*/*"
+                   accept="video/*"
                     id="contained-button-file"
                     multiple
                     type="file"
-                   // onChange={(e) => MultipleFileChange(e)}
+                    onChange={(e) => MultipleVideoChange(e)}
                   />
                   <div
                     style={{
@@ -1076,12 +1084,12 @@ const AddCourse = () => {
                     htmlFor="contained-button-file-Ressource"
                   >
                     <Input
-                      accept="*/*"
+                       accept=".pdf,.doc,.docx,.ppt,.pptx"
                       id="contained-button-file-Ressource"
                       multiple
                       type="file"
-                      onChange={(e)=>SingleFileChange(e)}
-                      //onChange={(e) => MultipleFileChangeRessources(e)}
+                    
+                      onChange={(e) => MultipleRessourcesChange(e)}
                     />
                     <IconButton
                       onClick={() => {
