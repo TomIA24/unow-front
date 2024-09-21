@@ -92,7 +92,7 @@ function App() {
             <Route exact path="/room/:url" element={<Room />} />
             <Route
               exact
-              path="/categoryCourses/:id/:categoryName"
+              path="/category/:id/:contentType"
               element={<CategoryDetails />}
             />
 
@@ -103,7 +103,7 @@ function App() {
             {user.userType === "Trainer" && (
               <Route exact path="/profile" element={<ProfileTrainer />} />
             )}
-            {user.userType === "Student" && (
+            {user.userType !== "Admin" &&  user.userType !== "Trainer"  &&  (
               <Route
                 exact
                 path="/candidate/profile"
