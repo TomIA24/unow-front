@@ -25,6 +25,7 @@ import { LanguageProvider } from "./hooks/LanguageContext";
 import CategoryDetails from "./component/Home/Categories/CategoryDetails";
 import Quiz from "./component/Quiz/Questions";
 
+import { Toaster } from "react-hot-toast";
 import Timeout from "./component/Quiz/Questions/timeout";
 import { QuizProvider } from "./hooks/QuizContext";
 
@@ -46,6 +47,7 @@ function App() {
     <LanguageProvider>
       <QuizProvider>
         <div className="App">
+          <Toaster position="top-right" />
           <Routes>
             {!user && (
               <React.Fragment>
@@ -103,7 +105,7 @@ function App() {
             {user.userType === "Trainer" && (
               <Route exact path="/profile" element={<ProfileTrainer />} />
             )}
-            {user.userType !== "Admin" &&  user.userType !== "Trainer"  &&  (
+            {user.userType !== "Admin" && user.userType !== "Trainer" && (
               <Route
                 exact
                 path="/candidate/profile"
