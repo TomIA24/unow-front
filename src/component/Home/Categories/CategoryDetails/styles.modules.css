@@ -271,3 +271,10 @@ b {
 .breadcrumb-text {
   font-weight: 500;
 }
+
+.box {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}

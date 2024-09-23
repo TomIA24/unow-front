@@ -106,14 +106,23 @@ const CategoryDetails = () => {
               <CircularProgress />
             </div>
           )}
-          {/* {!loading && (
-            <Box sx={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
+          {!loading && (
+            <div className={"box"}>
               {data.map((course) => (
-                <CourseItem key={course.id} course={course} />
+                <CourseTrainingCard
+                  key={course._id}
+                  id={course._id}
+                  thumbnail={course.Thumbnail?.filePath}
+                  title={course.Title}
+                  category={course.Category}
+                  price={course.Price}
+                  level={course.Level}
+                  rating={course.Rating}
+                  type={selectedType === "COURSES" ? "course" : "training"}
+                />
               ))}
-            </Box>
-          )} */}
-          <CourseTrainingCard />
+            </div>
+          )}
           <div className="center" style={{ paddingTop: "2%" }}>
             <PaginationComponent
               currentPage={currentPage}
