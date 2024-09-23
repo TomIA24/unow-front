@@ -1,34 +1,22 @@
 import { Box, CircularProgress, Container } from "@mui/material";
 import { useRef, useState } from "react";
 import { useParams } from "react-router-dom";
+import useDebouncedState from "../../../../hooks/useDebouncedState";
 import imageCourse from "../../../assets/icon_course.png";
 import imageTraining from "../../../assets/icon_training.png";
-import loupe from "../../../assets/loupe.png";
 import CourseTrainingCard from "../../../CourseTrainingCard";
 import GenericSwitcher from "../../../GenericSwitcher";
 import Nav from "../../../Nav";
 import PaginationComponent from "../../../Pagination";
+import SearchBar from "../../../SearchBar/Index";
 import Footer from "../../Footer";
 import useFetchCategory from "./hooks/useFetchcategory";
 import useFetchData from "./hooks/useFetchData";
 import "./styles.modules.css";
 
-const SearchBar = () => (
-  <div className={"explore_container"}>
-    <button className={"explore_btn"} type="button">
-      Explore
-    </button>
-    <div className={"explore_line"} />
-    <input type="text" placeholder="Type here..." className={"explore_input"} />
-    <div className={"explore_line"} />
-    <button className={"search_btn"} type="button">
-      <img src={loupe} alt="" className={"icon_search"} />
-    </button>
-  </div>
-);
-
 const CategoryDetails = () => {
   const { id, contentType } = useParams();
+  const [search, setSearch] = useDebouncedState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedType, setSelectedType] = useState(
     contentType ? contentType.toUpperCase() : "COURSES"
@@ -37,34 +25,31 @@ const CategoryDetails = () => {
   const { data, totalPages, loading } = useFetchData(
     selectedType === "COURSES" ? "courses" : "trainings",
     id,
-    currentPage
+    currentPage,
+    search
   );
   const refHome = useRef();
 
   const handlePageChange = (pageNumber) => setCurrentPage(pageNumber);
   return (
     <>
-      <div className="backimage">
-        <div style={{ marginLeft: "50px", marginRight: "50px" }}>
+      <div className="background_container">
+        <div>
           <Nav ref={refHome} />
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              width: "100%",
-            }}
-          >
-            <SearchBar />
-            <Box sx={{ width: "13rem", height: "13rem" }}>
-              <img
-                className="imagestyle"
-                src={`/svg/categories/${category.Title?.split(" ")
-                  .join("_")
-                  .toLocaleLowerCase()}.svg`}
-                style={{ width: "100%", height: "100%", objectFit: "cover" }}
-                alt=""
-              />
-            </Box>
+          <div className="content_overlay">
+            <Container maxWidth="xl">
+              <div className="box_container">
+                <SearchBar search={search} setSearch={setSearch} />
+                <div className="img_container">
+                  <img
+                    src={`/svg/categories/${category.Title?.split(" ")
+                      .join("_")
+                      .toLocaleLowerCase()}.svg`}
+                    alt=""
+                  />
+                </div>
+              </div>
+            </Container>
           </div>
           <br />
         </div>

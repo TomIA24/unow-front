@@ -1,6 +1,7 @@
 .container {
   background-color: white;
-  max-width: 21rem;
+  width: 20.75rem;
+  height: 25.19rem;
   border-top-right-radius: 20px;
   border-bottom-left-radius: 20px;
   position: relative;
@@ -74,7 +75,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 1.1rem;
 }
 
 .rating span {
