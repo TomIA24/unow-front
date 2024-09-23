@@ -12,7 +12,7 @@ import axios from "axios";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 // import logo from "../assets/logo2.jpg"
-import CourseTrainingCard from "../Home/Categories/CategoryDetails/CourseTrainingCard";
+import CourseTrainingCard from "../CourseTrainingCard";
 import Nav from "../Nav";
 import { Header } from "./Header/header";
 
