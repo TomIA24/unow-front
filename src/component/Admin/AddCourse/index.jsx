@@ -123,8 +123,8 @@ const AddCourse = () => {
   };
 
   
-  const [uploadProgressRessources, setUploadProgressRessources] = useState(0);
-  const [uploadProgressVideos, setUploadProgressVideos] = useState(0);
+  const [uploadProgressRessources, setUploadProgressRessources] = useState("");
+  const [uploadProgressVideos, setUploadProgressVideos] = useState("");
   const uploadSingleFile = async (id) => {
     const formData = new FormData();
     formData?.append("file", singleFile);
@@ -469,7 +469,6 @@ const AddCourse = () => {
   /////////////////////////////////////////////////
   /////////////////////////////////////////////////
 
-
   return (
     <>
       <form className={styles.CourseForm} action="">
@@ -583,10 +582,10 @@ const AddCourse = () => {
                       }}
                     />
                     <p style={{ marginTop: "-17px" }}>select videos</p>
-                    {uploadProgressVideos > 0 && (
+                    {parseInt(uploadProgressVideos) > 0 && (
                   
                  
-                  <Typography variant="body2">{`Time remaining for video upload : ${Math.round(uploadProgressVideos)}`}</Typography>
+                  <Typography variant="body2">{`Time remaining for video upload : ${uploadProgressVideos}`}</Typography>
                    )}  
                   </div>
                 </label>
@@ -1049,10 +1048,10 @@ const AddCourse = () => {
                       );
                     })
                   )}
-                 {uploadProgressRessources > 0 && (
+                 {parseInt(uploadProgressRessources) > 0 && (
                   
                  
-                  <Typography variant="body2">{`Time remaining for resource upload : ${Math.round(uploadProgressRessources)}`}</Typography>
+                  <Typography variant="body2">{`Time remaining for resource upload : ${uploadProgressRessources}`}</Typography>
                    )}  
                 </div>   
                 <div className={styles.AddRessource}>

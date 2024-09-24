@@ -59,7 +59,7 @@ export const multipleFilesUploadWithName = async (data, name, id,setUploadProgre
       };
       const formattedTime = formatTime(remainingTime);
 
-      type==="Ressources"?setUploadProgressRessources(Math.round(formattedTime)): setUploadProgressVideos(Math.round(formattedTime));
+      type==="Ressources"?setUploadProgressRessources(formattedTime): setUploadProgressVideos(formattedTime);
     },
   };
   try {
