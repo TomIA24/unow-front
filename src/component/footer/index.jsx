@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import axios from "axios";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import axios from "axios";
+import React, { useState } from "react";
 import styles from "./styles.module.css";
 
 const Footer = () => {
@@ -96,7 +96,7 @@ const Footer = () => {
           <p className={styles.title}>
             Follow Us <p className={styles.underline}></p>
           </p>
-          <div class="content-block">
+          <div className="content-block">
             <div className={styles.sociallinks}>
               <a href="#" aria-label="Facebook">
                 <FacebookIcon />

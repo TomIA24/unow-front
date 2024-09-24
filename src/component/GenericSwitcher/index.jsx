@@ -12,6 +12,7 @@ const GenericSwitcher = ({ items, selectedItem, setSelectedItem }) => {
         {items.map((item, i) => {
           return (
             <button
+              key={i}
               className={`${styles.btnstyle} ${
                 selectedItem === item.title ? styles.btnselectedstyle : null
               }`}

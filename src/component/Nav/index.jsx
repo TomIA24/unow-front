@@ -5,9 +5,6 @@ import imgicon from "../assets/profileuser.png";
 import SliderNav from "./slider";
 import styles from "./styles.module.css";
 
-import img from "../assets/profileImgNoUp.svg";
-import { CiUser } from "react-icons/ci";
-import { Typography } from "@mui/material";
 import axios from "axios";
 
 const Nav = () => {
@@ -50,6 +47,7 @@ const Nav = () => {
   const [candidateData, setcandidateData] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
+      if (!user?._id) return;
       try {
         const candidateResponse = await axios.get(
           `${process.env.REACT_APP_API}api/candidat/candidates/${user._id}`
@@ -156,13 +154,13 @@ const Nav = () => {
                 }}
                 to="/"
               >
-                <a
+                <button
                   type="button"
                   className={styles.nav_btn}
                   style={{ color: "white" }}
                 >
                   Home
-                </a>
+                </button>
                 {navState === 1 && <p className={styles.underline}></p>}
               </Link>
               <Link
@@ -171,9 +169,9 @@ const Nav = () => {
                 }}
                 to="/about"
               >
-                <a type="button" className={styles.nav_btn}>
+                <button type="button" className={styles.nav_btn}>
                   About
-                </a>
+                </button>
                 {navState === 2 && <p className={styles.underline}></p>}
               </Link>
               <Link
@@ -182,9 +180,9 @@ const Nav = () => {
                 }}
                 to="/contact"
               >
-                <a type="button" className={styles.nav_btn}>
+                <button type="button" className={styles.nav_btn}>
                   Contact
-                </a>
+                </button>
                 {navState === 3 && <p className={styles.underline}></p>}
               </Link>
               {/* <Link to="/blog">
@@ -216,10 +214,10 @@ const Nav = () => {
               <div className={styles.end_nav}>
                 {user.userType === "Admin" ? (
                   <Link to="/admin">
-                    <a type="button" className={styles.nav_btn_profile}>
+                    <button type="button" className={styles.nav_btn_profile}>
                       {/* {user.userType} */}
                       Welcome, Admin
-                    </a>
+                    </button>
                   </Link>
                 ) : (
                   <div>
@@ -243,7 +241,10 @@ const Nav = () => {
                               330
                             </strong>
 
-                            <a type="button" className={styles.nav_btn_profile}>
+                            <button
+                              type="button"
+                              className={styles.nav_btn_profile}
+                            >
                               <img
                                 src="/svg/bronze.svg"
                                 alt="bronze"
@@ -291,7 +292,7 @@ const Nav = () => {
                                 </div>
                               )}
                               Welcome, {user.name}
-                            </a>
+                            </button>
                           </Link>
                         ) : (
                           <button
@@ -310,7 +311,10 @@ const Nav = () => {
                             >
                               330
                             </strong>
-                            <a type="button" className={styles.nav_btn_profile}>
+                            <button
+                              type="button"
+                              className={styles.nav_btn_profile}
+                            >
                               <img
                                 src="/svg/bronze.svg"
                                 alt="bronze"
@@ -354,7 +358,7 @@ const Nav = () => {
                                 </div>
                               )}
                               Welcome, {user.name}
-                            </a>
+                            </button>
                           </button>
                         )}
                       </>
@@ -379,7 +383,10 @@ const Nav = () => {
                             330
                           </strong>
 
-                          <a type="button" className={styles.nav_btn_profile}>
+                          <button
+                            type="button"
+                            className={styles.nav_btn_profile}
+                          >
                             <img
                               src="/svg/bronze.svg"
                               alt="bronze"
@@ -425,20 +432,20 @@ const Nav = () => {
                               </div>
                             )}
                             Welcome, {user.name}
-                          </a>
+                          </button>
                         </Link>
                       </>
                     )}
                   </div>
                 )}
                 <Link to="/">
-                  <a
+                  <button
                     type="button"
                     onClick={handleLogout}
                     className={styles.nav_btn}
                   >
                     Logout
-                  </a>
+                  </button>
                 </Link>
                 <div className={styles.language}>
                   <p>EN</p>
