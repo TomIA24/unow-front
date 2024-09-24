@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-const useFetchData = (type, id, currentPage) => {
+const useFetchData = (type, id, currentPage, search) => {
   const [data, setData] = useState([]);
   const [totalPages, setTotalPages] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -9,7 +9,7 @@ const useFetchData = (type, id, currentPage) => {
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
-      const url = `${process.env.REACT_APP_API}api/Category/specificGroupeFromCategory/${id}?type=${type}&page=${currentPage}&limit=10`;
+      const url = `${process.env.REACT_APP_API}api/Category/specificGroupeFromCategory/${id}?type=${type}&search=${search}&page=${currentPage}&limit=10`;
       try {
         const response = await axios.get(url);
         setData(response.data.data);
@@ -22,7 +22,7 @@ const useFetchData = (type, id, currentPage) => {
     };
 
     fetchData();
-  }, [type, id, currentPage]);
+  }, [type, id, currentPage, search]);
 
   return { data, totalPages, loading };
 };

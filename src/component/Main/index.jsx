@@ -12,8 +12,8 @@ import axios from "axios";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 // import logo from "../assets/logo2.jpg"
+import CourseTrainingCard from "../CourseTrainingCard";
 import Nav from "../Nav";
-import ResourceCard from "../ResourceCard";
 import { Header } from "./Header/header";
 
 const Main = () => {
@@ -109,11 +109,12 @@ const Main = () => {
       setCurrentPage(currentPage - 1);
     }
   };
+  console.log(currentTrainings);
   return (
     <React.Fragment className={styles.body}>
       <div style={{ backgroundColor: "background: #f9f9f9;" }}>
         {/* <div className={styles.containerimage}><img src="./images/home/background.png" alt="" className={styles.imagebackground} /></div> */}
-        <Nav  />
+        <Nav />
         <div className={styles.motivationImg}>
           <div className={styles.textcontainer}>
             <div className={styles.textsearchtitle}>
@@ -170,7 +171,17 @@ const Main = () => {
             </div>
             <div className={styles.carousel} ref={carouselRef}>
               {currentTrainings.map((training) => (
-                <ResourceCard key={training._id} training={training} />
+                <CourseTrainingCard
+                  id={training._id}
+                  key={training._id}
+                  thumbnail={training.Thumbnail.filePath}
+                  title={training.Title}
+                  category={training.Category}
+                  price={training.Price}
+                  level={training.Level}
+                  rating={training.rating || 0}
+                  type={training.type}
+                />
               ))}
             </div>
             <div>

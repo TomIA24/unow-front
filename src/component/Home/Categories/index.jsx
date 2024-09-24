@@ -40,7 +40,7 @@ const Categories = () => {
   useEffect(() => {
     request
       .list("Category/getCategories")
-      .then((data) => setCategories(data.data.slice(0, 8)));
+      .then((data) => setCategories(data?.data.slice(0, 8) || []));
   }, []);
 
   const handleCardClick = (category) => {

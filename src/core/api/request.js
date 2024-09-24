@@ -1,14 +1,19 @@
 import axios from "axios";
-import ErrorHandler from "./ErrorHandler";
-import SuccessHandler from "./SuccessHandler";
+import errorHandler from "./errorHandler";
+import successHandler from "./successHandler";
 
 const api = axios.create({
   baseURL: process.env.REACT_APP_API + "api/",
-  withCredentials: true,
+//  withCredentials: true,
   headers: {
     "Content-Type": "application/json",
+     "X-Requested-With": "XMLHttpRequest",
+     "Access-Control-Allow-Origin": `${process.env.REACT_APP_API}`,
+     "Access-control-request-methods": "POST, GET, DELETE, PUT, PATCH, COPY, HEAD, OPTIONS",
   },
 });
+
+ 
 
 api.interceptors.request.use(
   (config) => {
@@ -24,39 +29,42 @@ api.interceptors.request.use(
 const create = async (entity, jsonData) => {
   try {
     const response = await api.post(`${entity}`, jsonData);
-    return SuccessHandler(response, { notifyOnSuccess: true });
+    return successHandler(response, {
+      notifyOnSuccess: true,
+      notifyOnFailed: true,
+    });
   } catch (error) {
-    return ErrorHandler(error);
+    return errorHandler(error);
   }
 };
 
 const update = async (entity, id, jsonData) => {
   try {
     const response = await api.patch(`${entity}/${id}`, jsonData);
-    SuccessHandler(response, { notifyOnSuccess: true });
+    successHandler(response, { notifyOnSuccess: true, notifyOnFailed: true });
     return response.data;
   } catch (error) {
-    return ErrorHandler(error);
+    return errorHandler(error);
   }
 };
 
 const read = async (entity, id) => {
   try {
     const response = await api.get(`${entity}/${id}`);
-    SuccessHandler(response, { notifyOnSuccess: false });
+    successHandler(response, { notifyOnSuccess: false, notifyOnFailed: true });
     return response.data;
   } catch (error) {
-    return ErrorHandler(error);
+    return errorHandler(error);
   }
 };
 
 const remove = async (entity, id) => {
   try {
     const response = await api.delete(`${entity}/${id}`);
-    SuccessHandler(response, { notifyOnSuccess: true });
+    successHandler(response, { notifyOnSuccess: true, notifyOnFailed: true });
     return response.data;
   } catch (error) {
-    return ErrorHandler(error);
+    return errorHandler(error);
   }
 };
 
@@ -69,10 +77,10 @@ const list = async (entity, options = {}) => {
     query = query.slice(0, -1);
 
     const response = await api.get(`${entity}${query}`);
-    SuccessHandler(response, { notifyOnSuccess: false });
+    successHandler(response, { notifyOnSuccess: false, notifyOnFailed: true });
     return response.data;
   } catch (error) {
-    return ErrorHandler(error);
+    return errorHandler(error);
   }
 };
 
