@@ -55,13 +55,12 @@ const CategoryDetails = () => {
         </div>
       </div>
 
-      <Container>
+      <Container maxWidth="xl">
         <Box
           sx={{
             display: "flex",
             flexDirection: "column",
             gap: "2rem",
-            marginTop: "50px",
           }}
         >
           <div className="breadcrumb-container">

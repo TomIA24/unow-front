@@ -114,7 +114,6 @@ b {
 }
 .box_container {
   width: 100%;
-  /* background: red; */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -129,12 +128,6 @@ b {
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-@media (max-width: 600px) {
-  .img_container {
-    display: none;
-  }
 }
 
 .breadcrumb {
@@ -170,7 +163,19 @@ b {
 
 .box {
   display: flex;
-  gap: 1rem;
+  justify-content: space-around;
   flex-wrap: wrap;
   margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+  .background_container {
+    height: 19vh;
+  }
+  .content_overlay {
+    bottom: 20px;
+  }
+  .img_container {
+    display: none;
+  }
 }
