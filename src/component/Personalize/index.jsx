@@ -42,7 +42,7 @@ const Personalize = () => {
   const [learningCertif, setLearningCertif] = useState("");
   const { candiddId, data } = location.state || {};
 
-
+const token =    localStorage.getItem("token");
   // Save quizId to sessionStorage
   const addDomain = (domain, e) => {
     if (e.target.checked) {
@@ -1029,6 +1029,7 @@ console.log(e.target.value);
 
         apiUrl = `${process.env.REACT_APP_API}api/candidat/step1/${candiddId}`;
         stepData = { stepPersonalize_1: { interests: filteredInterests, exploreFirst } };
+        console.log("stepData,",stepData);
 
       } else if (currentStep === 1) {
         const { goals, timeline } = formData.stepPersonalize_2;
@@ -1091,7 +1092,12 @@ console.log(e.target.value);
       // console.log("API URL:", apiUrl);
       // console.log("Data being sent:", stepData);
 
-      const response = await axios.put(apiUrl, stepData);
+      const response = await axios.put(apiUrl, stepData,  {
+        headers: { 'Content-Type': 'application/json','Authorization': `Bearer ${token}` },
+      }).then(response => console.log(response))
+      .catch(error => console.error('Error:', error));
+     
+      
       const candidateResponse = await axios.get(`${process.env.REACT_APP_API}api/candidat/candidates/${candiddId}`);
       setCandidatData(candidateResponse.data)
       if (response.status === 200) {

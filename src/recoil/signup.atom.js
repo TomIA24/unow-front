@@ -17,5 +17,6 @@ export const signupState = atom({
         otherPreferences: "",
         goals: [],
         otherGoals: "",
+        confirmPassword: "",
     }, // default value (aka initial value)
 });
