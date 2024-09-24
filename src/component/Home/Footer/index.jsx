@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import axios from "axios";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import axios from "axios";
+import React, { useState } from "react";
 import styles from "./styles.module.css";
 
 const Footer = () => {
@@ -33,7 +33,7 @@ const Footer = () => {
         <div className={styles.footercol}>
           <p className={styles.title}>
             Company
-            <p className={styles.underline}></p>
+            <span className={styles.underline}></span>
           </p>
           <ul>
             <li>
@@ -49,7 +49,7 @@ const Footer = () => {
         </div>
         <div className={styles.footercol2}>
           <p className={styles.title}>
-            Get Help <p className={styles.underline}></p>
+            Get Help <span className={styles.underline}></span>
           </p>
           <ul>
             <li>
@@ -58,7 +58,7 @@ const Footer = () => {
             <li>
               <a href="#">Order Status</a>
             </li>
-          
+
             <li>
               <a href="#">Payment Options</a>
             </li>
@@ -66,7 +66,7 @@ const Footer = () => {
         </div>
         <div className={styles.footercol}>
           <p className={styles.title}>
-            U!NOW <p className={styles.underline}></p>
+            U!NOW <span className={styles.underline}></span>
           </p>
           <ul>
             <li>
@@ -83,19 +83,30 @@ const Footer = () => {
 
         <div className={styles.footercol2}>
           <p className={styles.title}>
-            Follow Us <p className={styles.underline}></p>
+            Follow Us <span className={styles.underline}></span>
           </p>
-          <div class="content-block">
-          <div className={styles.sociallinks}>
-            <a href="https://www.facebook.com/unow.tn" aria-label="Facebook"><FacebookIcon /></a>
-            <a href="https://www.instagram.com/unowelearning/" aria-label="Instagram"><InstagramIcon /></a>
-            <a href="https://www.linkedin.com/company/u-now-elearning-platform/" aria-label="LinkedIn"><LinkedInIcon /></a>
+          <div className="content-block">
+            <div className={styles.sociallinks}>
+              <a href="https://www.facebook.com/unow.tn" aria-label="Facebook">
+                <FacebookIcon />
+              </a>
+              <a
+                href="https://www.instagram.com/unowelearning/"
+                aria-label="Instagram"
+              >
+                <InstagramIcon />
+              </a>
+              <a
+                href="https://www.linkedin.com/company/u-now-elearning-platform/"
+                aria-label="LinkedIn"
+              >
+                <LinkedInIcon />
+              </a>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    </div>
-    
   );
 };
 

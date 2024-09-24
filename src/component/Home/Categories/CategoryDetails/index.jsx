@@ -1,5 +1,5 @@
 import { Box, CircularProgress, Container } from "@mui/material";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import useDebouncedState from "../../../../hooks/useDebouncedState";
 import imageCourse from "../../../assets/icon_course.png";
@@ -28,14 +28,15 @@ const CategoryDetails = () => {
     currentPage,
     search
   );
-  const refHome = useRef();
 
   const handlePageChange = (pageNumber) => setCurrentPage(pageNumber);
   return (
     <>
       <div className="background_container">
         <div>
-          <Nav ref={refHome} />
+          <Container maxWidth="xl">
+            <Nav />
+          </Container>
           <div className="content_overlay">
             <Container maxWidth="xl">
               <div className="box_container">

@@ -66,7 +66,6 @@ const Main = () => {
           indexOfFirstTraining,
           indexOfLastTraining
         );
-        console.log(currentData);
         setCurrentTrainings(currentData);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -109,10 +108,9 @@ const Main = () => {
       setCurrentPage(currentPage - 1);
     }
   };
-  console.log(currentTrainings);
   return (
-    <React.Fragment className={styles.body}>
-      <div style={{ backgroundColor: "background: #f9f9f9;" }}>
+    <div className={styles.body}>
+      <div>
         {/* <div className={styles.containerimage}><img src="./images/home/background.png" alt="" className={styles.imagebackground} /></div> */}
         <Nav />
         <div className={styles.motivationImg}>
@@ -202,7 +200,7 @@ const Main = () => {
           </div>
         </div>
       </div>
-    </React.Fragment>
+    </div>
   );
 };
 
