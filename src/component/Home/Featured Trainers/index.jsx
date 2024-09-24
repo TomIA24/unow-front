@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { SectionTitle } from "../HomeInterface";
 import styles from "./styles.module.css";
-
 
 const Featured = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -59,22 +59,22 @@ const Featured = () => {
   };
 
   const currentData = trainers.slice(currentIndex, currentIndex + itemsPerPage);
-console.log("trainer.surname",trainers)
   return (
     <>
-      <div className={styles.featuredTitle} >
-        FEATURED TRAINERS
-        <p className={styles.underline}></p>
+      <div className={styles.featuredTitle}>
+        <SectionTitle title={"FEATURED TRAINERS"} />
       </div>
       <div className={styles.featuredContainer}>
         <div>
-      <button onClick={prev}    className={styles.arrowButton}>
-          <img src="./images/trainers/left.png" alt=""  className={styles.arrows}   />
-         
+          <button onClick={prev} className={styles.arrowButton}>
+            <img
+              src="./images/trainers/left.png"
+              alt=""
+              className={styles.arrows}
+            />
           </button>
-          </div>
+        </div>
         <div className={styles.cardsWrapper}>
-      
           <div className={styles.cardsContainer}>
             {currentData.map((trainer) => (
               <div className={styles.card} key={trainer._id}>
@@ -87,22 +87,24 @@ console.log("trainer.surname",trainers)
                 </div>
                 <div className={styles.cardContent}>
                   <h3 className={styles.titleName}>
-                    {trainer.surname} {trainer.name} 
-                    
+                    {trainer.surname} {trainer.name}
                   </h3>
-                  
+
                   <p className={styles.description}>{trainer.description}</p>
                 </div>
               </div>
             ))}
           </div>
-        
         </div>
         <div>
-        <button onClick={next}    className={styles.arrowButton}>
-          <img src="./images/trainers/right.png" alt=""   className={styles.arrows}  />
+          <button onClick={next} className={styles.arrowButton}>
+            <img
+              src="./images/trainers/right.png"
+              alt=""
+              className={styles.arrows}
+            />
           </button>
-          </div>
+        </div>
       </div>
     </>
   );
