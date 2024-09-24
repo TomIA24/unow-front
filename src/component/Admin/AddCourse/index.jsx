@@ -122,8 +122,9 @@ const AddCourse = () => {
     });
   };
 
-  const [uploadProgress, setUploadProgress] = useState(0);
+  
   const [uploadProgressRessources, setUploadProgressRessources] = useState(0);
+  const [uploadProgressVideos, setUploadProgressVideos] = useState(0);
   const uploadSingleFile = async (id) => {
     const formData = new FormData();
     formData?.append("file", singleFile);
@@ -133,7 +134,7 @@ const AddCourse = () => {
       data?.Title,
       user._id,
       id,
-      setUploadProgress
+    
     );
   };
 
@@ -231,6 +232,7 @@ const AddCourse = () => {
             data?.Title,
             user._id,
             setUploadProgressRessources,
+            setUploadProgressVideos,
             "Ressources"
           );
           await multipleFilesUploadWithName(
@@ -238,6 +240,7 @@ const AddCourse = () => {
             data?.Title,
             user._id,
             setUploadProgressRessources,
+            setUploadProgressVideos,
             "Videos"
           );
           window.scrollTo(0, 0);
@@ -247,8 +250,8 @@ const AddCourse = () => {
             setTimeout(r, 2000);
           });
           setMultipleFilesSelectedRessources([]);
-          setUploadProgress(0);
           setUploadProgressRessources(0);
+          setUploadProgressVideos(0);
           setSaved(false);
           setData(initialData);
           setMultipleVideosSelected([]);
@@ -466,7 +469,6 @@ const AddCourse = () => {
   /////////////////////////////////////////////////
   /////////////////////////////////////////////////
 
-  console.log("uploadProgressRessources",uploadProgressRessources)
 
   return (
     <>
@@ -547,42 +549,7 @@ const AddCourse = () => {
                   />
                 )}
 
-                <Box
-                  sx={{
-                    position: "absolute",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    // backgroundColor: "red",
-                    width: "100%",
-                    height: "100%",
-                  }}
-                >
-                  <CircularProgress
-                    variant="determinate"
-                    value={uploadProgress}
-                  />
-                  <Box
-                    sx={{
-                      top: 0,
-                      left: 0,
-                      bottom: 0,
-                      right: 0,
-                      position: "absolute",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                    }}
-                  >
-                    <Typography
-                      variant="caption"
-                      component="div"
-                      color="text.secondary"
-                    >
-                      {`${Math.round(uploadProgress)}%`}
-                    </Typography>
-                  </Box>
-                </Box>
+               
               </Badge>
             </div>
             <div className={styles.InfosSuction}>
@@ -616,6 +583,11 @@ const AddCourse = () => {
                       }}
                     />
                     <p style={{ marginTop: "-17px" }}>select videos</p>
+                    {uploadProgressVideos > 0 && (
+                  
+                 
+                  <Typography variant="body2">{`Time remaining for video upload : ${Math.round(uploadProgressVideos)}`}</Typography>
+                   )}  
                   </div>
                 </label>
               </div>
@@ -1071,20 +1043,17 @@ const AddCourse = () => {
                             )}
                           </Box>
                             
-                          <div>
-                           
-                           
-                                  </div>
+                      
                    
                         </div>
                       );
                     })
                   )}
                  {uploadProgressRessources > 0 && (
-                  <div>
-                  <LinearProgress variant="determinate" value={uploadProgressRessources} />
-                  <Typography variant="body2">{`Progression : ${Math.round(uploadProgressRessources)}%`}</Typography>
-                  </div>)}  
+                  
+                 
+                  <Typography variant="body2">{`Time remaining for resource upload : ${Math.round(uploadProgressRessources)}`}</Typography>
+                   )}  
                 </div>   
                 <div className={styles.AddRessource}>
                   <h5>Select Files</h5>
