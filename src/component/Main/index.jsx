@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import loupe from "../assets/loupe.png";
 import styles from "./styles.module.css";
 // import Google from "../assets/Google.png";
@@ -12,8 +12,14 @@ import axios from "axios";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 // import logo from "../assets/logo2.jpg"
+import AddIcCallIcon from "@mui/icons-material/AddIcCall";
+import HomeIcon from "@mui/icons-material/Home";
+import InfoIcon from "@mui/icons-material/Info";
+import { CiSearch } from "react-icons/ci";
+import { useNavigate } from "react-router-dom";
 import CourseTrainingCard from "../CourseTrainingCard";
 import Nav from "../Nav";
+import Spotlight from "../Spotlight";
 import { Header } from "./Header/header";
 
 const Main = () => {
@@ -23,6 +29,7 @@ const Main = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [WindowWidth, setWindowWidth] = useState(0);
   const [trainingsPerPage, settrainingsPerPage] = useState(3);
+  const navigate = useNavigate();
 
   const indexOfFirstTraining = (currentPage - 1) * trainingsPerPage;
   const indexOfLastTraining = currentPage * trainingsPerPage;
@@ -107,10 +114,42 @@ const Main = () => {
     if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
     }
-  };
+  }; 
+
+  const [isOpen, setIsOpen] = useState(false);
+  const openSpotlight = () => setIsOpen(true);
+  const closeSpotlight = () => setIsOpen(false);
+
+  const actions = useMemo(() => {
+    return [
+      {
+        id: "home",
+        label: "Home",
+        description: "Go to home page",
+        onClick: () => navigate("/home"),
+        leftSection: <HomeIcon color="disabled" />,
+      },
+      {
+        id: "about",
+        label: "About",
+        description: "View about",
+        onClick: () => navigate("/about"),
+        leftSection: <InfoIcon color="disabled" />,
+      },
+      {
+        id: "contact",
+        label: "Contact",
+        description: "Go to contact page",
+        onClick: () => navigate("/contact"),
+        leftSection: <AddIcCallIcon color="disabled" />,
+      },
+    ];
+  }, []);
+
   return (
     <div className={styles.body}>
-      <div>
+      <div style={{ backgroundColor: "background: #f9f9f9;" }}>
+ 
         {/* <div className={styles.containerimage}><img src="./images/home/background.png" alt="" className={styles.imagebackground} /></div> */}
         <Nav />
         <div className={styles.motivationImg}>
@@ -126,12 +165,8 @@ const Main = () => {
             </div>
           </div>
 
-          <div className={styles.explore_container}>
-            <button
-              className={styles.explore_btn}
-              type="button"
-              onClick={() => {}}
-            >
+          <div className={styles.explore_container} onClick={openSpotlight}>
+            <button className={styles.explore_btn} type="button">
               Explore
             </button>
             <div className={styles.explore_line} />
@@ -162,7 +197,7 @@ const Main = () => {
               <button className={styles.arrowButton} onClick={prevPage}>
                 <img
                   src="./images/home/left.png"
-                  alt="Description of the image"
+                  alt="Description"
                   className={styles.arrows}
                 />
               </button>
@@ -192,7 +227,7 @@ const Main = () => {
               >
                 <img
                   src="./images/home/right.png"
-                  alt="Description of the image"
+                  alt="Description"
                   className={styles.arrows}
                 />
               </button>
@@ -200,6 +235,18 @@ const Main = () => {
           </div>
         </div>
       </div>
+ 
+      <Spotlight
+        actions={actions}
+        nothingFound="No results found"
+        searchProps={{
+          leftSection: <CiSearch />,
+          placeholder: "Search...",
+        }}
+        isOpen={isOpen}
+        onClose={closeSpotlight}
+      />
+ 
     </div>
   );
 };
