@@ -12,8 +12,13 @@ import axios from "axios";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 // import logo from "../assets/logo2.jpg"
+import AddIcCallIcon from "@mui/icons-material/AddIcCall";
+import HomeIcon from "@mui/icons-material/Home";
+import InfoIcon from "@mui/icons-material/Info";
+import { CiSearch } from "react-icons/ci";
 import CourseTrainingCard from "../CourseTrainingCard";
 import Nav from "../Nav";
+import Spotlight from "../Spotlight";
 import { Header } from "./Header/header";
 
 const Main = () => {
@@ -66,7 +71,6 @@ const Main = () => {
           indexOfFirstTraining,
           indexOfLastTraining
         );
-        console.log(currentData);
         setCurrentTrainings(currentData);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -109,9 +113,37 @@ const Main = () => {
       setCurrentPage(currentPage - 1);
     }
   };
-  console.log(currentTrainings);
+
+  const [isOpen, setIsOpen] = useState(false);
+  const openSpotlight = () => setIsOpen(true);
+  const closeSpotlight = () => setIsOpen(false);
+
+  const actions = [
+    {
+      id: "home",
+      label: "Home",
+      description: "Go to home page",
+      onClick: () => {},
+      leftSection: <HomeIcon />,
+    },
+    {
+      id: "about",
+      label: "About",
+      description: "View about",
+      onClick: () => {},
+      leftSection: <InfoIcon />,
+    },
+    {
+      id: "contact",
+      label: "Contact",
+      description: "Go to contact page",
+      onClick: () => {},
+      leftSection: <AddIcCallIcon />,
+    },
+  ];
+
   return (
-    <React.Fragment className={styles.body}>
+    <div className={styles.body}>
       <div style={{ backgroundColor: "background: #f9f9f9;" }}>
         {/* <div className={styles.containerimage}><img src="./images/home/background.png" alt="" className={styles.imagebackground} /></div> */}
         <Nav />
@@ -132,7 +164,7 @@ const Main = () => {
             <button
               className={styles.explore_btn}
               type="button"
-              onClick={() => {}}
+              onClick={openSpotlight}
             >
               Explore
             </button>
@@ -164,7 +196,7 @@ const Main = () => {
               <button className={styles.arrowButton} onClick={prevPage}>
                 <img
                   src="./images/home/left.png"
-                  alt="Description of the image"
+                  alt="Description"
                   className={styles.arrows}
                 />
               </button>
@@ -194,7 +226,7 @@ const Main = () => {
               >
                 <img
                   src="./images/home/right.png"
-                  alt="Description of the image"
+                  alt="Description"
                   className={styles.arrows}
                 />
               </button>
@@ -202,7 +234,17 @@ const Main = () => {
           </div>
         </div>
       </div>
-    </React.Fragment>
+      <Spotlight
+        actions={actions}
+        nothingFound="No results found"
+        searchProps={{
+          leftSection: <CiSearch />,
+          placeholder: "Search...",
+        }}
+        isOpen={isOpen}
+        onClose={closeSpotlight}
+      />
+    </div>
   );
 };
 
