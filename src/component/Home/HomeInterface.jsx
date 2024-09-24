@@ -10,6 +10,9 @@ import Join from "./Join";
 import styles from "./styles.module.css";
 import UpSkill from "./UpSkill";
 
+export const SectionTitle = ({ title }) => (
+  <p className={styles.sectionTitle}>{title}</p>
+);
 const HomeInterface = () => {
   return (
     <>
