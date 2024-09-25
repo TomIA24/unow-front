@@ -1,81 +1,42 @@
-* {
-    margin: none;
-    padding: none;
+.container {
+  max-width: 452px;
+  height: 664px;
+  border-radius: 2.5rem;
+  box-shadow: 0px 0px 4px rgb(0, 0, 0, 26%);
+  padding: 45px 0px 0px 50px;
+  margin: 6rem;
 }
 
-.leftSectionProfile {
-    /* background-color: #6FC2D0; */
-    width: 90%;
-    height: auto;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+.container ul {
+  list-style-type: disc;
+  color: #2c2c2c;
 }
 
-.FirsSectionInfoProfile {
-    /* background-color: #6fd0b3; */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    margin-top: 100px;
-    margin-bottom: 20px;
+.container ul li {
+  font-weight: 800;
+  font-size: 1.5rem;
+  line-height: 2;
 }
 
-.FirsSectionInfoProfileName {
-    margin: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.container span {
+  font-weight: 600;
+  font-size: 1.25rem;
+  line-height: 2;
+  padding-left: 5px;
 }
 
-.FirsSectionInfoProfileName p {
-    color: #414141;
-    font-weight: 600;
-    font-size: 20px;
+.programs {
+  display: flex;
+  font-size: 1.5rem;
+  gap: 20px;
 }
 
-.ScndSectionInfoProfile {
-    width: 100%;
-    height: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.ScndSectionInfoProfileContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    width: 70%;
-    height: auto;
-    margin-bottom: 50px;
-    border: 2px solid #1C4B82;
-    border-radius: 10px;
-    font-size: 25px;
-    font-family: 'Nunito', sans-serif;
-    font-weight: bold;
-}
-
-.editIconDiv {
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-}
-
-.editIcon {
-    margin: 8px 15px;
-}
-
-.ScndSectionInfoProfileContainer p {
-    margin: 5px 50px;
-}
-
-.ScndSectionInfoProfileContainer span {
-    margin: 0 10px;
-    font-weight: 600;
+.seeMore {
+  display: flex;
+  justify-content: flex-end;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 2;
+  color: #6990f2;
 }

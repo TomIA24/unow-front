@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { useState } from "react";
 import styles from "./styles.module.css";
 
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
@@ -7,6 +6,7 @@ import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import HistoryEduIcon from "@mui/icons-material/HistoryEdu";
 import VoiceChatIcon from "@mui/icons-material/VoiceChat";
+import { Container } from "@mui/material";
 import Button from "@mui/material/Button";
 import Nav from "../Nav";
 import Footer from "../footer";
@@ -16,54 +16,8 @@ import InfoUser from "./InfoUser";
 import Trainings from "./Trainings";
 import Rooms from "./rooms";
 
-const ProfileTrainer = (props) => {
-  let { id } = useParams();
-  const token = localStorage.getItem("token");
-
-  const [error, setError] = useState("");
-
+const ProfileTrainer = () => {
   const user = JSON.parse(localStorage.getItem("user"));
-
-  /*///////////////////////////////////*/
-
-  const [scrollPosition, setScrollPosition] = useState(0);
-  const handleScroll = () => {
-    const position = window.pageYOffset;
-    setScrollPosition(position);
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-  // useEffect(()=>{
-  // 	if(scrollPosition>=300){
-  // 		window.document.querySelector(".styles_scndInfos__YSEZn").style.marginTop=-320 + "px"
-  // 	}else{
-  // 		window.document.querySelector(".styles_scndInfos__YSEZn").style.marginTop=0 + "px"
-  // 	}
-  // },[scrollPosition])
-
-  /*///////////////////////////////////*/
-  const WindowState = localStorage.getItem("Window State");
-
-  useEffect(() => {
-    // WindowState;
-    if (WindowState === "actu") {
-      setActu(true);
-      setProfile(false);
-      setCalendar(false);
-    }
-  }, []);
-
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
-    window.location = "/login";
-  };
   const [actu, setActu] = useState(false);
   const [profile, setProfile] = useState(true);
   const [calendar, setCalendar] = useState(false);
@@ -103,119 +57,97 @@ const ProfileTrainer = (props) => {
     setTrainings(true);
   };
 
-  /************/ //////////////////////// */
-  const [WindowWidth, setWindowWidth] = useState(0);
-  const handleWidthChange = () => {
-    const currentWidth = window.innerWidth;
-    setWindowWidth(currentWidth);
-  };
-
-  useEffect(() => {
-    handleWidthChange();
-    window.addEventListener("resize", handleWidthChange);
-    return () => {
-      window.removeEventListener("resize", handleWidthChange);
-    };
-  }, []);
-  const [mobileView, setMobileView] = useState(false);
-  useEffect(() => {
-    //(WindowWidth)
-    if (WindowWidth <= 756) {
-      setMobileView(true);
-    } else {
-      setMobileView(false);
-    }
-  }, []);
-  useEffect(() => {
-    // WindowWidth;
-    if (WindowWidth <= 756) {
-      setMobileView(true);
-    } else {
-      setMobileView(false);
-    }
-  }, [WindowWidth]);
-
   return (
     <React.Fragment>
-      <Nav />
-      <main className={styles.MotherDivProfile}>
-        <div className={styles.MainDivProfile}>
-          {profile ? (
-            <InfoUser user={user} />
-          ) : (
-            <React.Fragment>
-              {actu ? (
-                <Actu setActu={setActu} user={user} />
-              ) : (
-                <React.Fragment>
-                  {calendar ? (
-                    <Calendar user={user} />
-                  ) : (
-                    <React.Fragment>
-                      {rooms ? (
-                        <Rooms user={user} />
-                      ) : (
-                        <React.Fragment>
-                          {trainings ? <Trainings user={user} /> : ""}
-                        </React.Fragment>
-                      )}
-                    </React.Fragment>
-                  )}
-                </React.Fragment>
-              )}
-            </React.Fragment>
-          )}
-          <div className={styles.rightSectionProfile}>
-            <div className={styles.scndInfos}>
-              <h5 className={styles.titleWelcome}>welcome {user.name}</h5>
-              <Button
-                onClick={handleProfile}
-                className={styles.Button}
-                variant="outlined"
-                startIcon={<AccountCircleIcon />}
-              >
-                Personnal Informations
-              </Button>
-
-              <Button
-                onClick={handleActu}
-                className={styles.Button}
-                variant="outlined"
-                startIcon={<FormatListBulletedIcon />}
-              >
-                Actu Mandats
-              </Button>
-
-              <Button
-                onClick={handleTrainings}
-                className={styles.Button}
-                variant="outlined"
-                startIcon={<HistoryEduIcon />}
-              >
-                Trainings
-              </Button>
-
-              <Button
-                onClick={handleCalendar}
-                className={styles.Button}
-                variant="outlined"
-                startIcon={<CalendarTodayIcon />}
-              >
-                Calendar
-              </Button>
-
-              <Button
-                onClick={handleRooms}
-                className={styles.Button}
-                variant="outlined"
-                startIcon={<VoiceChatIcon />}
-              >
-                Rooms
-              </Button>
+      <div className="background_container">
+        <Container maxWidth="xl" sx={{ height: "calc(100% - 70px)" }}>
+          <Nav />
+          <div className={styles.container}>
+            <p className={styles.title}>Welcome Trainer</p>
+            <div className={styles.imgProfile}>
+              <div className={styles.imgContainer}>
+                <img
+                  className={styles.profile_border}
+                  src="./svg/profile_border.svg"
+                  alt="11"
+                />
+                <img
+                  src={`${process.env.REACT_APP_API}${user?.image?.filePath}`}
+                  alt="Profile"
+                />
+              </div>
             </div>
           </div>
-        </div>
-      </main>
+        </Container>
+      </div>
+      <Container maxWidth="xl">
+        <main className={styles.MotherDivProfile}>
+          <div className={styles.MainDivProfile}>
+            {profile ? (
+              <InfoUser user={user} />
+            ) : actu ? (
+              <Actu setActu={setActu} user={user} />
+            ) : calendar ? (
+              <Calendar user={user} />
+            ) : rooms ? (
+              <Rooms user={user} />
+            ) : trainings ? (
+              <Trainings user={user} />
+            ) : null}
+
+            <div className={styles.rightSectionProfile}>
+              <div className={styles.scndInfos}>
+                <h5 className={styles.titleWelcome}>welcome {user.name}</h5>
+                <Button
+                  onClick={handleProfile}
+                  className={styles.Button}
+                  variant="outlined"
+                  startIcon={<AccountCircleIcon />}
+                >
+                  Personnal Informations
+                </Button>
+
+                <Button
+                  onClick={handleActu}
+                  className={styles.Button}
+                  variant="outlined"
+                  startIcon={<FormatListBulletedIcon />}
+                >
+                  Actu Mandats
+                </Button>
+
+                <Button
+                  onClick={handleTrainings}
+                  className={styles.Button}
+                  variant="outlined"
+                  startIcon={<HistoryEduIcon />}
+                >
+                  Trainings
+                </Button>
+
+                <Button
+                  onClick={handleCalendar}
+                  className={styles.Button}
+                  variant="outlined"
+                  startIcon={<CalendarTodayIcon />}
+                >
+                  Calendar
+                </Button>
+
+                <Button
+                  onClick={handleRooms}
+                  className={styles.Button}
+                  variant="outlined"
+                  startIcon={<VoiceChatIcon />}
+                >
+                  Rooms
+                </Button>
+              </div>
+            </div>
+          </div>
+        </main>
+      </Container>
+
       <Footer />
     </React.Fragment>
   );
