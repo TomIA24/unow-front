@@ -1,61 +1,71 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./styles.module.css";
 
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
+import DateRangeIcon from "@mui/icons-material/DateRange";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
-import HistoryEduIcon from "@mui/icons-material/HistoryEdu";
-import VoiceChatIcon from "@mui/icons-material/VoiceChat";
+import LocalLibraryIcon from "@mui/icons-material/LocalLibrary";
 import { Container } from "@mui/material";
-import Button from "@mui/material/Button";
+import classNames from "classnames";
+import { request } from "../../core/api/request";
 import Nav from "../Nav";
 import Footer from "../footer";
 import Actu from "./Actu";
 import Calendar from "./Calendar";
 import InfoUser from "./InfoUser";
 import Trainings from "./Trainings";
-import Rooms from "./rooms";
 
 const ProfileTrainer = () => {
-  const user = JSON.parse(localStorage.getItem("user"));
-  const [actu, setActu] = useState(false);
-  const [profile, setProfile] = useState(true);
-  const [calendar, setCalendar] = useState(false);
-  const [rooms, setRooms] = useState(false);
-  const [trainings, setTrainings] = useState(false);
+  const [activeSection, setActiveSection] = useState("profile");
+  const [userInfo, setUserInfo] = useState({});
 
-  const handleActu = () => {
-    setActu(true);
-    setProfile(false);
-    setCalendar(false);
-  };
-  const handleCalendar = () => {
-    setActu(false);
-    setProfile(false);
-    setCalendar(true);
-  };
+  useEffect(() => {
+    request.read("userData").then((data) => {
+      setUserInfo(data.data);
+    });
+  }, []);
 
-  const handleRooms = () => {
-    setActu(false);
-    setProfile(false);
-    setRooms(true);
-    setCalendar(false);
-  };
-  const handleProfile = () => {
-    if (!profile) {
-      setProfile(true);
-      setActu(false);
-      setCalendar(false);
+  const renderContent = () => {
+    switch (activeSection) {
+      case "actu":
+        return <Actu setActu={setActiveSection} userInfo={userInfo} />;
+      case "calendar":
+        return <Calendar userInfo={userInfo} />;
+      case "trainings":
+        return <Trainings userInfo={userInfo} />;
+      case "profile":
+      default:
+        return <InfoUser userInfo={userInfo} />;
     }
   };
 
-  const handleTrainings = () => {
-    setActu(false);
-    setProfile(false);
-    setRooms(false);
-    setCalendar(false);
-    setTrainings(true);
+  const handleSectionChange = (section) => {
+    setActiveSection(section);
   };
+
+  const ProfileInfo = () => (
+    <div className={styles.info}>
+      <div>
+        <p>{userInfo?.name}</p>
+        <p>Trainer</p>
+      </div>
+      <div>
+        <p> {userInfo?.phoneNumber || "--"}</p>
+        <p> {userInfo?.email || "--"}</p>
+        <p> {userInfo?.address || "--"}</p>
+      </div>
+    </div>
+  );
+
+  const SideBarButton = ({ icon: Icon, label, section }) => (
+    <button
+      className={classNames({ [styles.active]: activeSection === section })}
+      onClick={() => handleSectionChange(section)}
+    >
+      <Icon sx={{ color: "white" }} />
+      <span>{label}</span>
+    </button>
+  );
 
   return (
     <React.Fragment>
@@ -67,82 +77,46 @@ const ProfileTrainer = () => {
             <div className={styles.imgProfile}>
               <div className={styles.imgContainer}>
                 <img
-                  className={styles.profile_border}
-                  src="./svg/profile_border.svg"
-                  alt="11"
-                />
-                <img
-                  src={`${process.env.REACT_APP_API}${user?.image?.filePath}`}
+                  src={
+                    userInfo?.image?.filePath
+                      ? `${process.env.REACT_APP_API}${userInfo.image.filePath}`
+                      : "/default-profile.png"
+                  }
                   alt="Profile"
                 />
               </div>
             </div>
+            {activeSection === "profile" && <ProfileInfo />}
           </div>
         </Container>
       </div>
+
       <Container maxWidth="xl">
-        <main className={styles.MotherDivProfile}>
-          <div className={styles.MainDivProfile}>
-            {profile ? (
-              <InfoUser user={user} />
-            ) : actu ? (
-              <Actu setActu={setActu} user={user} />
-            ) : calendar ? (
-              <Calendar user={user} />
-            ) : rooms ? (
-              <Rooms user={user} />
-            ) : trainings ? (
-              <Trainings user={user} />
-            ) : null}
-
-            <div className={styles.rightSectionProfile}>
-              <div className={styles.scndInfos}>
-                <h5 className={styles.titleWelcome}>welcome {user.name}</h5>
-                <Button
-                  onClick={handleProfile}
-                  className={styles.Button}
-                  variant="outlined"
-                  startIcon={<AccountCircleIcon />}
-                >
-                  Personnal Informations
-                </Button>
-
-                <Button
-                  onClick={handleActu}
-                  className={styles.Button}
-                  variant="outlined"
-                  startIcon={<FormatListBulletedIcon />}
-                >
-                  Actu Mandats
-                </Button>
-
-                <Button
-                  onClick={handleTrainings}
-                  className={styles.Button}
-                  variant="outlined"
-                  startIcon={<HistoryEduIcon />}
-                >
-                  Trainings
-                </Button>
-
-                <Button
-                  onClick={handleCalendar}
-                  className={styles.Button}
-                  variant="outlined"
-                  startIcon={<CalendarTodayIcon />}
-                >
-                  Calendar
-                </Button>
-
-                <Button
-                  onClick={handleRooms}
-                  className={styles.Button}
-                  variant="outlined"
-                  startIcon={<VoiceChatIcon />}
-                >
-                  Rooms
-                </Button>
-              </div>
+        <main className={styles.main}>
+          <div className={styles.mainContainer}>{renderContent()}</div>
+          <div className={styles.sideBar}>
+            <p className={styles.cardTitle}>{userInfo?.name}</p>
+            <div className={styles.sideBarContainer}>
+              <SideBarButton
+                icon={AccountCircleIcon}
+                label="Personal Information"
+                section="profile"
+              />
+              <SideBarButton
+                icon={FormatListBulletedIcon}
+                label="Actu mangdats"
+                section="actu"
+              />
+              <SideBarButton
+                icon={LocalLibraryIcon}
+                label="Trainings"
+                section="trainings"
+              />
+              <SideBarButton
+                icon={DateRangeIcon}
+                label="Calendar"
+                section="calendar"
+              />
             </div>
           </div>
         </main>
