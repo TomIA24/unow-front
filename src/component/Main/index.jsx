@@ -114,7 +114,7 @@ const Main = () => {
     if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
     }
-  }; 
+  };
 
   const [isOpen, setIsOpen] = useState(false);
   const openSpotlight = () => setIsOpen(true);
@@ -148,8 +148,7 @@ const Main = () => {
 
   return (
     <div className={styles.body}>
-      <div style={{ backgroundColor: "background: #f9f9f9;" }}>
- 
+      <div>
         {/* <div className={styles.containerimage}><img src="./images/home/background.png" alt="" className={styles.imagebackground} /></div> */}
         <Nav />
         <div className={styles.motivationImg}>
@@ -235,7 +234,7 @@ const Main = () => {
           </div>
         </div>
       </div>
- 
+
       <Spotlight
         actions={actions}
         nothingFound="No results found"
@@ -246,7 +245,6 @@ const Main = () => {
         isOpen={isOpen}
         onClose={closeSpotlight}
       />
- 
     </div>
   );
 };
