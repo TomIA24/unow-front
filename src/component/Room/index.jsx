@@ -14,19 +14,29 @@ import ChatIcon from '@mui/icons-material/Chat';
 import Fab from '@mui/material/Fab';
 import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
 import {RiCameraOffFill, RiCameraFill} from 'react-icons/ri'
-import {MdOutlineVideocamOff, MdOutlineVideocam, MdOutlineScreenShare} from 'react-icons/md'
-import {BsFillMicMuteFill, BsFillMicFill, BsThreeDotsVertical} from 'react-icons/bs'
-import { message } from 'antd'
+import {
+  MdOutlineVideocamOff,
+  MdOutlineVideocam,
+  MdOutlineScreenShare,
+  MdOutlineMessage,
+  MdOutlineSupervisedUserCircle,
+} from "react-icons/md";
+import {
+  BsFillMicMuteFill,
+  BsFillMicFill,
+  BsThreeDotsVertical,
+} from "react-icons/bs";
+import { message } from "antd";
 //import 'antd/dist/antd.css'
-import Grid from '@mui/material/Grid';
+import Grid from "@mui/material/Grid";
 // import { Row } from 'reactstrap'
-import SendIcon from '@mui/icons-material/Send';
+import SendIcon from "@mui/icons-material/Send";
 //import 'bootstrap/dist/css/bootstrap.css'
-import "./Room.css"
+import "./Room.css";
 
 // const server_url = process.env.NODE_ENV === 'production' ? `${process.env.REACT_APP_API}` : "localhost:8080"
 // const server_url = "http://localhost:5050";
-console.log(process.env.REACT_APP_API)
+console.log(process.env.REACT_APP_API);
 const server_url = process.env.REACT_APP_API;
 
 const style = {
@@ -62,6 +72,7 @@ class Room extends Component {
     super(props);
 
     this.localVideoref = React.createRef();
+    this.masterVideoref = React.createRef();
 
     this.videoAvailable = false;
     this.audioAvailable = false;
@@ -76,33 +87,34 @@ class Room extends Component {
       this.state = {
         video: true,
         audio: true,
-        speaking:false,
+        speaking: false,
         screen: false,
         showModal: false,
         screenAvailable: false,
         messages: [],
         message: "",
         newmessages: 0,
+        userRole: "user",
+        showMessages: true,
+        showVideos: false,
         askForUsername: true,
-        user : JSON.parse(localStorage.getItem("user")),
+        user: JSON.parse(localStorage.getItem("user")),
         // username: JSON.parse(localStorage.getItem("user")).name,
       };
       this.getPermissions();
 
-      console.log("user: ", JSON.parse(localStorage.getItem("user")))
+      console.log("user: ", JSON.parse(localStorage.getItem("user")));
     }
 
     connections = {};
-    
   }
 
-   componentDidMount() {
+  componentDidMount() {
     this.scrollToBottom();
-
   }
 
   scrollToBottom = () => {
-    const messageBody = document.querySelector('.MessagesBody');
+    const messageBody = document.querySelector(".MessagesBody");
     if (messageBody) {
       messageBody.scrollTop = messageBody.scrollHeight;
       // Use requestAnimationFrame to ensure the DOM has updated
@@ -110,7 +122,7 @@ class Room extends Component {
         messageBody.scrollTop = messageBody.scrollHeight;
       });
     }
-  }
+  };
 
   getPermissions = async () => {
     try {
@@ -125,9 +137,9 @@ class Room extends Component {
         .catch(() => (this.audioAvailable = false));
 
       if (navigator.mediaDevices.getDisplayMedia) {
-        this.state.screenAvailable = true ;
+        this.state.screenAvailable = true;
       } else {
-        this.state.screenAvailable = false ;
+        this.state.screenAvailable = false;
       }
 
       if (this.videoAvailable || this.audioAvailable) {
@@ -176,8 +188,6 @@ class Room extends Component {
   getUserMediaSuccess = (stream) => {
     try {
       window.localStream.getTracks().forEach((track) => track.stop());
-    this.setupVoiceActivityDetection();
-
     } catch (e) {
       console.log(e);
     }
@@ -356,24 +366,24 @@ class Room extends Component {
     }
   };
 
-  changeCssVideos = (main) => {
-    let widthMain = main.offsetWidth;
-    let minWidth = "200px";
-    if ((widthMain * 30) / 100 < 300) {
-      minWidth = "200px";
-    }
+  // changeCssVideos = (main) => {
+  //   let widthMain = main.offsetWidth;
+  //   let minWidth = "200px";
+  //   if ((widthMain * 30) / 100 < 300) {
+  //     minWidth = "200px";
+  //   }
 
-    let width = String(100 / elms) + "%";
+  //   let width = String(100 / elms) + "%";
 
-    let videos = main.querySelectorAll("video");
-    for (let a = 0; a < videos.length; ++a) {
-      videos[a].style.minWidth = minWidth;
-      videos[a].style.margin = "auto";
-      videos[a].style.setProperty("width", width);
-    }
+  //   let videos = main.querySelectorAll("video");
+  //   for (let a = 0; a < videos.length; ++a) {
+  //     videos[a].style.minWidth = minWidth;
+  //     videos[a].style.margin = "auto";
+  //     videos[a].style.setProperty("width", width);
+  //   }
 
-    return { minWidth, width };
-  };
+  //   return { minWidth, width };
+  // };
 
   connectToSocketServer = () => {
     socket = io.connect(server_url, { secure: true });
@@ -381,7 +391,10 @@ class Room extends Component {
     socket.on("signal", this.gotMessageFromServer);
 
     socket.on("connect", () => {
-      socket.emit("join-call", window.location.href);
+      socket.emit("join-call", {
+        path: window.location.href,
+        userId: JSON.parse(localStorage.getItem("user"))._id,
+      });
       socketId = socket.id;
 
       socket.on("chat-message", this.addMessage);
@@ -392,12 +405,14 @@ class Room extends Component {
           elms--;
           video.parentNode.removeChild(video);
 
-          let main = document.getElementById("main");
-          this.changeCssVideos(main);
+          let main = document.getElementById("StreamsVideos");
+          // this.changeCssVideos(main);
         }
       });
 
-      socket.on("user-joined", (id, clients) => {
+      socket.on("user-joined", (id, clients, userRole) => {
+        console.log("userRole: ", userRole);
+        this.setState({ userRole: userRole });
         clients.forEach((socketListId) => {
           connections[socketListId] = new RTCPeerConnection(
             peerConnectionConfig
@@ -424,14 +439,15 @@ class Room extends Component {
               searchVidep.srcObject = event.stream;
             } else {
               elms = clients.length;
-              let main = document.getElementById("main");
-              let cssMesure = this.changeCssVideos(main);
+              let main = document.getElementById("StreamsVideos");
+              // let cssMesure = this.changeCssVideos(main);
 
               let video = document.createElement("video");
 
               let css = {
-                minWidth: cssMesure.minWidth,
-                minHeight: cssMesure.minHeight,
+                // minWidth: cssMesure.minWidth,
+                // minHeight: cssMesure.minHeight,
+                width: "100%",
                 maxHeight: "100%",
                 margin: "10px",
                 borderStyle: "solid",
@@ -440,8 +456,8 @@ class Room extends Component {
               };
               for (let i in css) video.style[i] = css[i];
 
-              video.style.setProperty("width", cssMesure.width);
-              video.style.setProperty("height", cssMesure.height);
+              // video.style.setProperty("width", cssMesure.width);
+              // video.style.setProperty("height", cssMesure.height);
               video.setAttribute("data-socket", socketListId);
               video.srcObject = event.stream;
               video.autoplay = true;
@@ -545,27 +561,26 @@ class Room extends Component {
 
   handleUsername = (e) => this.setState({ username: e.target.value });
 
-  sendMessage = () => { 
-      console.log("test messages: ",this.state.message, this.state.user.name)
-      socket.emit("chat-message", this.state.message, this.state.user.name);
-      this.setState({ message: "", sender: this.state.user.name }, () => {
-          // After the state has been updated, scroll the message body to the bottom
-          const messageBody = document.querySelector('.MessagesBody');
-          if (messageBody) {
-            console.log("height messages body: ",messageBody.scrollHeight)
-              messageBody.scrollTop = messageBody.scrollHeight;
-          }
-      });
-
+  sendMessage = () => {
+    console.log("test messages: ", this.state.message, this.state.user.name);
+    socket.emit("chat-message", this.state.message, this.state.user.name);
+    this.setState({ message: "", sender: this.state.user.name }, () => {
+      // After the state has been updated, scroll the message body to the bottom
+      const messageBody = document.querySelector(".MessagesBody");
+      if (messageBody) {
+        console.log("height messages body: ", messageBody.scrollHeight);
+        messageBody.scrollTop = messageBody.scrollHeight;
+      }
+    });
   };
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState.message !== this.state.message) {
-      const messageBody = document.querySelector('.MessagesBody');
+      const messageBody = document.querySelector(".MessagesBody");
       if (messageBody) {
         console.log("height messages body: ", messageBody.scrollHeight);
         messageBody.scrollTop = messageBody.scrollHeight;
-        
+
         // Use setTimeout to ensure scrolling happens after DOM update
         setTimeout(() => {
           messageBody.scrollTop = messageBody.scrollHeight;
@@ -617,7 +632,12 @@ class Room extends Component {
   //   // return matchChrome !== null || matchFirefox !== null
   //   return matchChrome !== null;
   // };
-
+  handleShowVideos = () => {
+    this.setState({ showMessages: false, showVideos: true });
+  };
+  handleShowMessages = () => {
+    this.setState({ showVideos: false, showMessages: true });
+  };
   render() {
     // if (this.isChrome() === false) {
     //   return (
@@ -650,13 +670,19 @@ class Room extends Component {
                 paddingTop: "40px",
               }}
             >
-              <video
-                id="my-video"
-                ref={this.localVideoref}
-                autoPlay
-                muted
-                className="videoPreConnect"
-              ></video>
+              {this.state.video ? (
+                <video
+                  id="my-video-pre-connection"
+                  ref={this.localVideoref}
+                  autoPlay
+                  muted
+                  className="videoPreConnect"
+                ></video>
+              ) : (
+                <div className="videoPreConnectOffContainer">
+                  <MdOutlineVideocamOff color="white" size={60} />
+                </div>
+              )}
             </div>
 
             <div className="InfoSpace">
@@ -772,90 +798,250 @@ class Room extends Component {
                 className="flex-container"
                 style={{ margin: "10px", padding: 0 }}
               >
-                <video
-                  id="my-video"
-                  ref={this.localVideoref}
-                  autoPlay
-                  muted
-                  className="MyVideoArea"
-                ></video>
+                <div className="video-container">
+                  <video
+                    id="my-video"
+                    ref={this.localVideoref}
+                    autoPlay
+                    muted
+                  ></video>
+                </div>
+
+                <div className="Buttons">
+                  <Fab
+                    onClick={this.handleAudio}
+                    sx={
+                      this.state.audio === true
+                        ? {
+                            width: "40px",
+                            height: "40px",
+                            backgroundColor: "#343A40",
+                            transition: "margin-top 0.2s ease-out",
+                            border: "none",
+                            "&:hover": {
+                              backgroundColor: "#686D76",
+                              marginTop: "-5px",
+                            },
+                          }
+                        : {
+                            width: "40px",
+                            height: "40px",
+                            backgroundColor: "#BD1616",
+                            transition: "margin-top 0.2s ease-out",
+                            border: "none",
+                            "&:hover": {
+                              backgroundColor: "rgba(189, 22, 22, 0.75)",
+                              marginTop: "-5px",
+                            },
+                          }
+                    }
+                  >
+                    {this.state.audio === true ? (
+                      <BsFillMicFill color="white" size={20} />
+                    ) : (
+                      <BsFillMicMuteFill color="white" size={20} />
+                    )}
+                  </Fab>
+
+                  <Fab
+                    onClick={this.handleVideo}
+                    sx={
+                      this.state.video === true
+                        ? {
+                            width: "40px",
+                            height: "40px",
+                            backgroundColor: "#343A40",
+                            transition: "margin-top 0.2s ease-out",
+                            border: "none",
+                            "&:hover": {
+                              backgroundColor: "#686D76",
+                              marginTop: "-5px",
+                            },
+                          }
+                        : {
+                            width: "40px",
+                            height: "40px",
+                            backgroundColor: "#BD1616",
+                            transition: "margin-top 0.2s ease-out",
+                            border: "none",
+                            "&:hover": {
+                              backgroundColor: "rgba(189, 22, 22, 0.75)",
+                              marginTop: "-5px",
+                            },
+                          }
+                    }
+                  >
+                    {this.state.video === true ? (
+                      <MdOutlineVideocam color="white" size={27} />
+                    ) : (
+                      <MdOutlineVideocamOff color="white" size={27} />
+                    )}
+                  </Fab>
+
+                  <Fab
+                    onClick={this.handleScreen}
+                    sx={
+                      this.state.screen === false
+                        ? {
+                            width: "40px",
+                            height: "40px",
+                            backgroundColor: "#343A40",
+                            transition: "margin-top 0.2s ease-out",
+                            border: "none",
+                            "&:hover": {
+                              backgroundColor: "#686D76",
+                              marginTop: "-5px",
+                            },
+                          }
+                        : {
+                            width: "40px",
+                            height: "40px",
+                            backgroundColor: "#5D8BF4",
+                            transition: "margin-top 0.2s ease-out",
+                            border: "none",
+                            "&:hover": {
+                              backgroundColor: "rgba(93, 139, 244, 0.75)",
+                              marginTop: "-5px",
+                            },
+                          }
+                    }
+                  >
+                    <MdOutlineScreenShare color="white" size={24} />
+                  </Fab>
+
+                  <Fab
+                    sx={{
+                      width: "40px",
+                      height: "40px",
+                      backgroundColor: "#343A40",
+                      transition: "margin-top 0.2s ease-out",
+                      border: "none",
+                      "&:hover": {
+                        backgroundColor: "#686D76",
+                        marginTop: "-5px",
+                      },
+                    }}
+                  >
+                    <BsThreeDotsVertical color="white" size={23} />
+                  </Fab>
+                  <Fab
+                    onClick={this.handleEndCall}
+                    sx={{
+                      width: "60px",
+                      borderRadius: "50px",
+                      height: "40px",
+                      backgroundColor: "#BD1616",
+                      color: "white",
+                      transition: "margin-top 0.2s ease-out",
+                      border: "none",
+                      "&:hover": {
+                        backgroundColor: "rgba(189, 22, 22, 0.75)",
+                        marginTop: "-5px",
+                      },
+                    }}
+                  >
+                    <CallEndIcon />
+                  </Fab>
+                </div>
               </div>
+            </div>
+            <div className="rightDiv">
+              {this.state.showMessages ? (
+                <div className="StreamsChat">
+                  <div className="MessagesHeader">
+                    <h3>Messages in the call</h3>
+                  </div>
+                  <hr />
+                  <div className="MessagesBody">
+                    {this.state.messages.length > 0 ? (
+                      this.state.messages.map((item, index) =>
+                        item.sender === this.state.user.name ? (
+                          <div
+                            key={index}
+                            className="message"
+                            style={{ textAlign: "right" }}
+                          >
+                            <p
+                              style={{
+                                fontSize: "10px",
+                                margin: "5px",
+                                fontWeight: "200",
+                              }}
+                            >
+                              {item.sender}
+                            </p>
+                            <p
+                              style={{ wordBreak: "break-all", margin: "5px" }}
+                            >
+                              {" "}
+                              {item.data}
+                            </p>
+                          </div>
+                        ) : (
+                          <div
+                            key={index}
+                            className="message"
+                            style={{ textAlign: "left" }}
+                          >
+                            <p
+                              style={{
+                                fontSize: "10px",
+                                margin: "5px",
+                                fontWeight: "200",
+                              }}
+                            >
+                              {item.sender}
+                            </p>
 
-              <div className="Buttons">
-                <Fab
-                  onClick={this.handleAudio}
-                  sx={
-                    this.state.audio === true
-                      ? {
-                          width: "40px",
-                          height: "40px",
-                          backgroundColor: "#343A40",
-                          transition: "margin-top 0.2s ease-out",
-                          border: "none",
-                          "&:hover": {
-                            backgroundColor: "#686D76",
-                            marginTop: "-5px",
-                          },
+                            <p
+                              style={{ wordBreak: "break-all", margin: "5px" }}
+                            >
+                              {item.data}
+                            </p>
+                          </div>
+                        )
+                      )
+                    ) : (
+                      <p style={{ textAlign: "center" }}>No message yet</p>
+                    )}
+                  </div>
+                  <div className="MessagesFooter">
+                    <input
+                      variant="outlined"
+                      placeholder="Message"
+                      value={this.state.message}
+                      className="InputMessage"
+                      onChange={(e) => this.handleMessage(e)}
+                      onKeyDown={(e) => {
+                        if (
+                          e.key === "Enter" &&
+                          this.state.message.trim() !== ""
+                        ) {
+                          e.preventDefault();
+                          this.sendMessage();
                         }
-                      : {
-                          width: "40px",
-                          height: "40px",
-                          backgroundColor: "#BD1616",
-                          transition: "margin-top 0.2s ease-out",
-                          border: "none",
-                          "&:hover": {
-                            backgroundColor: "rgba(189, 22, 22, 0.75)",
-                            marginTop: "-5px",
-                          },
-                        }
-                  }
-                >
-                  {this.state.audio === true ? (
-                    <BsFillMicFill color="white" size={20} />
-                  ) : (
-                    <BsFillMicMuteFill color="white" size={20} />
-                  )}
-                </Fab>
+                      }}
+                    />
 
+                    <IconButton
+                      disabled={this.state.message.trim() === ""}
+                      aria-label="delete"
+                      Message-btn
+                      onClick={this.sendMessage}
+                      sx={{ color: "white", cursor: "pointer" }}
+                    >
+                      <SendIcon />
+                    </IconButton>
+                  </div>
+                </div>
+              ) : (
+                <div id="StreamsVideos" className="StreamsVideosContainer"></div>
+              )}
+              <div>
                 <Fab
-                  onClick={this.handleVideo}
+                  onClick={this.handleShowVideos}
                   sx={
-                    this.state.video === true
-                      ? {
-                          width: "40px",
-                          height: "40px",
-                          backgroundColor: "#343A40",
-                          transition: "margin-top 0.2s ease-out",
-                          border: "none",
-                          "&:hover": {
-                            backgroundColor: "#686D76",
-                            marginTop: "-5px",
-                          },
-                        }
-                      : {
-                          width: "40px",
-                          height: "40px",
-                          backgroundColor: "#BD1616",
-                          transition: "margin-top 0.2s ease-out",
-                          border: "none",
-                          "&:hover": {
-                            backgroundColor: "rgba(189, 22, 22, 0.75)",
-                            marginTop: "-5px",
-                          },
-                        }
-                  }
-                >
-                  {this.state.video === true ? (
-                    <MdOutlineVideocam color="white" size={27} />
-                  ) : (
-                    <MdOutlineVideocamOff color="white" size={27} />
-                  )}
-                </Fab>
-
-                <Fab
-                  onClick={this.handleScreen}
-                  sx={
-                    this.state.screen === false
+                    this.state.showVideos === false
                       ? {
                           width: "40px",
                           height: "40px",
@@ -880,122 +1066,38 @@ class Room extends Component {
                         }
                   }
                 >
-                  <MdOutlineScreenShare color="white" size={24} />
-                </Fab>
-
-                <Fab
-                  sx={{
-                    width: "40px",
-                    height: "40px",
-                    backgroundColor: "#343A40",
-                    transition: "margin-top 0.2s ease-out",
-                    border: "none",
-                    "&:hover": {
-                      backgroundColor: "#686D76",
-                      marginTop: "-5px",
-                    },
-                  }}
-                >
-                  <BsThreeDotsVertical color="white" size={23} />
+                  <MdOutlineSupervisedUserCircle color="white" size={24} />
                 </Fab>
                 <Fab
-                  onClick={this.handleEndCall}
-                  sx={{
-                    width: "60px",
-                    borderRadius: "50px",
-                    height: "40px",
-                    backgroundColor: "#BD1616",
-                    color: "white",
-                    transition: "margin-top 0.2s ease-out",
-                    border: "none",
-                    "&:hover": {
-                      backgroundColor: "rgba(189, 22, 22, 0.75)",
-                      marginTop: "-5px",
-                    },
-                  }}
+                  onClick={this.handleShowMessages}
+                  sx={
+                    this.state.showMessages === false
+                      ? {
+                          width: "40px",
+                          height: "40px",
+                          backgroundColor: "#343A40",
+                          transition: "margin-top 0.2s ease-out",
+                          border: "none",
+                          "&:hover": {
+                            backgroundColor: "#686D76",
+                            marginTop: "-5px",
+                          },
+                        }
+                      : {
+                          width: "40px",
+                          height: "40px",
+                          backgroundColor: "#5D8BF4",
+                          transition: "margin-top 0.2s ease-out",
+                          border: "none",
+                          "&:hover": {
+                            backgroundColor: "rgba(93, 139, 244, 0.75)",
+                            marginTop: "-5px",
+                          },
+                        }
+                  }
                 >
-                  <CallEndIcon />
+                  <MdOutlineMessage color="white" size={24} />
                 </Fab>
-              </div>
-            </div>
-            <div className="StreamsChat">
-              <div className="MessagesHeader">
-                <h3>Messages in the call</h3>
-              </div>
-              <hr />
-              <div className="MessagesBody">
-                {this.state.messages.length > 0 ? (
-                  this.state.messages.map((item, index) =>
-                    item.sender === this.state.user.name ? (
-                      <div
-                        key={index}
-                        className="message"
-                        style={{ textAlign: "right" }}
-                      >
-                        <p
-                          style={{
-                            fontSize: "10px",
-                            margin: "5px",
-                            fontWeight: "200",
-                          }}
-                        >
-                          {item.sender}
-                        </p>
-                        <p style={{ wordBreak: "break-all", margin: "5px" }}>
-                          {" "}
-                          {item.data}
-                        </p>
-                      </div>
-                    ) : (
-                      <div
-                        key={index}
-                        className="message"
-                        style={{ textAlign: "left" }}
-                      >
-                        <p
-                          style={{
-                            fontSize: "10px",
-                            margin: "5px",
-                            fontWeight: "200",
-                          }}
-                        >
-                          {item.sender}
-                        </p>
-
-                        <p style={{ wordBreak: "break-all", margin: "5px" }}>
-                          {item.data}
-                        </p>
-                      </div>
-                    )
-                  )
-                ) : (
-                  <p style={{ textAlign: "center" }}>No message yet</p>
-                )}
-              </div>
-              <div className="MessagesFooter">
-                <input
-                  variant="outlined"
-                  placeholder="Message"
-                  value={this.state.message}
-                  className="InputMessage"
-                  onChange={(e) => this.handleMessage(e)}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter' && this.state.message.trim() !== '') {
-                      e.preventDefault();
-                      this.sendMessage();
-                    }
-                  }}
-                />
-
-                <IconButton
-                  disabled={this.state.message.trim() === ""}
-                  aria-label="delete"
-                  Message-btn
-                  onClick={this.sendMessage}
-                  sx={{ color: "white", cursor: "pointer" }}
-                >
-                  <SendIcon />
-                </IconButton>
               </div>
             </div>
           </div>
