@@ -45,11 +45,19 @@ const Login = () => {
           console.log("user data", response.data.data);
           localStorage.setItem("user", JSON.stringify(response.data.data));
           localStorage.setItem("login", true);
-          if (response.data.data.firstConnection) {
-            navigate(`/completeInfo`);
+          const redirectPath = localStorage.getItem("redirectPath");
+
+          if (redirectPath) {
+            navigate(redirectPath);
+            localStorage.removeItem("redirectPath")
           } else {
-            navigate(`/profile`);
+            if (response.data.data.firstConnection) {
+              navigate("/trainer/informations");
+            } else {
+              navigate("/profile");
+            }
           }
+          
 
           if (response.data.data.userType === "Admin") {
             window.location = "/admin";

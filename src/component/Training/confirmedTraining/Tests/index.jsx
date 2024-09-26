@@ -27,8 +27,11 @@ const Tests = ({ showTests, setShowTests, courseId }) => {
     rate: 0,
   });
 
-  useEffect(async () => {
+  useEffect(() => {
+    const fetchData = async () => {
     await HandleTestsForCandidats();
+  };
+  fetchData();
   }, []);
 
   const [tests, setTests] = useState([]);
@@ -109,11 +112,14 @@ const Tests = ({ showTests, setShowTests, courseId }) => {
     console.log("test:", tests);
   }, [tests]);
 
-  useEffect(async () => {
+  useEffect( () => {
+    const fetchData = async () => {
     await GetUsers();
+  };
+  fetchData();
   }, [usersids]);
 
-  useEffect(async () => {
+  useEffect( () => {
     console.log(usersLimitedForTests);
     setLoading(false);
   }, [usersLimitedForTests]);

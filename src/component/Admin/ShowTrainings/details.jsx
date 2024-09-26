@@ -23,10 +23,12 @@ const Details = ({ Course, setOpenChange, openChange }) => {
   const [activeStep, setActiveStep] = useState(0);
   const [course, setCourse] = useState(Course);
   const [notifs, setNotifs] = useState([]);
+  const [defaultTrainer, setDefaultTrainer] = useState(null);
 
   const [countState, setCountState] = useState(0);
 
   useEffect(() => {
+    console.log("course: ", Course);
     setCourse(Course);
   }, [Course]);
 
@@ -65,7 +67,7 @@ const Details = ({ Course, setOpenChange, openChange }) => {
 
   // useEffect(()=>{
 
-  //     notifs.map(async notif=>{
+  //     notifs.length > 0 && notifs?.map(async notif=>{
   //         const config = {
   //     headers: { authorization: `Bearer ${token}`,       },
   //
@@ -86,20 +88,21 @@ const Details = ({ Course, setOpenChange, openChange }) => {
     };
     const url = `${process.env.REACT_APP_API}api/Trainer/GetNotifTrainerByCourse`;
     await axios.post(url, { CourseId: id }, config).then((res) => {
-      setNotifs(res.data.data);
+      setNotifs(res.data.data.updatedTrainerNotifs);
+      setDefaultTrainer(res.data.data.defaultTrainer);
     });
   };
 
   var count = 0;
-  // var Formateurs=[]
-  // var Formateur=[]
+
   React.useEffect(() => {
     if (notifs.length > 0) {
-      notifs.map((notif) => {
-        if (notif.reponseFormateur === "confirmed") {
-          count += 1;
-        }
-      });
+      notifs.length > 0 &&
+        notifs?.map((notif) => {
+          if (notif.reponseFormateur === "confirmed") {
+            count += 1;
+          }
+        });
       setCountState(count);
     }
   }, [notifs]);
@@ -124,31 +127,57 @@ const Details = ({ Course, setOpenChange, openChange }) => {
     setActiveStep(0);
   };
 
-  const Formateurs = notifs.map((notif) => {
-    if (notif.StatusMandate == "closed")
-      return (
-        <li style={{ textDecoration: "line-through" }}>
-          {notif.trainername}: {notif.reponseFormateur}
-        </li>
-      );
-    if (
-      notif.StatusMandate == "confirmed" ||
-      notif.StatusMandate == "en attente"
-    )
-      return (
-        <li>
-          {notif.trainer}: {notif.reponseFormateur}
-        </li>
-      );
-  });
+  const Formateurs =
+    notifs.length > 0 &&
+    notifs?.map((notif) => {
+      if (notif.StatusMandate == "closed")
+        return (
+          <li style={{ textDecoration: "line-through" }}>
+            {notif.Trainer.name}: {notif.reponseFormateur}
+          </li>
+        );
+      if (
+        notif.StatusMandate == "confirmed" ||
+        notif.StatusMandate == "en attente"
+      )
+        return (
+          <li>
+            {notif.Trainer.name}: {notif.reponseFormateur}
+          </li>
+        );
+    });
 
-  const Formateur = notifs.map((notif) => {
+  const FormateurDropList = (
+    defaultTrainer
+      ? [
+          {
+            _id: defaultTrainer._id,
+            Trainer: {
+              name: defaultTrainer.name,
+              surname: defaultTrainer.surname,
+            },
+            prixFormateur: "default trainer",
+            showTTC: false,
+          },
+        ]
+      : notifs?.length > 0
+      ? notifs
+      : []
+  ).map((notif) => {
+    console.log(notif);
     return (
       <MenuItem
+        key={notif._id}
         sx={{ display: "flex", justifyContent: "space-between" }}
         value={notif._id}
       >
-        {notif.trainer} <strong>{notif.prixFormateur} TTC</strong>
+        {`${
+          notif?.Trainer?.surname?.charAt(0).toUpperCase() +
+          notif?.Trainer?.surname?.slice(1)
+        } ${notif?.Trainer?.name} `}
+        <strong>
+          {notif?.prixFormateur} {notif?.showTTC && "TTC"}
+        </strong>
       </MenuItem>
     );
   });
@@ -162,11 +191,12 @@ const Details = ({ Course, setOpenChange, openChange }) => {
 
   const handleChange = (event) => {
     setFRSelected(event.target.value);
-    notifs.map((notif) => {
-      if (notif._id === event.target.value) {
-        setTrainerSelected(notif.trainer);
-      }
-    });
+    notifs.length > 0 &&
+      notifs?.map((notif) => {
+        if (notif._id === event.target.value) {
+          setTrainerSelected(notif.trainer);
+        }
+      });
   };
 
   const handleConfirme = () => {
@@ -180,6 +210,7 @@ const Details = ({ Course, setOpenChange, openChange }) => {
       .post(
         url,
         {
+          defaultTrainer: defaultTrainer,
           FRSelected: { Notif: FRSelected, trainer: trainerSelected },
           Course: course,
           urlId: urlId,
@@ -297,11 +328,11 @@ const Details = ({ Course, setOpenChange, openChange }) => {
                 label="Choisir Un Formateur"
                 onChange={handleChange}
               >
-                {Formateur}
+                {FormateurDropList}
               </Select>
             </FormControl>
             <Button
-              disabled={course.state == "confirmed"}
+              disabled={course.state === "confirmed"}
               sx={{ width: "22%", height: "56px", ml: 2 }}
               onClick={handleConfirme}
               variant="contained"

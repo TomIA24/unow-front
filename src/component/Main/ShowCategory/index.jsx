@@ -12,8 +12,13 @@ const ShowCategory = ({ openCategory, setOpenCategory, categoryData }) => {
   const [loadingCourses, setLoadingCourses] = useState(true);
   const [loadingTrainings, setLoadingTrainings] = useState(true);
 
-  useEffect(async () => {
+  useEffect(() => {
+    const fetchData = async () => {
+
     await handleData();
+    
+  };
+  fetchData();
   }, [openCategory]);
 
   const handleData = async () => {

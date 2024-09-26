@@ -89,10 +89,15 @@ const PaidTraining = () => {
     evaluate: [],
   });
 
-  useEffect(async () => {
+  useEffect( () => {
+  
+    const fetchData = async () => {
     await handleCourse();
     await getEvaluations();
     await handleRoom();
+  };
+
+  fetchData();
   }, []);
 
   useEffect(() => {
@@ -152,7 +157,7 @@ const PaidTraining = () => {
       });
   };
 
-  const GetUsers = (ids) => {
+  const GetUsers = async (ids) => {
     const config = {
       headers: { authorization: `Bearer ${token}` },
     };
@@ -167,15 +172,18 @@ const PaidTraining = () => {
       });
   };
 
-  useEffect(async () => {
+  useEffect( () => {
+    const fetchData = async () => {
     const ids = Evaluations.map((e) => {
       return e.id;
     });
-    GetUsers(ids);
+   await GetUsers(ids);
+  };
+  fetchData();
   }, [Evaluations]);
 
-  useEffect(async () => {
-    var list = [];
+  useEffect( () => {
+    const fetchData = async () => { var list = [];
     Evaluations.map((e) => {
       usersLimited.map((u) => {
         if (u._id === e.id) {
@@ -190,6 +198,8 @@ const PaidTraining = () => {
       });
     });
     setEvaluationsCompleated(list);
+  };
+  fetchData();
   }, [usersLimited]);
 
   const TextRating = (value, avis) => {

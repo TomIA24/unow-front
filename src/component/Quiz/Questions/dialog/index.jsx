@@ -14,9 +14,9 @@ const Dialog = ({ onClose, quizId,index, setCurrentQuestionIndex,currentQuestion
   // Fetch all questions initially or flagged questions based on state
   const fetchQuestions = async () => {
     try {
-      const endpoint = `http://localhost:5050/api/quiz/api/quiz/${quizId}/questions`;
+      const endpoint = `${process.env.REACT_APP_API}api/quiz/api/quiz/${quizId}/questions`;
       const allresponse = await axios.get(
-        `http://localhost:5050/api/quiz/api/quiz/${quizId}/questions`
+        `${process.env.REACT_APP_API}api/quiz/api/quiz/${quizId}/questions`
       );
       const response = await axios.get(endpoint);
       const fetchedQuestions = response.data;
@@ -52,7 +52,7 @@ const Dialog = ({ onClose, quizId,index, setCurrentQuestionIndex,currentQuestion
     // Update the flag status in the backend
     try {
       await axios.put(
-        `http://localhost:5050/api/quiz/api/updateQuiz/${quizId}/question/${questionId}`,
+        `${process.env.REACT_APP_API}api/quiz/api/updateQuiz/${quizId}/question/${questionId}`,
         {
           flag: updatedFlags[questionIndex],
         }

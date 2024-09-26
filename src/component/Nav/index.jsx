@@ -61,9 +61,8 @@ const Nav = () => {
   };
 
   const closepopup = () => {
-    setpopupopen(!opnpopup);
-    navigate("/profile");
-    console.log(opnpopup);
+    navigate("/candidate/profile");
+    setpopupopen(false);
   };
   const location = useLocation();
 
@@ -92,8 +91,8 @@ const Nav = () => {
 
   const handlpersonalized = (candiddId) => {
     console.log("id candat from nev", candiddId);
-    navigate('/profile');
-    // navigate(`/personalize`, { state: { candiddId } });
+    // navigate('/profile');
+    navigate(`/personalize`, { state: { candiddId } });
     setpopupopen(!opnpopup);
     console.log(opnpopup);
   };
@@ -113,7 +112,7 @@ const Nav = () => {
         setProgressGradient(`#F39D6E`);
         setMainColorRgb("76, 175, 80");
       }
-      if (percentage == 100) {
+      if (percentage >= 100) {
         setProgressGradient(`#49C382`);
       }
     } else {
@@ -209,133 +208,211 @@ const Nav = () => {
                   </Link>
                 ) : (
                   <div>
-                    {user?.profilecomplited === 100 ? (
-                      <Link
-                        to="/profile"
-                        style={{ display: "flex", alignItems: "center" }}
-                      >
-                        <img
-                          src="/svg/coins.svg"
-                          style={{ height: 30 }}
-                          alt=""
-                        />
-                        <strong
-                          variant="caption"
-                          component="div"
-                          color="text.secondary"
-                        >
-                          330
-                        </strong>
+                    {user.userType === "Student" && (
+                      <>
+                        {user.profilecomplited >= 100 ? (
+                          <Link
+                            to="/candidate/profile"
+                            style={{ display: "flex", alignItems: "center" }}
+                          >
+                            <img
+                              src="/svg/coins.svg"
+                              style={{ height: 30 }}
+                              alt=""
+                            />
+                            <strong
+                              variant="caption"
+                              component="div"
+                              color="text.secondary"
+                            >
+                              330
+                            </strong>
 
-                        <a type="button" className={styles.nav_btn_profile}>
-                          <img
-                            src="/svg/bronze.svg"
-                            alt="bronze"
-                            style={{ height: 30 }}
-                          />
-                          {user.image ? (
-                            <div
-                              className={styles.progressCircle}
-                              style={{
-                                "--completed-percentage": completedPercentage,
-                                "--progress-gradient": progressGradient,
-                                "--main-color-rgb": mainColorRgb,
-                              }}
-                            >
-                              <div className={styles.progressInnerGap}>
-                                <div className={styles.progressInner}>
-                                  <Avatar
-                                    alt="icon"
-                                    src={`${process.env.REACT_APP_API}${user.image.filePath}`}
-                                    sx={{ width: 30, height: 30 }}
-                                  />
+                            <a type="button" className={styles.nav_btn_profile}>
+                              <img
+                                src="/svg/bronze.svg"
+                                alt="bronze"
+                                style={{ height: 30 }}
+                              />
+                              {user.image ? (
+                                <div
+                                  className={styles.progressCircle}
+                                  style={{
+                                    "--completed-percentage":
+                                      completedPercentage,
+                                    "--progress-gradient": progressGradient,
+                                    "--main-color-rgb": mainColorRgb,
+                                  }}
+                                >
+                                  <div className={styles.progressInnerGap}>
+                                    <div className={styles.progressInner}>
+                                      <Avatar
+                                        alt="icon"
+                                        src={`${process.env.REACT_APP_API}${user.image.filePath}`}
+                                        sx={{ width: 30, height: 30 }}
+                                      />
+                                    </div>
+                                  </div>
                                 </div>
-                              </div>
-                            </div>
-                          ) : (
-                            <div
-                              className={styles.progressCircle}
-                              style={{
-                                "--completed-percentage": completedPercentage,
-                                "--progress-gradient": progressGradient,
-                                "--main-color-rgb": mainColorRgb,
-                              }}
+                              ) : (
+                                <div
+                                  className={styles.progressCircle}
+                                  style={{
+                                    "--completed-percentage":
+                                      completedPercentage,
+                                    "--progress-gradient": progressGradient,
+                                    "--main-color-rgb": mainColorRgb,
+                                  }}
+                                >
+                                  <div className={styles.progressInnerGap}>
+                                    <div className={styles.progressInner}>
+                                      <Avatar
+                                        alt="icon"
+                                        src={imgicon}
+                                        sx={{ width: 30, height: 30 }}
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              )}
+                              Welcome, {user.name}
+                            </a>
+                          </Link>
+                        ) : (
+                          <button
+                            onClick={handlepopup}
+                            style={{ display: "flex", alignItems: "center" }}
+                          >
+                            <img
+                              src="/svg/coins.svg"
+                              style={{ height: 30 }}
+                              alt=""
+                            />
+                            <strong
+                              variant="caption"
+                              component="div"
+                              color="text.secondary"
                             >
-                              <div className={styles.progressInnerGap}>
-                                <div className={styles.progressInner}>
+                              330
+                            </strong>
+                            <a type="button" className={styles.nav_btn_profile}>
+                              <img
+                                src="/svg/bronze.svg"
+                                alt="bronze"
+                                style={{ height: 30 }}
+                              />
+                              {user.image ? (
+                                <div
+                                  className={styles.progressCircle}
+                                  style={{
+                                    "--completed-percentage":
+                                      completedPercentage,
+                                    "--progress-gradient": progressGradient,
+                                    "--main-color-rgb": mainColorRgb,
+                                  }}
+                                >
+                                  <div className={styles.progressInnerGap}>
+                                    <div className={styles.progressInner}>
+                                      <Avatar
+                                        alt="icon"
+                                        src={`${process.env.REACT_APP_API}${user.image.filePath}`}
+                                        sx={{ width: 30, height: 30 }}
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              ) : (
+                                <div
+                                  className={styles.progressCircle}
+                                  style={{
+                                    "--completed-percentage":
+                                      completedPercentage,
+                                    "--progress-gradient": progressGradient,
+                                    "--main-color-rgb": mainColorRgb,
+                                  }}
+                                >
                                   <Avatar
                                     alt="icon"
                                     src={imgicon}
                                     sx={{ width: 30, height: 30 }}
                                   />
                                 </div>
-                              </div>
-                            </div>
-                          )}
-                          Welcome, {user.name}
-                        </a>
-                      </Link>
-                    ) : (
-                      <button
-                        onClick={handlepopup}
-                        style={{ display: "flex", alignItems: "center" }}
-                      >
-                        <img
-                          src="/svg/coins.svg"
-                          style={{ height: 30 }}
-                          alt=""
-                        />
-                        <strong
-                          variant="caption"
-                          component="div"
-                          color="text.secondary"
+                              )}
+                              Welcome, {user.name}
+                            </a>
+                          </button>
+                        )}
+                      </>
+                    )}
+
+                    {user.userType === "Trainer" && (
+                      <>
+                        <Link
+                          to="/profile"
+                          style={{ display: "flex", alignItems: "center" }}
                         >
-                          330
-                        </strong>
-                        <a type="button" className={styles.nav_btn_profile}>
                           <img
-                            src="/svg/bronze.svg"
-                            alt="bronze"
+                            src="/svg/coins.svg"
                             style={{ height: 30 }}
+                            alt=""
                           />
-                          {user.image ? (
-                            <div
-                              className={styles.progressCircle}
-                              style={{
-                                "--completed-percentage": completedPercentage,
-                                "--progress-gradient": progressGradient,
-                                "--main-color-rgb": mainColorRgb,
-                              }}
-                            >
-                              <div className={styles.progressInnerGap}>
-                                <div className={styles.progressInner}>
-                                  <Avatar
-                                    alt="icon"
-                                    src={`${process.env.REACT_APP_API}${user.image.filePath}`}
-                                    sx={{ width: 30, height: 30 }}
-                                  />
+                          <strong
+                            variant="caption"
+                            component="div"
+                            color="text.secondary"
+                          >
+                            330
+                          </strong>
+
+                          <a type="button" className={styles.nav_btn_profile}>
+                            <img
+                              src="/svg/bronze.svg"
+                              alt="bronze"
+                              style={{ height: 30 }}
+                            />
+                            {user.image ? (
+                              <div
+                                className={styles.progressCircle}
+                                style={{
+                                  "--completed-percentage": completedPercentage,
+                                  "--progress-gradient": progressGradient,
+                                  "--main-color-rgb": mainColorRgb,
+                                }}
+                              >
+                                <div className={styles.progressInnerGap}>
+                                  <div className={styles.progressInner}>
+                                    <Avatar
+                                      alt="icon"
+                                      src={`${process.env.REACT_APP_API}${user.image.filePath}`}
+                                      sx={{ width: 30, height: 30 }}
+                                    />
+                                  </div>
                                 </div>
                               </div>
-                            </div>
-                          ) : (
-                            <div
-                              className={styles.progressCircle}
-                              style={{
-                                "--completed-percentage": completedPercentage,
-                                "--progress-gradient": progressGradient,
-                                "--main-color-rgb": mainColorRgb,
-                              }}
-                            >
-                              <Avatar
-                                alt="icon"
-                                src={imgicon}
-                                sx={{ width: 30, height: 30 }}
-                              />
-                            </div>
-                          )}
-                          Welcome, {user.name}
-                        </a>
-                      </button>
+                            ) : (
+                              <div
+                                className={styles.progressCircle}
+                                style={{
+                                  "--completed-percentage": completedPercentage,
+                                  "--progress-gradient": progressGradient,
+                                  "--main-color-rgb": mainColorRgb,
+                                }}
+                              >
+                                <div className={styles.progressInnerGap}>
+                                  <div className={styles.progressInner}>
+                                    <Avatar
+                                      alt="icon"
+                                      src={imgicon}
+                                      sx={{ width: 30, height: 30 }}
+                                    />
+                                  </div>
+                                </div>
+                              </div>
+                            )}
+                            Welcome, {user.name}
+                          </a>
+                        </Link>
+                      </>
                     )}
                   </div>
                 )}

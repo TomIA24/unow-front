@@ -26,7 +26,7 @@ import Nav from "../../Nav";
 import Footer from "../../Home/Footer";
 import Evaluate from "./Evaluate";
 import Ressources from "./RessourcesFiles";
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate } from "react-router-dom";
 import styles from "./styles.module.css";
 
 const PaidCourse = () => {
@@ -62,7 +62,7 @@ const PaidCourse = () => {
     state: "",
     certificate: "",
     evaluate: [],
-    DurationQuiz:""
+    DurationQuiz: "",
   });
   // const [Videos, setVideos] = useState([])
   const [Datavideo, setDatavideo] = useState({
@@ -83,14 +83,10 @@ const PaidCourse = () => {
     Date: [],
     enrolled: [],
     state: "",
-    certificate: ""
+    certificate: "",
   });
 
-
-
-
-
-  const [VideoDisplay, setVideoDisplay] = useState("")
+  const [VideoDisplay, setVideoDisplay] = useState("");
   const [isPlaying, setIsPlaying] = useState(false); // Track video play state
 
   const handleDisplay = (vid) => {
@@ -107,19 +103,21 @@ const PaidCourse = () => {
   //   console.log(vid.filePath)
   // }
 
-
-
   useEffect(() => {
     console.log("test");
-    handleCourse();
+
+    const handleCourseFunction = async () => {
+      await handleCourse();
+    };
+    handleCourseFunction();
   }, []);
 
   useEffect(() => {
     getEvaluations();
   }, []);
 
-  const handleCourse = () => {
-    console.log("test")
+  const handleCourse = async () => {
+    console.log("test");
 
     const config = {
       headers: {},
@@ -198,7 +196,7 @@ const PaidCourse = () => {
     });
     GetUsers(ids);
   }, [Evaluations]);
-  // 
+  //
   useEffect(() => {
     var list = [];
     Evaluations.forEach((e) => {
@@ -373,10 +371,10 @@ const PaidCourse = () => {
   //   console.log("herrrrrrrrrree",activeButton);
 
   //   if (index === 0) {
-  //     handleCourseVideo(); 
+  //     handleCourseVideo();
   //   }
   // };
-  const [videos, setVideos] = useState([])
+  const [videos, setVideos] = useState([]);
   const handleCourseVideo = () => {
     const config = {
       params: { id: id }, // Make sure `id` is defined
@@ -392,7 +390,7 @@ const PaidCourse = () => {
       .catch((error) => {
         console.error("Error fetching course data:", error);
       });
-  }
+  };
   const handlePreCourseData = () => {
     // Implement API call to fetch Pre-Course data
     axios
@@ -407,7 +405,6 @@ const PaidCourse = () => {
       });
   };
 
- 
   // const [activeButton, setActiveButton] = useState(null);
   const [isOpenCourse, setOpenCourse] = useState(false);
   const [isOpenprcourse, setOpenprcourse] = useState(false);
@@ -417,45 +414,42 @@ const PaidCourse = () => {
   // const[isOpen,setOpen]=useState(false);
 
   const handleButtonClickcourse = () => {
-    handleCourseVideo()
-    setOpenCourse(!isOpenCourse)
-    setOpenprcourse(false)
-    setOpenPDF(false)
-    setOpenQuiz(false)
-    console.log('course open', isOpenCourse);
-
-
+    handleCourseVideo();
+    setOpenCourse(!isOpenCourse);
+    setOpenprcourse(false);
+    setOpenPDF(false);
+    setOpenQuiz(false);
+    console.log("course open", isOpenCourse);
   };
   const handleButtonClickprcourse = () => {
-    setOpenCourse(false)
-    setOpenprcourse(!isOpenprcourse)
-    setOpenPDF(false)
-    setOpenQuiz(false)
-
+    setOpenCourse(false);
+    setOpenprcourse(!isOpenprcourse);
+    setOpenPDF(false);
+    setOpenQuiz(false);
   };
   const handleButtonClickPDF = () => {
-    setOpenCourse(false)
-    setOpenprcourse(false)
-    setOpenPDF(!isOpenPDF)
-    setOpenQuiz(false)
-
+    setOpenCourse(false);
+    setOpenprcourse(false);
+    setOpenPDF(!isOpenPDF);
+    setOpenQuiz(false);
   };
   const handleQuizData = async (courseID) => {
-    setOpenCourse(false)
-    setOpenprcourse(false)
-    setOpenPDF(false)
-    setOpenQuiz(!isOpenQuiz)
+    setOpenCourse(false);
+    setOpenprcourse(false);
+    setOpenPDF(false);
+    setOpenQuiz(!isOpenQuiz);
     // Implement API call to fetch Quiz data
     if (!isOpenQuiz) {
       try {
         // Fetch quizzes associated with the course
-        const response = await axios.get(`${process.env.REACT_APP_API}api/courses/${courseID}`);
+        const response = await axios.get(
+          `${process.env.REACT_APP_API}api/courses/${courseID}`
+        );
         setQuizData(response.data);
-        console.log('Quiz Data:', quizData);
+        console.log("Quiz Data:", quizData);
         // console.log('Quiz Data:',response.data);
-
       } catch (error) {
-        console.error('Error fetching quizzes:', error);
+        console.error("Error fetching quizzes:", error);
       }
     }
   };
@@ -478,13 +472,13 @@ const PaidCourse = () => {
   //     setOpenQuiz(true)
   //   }
   // };
-  // toggle for the showing the content of a section 
+  // toggle for the showing the content of a section
   const [isSectionOpen, setIsSectionOpen] = useState(false);
 
   const toggleSection = () => {
     setIsSectionOpen((prev) => !prev);
     // Toggle the section visibility
-    console.log('section', isSectionOpen);
+    console.log("section", isSectionOpen);
   };
   const navigate = useNavigate();
   const handleQuizClick = (quizId) => {
@@ -492,15 +486,14 @@ const PaidCourse = () => {
   };
   return (
     <React.Fragment>
-
       <div className={styles.backimage}>
         <div className={styles.maincontainernav}>
           <div className={styles.nav_container}>
             <Nav ref={refHome} />
-
           </div>
           <div className={styles.pdowncontainer}>
-            <div className={styles.pdown} >COURS
+            <div className={styles.pdown}>
+              COURS
               <p className={styles.underline}></p>
             </div>
           </div>
@@ -513,78 +506,93 @@ const PaidCourse = () => {
               {VideoDisplay ? (
                 <div className={styles.videoPlayer}>
                   <video controls className={styles.videoElement}>
-                    <source src={`${process.env.REACT_APP_API}${VideoDisplay}`} type="video/mp4" />
+                    <source
+                      src={`${process.env.REACT_APP_API}${VideoDisplay}`}
+                      type="video/mp4"
+                    />
                     Your browser does not support the video tag.
                   </video>
-                  <button onClick={handlePlayPause} className={`${styles.startButton} ${isPlaying ? styles.playing : ''}`}>
+                  <button
+                    onClick={handlePlayPause}
+                    className={`${styles.startButton} ${
+                      isPlaying ? styles.playing : ""
+                    }`}
+                  >
                     {isPlaying ? (
                       <>
-                        <img src="/images/course/paid/startvideo.png" alt="Pause Icon" className={styles.startIcon} />
+                        <img
+                          src="/images/course/paid/startvideo.png"
+                          alt="Pause Icon"
+                          className={styles.startIcon}
+                        />
                         Pause
                       </>
                     ) : (
                       <>
-                        <img src="/images/course/paid/startvideo.png" alt="Play Icon" className={styles.startIcon} />
-
+                        <img
+                          src="/images/course/paid/startvideo.png"
+                          alt="Play Icon"
+                          className={styles.startIcon}
+                        />
                       </>
                     )}
                   </button>
                 </div>
+              ) : Data.Thumbnail === "qqq" ||
+                Data.Thumbnail === null ||
+                !Data.Thumbnail ? (
+                <div className={styles.imgCourse}>
+                  <img
+                    src={`${process.env.REACT_APP_API}uploads/courseImg.png`}
+                    alt=""
+                    className={styles.imgCourseImage}
+                  />
+                </div>
               ) : (
-                (Data.Thumbnail === "qqq" || Data.Thumbnail === null || !Data.Thumbnail) ? (
-                  <div className={styles.imgCourse}>
-                    <img
-                      src={`${process.env.REACT_APP_API}uploads/courseImg.png`}
-                      alt=""
-                      className={styles.imgCourseImage}
-                    />
-                  </div>
-                ) : (
-                  <div className={styles.imgCourse}>
-                    <img
-                      src={`${process.env.REACT_APP_API}${Data.Thumbnail.filePath}`}
-                      alt=""
-                      className={styles.imgCourseImage}
-                    />
-                  </div>
-                )
+                <div className={styles.imgCourse}>
+                  <img
+                    src={`${process.env.REACT_APP_API}${Data.Thumbnail.filePath}`}
+                    alt=""
+                    className={styles.imgCourseImage}
+                  />
+                </div>
               )}
               <div className={styles.FirsSectionInfoCourseTitle}>
-                <div className={styles.courtitle}>{Data.Title}</div >
-
+                <div className={styles.courtitle}>{Data.Title}</div>
               </div>
-              <div className={styles.FirsSectionInfoCourseTitle}>   <h4>{Data.Category}</h4>
+              <div className={styles.FirsSectionInfoCourseTitle}>
+                {" "}
+                <h4>{Data.Category}</h4>
                 {Data.rating
                   ? TextRating(Data.rating, Data.evaluate.length)
-                  : TextRating(0, 0)}</div>
+                  : TextRating(0, 0)}
+              </div>
 
               <div className={styles.Btn_Div}>
                 <div className={styles.containerBt1}>
-
                   <div className={styles.allbutton}>
                     <button
                       style={{
-                        backgroundColor: isOpenCourse ? '#CD6214' : '#3E4678'
+                        backgroundColor: isOpenCourse ? "#CD6214" : "#3E4678",
                       }}
                       className={styles.btncourse}
                       onClick={handleButtonClickcourse}
                     >
                       <img
                         src={`/images/course/paid/startc.png`}
-                        alt=''
+                        alt=""
                         className={styles.imagefeatures}
                       />
-                      {isOpenCourse ? ("yes") : ("no")}
+                      {isOpenCourse ? "yes" : "no"}
                       Course Content
-
                     </button>
-                    <button className={styles.btncour}>
-
-                    </button>
+                    <button className={styles.btncour}></button>
                     <button className={styles.btncour}>
                       <img
-                        src={`/images/course/paid/${isOpenCourse ? 'showsection' : 'hiddensection'}.png`}
-                        alt=''
+                        src={`/images/course/paid/${
+                          isOpenCourse ? "showsection" : "hiddensection"
+                        }.png`}
+                        alt=""
                       />
                     </button>
                   </div>
@@ -592,27 +600,26 @@ const PaidCourse = () => {
                   <div className={styles.allbutton}>
                     <button
                       style={{
-                        backgroundColor: isOpenprcourse ? '#CD6214' : '#3E4678'
+                        backgroundColor: isOpenprcourse ? "#CD6214" : "#3E4678",
                       }}
                       className={styles.btncourse}
                       onClick={() => handleButtonClickprcourse()}
                     >
                       <img
                         src={`/images/course/paid/prcours.png`}
-                        alt=''
+                        alt=""
                         className={styles.imagefeatures}
                       />
-                      {isOpenprcourse ? ("yes") : ("no")}
+                      {isOpenprcourse ? "yes" : "no"}
                       Pré-cours
-
                     </button>
-                    <button className={styles.btncour}>
-
-                    </button>
+                    <button className={styles.btncour}></button>
                     <button className={styles.btncour}>
                       <img
-                        src={`/images/course/paid/${isOpenprcourse ? 'showsection' : 'hiddensection'}.png`}
-                        alt=''
+                        src={`/images/course/paid/${
+                          isOpenprcourse ? "showsection" : "hiddensection"
+                        }.png`}
+                        alt=""
                       />
                     </button>
                   </div>
@@ -620,27 +627,26 @@ const PaidCourse = () => {
                   <div className={styles.allbutton}>
                     <button
                       style={{
-                        backgroundColor: isOpenPDF ? '#CD6214' : '#3E4678'
+                        backgroundColor: isOpenPDF ? "#CD6214" : "#3E4678",
                       }}
                       className={styles.btncourse}
                       onClick={() => handleButtonClickPDF()}
                     >
                       <img
                         src={`/images/course/paid/PDF.png`}
-                        alt=''
+                        alt=""
                         className={styles.imagefeatures}
                       />
-                      {isOpenPDF ? ("yes") : ("no")}
+                      {isOpenPDF ? "yes" : "no"}
                       PDF
-
                     </button>
-                    <button className={styles.btncour}>
-
-                    </button>
+                    <button className={styles.btncour}></button>
                     <button className={styles.btncour}>
                       <img
-                        src={`/images/course/paid/${isOpenPDF ? 'showsection' : 'hiddensection'}.png`}
-                        alt=''
+                        src={`/images/course/paid/${
+                          isOpenPDF ? "showsection" : "hiddensection"
+                        }.png`}
+                        alt=""
                       />
                     </button>
                   </div>
@@ -648,52 +654,57 @@ const PaidCourse = () => {
                   <div className={styles.allbutton}>
                     <button
                       style={{
-                        backgroundColor: isOpenQuiz ? '#CD6214' : '#3E4678'
+                        backgroundColor: isOpenQuiz ? "#CD6214" : "#3E4678",
                       }}
                       className={styles.btncourse}
                       onClick={() => handleQuizData(Data._id)}
                     >
                       <img
                         src={`/images/course/paid/Quiz.png`}
-                        alt=''
+                        alt=""
                         className={styles.imagefeatures}
                       />
-                      {isOpenQuiz ? ("yes") : ("no")}
+                      {isOpenQuiz ? "yes" : "no"}
                       Quiz
-
                     </button>
-                    <button className={styles.btncour}>
-
-                    </button>
+                    <button className={styles.btncour}></button>
                     <button className={styles.btncour}>
                       <img
-                        src={`/images/course/paid/${isOpenQuiz ? 'showsection' : 'hiddensection'}.png`}
-                        alt=''
+                        src={`/images/course/paid/${
+                          isOpenQuiz ? "showsection" : "hiddensection"
+                        }.png`}
+                        alt=""
                       />
                     </button>
                   </div>
-
                 </div>
                 {isOpenCourse && videos.length > 0 ? (
                   <div className={styles.containerBt2}>
                     {videos.map((video, index) => (
                       <div className={styles.videoList} key={video.id}>
                         <div className={styles.sectionbutton}>
-                          <div className={styles.sectionindex}>Section {index}</div>
+                          <div className={styles.sectionindex}>
+                            Section {index}
+                          </div>
                           <button
                             onClick={toggleSection}
                             className={styles.sectionToggle}
                           >
                             <img
-                              src={`/images/course/paid/${isSectionOpen ? 'downsection' : 'upsection'}.png`}
-                              alt=''
+                              src={`/images/course/paid/${
+                                isSectionOpen ? "downsection" : "upsection"
+                              }.png`}
+                              alt=""
                               className={styles.imagdown}
                             />
                           </button>
                         </div>
                         {!isSectionOpen && (
                           <div>
-                            <button onClick={() => handleDisplay(video)} className={styles.videoItem}>
+                            <button
+                              onClick={() => handleDisplay(video)}
+                              className={styles.videoItem}
+                            >
                               {video.fileName}
                             </button>
                           </div>
@@ -701,51 +712,43 @@ const PaidCourse = () => {
                       </div>
                     ))}
                   </div>
-                ) : (isOpenCourse && (<div className={styles.containerBt2}>
-                  <div  className={styles.videoList}>
-                    no content yet
-                  </div>
-                  </div>))}
+                ) : (
+                  isOpenCourse && (
+                    <div className={styles.containerBt2}>
+                      <div className={styles.videoList}>no content yet</div>
+                    </div>
+                  )
+                )}
 
                 {isOpenprcourse && preCourseData.length > 0 && (
-                  <div className={styles.preCourseDataContainer}>
-                    précours
-                  </div>
+                  <div className={styles.preCourseDataContainer}>précours</div>
                 )}
                 {isOpenPDF && preCourseData.length > 0 && (
-                  <div className={styles.preCourseDataContainer}>
-                    précours
-                  </div>
+                  <div className={styles.preCourseDataContainer}>précours</div>
                 )}
                 {isOpenQuiz && quizData.length > 0 ? (
                   <div className={styles.containerBt2}>
-                    {quizData.map((quiz,index) => (
-        <div
-          key={quiz._id}
-          className={styles.videoList}
-          onClick={() => handleQuizClick(quiz._id)} // Handle click
-        >
-          Quiz {index} {/* Adjust the display as needed */}
-        </div>
-      ))}
+                    {quizData.map((quiz, index) => (
+                      <div
+                        key={quiz._id}
+                        className={styles.videoList}
+                        onClick={() => handleQuizClick(quiz._id)} // Handle click
+                      >
+                        Quiz {index} {/* Adjust the display as needed */}
+                      </div>
+                    ))}
                   </div>
-                ) : (isOpenQuiz && (
-                  <div className={styles.containerBt2}>
-                <div  className={styles.videoList}>
-                  noquiz added
-                </div>
-                </div>))}
-
-
+                ) : (
+                  isOpenQuiz && (
+                    <div className={styles.containerBt2}>
+                      <div className={styles.videoList}>noquiz added</div>
+                    </div>
+                  )
+                )}
               </div>
 
-              <div>
-
-
-
-              </div>
+              <div></div>
             </div>
-
           </div>
         </div>
       </main>
@@ -776,7 +779,6 @@ const PaidCourse = () => {
       ) : (
         ""
       )}
-
     </React.Fragment>
   );
 };

@@ -72,8 +72,11 @@ function CategorySlider() {
         setMaxSteps(divideAndAddOneIfNeeded(res.data.data.length, 6));
       });
   };
-  useEffect(async () => {
+  useEffect( () => {
+    const fetchData = async () => {
     await HandleCategories();
+  };
+  fetchData();
   }, []);
   const categories = splitListIntoSublists(
     categoriesFromBd.map((c) => {

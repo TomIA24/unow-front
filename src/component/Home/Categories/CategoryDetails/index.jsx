@@ -14,6 +14,7 @@ import axios from "axios";
 import GenericSwitcher from "../../../GenericSwitcher";
 import imageCourse from "../../../assets/icon_course.png";
 import imageTraining from "../../../assets/icon_training.png";
+import Empty from "../../../assets/empty.png";
 import { useParams } from "react-router-dom";
 
 const CategoryDetails = (props) => {
@@ -25,6 +26,7 @@ const CategoryDetails = (props) => {
   const [indexItemsOffline, setIndexItemsOffline] = useState(6);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [courses, setCourses] = useState([]);
+  const [trainings, setTrainings] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [type, setType] = useState("Course");
@@ -49,19 +51,19 @@ const CategoryDetails = (props) => {
   const getAllTraining = () => {
     // e.preventDefault();
     const urlTrainings = `${process.env.REACT_APP_API}api/Category/specificGroupeFromCategory`;
-    const urlCourses = `${process.env.REACT_APP_API}api/Category/specificGroupeFromCategory`;
-    if (selectedType === "COURSES") {
-      axios.post(urlCourses, { id: id, type: "courses" }).then(async (res) => {
-        setCourses(res.data.data);
-      });
-    } else {
+   
+    // if (selectedType === "COURSES") {
+    //   axios.post(urlCourses, { id: id, type: "courses" }).then(async (res) => {
+    //     setCourses(res.data.data);
+    //   });
+    // } else {
       axios
         .post(urlTrainings, { id: id, type: "trainings" })
         .then(async (res) => {
-          setCourses(res.data.data);
+          setTrainings(res.data.data);
           // setTotalPages(res.data.totalPages);
         });
-    }
+  //  }
 
     // axios
     //   .get(
@@ -74,9 +76,22 @@ const CategoryDetails = (props) => {
     //     setTotalPages(res.data.totalPages);
     //   });
   };
+  const getAllCourses = () => {
+    // e.preventDefault();
+    
+    const urlCourses = `${process.env.REACT_APP_API}api/Category/specificGroupeFromCategory`;
+    if (selectedType === "COURSES") {
+      axios.post(urlCourses, { id: id, type: "courses" }).then(async (res) => {
+        setCourses(res.data.data);
+      });
+    } 
 
+  
+  };
   useEffect(() => {
     getAllTraining();
+
+    getAllCourses();
   }, [currentPage, selectedType]);
 
   useEffect(() => {
@@ -112,13 +127,15 @@ const CategoryDetails = (props) => {
   };
 
   const refHome = useRef();
-  const arrayOnline =
+  const arrayOnlineCourses =
     windowWidth > 900 ? groupIntoRows(courses, 3) : groupIntoRows(courses, 2);
+    const arrayOnlineTrainings =
+    windowWidth > 900 ? groupIntoRows(trainings, 3) : groupIntoRows(trainings, 2);
   // const arrayOffline =
   //   windowWidth > 900
   //     ? groupIntoRows(props.offlineCourses, 3)
   //     : groupIntoRows(props.onlineCourses, 2);
-
+console.log("selectedType",arrayOnlineCourses,arrayOnlineTrainings)
   return (
     <div className="backimage">
       <div style={{ marginLeft: "50px", marginRight: "50px" }}>
@@ -150,18 +167,18 @@ const CategoryDetails = (props) => {
         <br />
         {/* <TopListItem
           items={[
-            { id: 0, title: "Products" },
-            { id: 1, title: "Categories" },
-            { id: 2, title: "Subcategories" },
+            { id: 0, title: "Categories" },
+            { id: 1, title: "Products" },
+            // { id: 2, title: "Subcategories" },
           ]}
         />
         <TopBarComponent */}
           {/* items={[
             { id: 0, title: "Design" },
-            { id: 1, title: "Conception Web" },
-            { id: 2, title: "Conception Graphique et Illustration" },
-            { id: 3, title: "Outil de conception" },
-            { id: 4, title: "Conception d'une expérience utilisateur" },
+            { id: 1, title: "Web Design" },
+            { id: 2, title: "Graphic Design and Illustration" },
+            { id: 3, title: "Design Tool" },
+            { id: 4, title: "UX Design" },
           ]}
         /> */}
         <GenericSwitcher
@@ -173,23 +190,52 @@ const CategoryDetails = (props) => {
           setSelectedItem={setSelectedType}
         />
         <div className="d-flex justify-content-center align-items-center mt-4 paddingbottom">
-          <br />
+          {/* <br /> */}
 
           <Container className="container-grid">
-            {arrayOnline
-              .slice(0, windowWidth > 900 ? indexItems / 3 : indexItems / 2)
+            {selectedType==="COURSES" ?
+             ( arrayOnlineCourses.slice(0, windowWidth > 900 ? indexItems / 3 : indexItems / 2)
               .map((itemnested) => (
+              
                 <div key={itemnested[0].id}>
                   <Row className="row1">
-                    {itemnested.map((course) => (
+                    {itemnested.length > 0 ? (console.log("itemnested",itemnested),
+                    itemnested.map((course) => (
                       <Col xs={6} md={4} className="col" key={course.id}>
                         <CourseItem course={course} />
                       </Col>
-                    ))}
+                    )))
+                  :(
+                    <Empty/>
+                   
+                 )
+                  }
                   </Row>
                   <br />
                 </div>
-              ))}
+              ))):(
+                arrayOnlineTrainings.slice(0, windowWidth > 900 ? indexItems / 3 : indexItems / 2)
+                .map((itemnested) => (
+                
+                  <div key={itemnested[0].id}>
+                    <Row className="row1">
+                      {itemnested.length > 0 ? (console.log("itemnested",itemnested),
+                      itemnested.map((course) => (
+                        <Col xs={6} md={4} className="col" key={course.id}>
+                          <CourseItem course={course} />
+                        </Col>
+                      )))
+                    :(
+                      <Empty/>
+                     
+                   )
+                    }
+                    </Row>
+                    <br />
+                  </div>
+                ))
+
+              )}
             <div
               style={{
                 display: "flex",
