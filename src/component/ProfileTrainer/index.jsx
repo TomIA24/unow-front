@@ -5,7 +5,6 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import DateRangeIcon from "@mui/icons-material/DateRange";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import LocalLibraryIcon from "@mui/icons-material/LocalLibrary";
-import { Container } from "@mui/material";
 import classNames from "classnames";
 import { request } from "../../core/api/request";
 import Nav from "../Nav";
@@ -35,7 +34,7 @@ const ProfileTrainer = () => {
         return <Trainings userInfo={userInfo} />;
       case "profile":
       default:
-        return <InfoUser userInfo={userInfo} />;
+        return <InfoUser setUserInfo={setUserInfo} userInfo={userInfo} />;
     }
   };
 
@@ -70,7 +69,7 @@ const ProfileTrainer = () => {
   return (
     <React.Fragment>
       <div className="background_container">
-        <Container maxWidth="xl" sx={{ height: "calc(100% - 70px)" }}>
+        <div className="appWrapper" style={{ height: "100%" }}>
           <Nav />
           <div className={styles.container}>
             <p className={styles.title}>Welcome Trainer</p>
@@ -88,10 +87,10 @@ const ProfileTrainer = () => {
             </div>
             {activeSection === "profile" && <ProfileInfo />}
           </div>
-        </Container>
+        </div>
       </div>
 
-      <Container maxWidth="xl">
+      <div className="appWrapper">
         <main className={styles.main}>
           <div className={styles.mainContainer}>{renderContent()}</div>
           <div className={styles.sideBar}>
@@ -120,7 +119,7 @@ const ProfileTrainer = () => {
             </div>
           </div>
         </main>
-      </Container>
+      </div>
 
       <Footer />
     </React.Fragment>

@@ -1,30 +1,16 @@
-import CloseIcon from "@mui/icons-material/Close";
-import TuneIcon from "@mui/icons-material/Tune";
-import { Box, Button, Modal } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
+import ProgramsModal from "./ProgramsModal";
 import styles from "./styles.module.css";
 
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: "80%",
-  borderRadius: "30px",
-  bgcolor: "background.paper",
-  boxShadow: 24,
-  pt: 2,
-  px: 4,
-  pb: 3,
-};
+const InfoUser = ({ userInfo, setUserInfo }) => {
+  const [openModal, setOpenModal] = useState(false);
 
-const InfoUser = ({ userInfo }) => {
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => {
-    setOpen(true);
+  const handleOpenModal = () => {
+    setOpenModal(true);
   };
-  const handleClose = () => {
-    setOpen(false);
+
+  const handleCloseModal = () => {
+    setOpenModal(false);
   };
 
   return (
@@ -55,11 +41,11 @@ const InfoUser = ({ userInfo }) => {
             <div>
               {userInfo.programs?.slice(0, 6).map((program, index) => (
                 <p key={index}>
-                  <span>{program}</span>
+                  <span>{program.title}</span>
                 </p>
               ))}
               {userInfo.programs?.length > 6 && (
-                <p className={styles.seeMore} onClick={handleOpen}>
+                <p className={styles.seeMore} onClick={handleOpenModal}>
                   See more...
                 </p>
               )}
@@ -84,47 +70,12 @@ const InfoUser = ({ userInfo }) => {
         </li>
       </ul>
 
-      <Modal open={open} onClose={handleClose}>
-        <Box sx={{ ...style }}>
-          <div className={styles.modalContent}>
-            <div className={styles.header}>
-              <p className={styles.title}>Programs</p>
-              <div className={styles.input}>
-                <div>
-                  <TuneIcon sx={{ color: "#2C2C2C" }} />
-                  <span>Filter</span>
-                </div>
-                <input type="text" placeholder="Type here..." />
-              </div>
-              <CloseIcon
-                onClick={handleClose}
-                sx={{ color: "#C0BCB7", cursor: "pointer" }}
-              />
-            </div>
-
-            <div className={styles.programsDetails}>
-              <div>
-                <ul>
-                  {userInfo.programs?.map((program, index) => (
-                    <li key={index}>{program}</li>
-                  ))}
-                </ul>
-              </div>
-              <div>
-                <ul>
-                  {userInfo.programs?.map((program, index) => (
-                    <li key={index}>{program}</li>
-                  ))}
-                </ul>
-              </div>
-              <div className={styles.editSection}>
-                <Button>Ajouter un programme</Button>
-                <Button>Confirmer</Button>
-              </div>
-            </div>
-          </div>
-        </Box>
-      </Modal>
+      <ProgramsModal
+        open={openModal}
+        handleClose={handleCloseModal}
+        setUserInfo={setUserInfo}
+        programs={userInfo.programs}
+      />
     </div>
   );
 };

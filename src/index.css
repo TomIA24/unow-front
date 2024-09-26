@@ -2,6 +2,9 @@
 
 * {
   font-family: "Lato", sans-serif !important;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 :root {
@@ -85,4 +88,22 @@ code {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.appWrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+
+  @media (max-width: 768px) {
+    padding: 0 12px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0 8px;
+  }
 }

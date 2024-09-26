@@ -1,10 +1,9 @@
 .container {
   width: 100%;
   max-width: 452px;
-  height: 664px;
   border-radius: 2.5rem;
   box-shadow: 0px 0px 4px rgb(0, 0, 0, 26%);
-  padding: 45px 0px 0px 50px;
+  padding: 45px 70px;
 }
 
 .container ul {
@@ -14,20 +13,20 @@
 
 .container ul li {
   font-weight: 800;
-  font-size: 1.5rem;
+  font-size: 1rem;
   line-height: 2;
 }
 
 .container span {
   font-weight: 600;
-  font-size: 1.25rem;
+  font-size: 0.8rem;
   line-height: 2;
   padding-left: 5px;
 }
 
 .programs {
   display: flex;
-  font-size: 1.5rem;
+  font-size: 1rem;
   gap: 20px;
 }
 
@@ -38,7 +37,7 @@
   font-weight: 600;
   font-size: 1rem;
   line-height: 2;
-  color: #6990f2;
+  color: var(--secondary-color);
 }
 
 /* Modal styles */
@@ -136,5 +135,72 @@
 }
 
 .editSection {
-  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.editSection button:first-child,
+.editSection button:last-child {
+  display: flex;
+  align-items: flex-start;
+  gap: 5px;
+  padding: 10px 45px;
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  font-size: 1.2rem;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+  display: flex;
+  justify-content: center;
+}
+
+.editSection button:last-child {
+  background-color: var(--primary-color);
+  width: fit-content;
+  margin-left: auto;
+}
+
+.editSection button:first-child {
+  width: 100%;
+}
+
+.editSection form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.editSection form > div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.editSection form > div label {
+  font-size: 0.8rem;
+  color: #585858;
+}
+
+.editSection form > div input {
+  width: 100%;
+  border-radius: 10px;
+  outline: none;
+  height: 36px;
+  border: 1px solid var(--primary-color);
+  padding: 0 15px;
+}
+
+.editSection form .ouiNonButton {
+  display: flex;
+  gap: 3%;
+}
+
+.editSection form .ouiNonButton input {
+  background: none;
+}
+
+.editSection form .ouiNonButton input.oui {
+  background: var(--secondary-color);
+  color: white;
 }
