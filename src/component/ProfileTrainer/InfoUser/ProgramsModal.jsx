@@ -26,7 +26,10 @@ const ProgramsModal = ({ open, handleClose, programs, setUserInfo }) => {
   const [openAddProgram, setOpenAddProgram] = useState(false);
   const [isCertifying, setIsCertifying] = useState(true);
   const [filterPrograms, setFilterPrograms] = useState(programs);
-  const [isUpdated, setIsUpdated] = useState(false);
+  const [update, setUpdate] = useState({
+    isUpdated: false,
+    programId: undefined,
+  });
   const [search, setSearch] = useDebouncedState("");
   const titleRef = useRef(null);
   const durationRef = useRef(null);
@@ -39,6 +42,17 @@ const ProgramsModal = ({ open, handleClose, programs, setUserInfo }) => {
     setFilterPrograms(filteredPrograms);
   }, [search, programs]);
 
+  const handleResetForm = async () => {
+    const data = await request.read("userData");
+    setUserInfo(data.data);
+
+    titleRef.current.value = "";
+    durationRef.current.value = "";
+    tjRef.current.value = "";
+    setIsCertifying(true);
+    setUpdate({ isUpdated: false, programId: null });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const newProgram = {
@@ -48,23 +62,15 @@ const ProgramsModal = ({ open, handleClose, programs, setUserInfo }) => {
       certifying: isCertifying,
     };
 
-    if (isUpdated) {
-      request.update("programs", newProgram, programs._id).then(() => {
-        setUserInfo((prev) => ({
-          ...prev,
-          programs: prev.programs.map((program) =>
-            program._id === programs._id ? newProgram : program
-          ),
-        }));
+    if (update.isUpdated) {
+      request.update("programs", update.programId, newProgram).then(() => {
+        handleResetForm();
       });
     }
 
-    if (!isUpdated) {
+    if (!update.isUpdated) {
       request.create("programs", newProgram).then(() => {
-        setUserInfo((prev) => ({
-          ...prev,
-          programs: [...prev.programs, newProgram],
-        }));
+        handleResetForm();
       });
     }
   };
@@ -74,7 +80,21 @@ const ProgramsModal = ({ open, handleClose, programs, setUserInfo }) => {
     titleRef.current.value = program.title;
     durationRef.current.value = program.duration;
     tjRef.current.value = program.tj;
-    setIsUpdated(true);
+    setUpdate({
+      isUpdated: true,
+      programId: program._id,
+    });
+  };
+
+  const handleDelete = () => {
+    request.remove("programs", update.programId).then(() => {
+      handleResetForm();
+    });
+  };
+
+  const handleAddProgram = () => {
+    setOpenAddProgram((prev) => !prev);
+    handleResetForm();
   };
 
   return (
@@ -114,64 +134,77 @@ const ProgramsModal = ({ open, handleClose, programs, setUserInfo }) => {
                 ))}
               </ul>
             </div>
-            {filterPrograms?.length > 9 && (
-              <div>
+            <div>
+              {filterPrograms?.length > 9 && (
                 <ul>
-                  {filterPrograms
-                    ?.slice(9, filterPrograms?.length > 18 && 18)
-                    .map((program, index) => (
-                      <li key={index}>{program.title}</li>
-                    ))}
+                  {filterPrograms?.slice(9, 18).map((program, index) => (
+                    <li
+                      key={index}
+                      onClick={() => handleSelectedProgram(program)}
+                    >
+                      {program.title}
+                    </li>
+                  ))}
                 </ul>
-              </div>
-            )}
+              )}
+            </div>
 
             <div className={styles.editSection}>
-              <button onClick={() => setOpenAddProgram((prev) => !prev)}>
+              <button onClick={handleAddProgram}>
                 <span>Add Program</span>
                 <KeyboardArrowDownIcon sx={{ color: "white" }} />
               </button>
 
-              {openAddProgram && (
-                <form onSubmit={handleSubmit}>
-                  <div>
-                    <label>Title</label>
-                    <input type="text" required ref={titleRef} />
-                  </div>
+              <form
+                onSubmit={handleSubmit}
+                style={{ opacity: openAddProgram ? 1 : 0 }}
+              >
+                <div>
+                  <label>Title</label>
+                  <input type="text" required ref={titleRef} />
+                </div>
 
-                  <div>
-                    <label>Certifying</label>
-                    <div className={styles.ouiNonButton}>
-                      <input
-                        type="button"
-                        className={isCertifying && styles.oui}
-                        value="Yes"
-                        onClick={() => setIsCertifying(true)}
-                      />
-                      <input
-                        type="button"
-                        className={!isCertifying && styles.oui}
-                        value="No"
-                        onClick={() => setIsCertifying(false)}
-                      />
-                    </div>
+                <div>
+                  <label>Certifying</label>
+                  <div className={styles.ouiNonButton}>
+                    <input
+                      type="button"
+                      className={isCertifying && styles.oui}
+                      value="Yes"
+                      onClick={() => setIsCertifying(true)}
+                    />
+                    <input
+                      type="button"
+                      className={!isCertifying && styles.oui}
+                      value="No"
+                      onClick={() => setIsCertifying(false)}
+                    />
                   </div>
+                </div>
 
-                  <div>
-                    <label>Duration</label>
-                    <input type="text" required ref={durationRef} />
-                  </div>
+                <div>
+                  <label>Duration</label>
+                  <input type="text" required ref={durationRef} />
+                </div>
 
-                  <div>
-                    <label>TJ</label>
-                    <input type="text" required ref={tjRef} />
-                  </div>
+                <div>
+                  <label>TJ</label>
+                  <input type="text" required ref={tjRef} />
+                </div>
 
+                <div className={styles.buttons}>
+                  <button
+                    style={{ opacity: update.isUpdated ? 1 : 0 }}
+                    type="button"
+                    onClick={handleDelete}
+                  >
+                    <span>Delete</span>
+                  </button>
                   <button type="submit">
                     <span>Confirm</span>
                   </button>
-                </form>
-              )}
+                </div>
+              </form>
             </div>
           </div>
         </div>

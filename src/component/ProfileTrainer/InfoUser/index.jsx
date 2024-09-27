@@ -39,16 +39,10 @@ const InfoUser = ({ userInfo, setUserInfo }) => {
           <div className={styles.programs}>
             Programs:
             <div>
-              {userInfo.programs?.slice(0, 6).map((program, index) => (
-                <p key={index}>
-                  <span>{program.title}</span>
-                </p>
-              ))}
-              {userInfo.programs?.length > 6 && (
-                <p className={styles.seeMore} onClick={handleOpenModal}>
-                  See more...
-                </p>
-              )}
+              <span>{userInfo?.programs?.[0].title}</span>
+              <span className={styles.seeMore} onClick={handleOpenModal}>
+                see more...
+              </span>
             </div>
           </div>
         </li>

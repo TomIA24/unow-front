@@ -10,7 +10,7 @@
 .background_container {
   background: url("../assets/background-image.png") no-repeat center center;
   background-size: cover;
-  height: 31vh;
+  height: 40vh;
   border-radius: 0 0 var(--border-radius-large) var(--border-radius-large);
   position: relative;
 }
@@ -77,7 +77,7 @@
   justify-content: center;
   align-items: center;
   gap: 30px;
-  bottom: -150%;
+  bottom: -160%;
 }
 
 .info > div:first-child p:first-child {
@@ -153,4 +153,104 @@
 
 .sideBarContainer button.active {
   background-color: var(--primary-color);
+}
+
+.topBar,
+.personnelInfo {
+  display: none;
+}
+
+/* media Query */
+@media screen and (max-width: 992px) {
+  .main {
+    flex-direction: column-reverse;
+    gap: 2rem;
+  }
+  .sideBar {
+    width: 30rem;
+    margin-left: auto;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .img_container,
+  .title,
+  .imgProfile,
+  .info,
+  .sideBar {
+    display: none;
+  }
+
+  .personnelInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+  .imgContainer img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .main {
+    margin-top: 0;
+  }
+
+  .mainContainer {
+    align-items: center !important;
+  }
+
+  .userInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .userInfo > div {
+    text-align: center;
+  }
+
+  .userInfo > div > p {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+
+  .topBar {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    width: fit-content;
+    transition: transform 3s ease, top 3s ease;
+  }
+
+  .topBar > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background: var(--secondary-color);
+  }
+  .topBar div.active {
+    background: var(--primary-color);
+  }
+
+  .fixed {
+    position: sticky;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%);
+    transition: transform 0.3s ease, top 0.3s ease;
+  }
 }

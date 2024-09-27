@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./styles.module.css";
 
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
@@ -90,6 +90,7 @@ const ProfileTrainer = () => {
         </div>
       </div>
 
+      <MobileDevice userInfo={userInfo} />
       <div className="appWrapper">
         <main className={styles.main}>
           <div className={styles.mainContainer}>{renderContent()}</div>
@@ -123,6 +124,75 @@ const ProfileTrainer = () => {
 
       <Footer />
     </React.Fragment>
+  );
+};
+
+const MobileDevice = ({ userInfo }) => {
+  const ref = useRef();
+  const [isFixed, setIsFixed] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const rect = ref.current.getBoundingClientRect();
+      if (rect.top <= 0) {
+        setIsFixed(true);
+      } else {
+        setIsFixed(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  return (
+    <>
+      <div
+        ref={ref}
+        className={`${styles.topBar} ${isFixed ? styles.fixed : ""}`}
+      >
+        <div className={styles.active}>
+          <AccountCircleIcon sx={{ color: "white" }} />
+        </div>
+        <div>
+          <FormatListBulletedIcon sx={{ color: "white" }} />
+        </div>
+        <div>
+          <DateRangeIcon sx={{ color: "white" }} />
+        </div>
+
+        <div>
+          <LocalLibraryIcon sx={{ color: "white" }} />
+        </div>
+      </div>
+
+      <div className={styles.personnelInfo}>
+        <div className={styles.imgContainer}>
+          <img
+            src={
+              userInfo?.image?.filePath
+                ? `${process.env.REACT_APP_API}${userInfo.image.filePath}`
+                : "/default-profile.png"
+            }
+            alt="Profile"
+          />
+        </div>
+        <div className={styles.userInfo}>
+          <div>
+            <p>{userInfo?.name}</p>
+            <p>Trainer</p>
+          </div>
+          <div>
+            <p> {userInfo?.phoneNumber || "--"}</p>
+            <p> {userInfo?.email || "--"}</p>
+            <p> {userInfo?.address || "--"}</p>
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
 
