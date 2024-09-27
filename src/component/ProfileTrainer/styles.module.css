@@ -10,7 +10,7 @@
 .background_container {
   background: url("../assets/background-image.png") no-repeat center center;
   background-size: cover;
-  height: 40vh;
+  height: 31vh;
   border-radius: 0 0 var(--border-radius-large) var(--border-radius-large);
   position: relative;
 }
@@ -181,6 +181,9 @@
     display: none;
   }
 
+  .background_container {
+    height: 15dvh;
+  }
   .personnelInfo {
     display: flex;
     flex-direction: column;

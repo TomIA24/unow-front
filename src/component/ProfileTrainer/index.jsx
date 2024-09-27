@@ -68,7 +68,7 @@ const ProfileTrainer = () => {
 
   return (
     <React.Fragment>
-      <div className="background_container">
+      <div className={styles.background_container}>
         <div className="appWrapper" style={{ height: "100%" }}>
           <Nav />
           <div className={styles.container}>

@@ -6,22 +6,6 @@ import { request } from "../../../core/api/request";
 import useDebouncedState from "../../../hooks/useDebouncedState";
 import styles from "./styles.module.css";
 
-const modalStyle = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: "fit-content",
-  minWidth: "900px",
-  borderRadius: "30px",
-  bgcolor: "background.paper",
-  outline: "none",
-  boxShadow: 24,
-  pt: 2,
-  px: 4,
-  pb: 3,
-};
-
 const ProgramsModal = ({ open, handleClose, programs, setUserInfo }) => {
   const [openAddProgram, setOpenAddProgram] = useState(false);
   const [isCertifying, setIsCertifying] = useState(true);
@@ -99,26 +83,35 @@ const ProgramsModal = ({ open, handleClose, programs, setUserInfo }) => {
 
   return (
     <Modal open={open} onClose={handleClose}>
-      <Box sx={modalStyle}>
+      <div className={styles.modalContainer}>
         <div className={styles.modalContent}>
-          <div className={styles.header}>
-            <p className={styles.title}>Programs</p>
-            <div className={styles.input}>
-              <div>
-                <span>Filter</span>
-              </div>
-              <input
-                defaultValue={search}
-                onChange={(e) => setSearch(e.target.value)}
-                type="text"
-                placeholder="Type here..."
+          <Box>
+            <Box sx={{ textAlign: "end", marginBottom: "1rem" }}>
+              <CloseIcon
+                onClick={handleClose}
+                sx={{
+                  color: "#C0BCB7",
+
+                  cursor: "pointer",
+                }}
               />
+            </Box>
+
+            <div className={styles.header}>
+              <p className={styles.title}>Programs</p>
+              <div className={styles.input}>
+                <div>
+                  <span>Filter</span>
+                </div>
+                <input
+                  defaultValue={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                  type="text"
+                  placeholder="Type here..."
+                />
+              </div>
             </div>
-            <CloseIcon
-              onClick={handleClose}
-              sx={{ color: "#C0BCB7", cursor: "pointer" }}
-            />
-          </div>
+          </Box>
 
           <div className={styles.programsDetails}>
             <div>
@@ -208,7 +201,7 @@ const ProgramsModal = ({ open, handleClose, programs, setUserInfo }) => {
             </div>
           </div>
         </div>
-      </Box>
+      </div>
     </Modal>
   );
 };
