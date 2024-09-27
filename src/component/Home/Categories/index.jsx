@@ -14,6 +14,7 @@ import Icon7 from "../../assets/icon7.png";
 import Icon8 from "../../assets/icon8.png";
 import Next from "../../assets/next.png";
 import Prev from "../../assets/prev.png";
+import { SectionTitle } from "../HomeInterface";
 import styles from "./styles.module.css";
 
 const Categories = () => {
@@ -94,9 +95,7 @@ const Categories = () => {
   };
   return (
     <div className={styles.categorieTitle}>
-      CATEGORIES
-      <p className={styles.underline}></p>
-      <div className={styles.categorieContainer}></div>
+      <SectionTitle title="Categories" />
       {screenWidth >= 700 ? (
         <div className={styles.cardC}>
           <div className={styles.cardsContainer}>

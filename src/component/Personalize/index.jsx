@@ -228,12 +228,13 @@ const Personalize = () => {
       });
     }
     // Handle text input changes
-    else if (type === 'text') {
+    else if (type === 'radio') {
+      // Handle radio button changes
       setFormData(prevState => ({
         ...prevState,
         stepPersonalize_1: {
           ...prevState.stepPersonalize_1,
-          exploreFirst: value // Update the text input value
+          [name]: value 
         }
       }));
     }
@@ -587,53 +588,127 @@ console.log(e.target.value);
       title: "Interest Areas",
       content: (
         <>
-          {/* (!candidatdata.stepPersonalize_1 || candidatdata.stepPersonalize_1.length >= 2 ) &&  */}
-          {(<div className={styles.personlizestep}>
+          {/* Render interest checkboxes */}
+          <div className={styles.personlizestep}>
             <div className={styles.personlizesquestion}>
               <label>What subjects interest you most? (Select up to three)</label>
+    
               <div className={styles.checkboxGroup}>
-                <input type="checkbox" id="sciences" name="interests" value="Sciences & Technology" className={styles.hiddenCheckbox} checked={Array.isArray(formData.stepPersonalize_1.interests) && formData.stepPersonalize_1.interests.includes('Sciences & Technology')} onChange={handleInputChange1} />
+                <input
+                  type="checkbox"
+                  id="sciences"
+                  name="interests"
+                  value="Sciences & Technology"
+                  className={styles.hiddenCheckbox}
+                  checked={
+                    Array.isArray(formData.stepPersonalize_1.interests) &&
+                    formData.stepPersonalize_1.interests.includes("Sciences & Technology")
+                  }
+                  onChange={handleInputChange1}
+                />
                 <label htmlFor="sciences" className={styles.customLabel}>
                   Sciences & Technology
                 </label>
               </div>
               <div className={styles.checkboxGroup}>
-                <input type="checkbox" id="arts" name="interests" className={styles.hiddenCheckbox} value="Arts & Creativity"
-                  checked={Array.isArray(formData.stepPersonalize_1.interests) && formData.stepPersonalize_1.interests.includes('Arts & Creativity')} onChange={handleInputChange1} />
-                <label htmlFor="arts" className={styles.customLabel}>Arts & Creativity</label>
+                <input
+                  type="checkbox"
+                  id="arts"
+                  name="interests"
+                  value="Arts & Creativity"
+                  className={styles.hiddenCheckbox}
+                  checked={
+                    Array.isArray(formData.stepPersonalize_1.interests) &&
+                    formData.stepPersonalize_1.interests.includes("Arts & Creativity")
+                  }
+                  onChange={handleInputChange1}
+                />
+                <label htmlFor="arts" className={styles.customLabel}>
+                  Arts & Creativity
+                </label>
               </div>
               <div className={styles.checkboxGroup}>
-                <input type="checkbox" id="history" name="interests" className={styles.hiddenCheckbox} value="History & Culture" checked={Array.isArray(formData.stepPersonalize_1.interests) && formData.stepPersonalize_1.interests.includes('History & Culture')} onChange={handleInputChange1} />
-                <label htmlFor="history" className={styles.customLabel}>History & Culture</label>
+                <input
+                  type="checkbox"
+                  id="history"
+                  name="interests"
+                  value="History & Culture"
+                  className={styles.hiddenCheckbox}
+                  checked={
+                    Array.isArray(formData.stepPersonalize_1.interests) &&
+                    formData.stepPersonalize_1.interests.includes("History & Culture")
+                  }
+                  onChange={handleInputChange1}
+                />
+                <label htmlFor="history" className={styles.customLabel}>
+                  History & Culture
+                </label>
               </div>
               <div className={styles.checkboxGroup}>
-                <input type="checkbox" id="languages" name="interests" className={styles.hiddenCheckbox}
-                  checked={Array.isArray(formData.stepPersonalize_1.interests) && formData.stepPersonalize_1.interests.includes('Languages & Communication')} value="Languages & Communication" onChange={handleInputChange1} />
-                <label htmlFor="languages" className={styles.customLabel}>Languages & Communication</label>
+                <input
+                  type="checkbox"
+                  id="languages"
+                  name="interests"
+                  value="Languages & Communication"
+                  className={styles.hiddenCheckbox}
+                  checked={
+                    Array.isArray(formData.stepPersonalize_1.interests) &&
+                    formData.stepPersonalize_1.interests.includes("Languages & Communication")
+                  }
+                  onChange={handleInputChange1}
+                />
+                <label htmlFor="languages" className={styles.customLabel}>
+                  Languages & Communication
+                </label>
               </div>
               <div className={styles.checkboxGroup}>
-                <input type="checkbox" id="development" name="interests" className={styles.hiddenCheckbox}
-                  checked={Array.isArray(formData.stepPersonalize_1.interests) && formData.stepPersonalize_1.interests.includes('Personal Development')} value="Personal Development" onChange={handleInputChange1} />
-                <label htmlFor="development" className={styles.customLabel}>Personal Development</label>
-              </div>
-              <div className={styles.checkboxGroup}>
-                <input type="checkbox" id="other" name="other" className={styles.hiddenCheckbox}
-                  checked={Array.isArray(formData.stepPersonalize_1.interests) && formData.stepPersonalize_1.interests.includes('Other')} />
-                <label htmlFor="other" className={styles.customLabel}>Other (Specify)</label>
+                <input
+                  type="checkbox"
+                  id="development"
+                  name="interests"
+                  value="Personal Development"
+                  className={styles.hiddenCheckbox}
+                  checked={
+                    Array.isArray(formData.stepPersonalize_1.interests) &&
+                    formData.stepPersonalize_1.interests.includes("Personal Development")
+                  }
+                  onChange={handleInputChange1}
+                />
+                <label htmlFor="development" className={styles.customLabel}>
+                  Personal Development
+                </label>
               </div>
             </div>
-            <div >
-              <div className={styles.personlizesquestion}>
-                <label>Which of the selected areas would you like to explore in-depth first?</label>
-                <input type="text" name="exploreFirst" className={styles.input} value={formData.stepPersonalize_1.exploreFirst} onChange={handleInputChange1} placeholder="selected areas" />
-              </div>
-            </div>
-          </div>)}
+    
+            {/* Display radio buttons only if there are selected interests */}
+            {Array.isArray(formData.stepPersonalize_1.interests) &&
+              formData.stepPersonalize_1.interests.length > 0 && (
+                <div className={styles.personlizesquestion}>
+                  <label>Which of the selected areas would you like to explore in-depth first?</label>
+                  {formData.stepPersonalize_1.interests.map((interest) => (
+                    <div key={interest} className={styles.checkboxGroup}>
+                      <input
+                        type="radio"
+                        id={interest}
+                        name="exploreFirst"
+                        value={interest}
+                        checked={formData.stepPersonalize_1.exploreFirst === interest}
+                        onChange={handleInputChange1}
+                        className={styles.hiddenCheckbox}
+                      />
+                      <label htmlFor={interest} className={styles.customLabel}>
+                        {interest}
+                      </label>
+                    </div>
+                  ))}
+                </div>
+              )}
+          </div>
         </>
       ),
-      // isCompleted: !candidatdata.stepPersonalize_1?.interests && candidatdata.stepPersonalize_1.length.interests >0  ,
-      // filled:candidatdata.stepPersonalize_1 && candidatdata.stepPersonalize_1.length === 2 && candidatdata.exploreFirst
-    },
+    }
+    
+,    
     {
       title: "Goals and Aspirations",
       content: (
@@ -954,6 +1029,7 @@ console.log(e.target.value);
 
         apiUrl = `${process.env.REACT_APP_API}api/candidat/step1/${candiddId}`;
         stepData = { stepPersonalize_1: { interests: filteredInterests, exploreFirst } };
+        console.log("stepData,",stepData);
 
       } else if (currentStep === 1) {
         const { goals, timeline } = formData.stepPersonalize_2;
@@ -1016,7 +1092,10 @@ console.log(e.target.value);
       // console.log("API URL:", apiUrl);
       // console.log("Data being sent:", stepData);
 
-      const response = await axios.put(apiUrl, stepData);
+      const response = await axios.put(apiUrl, stepData).then(response => console.log(response))
+      .catch(error => console.error('Error:', error));
+     
+      
       const candidateResponse = await axios.get(`${process.env.REACT_APP_API}api/candidat/candidates/${candiddId}`);
       setCandidatData(candidateResponse.data)
       if (response.status === 200) {

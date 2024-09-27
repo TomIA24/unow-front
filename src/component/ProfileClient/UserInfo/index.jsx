@@ -31,7 +31,7 @@ useEffect(() => {
       setProgressGradient(`#F39D6E`);
       setMainColorRgb('76, 175, 80');
     } 
-     if (percentage == 100){
+     if (percentage >= 100){
       setProgressGradient(`#49C382`);
     }
   } else {
