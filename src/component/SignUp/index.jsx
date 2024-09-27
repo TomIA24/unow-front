@@ -129,9 +129,9 @@ const SignUp = () => {
       console.log("Error: Phone number");
       return;
     }
-
+    const { confirmPassword, ...dataToSend } = data;
     try {
-      const res = await signup({ ...data, profilecomplited: 20 });
+      const res = await signup({ ...dataToSend, profilecomplited: 20 });
 
       navigate("/login", { state: { signup: true } });
       console.log(res.message);
