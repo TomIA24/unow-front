@@ -90,7 +90,11 @@ const ProfileTrainer = () => {
         </div>
       </div>
 
-      <MobileDevice userInfo={userInfo} />
+      <MobileDevice
+        userInfo={userInfo}
+        activeSection={activeSection}
+        handleSectionChange={(section) => handleSectionChange(section)}
+      />
       <div className="appWrapper">
         <main className={styles.main}>
           <div className={styles.mainContainer}>{renderContent()}</div>
@@ -127,7 +131,7 @@ const ProfileTrainer = () => {
   );
 };
 
-const MobileDevice = ({ userInfo }) => {
+const MobileDevice = ({ userInfo, activeSection, handleSectionChange }) => {
   const ref = useRef();
   const [isFixed, setIsFixed] = useState(false);
 
@@ -148,25 +152,42 @@ const MobileDevice = ({ userInfo }) => {
     };
   }, []);
 
+  const TopBarButton = ({ icon: Icon, label, section }) => (
+    <div
+      className={classNames({ [styles.active]: activeSection === section })}
+      onClick={() => handleSectionChange(section)}
+    >
+      <Icon sx={{ color: "white" }} />
+      {activeSection === section && <p>{label}</p>}
+    </div>
+  );
+
   return (
     <>
       <div
         ref={ref}
         className={`${styles.topBar} ${isFixed ? styles.fixed : ""}`}
       >
-        <div className={styles.active}>
-          <AccountCircleIcon sx={{ color: "white" }} />
-        </div>
-        <div>
-          <FormatListBulletedIcon sx={{ color: "white" }} />
-        </div>
-        <div>
-          <DateRangeIcon sx={{ color: "white" }} />
-        </div>
-
-        <div>
-          <LocalLibraryIcon sx={{ color: "white" }} />
-        </div>
+        <TopBarButton
+          icon={AccountCircleIcon}
+          label="Personal Information"
+          section="profile"
+        />
+        <TopBarButton
+          icon={FormatListBulletedIcon}
+          label="Actu mangdats"
+          section="actu"
+        />
+        <TopBarButton
+          icon={LocalLibraryIcon}
+          label="Trainings"
+          section="trainings"
+        />
+        <TopBarButton
+          icon={DateRangeIcon}
+          label="Calendar"
+          section="calendar"
+        />
       </div>
 
       <div className={styles.personnelInfo}>
