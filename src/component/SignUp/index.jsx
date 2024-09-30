@@ -129,10 +129,13 @@ const SignUp = () => {
       console.log("Error: Phone number");
       return;
     }
-
+  
+    // Create a copy of the data excluding confirmPassword
+    const { confirmPassword, ...apiData } = data;
+  
     try {
-      const res = await signup({ ...data, profilecomplited: 20 });
-
+      const res = await signup({ ...apiData, profilecomplited: 20 });
+  
       navigate("/login", { state: { signup: true } });
       console.log(res.message);
     } catch (error) {
@@ -146,8 +149,7 @@ const SignUp = () => {
         console.error("An unexpected error occurred:", error);
       }
     }
-  };
-
+  }
 
   const [passwordError, setPasswordError] = useState("");
   return (

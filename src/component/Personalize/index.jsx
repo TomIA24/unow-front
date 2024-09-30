@@ -1092,7 +1092,7 @@ console.log(e.target.value);
       // console.log("API URL:", apiUrl);
       // console.log("Data being sent:", stepData);
 
-      const response = await axios.put(apiUrl, stepData).then(response => console.log(response))
+      const response = await axios.patch(apiUrl, stepData).then(response => console.log(response))
       .catch(error => console.error('Error:', error));
      
       
