@@ -49,7 +49,7 @@ const Login = () => {
             localStorage.removeItem("redirectPath");
           } else {
             if (response.data.data.firstConnection) {
-              window.location = "/trainer/informations";
+              window.location = "/profile/edit";
             } else {
               window.location = "/profile";
             }

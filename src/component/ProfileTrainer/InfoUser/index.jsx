@@ -1,10 +1,12 @@
+import BorderColorIcon from "@mui/icons-material/BorderColor";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import ProgramsModal from "./ProgramsModal";
 import styles from "./styles.module.css";
 
 const InfoUser = ({ userInfo, setUserInfo }) => {
   const [openModal, setOpenModal] = useState(false);
-
+  const navigate = useNavigate();
   const handleOpenModal = () => {
     setOpenModal(true);
   };
@@ -15,6 +17,11 @@ const InfoUser = ({ userInfo, setUserInfo }) => {
 
   return (
     <div className={styles.container}>
+      <BorderColorIcon
+        onClick={() => navigate("/profile/edit")}
+        className={styles.icon}
+        sx={{ display: "block" }}
+      />
       <ul>
         <li>
           Connecting Metropolis:
