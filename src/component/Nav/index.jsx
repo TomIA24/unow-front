@@ -297,7 +297,7 @@ const Nav = () => {
                         ) : (
                         
                           <button
-                            onClick={window.location = "/candidate/profile"}
+                            onClick={()=>{window.location = "/candidate/profile"}}
                             style={{ display: "flex", alignItems: "center" }}
                           >
                             <img
