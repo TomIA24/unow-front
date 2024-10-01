@@ -97,7 +97,7 @@ const Dialog = ({ onClose, quizId,index, setCurrentQuestionIndex,currentQuestion
             <div className={styles.questionsection}>
               <button
                 className={styles.flagsection}
-                onClick={() => handleFlagQuestion(index)}
+                // onClick={() => handleFlagQuestion(index)}
               >
                 <img
                   src={flags[index] ? "./images/quiz/dialog/flag.png" : "./images/quiz/dialog/flagunmarked.png"}

@@ -100,6 +100,12 @@ const Quiz = ({ startDate }) => {
           `${process.env.REACT_APP_API}api/quiz/api/quiz/${quizId}/questions`
         );
         setQuestions(response.data);
+        const fetchedQuestions = response.data;
+        const initialFlags = fetchedQuestions.map(
+          (question) => question.flag || false
+        );
+        setFlags(initialFlags);
+  
       } catch (error) {
         console.error("Error fetching quiz questions:", error);
       }
