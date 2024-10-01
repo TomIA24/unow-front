@@ -295,9 +295,10 @@ const Nav = () => {
                             </button>
                           </Link>
                         ) : (
-                        // eliminate personalize 
+                        
                           <button
-                            onClick={()=>{window.location = "/candidate/profile"}}
+                            onClick={handlepopup}
+{/*                 // eliminate personalize             onClick={()=>{window.location = "/candidate/profile"}} */}
                             style={{ display: "flex", alignItems: "center" }}
                           >
                             <img
