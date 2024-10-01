@@ -1,6 +1,7 @@
-import AddIcon from "@mui/icons-material/Add";
-import { Autocomplete, TextField } from "@mui/material";
 import React, { useState } from "react";
+import Input from "../../../shared/components/Inputs/Input";
+import MultiSelect from "../../../shared/components/Inputs/MultiSelect";
+import Select from "../../../shared/components/Inputs/Select";
 import Nav from "../../Nav";
 import ProgramsModal from "../InfoUser/ProgramsModal";
 import styles from "./styles.module.css";
@@ -187,73 +188,6 @@ const EditProfile = () => {
           />
         </div>
       </div>
-    </div>
-  );
-};
-
-const Input = ({
-  label,
-  name,
-  placeholder,
-  type = "text",
-  value,
-  onChange,
-  onClick,
-  required,
-}) => {
-  return (
-    <div className={styles.inputContainer} onClick={onClick}>
-      <label>{label}</label>
-      <input
-        type={type}
-        name={name}
-        placeholder={placeholder}
-        value={value}
-        onChange={onChange}
-        required={required}
-      />
-    </div>
-  );
-};
-
-const Select = ({ label, name, options, value, onChange, required }) => {
-  return (
-    <div className={styles.inputContainer}>
-      <label>{label}</label>
-      <select name={name} value={value} onChange={onChange} required={required}>
-        <option value="">Select</option>
-        {options.map((option) => (
-          <option key={option} value={option}>
-            {option}
-          </option>
-        ))}
-      </select>
-    </div>
-  );
-};
-
-const MultiSelect = ({ label, data, value, onChange }) => {
-  return (
-    <div className={styles.inputContainer}>
-      <label>{label}</label>
-      <Autocomplete
-        multiple
-        limitTags={3}
-        id="multiple-limit-tags"
-        options={data}
-        value={value}
-        onChange={(event, newValue) => onChange(newValue)}
-        getOptionLabel={(option) => option}
-        renderInput={(params) => <TextField {...params} placeholder={label} />}
-        popupIcon={<AddIcon sx={{ color: "var(--primary-color)" }} />}
-        sx={{
-          "& > div > div ": {
-            color: "1px solid #3e4678",
-            minHeight: "70px",
-            borderRadius: "12px",
-          },
-        }}
-      />
     </div>
   );
 };

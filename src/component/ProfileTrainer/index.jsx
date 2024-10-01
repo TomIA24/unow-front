@@ -1,11 +1,8 @@
-import React, { useEffect, useRef, useState } from "react";
-import styles from "./styles.module.css";
-
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import DateRangeIcon from "@mui/icons-material/DateRange";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import LocalLibraryIcon from "@mui/icons-material/LocalLibrary";
-import classNames from "classnames";
+import React, { useCallback, useEffect, useState } from "react";
 import { request } from "../../core/api/request";
 import Nav from "../Nav";
 import Footer from "../footer";
@@ -13,6 +10,10 @@ import Actu from "./Actu";
 import Calendar from "./Calendar";
 import InfoUser from "./InfoUser";
 import Trainings from "./Trainings";
+import MobileDevice from "./components/MobileDeiveTopBar";
+import SideBarButton from "./components/SideBarButton";
+import ProfileInfo from "./components/TopBarInfo";
+import styles from "./styles.module.css";
 
 const ProfileTrainer = () => {
   const [activeSection, setActiveSection] = useState("profile");
@@ -24,7 +25,7 @@ const ProfileTrainer = () => {
     });
   }, []);
 
-  const renderContent = () => {
+  const renderContent = useCallback(() => {
     switch (activeSection) {
       case "actu":
         return <Actu setActu={setActiveSection} userInfo={userInfo} />;
@@ -36,35 +37,11 @@ const ProfileTrainer = () => {
       default:
         return <InfoUser setUserInfo={setUserInfo} userInfo={userInfo} />;
     }
-  };
+  }, [activeSection, userInfo]);
 
   const handleSectionChange = (section) => {
     setActiveSection(section);
   };
-
-  const ProfileInfo = () => (
-    <div className={styles.info}>
-      <div>
-        <p>{userInfo?.name}</p>
-        <p>Trainer</p>
-      </div>
-      <div>
-        <p> {userInfo?.phoneNumber || "--"}</p>
-        <p> {userInfo?.email || "--"}</p>
-        <p> {userInfo?.address || "--"}</p>
-      </div>
-    </div>
-  );
-
-  const SideBarButton = ({ icon: Icon, label, section }) => (
-    <button
-      className={classNames({ [styles.active]: activeSection === section })}
-      onClick={() => handleSectionChange(section)}
-    >
-      <Icon sx={{ color: "white" }} />
-      <span>{label}</span>
-    </button>
-  );
 
   return (
     <React.Fragment>
@@ -85,7 +62,7 @@ const ProfileTrainer = () => {
                 />
               </div>
             </div>
-            {activeSection === "profile" && <ProfileInfo />}
+            {activeSection === "profile" && <ProfileInfo userInfo={userInfo} />}
           </div>
         </div>
       </div>
@@ -103,21 +80,29 @@ const ProfileTrainer = () => {
             <div className={styles.sideBarContainer}>
               <SideBarButton
                 icon={AccountCircleIcon}
+                activeSection={activeSection}
+                handleSectionChange={(section) => handleSectionChange(section)}
                 label="Personal Information"
                 section="profile"
               />
               <SideBarButton
                 icon={FormatListBulletedIcon}
+                activeSection={activeSection}
+                handleSectionChange={(section) => handleSectionChange(section)}
                 label="Actu mangdats"
                 section="actu"
               />
               <SideBarButton
                 icon={LocalLibraryIcon}
+                activeSection={activeSection}
+                handleSectionChange={(section) => handleSectionChange(section)}
                 label="Trainings"
                 section="trainings"
               />
               <SideBarButton
                 icon={DateRangeIcon}
+                activeSection={activeSection}
+                handleSectionChange={(section) => handleSectionChange(section)}
                 label="Calendar"
                 section="calendar"
               />
@@ -125,95 +110,8 @@ const ProfileTrainer = () => {
           </div>
         </main>
       </div>
-
       <Footer />
     </React.Fragment>
-  );
-};
-
-const MobileDevice = ({ userInfo, activeSection, handleSectionChange }) => {
-  const ref = useRef();
-  const [isFixed, setIsFixed] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const rect = ref.current.getBoundingClientRect();
-      if (rect.top <= 0) {
-        setIsFixed(true);
-      } else {
-        setIsFixed(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  const TopBarButton = ({ icon: Icon, label, section }) => (
-    <div
-      className={classNames({ [styles.active]: activeSection === section })}
-      onClick={() => handleSectionChange(section)}
-    >
-      <Icon sx={{ color: "white" }} />
-      {activeSection === section && <p>{label}</p>}
-    </div>
-  );
-
-  return (
-    <>
-      <div
-        ref={ref}
-        className={`${styles.topBar} ${isFixed ? styles.fixed : ""}`}
-      >
-        <TopBarButton
-          icon={AccountCircleIcon}
-          label="Personal Information"
-          section="profile"
-        />
-        <TopBarButton
-          icon={FormatListBulletedIcon}
-          label="Actu mangdats"
-          section="actu"
-        />
-        <TopBarButton
-          icon={LocalLibraryIcon}
-          label="Trainings"
-          section="trainings"
-        />
-        <TopBarButton
-          icon={DateRangeIcon}
-          label="Calendar"
-          section="calendar"
-        />
-      </div>
-
-      <div className={styles.personnelInfo}>
-        <div className={styles.imgContainer}>
-          <img
-            src={
-              userInfo?.image?.filePath
-                ? `${process.env.REACT_APP_API}${userInfo.image.filePath}`
-                : "/default-profile.png"
-            }
-            alt="Profile"
-          />
-        </div>
-        <div className={styles.userInfo}>
-          <div>
-            <p>{userInfo?.name}</p>
-            <p>Trainer</p>
-          </div>
-          <div>
-            <p> {userInfo?.phoneNumber || "--"}</p>
-            <p> {userInfo?.email || "--"}</p>
-            <p> {userInfo?.address || "--"}</p>
-          </div>
-        </div>
-      </div>
-    </>
   );
 };
 
