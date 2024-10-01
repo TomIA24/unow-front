@@ -60,7 +60,10 @@ if (loading) {
                       accept="image/*"
                       id="icon-button-file"
                       type="file"
-                      onChange={SingleFileChange}
+                      onChange={(e) => {
+                         
+                        SingleFileChange(e);
+                      }}
                     />
                     <IconButton
                       color="primary"
