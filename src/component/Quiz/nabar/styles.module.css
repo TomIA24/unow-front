@@ -30,8 +30,11 @@
   .backimage {
     background: url('../../assets/quizbackground.png') no-repeat center center;
     background-size: cover;
-    height: 20rem;
+    height: 15rem;
     border-radius: 0px 0px 50px 50px;
+  }
+  .logoimag{
+    width:11%
   }
   .underline{
   
@@ -95,7 +98,7 @@ font-weight: bold;
     }
     .backimage {
    
-      height: 18rem;
+      height: 11rem;
       border-radius: 0px 0px 22px 22px;
       display: flex;
       flex-direction: column;
@@ -142,7 +145,7 @@ font-weight: bold;
     }
     .backimage {
    
-      height: 18rem;
+      height: 11rem;
       border-radius: 0px 0px 22px 22px;
       display: flex;
       flex-direction: column;
@@ -218,7 +221,7 @@ font-weight: bold;
 
     .backimage {
    
-      height: 18rem;
+      height: 11rem;
       border-radius: 0px 0px 22px 22px;
       display: flex;
       flex-direction: column;
@@ -267,7 +270,7 @@ font-weight: bold;
     }
     .backimage {
    
-      height: 18rem;
+      height: 11rem;
       border-radius: 0px 0px 22px 22px;
       display: flex;
       flex-direction: column;
@@ -316,7 +319,7 @@ font-weight: bold;
     }
     .backimage {
    
-      height: 18rem;
+      height: 11rem;
       border-radius: 0px 0px 22px 22px;
       display: flex;
       flex-direction: column;
@@ -368,7 +371,7 @@ font-weight: bold;
     }
     .backimage {
    
-      height: 18rem;
+      height: 11rem;
       border-radius: 0px 0px 22px 22px;
       display: flex;
       flex-direction: column;
@@ -425,7 +428,7 @@ font-weight: bold;
     }
     .backimage {
    
-      height: 18rem;
+      height: 11rem;
       border-radius: 0px 0px 22px 22px;
       display: flex;
       flex-direction: column;
@@ -477,7 +480,7 @@ font-weight: bold;
     }
     .backimage {
    
-      height: 18rem;
+      height:11rem;
       border-radius: 0px 0px 22px 22px;
       display: flex;
       flex-direction: column;
@@ -509,7 +512,7 @@ font-weight: bold;
 
     .backimage {
    
-      height: 20rem;
+      height: 13rem;
       border-radius: 0px 0px 25px 2p5x;
       display: flex;
       flex-direction: column;
