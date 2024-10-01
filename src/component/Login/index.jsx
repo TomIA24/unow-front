@@ -1,18 +1,16 @@
-import styles from "./styles.module.css";
-import { Link, useLocation } from "react-router-dom";
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { IoIosArrowForward, IoMdArrowDropright } from "react-icons/io";
 import { Alert, Box, LinearProgress } from "@mui/material";
+import axios from "axios";
+import React, { useState } from "react";
+import { IoMdArrowDropright } from "react-icons/io";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import image from "./dhfg.png";
-import unow from "./logoblanc.png";
 import divider from "./Divider.png";
-import facebook from "./imgMedia/Social media logo.png";
 import apple from "./imgMedia/Social media logo (1).png";
 import google from "./imgMedia/Social media logo (2).png";
 import twitter from "./imgMedia/Social media logo (3).png";
-import hide from "./icon.png";
-import { useNavigate } from "react-router-dom";
+import facebook from "./imgMedia/Social media logo.png";
+import unow from "./logoblanc.png";
+import styles from "./styles.module.css";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -33,7 +31,6 @@ const Login = () => {
       const url = `${process.env.REACT_APP_API}api/auth`;
       await axios.post(url, data).then(async (res) => {
         localStorage.setItem("token", res.data.data);
-        console.log("success");
 
         const config = {
           headers: {
@@ -49,15 +46,14 @@ const Login = () => {
 
           if (redirectPath) {
             navigate(redirectPath);
-            localStorage.removeItem("redirectPath")
+            localStorage.removeItem("redirectPath");
           } else {
             if (response.data.data.firstConnection) {
-              navigate("/trainer/informations");
+              window.location = "/profile/edit";
             } else {
-              navigate("/profile");
+              window.location = "/profile";
             }
           }
-          
 
           if (response.data.data.userType === "Admin") {
             window.location = "/admin";
