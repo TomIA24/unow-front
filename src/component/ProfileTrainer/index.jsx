@@ -30,7 +30,7 @@ const ProfileTrainer = () => {
       case "actu":
         return <Actu setActu={setActiveSection} userInfo={userInfo} />;
       case "calendar":
-        return <Calendar userInfo={userInfo} />;
+        return <Calendar />;
       case "trainings":
         return <Trainings userInfo={userInfo} />;
       case "profile":

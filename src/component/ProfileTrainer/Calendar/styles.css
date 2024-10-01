@@ -1,0 +1,228 @@
+.example-container {
+  /* padding-top: 4rem; */
+}
+
+.calendar {
+  margin: auto;
+  max-width: 60rem;
+  border: 1px solid #e3e3e3;
+  border-radius: 40px;
+}
+
+.header {
+  display: flex;
+  gap: 1rem;
+  border-bottom: 1px solid #e3e3e3;
+  padding: 0.75rem 1.25rem;
+}
+
+.weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  padding: 0.5rem 1.25rem;
+  text-align: center;
+  font-weight: 600;
+  color: #3e4678;
+  border-bottom: 1px solid #e3e3e3;
+}
+
+.weekday {
+  color: #3e4678;
+  font-size: 0.875rem;
+}
+
+.days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  padding: 0.5rem 1.25rem;
+  row-gap: 5px;
+}
+
+.day {
+  padding: 0.375rem;
+}
+
+.day-title {
+  width: 100%;
+  font-size: 0.875rem;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.day.isSelected {
+  background: #ffecf1;
+  border-radius: 10px;
+}
+
+.day.isSelectedStart {
+  background: #ffecf1;
+  border-radius: 10px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.day.isSelectedMiddle {
+  background-color: #ffecf1;
+}
+
+.day.isSelectedEnd {
+  background: #ffecf1;
+  border-radius: 10px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.day-button {
+  margin: auto;
+  height: 2.5rem;
+  width: 2.5rem;
+  font-size: 0.875rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+}
+
+.dot-container {
+  width: 0.3rem;
+  height: 0.3rem;
+  margin: 0 auto;
+  margin-top: 0.25rem;
+}
+
+.dot {
+  width: 0.3rem;
+  height: 0.3rem;
+  border-radius: 50%;
+  background-color: #6b7280;
+}
+
+.day-button.not-in-month {
+  color: rgb(166, 173, 183);
+}
+
+.day-button.selected {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.day-button.today {
+  background-color: #2c2c2c;
+  color: white;
+}
+
+.meetings {
+  margin-top: 1rem;
+  padding: 0 1.25rem;
+}
+
+.meetings-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #3e4678;
+}
+
+.meetings-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.meeting {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid #e3e3e3;
+}
+
+.meeting-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 9999px;
+  margin-right: 1rem;
+}
+
+.meeting-info {
+  flex-grow: 1;
+}
+
+.meeting-name {
+  font-weight: 500;
+  color: #3e4678;
+}
+
+.meeting-time {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.meeting-menu {
+  position: relative;
+}
+
+.menu-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.menu-items {
+  position: absolute;
+  right: 0;
+  z-index: 10;
+  background-color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 0.25rem;
+}
+
+.menu-item {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #374151;
+  text-decoration: none;
+}
+
+.menu-item:hover {
+  background-color: #f3f4f6;
+}
+
+.active {
+  background-color: #f3f4f6;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.nav-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.nav-date {
+  font-weight: bold;
+  font-size: 0.875rem;
+}
+
+.nav-icon {
+  width: 0.9rem;
+  height: 0.9rem;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
