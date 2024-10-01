@@ -1,5 +1,9 @@
-import React, { useState, useEffect,useRef } from "react";
-import styles from "./styles.module.css";
+import React, { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
+import { request } from "../../../core/api/request";
 import Icon1 from "../../assets/icon1.png";
 import Icon2 from "../../assets/icon2.png";
 import Icon3 from "../../assets/icon3.png";
@@ -8,21 +12,17 @@ import Icon5 from "../../assets/icon5.png";
 import Icon6 from "../../assets/icon6.png";
 import Icon7 from "../../assets/icon7.png";
 import Icon8 from "../../assets/icon8.png";
-import Modal from "./Categoriemodal";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import Prev from "../../assets/prev.png";
 import Next from "../../assets/next.png";
-import { useNavigate } from "react-router-dom";
+import Prev from "../../assets/prev.png";
+import { SectionTitle } from "../HomeInterface";
+import styles from "./styles.module.css";
 
 const Categories = () => {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-  console.log(screenWidth);
   const [showModal, setShowModal] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [categories, setCategories] = useState([]);
- const navigate=useNavigate()
+  const navigate = useNavigate();
   useEffect(() => {
     const handleWidthChange = () => {
       setScreenWidth(window.innerWidth);
@@ -39,37 +39,13 @@ const Categories = () => {
   }, []);
 
   useEffect(() => {
-    const fetchCategories = async () => {
-      try {
-        const config = {
-          headers: {
-            "X-Requested-With": "XMLHttpRequest",
-            "Access-Control-Allow-Origin": `${process.env.REACT_APP_API}`,
-            "Access-control-request-methods":
-              "POST, GET, DELETE, PUT, PATCH, COPY, HEAD, OPTIONS",
-          },
-          withCredentials: true,
-        };
-        const response = await fetch(
-          `${process.env.REACT_APP_API}api/Category/getCategories`,
-          config
-        );
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const result = await response.json();
-        setCategories(result.data.slice(0, 8)); // Only take the first 8 categories
-      } catch (error) {
-        console.error("Error fetching categories:", error);
-      }
-    };
-
-    fetchCategories();
+    request
+      .list("Category/getCategories")
+      .then((data) => setCategories(data?.data.slice(0, 8) || []));
   }, []);
 
   const handleCardClick = (category) => {
-    setSelectedCategory(category);
-    navigate(`/categoryCourses/${category._id}`);
+    navigate(`/category/${category._id}/courses`);
   };
 
   const handleCloseModal = () => {
@@ -109,23 +85,17 @@ const Categories = () => {
   const dialogRef = useRef(null);
   const images = [Icon1, Icon2, Icon3, Icon4, Icon5, Icon6, Icon7, Icon8];
   const [opnpopup, setpopupopen] = useState(false);
- const handlepopup= ()=> {
-
-  setpopupopen(!opnpopup)
-  console.log(opnpopup);
-  
-  };
-  const closepopup= ()=> {
-   
-    setpopupopen(!opnpopup)
+  const handlepopup = () => {
+    setpopupopen(!opnpopup);
     console.log(opnpopup);
-    
-    };
+  };
+  const closepopup = () => {
+    setpopupopen(!opnpopup);
+    console.log(opnpopup);
+  };
   return (
     <div className={styles.categorieTitle}>
-      CATEGORIES
-      <p className={styles.underline}></p>
-      <div className={styles.categorieContainer}></div>
+      <SectionTitle title="Categories" />
       {screenWidth >= 700 ? (
         <div className={styles.cardC}>
           <div className={styles.cardsContainer}>
@@ -134,8 +104,8 @@ const Categories = () => {
                 key={category._id}
                 className={styles.card}
                 style={{ backgroundColor: category.color }}
-                // onClick={() => handleCardClick(category)}
-     onClick={()=>handlepopup()}
+                onClick={() => handleCardClick(category)}
+                // onClick={() => handlepopup()}
               >
                 <img
                   src={images[index % images.length]}
@@ -154,7 +124,7 @@ const Categories = () => {
               <div
                 className={styles.card}
                 style={{ backgroundColor: category.color }}
-                onClick={()=>handlepopup()}
+                onClick={() => handlepopup()}
               >
                 <img
                   src={images[index % images.length]}
@@ -167,36 +137,27 @@ const Categories = () => {
           ))}
         </Slider>
       )}
-
       {opnpopup && (
         <>
-        <div className={styles.overlayStyles}>
-     
-        <div  ref={dialogRef} className={styles.dialogStyles}>
-          {/* <div className={styles.closbutton}>       <button  onClick={closepopup}>     <img
+          <div className={styles.overlayStyles}>
+            <div ref={dialogRef} className={styles.dialogStyles}>
+              {/* <div className={styles.closbutton}>       <button  onClick={closepopup}>     <img
         src="/images/personalize/close.png"
         alt="bronze"
 
       /></button></div> */}
-  
-        <div className={styles.iamgedialog}>
-        <img
-        src="/images/home/comingSoon.png"
-        alt="bronze"
 
-      />
-      <div className={styles.continuebutton}>
-      <button onClick={closepopup}>
-                Ok
-                  </button> </div>
-         
-        </div>
-      
-        </div >
-        </div>
-      </>
+              <div className={styles.iamgedialog}>
+                <img src="/images/home/comingSoon.png" alt="bronze" />
+                <div className={styles.continuebutton}>
+                  <button onClick={closepopup}>Ok</button>{" "}
+                </div>
+              </div>
+            </div>
+          </div>
+        </>
       )}
-{/*       
+      {/*       
       <Modal
         show={showModal}
         onClose={handleCloseModal}

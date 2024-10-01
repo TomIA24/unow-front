@@ -5,11 +5,10 @@
   background-position: bottom;
   background-repeat: no-repeat; 
 } */
- 
+
 .container {
   position: relative;
 }
-
 
 .background {
   position: absolute;
@@ -23,207 +22,98 @@
   background-repeat: no-repeat; /* Prevent the background image from repeating */
 }
 
-@media  (max-width: 327px)  {
-  .background {
-   height: 88%;   
-  }
-}
-@media (min-width: 327px) and (max-width: 346px) {
-  .background {
-   height: 88%;   
-  }
-}
-@media (min-width: 346px) and (max-width: 420px) {
-  .background {
-   height: 88%;   
-  }
-}
-
-@media (min-width: 420px) and (max-width: 440px) {
-  .background {
-   height: 88%;   
-  }
-}
-@media (min-width: 440px) and (max-width: 490px) {
-  .background {
-   height: 88%;   
-  }
-}
-@media (min-width: 490px) and (max-width: 530px) {
-  .background {
-   height: 88%;   
-  }
-}
-@media (min-width: 530px) and (max-width: 574px) {
-  .background {
-   height: 88%;   
-  }
-}
-@media (min-width: 574px) and (max-width: 608px) {
-  .background {
-   height: 89%;   
-  }
-}
-/* For small screens (phones) */
-@media (min-width: 608px) and (max-width: 701px) {
-  .background {
-   height: 91%;   
-  }
-}
-/* For small screens (phones) */
-@media (min-width: 701px) and (max-width: 748px) {
-  .background {
-   height: 100%;   
-  }
-}
-@media (min-width: 748px) and (max-width: 768px) {
-  .background {
-     height: 100%;  
-  }
-}
-@media (min-width: 768px) and (max-width: 776px) {
-  .background {
-     height: 98%;  
-  }
-}
-/* For medium screens (tablets) */
-@media (min-width: 777px) and (max-width: 799px) {
-  .background {
-     height: 99%;  
-  }
-}
-
-/* For medium screens (tablets) */
-@media (min-width: 800px) and (max-width: 890px) {
-  .background {
-     height: 98%;  
-  }
-}
-@media (min-width: 890px) and (max-width: 1000px) {
-  .background {
-      height: 96%;
-  }
-}
-
-
-/* For large screens (small desktops) */
-@media (min-width: 1000px) and (max-width: 1100px) {
-  .background {
-      height: 94%;
-  }
-}
-/* For extra large screens (large desktops) */
-@media (min-width: 1100px) and (max-width: 1240px) {
-  .background {
-    height: 94%;
-  }
-}
-/* For extra large screens (large desktops) */
-@media (min-width: 1240px) and (max-width: 1286px) {
-  .background {
-    height: 94%;
-  }
-}
-@media (min-width: 1286px) and (max-width:1340px)  {
-  .background {
-    height: 94%;
-  }
-}
-@media (min-width: 1340px) and (max-width:1400px)  {
-  .background {
-    height: 94%;
-  }
-}
-@media (min-width: 1400px) {
-  .background {
-    height: 94%;
-  }
-}
-
-
-
-
-
-
-
 .imagebackground {
   width: 100%;
   height: 100%;
-   /* Ensure the image covers the entire background */
+  /* Ensure the image covers the entire background */
 }
-
-
 
 .content {
   position: relative;
   z-index: 1; /* Ensure the content is above the background */
-
 }
-.Featured{
-margin-top: 5%;
+.Featured {
+  margin-top: 5%;
 }
 
-
-.margin{
+.margin {
   margin-left: 50px;
   margin-right: 50px;
 }
-@media (min-width:1500px)and (max-width:1830px){
-  .margin{
+@media (min-width: 1500px) and (max-width: 1830px) {
+  .margin {
     padding-left: 11em;
     padding-right: 11em;
   }
 }
-@media (min-width:1830px)and (max-width:2000px){
-  .margin{
+@media (min-width: 1830px) and (max-width: 2000px) {
+  .margin {
     padding-left: 15em;
     padding-right: 15em;
   }
 }
-@media (min-width:2000px)and (max-width:2500px){
-  .margin{
+@media (min-width: 2000px) and (max-width: 2500px) {
+  .margin {
     padding-left: 19em;
     padding-right: 19em;
   }
 }
-@media (min-width:2500px)and (max-width:3000px){
-  .margin{
+@media (min-width: 2500px) and (max-width: 3000px) {
+  .margin {
     padding-left: 29em;
     padding-right: 29em;
   }
-  .textsearchtitle{
+  .textsearchtitle {
     color: white;
     font-size: 59px;
     font-weight: 600;
     text-align: center;
     margin: 0 auto;
+  }
 }
-}
-@media (min-width:3000px)and (max-width:4000px){
-  .margin{
+@media (min-width: 3000px) and (max-width: 4000px) {
+  .margin {
     padding-left: 42em;
     padding-right: 42em;
-
   }
-  .textsearchtitle{
+  .textsearchtitle {
     color: white;
     font-size: 59px;
     font-weight: 600;
     text-align: center;
     margin: 0 auto;
+  }
 }
-}
-@media (min-width:4000px){
-  .margin{
+@media (min-width: 4000px) {
+  .margin {
     padding-left: 70em;
     padding-right: 70em;
-
   }
-  .textsearchtitle{
+  .textsearchtitle {
     color: white;
     font-size: 59px;
     font-weight: 600;
     text-align: center;
     margin: 0 auto;
+  }
 }
+
+.sectionTitle {
+  text-transform: uppercase;
+  font-size: 2.5rem;
+  font-weight: 900;
+  position: relative;
+  width: fit-content;
+  margin-bottom: 2rem;
+}
+
+.sectionTitle::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  border-radius: 100px;
+  left: 0;
+  width: 40%;
+  height: 5px;
+  background-color: #cd6214;
 }

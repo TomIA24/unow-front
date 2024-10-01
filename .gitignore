@@ -2,4 +2,5 @@
 /cert
 yarn.lock
 /build
-
+.env
+.env.prod

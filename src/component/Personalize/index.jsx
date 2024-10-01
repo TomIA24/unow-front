@@ -41,7 +41,7 @@ const Personalize = () => {
   const [learningDomain, setLearningDomain] = useState("");
   const [learningCertif, setLearningCertif] = useState("");
   const { candiddId, data } = location.state || {};
-  console.log("idcdnadt", candiddId);
+
 
   // Save quizId to sessionStorage
   const addDomain = (domain, e) => {
@@ -83,7 +83,7 @@ const Personalize = () => {
   };
 
   const handleChangeSignup = ({ currentTarget: input }) => {
-    console.log(input.name, input.value);
+
     setSignup({ ...data, [input.name]: input.value });
   };
 
@@ -121,7 +121,7 @@ const Personalize = () => {
   // };
 
   const handleComplete = () => {
-    console.log("Form completed!");
+ 
     // Handle form completion logic here
   };
 
@@ -154,7 +154,7 @@ const Personalize = () => {
     profilecomplited: 0,
  });
 
-  const [candidatdata, setcandidatdata] = useState({
+  const [candidatdata, setCandidatData] = useState({
    
     stepPersonalize_1: {
       interests: [],
@@ -188,7 +188,7 @@ const Personalize = () => {
 
         const candidateResponse = await axios.get(`${process.env.REACT_APP_API}api/candidat/candidates/${candiddId}`);
         const candidateData = candidateResponse.data;
-        setcandidatdata(candidateResponse.data)
+        setCandidatData(candidateResponse.data)
         setcandidateData(candidateResponse.data);
 
 
@@ -197,10 +197,6 @@ const Personalize = () => {
           ...candidateData,
         }));
 
-        console.log("Existing candidate candidateData:", candidateData);
-        console.log("Existing candidate candidatdata:", candidatdata);
-        console.log("Existing candidate FormData:", formData);
-        console.log("hasChanges:", hasChanges);
       }
       catch (error) {
         console.error("Error fetching candidate data:", error);
@@ -232,12 +228,13 @@ const Personalize = () => {
       });
     }
     // Handle text input changes
-    else if (type === 'text') {
+    else if (type === 'radio') {
+      // Handle radio button changes
       setFormData(prevState => ({
         ...prevState,
         stepPersonalize_1: {
           ...prevState.stepPersonalize_1,
-          exploreFirst: value // Update the text input value
+          [name]: value 
         }
       }));
     }
@@ -282,7 +279,6 @@ const Personalize = () => {
 
   const handleInputChange3 = (e) => {
     const { name, value, checked, type } = e.target;
-  console.log(e.target.value);
   
     if (type === 'checkbox') {
       setFormData(prevState => {
@@ -480,7 +476,7 @@ console.log(e.target.value);
 
     try {
       const response = await axios.put(`${process.env.REACT_APP_API}api/candidat/step1/${candiddId}`, candidatdata);
-      console.log('Response:', response.data);
+    
     } catch (error) {
       console.error('Error updating candidat data:', error);
     }
@@ -503,12 +499,12 @@ console.log(e.target.value);
     // const isStepCompleted = stepCompletionStatus[currentStep];
     const hasStepBeenCompleted = currentStepData.isCompleted;
 
-    console.log("hasChanges ", hasChanges);
+    // console.log("hasChanges ", hasChanges);
     // console.log("hasStepBeenCompleted ",hasStepBeenCompleted );
-    console.log(hasStepBeenCompleted && hasChanges);
+    // console.log(hasStepBeenCompleted && hasChanges);
 
     const updatedProfilecomplited = (hasStepBeenCompleted && hasChanges) ? (candidateData.profilecomplited) : (candidateData.profilecomplited + 20);
-    console.log('updatedProfilecomplited', updatedProfilecomplited);
+    // console.log('updatedProfilecomplited', updatedProfilecomplited);
 
 
     const updatedFormData = {
@@ -530,7 +526,7 @@ console.log(e.target.value);
       ...dataToSubmit
     } = updatedFormData;
 
-    console.log("Data to be submitted:", dataToSubmit);
+    // console.log("Data to be submitted:", dataToSubmit);
     try {
 
       const response = await axios.put(
@@ -538,7 +534,7 @@ console.log(e.target.value);
         dataToSubmit
       );
       navigate("/profile");
-      console.log("Final updated candidate data:", response.data);
+      // console.log("Final updated candidate data:", response.data);
       setCurrentStep(prevStep => prevStep + 1);
 
 
@@ -555,8 +551,8 @@ console.log(e.target.value);
   useEffect(() => {
     if (candidatdata?.profilecomplited != null) {
       const percentage = candidatdata.profilecomplited;
-      console.log('candidatdata', candidatdata.profilecomplited);
-      console.log('candidateData', candidateData.profilecomplited);
+      // console.log('candidatdata', candidatdata.profilecomplited);
+      // console.log('candidateData', candidateData.profilecomplited);
 
       setCompletedPercentage(`${percentage}%`);
 
@@ -582,7 +578,7 @@ console.log(e.target.value);
 
   const gotohome = () => {
     navigate("/")
-    console.log("candidat", { ...data, candidatdata });
+    // console.log("candidat", { ...data, candidatdata });
 
     localStorage.setItem("user", JSON.stringify({ ...candidateData }));
   }
@@ -592,53 +588,127 @@ console.log(e.target.value);
       title: "Interest Areas",
       content: (
         <>
-          {/* (!candidatdata.stepPersonalize_1 || candidatdata.stepPersonalize_1.length >= 2 ) &&  */}
-          {(<div className={styles.personlizestep}>
+          {/* Render interest checkboxes */}
+          <div className={styles.personlizestep}>
             <div className={styles.personlizesquestion}>
               <label>What subjects interest you most? (Select up to three)</label>
+    
               <div className={styles.checkboxGroup}>
-                <input type="checkbox" id="sciences" name="interests" value="Sciences & Technology" className={styles.hiddenCheckbox} checked={Array.isArray(formData.stepPersonalize_1.interests) && formData.stepPersonalize_1.interests.includes('Sciences & Technology')} onChange={handleInputChange1} />
+                <input
+                  type="checkbox"
+                  id="sciences"
+                  name="interests"
+                  value="Sciences & Technology"
+                  className={styles.hiddenCheckbox}
+                  checked={
+                    Array.isArray(formData.stepPersonalize_1.interests) &&
+                    formData.stepPersonalize_1.interests.includes("Sciences & Technology")
+                  }
+                  onChange={handleInputChange1}
+                />
                 <label htmlFor="sciences" className={styles.customLabel}>
                   Sciences & Technology
                 </label>
               </div>
               <div className={styles.checkboxGroup}>
-                <input type="checkbox" id="arts" name="interests" className={styles.hiddenCheckbox} value="Arts & Creativity"
-                  checked={Array.isArray(formData.stepPersonalize_1.interests) && formData.stepPersonalize_1.interests.includes('Arts & Creativity')} onChange={handleInputChange1} />
-                <label htmlFor="arts" className={styles.customLabel}>Arts & Creativity</label>
+                <input
+                  type="checkbox"
+                  id="arts"
+                  name="interests"
+                  value="Arts & Creativity"
+                  className={styles.hiddenCheckbox}
+                  checked={
+                    Array.isArray(formData.stepPersonalize_1.interests) &&
+                    formData.stepPersonalize_1.interests.includes("Arts & Creativity")
+                  }
+                  onChange={handleInputChange1}
+                />
+                <label htmlFor="arts" className={styles.customLabel}>
+                  Arts & Creativity
+                </label>
               </div>
               <div className={styles.checkboxGroup}>
-                <input type="checkbox" id="history" name="interests" className={styles.hiddenCheckbox} value="History & Culture" checked={Array.isArray(formData.stepPersonalize_1.interests) && formData.stepPersonalize_1.interests.includes('History & Culture')} onChange={handleInputChange1} />
-                <label htmlFor="history" className={styles.customLabel}>History & Culture</label>
+                <input
+                  type="checkbox"
+                  id="history"
+                  name="interests"
+                  value="History & Culture"
+                  className={styles.hiddenCheckbox}
+                  checked={
+                    Array.isArray(formData.stepPersonalize_1.interests) &&
+                    formData.stepPersonalize_1.interests.includes("History & Culture")
+                  }
+                  onChange={handleInputChange1}
+                />
+                <label htmlFor="history" className={styles.customLabel}>
+                  History & Culture
+                </label>
               </div>
               <div className={styles.checkboxGroup}>
-                <input type="checkbox" id="languages" name="interests" className={styles.hiddenCheckbox}
-                  checked={Array.isArray(formData.stepPersonalize_1.interests) && formData.stepPersonalize_1.interests.includes('Languages & Communication')} value="Languages & Communication" onChange={handleInputChange1} />
-                <label htmlFor="languages" className={styles.customLabel}>Languages & Communication</label>
+                <input
+                  type="checkbox"
+                  id="languages"
+                  name="interests"
+                  value="Languages & Communication"
+                  className={styles.hiddenCheckbox}
+                  checked={
+                    Array.isArray(formData.stepPersonalize_1.interests) &&
+                    formData.stepPersonalize_1.interests.includes("Languages & Communication")
+                  }
+                  onChange={handleInputChange1}
+                />
+                <label htmlFor="languages" className={styles.customLabel}>
+                  Languages & Communication
+                </label>
               </div>
               <div className={styles.checkboxGroup}>
-                <input type="checkbox" id="development" name="interests" className={styles.hiddenCheckbox}
-                  checked={Array.isArray(formData.stepPersonalize_1.interests) && formData.stepPersonalize_1.interests.includes('Personal Development')} value="Personal Development" onChange={handleInputChange1} />
-                <label htmlFor="development" className={styles.customLabel}>Personal Development</label>
-              </div>
-              <div className={styles.checkboxGroup}>
-                <input type="checkbox" id="other" name="other" className={styles.hiddenCheckbox}
-                  checked={Array.isArray(formData.stepPersonalize_1.interests) && formData.stepPersonalize_1.interests.includes('Other')} />
-                <label htmlFor="other" className={styles.customLabel}>Other (Specify)</label>
+                <input
+                  type="checkbox"
+                  id="development"
+                  name="interests"
+                  value="Personal Development"
+                  className={styles.hiddenCheckbox}
+                  checked={
+                    Array.isArray(formData.stepPersonalize_1.interests) &&
+                    formData.stepPersonalize_1.interests.includes("Personal Development")
+                  }
+                  onChange={handleInputChange1}
+                />
+                <label htmlFor="development" className={styles.customLabel}>
+                  Personal Development
+                </label>
               </div>
             </div>
-            <div >
-              <div className={styles.personlizesquestion}>
-                <label>Which of the selected areas would you like to explore in-depth first?</label>
-                <input type="text" name="exploreFirst" className={styles.input} value={formData.stepPersonalize_1.exploreFirst} onChange={handleInputChange1} placeholder="selected areas" />
-              </div>
-            </div>
-          </div>)}
+    
+            {/* Display radio buttons only if there are selected interests */}
+            {Array.isArray(formData.stepPersonalize_1.interests) &&
+              formData.stepPersonalize_1.interests.length > 0 && (
+                <div className={styles.personlizesquestion}>
+                  <label>Which of the selected areas would you like to explore in-depth first?</label>
+                  {formData.stepPersonalize_1.interests.map((interest) => (
+                    <div key={interest} className={styles.checkboxGroup}>
+                      <input
+                        type="radio"
+                        id={interest}
+                        name="exploreFirst"
+                        value={interest}
+                        checked={formData.stepPersonalize_1.exploreFirst === interest}
+                        onChange={handleInputChange1}
+                        className={styles.hiddenCheckbox}
+                      />
+                      <label htmlFor={interest} className={styles.customLabel}>
+                        {interest}
+                      </label>
+                    </div>
+                  ))}
+                </div>
+              )}
+          </div>
         </>
       ),
-      // isCompleted: !candidatdata.stepPersonalize_1?.interests && candidatdata.stepPersonalize_1.length.interests >0  ,
-      // filled:candidatdata.stepPersonalize_1 && candidatdata.stepPersonalize_1.length === 2 && candidatdata.exploreFirst
-    },
+    }
+    
+,    
     {
       title: "Goals and Aspirations",
       content: (
@@ -933,7 +1003,7 @@ console.log(e.target.value);
 
   const stepsWithContent = steps
 
-  console.log('steps', stepsWithContent[0].content);
+  // console.log('steps', stepsWithContent[0].content);
 
 
   const handleNext = async () => {
@@ -948,7 +1018,7 @@ console.log(e.target.value);
         const filteredInterests = interests.filter(i => i.trim() !== '');
 
         // Log data before validation
-        console.log("Step 1 Data:", { filteredInterests, exploreFirst });
+        // console.log("Step 1 Data:", { filteredInterests, exploreFirst });
 
         // Validate that interests array is not empty and exploreFirst is not empty
         if (!Array.isArray(filteredInterests) || filteredInterests.length === 0 || !exploreFirst.trim()) {
@@ -959,6 +1029,7 @@ console.log(e.target.value);
 
         apiUrl = `${process.env.REACT_APP_API}api/candidat/step1/${candiddId}`;
         stepData = { stepPersonalize_1: { interests: filteredInterests, exploreFirst } };
+        console.log("stepData,",stepData);
 
       } else if (currentStep === 1) {
         const { goals, timeline } = formData.stepPersonalize_2;
@@ -966,7 +1037,7 @@ console.log(e.target.value);
 
         const filteredGoals = goals.filter(g => g.trim() !== '');
 
-        console.log("Step 2 Data:", { filteredGoals, timeline });
+        // console.log("Step 2 Data:", { filteredGoals, timeline });
 
 
         if (!Array.isArray(filteredGoals) || filteredGoals.length === 0 || !timeline) {
@@ -985,7 +1056,7 @@ console.log(e.target.value);
 
         const filteredavailability = availability.filter(g => g.trim() !== '');
 
-        console.log("Step 3 Data:", { filteredavailability, hoursperweek ,learningother });
+        // console.log("Step 3 Data:", { filteredavailability, hoursperweek ,learningother });
 
 
         if (!Array.isArray(filteredavailability) || filteredavailability.length === 0 || !hoursperweek || !learningother) {
@@ -1004,11 +1075,11 @@ console.log(e.target.value);
 
         const filteredlearningpace = learningpace.filter(g => g.trim() !== '');
 
-        console.log("Step 4 Data:", { filteredlearningpace, dayslearning ,timeOfDay });
+        // console.log("Step 4 Data:", { filteredlearningpace, dayslearning ,timeOfDay });
 
 
         if (!Array.isArray(filteredlearningpace) || filteredlearningpace.length === 0 || !dayslearning || !timeOfDay) {
-          navigate('/profileClient');
+          navigate('/candidate/profile');
           console.error("learningpace or dayslearning , are invalid.");
           return; // Prevent sending invalid data
         }
@@ -1018,14 +1089,18 @@ console.log(e.target.value);
       }
 
       // Log API URL and data being sent
-      console.log("API URL:", apiUrl);
-      console.log("Data being sent:", stepData);
+      // console.log("API URL:", apiUrl);
+      // console.log("Data being sent:", stepData);
 
-      const response = await axios.put(apiUrl, stepData);
-
+      const response = await axios.put(apiUrl, stepData).then(response => console.log(response))
+      .catch(error => console.error('Error:', error));
+     
+      
+      const candidateResponse = await axios.get(`${process.env.REACT_APP_API}api/candidat/candidates/${candiddId}`);
+      setCandidatData(candidateResponse.data)
       if (response.status === 200) {
         if (currentStep === 3){
-          navigate('/profileClient');
+          navigate('/candidate/profile');
         }else {
           setCurrentStep(prevStep => prevStep + 1);
         }
@@ -1033,6 +1108,7 @@ console.log(e.target.value);
       } else {
         console.error("Something went wrong with the API call.");
       }
+
     } catch (error) {
       console.error("Error while updating candidate data:", error);
     }

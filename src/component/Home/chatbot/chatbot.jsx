@@ -1,23 +1,23 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import styles from './styles.module.css';
-import ChatbotIcon from './chat-bot.png'; // Import your SVG
-import UserAvatar from './user-avatar.png'; // Path to user avatar image
-import BotAvatar from './bot-avatar.png'; // Path to bot avatar image
-import paper from './paper.png';
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import BotAvatar from "./bot-avatar.png"; // Path to bot avatar image
+import ChatbotIcon from "./chat-bot.png"; // Import your SVG
+import paper from "./paper.png";
+import styles from "./styles.module.css";
+import UserAvatar from "./user-avatar.png"; // Path to user avatar image
 
 const Chatbot = () => {
   const [messages, setMessages] = useState([
-    { user: 'Bot', text: "Hello there! I am Knowy, your virtual assistant." },
-    { user: 'Bot', text: "How may I assist you?" }
+    { user: "Bot", text: "Hello there! I am Knowy, your virtual assistant." },
+    { user: "Bot", text: "How may I assist you?" },
   ]);
-  const [input, setInput] = useState('');
-  const [conversationId, setConversationId] = useState('');
+  const [input, setInput] = useState("");
+  const [conversationId, setConversationId] = useState("");
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [isChatAtTop, setIsChatAtTop] = useState(false);
   const [isButtonClicked, setIsButtonClicked] = useState(false); // New state
 
-  const API_KEY = '55ShM0TPpI19H14ZGDeeULP3hdm3ZGrs38rXXfDKbce8c511'; // Replace with your actual API key
+  const API_KEY = "55ShM0TPpI19H14ZGDeeULP3hdm3ZGrs38rXXfDKbce8c511"; // Replace with your actual API key
   const BASE_URL = "https://getcody.ai/api/v1";
   const BOT_NAME = "developer";
   const BOT_ID = "kQBeXrKDobyK";
@@ -38,7 +38,6 @@ const Chatbot = () => {
         }
       );
       setConversationId(response.data.data.id);
-      console.log(response.data);
     } catch (error) {
       console.log(error);
     }
@@ -98,8 +97,8 @@ const Chatbot = () => {
         className={styles.chatIcon}
         onClick={toggleChat}
         style={{
-          bottom: isChatAtTop ? 'unset' : '20px',
-          top: isChatAtTop ? '10px' : 'unset',
+          bottom: isChatAtTop ? "unset" : "20px",
+          top: isChatAtTop ? "10px" : "unset",
         }}
       >
         <img src={ChatbotIcon} alt="Chatbot Icon" />
@@ -111,48 +110,62 @@ const Chatbot = () => {
           <div className={styles.chatHeader}>
             <img src={ChatbotIcon} alt="Chatbot Icon" />
             <div className={styles.title}>
-              <span className={styles.knowy}>knowy</span><br /> 
+              <span className={styles.knowy}>knowy</span>
+              <br />
               <span className={styles.byUnow}>by u!now</span>
             </div>
           </div>
           <div className={styles.chatMessages}>
             {messages.map((message, index) => (
-              <div key={index} className={`${styles.message} ${message.user === 'User' ? styles.message1 : styles.message2}`}>
-                {message.user === 'User' ? (
+              <div
+                key={index}
+                className={`${styles.message} ${
+                  message.user === "User" ? styles.message1 : styles.message2
+                }`}
+              >
+                {message.user === "User" ? (
                   <>
-                    <div className={styles.userText}>
-                      {message.text}
-                    </div>
-                    <img className={styles.userAvatar} src={UserAvatar} alt="User Avatar" />
+                    <div className={styles.userText}>{message.text}</div>
+                    <img
+                      className={styles.userAvatar}
+                      src={UserAvatar}
+                      alt="User Avatar"
+                    />
                   </>
                 ) : (
                   <>
-                    <img className={styles.botAvatar} src={BotAvatar} alt="Bot Avatar" />
-                    <div className={styles.botText}>
-                      {message.text}
-                    </div>
+                    <img
+                      className={styles.botAvatar}
+                      src={BotAvatar}
+                      alt="Bot Avatar"
+                    />
+                    <div className={styles.botText}>{message.text}</div>
                   </>
                 )}
               </div>
             ))}
           </div>
           <div className={styles.chatInput}>
-  <input
-    type="text"
-    placeholder="Type your message here..."
-    value={input}
-    onChange={(e) => setInput(e.target.value)}
-    onKeyPress={(e) => {
-      if (e.key === 'Enter') sendMessage();
-    }}
-  />
-  <button
-    onClick={sendMessage}
-    className={input ? styles.activeButton : ''}
-  >
-    <img src={paper} alt="button icon" className={styles.buttonImage} />
-  </button>
-</div>
+            <input
+              type="text"
+              placeholder="Type your message here..."
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyPress={(e) => {
+                if (e.key === "Enter") sendMessage();
+              }}
+            />
+            <button
+              onClick={sendMessage}
+              className={input ? styles.activeButton : ""}
+            >
+              <img
+                src={paper}
+                alt="button icon"
+                className={styles.buttonImage}
+              />
+            </button>
+          </div>
         </div>
       )}
     </div>

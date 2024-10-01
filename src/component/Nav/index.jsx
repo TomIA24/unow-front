@@ -1,14 +1,11 @@
-import React, { useEffect, useState, useRef } from "react";
-import { Link } from "react-router-dom";
+import Avatar from "@mui/material/Avatar";
+import React, { useEffect, useRef, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import imgicon from "../assets/profileuser.png";
 import SliderNav from "./slider";
 import styles from "./styles.module.css";
-import img from "../assets/profileImgNoUp.svg";
-import imgicon from "../assets/profileuser.png";
-import Avatar from "@mui/material/Avatar";
-import { CiUser } from "react-icons/ci";
-import { Typography } from "@mui/material";
-import { useNavigate } from "react-router-dom";
-import { useLocation } from "react-router-dom";
+
+import axios from "axios";
 
 const Nav = () => {
   const [WindowWidth, setWindowWidth] = useState(0);
@@ -30,7 +27,6 @@ const Nav = () => {
   }, []);
   const [mobileView, setMobileView] = useState(false);
   useEffect(() => {
-    //console.log(WindowWidth)
     if (WindowWidth <= 800) {
       setMobileView(true);
     } else {
@@ -38,7 +34,6 @@ const Nav = () => {
     }
   }, []);
   useEffect(() => {
-    console.log(WindowWidth);
     if (WindowWidth <= 800) {
       setMobileView(true);
     } else {
@@ -49,20 +44,41 @@ const Nav = () => {
   const token = localStorage.getItem("token");
   const user = JSON.parse(localStorage.getItem("user"));
 
+  const [candidateData, setcandidateData] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      if (!user?._id) return;
+      try {
+        const candidateResponse = await axios.get(
+          `${process.env.REACT_APP_API}api/candidat/candidates/${user._id}`
+        );
+        const candidateData = candidateResponse.data;
+
+        setcandidateData(candidateResponse.data);
+      } catch (error) {
+        console.error("Error fetching candidate data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
     navigate(`/login`);
   };
-  const [opnpopup, setpopupopen] = useState(false);
+  const [opnpopup, setPopupOpen] = useState(false);
 
   const handlepopup = () => {
-    setpopupopen(true);
+    setPopupOpen(true);
   };
 
   const closepopup = () => {
-    navigate("/candidate/profile");
-    setpopupopen(false);
+    setTimeout(() => {
+      navigate("/candidate/profile"); // Navigate after state update
+    }, 100);
+    setPopupOpen(false);
   };
   const location = useLocation();
 
@@ -90,19 +106,16 @@ const Nav = () => {
   });
 
   const handlpersonalized = (candiddId) => {
-    console.log("id candat from nev", candiddId);
-    // navigate('/profile');
     navigate(`/personalize`, { state: { candiddId } });
-    setpopupopen(!opnpopup);
-    console.log(opnpopup);
+    setPopupOpen(!opnpopup);
   };
   const [completedPercentage, setCompletedPercentage] = useState("0%");
 
   const [progressGradient, setProgressGradient] = useState("");
   const [mainColorRgb, setMainColorRgb] = useState("");
   useEffect(() => {
-    if (user?.profilecomplited != null) {
-      const percentage = user.profilecomplited;
+    if (candidateData?.profilecomplited != null) {
+      const percentage = candidateData.profilecomplited;
       setCompletedPercentage(`${percentage}%`);
 
       if (percentage <= 20) {
@@ -120,7 +133,7 @@ const Nav = () => {
       setProgressGradient("conic-gradient(#ff9800 0%, #ffffff00 0%)");
       setMainColorRgb("255, 152, 0");
     }
-  }, [user?.profilecomplited]);
+  }, [candidateData?.profilecomplited]);
 
   return (
     <React.Fragment>
@@ -141,13 +154,13 @@ const Nav = () => {
                 }}
                 to="/"
               >
-                <a
+                <button
                   type="button"
                   className={styles.nav_btn}
                   style={{ color: "white" }}
                 >
                   Home
-                </a>
+                </button>
                 {navState === 1 && <p className={styles.underline}></p>}
               </Link>
               <Link
@@ -156,9 +169,9 @@ const Nav = () => {
                 }}
                 to="/about"
               >
-                <a type="button" className={styles.nav_btn}>
+                <button type="button" className={styles.nav_btn}>
                   About
-                </a>
+                </button>
                 {navState === 2 && <p className={styles.underline}></p>}
               </Link>
               <Link
@@ -167,9 +180,9 @@ const Nav = () => {
                 }}
                 to="/contact"
               >
-                <a type="button" className={styles.nav_btn}>
+                <button type="button" className={styles.nav_btn}>
                   Contact
-                </a>
+                </button>
                 {navState === 3 && <p className={styles.underline}></p>}
               </Link>
               {/* <Link to="/blog">
@@ -201,10 +214,10 @@ const Nav = () => {
               <div className={styles.end_nav}>
                 {user.userType === "Admin" ? (
                   <Link to="/admin">
-                    <a type="button" className={styles.nav_btn_profile}>
+                    <button type="button" className={styles.nav_btn_profile}>
                       {/* {user.userType} */}
                       Welcome, Admin
-                    </a>
+                    </button>
                   </Link>
                 ) : (
                   <div>
@@ -228,7 +241,10 @@ const Nav = () => {
                               330
                             </strong>
 
-                            <a type="button" className={styles.nav_btn_profile}>
+                            <button
+                              type="button"
+                              className={styles.nav_btn_profile}
+                            >
                               <img
                                 src="/svg/bronze.svg"
                                 alt="bronze"
@@ -276,7 +292,7 @@ const Nav = () => {
                                 </div>
                               )}
                               Welcome, {user.name}
-                            </a>
+                            </button>
                           </Link>
                         ) : (
                           <button
@@ -295,7 +311,10 @@ const Nav = () => {
                             >
                               330
                             </strong>
-                            <a type="button" className={styles.nav_btn_profile}>
+                            <button
+                              type="button"
+                              className={styles.nav_btn_profile}
+                            >
                               <img
                                 src="/svg/bronze.svg"
                                 alt="bronze"
@@ -339,7 +358,7 @@ const Nav = () => {
                                 </div>
                               )}
                               Welcome, {user.name}
-                            </a>
+                            </button>
                           </button>
                         )}
                       </>
@@ -364,7 +383,10 @@ const Nav = () => {
                             330
                           </strong>
 
-                          <a type="button" className={styles.nav_btn_profile}>
+                          <button
+                            type="button"
+                            className={styles.nav_btn_profile}
+                          >
                             <img
                               src="/svg/bronze.svg"
                               alt="bronze"
@@ -410,20 +432,20 @@ const Nav = () => {
                               </div>
                             )}
                             Welcome, {user.name}
-                          </a>
+                          </button>
                         </Link>
                       </>
                     )}
                   </div>
                 )}
                 <Link to="/">
-                  <a
+                  <button
                     type="button"
                     onClick={handleLogout}
                     className={styles.nav_btn}
                   >
                     Logout
-                  </a>
+                  </button>
                 </Link>
                 <div className={styles.language}>
                   <p>EN</p>
@@ -442,9 +464,7 @@ const Nav = () => {
           <div className={styles.overlayStyles}>
             <div ref={dialogRef} className={styles.dialogStyles}>
               <div className={styles.closbutton}>
-                {" "}
                 <button onClick={closepopup}>
-                  {" "}
                   <img src="/images/personalize/close.png" alt="bronze" />
                 </button>
               </div>
@@ -455,7 +475,6 @@ const Nav = () => {
                   alt="bronze"
                 />
                 <div className={styles.continuebutton}>
-                  {" "}
                   <button onClick={() => handlpersonalized(user._id)}>
                     Proceed
                   </button>

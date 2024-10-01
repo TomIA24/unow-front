@@ -6,8 +6,8 @@ export const singleFileUploadWithName = async (
   data,
   name,
   userId,
-  id,
-  setUploadProgress
+  id
+ 
 ) => {
   const config = {
     headers: {
@@ -15,12 +15,7 @@ export const singleFileUploadWithName = async (
       name: `name/${name}`,
       id: `id/${id}`,
     },
-    onUploadProgress: (progressEvent) => {
-      const progress = Math.round(
-        (progressEvent.loaded / progressEvent.total) * 100
-      );
-      setUploadProgress(progress);
-    },
+    
   };
   try {
     await axios.post(apiUrl + "singleFilewithTitle", data, config);
@@ -40,17 +35,36 @@ export const singleFileUpload = async (data, id) => {
   }
 };
 
-export const multipleFilesUploadWithName = async (data, name, id, type) => {
+export const multipleFilesUploadWithName = async (data, name, id,setUploadProgressRessources,setUploadProgressVideos, type) => {
+  const startTime = Date.now();
   const config = {
     headers: {
       authorization: `Bearer ${id}`,
       name: `name/${name}`,
       type: `type/${type}`,
     },
+    
+    onUploadProgress: (progressEvent) => {
+      const { loaded, total } = progressEvent;
+      
+      // Calculer le temps estimé restant
+      const elapsedTime = (Date.now() - startTime) / 1000; // temps écoulé en secondes
+      const uploadSpeed = loaded / elapsedTime; // vitesse en octets par seconde
+      const remainingBytes = total - loaded;
+      const remainingTime = remainingBytes / uploadSpeed; // temps restant en secondes
+      const formatTime = (timeInSeconds) => {
+        if (timeInSeconds < 60) return `${Math.round(timeInSeconds)} sec`;
+        if (timeInSeconds < 3600) return `${Math.round(timeInSeconds / 60)} min`;
+        return `${Math.round(timeInSeconds / 3600)} h`;
+      };
+      const formattedTime = formatTime(remainingTime);
+
+      type==="Ressources"?setUploadProgressRessources(formattedTime): setUploadProgressVideos(formattedTime);
+    },
   };
   try {
-    console.log("here Multiple videos from api file");
     await axios.post(apiUrl + "multipleFileswithTitle", data, config);
+   
   } catch (error) {
     console.log(error);
   }

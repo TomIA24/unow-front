@@ -3,12 +3,19 @@
 * {
   font-family: "Lato", sans-serif !important;
 }
-body {
 
+:root {
+  --breakpoint-xs: 0px;
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+}
+
+body {
   /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  
 }
 
 code {
@@ -56,8 +63,7 @@ code {
   top: 44px !important;
 }
 
-
-.wizard-card-footer{
+.wizard-card-footer {
   display: flex;
   justify-content: center;
   margin-top: 50px;
@@ -70,4 +76,10 @@ code {
 .disabled {
   pointer-events: none;
   opacity: 0.5;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

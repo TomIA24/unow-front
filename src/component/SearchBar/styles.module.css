@@ -1,0 +1,76 @@
+.explore_container {
+  width: 801px;
+  height: 68px;
+  display: flex;
+  border-radius: 12px;
+  background: #ffffff;
+}
+
+.explore_container input {
+  width: 70%;
+  border: none;
+  outline: none;
+}
+
+.explore_container input::placeholder {
+  color: #9f9f9f;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.explore_container button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: #2c2c2c;
+  font-weight: 600;
+}
+
+.explore_btn {
+  width: 20%;
+}
+.explore_btn::after {
+  content: "";
+  width: 2px;
+  height: 44px;
+  background-color: #9f9f9f;
+  margin-left: 20px;
+}
+.search_btn {
+  width: 10%;
+}
+.search_btn::before {
+  content: "";
+  width: 2px;
+  height: 44px;
+  background-color: #9f9f9f;
+  margin-right: 10px;
+}
+.search_btn img {
+  width: 45%;
+  height: 45%;
+  object-fit: contain;
+}
+
+@media (max-width: 768px) {
+  .explore_container {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    border-radius: 0.8rem;
+  }
+  .explore_container button {
+    font-size: 0.8rem;
+  }
+  .explore_container input::placeholder {
+    font-size: 0.8rem;
+  }
+  .explore_btn::after {
+    height: 30px;
+  }
+  .search_btn::before {
+    height: 30px;
+  }
+}

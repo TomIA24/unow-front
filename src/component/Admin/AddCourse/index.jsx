@@ -9,6 +9,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import Stack from "@mui/material/Stack";
 import TextField from "@mui/material/TextField";
+import LinearProgress from "@mui/material/LinearProgress";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import img from "../../assets/profileImgNoUp.svg";
@@ -24,6 +25,7 @@ import Avatar from "@mui/material/Avatar";
 import Badge from "@mui/material/Badge";
 import IconButton from "@mui/material/IconButton";
 import { styled } from "@mui/material/styles";
+import { getBase64 } from "../../../shared/image.service";
 import {
   multipleFilesUploadWithName,
   singleFileUploadWithName,
@@ -31,7 +33,6 @@ import {
 import Programs from "../../res/programs";
 import VideoSelected from "./VideoSelected";
 import "./styles.css";
-import { getBase64 } from "../../../shared/image.service";
 
 const SmallAvatar = styled(Avatar)(({ theme }) => ({
   width: 22,
@@ -121,17 +122,19 @@ const AddCourse = () => {
     });
   };
 
-  const [uploadProgress, setUploadProgress] = useState(0);
-
+  
+  const [uploadProgressRessources, setUploadProgressRessources] = useState("");
+  const [uploadProgressVideos, setUploadProgressVideos] = useState("");
   const uploadSingleFile = async (id) => {
     const formData = new FormData();
     formData?.append("file", singleFile);
+   
     await singleFileUploadWithName(
       formData,
       data?.Title,
       user._id,
       id,
-      setUploadProgress
+    
     );
   };
 
@@ -218,14 +221,28 @@ const AddCourse = () => {
     };
     try {
       const url = `${process.env.REACT_APP_API}api/courses/CreateCourse`;
-      axios
-        .post(url, data, config)
-        .then(async (res) => {
-          console.log("id---- :", res.data?.id);
+    const res = await axios.post(url, data, config);
+    const courseId = res.data?.id;
           // setUploading(true);
-          await uploadSingleFile(res.data?.id);
-          await UploadMultipleFiles();
-          await UploadMultipleFilesRessources();
+          await uploadSingleFile(courseId);
+           const videosData =  UploadMultipleVideos();
+           const ressourcesData =  UploadMultipleRessources();
+          await multipleFilesUploadWithName(
+            ressourcesData,
+            data?.Title,
+            user._id,
+            setUploadProgressRessources,
+            setUploadProgressVideos,
+            "Ressources"
+          );
+          await multipleFilesUploadWithName(
+            videosData,
+            data?.Title,
+            user._id,
+            setUploadProgressRessources,
+            setUploadProgressVideos,
+            "Videos"
+          );
           window.scrollTo(0, 0);
           setSaved(true);
           // setUploading(false);
@@ -233,15 +250,17 @@ const AddCourse = () => {
             setTimeout(r, 2000);
           });
           setMultipleFilesSelectedRessources([]);
-          setUploadProgress(0);
+          setUploadProgressRessources(0);
+          setUploadProgressVideos(0);
           setSaved(false);
           setData(initialData);
-          setMultipleFilesSelected([]);
+          setMultipleVideosSelected([]);
           setPrev(null);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+       //}
+      //)
+        // .catch((err) => {
+        //   console.log(err);
+        // });
     } catch (error) {
       if (
         error.response &&
@@ -282,7 +301,7 @@ const AddCourse = () => {
 
   let filesArrayRessources = [];
 
-  const MultipleFileChangeRessources = (e) => {
+  const MultipleRessourcesChange = (e) => {
     for (let i = 0; i < Object.values(e.target.files).length; i++) {
       setMultipleFilesSelectedRessources((oldSelected) => [
         ...oldSelected,
@@ -315,25 +334,20 @@ const AddCourse = () => {
     );
   };
 
-  const UploadMultipleFilesRessources = async () => {
+  const UploadMultipleRessources =  () => {
     const formData = new FormData();
     for (let i = 0; i < multipleFilesSelectedRessources.length; i++) {
       formData?.append("files", multipleFilesSelectedRessources[i]);
     }
-    await multipleFilesUploadWithName(
-      formData,
-      data?.Title,
-      user._id,
-      "Ressources"
-    );
-    // getMultipleFilesList();
+    return formData;
+   
   };
 
   /////////////////////////////////////////////////
   /////////////////////////////////////////////////
   /////////////////////////////////////////////////
 
-  const [multipleFilesSelected, setMultipleFilesSelected] = useState([]);
+  const [multipleFilesSelected, setMultipleVideosSelected] = useState([]);
 
   let filesArray = [];
 
@@ -351,15 +365,15 @@ const AddCourse = () => {
     );
   };
 
-  const MultipleFileChange = (e) => {
+  const MultipleVideoChange = (e) => {
     for (let i = 0; i < Object.values(e.target.files).length; i++) {
-      setMultipleFilesSelected((oldSelected) => [
+      setMultipleVideosSelected((oldSelected) => [
         ...oldSelected,
         Object.values(e.target.files)[i],
       ]);
     }
 
-    //setMultipleFilesSelected([Object.values().concat(multipleFilesSelected)]);
+    //setMultipleVideosSelected([Object.values().concat(multipleFilesSelected)]);
   };
 
   useEffect(() => {
@@ -376,24 +390,21 @@ const AddCourse = () => {
     }
   }, [multipleFilesSelected, filesArray]);
 
-  const UploadMultipleFiles = async () => {
+  const UploadMultipleVideos =  () => {
     const formData = new FormData();
     for (let i = 0; i < multipleFilesSelected.length; i++) {
       formData?.append("files", multipleFilesSelected[i]);
     }
-    await multipleFilesUploadWithName(
-      formData,
-      data?.Title,
-      user._id,
-      "Videos"
-    );
-    // getMultipleFilesList();
+   
+    return formData;
+   
   };
 
   var selected = multipleFilesSelected.map((element, index) => {
     return (
       <VideoSelected
-        setMultipleFilesSelected={setMultipleFilesSelected}
+       // key={index}
+        setMultipleVideosSelected={setMultipleVideosSelected}
         multipleFilesSelected={multipleFilesSelected}
         element={element}
       />
@@ -451,13 +462,13 @@ const AddCourse = () => {
     setQRQuestionValues({ [e.target.name]: e.target.value });
   };
 
-  /************************ */
+  /*************************/
+  /////////////////////////////////////////////////
+  /////////////////////////////////////////////////
+  /////////////////////////////////////////////////
+  /////////////////////////////////////////////////
+  /////////////////////////////////////////////////
 
-  /////////////////////////////////////////////////
-  /////////////////////////////////////////////////
-  /////////////////////////////////////////////////
-  /////////////////////////////////////////////////
-  /////////////////////////////////////////////////
   return (
     <>
       <form className={styles.CourseForm} action="">
@@ -501,6 +512,7 @@ const AddCourse = () => {
                         id="icon-button-file"
                         type="file"
                         onChange={(e) => {
+                          console.log(e.target.files[0]);
                           SingleFileChange(e);
                         }}
                       />
@@ -511,7 +523,7 @@ const AddCourse = () => {
                       >
                         <PhotoCamera sx={{ width: 35, height: 35 }} />
                       </IconButton>
-                    </label>
+                    </label> 
                   </SmallAvatar>
                 }
               >
@@ -537,42 +549,7 @@ const AddCourse = () => {
                   />
                 )}
 
-                <Box
-                  sx={{
-                    position: "absolute",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    // backgroundColor: "red",
-                    width: "100%",
-                    height: "100%",
-                  }}
-                >
-                  <CircularProgress
-                    variant="determinate"
-                    value={uploadProgress}
-                  />
-                  <Box
-                    sx={{
-                      top: 0,
-                      left: 0,
-                      bottom: 0,
-                      right: 0,
-                      position: "absolute",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                    }}
-                  >
-                    <Typography
-                      variant="caption"
-                      component="div"
-                      color="text.secondary"
-                    >
-                      {`${Math.round(uploadProgress)}%`}
-                    </Typography>
-                  </Box>
-                </Box>
+               
               </Badge>
             </div>
             <div className={styles.InfosSuction}>
@@ -582,11 +559,11 @@ const AddCourse = () => {
                   htmlFor="contained-button-file"
                 >
                   <Input
-                    accept="*/*"
+                   accept="video/*"
                     id="contained-button-file"
                     multiple
                     type="file"
-                    onChange={(e) => MultipleFileChange(e)}
+                    onChange={(e) => MultipleVideoChange(e)}
                   />
                   <div
                     style={{
@@ -606,6 +583,11 @@ const AddCourse = () => {
                       }}
                     />
                     <p style={{ marginTop: "-17px" }}>select videos</p>
+                    {parseInt(uploadProgressVideos) > 0 && (
+                  
+                 
+                  <Typography variant="body2">{`Time remaining for video upload : ${uploadProgressVideos}`}</Typography>
+                   )}  
                   </div>
                 </label>
               </div>
@@ -1042,7 +1024,7 @@ const AddCourse = () => {
                               {element.name}
                             </Typography>
                             <span className="">
-                              {fileSizeFormatter(element.size, 2)} KB
+                              {fileSizeFormatter(element.size, 2)} 
                             </span>
                           </div>
                           <Box
@@ -1060,11 +1042,19 @@ const AddCourse = () => {
                               <DoneIcon className={styles.IconFile} />
                             )}
                           </Box>
+                            
+                      
+                   
                         </div>
                       );
                     })
                   )}
-                </div>
+                 {parseInt(uploadProgressRessources) > 0 && (
+                  
+                 
+                  <Typography variant="body2">{`Time remaining for resource upload : ${uploadProgressRessources}`}</Typography>
+                   )}  
+                </div>   
                 <div className={styles.AddRessource}>
                   <h5>Select Files</h5>
                   <label
@@ -1072,11 +1062,12 @@ const AddCourse = () => {
                     htmlFor="contained-button-file-Ressource"
                   >
                     <Input
-                      accept="*/*"
+                       accept=".pdf,.doc,.docx,.ppt,.pptx"
                       id="contained-button-file-Ressource"
                       multiple
                       type="file"
-                      onChange={(e) => MultipleFileChangeRessources(e)}
+                    
+                      onChange={(e) => MultipleRessourcesChange(e)}
                     />
                     <IconButton
                       onClick={() => {

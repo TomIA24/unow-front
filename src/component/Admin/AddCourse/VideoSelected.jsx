@@ -6,11 +6,11 @@ import { Typography } from "@mui/material";
 import DoneIcon from '@mui/icons-material/Done';
 import UploadFileIcon from '@mui/icons-material/UploadFile';
 import CloseIcon from '@mui/icons-material/Close';
-const VideoSelected =({element,setMultipleFilesSelected,multipleFilesSelected})=>{
+const VideoSelected =({element,setMultipleVideosSelected,multipleFilesSelected})=>{
 
     const [close, setClose] = useState(false)
     const handleDeleteSelected=(name)=>{
-        setMultipleFilesSelected(multipleFilesSelected.filter(item => item.name !== name))
+        setMultipleVideosSelected(multipleFilesSelected.filter(item => item.name !== name))
     }
     const fileSizeFormatter = (bytes, decimal) => {
         if(bytes === 0){
