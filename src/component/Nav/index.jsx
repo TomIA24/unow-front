@@ -298,7 +298,6 @@ const Nav = () => {
                         
                           <button
                             onClick={handlepopup}
-{/*                 // eliminate personalize             onClick={()=>{window.location = "/candidate/profile"}} */}
                             style={{ display: "flex", alignItems: "center" }}
                           >
                             <img
