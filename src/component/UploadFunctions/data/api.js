@@ -26,10 +26,15 @@ export const singleFileUploadWithName = async (
 
 export const singleFileUpload = async (data, id) => {
   const config = {
-    headers: { authorization: `Bearer ${id}` },
+    headers: { 
+      authorization: `Bearer ${id}`,
+     
+      id: `id/${id}`,
+    },
   };
+console.log("data:",id,config)
   try {
-    return await axios.post(apiUrl + "singleFile", data, config);
+     await axios.post(apiUrl + "singleFile", data, config);
   } catch (error) {
     throw error;
   }
