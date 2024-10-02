@@ -75,10 +75,10 @@ const EditProfile = () => {
               <div className={styles.stack}>
                 <Input
                   label="Last Name"
-                  name="surname"
+                  name="subname"
                   placeholder="Enter your last name"
                   type="text"
-                  value={formData.surname}
+                  value={formData.subname}
                   onChange={handleChange}
                   required
                 />
