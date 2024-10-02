@@ -87,7 +87,7 @@ const Featured = () => {
                 </div>
                 <div className={styles.cardContent}>
                   <h3 className={styles.titleName}>
-                    {trainer.surname} {trainer.name}
+                    {trainer.subname} {trainer.name}
                   </h3>
 
                   <p className={styles.description}>{trainer.description}</p>

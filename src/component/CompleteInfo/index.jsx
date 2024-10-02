@@ -76,7 +76,7 @@ const CompleteInfo = () => {
   const [data, setData] = useState({
     _id: user._id,
     name: "",
-    surname: "",
+    subname: "",
     userName: "",
     adresse: "",
     phone: "",
@@ -614,10 +614,10 @@ const CompleteInfo = () => {
                     autoComplete="off"
                   >
                     <TextField
-                      name="surname"
+                      name="subname"
                       id="outlined-basic"
-                      label="surname"
-                      value={data.surname}
+                      label="subname"
+                      value={data.subname}
                       onChange={(e) => handleChange(e)}
                       variant="outlined"
                     />

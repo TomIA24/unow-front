@@ -9,7 +9,7 @@ const useForm = () => {
   const [formData, setFormData] = useState({
     image: "",
     name: "",
-    surname: "",
+    subname: "",
     userName: "",
     phone: "",
     address: "",
@@ -28,7 +28,7 @@ const useForm = () => {
       setFormData({
         image: data.data.image,
         name: data.data.name,
-        surname: data.data.surname,
+        subname: data.data.subname,
         userName: data.data.userName,
         phone: data.data.phone,
         address: data.data.address,

@@ -475,7 +475,7 @@ console.log(e.target.value);
     e.preventDefault();
 
     try {
-      const response = await axios.put(`${process.env.REACT_APP_API}api/candidat/step1/${candiddId}`, candidatdata);
+      const response = await axios.patch(`${process.env.REACT_APP_API}api/candidat/step1/${candiddId}`, candidatdata);
     
     } catch (error) {
       console.error('Error updating candidat data:', error);
@@ -529,7 +529,7 @@ console.log(e.target.value);
     // console.log("Data to be submitted:", dataToSubmit);
     try {
 
-      const response = await axios.put(
+      const response = await axios.patch(
         `${process.env.REACT_APP_API}api/candidat/${candiddId}`,
         dataToSubmit
       );
@@ -1029,6 +1029,7 @@ console.log(e.target.value);
 
         apiUrl = `${process.env.REACT_APP_API}api/candidat/step1/${candiddId}`;
         stepData = { stepPersonalize_1: { interests: filteredInterests, exploreFirst } };
+        console.log("stepData,",stepData);
 
       } else if (currentStep === 1) {
         const { goals, timeline } = formData.stepPersonalize_2;
@@ -1091,7 +1092,10 @@ console.log(e.target.value);
       // console.log("API URL:", apiUrl);
       // console.log("Data being sent:", stepData);
 
-      const response = await axios.put(apiUrl, stepData);
+      const response = await axios.patch(apiUrl, stepData).then(response => console.log(response))
+      .catch(error => console.error('Error:', error));
+     
+      
       const candidateResponse = await axios.get(`${process.env.REACT_APP_API}api/candidat/candidates/${candiddId}`);
       setCandidatData(candidateResponse.data)
       if (response.status === 200) {
