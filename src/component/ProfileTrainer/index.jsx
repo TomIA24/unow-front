@@ -93,7 +93,7 @@ const ProfileTrainer = () => {
                 icon={FormatListBulletedIcon}
                 activeSection={activeSection}
                 handleSectionChange={(section) => handleSectionChange(section)}
-                label="Actu mangdats"
+                label="Actu mandats"
                 section="actu"
               />
               <SideBarButton

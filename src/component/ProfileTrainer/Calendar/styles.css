@@ -13,24 +13,59 @@
 
 .header {
   display: flex;
-  gap: 1rem;
+  justify-content: space-between;
   border-bottom: 1px solid #e3e3e3;
   padding: 0.9rem 3rem;
 }
 
+.header-container {
+  display: flex;
+  gap: 1rem;
+}
+
+.header-buttons {
+  display: flex;
+  gap: 3rem;
+}
+
+.header-buttons button {
+  position: relative;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  color: var(--secondary-color);
+  font-size: 0.875rem;
+  font-weight: normal;
+}
+
+.header-buttons button::before {
+  content: "";
+  position: absolute;
+  left: -2rem;
+  background-color: var(--button-color);
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+  .header-buttons {
+    display: none;
+  }
+}
 .weekdays {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   padding: 0.9rem 1.25rem;
   text-align: center;
   font-weight: 600;
-  color: #3e4678;
+  color: var(--secondary-color);
   border-bottom: 1px solid #e3e3e3;
 }
 
 .weekday {
-  color: #3e4678;
-  font-size: 1.25rem;
+  color: var(--secondary-color);
+  font-size: 1.1rem;
   font-weight: 800;
 }
 
@@ -42,15 +77,15 @@
 }
 
 .day {
-  /* padding: 0.375rem; */
   max-width: 127px;
   height: 94px;
+  font-weight: 600;
 }
 
 .day-title {
   width: 100%;
   font-size: 0.875rem;
-  text-transform: uppercase;
+  text-transform: capitalize;
   padding: 0 0.5rem;
   font-weight: normal;
   white-space: nowrap;
@@ -111,17 +146,25 @@
   background-color: #6b7280;
 }
 
+.day-button {
+  cursor: pointer;
+}
+
 .day-button.not-in-month {
   color: rgb(166, 173, 183);
 }
 
+.day-button:hover {
+  background-color: rgba(62, 70, 120, 0.349);
+  color: white;
+}
 .day-button.selected {
-  background-color: #3b82f6;
+  background-color: var(--secondary-color);
   color: white;
 }
 
 .day-button.today {
-  background-color: #2c2c2c;
+  background-color: var(--primary-color);
   color: white;
 }
 

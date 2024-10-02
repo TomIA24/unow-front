@@ -41,6 +41,13 @@ const meetings = [
   },
 ];
 
+const buttons = [
+  { label: "Confirmed", color: "#D9EAD0" },
+  { label: "Unconfirmed", color: "#ffecf1" },
+  { label: "Holidays", color: "#DAF1FC" },
+  { label: "Availability", color: "#E2E0F6" },
+];
+
 export default function Calendar() {
   const {
     selectedDay,
@@ -51,23 +58,32 @@ export default function Calendar() {
     nextMonth,
     previousYear,
     nextYear,
-    selectedDayMeetings,
   } = useCalendar(meetings);
 
   return (
     <div className="example-container">
       <div className="calendar">
         <div className="header">
-          <OnNavigate
-            onPrevious={previousMonth}
-            onNext={nextMonth}
-            currentDate={format(firstDayCurrentMonth, "MMMM")}
-          />
-          <OnNavigate
-            onPrevious={previousYear}
-            onNext={nextYear}
-            currentDate={format(firstDayCurrentMonth, "yyyy")}
-          />
+          <div className="header-container">
+            <OnNavigate
+              onPrevious={previousMonth}
+              onNext={nextMonth}
+              currentDate={format(firstDayCurrentMonth, "MMMM")}
+            />
+            <OnNavigate
+              onPrevious={previousYear}
+              onNext={nextYear}
+              currentDate={format(firstDayCurrentMonth, "yyyy")}
+            />
+          </div>
+
+          <div className="header-buttons">
+            {buttons.map((button, index) => (
+              <button key={index} style={{ "--button-color": button.color }}>
+                <span>{button.label}</span>
+              </button>
+            ))}
+          </div>
         </div>
         <div className="weekdays">
           {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day) => (
