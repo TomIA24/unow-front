@@ -1,0 +1,78 @@
+.topBar,
+.personnelInfo {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .topBar {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    width: fit-content;
+    transition: transform 3s ease, top 3s ease;
+  }
+
+  .personnelInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .imgContainer img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+  }
+
+  .topBar > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 3rem;
+    height: 3rem;
+    border-radius: 12px;
+    background-color: var(--secondary-color);
+    border: 1px solid var(--primary-color);
+  }
+
+  .topBar div.active {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0 0.5rem;
+  }
+
+  .fixed {
+    position: sticky;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%);
+    transition: transform 0.3s ease, top 0.3s ease;
+  }
+
+  .userInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  .userInfo > div {
+    text-align: center;
+  }
+
+  .userInfo > div > p {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+}

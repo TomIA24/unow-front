@@ -26,6 +26,7 @@ import CategoryDetails from "./component/Home/Categories/CategoryDetails";
 import Quiz from "./component/Quiz/Questions";
 
 import { Toaster } from "react-hot-toast";
+import EditProfile from "./component/ProfileTrainer/EditProfile";
 import Timeout from "./component/Quiz/Questions/timeout";
 import { QuizProvider } from "./hooks/QuizContext";
 
@@ -103,7 +104,10 @@ function App() {
             )}
 
             {user.userType === "Trainer" && (
-              <Route exact path="/profile" element={<ProfileTrainer />} />
+              <>
+                <Route exact path="/profile" element={<ProfileTrainer />} />
+                <Route exact path="/profile/edit" element={<EditProfile />} />
+              </>
             )}
             {user.userType !== "Admin" && user.userType !== "Trainer" && (
               <Route
