@@ -129,13 +129,10 @@ const SignUp = () => {
       console.log("Error: Phone number");
       return;
     }
-  
-    // Create a copy of the data excluding confirmPassword
-    const { confirmPassword, ...apiData } = data;
-  
+    const { confirmPassword, ...dataToSend } = data;
     try {
-      const res = await signup({ ...apiData, profilecomplited: 20 });
-  
+      const res = await signup({ ...dataToSend, profilecomplited: 20 });
+
       navigate("/login", { state: { signup: true } });
       console.log(res.message);
     } catch (error) {

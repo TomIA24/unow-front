@@ -475,7 +475,7 @@ console.log(e.target.value);
     e.preventDefault();
 
     try {
-      const response = await axios.put(`${process.env.REACT_APP_API}api/candidat/step1/${candiddId}`, candidatdata);
+      const response = await axios.patch(`${process.env.REACT_APP_API}api/candidat/step1/${candiddId}`, candidatdata);
     
     } catch (error) {
       console.error('Error updating candidat data:', error);
@@ -529,7 +529,7 @@ console.log(e.target.value);
     // console.log("Data to be submitted:", dataToSubmit);
     try {
 
-      const response = await axios.put(
+      const response = await axios.patch(
         `${process.env.REACT_APP_API}api/candidat/${candiddId}`,
         dataToSubmit
       );
