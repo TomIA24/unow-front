@@ -1,23 +1,12 @@
+import { format, getDay, isEqual, isSameMonth, isToday } from "date-fns";
 import {
-  add,
-  eachDayOfInterval,
-  endOfMonth,
-  endOfWeek,
-  format,
-  getDay,
-  isAfter,
-  isBefore,
-  isEqual,
-  isSameDay,
-  isSameMonth,
-  isToday,
-  parse,
-  parseISO,
-  startOfToday,
-  startOfWeek,
-} from "date-fns";
-import { useState } from "react";
+  getMeetingClasses,
+  getMeetingColor,
+  getMettingTitleCurrentDay,
+} from "../../../shared/calendarUtils";
+import OnNavigate from "../components/OnNavigate";
 import "./styles.css"; // Import the CSS file
+import { useCalendar } from "./useCalendar";
 
 const meetings = [
   {
@@ -52,102 +41,19 @@ const meetings = [
   },
 ];
 
-const getMeetingClasses = (day, meetings) => {
-  const isPartOfMeeting = (meeting) => {
-    const start = parseISO(meeting.startDatetime);
-    const end = parseISO(meeting.endDatetime);
-    return (
-      isSameDay(start, day) ||
-      isSameDay(end, day) ||
-      (isAfter(day, start) && isBefore(day, end))
-    );
-  };
-
-  const relevantMeetings = meetings.filter((meeting) =>
-    isPartOfMeeting(meeting)
-  );
-
-  if (relevantMeetings.length === 0) {
-    return "";
-  }
-
-  const firstMeeting = relevantMeetings[0];
-  const startDay = parseISO(firstMeeting.startDatetime);
-  const endDay = parseISO(firstMeeting.endDatetime);
-
-  if (isSameDay(startDay, endDay)) {
-    return "isSelected";
-  }
-
-  const classes = [];
-  if (isSameDay(day, startDay)) {
-    classes.push("isSelectedStart");
-  } else if (isSameDay(day, endDay)) {
-    classes.push("isSelectedEnd");
-  } else if (isAfter(day, startDay) && isBefore(day, endDay)) {
-    classes.push("isSelectedMiddle");
-  }
-
-  return classes.join(" ");
-};
-
 export default function Calendar() {
-  const today = startOfToday();
-  const [selectedDay, setSelectedDay] = useState(today);
-  const [currentMonth, setCurrentMonth] = useState(format(today, "MMM-yyyy"));
-  const firstDayCurrentMonth = parse(currentMonth, "MMM-yyyy", new Date());
+  const {
+    selectedDay,
+    setSelectedDay,
+    firstDayCurrentMonth,
+    days,
+    previousMonth,
+    nextMonth,
+    previousYear,
+    nextYear,
+    selectedDayMeetings,
+  } = useCalendar(meetings);
 
-  const days = eachDayOfInterval({
-    start: startOfWeek(firstDayCurrentMonth),
-    end: endOfWeek(endOfMonth(firstDayCurrentMonth)),
-  });
-
-  function previousMonth() {
-    const firstDayNextMonth = add(firstDayCurrentMonth, { months: -1 });
-    setCurrentMonth(format(firstDayNextMonth, "MMM-yyyy"));
-  }
-
-  function nextMonth() {
-    const firstDayNextMonth = add(firstDayCurrentMonth, { months: 1 });
-    setCurrentMonth(format(firstDayNextMonth, "MMM-yyyy"));
-  }
-
-  function previousYear() {
-    const firstDayPreviousYear = add(firstDayCurrentMonth, { years: -1 });
-    setCurrentMonth(format(firstDayPreviousYear, "MMM-yyyy"));
-  }
-
-  function nextYear() {
-    const firstDayNextYear = add(firstDayCurrentMonth, { years: 1 });
-    setCurrentMonth(format(firstDayNextYear, "MMM-yyyy"));
-  }
-
-  const selectedDayMeetings = meetings.filter((meeting) =>
-    isSameDay(parseISO(meeting.startDatetime), selectedDay)
-  );
-
-  const getMeetingColor = (day) => {
-    const isPartOfMeeting = (meeting) => {
-      const start = parseISO(meeting.startDatetime);
-      const end = parseISO(meeting.endDatetime);
-      return (
-        isSameDay(start, day) ||
-        isSameDay(end, day) ||
-        (isAfter(day, start) && isBefore(day, end))
-      );
-    };
-
-    const relevantMeetings = meetings.filter((meeting) =>
-      isPartOfMeeting(meeting)
-    );
-
-    if (relevantMeetings.length === 0) {
-      return "";
-    }
-
-    const firstMeeting = relevantMeetings[0];
-    return firstMeeting.color;
-  };
   return (
     <div className="example-container">
       <div className="calendar">
@@ -171,10 +77,12 @@ export default function Calendar() {
           ))}
         </div>
         <div className="days">
-          {days.map((day) => (
+          {days?.map((day) => (
             <div
               key={day.toString()}
-              style={{ background: getMeetingColor(day, selectedDayMeetings) }}
+              style={{
+                background: getMeetingColor(day, meetings),
+              }}
               className={`day day-${getDay(day)} ${getMeetingClasses(
                 day,
                 meetings
@@ -196,12 +104,14 @@ export default function Calendar() {
                   {format(day, "d")}
                 </time>
               </button>
-              {/* <p className="day-title">{getMettingTitleCurrentDay(day)}</p> */}
               <div className="dot-container">
-                {meetings.some((meeting) =>
-                  isSameDay(parseISO(meeting.startDatetime), day)
-                ) && <div className="dot"></div>}
+                {!isSameMonth(day, firstDayCurrentMonth) && (
+                  <div className="dot"></div>
+                )}
               </div>
+              <p className="day-title">
+                {getMettingTitleCurrentDay(day, meetings)}
+              </p>
             </div>
           ))}
         </div>
@@ -209,39 +119,3 @@ export default function Calendar() {
     </div>
   );
 }
-
-const OnNavigate = ({ onPrevious, onNext, currentDate }) => {
-  return (
-    <div className="navigation">
-      <button type="button" onClick={onPrevious} className="nav-button">
-        <svg
-          className="nav-icon"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          viewBox="0 0 24 24"
-          aria-hidden="true"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M15 19l-7-7 7-7"
-          />
-        </svg>
-      </button>
-      <p className="nav-date">{currentDate}</p>
-      <button onClick={onNext} type="button" className="nav-button">
-        <svg
-          className="nav-icon"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          viewBox="0 0 24 24"
-          aria-hidden="true"
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-        </svg>
-      </button>
-    </div>
-  );
-};

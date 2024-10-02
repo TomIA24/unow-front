@@ -50,19 +50,23 @@ const ProfileTrainer = () => {
           <Nav />
           <div className={styles.container}>
             <p className={styles.title}>Welcome Trainer</p>
-            <div className={styles.imgProfile}>
-              <div className={styles.imgContainer}>
-                <img
-                  src={
-                    userInfo?.image?.filePath
-                      ? `${process.env.REACT_APP_API}${userInfo.image.filePath}`
-                      : "/default-profile.png"
-                  }
-                  alt="Profile"
-                />
-              </div>
-            </div>
-            {activeSection === "profile" && <ProfileInfo userInfo={userInfo} />}
+            {activeSection === "profile" && (
+              <>
+                <div className={styles.imgProfile}>
+                  <div className={styles.imgContainer}>
+                    <img
+                      src={
+                        userInfo?.image?.filePath
+                          ? `${process.env.REACT_APP_API}${userInfo.image.filePath}`
+                          : "/default-profile.png"
+                      }
+                      alt="Profile"
+                    />
+                  </div>
+                </div>
+                <ProfileInfo userInfo={userInfo} />
+              </>
+            )}
           </div>
         </div>
       </div>
