@@ -58,13 +58,13 @@ const useNotifTrainer = () => {
       { field: "date", headerName: "Date", width: 150 },
       {
         field: "TJ",
-        headerName: "TJ (Frais inclus)",
+        headerName: "TJ (Fees Included)",
         width: 150,
         editable: true,
       },
       {
         field: "statusMandat",
-        headerName: "Status Mandat",
+        headerName: "Mandate Status",
         width: 150,
         renderCell: (params) => {
           let color = "";
@@ -88,19 +88,19 @@ const useNotifTrainer = () => {
       { field: "NB", headerName: "NB d'inscrit", width: 130 },
       {
         field: "RF",
-        headerName: "Réponse Formateur",
+        headerName: "Trainer Response",
         width: 190,
         renderCell: (params) => renderResponseButton(params, handleUpdate),
       },
       {
         field: "BC",
-        headerName: "Bon de commande",
+        headerName: "Purchase Order",
         width: 190,
         renderCell: (params) => renderBCButton(params),
       },
       {
         field: "commentaire",
-        headerName: "Commentaire",
+        headerName: "Comment",
         width: 190,
         renderCell: renderCommentButton,
       },
