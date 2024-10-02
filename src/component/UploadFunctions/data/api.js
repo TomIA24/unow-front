@@ -26,10 +26,10 @@ export const singleFileUploadWithName = async (
 
 export const singleFileUpload = async (data, id) => {
   const config = {
-    headers: { 
+    headers: {
       authorization: `Bearer ${id}`,
-     
-      id: `id/${id}`,
+
+      id: `${id}`,
     },
   };
 console.log("data:",id,config)
