@@ -1004,115 +1004,88 @@ console.log(e.target.value);
   const stepsWithContent = steps
 
   // console.log('steps', stepsWithContent[0].content);
-
-
   const handleNext = async () => {
     try {
       let apiUrl;
       let stepData;
-
+  
       if (currentStep === 0) {
         const { interests, exploreFirst } = formData.stepPersonalize_1;
-
-
         const filteredInterests = interests.filter(i => i.trim() !== '');
-
-        // Log data before validation
-        // console.log("Step 1 Data:", { filteredInterests, exploreFirst });
-
-        // Validate that interests array is not empty and exploreFirst is not empty
+  
         if (!Array.isArray(filteredInterests) || filteredInterests.length === 0 || !exploreFirst.trim()) {
           setCurrentStep(prevStep => prevStep + 1);
           console.error("Interests or exploreFirst are invalid.");
-          return; // Prevent sending invalid data
+          return; 
         }
-
+  
         apiUrl = `${process.env.REACT_APP_API}api/candidat/step1/${candiddId}`;
         stepData = { stepPersonalize_1: { interests: filteredInterests, exploreFirst } };
-        console.log("stepData,",stepData);
-
+  
       } else if (currentStep === 1) {
         const { goals, timeline } = formData.stepPersonalize_2;
-
-
         const filteredGoals = goals.filter(g => g.trim() !== '');
-
-        // console.log("Step 2 Data:", { filteredGoals, timeline });
-
-
+  
         if (!Array.isArray(filteredGoals) || filteredGoals.length === 0 || !timeline) {
           setCurrentStep(prevStep => prevStep + 1);
           console.error("Goals or timeline are invalid.");
-          return; // Prevent sending invalid data
+          return;
         }
-
+  
         apiUrl = `${process.env.REACT_APP_API}api/candidat/step2/${candiddId}`;
         stepData = { stepPersonalize_2: { goals: filteredGoals, timeline } };
+  
       } else if (currentStep === 2) {
-        const { availability
-         , hoursperweek
-        , learningother } = formData.stepPersonalize_3;
-
-
+        const { availability, hoursperweek, learningother } = formData.stepPersonalize_3;
         const filteredavailability = availability.filter(g => g.trim() !== '');
-
-        // console.log("Step 3 Data:", { filteredavailability, hoursperweek ,learningother });
-
-
+  
         if (!Array.isArray(filteredavailability) || filteredavailability.length === 0 || !hoursperweek || !learningother) {
           setCurrentStep(prevStep => prevStep + 1);
-          console.error("availability or hoursperweek , are invalid.");
-          return; // Prevent sending invalid data
+          console.error("availability or hoursperweek are invalid.");
+          return;
         }
-
+  
         apiUrl = `${process.env.REACT_APP_API}api/candidat/step3/${candiddId}`;
-        stepData = { stepPersonalize_3: { availability: filteredavailability, hoursperweek ,learningother } };
-      }else if (currentStep === 3) {
-        const { learningpace
-         , dayslearning
-        , timeOfDay } = formData.stepPersonalize_4;
-
-
+        stepData = { stepPersonalize_3: { availability: filteredavailability, hoursperweek, learningother } };
+  
+      } else if (currentStep === 3) {
+        const { learningpace, dayslearning, timeOfDay } = formData.stepPersonalize_4;
         const filteredlearningpace = learningpace.filter(g => g.trim() !== '');
-
-        // console.log("Step 4 Data:", { filteredlearningpace, dayslearning ,timeOfDay });
-
-
+  
         if (!Array.isArray(filteredlearningpace) || filteredlearningpace.length === 0 || !dayslearning || !timeOfDay) {
           navigate('/candidate/profile');
-          console.error("learningpace or dayslearning , are invalid.");
-          return; // Prevent sending invalid data
+          console.error("learningpace or dayslearning are invalid.");
+          return;
         }
-
+  
         apiUrl = `${process.env.REACT_APP_API}api/candidat/step4/${candiddId}`;
-        stepData = { stepPersonalize_4: { learningpace: filteredlearningpace, dayslearning ,timeOfDay } };
+        stepData = { stepPersonalize_4: { learningpace: filteredlearningpace, dayslearning, timeOfDay } };
       }
-
+  
       // Log API URL and data being sent
-      // console.log("API URL:", apiUrl);
-      // console.log("Data being sent:", stepData);
-
-      const response = await axios.patch(apiUrl, stepData).then(response => console.log(response))
-      .catch(error => console.error('Error:', error));
-     
+      console.log("API URL:", apiUrl);
+      console.log("Data being sent:", stepData);
+  
+      const response = await axios.patch(apiUrl, stepData); // Use only `await`
       
-      const candidateResponse = await axios.get(`${process.env.REACT_APP_API}api/candidat/candidates/${candiddId}`);
-      setCandidatData(candidateResponse.data)
-      if (response.status === 200) {
-        if (currentStep === 3){
+      if (response?.status === 200) {
+        const candidateResponse = await axios.get(`${process.env.REACT_APP_API}api/candidat/candidates/${candiddId}`);
+        setCandidatData(candidateResponse.data);
+  
+        if (currentStep === 3) {
           navigate('/candidate/profile');
-        }else {
+        } else {
           setCurrentStep(prevStep => prevStep + 1);
         }
-      
       } else {
         console.error("Something went wrong with the API call.");
       }
-
+  
     } catch (error) {
       console.error("Error while updating candidate data:", error);
     }
   };
+  
 
 
 
