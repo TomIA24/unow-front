@@ -1,6 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { request } from "../../../../core/api/request";
 import Input from "../../../../shared/components/Inputs/Input";
+import AddRessources from "../../../AddRessources";
 import Nav from "../../../Nav";
 import styles from "./styles.module.css";
 
@@ -13,9 +14,24 @@ const CourseForm = () => {
     });
   }, []);
 
+  const [multipleFilesSelectedRessources, setMultipleFilesSelectedRessources] =
+    useState([]);
+  const [uploadProgressRessources, setUploadProgressRessources] = useState(0);
+
+  const handleDeleteSelected = (fileName) => {
+    setMultipleFilesSelectedRessources((prevFiles) =>
+      prevFiles.filter((file) => file.name !== fileName)
+    );
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("submit");
+  };
+
+  const MultipleRessourcesChange = (event) => {
+    const files = Array.from(event.target.files);
+    setMultipleFilesSelectedRessources((prevFiles) => [...prevFiles, ...files]);
   };
   return (
     <div>
@@ -125,6 +141,13 @@ const CourseForm = () => {
               placeholder="Enter certificate"
               type="text"
               required
+            />
+
+            <AddRessources
+              multipleFilesSelectedRessources={multipleFilesSelectedRessources}
+              uploadProgressRessources={uploadProgressRessources}
+              MultipleRessourcesChange={MultipleRessourcesChange}
+              handleDeleteSelected={handleDeleteSelected}
             />
 
             <div className={`${styles.group} ${styles.buttons}`}>
