@@ -30,7 +30,7 @@ const ProfileTrainer = () => {
       case "actu":
         return <Actu setActu={setActiveSection} userInfo={userInfo} />;
       case "calendar":
-        return <Calendar userInfo={userInfo} />;
+        return <Calendar />;
       case "trainings":
         return <Trainings userInfo={userInfo} />;
       case "profile":
@@ -50,19 +50,23 @@ const ProfileTrainer = () => {
           <Nav />
           <div className={styles.container}>
             <p className={styles.title}>Welcome Trainer</p>
-            <div className={styles.imgProfile}>
-              <div className={styles.imgContainer}>
-                <img
-                  src={
-                    userInfo?.image?.filePath
-                      ? `${process.env.REACT_APP_API}${userInfo.image.filePath}`
-                      : "/default-profile.png"
-                  }
-                  alt="Profile"
-                />
-              </div>
-            </div>
-            {activeSection === "profile" && <ProfileInfo userInfo={userInfo} />}
+            {activeSection === "profile" && (
+              <>
+                <div className={styles.imgProfile}>
+                  <div className={styles.imgContainer}>
+                    <img
+                      src={
+                        userInfo?.image?.filePath
+                          ? `${process.env.REACT_APP_API}${userInfo.image.filePath}`
+                          : "/default-profile.png"
+                      }
+                      alt="Profile"
+                    />
+                  </div>
+                </div>
+                <ProfileInfo userInfo={userInfo} />
+              </>
+            )}
           </div>
         </div>
       </div>
@@ -89,7 +93,7 @@ const ProfileTrainer = () => {
                 icon={FormatListBulletedIcon}
                 activeSection={activeSection}
                 handleSectionChange={(section) => handleSectionChange(section)}
-                label="Actu mangdats"
+                label="Actu mandats"
                 section="actu"
               />
               <SideBarButton
