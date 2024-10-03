@@ -696,10 +696,10 @@ console.log(e.target.value);
                         onChange={handleInputChange1}
                         className={styles.hiddenCheckbox}
                       />
-                    <label
+                       <label
             htmlFor={interest}
             className={
-              formData.stepPersonalize_1.exploreFirst === interest
+              interest
                 ? styles.customLabel
                 : ''
             }
@@ -1153,9 +1153,6 @@ console.log(e.target.value);
       </button>
       <div>
 
-
-
-
         <div className={styles.container}>
           {stepsWithContent.length > 0 && (
             <>
@@ -1196,7 +1193,3 @@ console.log(e.target.value);
 };
 
 export default Personalize;
-
-
-
-
