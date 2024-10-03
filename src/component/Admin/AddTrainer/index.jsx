@@ -10,8 +10,8 @@ const AddTrainer = () => {
   const currentDate = new Date();
   const initialData = {
     name: "",
-    surname: "",
-    adresse: "",
+    subname: "",
+    address: "",
     phone: "",
     email: "",
     password: "",
@@ -30,8 +30,8 @@ const AddTrainer = () => {
   };
   const [data, setData] = useState({
     name: "",
-    surname: "",
-    adresse: "",
+    subname: "",
+    address: "",
     phone: "",
     email: "",
     password: "",
