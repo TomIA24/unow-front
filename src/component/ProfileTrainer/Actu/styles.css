@@ -1,0 +1,19 @@
+.MuiDataGrid-root {
+  border: none !important;
+  scrollbar-color: var(--secondary-color) transparent !important;
+}
+
+.MuiSvgIcon-root.css-i4bv87-MuiSvgIcon-root {
+  color: var(--primary-color) !important;
+}
+
+.MuiDataGrid-columnHeaderTitle {
+  font-size: 1rem !important;
+  font-weight: 800 !important;
+}
+
+.MuiDataGrid-cell {
+  font-size: 0.75rem !important;
+  font-weight: 500 !important;
+  color: #000000;
+}

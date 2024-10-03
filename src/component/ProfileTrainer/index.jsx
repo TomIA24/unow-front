@@ -28,7 +28,7 @@ const ProfileTrainer = () => {
   const renderContent = useCallback(() => {
     switch (activeSection) {
       case "actu":
-        return <Actu setActu={setActiveSection} userInfo={userInfo} />;
+        return <Actu />;
       case "calendar":
         return <Calendar />;
       case "trainings":
