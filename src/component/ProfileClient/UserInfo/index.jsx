@@ -13,7 +13,7 @@ import useProfile from "../hooks/use-profile";
 
 export default function UserInfo() {
   const { prev, data, loading, SingleFileChange } = useProfile();
-console.log("data?.profilecomplited",data?.profilecomplited);
+
 
 const [completedPercentage, setCompletedPercentage] = useState('0%');
 
@@ -60,7 +60,10 @@ if (loading) {
                       accept="image/*"
                       id="icon-button-file"
                       type="file"
-                      onChange={SingleFileChange}
+                      onChange={(e) => {
+                       
+                        SingleFileChange(e);
+                      }}
                     />
                     <IconButton
                       color="primary"
