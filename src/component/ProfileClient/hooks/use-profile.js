@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { singleFileUpload,singleFileUploadWithName } from "../../UploadFunctions/data/api";
+import { singleFileUpload } from "../../UploadFunctions/data/api";
 import { getBase64 } from "../../../shared/image.service";
 
 const useProfile = () => {
@@ -28,7 +28,7 @@ const useProfile = () => {
       const response = await axios.get(urlUserData, config);
 
       localStorage.setItem("user", JSON.stringify(response.data.data));
-      console.log("data: ", response.data.data);
+    
       setData(response.data.data);
       setLoading(false);
     } catch (err) {
@@ -50,7 +50,7 @@ const useProfile = () => {
 
   const uploadSingleFile = async () => {
     const formData = new FormData();
-    console.log("data:", data?._id);
+    
     if (singleFile && data?._id) {
       formData.append("file", singleFile);
     
@@ -61,7 +61,7 @@ const useProfile = () => {
         window.location.reload(true);
       } catch (error) {
         console.error("Erreur lors du upload du fichier : ", error);
-        // Si Axios retourne une erreur, affiche les détails de la réponse
+       
         if (error.response) {
           console.error("Réponse du serveur :", error.response.data);
         }

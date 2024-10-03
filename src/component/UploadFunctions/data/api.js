@@ -32,7 +32,7 @@ export const singleFileUpload = async (data, id) => {
       id: `${id}`,
     },
   };
-console.log("data:",id,config)
+
   try {
      await axios.post(apiUrl + "singleFile", data, config);
   } catch (error) {
