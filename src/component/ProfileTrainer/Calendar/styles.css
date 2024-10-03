@@ -1,0 +1,259 @@
+.example-container {
+  width: 100%;
+  /* padding-top: 4rem; */
+}
+
+.calendar {
+  margin: auto;
+  width: 100%;
+  max-width: 994px;
+  box-shadow: 0 0px 4px rgba(0, 0, 0, 0.24);
+  border-radius: 40px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #e3e3e3;
+  padding: 0.9rem 3rem;
+}
+
+.header-container {
+  display: flex;
+  gap: 1rem;
+}
+
+.header-buttons {
+  display: flex;
+  gap: 3rem;
+}
+
+.header-buttons button {
+  position: relative;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  color: var(--secondary-color);
+  font-size: 0.875rem;
+  font-weight: normal;
+}
+
+.header-buttons button::before {
+  content: "";
+  position: absolute;
+  left: -2rem;
+  background-color: var(--button-color);
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+  .header-buttons {
+    display: none;
+  }
+}
+.weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  padding: 0.9rem 1.25rem;
+  text-align: center;
+  font-weight: 600;
+  color: var(--secondary-color);
+  border-bottom: 1px solid #e3e3e3;
+}
+
+.weekday {
+  color: var(--secondary-color);
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+.days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  padding: 0.9rem 1.25rem;
+  row-gap: 14px;
+}
+
+.day {
+  max-width: 127px;
+  height: 94px;
+  font-weight: 600;
+}
+
+.day-title {
+  width: 100%;
+  font-size: 0.875rem;
+  text-transform: capitalize;
+  padding: 0 0.5rem;
+  font-weight: normal;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.day.isSelected {
+  background: #ffecf1;
+  border-radius: 10px;
+}
+
+.day.isSelectedStart {
+  background: #ffecf1;
+  border-radius: 10px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.day.isSelectedMiddle {
+  background-color: #ffecf1;
+}
+
+.day.isSelectedEnd {
+  background: #ffecf1;
+  border-radius: 10px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.day-button {
+  margin: auto;
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: 0.875rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+}
+
+.dot-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 0.6rem;
+  height: 0.6rem;
+  margin: 0 auto;
+  margin-top: 0.25rem;
+}
+
+.dot {
+  width: 0.3rem;
+  height: 0.3rem;
+  border-radius: 50%;
+  background-color: #6b7280;
+}
+
+.day-button {
+  cursor: pointer;
+}
+
+.day-button.not-in-month {
+  color: rgb(166, 173, 183);
+}
+
+.day-button:hover {
+  background-color: rgba(62, 70, 120, 0.349);
+  color: white;
+}
+.day-button.selected {
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+.day-button.today {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.meetings {
+  margin-top: 1rem;
+  padding: 0 1.25rem;
+}
+
+.meetings-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #3e4678;
+}
+
+.meetings-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.meeting {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid #e3e3e3;
+}
+
+.meeting-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 9999px;
+  margin-right: 1rem;
+}
+
+.meeting-info {
+  flex-grow: 1;
+}
+
+.meeting-name {
+  font-weight: 500;
+  color: #3e4678;
+}
+
+.meeting-time {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.meeting-menu {
+  position: relative;
+}
+
+.menu-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.menu-items {
+  position: absolute;
+  right: 0;
+  z-index: 10;
+  background-color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 0.25rem;
+}
+
+.menu-item {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #374151;
+  text-decoration: none;
+}
+
+.menu-item:hover {
+  background-color: #f3f4f6;
+}
+
+.active {
+  background-color: #f3f4f6;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
