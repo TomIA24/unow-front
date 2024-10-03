@@ -555,11 +555,14 @@ console.log(e.target.value);
       // console.log('candidateData', candidateData.profilecomplited);
 
       setCompletedPercentage(`${percentage}%`);
-
-      if (percentage <= 20) {
+if(percentage<20){
+  setProgressGradient(`#2596be`);
+  setMainColorRgb('255, 152, 0');
+}
+      else if (0<percentage <= 20) {
         setProgressGradient(`#E74C3C`);
         setMainColorRgb('255, 152, 0');
-      } else if (20 < percentage <= 80) {
+      } else if (20 < percentage < 100) {
         setProgressGradient(`#F39D6E`);
         setMainColorRgb('76, 175, 80');
       }
@@ -696,9 +699,16 @@ console.log(e.target.value);
                         onChange={handleInputChange1}
                         className={styles.hiddenCheckbox}
                       />
-                      <label htmlFor={interest} className={styles.customLabel}>
-                        {interest}
-                      </label>
+                    <label
+            htmlFor={interest}
+            className={
+           interest
+                ? styles.customLabel
+                : ''
+            }
+          >
+            {interest}
+          </label>
                     </div>
                   ))}
                 </div>
@@ -1146,6 +1156,9 @@ console.log(e.target.value);
       </button>
       <div>
 
+
+
+
         <div className={styles.container}>
           {stepsWithContent.length > 0 && (
             <>
@@ -1186,3 +1199,7 @@ console.log(e.target.value);
 };
 
 export default Personalize;
+
+
+
+
