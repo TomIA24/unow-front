@@ -28,7 +28,7 @@ const useProfile = () => {
       const response = await axios.get(urlUserData, config);
 
       localStorage.setItem("user", JSON.stringify(response.data.data));
-      console.log("data: ", data);
+    
       setData(response.data.data);
       setLoading(false);
     } catch (err) {
@@ -50,14 +50,25 @@ const useProfile = () => {
 
   const uploadSingleFile = async () => {
     const formData = new FormData();
-    if (singleFile !== "" && singleFile !== null && singleFile !== undefined) {
+    
+    if (singleFile && data?._id) {
       formData.append("file", singleFile);
-      await singleFileUpload(formData, data._id);
-
-      window.location.reload(true);
+    
+      
+      try {
+       await singleFileUpload(formData, data._id);
+     
+        window.location.reload(true);
+      } catch (error) {
+        console.error("Erreur lors du upload du fichier : ", error);
+       
+        if (error.response) {
+          console.error("Réponse du serveur :", error.response.data);
+        }
+      }
     }
   };
-
+  
   useEffect(() => {
     uploadSingleFile();
   }, [singleFile]);

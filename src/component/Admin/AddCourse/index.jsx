@@ -138,9 +138,8 @@ const AddCourse = () => {
     );
   };
 
-  // useEffect(()=>{
-  //     uploadSingleFile()
-  // },[singleFile])
+  
+
 
   const certificates = Programs.map((p, index) => {
     return (
@@ -512,7 +511,7 @@ const AddCourse = () => {
                         id="icon-button-file"
                         type="file"
                         onChange={(e) => {
-                          console.log(e.target.files[0]);
+                         
                           SingleFileChange(e);
                         }}
                       />
