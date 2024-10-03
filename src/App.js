@@ -26,6 +26,7 @@ import CategoryDetails from "./component/Home/Categories/CategoryDetails";
 import Quiz from "./component/Quiz/Questions";
 
 import { Toaster } from "react-hot-toast";
+import CourseForm from "./component/ProfileTrainer/Courses/CourseForm";
 import EditProfile from "./component/ProfileTrainer/EditProfile";
 import Timeout from "./component/Quiz/Questions/timeout";
 import { QuizProvider } from "./hooks/QuizContext";
@@ -107,6 +108,8 @@ function App() {
               <>
                 <Route exact path="/profile" element={<ProfileTrainer />} />
                 <Route exact path="/profile/edit" element={<EditProfile />} />
+                <Route exact path="/course/add" element={<CourseForm />} />
+                <Route exact path="/course/edit/:id" element={<CourseForm />} />
               </>
             )}
             {user.userType !== "Admin" && user.userType !== "Trainer" && (

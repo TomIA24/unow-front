@@ -3,14 +3,17 @@ import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import EditIcon from "@mui/icons-material/Edit";
 import SendIcon from "@mui/icons-material/Send";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "./styles.module.css";
 
 const Courses = () => {
+  const navigate = useNavigate();
+
   return (
     <div className={styles.container}>
       <div className={styles.addCourse}>
         <p>Courses</p>
-        <span>
+        <span onClick={() => navigate("/course/add")}>
           <AddIcon sx={{ fontSize: "24px" }} />
         </span>
       </div>
@@ -28,11 +31,14 @@ const Courses = () => {
                   sx={{ color: "var(--primary-color)", fontSize: "16px" }}
                 />
               </div>
-              <div className={styles.icon}>
+              <di
+                onClick={() => navigate(`/course/edit/${1}`)}
+                className={styles.icon}
+              >
                 <EditIcon
                   sx={{ color: "var(--secondary-color)", fontSize: "16px" }}
                 />
-              </div>
+              </di>
             </div>
           </div>
           <div className={styles.textContainer}>
