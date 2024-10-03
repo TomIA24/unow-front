@@ -555,14 +555,11 @@ console.log(e.target.value);
       // console.log('candidateData', candidateData.profilecomplited);
 
       setCompletedPercentage(`${percentage}%`);
-if(percentage<20){
-  setProgressGradient(`#2596be`);
-  setMainColorRgb('255, 152, 0');
-}
-      else if (0<percentage <= 20) {
+
+      if (percentage <= 20) {
         setProgressGradient(`#E74C3C`);
         setMainColorRgb('255, 152, 0');
-      } else if (20 < percentage < 100) {
+      } else if (20 < percentage <= 80) {
         setProgressGradient(`#F39D6E`);
         setMainColorRgb('76, 175, 80');
       }
@@ -702,7 +699,7 @@ if(percentage<20){
                     <label
             htmlFor={interest}
             className={
-           interest
+              formData.stepPersonalize_1.exploreFirst === interest
                 ? styles.customLabel
                 : ''
             }
