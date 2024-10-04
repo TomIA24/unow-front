@@ -1,0 +1,22 @@
+.FileSelector {
+  width: 100%;
+  min-height: 454px;
+  border-radius: 20px;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 26%);
+}
+
+.selectFiles {
+  width: 90%;
+  height: 250px;
+  margin: auto;
+  border: 2px dashed #cccccc;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
