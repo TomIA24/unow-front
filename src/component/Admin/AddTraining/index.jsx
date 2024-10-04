@@ -291,7 +291,7 @@ const AddTraining = () => {
     return (
       <MenuItem key={Trainer._id} value={Trainer._id}>
         {`${
-          Trainer.surname.charAt(0).toUpperCase() + Trainer.surname.slice(1)
+          Trainer.subname.charAt(0).toUpperCase() + Trainer.subname.slice(1)
         } ${Trainer.name} `}
       </MenuItem>
     );
