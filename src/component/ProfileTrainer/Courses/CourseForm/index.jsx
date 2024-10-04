@@ -1,16 +1,38 @@
 import React, { useEffect, useState } from "react";
 import { request } from "../../../../core/api/request";
 import Input from "../../../../shared/components/Inputs/Input";
+import Select from "../../../../shared/components/Inputs/Select";
 import AddRessources from "../../../AddRessources";
 import Nav from "../../../Nav";
 import styles from "./styles.module.css";
 
 const CourseForm = () => {
   const [userInfo, setUserInfo] = React.useState({});
+  const [categories, setCategories] = useState([]);
+  const [formData, setFormData] = useState({
+    Reference: "",
+    Title: "",
+    Description: "",
+    Price: "",
+    Level: "",
+    Category: "",
+    Goals: "",
+    WhoShouldAttend: "",
+    CourseContent: "",
+    PracticalWork: "",
+    certificate: "",
+    testState: "notStarted",
+    // thumbnail: "",
+  });
 
   useEffect(() => {
     request.read("userData").then((data) => {
-      setUserInfo(data.data);
+      setUserInfo(data?.data);
+    });
+
+    request.read("category/getCategories").then((data) => {
+      const CategoriesTitles = data?.data.map((category) => category.Title);
+      setCategories(CategoriesTitles);
     });
   }, []);
 
@@ -26,12 +48,19 @@ const CourseForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("submit");
+    request.create("courses/CreateCourse", formData).then((data) => {
+      console.log("Course created successfully", data);
+    });
+    // console.log(formData);
   };
 
   const MultipleRessourcesChange = (event) => {
     const files = Array.from(event.target.files);
     setMultipleFilesSelectedRessources((prevFiles) => [...prevFiles, ...files]);
+  };
+
+  const handleChangeFormData = (e) => {
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
   return (
     <div>
@@ -57,22 +86,33 @@ const CourseForm = () => {
       <div className="appWrapper">
         <div className={styles.container}>
           <form onSubmit={handleSubmit}>
-            <Input label="Title" name="title" type="text" />
+            <Input
+              label="Title"
+              name="Title"
+              type="text"
+              value={formData.Title}
+              onChange={(e) => handleChangeFormData(e)}
+              required
+            />
 
             <div className={styles.group}>
               <div className={styles.stack}>
                 <Input
                   label="Reference"
-                  name="reference"
+                  name="Reference"
                   placeholder="Enter reference"
                   type="text"
+                  value={formData.Reference}
+                  onChange={(e) => handleChangeFormData(e)}
                   required
                 />
-                <Input
+                <Select
                   label="Category"
-                  name="category"
+                  name="Category"
                   placeholder="Enter category"
-                  type="text"
+                  options={categories}
+                  value={formData.Category}
+                  onChange={(e) => handleChangeFormData(e)}
                   required
                 />
               </div>
@@ -80,16 +120,20 @@ const CourseForm = () => {
               <div className={styles.stack}>
                 <Input
                   label="Price"
-                  name="price"
+                  name="Price"
                   placeholder="Enter price"
+                  value={formData.Price}
+                  onChange={(e) => handleChangeFormData(e)}
                   type="number"
                   required
                 />
-                <Input
+                <Select
                   label="Level"
-                  name="level"
+                  name="Level"
                   placeholder="Enter level"
-                  type="number"
+                  options={["Level 1", "Level 2", "Level 3"]}
+                  value={formData.Level}
+                  onChange={(e) => handleChangeFormData(e)}
                   required
                 />
               </div>
@@ -97,41 +141,51 @@ const CourseForm = () => {
 
             <Input
               label="Description"
-              name="description"
+              name="Description"
               placeholder="Enter desciption"
               type="text"
+              value={formData.Description}
+              onChange={(e) => handleChangeFormData(e)}
               required
             />
 
             <Input
               label="Goals"
-              name="goals"
+              name="Goals"
               placeholder="Enter goals"
               type="text"
+              value={formData.Goals}
+              onChange={(e) => handleChangeFormData(e)}
               required
             />
 
             <Input
               label="Who Should Attend"
-              name="whoShouldAttend"
+              name="WhoShouldAttend"
               placeholder="Enter who shoud attend"
               type="text"
+              value={formData.WhoShouldAttend}
+              onChange={(e) => handleChangeFormData(e)}
               required
             />
 
             <Input
               label="Course Content"
-              name="courseContent"
+              name="CourseContent"
               placeholder="Enter course content"
               type="text"
+              value={formData.CourseContent}
+              onChange={(e) => handleChangeFormData(e)}
               required
             />
 
             <Input
               label="Practical Work"
-              name="practicalWork"
+              name="PracticalWork"
               placeholder="Enter practical work"
               type="text"
+              value={formData.PracticalWork}
+              onChange={(e) => handleChangeFormData(e)}
               required
             />
 
@@ -140,6 +194,8 @@ const CourseForm = () => {
               name="certificate"
               placeholder="Enter certificate"
               type="text"
+              value={formData.certificate}
+              onChange={(e) => handleChangeFormData(e)}
               required
             />
 
