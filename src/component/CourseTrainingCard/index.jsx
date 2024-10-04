@@ -8,6 +8,7 @@ const CourseTrainingCard = ({
   title,
   category,
   price,
+  currency,
   level,
   rating,
   type,
@@ -24,7 +25,7 @@ const CourseTrainingCard = ({
         <div className={styles.content}>
           <div className={styles.text}>
             <p>{category}</p>
-            <p>{price} $</p>
+            <p>{price} {currency}</p>
           </div>
 
           <div className={styles.title}>
