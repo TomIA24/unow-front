@@ -154,7 +154,7 @@ const Details = ({ Course, setOpenChange, openChange }) => {
             _id: defaultTrainer._id,
             Trainer: {
               name: defaultTrainer.name,
-              surname: defaultTrainer.surname,
+              surname: defaultTrainer.subname,
             },
             prixFormateur: "default trainer",
             showTTC: false,
