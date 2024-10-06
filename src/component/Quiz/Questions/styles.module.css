@@ -23,7 +23,7 @@ body {
 .backimage {
   background: url('../../assets/quizbackground.png') no-repeat center center;
   background-size: cover;
-  height: 22rem;
+  height: 15rem;
   border-radius: 0px 0px 50px 50px;
   display: flex;
   flex-direction: column;
@@ -105,11 +105,10 @@ body {
   filter: brightness(1.2); /* Increase brightness on hover */
 }
 .quizcontainer {
-  padding-top: 4rem;
+  padding-top: 2rem;
   display: flex;
   flex-direction: column;
-
-  gap: 1.5rem;
+  gap: 0;
 }
 
 .logo {
@@ -119,6 +118,9 @@ body {
   /* height: 70%;  */
   width: 100%;
   margin-bottom: 0;
+}
+.logo img{
+  width: 10rem;
 }
 
 .questionsection {
@@ -290,7 +292,7 @@ cursor: pointer;
 
   margin-left: 15%;
   margin-right: 15%;
-  margin-top: 24rem;
+  margin-top:17rem;
 
 }
 .menudialog{
@@ -1904,7 +1906,7 @@ align-items: center;
       width: 50%;
     }
     .backimage {
-      height: 20rem;
+      height: 13rem;
       border-radius: 0px 0px 25px 25px;
    
   
@@ -2351,7 +2353,7 @@ align-items: center;
       }
   @media (min-width: 760px) and (max-width: 800px) {
     .backimage {
-      height: 20rem;
+      height: 13rem;
       border-radius: 0px 0px 25px 25px;
    
   
@@ -3405,7 +3407,7 @@ align-items: center;
     
     }
     .backimage {
-      height: 20rem;
+      height: 13rem;
       border-radius: 0px 0px 25px 25px;
    
   
