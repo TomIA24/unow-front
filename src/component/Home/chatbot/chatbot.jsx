@@ -4,7 +4,7 @@ import BotAvatar from "./bot-avatar.png"; // Path to bot avatar image
 import ChatbotIcon from "./chat-bot.png"; // Import your SVG
 import paper from "./paper.png";
 import styles from "./styles.module.css";
-import UserAvatar from "./user-avatar.png"; // Path to user avatar image
+import UserAvatar from "./user-avatar.jpg"; // Path to user avatar image
 
 const Chatbot = () => {
   const [messages, setMessages] = useState([
