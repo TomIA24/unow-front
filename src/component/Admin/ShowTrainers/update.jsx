@@ -218,10 +218,29 @@ const Update = ({ User, setOpenChange, openChange }) => {
               autoComplete="off"
             >
               <TextField
-                name="userName"
+                name="name"
                 id="outlined-basic"
-                label="userName"
-                value={user.userName}
+                label="name"
+                value={user.name}
+                onChange={(e) => handleChange(e)}
+                variant="outlined"
+              />
+            </Box>
+          </FormControl>
+          <FormControl sx={{ m: 1, minWidth: "80%" }}>
+            <Box
+              component="form"
+              sx={{
+                "& > :not(style)": { width: "100%" },
+              }}
+              Validate
+              autoComplete="off"
+            >
+              <TextField
+                name="subname"
+                id="outlined-basic"
+                label="subname"
+                value={user.subname}
                 onChange={(e) => handleChange(e)}
                 variant="outlined"
               />

@@ -4,20 +4,19 @@ import successHandler from "./successHandler";
 
 const api = axios.create({
   baseURL: process.env.REACT_APP_API + "api/",
-//  withCredentials: true,
+  //  withCredentials: true,
   headers: {
     "Content-Type": "application/json",
-     "X-Requested-With": "XMLHttpRequest",
-     "Access-Control-Allow-Origin": `${process.env.REACT_APP_API}`,
-     "Access-control-request-methods": "POST, GET, DELETE, PUT, PATCH, COPY, HEAD, OPTIONS",
+    "X-Requested-With": "XMLHttpRequest",
+    "Access-Control-Allow-Origin": `${process.env.REACT_APP_API}`,
+    "Access-control-request-methods":
+      "POST, GET, DELETE, PUT, PATCH, COPY, HEAD, OPTIONS",
   },
 });
 
- 
-
 api.interceptors.request.use(
   (config) => {
-    const accessToken = localStorage.getItem("accessToken");
+    const accessToken = localStorage.getItem("token");
     if (accessToken) {
       config.headers["Authorization"] = `Bearer ${accessToken}`;
     }
@@ -48,7 +47,7 @@ const update = async (entity, id, jsonData) => {
   }
 };
 
-const read = async (entity, id) => {
+const read = async (entity, id = "") => {
   try {
     const response = await api.get(`${entity}/${id}`);
     successHandler(response, { notifyOnSuccess: false, notifyOnFailed: true });

@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useRef } from "react";
-import styles from "./styles.module.css";
+import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import TextField from "@mui/material/TextField";
-import Box from "@mui/material/Box";
 import axios from "axios";
+import React, { useState } from "react";
+import styles from "./styles.module.css";
 
 const ApplyTrainer = ({ openApply, setOpenApply }) => {
   const [Data, setData] = useState({

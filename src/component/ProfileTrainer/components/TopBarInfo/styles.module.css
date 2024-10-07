@@ -1,0 +1,39 @@
+.info {
+  position: absolute;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  bottom: -160%;
+}
+
+.info > div:first-child p:first-child {
+  font-size: 36px;
+  font-weight: 700;
+}
+.info > div:first-child p:nth-child(2) {
+  font-size: 32px;
+  font-weight: 500;
+}
+
+.info > div:first-child {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.info > div:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+@media screen and (max-width: 768px) {
+  .info {
+    display: none;
+  }
+}

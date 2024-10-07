@@ -1,0 +1,33 @@
+.inputContainer {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.inputContainer > label {
+  font-size: 1.55rem;
+  font-family: "Roboto", sans-serif !important;
+  font-weight: 600;
+  color: #1c1c1c;
+}
+
+.inputContainer > input,
+.inputContainer > select {
+  width: 100%;
+  height: 70px;
+  border-radius: 12px;
+  border: 1px solid #3e4678;
+  padding: 21px 27px;
+  outline: none;
+}
+
+.inputContainer > select {
+  background-image: url("../../../component/assets/arrow.svg");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1rem;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}

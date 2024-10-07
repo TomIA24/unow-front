@@ -33,6 +33,7 @@ const SignUp = () => {
   const [phoneError, setPhoneError] = useState("");
 
   const [isValidEmail, setIsValidEmail] = useState(true);
+  const [isConfPswrd, setIsConfPswrd] =useState(true);
   const navigate = useNavigate();
 
   const handleChange = ({ currentTarget: input }) => {
@@ -52,6 +53,7 @@ const SignUp = () => {
   
     if (name === "confirmPassword" || name === "password") {
       if (data.password !== value && name === "confirmPassword") {
+        setIsConfPswrd(false);
         setPasswordError("Passwords do not match");
       } else {
         setPasswordError("");
@@ -129,9 +131,9 @@ const SignUp = () => {
       console.log("Error: Phone number");
       return;
     }
-
+    const { confirmPassword, ...dataToSend } = data;
     try {
-      const res = await signup({ ...data, profilecomplited: 20 });
+      const res = await signup({ ...dataToSend, profilecomplited: 20 });
 
       navigate("/login", { state: { signup: true } });
       console.log(res.message);
@@ -242,9 +244,9 @@ const SignUp = () => {
           required
           className={styles.input}
         />
-        {passwordError && <div className={styles.error_msg}>{passwordError}</div>}
+    
       </div>
-
+      {!isConfPswrd && <div className={styles.error_msg_Phone}>Password not matched </div>}
       <div className={styles.options}>
         <div className={styles.checkBox}>
           <input type="checkbox" name="remember" />

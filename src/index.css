@@ -2,6 +2,9 @@
 
 * {
   font-family: "Lato", sans-serif !important;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 :root {
@@ -10,6 +13,9 @@
   --breakpoint-md: 768px;
   --breakpoint-lg: 992px;
   --breakpoint-xl: 1200px;
+  --primary-color: #cd6214;
+  --secondary-color: #3e4678;
+  --shadow-color: rgba(0, 0, 0, 26%);
 }
 
 body {
@@ -82,4 +88,32 @@ code {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.appWrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+
+  @media (max-width: 768px) {
+    padding: 0 12px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0 8px;
+  }
+}
+
+/* Container for the header background image */
+.background_container {
+  background: url("./component/assets/background-image.png") no-repeat center
+    center;
+  background-size: cover;
+  height: 31vh;
+  border-radius: 0 0 var(--border-radius-large) var(--border-radius-large);
+  position: relative;
 }
