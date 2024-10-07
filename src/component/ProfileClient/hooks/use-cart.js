@@ -3,7 +3,7 @@ import axios from "axios";
 
 const useCart = () => {
   const [data, setData] = useState(null);
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState();
 
   const [loading, setLoading] = useState(true);
   const [isCoursesLoading, setCoursesLoading] = useState(true);
@@ -11,26 +11,47 @@ const useCart = () => {
 
   const token = localStorage.getItem("token");
 
-  const handleCartContent = async (cartTrainings, cartCourses) => {
-    const coursesIds = [...new Set(cartCourses)];
-    const trainingsIds = [...new Set(cartTrainings)];
-    const config = {
-      headers: { authorization: `Bearer ${token}` },
-    };
+  const handleCartCourses = async (  cartCourses) => {
     try {
+      const coursesIds = [...new Set(cartCourses)]; 
+      const config = {
+        headers: { authorization: `Bearer ${token}` },
+      };
+
+       
+          const urlCourses = `${process.env.REACT_APP_API}api/courses/specificGroupe`;
+          await axios
+            .post(urlCourses, { cartIds: coursesIds }, config)
+            .then(async (res) => {
+              setCart({ ...cart, courses: res.data.data });
+              setCoursesLoading(false);
+              console.log("cart update courses: ", res.data.data);
+            });
+         
+    } catch (error) {
+      if (
+        error.response &&
+        error.response.status >= 400 &&
+        error.response.status <= 500
+      ) {
+      }
+    }
+  };
+  const handleCartTrainings = async (cartTrainings ) => {
+    try { 
+      const trainingsIds = [...new Set(cartTrainings)];
+      const config = {
+        headers: { authorization: `Bearer ${token}` },
+      };
+
       const urlTrainings = `${process.env.REACT_APP_API}api/trainings/specificGroupe`;
       await axios
         .post(urlTrainings, { cartIds: trainingsIds }, config)
-        .then((res) => {
+        .then(async (res) => {
           setCart({ ...cart, trainings: res.data.data });
           setTrainingsLoading(false);
-        });
-      const urlCourses = `${process.env.REACT_APP_API}api/courses/specificGroupe`;
-      await axios
-        .post(urlCourses, { cartIds: coursesIds }, config)
-        .then((res) => {
-          setCart({ ...cart, courses: res.data.data });
-          setCoursesLoading(false);
+          console.log("cart update trainings: ", res.data.data);
+           
         });
     } catch (error) {
       if (
@@ -63,10 +84,9 @@ const useCart = () => {
       console.log("data: ", data);
       setData(response.data.data);
       setLoading(false);
-      handleCartContent(
-        response.data.data.cartTrainings,
-        response.data.data.cartCourses
-      );
+      await handleCartCourses(response.data.data.cartCourses)
+      await handleCartTrainings(response.data.data.cartTrainings)
+        
     } catch (err) {
       console.error("Failed to fetch user data", err);
       setLoading(false);
