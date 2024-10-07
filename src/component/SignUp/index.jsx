@@ -8,11 +8,6 @@ import { useRecoilState } from "recoil";
 import { signup } from "./signup.utils";
 import unow from "./unow.png";
 import image from "./image.png";
-import divider from "./Divider.png";
-import facebook from "./imgMedia/Social media logo.png";
-import apple from "./imgMedia/Social media logo (1).png";
-import google from "./imgMedia/Social media logo (2).png";
-import twitter from "./imgMedia/Social media logo (3).png";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 const SignUp = () => {
@@ -263,34 +258,27 @@ const SignUp = () => {
         <button type="submit" className={styles.Signup_btn}>
           Sign Up
         </button>
-        <Link className={styles.login} to="/login">
+        
+        {/* <Link className={styles.login} to="/login">
           <p className={styles.forgetpsw}>
             <u>
               You have already one ?<IoMdArrowDropright />
             </u>{" "}
           </p>
-        </Link>
+        </Link> */}
       </div>
 
-      <div className={styles.divider}>
-        <img
-          src={divider}
-          className={styles.dividerImage}
-          alt="Divider"
-        />
-        <p className={styles.or}>Or</p>
-        <img
-          src={divider}
-          className={styles.dividerImage}
-          alt="Divider"
-        />
-      </div>
-      <div className={styles.allsocialmedia}>
-        <img src={facebook} className={styles.socialmediaF} />
-        <img src={apple} className={styles.socialmedia} />
-        <img src={google} className={styles.socialmedia} />
-        <img src={twitter} className={styles.socialmedia} />
-      </div>
+      <p className={styles.nvaccount}>
+          You have already one ?{" "}
+                <a href="/login" className={styles.loginLink}>
+                  Login
+                </a>
+                <img 
+                    src="/svg/login.svg"
+                    style={{ height: 20 ,margin :"8px 2px 2px 2px"}}
+                    alt=""
+                  />
+              </p>
     </form>
   </div>
 </div>
