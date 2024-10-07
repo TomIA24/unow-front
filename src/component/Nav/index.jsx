@@ -9,11 +9,7 @@ import axios from "axios";
 
 const Nav = () => {
   const [WindowWidth, setWindowWidth] = useState(0);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
   const navState = localStorage.getItem("navState");
 
   const navigate = useNavigate();
@@ -200,7 +196,7 @@ const Nav = () => {
               <div className={styles.end_nav}>
               {/* <div style={{ position: 'relative', display: 'inline-block' }}> */}
               <Link to="/login">
-                 <div onClick={toggleMenu} className={styles.login}>
+                 <div  className={styles.login}>
                  <img
                               src="/svg/loginHome.svg"
                               style={{ height: 30 }}
