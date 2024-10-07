@@ -1,143 +1,31 @@
-import React, { useEffect, useState } from "react";
-import toast from "react-hot-toast";
-import { request } from "../../../../core/api/request";
+import React from "react";
 import Input from "../../../../shared/components/Inputs/Input";
 import Select from "../../../../shared/components/Inputs/Select";
 import AddRessources from "../../../AddRessources";
 import ImgUploadSection from "../../../ImgUploadSection";
 import Nav from "../../../Nav";
-import { multipleFilesUploadWithName } from "../../../UploadFunctions/data/api";
 import VideosSelector from "../../../VideosSelector";
 import styles from "./styles.module.css";
+import { useCourseForm } from "./useCourseForm";
 
 const CourseForm = () => {
-  const [userInfo, setUserInfo] = useState({});
-  const [categories, setCategories] = useState([]);
-  const [uploadProgressVideos, setUploadProgressVideos] = useState(0);
-  const [multipleVideosSelected, setMultipleVideosSelected] = useState([]);
-  const [multipleFilesSelectedRessources, setMultipleFilesSelectedRessources] =
-    useState([]);
-  const [uploadProgressRessources, setUploadProgressRessources] = useState(0);
-  const [formData, setFormData] = useState({
-    Reference: "",
-    Title: "",
-    Description: "",
-    Price: "",
-    Level: "",
-    Category: "",
-    Goals: "",
-    WhoShouldAttend: "",
-    CourseContent: "",
-    PracticalWork: "",
-    certificate: "",
-    testState: "notStarted",
-    thumbnail: "",
-  });
+  const {
+    formData,
+    categories,
+    img,
+    uploadProgressVideos,
+    multipleVideosSelected,
+    multipleFilesSelectedRessources,
+    setMultipleVideosSelected,
+    uploadProgressRessources,
+    handleSingleFileChange,
+    handleChangeFormData,
+    handleMultipleVideoChange,
+    MultipleRessourcesChange,
+    handleDeleteSelected,
+    handleSubmit,
+  } = useCourseForm();
 
-  useEffect(() => {
-    request.read("userData").then((data) => {
-      setUserInfo(data?.data);
-    });
-
-    request.read("category/getCategories").then((data) => {
-      const CategoriesTitles = data?.data.map((category) => category.Title);
-      setCategories(CategoriesTitles);
-    });
-  }, []);
-
-  const handleDeleteSelected = (fileName) => {
-    setMultipleFilesSelectedRessources((prevFiles) =>
-      prevFiles.filter((file) => file.name !== fileName)
-    );
-  };
-
-  const UploadMultipleVideos = (multipleFilesSelected) => {
-    const formData = new FormData();
-    for (let i = 0; i < multipleFilesSelected?.length; i++) {
-      formData?.append("files", multipleFilesSelected[i]);
-    }
-
-    return formData;
-  };
-
-  const UploadMultipleRessources = (multipleFilesSelectedRessources) => {
-    const formData = new FormData();
-    for (let i = 0; i < multipleFilesSelectedRessources.length; i++) {
-      formData?.append("files", multipleFilesSelectedRessources[i]);
-    }
-    return formData;
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const data = await request.create("courses/CreateCourse", formData);
-
-    const videosData = UploadMultipleVideos(multipleVideosSelected);
-    const ressourcesData = UploadMultipleRessources(
-      multipleFilesSelectedRessources
-    );
-
-    try {
-      await multipleFilesUploadWithName(
-        ressourcesData,
-        data?.Title,
-        userInfo._id,
-        setUploadProgressRessources,
-        setUploadProgressVideos,
-        "Ressources"
-      );
-      await multipleFilesUploadWithName(
-        videosData,
-        data?.Title,
-        userInfo._id,
-        setUploadProgressRessources,
-        setUploadProgressVideos,
-        "Videos"
-      );
-    } catch (error) {
-      toast.error("Failed to upload files");
-    } finally {
-      setMultipleFilesSelectedRessources([]);
-      setMultipleVideosSelected([]);
-      setFormData({
-        Reference: "",
-        Title: "",
-        Description: "",
-        Price: "",
-        Level: "",
-        Category: "",
-        Goals: "",
-        WhoShouldAttend: "",
-        CourseContent: "",
-        PracticalWork: "",
-        certificate: "",
-        testState: "notStarted",
-      });
-
-      toast.success("Course created successfully");
-    }
-  };
-
-  const MultipleRessourcesChange = (event) => {
-    const files = Array.from(event.target.files);
-    setMultipleFilesSelectedRessources((prevFiles) => [...prevFiles, ...files]);
-  };
-
-  const handleChangeFormData = (e) => {
-    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  };
-
-  const handleMultipleVideoChange = (e) => {
-    const files = Array.from(e.target.files);
-    setMultipleVideosSelected((prevFiles) => [...prevFiles, ...files]);
-  };
-
-  const [img, setImg] = useState("");
-
-  const handleSingleFileChange = (e) => {
-    const file = e.target.files[0];
-    setImg(URL.createObjectURL(file));
-  };
   return (
     <div>
       <div className={"background_container"}>
@@ -285,7 +173,9 @@ const CourseForm = () => {
             />
 
             <div className={`${styles.group} ${styles.buttons}`}>
-              <button type="button">Cancel</button>
+              <button onClick={() => window.history.back()} type="button">
+                Cancel
+              </button>
               <button type="submit">Save</button>
             </div>
           </form>

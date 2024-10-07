@@ -1,28 +1,43 @@
 import SendIcon from "@mui/icons-material/Send";
-import React from "react";
+import { format } from "date-fns";
+import React, { useEffect, useState } from "react";
+import { request } from "../../../core/api/request";
 import styles from "./styles.module.css";
 
-const Trainings = ({ userInfo }) => {
+const Trainings = () => {
+  const [trainings, setTrainings] = useState([]);
+  useEffect(() => {
+    request.list("trainings/TrainerTrainings").then((data) => {
+      setTrainings(data.data);
+    });
+  }, []);
+
   return (
     <div className={styles.container}>
-      <div className={styles.trainingsCard}>
-        <div className={styles.imgContainer}>
-          <img src={"./images/trainings.png"} alt="" className={styles.img} />
-        </div>
-
-        <div className={styles.info}>
-          <p className={styles.title}>Web Development</p>
-          <div className={styles.textContainer}>
-            <p>React: Developing a Web Development</p>
-            <p>October 27, 2024</p>
-            <p>12:00 AM - 12:00 PM</p>
+      {trainings.map((training) => (
+        <div className={styles.trainingsCard}>
+          <div className={styles.imgContainer}>
+            <img
+              src={process.env.REACT_APP_API + training.Thumbnail.filePath}
+              alt=""
+              className={styles.img}
+            />
           </div>
-          <button>
-            <span>Go To Training</span>
-            <SendIcon sx={{ color: "white", fontSize: "16px" }} />
-          </button>
+
+          <div className={styles.info}>
+            <p className={styles.title}>{training.Category}</p>
+            <div className={styles.textContainer}>
+              <p>{training.Title}</p>
+              <p>{format(training.dateOfCreation, "dd/MM/yyyy")}</p>
+              <p>{format(training.TimePerDay, "HH:mm")}</p>
+            </div>
+            <button>
+              <span>Go To Training</span>
+              <SendIcon sx={{ color: "white", fontSize: "16px" }} />
+            </button>
+          </div>
         </div>
-      </div>
+      ))}
     </div>
   );
 };

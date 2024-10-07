@@ -54,7 +54,11 @@ const ImgUploadSection = ({ SingleFileChange, img }) => {
           </SmallAvatar>
         }
       >
-        <Avatar alt="icon" src={img} sx={{ width: 160, height: 160 }} />
+        <Avatar
+          alt="icon"
+          src={img instanceof File ? URL.createObjectURL(img) : img}
+          sx={{ width: 160, height: 160 }}
+        />
       </Badge>
     </div>
   );

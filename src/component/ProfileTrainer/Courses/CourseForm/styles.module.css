@@ -70,6 +70,7 @@
   padding: 11px 47px;
   color: #3e4678;
   margin-top: 2rem;
+  cursor: pointer;
 }
 
 .container form .buttons button:last-child {
