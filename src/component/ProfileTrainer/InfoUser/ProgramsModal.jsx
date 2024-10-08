@@ -2,6 +2,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { Box, Modal } from "@mui/material";
 import React from "react";
+import Select from "../../../shared/components/Inputs/Select";
 import styles from "./styles.module.css";
 import useProgramsModal from "./useProgramsModal";
 
@@ -15,8 +16,10 @@ const ProgramsModal = ({ open, handleClose, programs, setUserInfo }) => {
     setSearch,
     titleRef,
     durationRef,
+    categoryRef,
     tjRef,
     update,
+    categories,
     handleSubmit,
     handleSelectedProgram,
     handleDelete,
@@ -100,8 +103,22 @@ const ProgramsModal = ({ open, handleClose, programs, setUserInfo }) => {
                 </div>
 
                 <div>
+                  <Select
+                    style={{
+                      height: "fit-content",
+                      padding: "8px 27px",
+                      borderColor: "var(--primary-color)",
+                    }}
+                    name={"Category"}
+                    label={"Category"}
+                    options={categories}
+                    categoryRef={categoryRef}
+                  />
+                </div>
+
+                <div>
                   <label>Certifying</label>
-                  <div className={styles.ouiNonButton}>
+                  <div className={styles.ouiNonButton.toString()}>
                     <input
                       type="button"
                       className={isCertifying && styles.oui}
