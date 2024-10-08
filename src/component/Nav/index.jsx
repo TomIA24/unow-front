@@ -9,6 +9,7 @@ import axios from "axios";
 
 const Nav = () => {
   const [WindowWidth, setWindowWidth] = useState(0);
+
   const navState = localStorage.getItem("navState");
 
   const navigate = useNavigate();
@@ -193,7 +194,30 @@ const Nav = () => {
             </div>
             {!user ? (
               <div className={styles.end_nav}>
-                <Link to="/login">
+              {/* <div style={{ position: 'relative', display: 'inline-block' }}> */}
+              <Link to="/login">
+                 <div  className={styles.login}>
+                 <img
+                              src="/svg/loginHome.svg"
+                              style={{ height: 30 }}
+                              alt=""
+                            />
+                </div>
+                </Link>
+                {/* {isMenuOpen && (
+        <div
+          style={{
+          
+            top: '40px',
+            right: '0',
+            background: '#f0f0f0',
+            border: '1px solid #ccc',
+            borderRadius: '5px',
+            padding: '10px',
+            boxShadow: '0px 2px 10px rgba(0,0,0,0.1)',
+          }}
+        >
+            <Link to="/login">
                   <button
                     type="button"
                     className={styles.nav_btn_special_light}
@@ -205,7 +229,10 @@ const Nav = () => {
                   <button type="button" className={styles.nav_btn_special_dark}>
                     Sign up
                   </button>
-                </Link>
+                </Link> 
+        </div>
+      )} 
+      </div> */}
                 <div className={styles.language}>
                   <p>EN</p>
                 </div>
