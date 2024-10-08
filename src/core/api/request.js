@@ -28,10 +28,11 @@ api.interceptors.request.use(
 const create = async (entity, jsonData) => {
   try {
     const response = await api.post(`${entity}`, jsonData);
-    return successHandler(response, {
+    successHandler(response, {
       notifyOnSuccess: true,
       notifyOnFailed: true,
     });
+    return response.data;
   } catch (error) {
     return errorHandler(error);
   }
