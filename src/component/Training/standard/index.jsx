@@ -358,7 +358,44 @@ const StandardTraining = (props) => {
       }
     }
   }, [Data]);
+  const [currency, setCurrency] = useState(null);
+  const [errorLocation, setErrorLocation] = useState(null);
+  const currencies = {
+  "Algeria": { currency: "Algerian dinar", code: "DZD" },
+  "Belgium": { currency: "Euro", code: "EUR" },
+  "Canada": { currency: "Canadian dollar", code: "CAD" },
+  "France": { currency: "Euro", code: "EUR" },
+  "Germany": { currency: "Euro", code: "EUR" },
+  "Morocco": { currency: "Moroccan dirham", code: "MAD" }, 
+  "Tunisia": { currency: "Tunisian dinar", code: "TND" },
+  "Egypt": { currency: "Egyptian pound", code: "EGP" },
+  "United Kingdom": { currency: "Pound sterling", code: "GBP" },
+  "United States": { currency: "United States dollar", code: "USD" },
+  };
 
+  useEffect(() => {
+    const fetchCurrency = async () => {
+      try {
+      
+        const ipResponse = await axios.get('https://api.ipify.org?format=json');
+        const ip = ipResponse.data.ip; 
+        const countryResponse = await axios.get(`https://ipapi.co/${ip}/json/`);
+        const country = countryResponse.data.country_name;
+        const currencyData = currencies[country];
+
+        if (currencyData) {
+          setCurrency(currencyData);
+        } else {
+          setErrorLocation('Monnaie non trouvée pour ce pays');
+        }
+      } catch (err) {
+        setErrorLocation('Erreur lors de la récupération des données');
+        console.error(err);
+      }
+    };
+
+    fetchCurrency();
+  }, []);
   const TextRating = (value, avis) => {
     return (
       <Box
@@ -719,7 +756,7 @@ const StandardTraining = (props) => {
                 {down && (<div className={styles.rightSectionCourse}>
                   <div className={styles.scndInfos}>
                     <div className={styles.CoursePriceInfoPage}>
-                      <div className={styles.price}>{Data.Price} TTC
+                      <div className={styles.price}>{Data.Price} {currency?.code}
                         <p className={styles.underline}></p>
                       </div>
 
@@ -788,7 +825,7 @@ const StandardTraining = (props) => {
                                     id={styles.CourseButtonsInfoPageB1Mod}
                                   >
                                     {/*onClick={handleDisabled} */}
-                                    <p>Add To Cart  here2</p>
+                                    <p>Added TO Cart</p>
                                     <img src="/images/course/addchat.png" alt="" className={styles.imagechart} />
                                   </button>
                                 </Tooltip>
@@ -1166,7 +1203,7 @@ const StandardTraining = (props) => {
               <div className={styles.rightSectionCourse}>
                 <div className={styles.scndInfos}>
                   <div className={styles.CoursePriceInfoPage}>
-                    <div className={styles.price}>{Data.Price} TTC
+                    <div className={styles.price}>{Data.Price} {currency?.code}
                       <p className={styles.underline}></p>
                     </div>
 
