@@ -21,7 +21,6 @@
   position: relative;
   z-index: 999;
   padding: 27px 78px;
-  min-width: 758px;
 }
 
 @keyframes fadeIn {
@@ -82,7 +81,6 @@
 .radio {
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
 }
 
 .radio input[type="radio"] {
@@ -108,7 +106,6 @@
 .dates {
   display: flex;
   gap: 41px;
-  margin-bottom: 15px;
 }
 
 .dates input[type="date"] {
@@ -116,6 +113,7 @@
   border-radius: 4px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  max-width: 50%;
   flex: 1;
 }
 
@@ -131,8 +129,9 @@
 .comments label {
   display: block;
   margin-bottom: 5px;
-  font-weight: bold;
-  color: #333;
+  margin-top: 15px;
+  font-weight: 700;
+  color: #818181;
 }
 
 .header button {
@@ -179,4 +178,34 @@
   color: #2c2c2c;
   font-weight: 700;
   margin-right: auto;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.propose {
+  display: flex;
+  align-items: center;
+  padding: 10px 8.5px;
+  background-color: #d9d9d9;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.propose.clicked svg {
+  transform: rotate(-90deg);
+}
+.propose span {
+  font-size: 1rem;
+  color: #2c2c2c;
+  font-weight: 700;
+  margin-right: auto;
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
 }

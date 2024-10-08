@@ -4,6 +4,7 @@ import {
   getMeetingClasses,
   getMeetingColor,
   getMettingTitleCurrentDay,
+  relevantMeetings,
 } from "../../../shared/calendarUtils";
 import DayDetailsModal from "../components/DayDetailsModal";
 import OnNavigate from "../components/OnNavigate";
@@ -61,10 +62,17 @@ export default function Calendar() {
     previousYear,
     nextYear,
   } = useCalendar(meetings);
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState({ isOpen: false, isFreeDay: true });
 
   const onClose = () => {
-    setOpen(false);
+    setOpen({ isOpen: false, isFreeDay: true });
+  };
+
+  const handleModalOpen = (meetings, day) => {
+    setOpen({
+      isOpen: true,
+      isFreeDay: relevantMeetings(meetings, day),
+    });
   };
 
   return (
@@ -110,7 +118,7 @@ export default function Calendar() {
                 day,
                 meetings
               )}`}
-              onClick={() => setOpen(true)}
+              onClick={() => handleModalOpen(meetings, day)}
             >
               <button
                 type="button"
@@ -140,7 +148,7 @@ export default function Calendar() {
           ))}
         </div>
       </div>
-      <DayDetailsModal open={open} onClose={onClose} dayType="confirmation" />
+      <DayDetailsModal open={open} onClose={onClose} />
     </div>
   );
 }

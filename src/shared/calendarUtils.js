@@ -1,18 +1,27 @@
 import { isAfter, isBefore, isSameDay, parseISO } from "date-fns";
 
-const getMeetingClasses = (day, meetings) => {
-  const isPartOfMeeting = (meeting) => {
-    const start = parseISO(meeting.startDatetime);
-    const end = parseISO(meeting.endDatetime);
-    return (
-      isSameDay(start, day) ||
-      isSameDay(end, day) ||
-      (isAfter(day, start) && isBefore(day, end))
-    );
-  };
+const isPartOfMeeting = (meeting, day) => {
+  const start = parseISO(meeting.startDatetime);
+  const end = parseISO(meeting.endDatetime);
 
+  return (
+    isSameDay(start, day) ||
+    isSameDay(end, day) ||
+    (isAfter(day, start) && isBefore(day, end))
+  );
+};
+
+const relevantMeetings = (meetings, day) => {
   const relevantMeetings = meetings.filter((meeting) =>
-    isPartOfMeeting(meeting)
+    isPartOfMeeting(meeting, day)
+  );
+
+  return relevantMeetings.length === 0;
+};
+
+const getMeetingClasses = (day, meetings) => {
+  const relevantMeetings = meetings.filter((meeting) =>
+    isPartOfMeeting(meeting, day)
   );
 
   if (relevantMeetings.length === 0) {
@@ -40,18 +49,8 @@ const getMeetingClasses = (day, meetings) => {
 };
 
 const getMeetingColor = (day, meetings) => {
-  const isPartOfMeeting = (meeting) => {
-    const start = parseISO(meeting.startDatetime);
-    const end = parseISO(meeting.endDatetime);
-    return (
-      isSameDay(start, day) ||
-      isSameDay(end, day) ||
-      (isAfter(day, start) && isBefore(day, end))
-    );
-  };
-
   const relevantMeetings = meetings.filter((meeting) =>
-    isPartOfMeeting(meeting)
+    isPartOfMeeting(meeting, day)
   );
 
   if (relevantMeetings.length === 0) {
@@ -81,4 +80,10 @@ const getMettingTitleCurrentDay = (day, meetings) => {
   return firstMeeting.title;
 };
 
-export { getMeetingClasses, getMeetingColor, getMettingTitleCurrentDay };
+export {
+  getMeetingClasses,
+  getMeetingColor,
+  getMettingTitleCurrentDay,
+  isPartOfMeeting,
+  relevantMeetings,
+};
