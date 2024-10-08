@@ -3,22 +3,6 @@ import { Avatar, Badge, IconButton } from "@mui/material";
 import React from "react";
 import styles from "./styles.module.css";
 
-const Input = ({ accept, id, type, onChange }) => (
-  <input
-    accept={accept}
-    id={id}
-    type={type}
-    style={{ display: "none" }}
-    onChange={onChange}
-  />
-);
-
-const SmallAvatar = ({ children, alt, sx }) => (
-  <Avatar alt={alt} sx={sx}>
-    {children}
-  </Avatar>
-);
-
 const ImgUploadSection = ({ SingleFileChange, img }) => {
   return (
     <div className={styles.ImgUploadSection}>
@@ -26,7 +10,7 @@ const ImgUploadSection = ({ SingleFileChange, img }) => {
         overlap="circular"
         anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
         badgeContent={
-          <SmallAvatar
+          <Avatar
             alt="icon"
             sx={{
               boxShadow:
@@ -37,10 +21,11 @@ const ImgUploadSection = ({ SingleFileChange, img }) => {
             }}
           >
             <label htmlFor="icon-button-file">
-              <Input
+              <input
                 accept="image/*"
                 id="icon-button-file"
                 type="file"
+                style={{ display: "none" }}
                 onChange={(e) => SingleFileChange(e)}
               />
               <IconButton
@@ -51,7 +36,7 @@ const ImgUploadSection = ({ SingleFileChange, img }) => {
                 <PhotoCamera sx={{ width: 35, height: 35 }} />
               </IconButton>
             </label>
-          </SmallAvatar>
+          </Avatar>
         }
       >
         <Avatar

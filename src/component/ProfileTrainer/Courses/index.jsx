@@ -2,29 +2,15 @@ import AddIcon from "@mui/icons-material/Add";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import EditIcon from "@mui/icons-material/Edit";
 import SendIcon from "@mui/icons-material/Send";
-import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import React from "react";
 import { request } from "../../../core/api/request";
 import Loading from "../../Loading";
 import styles from "./styles.module.css";
+import useCourses from "./useCourses";
 
 const Courses = () => {
-  const navigate = useNavigate();
-  const [courses, setCourses] = React.useState([]);
-  const [loading, setLoading] = React.useState(false);
+  const { courses, loading, handleDelete, navigate } = useCourses(request);
 
-  useEffect(() => {
-    setLoading(true);
-    request
-      .list("/courses/trainerCourses")
-      .then((data) => setCourses(data.data))
-      .finally(() => setLoading(false));
-  }, []);
-
-  const handleDelete = (id) => {
-    request.remove(`/courses`, id);
-    setCourses(courses.filter((course) => course._id !== id));
-  };
   return (
     <div className={styles.container}>
       <div className={styles.addCourse}>

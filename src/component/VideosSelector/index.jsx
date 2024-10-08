@@ -4,19 +4,6 @@ import React from "react";
 import VideoSelected from "../Admin/AddCourse/VideoSelected";
 import styles from "./styles.module.css";
 
-const Input = ({ accept, id, multiple, type, onChange }) => {
-  return (
-    <input
-      accept={accept}
-      id={id}
-      multiple={multiple}
-      type={type}
-      onChange={onChange}
-      style={{ display: "none" }}
-    />
-  );
-};
-
 const VideosSelector = ({
   MultipleVideoChange,
   uploadProgressVideos,
@@ -26,12 +13,13 @@ const VideosSelector = ({
   return (
     <div className={styles.FileSelector}>
       <label className={styles.selectFiles} htmlFor="contained-button-file">
-        <Input
+        <input
           accept="video/*"
           id="contained-button-file"
           multiple
           type="file"
           onChange={(e) => MultipleVideoChange(e)}
+          style={{ display: "none" }}
         />
         <div
           style={{

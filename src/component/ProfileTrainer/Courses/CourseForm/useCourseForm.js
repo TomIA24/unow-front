@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { request } from "../../../../core/api/request";
 import {
   multipleFilesUploadWithName,
-  singleFileUploadWithName,
+  singleFileUpload,
 } from "../../../UploadFunctions/data/api";
 
 export const useCourseForm = () => {
@@ -58,6 +58,8 @@ export const useCourseForm = () => {
           certificate: data?.data.certificate,
           testState: data?.data.testState,
         });
+        setMultipleFilesSelectedRessources(data?.data.Ressources);
+        setMultipleVideosSelected(data?.data.Videos);
       });
     }
   }, [id]);
@@ -100,65 +102,91 @@ export const useCourseForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     const courseData = {
       ...formData,
       Status: "processing",
       Trainer: userInfo._id,
     };
-    request.create("courses/CreateCourse", courseData).then(async (data) => {
+
+    const resetFormAndFiles = () => {
+      setMultipleFilesSelectedRessources([]);
+      setMultipleVideosSelected([]);
+      setFormData({
+        Reference: "",
+        Title: "",
+        Description: "",
+        Price: "",
+        Level: "",
+        Category: "",
+        Goals: "",
+        WhoShouldAttend: "",
+        CourseContent: "",
+        PracticalWork: "",
+        certificate: "",
+        testState: "notStarted",
+      });
+    };
+
+    const handleFileUploads = async (courseId, title) => {
       try {
-        const videosData = UploadMultipleVideos(multipleVideosSelected);
-        const ressourcesData = UploadMultipleRessources(
-          multipleFilesSelectedRessources
-        );
+        const [videosData, ressourcesData] = await Promise.all([
+          UploadMultipleVideos(multipleVideosSelected),
+          UploadMultipleRessources(multipleFilesSelectedRessources),
+        ]);
 
-        const formDataThumbnail = new FormData();
-        formDataThumbnail.append("file", img);
+        if (typeof img === "object") {
+          const formDataThumbnail = new FormData();
+          formDataThumbnail.append("file", img);
+          await singleFileUpload(formDataThumbnail, courseId);
+        }
 
-        await singleFileUploadWithName(
-          formDataThumbnail,
-          formData?.Title,
-          userInfo._id,
-          data?.id
-        );
-        await multipleFilesUploadWithName(
-          ressourcesData,
-          data?.Title,
-          userInfo._id,
-          setUploadProgressRessources,
-          setUploadProgressVideos,
-          "Ressources"
-        );
-        await multipleFilesUploadWithName(
-          videosData,
-          data?.Title,
-          userInfo._id,
-          setUploadProgressRessources,
-          setUploadProgressVideos,
-          "Videos"
-        );
-        toast.success("Course created successfully");
+        await Promise.all([
+          multipleFilesUploadWithName(
+            ressourcesData,
+            title,
+            userInfo._id,
+            setUploadProgressRessources,
+            setUploadProgressVideos,
+            "Ressources"
+          ),
+          multipleFilesUploadWithName(
+            videosData,
+            title,
+            userInfo._id,
+            setUploadProgressRessources,
+            setUploadProgressVideos,
+            "Videos"
+          ),
+        ]);
+
+        toast.success("Course files uploaded successfully");
       } catch (error) {
         toast.error("Failed to upload files");
-      } finally {
-        setMultipleFilesSelectedRessources([]);
-        setMultipleVideosSelected([]);
-        setFormData({
-          Reference: "",
-          Title: "",
-          Description: "",
-          Price: "",
-          Level: "",
-          Category: "",
-          Goals: "",
-          WhoShouldAttend: "",
-          CourseContent: "",
-          PracticalWork: "",
-          certificate: "",
-          testState: "notStarted",
-        });
+        throw error;
       }
-    });
+    };
+
+    try {
+      if (!id) {
+        const createdCourse = await request.create(
+          "courses/CreateCourse",
+          courseData
+        );
+        await handleFileUploads(createdCourse?.id, formData?.Title);
+        toast.success("Course created successfully");
+      }
+
+      if (id) {
+        await request.create(`courses/updateCourse`, { ...courseData, id });
+        await handleFileUploads(id, formData?.Title);
+        toast.success("Course updated successfully");
+      }
+    } catch (error) {
+      toast.error("An error occurred while processing the course");
+    } finally {
+      resetFormAndFiles();
+    }
   };
 
   return {
