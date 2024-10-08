@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Button from "../../../../shared/components/button";
 import Input from "../../../../shared/components/Inputs/Input";
 import styles from "./styles.module.css";
 
@@ -95,7 +96,10 @@ const Unavailability = () => {
         </div>
       </div>
 
-      <button type="submit">Submit</button>
+      <div style={{ display: "flex", gap: "10px", marginLeft: "auto" }}>
+        <Button varaint="outline" text="Cancel" />
+        <Button type="submit" text="Submit" />
+      </div>
     </form>
   );
 };
