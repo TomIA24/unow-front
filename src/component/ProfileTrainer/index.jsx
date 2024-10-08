@@ -23,7 +23,7 @@ const ProfileTrainer = () => {
 
   useEffect(() => {
     request.read("userData").then((data) => {
-      setUserInfo(data.data);
+      setUserInfo(data?.data || {});
     });
   }, []);
 
