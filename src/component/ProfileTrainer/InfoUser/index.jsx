@@ -46,7 +46,7 @@ const InfoUser = ({ userInfo, setUserInfo }) => {
           <div className={styles.programs}>
             Programs:
             <div>
-              <span>{userInfo?.programs?.[0].title}</span>
+              <span>{userInfo?.programs?.[0]?.title || "-"}</span>
               <span className={styles.seeMore} onClick={handleOpenModal}>
                 see more...
               </span>
@@ -75,7 +75,7 @@ const InfoUser = ({ userInfo, setUserInfo }) => {
         open={openModal}
         handleClose={handleCloseModal}
         setUserInfo={setUserInfo}
-        programs={userInfo.programs}
+        programs={userInfo?.programs}
       />
     </div>
   );

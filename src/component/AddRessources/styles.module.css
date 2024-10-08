@@ -1,0 +1,70 @@
+.AddRessources {
+  border: 1px dashed rgb(169, 169, 169);
+  width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+.AddRessources h3 {
+  margin: 10px;
+}
+
+.Ressources {
+  border: 1px solid rgb(113, 113, 113);
+  margin: 20px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 10px;
+}
+
+.AddRessource {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid rgb(113, 113, 113);
+  margin: 20px;
+  border-radius: 5px;
+}
+
+.AddRessource h5 {
+  margin: 10px;
+  color: rgb(109, 109, 109);
+}
+
+.fileUploaded {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  height: 60px;
+  border-radius: 5px;
+  background-color: #e9f0ff;
+  margin: 5px;
+}
+
+.IconFile {
+  width: 10%;
+  color: #6990f2;
+}
+
+.TitleFile {
+  color: black;
+  width: 80%;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  height: 40px;
+}
+
+.TitleFile span {
+  color: #404040;
+  font-size: 11px;
+}
+
+.TitleFile h6 {
+  font-size: 14px;
+}
