@@ -126,7 +126,7 @@ export default function SliderNav({ user, handleLogout }) {
       </SwipeableDrawer>
       <div className={styles.logo}>
             <Link to="/" >
-            <img src="/images/home/logoblanc.png" alt=""   className={styles.logoimage}  />
+            <img src="/images/home/logoblanc.png" alt=""     />
               {/* <img
                 style={{ marginTop: "20px", width: "160px" }}
                 className={styles.LogoImg}
@@ -136,11 +136,15 @@ export default function SliderNav({ user, handleLogout }) {
             </div>
 
       {!user ? (
-        <Link to="/login">
-          <button type="button" className={styles.nav_btn_special_light}>
-            Login
-          </button>
-        </Link>
+           <Link to="/login">
+           <div  className={styles.login}>
+           <img
+                        src="/svg/loginHome.svg"
+                        style={{ height: 20 }}
+                        alt=""
+                      />
+          </div>
+          </Link>
       ) : (
         <Link to="/profile" style={{ display: "flex", alignItems: "center" }}>
           <img src="/svg/coins.svg" style={{ height: 30 }} alt="" />

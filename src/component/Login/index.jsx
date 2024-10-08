@@ -4,11 +4,6 @@ import React, { useState } from "react";
 import { IoMdArrowDropright } from "react-icons/io";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import image from "./dhfg.png";
-import divider from "./Divider.png";
-import apple from "./imgMedia/Social media logo (1).png";
-import google from "./imgMedia/Social media logo (2).png";
-import twitter from "./imgMedia/Social media logo (3).png";
-import facebook from "./imgMedia/Social media logo.png";
 import unow from "./logoblanc.png";
 import styles from "./styles.module.css";
 
@@ -147,39 +142,17 @@ const Login = () => {
               </a>
 
               <p className={styles.nvaccount}>
-                Don’t have an account?{" "}
+                Don’t have an account ? {" "}
                 <a href="/signup" className={styles.signupLink}>
                   Sign up
                 </a>
+                <img 
+                    src="/svg/signup.svg"
+                    style={{ height: 20 ,margin :"8px 2px 2px 2px"}}
+                    alt=""
+                  />
               </p>
 
-              <div className={styles.divider}>
-                <img
-                  src={divider}
-                  className={styles.dividerImage}
-                  alt="Divider"
-                />
-                <p className={styles.or}>Or</p>
-                <img
-                  src={divider}
-                  className={styles.dividerImage}
-                  alt="Divider"
-                />
-              </div>
-              <div className={styles.allsocialmedia}>
-                <img
-                  src={facebook}
-                  alt="Facebook"
-                  className={styles.socialmediaF}
-                />
-                <img src={apple} alt="Apple" className={styles.socialmedia} />
-                <img src={google} alt="Google" className={styles.socialmedia} />
-                <img
-                  src={twitter}
-                  alt="Twitter"
-                  className={styles.socialmedia}
-                />
-              </div>
             </form>
           </div>
         </div>

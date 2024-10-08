@@ -1,9 +1,11 @@
 import { format, getDay, isEqual, isSameMonth, isToday } from "date-fns";
+import { useState } from "react";
 import {
   getMeetingClasses,
   getMeetingColor,
   getMettingTitleCurrentDay,
 } from "../../../shared/calendarUtils";
+import DayDetailsModal from "../components/DayDetailsModal";
 import OnNavigate from "../components/OnNavigate";
 import "./styles.css"; // Import the CSS file
 import { useCalendar } from "./useCalendar";
@@ -59,6 +61,11 @@ export default function Calendar() {
     previousYear,
     nextYear,
   } = useCalendar(meetings);
+  const [open, setOpen] = useState(false);
+
+  const onClose = () => {
+    setOpen(false);
+  };
 
   return (
     <div className="example-container">
@@ -103,6 +110,7 @@ export default function Calendar() {
                 day,
                 meetings
               )}`}
+              onClick={() => setOpen(true)}
             >
               <button
                 type="button"
@@ -132,6 +140,7 @@ export default function Calendar() {
           ))}
         </div>
       </div>
+      <DayDetailsModal open={open} onClose={onClose} dayType="confirmation" />
     </div>
   );
 }

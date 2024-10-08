@@ -469,6 +469,22 @@ button{
     color: rgba(0, 0, 0, 0.3);
     font-weight: bold;
 }
+.login {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    /* border: 3px solid #1C4B82; */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.25);
+    background-color: white;
+    color: rgba(0, 0, 0, 0.3);
+    font-weight: bold;
+    
+}
 
 .search {
     flex: 1.4;
