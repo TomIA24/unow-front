@@ -1,9 +1,12 @@
 import React, { useState } from "react";
+import toast from "react-hot-toast";
+import { request } from "../../../../core/api/request";
 import Button from "../../../../shared/components/button";
 import Input from "../../../../shared/components/Inputs/Input";
 import styles from "./styles.module.css";
 
-const Unavailability = () => {
+const Unavailability = ({ onClose }) => {
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     isUnavailable: false,
     startDate: "",
@@ -17,11 +20,28 @@ const Unavailability = () => {
     event.preventDefault();
 
     if (!formData.reason) {
-      alert("Please provide a reason for your unavailability.");
+      toast.error("Please provide a reason for your unavailability.");
       return;
     }
 
-    console.log("Form data submitted: ", formData);
+    const eventData = {
+      type: "unavailability",
+      startDate: formData.startDate,
+      endDate: formData.endDate,
+      reason: formData.reason,
+      unavailabilityDetails: {
+        isFirmUnavailable: formData.isFirmUnavailable,
+        comment: formData.comment,
+      },
+    };
+
+    setLoading(true);
+    request
+      .create("calendarEvents", eventData)
+      .then((data) => {
+        console.log(data);
+      })
+      .finally(() => setLoading(false));
   };
 
   const handleChange = (e) => {
@@ -97,8 +117,8 @@ const Unavailability = () => {
       </div>
 
       <div style={{ display: "flex", gap: "10px", marginLeft: "auto" }}>
-        <Button varaint="outline" text="Cancel" />
-        <Button type="submit" text="Submit" />
+        <Button text="Cancel" varaint="outline" onClick={onClose} />
+        <Button type="submit" text="Submit" loading={loading} />
       </div>
     </form>
   );

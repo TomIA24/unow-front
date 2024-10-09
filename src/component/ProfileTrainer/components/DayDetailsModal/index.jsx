@@ -21,8 +21,8 @@ const DayDetailsModal = ({ open, onClose }) => {
               X
             </button>
           </div>
-          {open.isFreeDay && <Unavailability />}
-          {!open.isFreeDay && <TrainerConfirmation />}
+          {open.isFreeDay && <Unavailability onClose={onClose} />}
+          {!open.isFreeDay && <TrainerConfirmation onClose={onClose} />}
         </div>
       </div>
     )
