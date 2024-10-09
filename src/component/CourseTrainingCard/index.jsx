@@ -25,9 +25,9 @@ const CourseTrainingCard = ({
         <div className={styles.content}>
           <div className={styles.text}>
             <p>{category}</p>
-            <p>
-              {price} {currency}
-            </p>
+ 
+            <p>{price} {currency}</p>
+ 
           </div>
 
           <div className={styles.title}>
