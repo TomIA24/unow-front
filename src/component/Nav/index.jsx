@@ -194,29 +194,9 @@ const Nav = () => {
             </div>
             {!user ? (
               <div className={styles.end_nav}>
-              {/* <div style={{ position: 'relative', display: 'inline-block' }}> */}
-              <Link to="/login">
-                 <div  className={styles.login}>
-                 <img
-                              src="/svg/loginHome.svg"
-                              style={{ height: 30 }}
-                              alt=""
-                            />
-                </div>
-                </Link>
-                {/* {isMenuOpen && (
-        <div
-          style={{
-          
-            top: '40px',
-            right: '0',
-            background: '#f0f0f0',
-            border: '1px solid #ccc',
-            borderRadius: '5px',
-            padding: '10px',
-            boxShadow: '0px 2px 10px rgba(0,0,0,0.1)',
-          }}
-        >
+           
+           
+              
             <Link to="/login">
                   <button
                     type="button"
@@ -230,9 +210,7 @@ const Nav = () => {
                     Sign up
                   </button>
                 </Link> 
-        </div>
-      )} 
-      </div> */}
+      
                 <div className={styles.language}>
                   <p>EN</p>
                 </div>
