@@ -1,8 +1,8 @@
 import { isAfter, isBefore, isSameDay, parseISO } from "date-fns";
 
 const isPartOfMeeting = (meeting, day) => {
-  const start = parseISO(meeting.startDatetime);
-  const end = parseISO(meeting.endDatetime);
+  const start = parseISO(meeting.startDate);
+  const end = parseISO(meeting.endDate);
 
   return (
     isSameDay(start, day) ||
@@ -29,8 +29,8 @@ const getMeetingClasses = (day, meetings) => {
   }
 
   const firstMeeting = relevantMeetings[0];
-  const startDay = parseISO(firstMeeting.startDatetime);
-  const endDay = parseISO(firstMeeting.endDatetime);
+  const startDay = parseISO(firstMeeting.startDate);
+  const endDay = parseISO(firstMeeting.endDate);
 
   if (isSameDay(startDay, endDay)) {
     return "isSelected";
@@ -63,7 +63,7 @@ const getMeetingColor = (day, meetings) => {
 
 const getMettingTitleCurrentDay = (day, meetings) => {
   const isPartOfMeeting = (meeting) => {
-    const start = parseISO(meeting.startDatetime);
+    const start = parseISO(meeting.startDate);
     return isSameDay(start, day);
   };
 

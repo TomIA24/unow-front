@@ -126,12 +126,28 @@
   outline: none;
 }
 
+.comments {
+  margin-top: 15px;
+}
+
 .comments label {
   display: block;
   margin-bottom: 5px;
-  margin-top: 15px;
   font-weight: 700;
   color: #818181;
+}
+
+.comments > label:first-child {
+  margin-left: 20px;
+}
+
+.comments textarea {
+  width: 100%;
+  padding: 8px;
+  border-radius: 15px;
+  border: 1px solid #ccc;
+  min-height: 80px;
+  outline: none;
 }
 
 .header button {

@@ -1,3 +1,4 @@
+import { isAfter, isBefore, isToday, parseISO } from "date-fns";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { request } from "../../../../core/api/request";
@@ -5,11 +6,12 @@ import Button from "../../../../shared/components/button";
 import Input from "../../../../shared/components/Inputs/Input";
 import styles from "./styles.module.css";
 
-const Unavailability = ({ onClose }) => {
+const Unavailability = ({ onClose, selectedDay, setCalendarEvents }) => {
   const [loading, setLoading] = useState(false);
+
   const [formData, setFormData] = useState({
-    isUnavailable: false,
-    startDate: "",
+    isUnavailable: true,
+    startDate: selectedDay || "",
     endDate: "",
     reason: "",
     isFirmUnavailable: false,
@@ -19,6 +21,20 @@ const Unavailability = ({ onClose }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
+    const currentDate = new Date();
+    const startDate = parseISO(formData.startDate);
+    const endDate = parseISO(formData.endDate);
+
+    if (isBefore(startDate, currentDate) && !isToday(startDate)) {
+      toast.error("Start date cannot be in the past.");
+      return;
+    }
+
+    if (isAfter(startDate, endDate)) {
+      toast.error("Start date cannot be after the end date.");
+      return;
+    }
+
     if (!formData.reason) {
       toast.error("Please provide a reason for your unavailability.");
       return;
@@ -26,8 +42,10 @@ const Unavailability = ({ onClose }) => {
 
     const eventData = {
       type: "unavailability",
+      title: "_",
+      color: "#E2E0F6",
       startDate: formData.startDate,
-      endDate: formData.endDate,
+      endDate: formData.endDate ? formData.endDate : formData.startDate,
       reason: formData.reason,
       unavailabilityDetails: {
         isFirmUnavailable: formData.isFirmUnavailable,
@@ -39,7 +57,9 @@ const Unavailability = ({ onClose }) => {
     request
       .create("calendarEvents", eventData)
       .then((data) => {
-        console.log(data);
+        setFormData({});
+        onClose();
+        setCalendarEvents((prevEvents) => [...prevEvents, data.calendarEvent]);
       })
       .finally(() => setLoading(false));
   };
@@ -62,7 +82,6 @@ const Unavailability = ({ onClose }) => {
               type="radio"
               name="isUnavailable"
               checked={formData.isUnavailable}
-              onChange={handleChange}
             />
             <label>I am unavailable on the following days.</label>
           </div>
@@ -73,6 +92,7 @@ const Unavailability = ({ onClose }) => {
               name="startDate"
               value={formData.startDate}
               onChange={handleChange}
+              required
             />
             <input
               type="date"
@@ -92,6 +112,7 @@ const Unavailability = ({ onClose }) => {
             type="text"
             value={formData.reason}
             onChange={handleChange}
+            required
           />
         </div>
 

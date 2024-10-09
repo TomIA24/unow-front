@@ -10,12 +10,25 @@ import {
   startOfToday,
   startOfWeek,
 } from "date-fns";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { request } from "../../../core/api/request";
 
-export const useCalendar = (meetings) => {
+export const useCalendar = () => {
   const today = startOfToday();
   const [selectedDay, setSelectedDay] = useState(today);
   const [currentMonth, setCurrentMonth] = useState(format(today, "MMM-yyyy"));
+  const [laoding, setLoading] = useState(false);
+
+  const [calendarEvents, setCalendarEvents] = useState([]);
+  useEffect(() => {
+    setLoading(true);
+    request
+      .list("calendarEvents")
+      .then((data) => {
+        setCalendarEvents(data.data);
+      })
+      .finally(() => setLoading(false));
+  }, []);
 
   const firstDayCurrentMonth = useMemo(() => {
     return parse(currentMonth, "MMM-yyyy", new Date());
@@ -49,10 +62,10 @@ export const useCalendar = (meetings) => {
   };
 
   const selectedDayMeetings = useMemo(() => {
-    return meetings.filter((meeting) =>
-      isSameDay(parseISO(meeting.startDatetime), selectedDay)
+    return calendarEvents?.filter((meeting) =>
+      isSameDay(parseISO(meeting.startDate), selectedDay)
     );
-  }, [meetings, selectedDay]);
+  }, [calendarEvents, selectedDay]);
 
   return {
     selectedDay,
@@ -64,6 +77,9 @@ export const useCalendar = (meetings) => {
     nextMonth,
     previousYear,
     nextYear,
+    laoding,
+    calendarEvents,
     selectedDayMeetings,
+    setCalendarEvents,
   };
 };

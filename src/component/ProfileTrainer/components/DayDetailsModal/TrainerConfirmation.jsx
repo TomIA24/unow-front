@@ -1,13 +1,21 @@
 import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
+import { format } from "date-fns";
 import React, { useState } from "react";
+import { request } from "../../../../core/api/request";
 import Button from "../../../../shared/components/button";
 import styles from "./styles.module.css";
 
-const TrainerConfirmation = ({ onClose }) => {
+const TrainerConfirmation = ({
+  onClose,
+  selectedDay,
+  trainingTitle,
+  setCalendarEvents,
+}) => {
   const [openPropose, setOpenPropose] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
-    unavailableDays: false,
-    unavailableDate: false,
+    unavailableDays: true,
+    unavailableDate: true,
     alternativeDate: "",
     unsuitableElements: false,
     notInterested: false,
@@ -25,7 +33,40 @@ const TrainerConfirmation = ({ onClose }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form submitted with data:", formData);
+
+    let comment;
+    if (formData.unavailableDate) {
+      comment = "One or more of the following elements do not suit me";
+    }
+
+    if (formData.notInterested) {
+      comment =
+        "I do not wish to take on this assignment. However, I remain open to other proposals on these dates";
+    }
+
+    const eventData = {
+      type: "unavailability",
+      title: "_",
+      color: "#E2E0F6",
+      startDate: selectedDay,
+      endDate: selectedDay,
+      reason: formData.reason,
+      unavailabilityDetails: {
+        comment: formData.comment ? formData.comment : comment,
+        alternativeDates: formData.alternativeDate,
+      },
+      updateAvailability: formData.updateAvailability,
+    };
+
+    setLoading(true);
+    request
+      .create("calendarEvents", eventData)
+      .then(() => {
+        setFormData({});
+        onClose();
+        setCalendarEvents((prev) => [...prev, eventData]);
+      })
+      .finally(() => setLoading(false));
   };
 
   return (
@@ -36,7 +77,9 @@ const TrainerConfirmation = ({ onClose }) => {
             <p className={styles.parg2}>
               Are you unable or unwilling to take on this assignment
             </p>
-            <p className={styles.parg2}>1 June 2024 - Agile Scrum</p>
+            <p className={styles.parg2}>
+              {format(selectedDay, "d MMMM yyyy")} - {trainingTitle}
+            </p>
           </div>
 
           <p className={styles.parg1}>
@@ -51,7 +94,7 @@ const TrainerConfirmation = ({ onClose }) => {
               type="radio"
               name="unavailableDays"
               checked={formData.unavailableDays}
-              onChange={handleChange}
+              onChange={() => {}}
             />
             <label>I am unavailable on the following days.</label>
           </div>
@@ -61,7 +104,7 @@ const TrainerConfirmation = ({ onClose }) => {
               type="checkbox"
               name="unavailableDate"
               checked={formData.unavailableDate}
-              onChange={handleChange}
+              onChange={() => {}}
             />
             <label>Fri 1 June</label>
           </div>
@@ -97,7 +140,7 @@ const TrainerConfirmation = ({ onClose }) => {
               checked={formData.unsuitableElements}
               onChange={handleChange}
             />
-            <label>One or more of the following elements do not suit me:</label>
+            <label>One or more of the following elements do not suit me</label>
           </div>
           <div className={styles.radio}>
             <input
@@ -108,7 +151,7 @@ const TrainerConfirmation = ({ onClose }) => {
             />
             <label>
               I do not wish to take on this assignment. However, I remain open
-              to other proposals on these dates:
+              to other proposals on these dates
             </label>
           </div>
         </div>
@@ -116,8 +159,7 @@ const TrainerConfirmation = ({ onClose }) => {
 
       <div className={styles.comments}>
         <label>Add a comment:</label>
-        <input
-          type="textarea"
+        <textarea
           name="comment"
           value={formData.comment}
           onChange={handleChange}
@@ -137,7 +179,7 @@ const TrainerConfirmation = ({ onClose }) => {
       </div>
       <div style={{ display: "flex", gap: "10px", marginLeft: "auto" }}>
         <Button onClick={onClose} varaint="outline" text="Cancel" />
-        <Button type="submit" text="Submit" />
+        <Button type="submit" text="Save" loading={loading} />
       </div>
     </form>
   );

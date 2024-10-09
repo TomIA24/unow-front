@@ -3,7 +3,13 @@ import styles from "./styles.module.css";
 import TrainerConfirmation from "./TrainerConfirmation";
 import Unavailability from "./Unavailability";
 
-const DayDetailsModal = ({ open, onClose }) => {
+const DayDetailsModal = ({
+  open,
+  onClose,
+  selectedDay,
+  trainingTitle,
+  setCalendarEvents,
+}) => {
   return (
     open.isOpen && (
       <div className={styles.modal}>
@@ -12,7 +18,10 @@ const DayDetailsModal = ({ open, onClose }) => {
           style={{ maxWidth: open?.isFreeDay ? "549px" : "656px" }}
         >
           <div className={styles.header}>
-            <h2 className={`${styles.title} center`}>
+            <h2
+              className={`${styles.title}`}
+              style={{ margin: open.isFreeDay ? "0 0 34px 0" : "0 auto 54px" }}
+            >
               {open.isFreeDay
                 ? "Add an unavailability"
                 : "Trainer Confirmation"}
@@ -21,8 +30,21 @@ const DayDetailsModal = ({ open, onClose }) => {
               X
             </button>
           </div>
-          {open.isFreeDay && <Unavailability onClose={onClose} />}
-          {!open.isFreeDay && <TrainerConfirmation onClose={onClose} />}
+          {open.isFreeDay && (
+            <Unavailability
+              onClose={onClose}
+              selectedDay={selectedDay}
+              setCalendarEvents={setCalendarEvents}
+            />
+          )}
+          {!open.isFreeDay && (
+            <TrainerConfirmation
+              onClose={onClose}
+              selectedDay={selectedDay}
+              trainingTitle={trainingTitle}
+              setCalendarEvents={setCalendarEvents}
+            />
+          )}
         </div>
       </div>
     )
