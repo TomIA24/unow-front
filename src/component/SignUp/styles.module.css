@@ -233,7 +233,25 @@
     border-style: solid;
     border-color: #ccc;
 }
-
+.loginLink {
+    text-decoration: underline;
+    color: #1C4B82;
+    font-size: 16px;
+    font-weight: bold;
+    margin:0px
+  }
+  .nvaccount{
+    color:  #666666;
+    border: 1.8px solid #0000001d;
+    border-radius: 12px;
+    width: 310px;
+    height: 46px;
+    display: flex;              
+    justify-content: center;    
+    align-items: center; 
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+}
 .select {
     composes: input;
     width: 400px;
@@ -314,7 +332,7 @@
     border-radius: 50px;
     font-size: 18px;
     font-weight: bold;
-    color: #345AA4;
+    color: 1C4B82;
     cursor: pointer;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     transition: background-color 0.3s ease, color 0.3s ease; /* Ajout de la transition pour un effet plus fluide */
