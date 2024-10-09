@@ -233,7 +233,25 @@
     border-style: solid;
     border-color: #ccc;
 }
-
+.loginLink {
+    text-decoration: underline;
+    color: #CD6214;
+    font-size: 16px;
+    font-weight: bold;
+    margin:0px
+  }
+  .nvaccount{
+    color:  #666666;
+    border: 1.8px solid #0000001d;
+    border-radius: 12px;
+    width: 310px;
+    height: 46px;
+    display: flex;              
+    justify-content: center;    
+    align-items: center; 
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+}
 .select {
     composes: input;
     width: 400px;
@@ -274,10 +292,17 @@
     text-align: left;
     justify-content: flex-end;
     align-items: flex-end;
-    margin-top: 0.95rem;
+    margin-top: 0.55rem;
     margin-left: -2rem;
+   
 }
-
+@media (max-width: 600px) {
+    .password_visibility {
+      font-size: 16px;
+      margin-top: 1.2rem;
+      margin-left: -3rem;
+    }
+  }
 .error_msg_Phone {
     width: 370px;
     font-size: 12px;
@@ -305,76 +330,60 @@
     margin-top: -5px;
 }
 
-.Signup_btn {
-    width: 105px;
-    height: 43px;
-    border: 0px solid #ffffff;
-    margin-top: 20px;
-    background-color: white;
-    border-radius: 50px;
-    font-size: 18px;
-    font-weight: bold;
-    color: #345AA4;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s ease, color 0.3s ease; /* Ajout de la transition pour un effet plus fluide */
-}
-
 .Signup_btn:hover {
     background-color: #345AA4;
     color: white; /* Changement de couleur du texte pour le contraste */
 }
 /* Styles de base pour .Signup_btn */
 .Signup_btn {
-    width: 105px;
-    height: 43px;
-    border: 0px solid #ffffff;
+    width: 100%;
+    height: 50px;
+    border: 2px solid #f3f3f3;
     margin-top: 20px;
-    background-color: white;
-    border-radius: 50px;
-    font-size: 18px;
+    background-color: #C3C3C3;
+    border-radius: 30px;
     font-weight: bold;
-    color: #345AA4;
+    font-size: 16px;
+    color: white;
     cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s ease, color 0.3s ease; /* Transition fluide */
+    transition: background-color 0.3s; /* Transition fluide */
 }
 
 /* Médias queries pour les écrans entre 300px et 599px */
-@media (min-width: 300px) and (max-width: 599px) {
+/* @media (min-width: 300px) and (max-width: 599px) {
     .Signup_btn {
-        width: 90px; /* Ajustement pour les petits écrans */
+        width: 90px; 
         height: 36px;
         font-size: 16px;
     }
-}
+} */
 
 /* Médias queries pour les écrans entre 600px et 899px */
-@media (min-width: 600px) and (max-width: 899px) {
+/* @media (min-width: 600px) and (max-width: 899px) {
     .Signup_btn {
-        width: 100px; /* Ajustement pour les écrans moyens */
+        width: 100px; 
         height: 40px;
         font-size: 17px;
     }
-}
+} */
 
 /* Médias queries pour les écrans entre 900px et 1199px */
-@media (min-width: 900px) and (max-width: 1199px) {
+/* @media (min-width: 900px) and (max-width: 1199px) {
     .Signup_btn {
-        width: 105px; /* Taille par défaut */
+        width: 105px; 
         height: 43px;
         font-size: 18px;
     }
-}
+} */
 
 /* Médias queries pour les écrans entre 1200px et 1500px */
-@media (min-width: 1200px) and (max-width: 1500px) {
+/* @media (min-width: 1200px) and (max-width: 1500px) {
     .Signup_btn {
-        width: 115px; /* Ajustement pour les grands écrans */
+        width: 115px; 
         height: 46px;
         font-size: 19px;
     }
-}
+} */
 
 
 

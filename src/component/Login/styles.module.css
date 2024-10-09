@@ -138,6 +138,7 @@ html, body {
     margin-top: 20px;
     background-color: #C3C3C3;
     border-radius: 30px;
+    font-size: 16px;
     font-weight: bold;
     color: white;
     cursor: pointer;
@@ -150,8 +151,9 @@ html, body {
   }
   .signupLink {
     text-decoration: underline;
-    color: black;
-    font-size: 13px;
+    color: #CD6214;
+    font-size: 16px;
+    font-weight: bold;
     margin:0px
   }
   
@@ -197,8 +199,16 @@ html, body {
     align-self: start;
 }
 .nvaccount{
-    color: gray;
-    font-size: 13px;
+    color:  #666666;
+    border: 1.8px solid #0000001d;
+    border-radius: 12px;
+    width: 310px;
+    height: 46px;
+    display: flex;              
+    justify-content: center;    
+    align-items: center; 
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
 }
 .nvaccount u{
     color: black;

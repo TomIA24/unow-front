@@ -1,12 +1,13 @@
-import './styles.css'
-import React from 'react'
+import React from "react";
+import "./styles.css";
 
-const Loading =()=>
-  <div className="allLoading">
+const Loading = ({ h = "100vh" }) => (
+  <div style={{ minHeight: h }} className="allLoading">
     <div className="loading">
       <div></div>
       <div></div>
     </div>
-  </div> 
+  </div>
+);
 
-export default Loading
+export default Loading;

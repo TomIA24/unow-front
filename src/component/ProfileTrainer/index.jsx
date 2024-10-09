@@ -1,4 +1,5 @@
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import ComputerIcon from "@mui/icons-material/Computer";
 import DateRangeIcon from "@mui/icons-material/DateRange";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import LocalLibraryIcon from "@mui/icons-material/LocalLibrary";
@@ -8,6 +9,7 @@ import Nav from "../Nav";
 import Footer from "../footer";
 import Actu from "./Actu";
 import Calendar from "./Calendar";
+import Courses from "./Courses";
 import InfoUser from "./InfoUser";
 import Trainings from "./Trainings";
 import MobileDevice from "./components/MobileDeiveTopBar";
@@ -21,7 +23,7 @@ const ProfileTrainer = () => {
 
   useEffect(() => {
     request.read("userData").then((data) => {
-      setUserInfo(data.data);
+      setUserInfo(data?.data || {});
     });
   }, []);
 
@@ -33,6 +35,8 @@ const ProfileTrainer = () => {
         return <Calendar />;
       case "trainings":
         return <Trainings userInfo={userInfo} />;
+      case "courses":
+        return <Courses />;
       case "profile":
       default:
         return <InfoUser setUserInfo={setUserInfo} userInfo={userInfo} />;
@@ -109,6 +113,13 @@ const ProfileTrainer = () => {
                 handleSectionChange={(section) => handleSectionChange(section)}
                 label="Calendar"
                 section="calendar"
+              />
+              <SideBarButton
+                icon={ComputerIcon}
+                activeSection={activeSection}
+                handleSectionChange={(section) => handleSectionChange(section)}
+                label="Courses"
+                section="courses"
               />
             </div>
           </div>
