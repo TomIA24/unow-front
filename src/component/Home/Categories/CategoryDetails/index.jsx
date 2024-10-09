@@ -1,5 +1,5 @@
 import { Box, CircularProgress, Container } from "@mui/material";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { useParams } from "react-router-dom";
 import useDebouncedState from "../../../../hooks/useDebouncedState";
 import imageCourse from "../../../assets/icon_course.png";
@@ -13,7 +13,7 @@ import Footer from "../../Footer";
 import useFetchCategory from "./hooks/useFetchcategory";
 import useFetchData from "./hooks/useFetchData";
 import "./styles.modules.css";
-
+import axios from "axios";
 const CategoryDetails = () => {
   const { id, contentType } = useParams();
   const [search, setSearch] = useDebouncedState("");
@@ -101,6 +101,7 @@ const CategoryDetails = () => {
                   title={course.Title}
                   category={course.Category}
                   price={course.Price}
+               
                   level={course.Level}
                   rating={course.Rating}
                   type={selectedType === "COURSES" ? "course" : "training"}

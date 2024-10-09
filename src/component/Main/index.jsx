@@ -145,44 +145,7 @@ const Main = () => {
       },
     ];
   }, []);
-  const [currency, setCurrency] = useState(null);
-  const [error, setError] = useState(null);
-  const currencies = {
-  "Algeria": { currency: "Algerian dinar", code: "DZD" },
-  "Belgium": { currency: "Euro", code: "EUR" },
-  "Canada": { currency: "Canadian dollar", code: "CAD" },
-  "France": { currency: "Euro", code: "EUR" },
-  "Germany": { currency: "Euro", code: "EUR" },
-  "Morocco": { currency: "Moroccan dirham", code: "MAD" }, 
-  "Tunisia": { currency: "Tunisian dinar", code: "TND" },
-  "Egypt": { currency: "Egyptian pound", code: "EGP" },
-  "United Kingdom": { currency: "Pound sterling", code: "GBP" },
-  "United States": { currency: "United States dollar", code: "USD" },
-  };
-
-  useEffect(() => {
-    const fetchCurrency = async () => {
-      try {
-      
-        const ipResponse = await axios.get('https://api.ipify.org?format=json');
-        const ip = ipResponse.data.ip; 
-        const countryResponse = await axios.get(`https://ipapi.co/${ip}/json/`);
-        const country = countryResponse.data.country_name;
-        const currencyData = currencies[country];
-
-        if (currencyData) {
-          setCurrency(currencyData);
-        } else {
-          setError('Monnaie non trouvée pour ce pays');
-        }
-      } catch (err) {
-        setError('Erreur lors de la récupération des données');
-        console.error(err);
-      }
-    };
-
-    fetchCurrency();
-  }, []);
+  
   return (
     <div className={styles.body}>
       <div>
@@ -245,7 +208,6 @@ const Main = () => {
                   key={training._id}
                   thumbnail={training.Thumbnail.filePath}
                   title={training.Title}
-                  currency={currency?.code}
                   category={training.Category}
                   price={training.Price}
                   level={training.Level}
