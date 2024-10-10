@@ -1,8 +1,8 @@
 import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
 import { format } from "date-fns";
-import React, { useState } from "react";
-import { request } from "../../../../core/api/request";
+import React from "react";
 import Button from "../../../../shared/components/button";
+import useTrainerConfirmation from "./hooks/useTrainerConfirmation";
 import styles from "./styles.module.css";
 
 const TrainerConfirmation = ({
@@ -11,63 +11,14 @@ const TrainerConfirmation = ({
   trainingTitle,
   setCalendarEvents,
 }) => {
-  const [openPropose, setOpenPropose] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [formData, setFormData] = useState({
-    unavailableDays: true,
-    unavailableDate: true,
-    alternativeDate: "",
-    unsuitableElements: false,
-    notInterested: false,
-    comment: "",
-    updateAvailability: false,
-  });
-
-  const handleChange = (e) => {
-    const { name, type, value, checked } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: type === "checkbox" ? checked : value,
-    }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    let comment;
-    if (formData.unavailableDate) {
-      comment = "One or more of the following elements do not suit me";
-    }
-
-    if (formData.notInterested) {
-      comment =
-        "I do not wish to take on this assignment. However, I remain open to other proposals on these dates";
-    }
-
-    const eventData = {
-      type: "unavailability",
-      title: "_",
-      color: "#E2E0F6",
-      startDate: selectedDay,
-      endDate: selectedDay,
-      reason: formData.reason,
-      unavailabilityDetails: {
-        comment: formData.comment ? formData.comment : comment,
-        alternativeDates: formData.alternativeDate,
-      },
-      updateAvailability: formData.updateAvailability,
-    };
-
-    setLoading(true);
-    request
-      .create("calendarEvents", eventData)
-      .then(() => {
-        setFormData({});
-        onClose();
-        setCalendarEvents((prev) => [...prev, eventData]);
-      })
-      .finally(() => setLoading(false));
-  };
+  const {
+    openPropose,
+    setOpenPropose,
+    loading,
+    formData,
+    handleChange,
+    handleSubmit,
+  } = useTrainerConfirmation(selectedDay, onClose, setCalendarEvents);
 
   return (
     <form className={styles.content} onSubmit={handleSubmit}>

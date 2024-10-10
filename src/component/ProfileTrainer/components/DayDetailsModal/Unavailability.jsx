@@ -1,76 +1,15 @@
-import { isAfter, isBefore, isToday, parseISO } from "date-fns";
-import React, { useState } from "react";
-import toast from "react-hot-toast";
-import { request } from "../../../../core/api/request";
+import React from "react";
 import Button from "../../../../shared/components/button";
 import Input from "../../../../shared/components/Inputs/Input";
+import useUnavailability from "./hooks/useUnavailability";
 import styles from "./styles.module.css";
 
 const Unavailability = ({ onClose, selectedDay, setCalendarEvents }) => {
-  const [loading, setLoading] = useState(false);
-
-  const [formData, setFormData] = useState({
-    isUnavailable: true,
-    startDate: selectedDay || "",
-    endDate: "",
-    reason: "",
-    isFirmUnavailable: false,
-    comment: "",
-  });
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    const currentDate = new Date();
-    const startDate = parseISO(formData.startDate);
-    const endDate = parseISO(formData.endDate);
-
-    if (isBefore(startDate, currentDate) && !isToday(startDate)) {
-      toast.error("Start date cannot be in the past.");
-      return;
-    }
-
-    if (isAfter(startDate, endDate)) {
-      toast.error("Start date cannot be after the end date.");
-      return;
-    }
-
-    if (!formData.reason) {
-      toast.error("Please provide a reason for your unavailability.");
-      return;
-    }
-
-    const eventData = {
-      type: "unavailability",
-      title: "_",
-      color: "#E2E0F6",
-      startDate: formData.startDate,
-      endDate: formData.endDate ? formData.endDate : formData.startDate,
-      reason: formData.reason,
-      unavailabilityDetails: {
-        isFirmUnavailable: formData.isFirmUnavailable,
-        comment: formData.comment,
-      },
-    };
-
-    setLoading(true);
-    request
-      .create("calendarEvents", eventData)
-      .then((data) => {
-        setFormData({});
-        onClose();
-        setCalendarEvents((prevEvents) => [...prevEvents, data.calendarEvent]);
-      })
-      .finally(() => setLoading(false));
-  };
-
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: type === "checkbox" ? checked : value,
-    }));
-  };
+  const { formData, loading, handleChange, handleSubmit } = useUnavailability(
+    selectedDay,
+    onClose,
+    setCalendarEvents
+  );
 
   return (
     <form className={styles.content} onSubmit={handleSubmit}>
