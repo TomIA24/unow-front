@@ -17,7 +17,7 @@ const useCurrency = () => {
     "GB": { currency: "Pound sterling", code: "GBP" },   // United Kingdom
     "US": { currency: "United States dollar", code: "USD" }, // United States
   };
-console.log("token",token,process.env.REACT_APP_API)
+
   useEffect(() => {
     const fetchCurrency = async () => {
       try {
