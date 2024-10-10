@@ -4,7 +4,8 @@ import styles from "./styles.module.css";
 
 import Loading from "../../Loading";
 import useCart from "../hooks/use-cart";
-import Empty from "../../assets/empty.png";
+import EmptyTrainings from "../../assets/empty.png";
+import EmptyCourses from "../../assets/emptyCourses.png";
 import CourseElement from "../components/CourseCardElement";
 
 const Cart = ({ user }) => {
@@ -20,7 +21,7 @@ const Cart = ({ user }) => {
   } = useCart();
 
   
-
+console.log("cart",cart)
   return (
     <div className={styles.leftSectionProfile}>
       <div className={styles.CartDiv}>
@@ -42,7 +43,7 @@ const Cart = ({ user }) => {
                   </div>
                 ) : (
                   <div className={styles.emptyBox}>
-                    <img src={Empty} alt="" />
+                    <img src={EmptyCourses} alt="" />
                   </div>
                 )}
               </>
@@ -70,7 +71,7 @@ const Cart = ({ user }) => {
                   </div>
                 ) : (
                   <div className={styles.emptyBox}>
-                    <img src={Empty} alt="" />
+                    <img src={EmptyTrainings} alt="" />
                   </div>
                 )}
               </>

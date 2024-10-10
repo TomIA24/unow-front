@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./styles.module.css";
 
 import Loading from "../../Loading";
-import Empty from "../../assets/empty.png";
+import EmptyCourses from "../../assets/emptyCourses.png";
 import CourseElement from "../components/CourseElement";
 import useCourses from "../hooks/use-courses";
 const Courses = () => {
@@ -26,7 +26,7 @@ const Courses = () => {
             </div>
           ) : (
             <div className={styles.courses}>
-              <img src={Empty} alt="" />
+              <img src={EmptyCourses} alt="" />
             </div>
           )}
         </div>
