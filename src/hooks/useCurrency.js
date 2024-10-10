@@ -4,7 +4,7 @@ import axios from 'axios';
 const useCurrency = () => {
   const [currency, setCurrency] = useState(null);
   const [error, setError] = useState(null);
-  const token = process.env.TOKEN_API_LOCATION;
+  const token = process.env.REACT_APP_LOCATION;
   const currencies = {
     "DZ": { currency: "Algerian dinar", code: "DZD" }, // Algeria
     "BE": { currency: "Euro", code: "EUR" },           // Belgium
