@@ -1,5 +1,5 @@
 import { Box, CircularProgress, Container } from "@mui/material";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { useParams } from "react-router-dom";
 import useDebouncedState from "../../../../hooks/useDebouncedState";
 import imageCourse from "../../../assets/icon_course.png";
@@ -13,8 +13,12 @@ import Footer from "../../Footer";
 import useFetchCategory from "./hooks/useFetchcategory";
 import useFetchData from "./hooks/useFetchData";
 import "./styles.modules.css";
+
 import EmptyTrainings from "../../../assets/empty.png";
 import EmptyCourses from "../../../assets/emptyCourses.png";
+
+import axios from "axios";
+
 const CategoryDetails = () => {
   const { id, contentType } = useParams();
   const [search, setSearch] = useDebouncedState("");
@@ -29,7 +33,7 @@ const CategoryDetails = () => {
     currentPage,
     search
   );
-console.log("data",!loading && data)
+
   const handlePageChange = (pageNumber) => setCurrentPage(pageNumber);
   return (
     <>
@@ -93,6 +97,7 @@ console.log("data",!loading && data)
             </div>
           )}
           {!loading && (
+
   <>
     {data.length === 0 ? (
       <div className="emptyBox">
@@ -121,6 +126,7 @@ console.log("data",!loading && data)
     )}
   </>
 )}
+
           <div className="center" style={{ paddingTop: "2%" }}>
             <PaginationComponent
               currentPage={currentPage}

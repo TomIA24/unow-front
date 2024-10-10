@@ -19,7 +19,7 @@ const useNotifTrainer = () => {
 
   const getNotifTrainer = useCallback(() => {
     request.read("Trainer/GetNotifTrainer").then((data) => {
-      setData(data.data);
+      setData(data?.data);
     });
   }, []);
 
@@ -110,7 +110,7 @@ const useNotifTrainer = () => {
 
   const rows = useMemo(
     () =>
-      data.map((row) => ({
+      data?.map((row) => ({
         id: row._id,
         subject: row.courseCertif,
         date: `${new Date(row.courseDate[0]).getDate()}/${

@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./styles.module.css";
+import useCurrency from "../../hooks/useCurrency.js";
 
 const CourseTrainingCard = ({
   id,
@@ -8,11 +9,12 @@ const CourseTrainingCard = ({
   title,
   category,
   price,
-  currency,
   level,
   rating,
   type,
 }) => {
+  const { currency, error } = useCurrency();
+  console.log("currency",currency?.code)
   return (
     <Link to={`/${type}/${id}`} key={id}>
       <div key={id} className={styles.container}>
@@ -25,9 +27,9 @@ const CourseTrainingCard = ({
         <div className={styles.content}>
           <div className={styles.text}>
             <p>{category}</p>
- 
-            <p>{price} {currency}</p>
- 
+
+            <p>{price} {currency?.code}</p>
+
           </div>
 
           <div className={styles.title}>
@@ -35,7 +37,7 @@ const CourseTrainingCard = ({
             <p>{title}</p>
           </div>
 
-          <div className={styles.rating}>
+          {/* <div className={styles.rating}>
             <span>⭐ {rating} (750)</span>
             <div className={styles.stars}>
               <div className={styles.avatarGroup}>
@@ -54,7 +56,7 @@ const CourseTrainingCard = ({
               </div>
               <span>3k+</span>
             </div>
-          </div>
+          </div> */}
 
           <div className={styles.type}>
             <img
