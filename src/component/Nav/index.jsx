@@ -9,6 +9,7 @@ import axios from "axios";
 
 const Nav = () => {
   const [WindowWidth, setWindowWidth] = useState(0);
+
   const navState = localStorage.getItem("navState");
 
   const navigate = useNavigate();
@@ -193,7 +194,10 @@ const Nav = () => {
             </div>
             {!user ? (
               <div className={styles.end_nav}>
-                <Link to="/login">
+           
+           
+              
+            <Link to="/login">
                   <button
                     type="button"
                     className={styles.nav_btn_special_light}
@@ -205,7 +209,8 @@ const Nav = () => {
                   <button type="button" className={styles.nav_btn_special_dark}>
                     Sign up
                   </button>
-                </Link>
+                </Link> 
+      
                 <div className={styles.language}>
                   <p>EN</p>
                 </div>

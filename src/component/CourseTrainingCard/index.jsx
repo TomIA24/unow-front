@@ -27,7 +27,9 @@ const CourseTrainingCard = ({
         <div className={styles.content}>
           <div className={styles.text}>
             <p>{category}</p>
+
             <p>{price} {currency?.code}</p>
+
           </div>
 
           <div className={styles.title}>
@@ -57,7 +59,14 @@ const CourseTrainingCard = ({
           </div> */}
 
           <div className={styles.type}>
-            <img src="./images/home/type.png" alt="" />
+            <img
+              src={`${
+                type === "training"
+                  ? "./images/trainingsIcon.png"
+                  : "./images/coursesIcon.png"
+              }`}
+              alt=""
+            />
           </div>
           <button>+</button>
         </div>
