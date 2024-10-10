@@ -13,7 +13,8 @@ import Footer from "../../Footer";
 import useFetchCategory from "./hooks/useFetchcategory";
 import useFetchData from "./hooks/useFetchData";
 import "./styles.modules.css";
-
+import EmptyTrainings from "../../../assets/empty.png";
+import EmptyCourses from "../../../assets/emptyCourses.png";
 const CategoryDetails = () => {
   const { id, contentType } = useParams();
   const [search, setSearch] = useDebouncedState("");
@@ -28,7 +29,7 @@ const CategoryDetails = () => {
     currentPage,
     search
   );
-
+console.log("data",!loading && data)
   const handlePageChange = (pageNumber) => setCurrentPage(pageNumber);
   return (
     <>
@@ -92,22 +93,34 @@ const CategoryDetails = () => {
             </div>
           )}
           {!loading && (
-            <div className={"box"}>
-              {data.map((course) => (
-                <CourseTrainingCard
-                  key={course._id}
-                  id={course._id}
-                  thumbnail={course.Thumbnail?.filePath}
-                  title={course.Title}
-                  category={course.Category}
-                  price={course.Price}
-                  level={course.Level}
-                  rating={course.Rating}
-                  type={selectedType === "COURSES" ? "course" : "training"}
-                />
-              ))}
-            </div>
-          )}
+  <>
+    {data.length === 0 ? (
+      <div className="emptyBox">
+        {selectedType === "COURSES" ? (
+          <img src={EmptyCourses} alt="" />
+        ) : (
+          <img src={EmptyTrainings} alt="" />
+        )}
+      </div>
+    ) : (
+      <div className={"box"}>
+        {data.map((course) => (
+          <CourseTrainingCard
+            key={course._id}
+            id={course._id}
+            thumbnail={course.Thumbnail?.filePath}
+            title={course.Title}
+            category={course.Category}
+            price={course.Price}
+            level={course.Level}
+            rating={course.Rating}
+            type={selectedType === "COURSES" ? "course" : "training"}
+          />
+        ))}
+      </div>
+    )}
+  </>
+)}
           <div className="center" style={{ paddingTop: "2%" }}>
             <PaginationComponent
               currentPage={currentPage}
