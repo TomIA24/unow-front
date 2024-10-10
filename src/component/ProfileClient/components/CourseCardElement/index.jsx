@@ -72,6 +72,7 @@ export default function CourseElement({ course, type }) {
 
     fetchCurrency();
   }, []);
+  console.log("currency",currency?.code)
   return (
     <div className={styles.courseContainerElement}>
       <div className={styles.imgCourseContainer}>
