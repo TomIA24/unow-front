@@ -8,10 +8,14 @@ import {
   parse,
   parseISO,
   startOfToday,
-  startOfWeek,
+  startOfWeek
 } from "date-fns";
 import { useEffect, useMemo, useState } from "react";
 import { request } from "../../../core/api/request";
+import {
+  getMettingTitleCurrentDay,
+  relevantMeetings
+} from "../../../shared/calendarUtils";
 
 export const useCalendar = () => {
   const today = startOfToday();
@@ -37,7 +41,7 @@ export const useCalendar = () => {
   const days = useMemo(() => {
     return eachDayOfInterval({
       start: startOfWeek(firstDayCurrentMonth),
-      end: endOfWeek(endOfMonth(firstDayCurrentMonth)),
+      end: endOfWeek(endOfMonth(firstDayCurrentMonth))
     });
   }, [firstDayCurrentMonth]);
 
@@ -67,6 +71,22 @@ export const useCalendar = () => {
     );
   }, [calendarEvents, selectedDay]);
 
+  const [open, setOpen] = useState({ isOpen: false, isFreeDay: true });
+  const [trainingTitle, setTrainingTitle] = useState("");
+
+  const onClose = () => {
+    setOpen({ isOpen: false, isFreeDay: true });
+  };
+
+  const handleModalOpen = (calendarEvents, day) => {
+    setOpen({
+      isOpen: true,
+      isFreeDay: relevantMeetings(calendarEvents, day)
+    });
+    setTrainingTitle(getMettingTitleCurrentDay(day, calendarEvents));
+    setSelectedDay(day);
+  };
+
   return {
     selectedDay,
     setSelectedDay,
@@ -81,5 +101,9 @@ export const useCalendar = () => {
     calendarEvents,
     selectedDayMeetings,
     setCalendarEvents,
+    open,
+    trainingTitle,
+    onClose,
+    handleModalOpen
   };
 };

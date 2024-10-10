@@ -1,23 +1,12 @@
 import SendIcon from "@mui/icons-material/Send";
 import { format } from "date-fns";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Loading from "../../../component/Loading/index";
-import { request } from "../../../core/api/request";
 import styles from "./styles.module.css";
+import useTrainings from "./useTrainings";
 
 const Trainings = () => {
-  const [trainings, setTrainings] = useState([]);
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    setLoading(true);
-    request
-      .list("trainings/TrainerTrainings")
-      .then((data) => {
-        setTrainings(data.data);
-      })
-      .finally(() => setLoading(false));
-  }, []);
+  const { trainings, loading } = useTrainings();
 
   if (loading) return <Loading h="55vh" />;
 

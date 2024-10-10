@@ -1,10 +1,8 @@
 import { format, getDay, isEqual, isSameMonth, isToday } from "date-fns";
-import { useState } from "react";
 import {
   getMeetingClasses,
   getMeetingColor,
-  getMettingTitleCurrentDay,
-  relevantMeetings,
+  getMettingTitleCurrentDay
 } from "../../../shared/calendarUtils";
 import Loading from "../../Loading/index";
 import DayDetailsModal from "../components/DayDetailsModal";
@@ -16,13 +14,12 @@ const buttons = [
   { label: "Confirmed", color: "#D9EAD0" },
   { label: "Unconfirmed", color: "#ffecf1" },
   { label: "Holidays", color: "#DAF1FC" },
-  { label: "Unavailability", color: "#E2E0F6" },
+  { label: "Unavailability", color: "#E2E0F6" }
 ];
 
 export default function Calendar() {
   const {
     selectedDay,
-    setSelectedDay,
     firstDayCurrentMonth,
     days,
     previousMonth,
@@ -32,22 +29,11 @@ export default function Calendar() {
     calendarEvents,
     setCalendarEvents,
     loading,
+    open,
+    trainingTitle,
+    onClose,
+    handleModalOpen
   } = useCalendar();
-  const [open, setOpen] = useState({ isOpen: false, isFreeDay: true });
-  const [trainingTitle, setTrainingTitle] = useState("");
-
-  const onClose = () => {
-    setOpen({ isOpen: false, isFreeDay: true });
-  };
-
-  const handleModalOpen = (calendarEvents, day) => {
-    setOpen({
-      isOpen: true,
-      isFreeDay: relevantMeetings(calendarEvents, day),
-    });
-    setTrainingTitle(getMettingTitleCurrentDay(day, calendarEvents));
-    setSelectedDay(day);
-  };
 
   if (loading) return <Loading h="55vh" />;
 
@@ -88,7 +74,7 @@ export default function Calendar() {
             <div
               key={day.toString()}
               style={{
-                background: getMeetingColor(day, calendarEvents),
+                background: getMeetingColor(day, calendarEvents)
               }}
               className={`day day-${getDay(day)} ${getMeetingClasses(
                 day,
