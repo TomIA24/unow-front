@@ -1,7 +1,8 @@
 import { Box, CircularProgress, Container } from "@mui/material";
-import { useState,useEffect } from "react";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import useDebouncedState from "../../../../hooks/useDebouncedState";
+import EmptyBox from "../../../../shared/components/EmptyBox";
 import imageCourse from "../../../assets/icon_course.png";
 import imageTraining from "../../../assets/icon_training.png";
 import CourseTrainingCard from "../../../CourseTrainingCard";
@@ -13,7 +14,6 @@ import Footer from "../../Footer";
 import useFetchCategory from "./hooks/useFetchcategory";
 import useFetchData from "./hooks/useFetchData";
 import "./styles.modules.css";
-import axios from "axios";
 const CategoryDetails = () => {
   const { id, contentType } = useParams();
   const [search, setSearch] = useDebouncedState("");
@@ -61,7 +61,7 @@ const CategoryDetails = () => {
           sx={{
             display: "flex",
             flexDirection: "column",
-            gap: "2rem",
+            gap: "2rem"
           }}
         >
           <div className="breadcrumb-container">
@@ -78,7 +78,7 @@ const CategoryDetails = () => {
           <GenericSwitcher
             items={[
               { icon: imageCourse, title: "COURSES" },
-              { icon: imageTraining, title: "TRAININGS" },
+              { icon: imageTraining, title: "TRAININGS" }
             ]}
             selectedItem={selectedType}
             setSelectedItem={setSelectedType}
@@ -91,24 +91,37 @@ const CategoryDetails = () => {
               <CircularProgress />
             </div>
           )}
+
           {!loading && (
-            <div className={"box"}>
-              {data.map((course) => (
-                <CourseTrainingCard
-                  key={course._id}
-                  id={course._id}
-                  thumbnail={course.Thumbnail?.filePath}
-                  title={course.Title}
-                  category={course.Category}
-                  price={course.Price}
-               
-                  level={course.Level}
-                  rating={course.Rating}
-                  type={selectedType === "COURSES" ? "course" : "training"}
+            <>
+              {data.length === 0 && (
+                <EmptyBox
+                  h="40vh"
+                  text={`No ${
+                    selectedType === "COURSES" ? "course" : "training"
+                  } found`}
                 />
-              ))}
-            </div>
+              )}
+              {data.length > 0 && (
+                <div className="box">
+                  {data.map((course) => (
+                    <CourseTrainingCard
+                      key={course._id}
+                      id={course._id}
+                      thumbnail={course.Thumbnail?.filePath}
+                      title={course.Title}
+                      category={course.Category}
+                      price={course.Price}
+                      level={course.Level}
+                      rating={course.Rating}
+                      type={selectedType === "COURSES" ? "course" : "training"}
+                    />
+                  ))}
+                </div>
+              )}
+            </>
           )}
+
           <div className="center" style={{ paddingTop: "2%" }}>
             <PaginationComponent
               currentPage={currentPage}

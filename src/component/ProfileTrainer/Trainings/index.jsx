@@ -21,7 +21,7 @@ const Trainings = () => {
           <div className={styles.trainingsCard} key={training._id}>
             <div className={styles.imgContainer}>
               <img
-                src={process.env.REACT_APP_API + training?.Thumbnail.filePath}
+                src={process.env.REACT_APP_API + training?.Thumbnail?.filePath}
                 alt=""
                 className={styles.img}
               />
