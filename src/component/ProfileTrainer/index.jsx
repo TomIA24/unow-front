@@ -14,7 +14,6 @@ import InfoUser from "./InfoUser";
 import Trainings from "./Trainings";
 import MobileDevice from "./components/MobileDeiveTopBar";
 import SideBarButton from "./components/SideBarButton";
-import ProfileInfo from "./components/TopBarInfo";
 import styles from "./styles.module.css";
 
 const ProfileTrainer = () => {
@@ -54,29 +53,11 @@ const ProfileTrainer = () => {
           <Nav />
           <div className={styles.container}>
             <p className={styles.title}>{userInfo?.name}</p>
-            {activeSection === "profile" && (
-              <>
-                <div className={styles.imgProfile}>
-                  <div className={styles.imgContainer}>
-                    <img
-                      src={
-                        userInfo?.image?.filePath
-                          ? `${process.env.REACT_APP_API}${userInfo.image.filePath}`
-                          : "svg/default-img.svg"
-                      }
-                      alt="Profile"
-                    />
-                  </div>
-                </div>
-                <ProfileInfo userInfo={userInfo} />
-              </>
-            )}
           </div>
         </div>
       </div>
 
       <MobileDevice
-        userInfo={userInfo}
         activeSection={activeSection}
         handleSectionChange={(section) => handleSectionChange(section)}
       />
