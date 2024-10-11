@@ -62,7 +62,7 @@ const ProfileTrainer = () => {
                       src={
                         userInfo?.image?.filePath
                           ? `${process.env.REACT_APP_API}${userInfo.image.filePath}`
-                          : "/default-profile.png"
+                          : "svg/default-img.svg"
                       }
                       alt="Profile"
                     />

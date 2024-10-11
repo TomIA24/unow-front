@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Input from "../../../shared/components/Inputs/Input";
 import MultiSelect from "../../../shared/components/Inputs/MultiSelect";
 import Select from "../../../shared/components/Inputs/Select";
+import ImgUploadSection from "../../ImgUploadSection";
 import Nav from "../../Nav";
 import ProgramsModal from "../InfoUser/ProgramsModal";
 import styles from "./styles.module.css";
@@ -12,12 +13,15 @@ const EditProfile = () => {
     formData,
     setFormData,
     countryListValue,
+    img,
     handleSubmit,
     handleChange,
     handleAnimationLanguageChange,
     handleConnectingMetropolisChange,
+    handleSingleFileChange
   } = useForm();
   const [openModal, setOpenModal] = useState(false);
+
   const handleOpenModal = () => {
     setOpenModal(true);
   };
@@ -32,16 +36,10 @@ const EditProfile = () => {
         <div className="appWrapper" style={{ height: "100%" }}>
           <Nav />
           <div className={styles.container}>
-            <div className={styles.imgContainer}>
-              <img
-                src={
-                  formData?.image?.filePath
-                    ? `${process.env.REACT_APP_API}${formData.image.filePath}`
-                    : "/default-profile.png"
-                }
-                alt="Profile"
-              />
-            </div>
+            <ImgUploadSection
+              SingleFileChange={handleSingleFileChange}
+              img={img}
+            />
             <p className={styles.title}>Edit Profile</p>
           </div>
         </div>
