@@ -2,7 +2,6 @@ import { Box, CircularProgress, Container } from "@mui/material";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import useDebouncedState from "../../../../hooks/useDebouncedState";
-import EmptyBox from "../../../../shared/components/EmptyBox";
 import imageCourse from "../../../assets/icon_course.png";
 import imageTraining from "../../../assets/icon_training.png";
 import CourseTrainingCard from "../../../CourseTrainingCard";
@@ -14,6 +13,10 @@ import Footer from "../../Footer";
 import useFetchCategory from "./hooks/useFetchcategory";
 import useFetchData from "./hooks/useFetchData";
 import "./styles.modules.css";
+
+import EmptyTrainings from "../../../assets/empty.png";
+import EmptyCourses from "../../../assets/emptyCourses.png";
+
 const CategoryDetails = () => {
   const { id, contentType } = useParams();
   const [search, setSearch] = useDebouncedState("");
@@ -94,16 +97,16 @@ const CategoryDetails = () => {
 
           {!loading && (
             <>
-              {data.length === 0 && (
-                <EmptyBox
-                  h="40vh"
-                  text={`No ${
-                    selectedType === "COURSES" ? "course" : "training"
-                  } found`}
-                />
-              )}
-              {data.length > 0 && (
-                <div className="box">
+              {data.length === 0 ? (
+                <div className="emptyBox">
+                  {selectedType === "COURSES" ? (
+                    <img src={EmptyCourses} alt="" />
+                  ) : (
+                    <img src={EmptyTrainings} alt="" />
+                  )}
+                </div>
+              ) : (
+                <div className={"box"}>
                   {data.map((course) => (
                     <CourseTrainingCard
                       key={course._id}
