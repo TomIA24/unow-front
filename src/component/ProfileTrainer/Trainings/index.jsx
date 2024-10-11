@@ -13,10 +13,10 @@ const Trainings = () => {
 
   return (
     <div className={styles.container}>
-      {trainings.length !== 0 && (
+      {trainings.length === 0 && (
         <EmptyBox h="55vh" text="You don't have any trainings yet" />
       )}
-      {trainings.length < 0 &&
+      {trainings.length > 0 &&
         trainings.map((training) => (
           <div className={styles.trainingsCard} key={training._id}>
             <div className={styles.imgContainer}>
