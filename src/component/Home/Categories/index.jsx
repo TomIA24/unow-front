@@ -84,19 +84,12 @@ const Categories = () => {
   };
   const dialogRef = useRef(null);
   const images = [Icon1, Icon2, Icon3, Icon4, Icon5, Icon6, Icon7, Icon8];
-  const [opnpopup, setpopupopen] = useState(false);
-  const handlepopup = () => {
-    setpopupopen(!opnpopup);
-    console.log(opnpopup);
-  };
-  const closepopup = () => {
-    setpopupopen(!opnpopup);
-    console.log(opnpopup);
-  };
+ 
+
   return (
     <div className={styles.categorieTitle}>
       <SectionTitle title="Categories" />
-      {screenWidth >= 700 ? (
+
         <div className={styles.cardC}>
           <div className={styles.cardsContainer}>
             {categories.map((category, index) => (
@@ -105,7 +98,7 @@ const Categories = () => {
                 className={styles.card}
                 style={{ backgroundColor: category.color }}
                 onClick={() => handleCardClick(category)}
-                // onClick={() => handlepopup()}
+            
               >
                 <img
                   src={images[index % images.length]}
@@ -117,52 +110,7 @@ const Categories = () => {
             ))}
           </div>
         </div>
-      ) : (
-        <Slider {...settings} className={styles.slider}>
-          {categories.map((category, index) => (
-            <div key={category._id} className={styles.cardWrapper}>
-              <div
-                className={styles.card}
-                style={{ backgroundColor: category.color }}
-                onClick={() => handlepopup()}
-              >
-                <img
-                  src={images[index % images.length]}
-                  alt={category.Title}
-                  className={styles.cardImage}
-                />
-                <p className={styles.titleName}>{category.Title}</p>
-              </div>
-            </div>
-          ))}
-        </Slider>
-      )}
-      {opnpopup && (
-        <>
-          <div className={styles.overlayStyles}>
-            <div ref={dialogRef} className={styles.dialogStyles}>
-              {/* <div className={styles.closbutton}>       <button  onClick={closepopup}>     <img
-        src="/images/personalize/close.png"
-        alt="bronze"
-
-      /></button></div> */}
-
-              <div className={styles.iamgedialog}>
-                <img src="/images/home/comingSoon.png" alt="bronze" />
-                <div className={styles.continuebutton}>
-                  <button onClick={closepopup}>Ok</button>{" "}
-                </div>
-              </div>
-            </div>
-          </div>
-        </>
-      )}
-      {/*       
-      <Modal
-        show={showModal}
-        onClose={handleCloseModal}
-        category={selectedCategory}
-      /> */}
+ 
     </div>
   );
 };
