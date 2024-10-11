@@ -53,7 +53,7 @@ const ProfileTrainer = () => {
         <div className="appWrapper" style={{ height: "100%" }}>
           <Nav />
           <div className={styles.container}>
-            <p className={styles.title}>Welcome Trainer</p>
+            <p className={styles.title}>{userInfo?.name}</p>
             {activeSection === "profile" && (
               <>
                 <div className={styles.imgProfile}>
@@ -84,7 +84,7 @@ const ProfileTrainer = () => {
         <main className={styles.main}>
           <div className={styles.mainContainer}>{renderContent()}</div>
           <div className={styles.sideBar}>
-            <p className={styles.cardTitle}>{userInfo?.name}</p>
+            <p className={styles.cardTitle}>Welcome</p>
             <div className={styles.sideBarContainer}>
               <SideBarButton
                 icon={AccountCircleIcon}
