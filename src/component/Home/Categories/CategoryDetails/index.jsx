@@ -1,5 +1,5 @@
 import { Box, CircularProgress, Container } from "@mui/material";
-import { useState,useEffect } from "react";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import useDebouncedState from "../../../../hooks/useDebouncedState";
 import imageCourse from "../../../assets/icon_course.png";
@@ -16,8 +16,6 @@ import "./styles.modules.css";
 
 import EmptyTrainings from "../../../assets/empty.png";
 import EmptyCourses from "../../../assets/emptyCourses.png";
-
-import axios from "axios";
 
 const CategoryDetails = () => {
   const { id, contentType } = useParams();
@@ -66,7 +64,7 @@ const CategoryDetails = () => {
           sx={{
             display: "flex",
             flexDirection: "column",
-            gap: "2rem",
+            gap: "2rem"
           }}
         >
           <div className="breadcrumb-container">
@@ -83,7 +81,7 @@ const CategoryDetails = () => {
           <GenericSwitcher
             items={[
               { icon: imageCourse, title: "COURSES" },
-              { icon: imageTraining, title: "TRAININGS" },
+              { icon: imageTraining, title: "TRAININGS" }
             ]}
             selectedItem={selectedType}
             setSelectedItem={setSelectedType}
@@ -96,36 +94,36 @@ const CategoryDetails = () => {
               <CircularProgress />
             </div>
           )}
-          {!loading && (
 
-  <>
-    {data.length === 0 ? (
-      <div className="emptyBox">
-        {selectedType === "COURSES" ? (
-          <img src={EmptyCourses} alt="" />
-        ) : (
-          <img src={EmptyTrainings} alt="" />
-        )}
-      </div>
-    ) : (
-      <div className={"box"}>
-        {data.map((course) => (
-          <CourseTrainingCard
-            key={course._id}
-            id={course._id}
-            thumbnail={course.Thumbnail?.filePath}
-            title={course.Title}
-            category={course.Category}
-            price={course.Price}
-            level={course.Level}
-            rating={course.Rating}
-            type={selectedType === "COURSES" ? "course" : "training"}
-          />
-        ))}
-      </div>
-    )}
-  </>
-)}
+          {!loading && (
+            <>
+              {data.length === 0 ? (
+                <div className="emptyBox">
+                  {selectedType === "COURSES" ? (
+                    <img src={EmptyCourses} alt="" />
+                  ) : (
+                    <img src={EmptyTrainings} alt="" />
+                  )}
+                </div>
+              ) : (
+                <div className={"box"}>
+                  {data.map((course) => (
+                    <CourseTrainingCard
+                      key={course._id}
+                      id={course._id}
+                      thumbnail={course.Thumbnail?.filePath}
+                      title={course.Title}
+                      category={course.Category}
+                      price={course.Price}
+                      level={course.Level}
+                      rating={course.Rating}
+                      type={selectedType === "COURSES" ? "course" : "training"}
+                    />
+                  ))}
+                </div>
+              )}
+            </>
+          )}
 
           <div className="center" style={{ paddingTop: "2%" }}>
             <PaginationComponent

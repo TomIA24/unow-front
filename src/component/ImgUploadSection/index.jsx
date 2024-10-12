@@ -17,7 +17,7 @@ const ImgUploadSection = ({ SingleFileChange, img }) => {
                 "0 0 4px 2px rgba(0,0,0,0.26),-1px -1px 4px 2px rgba(255,255,255,0.26)",
               backgroundColor: "white",
               width: 50,
-              height: 50,
+              height: 50
             }}
           >
             <label htmlFor="icon-button-file">
