@@ -52,7 +52,7 @@ const ProfileTrainer = () => {
         <div className="appWrapper" style={{ height: "100%" }}>
           <Nav />
           <div className={styles.container}>
-            <p className={styles.title}>{userInfo?.name}</p>
+            <p className={styles.title}>Welcome {userInfo?.name}</p>
           </div>
         </div>
       </div>
