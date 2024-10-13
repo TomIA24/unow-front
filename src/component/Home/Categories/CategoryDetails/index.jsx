@@ -74,6 +74,8 @@ const CategoryDetails = () => {
             display: "flex",
             flexDirection: "column",
             gap: "2rem",
+            width: "95%",
+            marginInline: "auto",
           }}
         >
           <div className="breadcrumb-container">
@@ -112,7 +114,7 @@ const CategoryDetails = () => {
           />
         </Box>
 
-        <div className="d-flex justify-content-center align-items-center mt-4 paddingbottom">
+        <div className="d-flex justify-content-center align-items-center mt-4 paddingbottom innerDisplay">
           {loading && (
             <div className="center" style={{ minHeight: "40vh" }}>
               <CircularProgress />
