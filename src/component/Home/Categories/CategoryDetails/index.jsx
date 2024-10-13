@@ -1,7 +1,8 @@
 import { Box, CircularProgress, Container } from "@mui/material";
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import useDebouncedState from "../../../../hooks/useDebouncedState";
+
 import imageCourse from "../../../assets/icon_course.png";
 import imageTraining from "../../../assets/icon_training.png";
 import CourseTrainingCard from "../../../CourseTrainingCard";
@@ -31,10 +32,18 @@ const CategoryDetails = () => {
     currentPage,
     search
   );
-
+  const navigate = useNavigate();
+  const handleNavigation = (param) => {
+    if (param === "home") {
+      navigate(`/home`);
+    }
+    if (param === "categories") {
+      navigate(-1);
+    }
+  };
   const handlePageChange = (pageNumber) => setCurrentPage(pageNumber);
   return (
-    <>
+    <div className="category_container">
       <div className="background_container">
         <div>
           <Container maxWidth="xl">
@@ -64,16 +73,31 @@ const CategoryDetails = () => {
           sx={{
             display: "flex",
             flexDirection: "column",
-            gap: "2rem"
+            gap: "2rem",
           }}
         >
           <div className="breadcrumb-container">
             <div className="breadcrumb-header">
-              <span className="breadcrumb-text">Home</span>
+              <button
+                className="breadcrumb-text"
+                onClick={() => handleNavigation("home")}
+              >
+                Home
+              </button>
               <img src="/svg/polygon.svg" alt="Breadcrumb separator" />
-              <span className="breadcrumb-text">Categories</span>
+              <button
+                className="breadcrumb-text"
+                onClick={() => handleNavigation("categories")}
+              >
+                Categories
+              </button>
               <img src="/svg/polygon.svg" alt="Breadcrumb separator" />
-              <span className="breadcrumb-text">{category.Title}</span>
+              <button
+                className="breadcrumb-text"
+                // onClick={() => handleNavigation(category.Title)}
+              >
+                {category.Title}
+              </button>
             </div>
           </div>
 
@@ -81,7 +105,7 @@ const CategoryDetails = () => {
           <GenericSwitcher
             items={[
               { icon: imageCourse, title: "COURSES" },
-              { icon: imageTraining, title: "TRAININGS" }
+              { icon: imageTraining, title: "TRAININGS" },
             ]}
             selectedItem={selectedType}
             setSelectedItem={setSelectedType}
@@ -136,7 +160,7 @@ const CategoryDetails = () => {
         </div>
       </Container>
       <Footer />
-    </>
+    </div>
   );
 };
 
