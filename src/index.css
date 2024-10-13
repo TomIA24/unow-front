@@ -110,11 +110,11 @@ code {
 }
 
 /* Container for the header background image */
-.background_container {
+/* .background_container {
   background: url("./component/assets/background-image.png") no-repeat center
     center;
   background-size: cover;
   height: 31vh;
   border-radius: 0 0 var(--border-radius-large) var(--border-radius-large);
   position: relative;
-}
+} */

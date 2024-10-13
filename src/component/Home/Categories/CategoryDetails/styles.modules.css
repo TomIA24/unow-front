@@ -108,18 +108,19 @@ b {
  
 .background_container {
   background: radial-gradient(circle, #345AA4 20%, #3E4678 100%);
-  height: fit-content;
+  height: auto;
   border-radius: 0px 0px 50px 50px;
-  position: relative; 
-
+   
 }
 
 .content_overlay {
   position: relative;
   bottom: 0;
-  width: 95%;
+  width: 85%;
+  background: #000;
   margin-inline: auto;
   margin-top: 30px;
+ 
 
 }
 .box_container {
