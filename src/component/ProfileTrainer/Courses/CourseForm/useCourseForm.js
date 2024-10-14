@@ -1,11 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import toast from "react-hot-toast";
 import { useParams } from "react-router-dom";
 import { request } from "../../../../core/api/request";
 import {
   multipleFilesUploadWithName,
-  singleFileUpload,
+  singleFileUpload
 } from "../../../UploadFunctions/data/api";
+import Programs from "../../../res/programs";
 
 export const useCourseForm = () => {
   const { id } = useParams();
@@ -28,7 +29,7 @@ export const useCourseForm = () => {
     CourseContent: "",
     PracticalWork: "",
     certificate: "",
-    testState: "notStarted",
+    testState: "notStarted"
   });
   const [img, setImg] = useState(null);
 
@@ -56,7 +57,7 @@ export const useCourseForm = () => {
           CourseContent: data?.data.CourseContent,
           PracticalWork: data?.data.PracticalWork,
           certificate: data?.data.certificate,
-          testState: data?.data.testState,
+          testState: data?.data.testState
         });
         setMultipleFilesSelectedRessources(data?.data.Ressources);
         setMultipleVideosSelected(data?.data.Videos);
@@ -106,7 +107,7 @@ export const useCourseForm = () => {
     const courseData = {
       ...formData,
       Status: "processing",
-      Trainer: userInfo._id,
+      Trainer: userInfo._id
     };
 
     const resetFormAndFiles = () => {
@@ -124,7 +125,7 @@ export const useCourseForm = () => {
         CourseContent: "",
         PracticalWork: "",
         certificate: "",
-        testState: "notStarted",
+        testState: "notStarted"
       });
     };
 
@@ -132,7 +133,7 @@ export const useCourseForm = () => {
       try {
         const [videosData, ressourcesData] = await Promise.all([
           UploadMultipleVideos(multipleVideosSelected),
-          UploadMultipleRessources(multipleFilesSelectedRessources),
+          UploadMultipleRessources(multipleFilesSelectedRessources)
         ]);
 
         if (typeof img === "object") {
@@ -157,7 +158,7 @@ export const useCourseForm = () => {
             setUploadProgressRessources,
             setUploadProgressVideos,
             "Videos"
-          ),
+          )
         ]);
 
         toast.success("Course files uploaded successfully");
@@ -189,6 +190,10 @@ export const useCourseForm = () => {
     }
   };
 
+  const certifcateList = useMemo(() => {
+    return Programs.map((program) => program.title);
+  }, []);
+
   return {
     formData,
     categories,
@@ -204,5 +209,6 @@ export const useCourseForm = () => {
     MultipleRessourcesChange,
     handleDeleteSelected,
     handleSubmit,
+    certifcateList
   };
 };

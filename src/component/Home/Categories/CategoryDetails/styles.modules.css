@@ -7,6 +7,14 @@ hr {
   border-radius: 20px;
 }
 
+.emptyBox {
+width: 100%;
+height: 100%;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
 .paddingbottom {
   padding-bottom: 2%;
 }
@@ -97,27 +105,30 @@ b {
   font-weight: bold;
   text-decoration: none;
 }
-
+ 
 .background_container {
-  background: url("../../../assets/background-image.png") no-repeat center
-    center;
-  background-size: cover;
-  height: 31vh;
+  background: radial-gradient(circle, #345AA4 20%, #3E4678 100%);
+  height: auto;
   border-radius: 0px 0px 50px 50px;
-  position: relative;
+   
 }
 
 .content_overlay {
-  position: absolute;
+  position: relative;
   bottom: 0;
-  width: 100%;
+  width: 85%;
+   
+  margin-inline: auto;
+  margin-top: 30px;
+ 
+
 }
 .box_container {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
+ 
 }
 
 .img_container {
@@ -149,6 +160,9 @@ b {
   flex-direction: column;
   gap: 2rem;
   margin-top: 50px;
+  width: 100%;
+  padding-inline: 5px;
+  margin-inline: auto;
 }
 
 .breadcrumb-header {
@@ -159,6 +173,12 @@ b {
 
 .breadcrumb-text {
   font-weight: 500;
+  cursor: pointer;
+}
+
+.innerDisplay{
+  width: 90%;
+  margin-inline: auto;
 }
 
 .box {

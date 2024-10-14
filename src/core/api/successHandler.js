@@ -10,9 +10,7 @@ const successHandler = (
   if (data) {
     const message = data.message || codeMessage[response.status];
     if (options.notifyOnSuccess) {
-      toast.success(`Request success: ${message}`, {
-        duration: 6000,
-      });
+      toast.success(message, { duration: 6000 });
     }
   } else {
     const message = data.message || codeMessage[response.status];

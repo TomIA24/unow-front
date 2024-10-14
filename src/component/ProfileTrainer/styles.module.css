@@ -64,14 +64,14 @@
 }
 
 .imgContainer img {
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
 }
 
 .main {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 1.25rem;
   margin: 5rem 0px;
 }
@@ -106,14 +106,15 @@
 }
 
 /* media Query */
-@media screen and (max-width: 992px) {
-  .main {
-    flex-direction: column-reverse;
-    gap: 2rem;
+@media (max-width: 1200px) {
+  .cardTitle {
+    font-size: 1.25rem;
   }
+
   .sideBar {
-    width: 30rem;
-    margin-left: auto;
+    padding: 30px 24px;
+    width: fit-content;
+    flex: 0 !important;
   }
 }
 

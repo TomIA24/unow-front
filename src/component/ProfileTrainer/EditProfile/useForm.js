@@ -3,9 +3,11 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { request } from "../../../core/api/request";
 import countryList from "../../res/countries";
+import { singleFileUpload } from "../../UploadFunctions/data/api";
 
 const useForm = () => {
   const navigate = useNavigate();
+  const [img, setImg] = useState("svg/default-img.svg");
   const [formData, setFormData] = useState({
     image: "",
     name: "",
@@ -20,12 +22,13 @@ const useForm = () => {
     monthlyBandwidth: "",
     RCS: "",
     SIRET: "",
-    socialReason: "",
+    socialReason: ""
   });
 
   useEffect(() => {
     request.read("userData").then((data) => {
       setFormData({
+        _id: data.data._id,
         image: data.data.image,
         name: data.data.name,
         subname: data.data.subname,
@@ -40,8 +43,12 @@ const useForm = () => {
         monthlyBandwidth: data.data.monthlyBandwidth,
         RCS: data.data.RCS,
         SIRET: data.data.SIRET,
-        socialReason: data.data.socialReason,
+        socialReason: data.data.socialReason
       });
+
+      if (data?.data?.image?.filePath) {
+        setImg(`${process.env.REACT_APP_API}${data.data.image.filePath}`);
+      }
     });
   }, []);
 
@@ -49,7 +56,7 @@ const useForm = () => {
     return countryList.map((country) => country.name);
   }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (formData.programs.length === 0) {
@@ -57,44 +64,56 @@ const useForm = () => {
       return;
     }
 
-    request
-      .update("Trainer/complete", "", {
-        ...formData,
-        firstConnection: false,
-      })
-      .then(() => navigate("/profile"));
-  };
+    request.update("Trainer/complete", "", {
+      ...formData,
+      firstConnection: false
+    });
 
+    const formDataProfilePicture = new FormData();
+    formDataProfilePicture.append("file", img);
+
+    try {
+      await singleFileUpload(formDataProfilePicture, formData._id);
+    } catch (error) {
+      toast.error("Error uploading profile picture");
+    } finally {
+      navigate("/profile");
+    }
+  };
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
-      [name]: value,
+      [name]: value
     }));
   };
 
   const handleAnimationLanguageChange = (newValues) => {
     setFormData((prevData) => ({
       ...prevData,
-      animationLanguage: newValues,
+      animationLanguage: newValues
     }));
   };
 
   const handleConnectingMetropolisChange = (newValues) => {
     setFormData((prevData) => ({
       ...prevData,
-      connectingMetropolis: newValues,
+      connectingMetropolis: newValues
     }));
   };
+
+  const handleSingleFileChange = (e) => setImg(e.target.files[0]);
 
   return {
     formData,
     setFormData,
     countryListValue,
+    img,
     handleSubmit,
     handleChange,
     handleAnimationLanguageChange,
     handleConnectingMetropolisChange,
+    handleSingleFileChange
   };
 };
 

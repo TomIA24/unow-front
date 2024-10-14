@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import useCurrency from "../../hooks/useCurrency.js";
 import styles from "./styles.module.css";
 
 const CourseTrainingCard = ({
@@ -8,11 +9,12 @@ const CourseTrainingCard = ({
   title,
   category,
   price,
-  currency,
   level,
   rating,
-  type,
+  type
 }) => {
+  const { currency, error } = useCurrency();
+  console.log("currency", currency?.code);
   return (
     <Link to={`/${type}/${id}`} key={id}>
       <div key={id} className={styles.container}>
@@ -25,7 +27,10 @@ const CourseTrainingCard = ({
         <div className={styles.content}>
           <div className={styles.text}>
             <p>{category}</p>
-            <p>{price} {currency}</p>
+
+            <p>
+              {price} {currency?.code}
+            </p>
           </div>
 
           <div className={styles.title}>
@@ -33,7 +38,7 @@ const CourseTrainingCard = ({
             <p>{title}</p>
           </div>
 
-          <div className={styles.rating}>
+          {/* <div className={styles.rating}>
             <span>⭐ {rating} (750)</span>
             <div className={styles.stars}>
               <div className={styles.avatarGroup}>
@@ -52,10 +57,17 @@ const CourseTrainingCard = ({
               </div>
               <span>3k+</span>
             </div>
-          </div>
+          </div> */}
 
           <div className={styles.type}>
-            <img src="./images/home/type.png" alt="" />
+            <img
+              src={`${
+                type === "training"
+                  ? "./images/trainingsIcon.png"
+                  : "./images/coursesIcon.png"
+              }`}
+              alt=""
+            />
           </div>
           <button>+</button>
         </div>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Main from "../Main";
 import About from "./AboutUs";
 import Categories from "./Categories";
@@ -32,7 +32,7 @@ const HomeInterface = () => {
             <Collab />
           </div>
 
-          <div className={styles.margin}>
+          <div id="categories-section" className={styles.margin}>
             <Categories />
             <div className={styles.Featured}>
               <Featured />

@@ -126,7 +126,7 @@ export default function SliderNav({ user, handleLogout }) {
       </SwipeableDrawer>
       <div className={styles.logo}>
             <Link to="/" >
-            <img src="/images/home/logoblanc.png" alt=""     />
+            <img src="/images/home/logoMobile.png" alt=""     />
               {/* <img
                 style={{ marginTop: "20px", width: "160px" }}
                 className={styles.LogoImg}
