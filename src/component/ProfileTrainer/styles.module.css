@@ -118,7 +118,11 @@
   }
 }
 
-@media screen and (max-width: 768px) {
+@media (max-width: 768px) {
+  .main {
+    margin-top: 22px;
+  }
+
   .img_container,
   .title,
   .imgProfile,
@@ -140,10 +144,6 @@
   .imgContainer img {
     width: 100px;
     height: 100px;
-  }
-
-  .main {
-    margin-top: 0;
   }
 
   .mainContainer {

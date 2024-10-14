@@ -21,6 +21,7 @@ const Unavailability = ({ onClose, selectedDay, setCalendarEvents }) => {
               type="radio"
               name="isUnavailable"
               checked={formData.isUnavailable}
+              onChange={() => {}}
             />
             <label>I am unavailable on the following days.</label>
           </div>
@@ -44,7 +45,7 @@ const Unavailability = ({ onClose, selectedDay, setCalendarEvents }) => {
             style={{
               height: "fit-content",
               padding: "11px 27px",
-              borderColor: "#818181",
+              borderColor: "#818181"
             }}
             placeholder={"short description *"}
             name="reason"

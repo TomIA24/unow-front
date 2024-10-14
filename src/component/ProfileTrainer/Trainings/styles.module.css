@@ -21,7 +21,7 @@
   flex: 2;
   width: 100%;
   height: 100%;
-  background-color: bisque;
+  /* background-color: bisque; */
   object-fit: cover;
   border-radius: 2.5rem;
 }
