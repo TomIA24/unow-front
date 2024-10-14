@@ -1,19 +1,18 @@
 .featuredContainer {
   display: flex;
   flex-direction: row;
-  /* padding: 50px; */
+
   align-items: center;
   align-content: center;
   justify-content: space-between;
-   /* width: 100%;  */
-   margin-left: -0.5rem;
+  
+   margin-left: -2.5rem;
 
 }
 
 .featuredTitle {
   margin-bottom: 2rem;
-  /* padding-left: 6.5rem;
-  padding-right: 6.5rem; */
+
   font-size: 36px;
   font-weight: bold;
   padding-bottom: 50px;
@@ -174,7 +173,7 @@
 .card {
   background-color: #3e4678;
   color: #d9d9d9;
-  width: 150px;
+  width: 125px;
   height: 15rem;
   border-radius: 1rem;
   display: flex;
@@ -185,20 +184,7 @@
   overflow: visible;
 }
 
-/* Media queries for different screen widths */
-@media (max-width: 372px)  {
-  .card {
-    width: 95px;
-    height: 12.5rem;
-  }
-}
-/* For screens between 300px and 399px */
-@media (min-width: 372px) and (max-width: 400px) {
-  .card {
-    width: 98px;
-    height: 9.5rem;
-  }
-}
+
 @media (min-width: 400px) and (max-width: 470px) {
   .card {
     width: 118px;
@@ -317,130 +303,7 @@
   transform: translateX(-50%);
   background: white;
 }
-@media (max-width: 300px) {
-  .imageWrapper {
-    width: 4rem;
-    height: 4rem;
-    top: -2rem;
-  }
-}
 
-/* For screens between 300px and 399px */
-@media (min-width: 300px) and (max-width: 399px) {
-  .imageWrapper {
-    width: 4rem;
-    height: 4rem;
-    top: -2rem;
-  }
-}
-
-/* For screens between 400px and 499px */
-@media (min-width: 400px) and (max-width: 499px) {
-  .imageWrapper {
-    width: 6.75rem;
-    height: 6.75rem;
-    top: -3.25rem;
-  }
-}
-
-/* For screens between 500px and 599px */
-@media (min-width: 500px) and (max-width: 599px) {
-  .imageWrapper {
-    width: 6.75rem;
-    height: 6.75rem;
-    top: -3.25rem;
-  }
-}
-
-/* For screens between 600px and 699px */
-@media (min-width: 600px) and (max-width: 699px) {
-  .imageWrapper {
-    width: 7.5rem;
-    height: 7.5rem;
-    top: -3.75rem;
-  }
-}
-
-/* For screens between 700px and 799px */
-@media (min-width: 700px) and (max-width: 799px) {
-  .imageWrapper {
-    width: 7.5rem;
-    height: 7.5rem;
-    top: -3.75rem;
-  }
-}
-
-/* For screens between 800px and 899px */
-@media (min-width: 800px) and (max-width: 899px) {
-  .imageWrapper {
-    width: 8rem;
-    height: 8rem;
-    top: -3.5rem;
-  }
-}
-
-/* For screens between 900px and 999px */
-@media (min-width: 900px) and (max-width: 999px) {
-  .imageWrapper {
-    width: 8rem;
-    height: 8rem;
-    top: -3.5rem;
-  }
-}
-
-/* For screens between 1000px and 1099px */
-@media (min-width: 1000px) and (max-width: 1099px) {
-  .imageWrapper {
-    width: 7.5rem;
-    height: 7.5rem;
-    top: -3.75rem;
-  }
-}
-
-/* For screens between 1100px and 1199px */
-@media (min-width: 1100px) and (max-width: 1199px) {
-  .imageWrapper {
-    width: 8rem;
-    height: 8rem;
-    top: -4rem;
-  }
-}
-
-/* For screens between 1200px and 1299px */
-@media (min-width: 1200px) and (max-width: 1299px) {
-  .imageWrapper {
-    width: 9rem;
-    height: 9rem;
-    top: -4.25rem;
-  }
-}
-
-/* For screens between 1300px and 1399px */
-@media (min-width: 1300px) and (max-width: 1399px) {
-  .imageWrapper {
-    width: 9rem;
-    height: 9rem;
-    top: -4.5rem;
-  }
-}
-
-/* For screens between 1400px and 1499px */
-@media (min-width: 1400px) and (max-width: 1499px) {
-  .imageWrapper {
-    width: 9.5rem;
-    height: 9.5rem;
-    top: -4.75rem;
-  }
-}
-
-/* For screens above 1500px */
-@media (min-width: 1500px) {
-  .imageWrapper {
-    width: 9.5rem;
-    height: 9.5rem;
-    top: -4.75rem;
-  }
-}
 
 .cardImage {
   width: 100%;
@@ -777,22 +640,10 @@
   width: 100%;
 }
 
-@media (max-width: 300px)  {
-  .arrows {
-    width: 10px;
-  }
-}
-/* For screens between 300px and 399px */
-@media (min-width: 300px) and (max-width: 399px) {
-  .arrows {
-    width: 10px;
-  }
-}
 
-/* For screens between 400px and 499px */
-@media (min-width: 400px) and (max-width: 499px) {
+@media (max-width: 499px) {
   .arrows {
-    width: 12px;
+    width: 13px;
   }
 }
 
