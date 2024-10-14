@@ -12,8 +12,8 @@ const isPartOfMeeting = (meeting, day) => {
 };
 
 const relevantMeetings = (meetings, day) => {
-  const relevantMeetings = meetings.filter((meeting) =>
-    isPartOfMeeting(meeting, day)
+  const relevantMeetings = meetings.filter(
+    (meeting) => isPartOfMeeting(meeting, day) && meeting.type === "training"
   );
 
   return relevantMeetings.length === 0;
@@ -85,5 +85,5 @@ export {
   getMeetingColor,
   getMettingTitleCurrentDay,
   isPartOfMeeting,
-  relevantMeetings,
+  relevantMeetings
 };

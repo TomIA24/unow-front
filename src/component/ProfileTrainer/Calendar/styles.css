@@ -42,6 +42,8 @@
   content: "";
   position: absolute;
   left: -2rem;
+  top: 50%;
+  transform: translateY(-50%);
   background-color: var(--button-color);
   width: 20px;
   height: 20px;
@@ -49,8 +51,9 @@
 }
 
 @media (max-width: 768px) {
-  .header-buttons {
-    display: none;
+  .header-buttons button::before {
+    width: 10px;
+    height: 10px;
   }
 }
 .weekdays {
@@ -78,7 +81,7 @@
 
 .day {
   max-width: 127px;
-  height: 94px;
+  padding: 10px 0;
   font-weight: 600;
 }
 

@@ -176,3 +176,13 @@
   font-size: 10px;
   font-weight: 500;
 }
+
+@media (max-width: 768px) {
+  .addCourse span {
+    width: 28px;
+    height: 28px;
+  }
+  .addCourse {
+    padding: 8px 36px;
+  }
+}

@@ -12,8 +12,8 @@ import { useCalendar } from "./useCalendar";
 
 const buttons = [
   { label: "Confirmed", color: "#D9EAD0" },
-  { label: "Unconfirmed", color: "#ffecf1" },
-  { label: "Holidays", color: "#DAF1FC" },
+  // { label: "Unconfirmed", color: "#ffecf1" },
+  // { label: "Holidays", color: "#DAF1FC" },
   { label: "Unavailability", color: "#E2E0F6" }
 ];
 

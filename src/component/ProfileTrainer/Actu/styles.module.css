@@ -19,3 +19,9 @@
   border-bottom: none;
   background-color: red !important;
 }
+
+.currencySelect {
+  height: 50px !important;
+  transform: scale(0.7);
+  background-color: white;
+}
