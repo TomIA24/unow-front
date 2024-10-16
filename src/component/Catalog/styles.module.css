@@ -1,0 +1,33 @@
+
+h1 {
+    color: green;
+  }
+
+
+#logoBar{
+    display: none !important;
+   
+}
+.catalog{
+    width: 50%; /* ou la largeur que vous souhaitez */
+    margin: 0 auto; /* Centre horizontalement */
+    z-index: 2;
+    color: white;
+  }
+
+element.style {
+    display: none !important;
+}
+
+div.fh5---banner---container{
+    display:none !important;
+}
+
+div.pt-brand-bar {
+
+    display: none !important;
+  }
+  
+  
+
+  
