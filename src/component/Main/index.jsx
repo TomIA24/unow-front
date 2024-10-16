@@ -104,16 +104,24 @@ const Main = () => {
     }
   }, [WindowWidth]);
 
+  const totalPages = Math.ceil(trainings.length / trainingsPerPage);
+
   const nextPage = () => {
-    if (currentPage < Math.ceil(trainings.length / trainingsPerPage)) {
-      setCurrentPage(currentPage + 1);
-    }
+ 
+  if (currentPage < totalPages-1) {
+    setCurrentPage(currentPage + 1);
+  } else {
+    setCurrentPage(1); //back to the first page
+  }
   };
 
   const prevPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
-    }
+
+  if (currentPage > 1) {
+    setCurrentPage(currentPage - 1);
+  } else {
+    setCurrentPage(totalPages ); 
+  }
   };
 
   const [isOpen, setIsOpen] = useState(false);
@@ -145,7 +153,6 @@ const Main = () => {
       },
     ];
   }, []);
-  
   return (
     <div className={styles.body}>
       <div>
@@ -206,7 +213,7 @@ const Main = () => {
                 <CourseTrainingCard
                   id={training._id}
                   key={training._id}
-                  thumbnail={training.Thumbnail.filePath}
+                  thumbnail="./images/home/right.png"
                   title={training.Title}
                   category={training.Category}
                   price={training.Price}
