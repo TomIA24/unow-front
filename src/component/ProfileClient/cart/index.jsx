@@ -1,12 +1,13 @@
-import React from "react";
-
-import styles from "./styles.module.css";
-
-import Loading from "../../Loading";
+import AddCardIcon from "@mui/icons-material/AddCard";
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import React, { useState } from "react";
+import Button from "../../../shared/components/button";
+import imageCourse from "../../assets/icon_course.svg";
+import imageTraining from "../../assets/icon_training.svg";
+import imageVoucher from "../../assets/icon_voucher.svg";
+import GenericSwitcher from "../../GenericSwitcher";
 import useCart from "../hooks/use-cart";
-import EmptyTrainings from "../../assets/empty.png";
-import EmptyCourses from "../../assets/emptyCourses.png";
-import CourseElement from "../components/CourseCardElement";
+import styles from "./styles.module.css";
 
 const Cart = ({ user }) => {
   const {
@@ -17,66 +18,72 @@ const Cart = ({ user }) => {
     isTrainingsLoading,
     handleCourse,
     handleTraining,
-    handleBuySTRIPE,
+    handleBuySTRIPE
   } = useCart();
+  const [selectedType, setSelectedType] = useState("COURSES");
 
-  
-console.log("cart",cart)
   return (
     <div className={styles.leftSectionProfile}>
-      <div className={styles.CartDiv}>
-        <div className={styles.titleContainer}>
-          <h1>Courses</h1>
-          <div className={styles.underline} />
-        </div>
-        <div className={styles.carouselDivContainer}>
-          <div className={styles.carouselDiv}>
-            {isCoursesLoading ? (
-              <Loading />
-            ) : (
-              <>
-                {cart?.courses?.length > 0 ? (
-                  <div className={styles.coursesInner}>
-                    {cart?.courses?.map((course) => (
-                      <CourseElement course={course} type="course" />
-                    ))}
-                  </div>
-                ) : (
-                  <div className={styles.emptyBox}>
-                    <img src={EmptyCourses} alt="" />
-                  </div>
-                )}
-              </>
-            )}
-          </div>
-        </div>
-      </div>
+      <div className={styles.container}>
+        <GenericSwitcher
+          items={[
+            { icon: imageCourse, title: "COURSES", width: "32px" },
+            { icon: imageTraining, title: "TRAININGS", width: "37px" },
+            { icon: imageVoucher, title: "VOUCHERS", width: "44px" }
+          ]}
+          selectedItem={selectedType}
+          setSelectedItem={setSelectedType}
+          indicator={5}
+        />
 
-      <div className={styles.CartDiv}>
-        <div className={styles.titleContainer}>
-          <h1>Trainings</h1>
-          <div className={styles.underline} />
-        </div>
-        <div className={styles.carouselDivContainer}>
-          <div className={styles.carouselDiv}>
-            {isTrainingsLoading ? (
-              <Loading />
-            ) : (
-              <>
-                {cart?.trainings?.length > 0 ? (
-                  <div className={styles.coursesInner}>
-                    {cart?.trainings?.map((course) => (
-                      <CourseElement course={course} type="Training" />
-                    ))}
+        <div className={styles.content}>
+          {cart?.trainings?.map((course) => (
+            <div key={course._id} className={styles.card}>
+              <div className={styles.imgContainer}>
+                <img
+                  className={styles.img}
+                  src={"images/welcome/welcome.png"}
+                  alt="cart item"
+                />
+              </div>
+
+              <div className={styles.info}>
+                <div className={styles.group}>
+                  <p className={styles.title}>Web development</p>
+                  <div className={styles.price}>160$</div>
+                </div>
+                <div className={styles.textContainer}>
+                  <p>Intermediate</p>
+                  <p
+                    className={styles.status}
+                    style={{ "--status-color": "#34A853" }}
+                  >
+                    progress
+                  </p>
+                  <p>React: Developing a Web Application</p>
+                </div>
+
+                <div className={styles.box}>
+                  <p>⭐4.7</p>
+                  <div className={styles.buttons}>
+                    <Button
+                      varaint="outline"
+                      text="Delete"
+                      className={styles.btn}
+                      leftIcon={<DeleteOutlineIcon sx={{ fontSize: "17px" }} />}
+                      onClick={() => {}}
+                    />
+                    <Button
+                      text="Pay Now"
+                      className={styles.btn}
+                      leftIcon={<AddCardIcon sx={{ fontSize: "17px" }} />}
+                      onClick={() => {}}
+                    />
                   </div>
-                ) : (
-                  <div className={styles.emptyBox}>
-                    <img src={EmptyTrainings} alt="" />
-                  </div>
-                )}
-              </>
-            )}
-          </div>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>

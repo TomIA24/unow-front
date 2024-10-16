@@ -2,7 +2,12 @@ import { Box } from "@mui/material";
 import { Link, useParams } from "react-router-dom";
 import styles from "./styles.module.css";
 
-const GenericSwitcher = ({ items, selectedItem, setSelectedItem }) => {
+const GenericSwitcher = ({
+  items,
+  selectedItem,
+  setSelectedItem,
+  indicator
+}) => {
   const { id, contentType } = useParams();
   const content = contentType === "courses" ? "trainings" : "courses";
 
@@ -18,9 +23,15 @@ const GenericSwitcher = ({ items, selectedItem, setSelectedItem }) => {
               }`}
               onClick={() => setSelectedItem(item.title)}
             >
-              <img className={styles.image} src={item.icon} alt="" />
+              <img
+                className={styles.image}
+                src={item.icon}
+                width={item.width}
+                alt=""
+              />
 
               <p className={styles.textstyle}>{item.title}</p>
+              {indicator && <p className={styles.indicator}> {indicator}</p>}
             </button>
           );
         })}

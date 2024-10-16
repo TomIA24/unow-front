@@ -1,10 +1,10 @@
 import { Box, CircularProgress, Container } from "@mui/material";
 import { useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useDebouncedState from "../../../../hooks/useDebouncedState";
 
-import imageCourse from "../../../assets/icon_course.png";
-import imageTraining from "../../../assets/icon_training.png";
+import imageCourse from "../../../assets/icon_course.svg";
+import imageTraining from "../../../assets/icon_training.svg";
 import CourseTrainingCard from "../../../CourseTrainingCard";
 import GenericSwitcher from "../../../GenericSwitcher";
 import Nav from "../../../Nav";
@@ -75,7 +75,7 @@ const CategoryDetails = () => {
             flexDirection: "column",
             gap: "2rem",
             width: "95%",
-            marginInline: "auto",
+            marginInline: "auto"
           }}
         >
           <div className="breadcrumb-container">
@@ -106,8 +106,8 @@ const CategoryDetails = () => {
           {/* TapBarComponent exists, you just need to implement the subcategory in the backend */}
           <GenericSwitcher
             items={[
-              { icon: imageCourse, title: "COURSES" },
-              { icon: imageTraining, title: "TRAININGS" },
+              { icon: imageCourse, title: "COURSES", width: "32px" },
+              { icon: imageTraining, title: "TRAININGS", width: "37px" }
             ]}
             selectedItem={selectedType}
             setSelectedItem={setSelectedType}
