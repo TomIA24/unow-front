@@ -65,7 +65,7 @@ const Featured = () => {
         <SectionTitle title={"FEATURED TRAINERS"} />
       </div>
       <div className={styles.featuredContainer}>
-        <div>
+       
           <button onClick={prev} className={styles.arrowButton}>
             <img
               src="./images/trainers/left.png"
@@ -73,7 +73,7 @@ const Featured = () => {
               className={styles.arrows}
             />
           </button>
-        </div>
+       
         <div className={styles.cardsWrapper}>
           <div className={styles.cardsContainer}>
             {currentData.map((trainer) => (
@@ -96,7 +96,7 @@ const Featured = () => {
             ))}
           </div>
         </div>
-        <div>
+        
           <button onClick={next} className={styles.arrowButton}>
             <img
               src="./images/trainers/right.png"
@@ -104,7 +104,7 @@ const Featured = () => {
               className={styles.arrows}
             />
           </button>
-        </div>
+       
       </div>
     </>
   );
