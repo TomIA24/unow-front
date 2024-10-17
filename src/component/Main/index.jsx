@@ -213,7 +213,7 @@ const Main = () => {
                 <CourseTrainingCard
                   id={training._id}
                   key={training._id}
-                  thumbnail="./images/home/right.png"
+                  thumbnail={training.Thumbnail?.filePath ? training.Thumbnail.filePath : "./images/home/unknown.png"}
                   title={training.Title}
                   category={training.Category}
                   price={training.Price}
