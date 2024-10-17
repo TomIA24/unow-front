@@ -318,9 +318,9 @@
     padding: 2rem 4rem;
     width: fit-content;
   }
-  .containerInfo {
+  /* .containerInfo {
     margin-top: 22px;
-  }
+  } */
 
   .imgContainer img {
     width: 100px;

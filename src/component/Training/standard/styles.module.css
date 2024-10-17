@@ -1,77 +1,70 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
 .backimage {
-  background: url('../../assets/quizbackground.png') no-repeat center center;
+  background: url("../../assets/quizbackground.png") no-repeat center center;
   background-size: cover;
   height: 18rem;
   border-radius: 0px 0px 50px 50px;
   display: flex;
   justify-content: center; /* Horizontally centers .maincontainernav */
-  align-items: center; 
-    
-  }
-  .maincontainer{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  .logoimage {
-    margin-left: 30%; /* Centre l'image horizontalement */
-    padding: 10px;
-    height: auto; /* Garde les proportions de l'image */
-    width: auto; /* Garde les proportions de l'image */
-    max-height: 52px; /* Hauteur maximale */
-    max-width: 135px; /* Largeur maximale */
+  align-items: center;
 }
-  
-  .pdown{
-    color: #FFFFFF;
-    font-size: 40px;
-font-weight: 900;
-  }
-  .course{
-    color: #2C2C2C;
-    font-size: 3rem;
-font-weight: 900;
-  }
+.maincontainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.logoimage {
+  margin-left: 30%; /* Centre l'image horizontalement */
+  padding: 10px;
+  height: auto; /* Garde les proportions de l'image */
+  width: auto; /* Garde les proportions de l'image */
+  max-height: 52px; /* Hauteur maximale */
+  max-width: 135px; /* Largeur maximale */
+}
 
-  .underline{
-  
-    width:8%;
-    background-color: #CD6214;
-    padding-top: 5px;
-    border-radius: 100px;
-    margin-top: 10px;
-  }
-  .product{
-    font-size: 40px;
-    color: white;
-    font-weight: 600;
-  
-    font-family: "Lato";
+.pdown {
+  color: #ffffff;
+  font-size: 40px;
+  font-weight: 900;
+}
+.course {
+  color: #2c2c2c;
+  font-size: 3rem;
+  font-weight: 900;
+}
 
+.underline {
+  width: 8%;
+  background-color: #cd6214;
+  padding-top: 5px;
+  border-radius: 100px;
+  margin-top: 10px;
+}
+.product {
+  font-size: 40px;
+  color: white;
+  font-weight: 600;
 
-  }
-  .navContainer{
-    
-  }
-  .pdowncontainer{
-    /* padding-left: 8rem;
+  font-family: "Lato";
+}
+.navContainer {
+}
+.pdowncontainer {
+  /* padding-left: 8rem;
     padding-right: 8rem; */
-    padding-top: 100px;
-  }
-  .maincontainernav{
-  
-    width: 100%;
-    max-width: 1200px; /* Optional: Set a max-width to control layout */
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-between;
- 
-  }
+  padding-top: 100px;
+}
+.maincontainernav {
+  width: 100%;
+  max-width: 1200px; /* Optional: Set a max-width to control layout */
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+}
 /* a {
     text-decoration: none;
     margin: 0 5px;
@@ -83,13 +76,13 @@ font-weight: 900;
 } */
 
 .scndNav {
-    width: 97%;
-    height: 60px;
-    margin: auto;
-    border-radius: 13px;
-    border: 3px solid #6FC2D0;
-    display: flex;
-    justify-content: end;
+  width: 97%;
+  height: 60px;
+  margin: auto;
+  border-radius: 13px;
+  border: 3px solid #6fc2d0;
+  display: flex;
+  justify-content: end;
 }
 
 /* .Links {
@@ -106,76 +99,74 @@ font-weight: 900;
 } */
 
 .nav_btn {
-    font-size: 22px;
-    color: #1C4B82;
-    font-family: 'Nunito', sans-serif;
-    font-weight: 600;
+  font-size: 22px;
+  color: #1c4b82;
+  font-family: "Nunito", sans-serif;
+  font-weight: 600;
 }
 .nav_container {
   width: 100%;
   height: 70px;
   display: flex;
   justify-content: space-between;
- /* Center items vertically */
+  /* Center items vertically */
   background-color: #00000000;
   /* padding-left: 5rem; */
   /* padding-right: 5rem; */
-align-items: center;
+  align-items: center;
 }
-.logo{
+.logo {
   width: 100%;
-    }
-  
-    .logoimage {
-      /* margin-left: 30%; Centre l'image horizontalement */
-      padding: 10px;
-      height: auto; /* Garde les proportions de l'image */
-      width: auto; /* Garde les proportions de l'image */
-      /* max-height: 52px; /* Hauteur maximale */
-      /* max-width: 135px; Largeur maximale */ 
-  }
-  
+}
+
+.logoimage {
+  /* margin-left: 30%; Centre l'image horizontalement */
+  padding: 10px;
+  height: auto; /* Garde les proportions de l'image */
+  width: auto; /* Garde les proportions de l'image */
+  /* max-height: 52px; /* Hauteur maximale */
+  /* max-width: 135px; Largeur maximale */
+}
 
 .nav_btn_special {
-    composes: nav_btn;
-    border: 2px solid #FFA41B;
-    padding: 5px;
-    border-radius: 14px;
+  composes: nav_btn;
+  border: 2px solid #ffa41b;
+  padding: 5px;
+  border-radius: 14px;
 }
 
 .nav_btn_special:hover {
-    border: 2px solid #1C4B82;
-    color: #FFA41B;
-    padding: 5px;
-    border-radius: 14px;
+  border: 2px solid #1c4b82;
+  color: #ffa41b;
+  padding: 5px;
+  border-radius: 14px;
 }
 
 .search {
-    flex: 1.4;
-    display: flex;
-    justify-content: end;
+  flex: 1.4;
+  display: flex;
+  justify-content: end;
 }
 
 .search input {
-    height: 100%;
-    align-self: center;
-    margin-right: 60px;
-    border: 2.5px solid #9B0000;
-    border-radius: 20px;
-    width: 50%;
-    padding: 0 10px;
+  height: 100%;
+  align-self: center;
+  margin-right: 60px;
+  border: 2.5px solid #9b0000;
+  border-radius: 20px;
+  width: 50%;
+  padding: 0 10px;
 }
 
-
 .search input:focus {
-    outline: none;
+  outline: none;
 }
 
 .firstNav {
-    width: 95%;
-    height: 70px;
-    margin: auto;
-    display: flex;
+  width: 95%;
+  height: 70px;
+  margin: auto;
+  display: flex;
 }
 /* 
 .logo {
@@ -191,152 +182,149 @@ align-items: center;
 } */
 
 .contact {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: end;
-    margin-right: 20px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  margin-right: 20px;
 }
 
 .nav_btn_special_contact {
-    composes: nav_btn;
-    border: 2px solid #1C4B82;
-    padding: 5px 10px;
-    border-radius: 14px;
+  composes: nav_btn;
+  border: 2px solid #1c4b82;
+  padding: 5px 10px;
+  border-radius: 14px;
 }
 
 .nav_btn_special_contact:hover {
-    color: white;
-    background-color: #1C4B82;
-    padding: 5px 10px;
-    border-radius: 14px;
+  color: white;
+  background-color: #1c4b82;
+  padding: 5px 10px;
+  border-radius: 14px;
 }
 
 .language {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    border: 3px solid #1C4B82;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 3px solid #1c4b82;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }
 
 .language img {
-    width: 50px;
-    height: 50px;
+  width: 50px;
+  height: 50px;
 }
 
 .language p {
-    position: absolute;
-    color: white;
-    font-weight: bold;
-    width: 55px;
-    height: 55px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50px;
-    background-color: rgba(0, 0, 0, 0.3);
+  position: absolute;
+  color: white;
+  font-weight: bold;
+  width: 55px;
+  height: 55px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
-
 /*///////////////////////*/
-
 
 /*/////////ENDNAV////////////////////*/
 
 .MotherDivCourse {
-    /* background: url('../../assets/courseBack.png') no-repeat top; */
-    width: 100%;
-   /* height: auto;
+  /* background: url('../../assets/courseBack.png') no-repeat top; */
+  width: 100%;
+  /* height: auto;
     margin-top: 20px; */
-    display: flex;
-    flex-direction: column;
-    /* justify-content: center;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center;
     align-items: center; */
-    position: relative;
-    align-items: center;
-    justify-self: space-between;
- 
-    /* padding-left: 5rem;
-    padding-right: 5rem; */
+  position: relative;
+  align-items: center;
+  justify-self: space-between;
 
+  /* padding-left: 5rem;
+    padding-right: 5rem; */
 }
 
 .MainDivCourse {
-    /* width: 90%; */
-    width: 100%;
-    height: auto;
-    /* background-color: #1C4B82; */
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: space-between;
-    /* grid-template-columns: auto 19rem; */
-     padding-left: 8rem;
-    padding-right: 8rem; 
-    padding-top: 5rem;
+  /* width: 90%; */
+  width: 100%;
+  height: auto;
+  /* background-color: #1C4B82; */
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  /* grid-template-columns: auto 19rem; */
+  padding-left: 8rem;
+  padding-right: 8rem;
+  padding-top: 5rem;
 }
 
 .leftSectionCourse {
-      /* background-color: #6FC2D0; */
-      width: 60%;
+  /* background-color: #6FC2D0; */
+  width: 60%;
 
-      /* height: 100%; */
-      display: flex;
-      flex-direction: column;
-    /* padding-left: 5rem;
+  /* height: 100%; */
+  display: flex;
+  flex-direction: column;
+  /* padding-left: 5rem;
     padding-right: 5rem; */
 }
 
 .FirsSectionInfoCourse {
   margin-top: 2rem;
-    /* background-color: #6fd0b3; */
-    display: flex;
-    justify-content: start;
-    align-items: start;
-    /* width: 100%; */
+  /* background-color: #6fd0b3; */
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  /* width: 100%; */
 
-    margin-bottom: 20px;
-    flex-direction: column;
+  margin-bottom: 20px;
+  flex-direction: column;
 }
-.courseInfo{
-    display: flex;
-    flex-direction: row;
-    gap:1rem
+.courseInfo {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
 }
 
 /* .FirsSectionInfoCourseTitle {
     margin: 20px;
 } */
-.FirsSectionInfoCourseTitle h1{
-    margin: 20px;
-    color: #2C2C2C;
-    font-size: 2rem;
-    font-weight:900;
-    text-transform: capitalize;
+.FirsSectionInfoCourseTitle h1 {
+  margin: 20px;
+  color: #2c2c2c;
+  font-size: 2rem;
+  font-weight: 900;
+  text-transform: capitalize;
 }
 
 /* .imgCourse {
     width:100%;
     height:28rem; */
- /* height: 100%;  */
-    /* display: grid; */
-    /* grid-template-columns: 1fr; */
-    /* border-radius: 3rem; */
-    /* margin: auto 5px;
+/* height: 100%;  */
+/* display: grid; */
+/* grid-template-columns: 1fr; */
+/* border-radius: 3rem; */
+/* margin: auto 5px;
     box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.16);
     z-index: -1;
 } */
 .imgCourse {
-  width: 100%;  /* Make the container take up full width */
+  width: 100%; /* Make the container take up full width */
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden; 
+  overflow: hidden;
   border-radius: 2rem;
   position: relative;
   padding-bottom: 64.5%; /* (498 / 772) * 100% to maintain aspect ratio */
@@ -346,470 +334,456 @@ align-items: center;
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;  /* Image takes full width of the container */
+  width: 100%; /* Image takes full width of the container */
   height: 100%; /* Image takes full height of the container */
   object-fit: cover; /* Ensure the image covers the container without stretching */
 }
 .imgCourse img {
-    /* position: relative;
+  /* position: relative;
     height: 200px;
     margin: auto; */
-
-
-    
 }
-
 
 .rightSectionContainer {
   position: sticky;
-  top:0;
+  top: 0;
   margin-bottom: 2rem;
 }
 
-
 .rightSectionCourse {
-    position: relative; /* Allows the element to scroll normally */
-    top: 0; /* Resets the top position */
-    right: 0; /* Aligns it to the right (if needed) */
-    height: auto; 
-    margin-top: 6rem; /* Keeps the top margin as needed */
+  position: relative; /* Allows the element to scroll normally */
+  top: 0; /* Resets the top position */
+  right: 0; /* Aligns it to the right (if needed) */
+  height: auto;
+  margin-top: 6rem; /* Keeps the top margin as needed */
 }
 
 .scndInfos {
-    padding: 3rem 4rem;
-    border-radius: 0px 40px 0px 40px;
-    background-color: #3E4678;
-    box-shadow: 0 0 7px rgba(0, 0, 0, 0.25);
-    display: flex;
-    flex-direction: column;   
-    align-items: center;
-    text-align: left;
-    gap: 1rem;
-    color: #FFFFFF;
-    font: bold 20px "Lato", sans-serif;
-    position: relative; /* Allows the element to scroll normally */
-    margin-top: 0; /* Adjust as needed */
+  padding: 3rem 4rem;
+  border-radius: 0px 40px 0px 40px;
+  background-color: #3e4678;
+  box-shadow: 0 0 7px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: left;
+  gap: 1rem;
+  color: #ffffff;
+  font: bold 20px "Lato", sans-serif;
+  position: relative; /* Allows the element to scroll normally */
+  margin-top: 0; /* Adjust as needed */
 }
-.maincontainernav{
+.maincontainernav {
   /* width: 1500px; */
   /* align-items: center; */
   width: 100%;
 }
 .InfosRefDur span {
-    font:lighter 1rem "Lato", sans-serif;
+  font: lighter 1rem "Lato", sans-serif;
 }
 
 .InfosDates {
-    /* width: 90%;
+  /* width: 90%;
     height: 25%;
     /* min-height: 70px; */
-    /* display: flex;
+  /* display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start; */ 
+    align-items: flex-start; */
 
-    padding-bottom: 2rem;
+  padding-bottom: 2rem;
 }
-.InfosDates p{
+.InfosDates p {
   font: 1rem "Lato", sans-serif;
 }
 
-
 .radioTitle {
-    color: #FFFFFF;
-    font: bolder 2rem "Lato";
-    padding-bottom: 1rem;
+  color: #ffffff;
+  font: bolder 2rem "Lato";
 }
 .InfosRefDur ul {
-    list-style-type: disc; /* Ensure the list style is set to bullets */
-    padding-left: 1rem; /* Add padding to align the bullet points */
+  list-style-type: disc; /* Ensure the list style is set to bullets */
+  padding-left: 1rem; /* Add padding to align the bullet points */
 }
 
 .InfosRefDur li {
-    margin-bottom: 1rem; 
-    font-size: 1.2rem;/* Optional: add some space between list items for better readability */
+  margin-bottom: 1rem;
+  font-size: 1.2rem; /* Optional: add some space between list items for better readability */
 }
-.InfosRefDur li span{
- margin-left: 0.5rem;/* Optional: add some space between list items for better readability */
+.InfosRefDur li span {
+  margin-left: 0.5rem; /* Optional: add some space between list items for better readability */
 }
 
-.InfosRefDur li b{
+.InfosRefDur li b {
   margin-bottom: 10px;
   font-size: 1.2rem;
-   /* Optional: add some space between list items for better readability */
+  /* Optional: add some space between list items for better readability */
 }
 .radioLable {
-    color: #FFFFFF;
-    font: 400 20px "Lato", sans-serif;
+  color: #ffffff;
+  font: 400 20px "Lato", sans-serif;
 }
 
-
-
-.price{
-    color: #FFFFFF;
-    font-size: 2.5rem;
-    font-family: 'Lato';
-    align-self: center;
-    font-weight: 900;
-    text-align: center;
-  
+.price {
+  color: #ffffff;
+  font-size: 2.5rem;
+  font-family: "Lato";
+  align-self: center;
+  font-weight: 900;
+  text-align: center;
 }
-.price p{
-    width:50%;
-    background-color: #CD6214;
-    padding-top: 0.35rem;
-    border-radius: 100px;
-    margin-top: 0.5rem;
-    align-self: center;
-  
+.price p {
+  width: 50%;
+  background-color: #cd6214;
+  padding-top: 0.35rem;
+  border-radius: 100px;
+  margin-top: 0.5rem;
+  align-self: center;
 }
 
 .CourseButtonsInfoPage {
-
-    height: 30%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items:center;
+  height: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
 
 .CourseButtonsInfoPage button {
-    width: 90%;
-    height: 5rem;
-    margin: 5px 10px;
-    padding: 0 20px;
-    display: flex;
-    justify-content:center;
-    align-items: center;
-    flex-direction: row-reverse;
-    border-radius: 10px;     
-    border: none;
-    color: #3E4678;
-    font: 500 20px "Lato", sans-serif;
-    cursor: pointer;
-    font-weight: bolder;
+  padding: 5px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row-reverse;
+  border-radius: 10px;
+  border: none;
+  color: #3e4678;
+  font: 500 20px "Lato", sans-serif;
+  cursor: pointer;
+  font-weight: bolder;
+  width: 100%;
+}
+
+.CourseButtonsInfoPage button.disabled {
+  cursor: not-allowed;
+  background-color: rgb(107, 106, 106);
 }
 
 #CourseButtonsInfoPageB1 {
-    background-color: #FFFFFF;
-    transition: background-color 0.5s ease-out;
+  background-color: #ffffff;
+  transition: background-color 0.5s ease-out;
 }
 
 #CourseButtonsInfoPageB1Mod {
-    background-color: white;
-    cursor: not-allowed;
+  background-color: white;
+  cursor: not-allowed;
 }
-#CourseButtonsInfoPageB1Mod:disabled{
-
-    background-color: rgb(107, 106, 106);
-    cursor: not-allowed;
+#CourseButtonsInfoPageB1Mod:disabled {
+  background-color: rgb(107, 106, 106);
+  cursor: not-allowed;
 }
 
 #CourseButtonsInfoPageB2 {
-    background-color:  white;
-    opacity: 72%;
+  background-color: white;
+  opacity: 72%;
 }
 
 #CourseButtonsInfoPageB2Mod {
-    background-color:  white;
-    cursor: not-allowed;
+  background-color: white;
+  cursor: not-allowed;
 }
 
 .ModalComponent {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 95%;
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 95%;
+  text-align: center;
 }
 
 .ModalTitle {
-    text-align: center;
+  text-align: center;
 }
 
 .Date {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 94%;
-    margin: 5px 20px;
-    height: auto;
-    border-radius: 3px;
-    box-shadow: 0px 0px 3px 0px #4e4e4e;
-    padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 94%;
+  margin: 5px 20px;
+  height: auto;
+  border-radius: 3px;
+  box-shadow: 0px 0px 3px 0px #4e4e4e;
+  padding: 10px;
 }
 
 .DatePicker {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 95%;
-    margin: 10px;
-    height: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 95%;
+  margin: 10px;
+  height: auto;
 }
 
 .DatePickedDiplay {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    margin: 10px;
-    height: 100px;
-    max-height: 100px;
-    overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 10px;
+  height: 100px;
+  max-height: 100px;
+  overflow-y: auto;
 }
 
 .ValidateIcon {
-    margin: auto 5px;
-    cursor: pointer;
+  margin: auto 5px;
+  cursor: pointer;
 }
 
 .Btn_save {
-    height: 50px;
-    margin-bottom: 0;
+  height: 50px;
+  margin-bottom: 0;
 }
 
 .DescriptionInfoCourse {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: start;
-    /* margin: 20px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  /* margin: 20px; */
 }
 
-.DescriptionInfoCourseTitle{
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-   
+.DescriptionInfoCourseTitle {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
-.DescriptionInfoCourseTitle span{
-  font-family: 'Lato';
+.DescriptionInfoCourseTitle span {
+  font-family: "Lato";
   font-weight: 900;
   text-transform: uppercase;
   font-size: 1.7rem;
-  color: #2C2C2C;
+  color: #2c2c2c;
 }
 
-.DescriptionInfoCourseTitle .underline{
-  
-    width:4.7rem;
-    background-color: #CD6214;
-    padding:0.25em;
-    border-radius: 100px;
-    margin-top: 10px;
-  }
+.DescriptionInfoCourseTitle .underline {
+  width: 4.7rem;
+  background-color: #cd6214;
+  padding: 0.25em;
+  border-radius: 100px;
+  margin-top: 10px;
+}
 
-
-.ScndSectionInfoCourse{
-    width: 98%;
-    padding-bottom: 5rem;
+.ScndSectionInfoCourse {
+  width: 98%;
+  padding-bottom: 5rem;
 }
 .DescriptionInfoCourseTitle {
- 
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    gap: 10px
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 10px;
 }
 
 .DescriptionInfoCourseText {
-    /* width:90%; */
-    height: 90%; 
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    /* margin: 20px;
+  /* width:90%; */
+  height: 90%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  /* margin: 20px;
     padding: 20px; */
-    font: 500 15px "Lato";
-    /* border: 2px solid #525252; */
-    line-height: 1rem;
-    color: #2C2C2C;
-    border-radius: 5px;
-    margin-top: 5px;
-    margin-bottom: 19px;
+  font: 500 15px "Lato";
+  /* border: 2px solid #525252; */
+  line-height: 1rem;
+  color: #2c2c2c;
+  border-radius: 5px;
+  margin-top: 5px;
+  margin-bottom: 19px;
 }
-
 
 /*//////////////////FOOTER////////////////////////////*/
 
 .footer {
-    height: 40vh;
-    width: 100%;
-    background-color: #0E2256;
-    display: grid;
-    grid-template-columns: 3fr 1fr 1fr 3fr;
-    justify-content: center;
-    align-items: center;
+  height: 40vh;
+  width: 100%;
+  background-color: #0e2256;
+  display: grid;
+  grid-template-columns: 3fr 1fr 1fr 3fr;
+  justify-content: center;
+  align-items: center;
 }
 
 .FstPart {
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    height: 100%;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100%;
 }
 
 .FooterLogo h1 {
-    color: #F8C498;
-    font-size: 40px;
+  color: #f8c498;
+  font-size: 40px;
 }
 
 .FooterLogo p {
-    margin-left: 50px;
-    font-size: 12px;
+  margin-left: 50px;
+  font-size: 12px;
 }
 
 .Adress {
-    display: flex;
-    flex-direction: column;
-    height: 40%;
-    justify-content: space-evenly;
+  display: flex;
+  flex-direction: column;
+  height: 40%;
+  justify-content: space-evenly;
 }
 
 .ScPart {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: start;
-    color: white;
-    height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: start;
+  color: white;
+  height: 80%;
 }
 
 .ScPart h1 {
-    font-size: 20px;
-    font-weight: 500;
+  font-size: 20px;
+  font-weight: 500;
 }
 
 .ScPart p {
-    font-size: 16px;
-    font-weight: 300;
+  font-size: 16px;
+  font-weight: 300;
 }
 
 .ThrdPart {
-    display: flex;
-    flex-direction: column;
-    height: 65%;
-    color: white;
+  display: flex;
+  flex-direction: column;
+  height: 65%;
+  color: white;
 }
 
 .ThrdPart h1 {
-    font-size: 20px;
-    font-weight: 500;
+  font-size: 20px;
+  font-weight: 500;
 }
 
 .social {
-    margin-top: 40px;
-    color: #F8C498;
-    width: 100px;
-    display: flex;
-    justify-content: space-between;
+  margin-top: 40px;
+  color: #f8c498;
+  width: 100px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .FrthPart {
-    display: flex;
-    flex-direction: column;
-    height: 65%;
-    color: white;
+  display: flex;
+  flex-direction: column;
+  height: 65%;
+  color: white;
 }
 
 .FrthPart h1 {
-    font-size: 32px;
+  font-size: 32px;
 }
 
 .SignUpFooter {
-    display: flex;
-    margin-top: 50px;
-    height: 65px;
-    width: 80%;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 12px;
+  display: flex;
+  margin-top: 50px;
+  height: 65px;
+  width: 80%;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
 }
 
 .SignUpFooter input {
-    height: 65px;
-    width: 300px;
-    background: none;
-    border: none;
-    outline: none;
-    margin: 0 10px;
-    color: white;
+  height: 65px;
+  width: 300px;
+  background: none;
+  border: none;
+  outline: none;
+  margin: 0 10px;
+  color: white;
 }
 
 .SignUpFooter input::placeholder {
-    color: white;
+  color: white;
 }
 
 .SignUpButtonFooter {
-    height: 65px;
-    width: 180px;
-    border-radius: 12px;
-    border: none;
-    background-color: #FFD2A4;
+  height: 65px;
+  width: 180px;
+  border-radius: 12px;
+  border: none;
+  background-color: #ffd2a4;
 }
 
 .SignUpButtonFooter p {
-    color: #1d281c;
-    font-size: 18px;
-    font-weight: 900px;
+  color: #1d281c;
+  font-size: 18px;
+  font-weight: 900px;
 }
 
 .colorRed {
-    color: red !important
+  color: red !important;
 }
 
 .OpinionsCourse {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: start;
-    margin: 20px;
-    border: 1px dashed #525252;
-    border-radius: 15px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  margin: 20px;
+  border: 1px dashed #525252;
+  border-radius: 15px;
 }
 
 .OpinionsCourseTitle {
-    margin: 5px 10px;
-    width: 50%;
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    gap: 10px
+  margin: 5px 10px;
+  width: 50%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 10px;
 }
 
 .opinion {
-    width: 90%;
-    margin: auto;
+  width: 90%;
+  margin: auto;
 }
 
 .opinionHeader {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 10px
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
 }
 
 .opinionBody {
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 .opinionHr {
-    border-top: 1px dashed #525252;
-    border-bottom: none;
-    border-right: none;
-    border-left: none;
-    /* background-color: #525252;
+  border-top: 1px dashed #525252;
+  border-bottom: none;
+  border-right: none;
+  border-left: none;
+  /* background-color: #525252;
     border: none; */
-    width: 70%;
-    margin: 10px auto;
-    height: .5px;
+  width: 70%;
+  margin: 10px auto;
+  height: 0.5px;
 }
 .nav_web_container {
   width: 100%;
@@ -818,21 +792,20 @@ align-items: center;
   justify-content: space-between;
   /* margin-inline: 60px; */
   align-items: center;
-  background-color:#3e467800 ;
+  background-color: #3e467800;
   margin-top: 30px;
-  
 }
-.middle_nav{
+.middle_nav {
   display: flex;
   flex-direction: row;
-  gap:35px
- }
- .videocontainer video {
+  gap: 35px;
+}
+.videocontainer video {
   width: 100%;
   height: auto; /* Maintain aspect ratio */
   max-width: 800px;
   border-radius: 2rem; /* Initial border radius */
-  transition: border-radius 0.3s ease-in-out;  /* Maximum size for larger screens */
+  transition: border-radius 0.3s ease-in-out; /* Maximum size for larger screens */
 }
 
 .videocontainer {
@@ -842,7 +815,6 @@ align-items: center;
 .videocontainer video:hover {
   border-radius: 1rem; /* Change to a smaller radius on hover */
 }
-
 
 /* For screens larger than 1200px */
 @media (min-width: 1200px) {
@@ -866,40 +838,37 @@ align-items: center;
   }
 }
 
-/**********************************************************************/ 
+/**********************************************************************/
 @media (max-width: 300px) {
   .nav_container {
-      height: 50px; /* Adjust height for smaller screens */
-      /* Adjust padding for smaller screens if necessary */
-      /* padding-left: 1rem; */
-      /* padding-right: 1rem; */
+    height: 50px; /* Adjust height for smaller screens */
+    /* Adjust padding for smaller screens if necessary */
+    /* padding-left: 1rem; */
+    /* padding-right: 1rem; */
   }
 }
 
 /* For screens between 301px and 400px */
 @media (min-width: 301px) and (max-width: 326px) {
   .nav_container {
-      height: 55px;
-      /* padding-left: 2rem; */
-      /* padding-right: 2rem; */
+    height: 55px;
+    /* padding-left: 2rem; */
+    /* padding-right: 2rem; */
   }
 }
 
-
-
 /* For screens between 601px and 700px */
-
 
 @media (max-width: 326px) {
   .radioTitle {
-    color: #FFFFFF;
+    color: #ffffff;
     font: bolder 1.4rem "Lato";
     padding-bottom: 1rem;
-}
-.scndInfos {
+  }
+  .scndInfos {
     padding: 2rem 3rem;
     border-radius: 0px 20px 0px 20px;
-    background-color: #3E4678;
+    background-color: #3e4678;
     /* height: 50%; */
     /* width: 40rem; */
     position: sticky;
@@ -910,324 +879,252 @@ align-items: center;
     flex-direction: column;
     text-align: left;
     gap: 1rem;
-    color: #FFFFFF;
+    color: #ffffff;
     font: bold 14px "Lato", sans-serif;
-}
-.price {
-    color: #FFFFFF;
+  }
+  .price {
+    color: #ffffff;
     font-size: 1.5rem;
-    font-family: 'Lato';
+    font-family: "Lato";
     align-self: center;
     font-weight: 900;
-}
-.DescriptionInfoCourseTitle span {
-    font-family: 'Lato';
+  }
+  .DescriptionInfoCourseTitle span {
+    font-family: "Lato";
     font-weight: 900;
     text-transform: uppercase;
     font-size: 1rem;
-    color: #2C2C2C;
-}
+    color: #2c2c2c;
+  }
 
-
-/* .imgCourse {
+  /* .imgCourse {
   width: 100%; 
   height:28rem;
   background-size: contain; 
   background-position: center;
   background-repeat: no-repeat;} */
 
-.CourseButtonsInfoPage button {
-    height: 4rem;
-    margin: 0.5rem 0rem;
-    padding: 0px 7px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row-reverse;
-    border-radius: 5px;
-    border: none;
-    color: #3E4678;
-    font: 500 20px "Lato", sans-serif;
-    cursor: pointer;
-    font-weight: bolder;
-}
-  
-.imagechart{
+  .imagechart {
     width: 2rem;
-}
-.course{
-    color: #2C2C2C;
+  }
+  .course {
+    color: #2c2c2c;
     font-size: 2rem;
-font-weight: 900;
-  }
-.pdown{
-  color: #ffffff;
-  font-size:1.7rem;
-
-}
-    .imagechart{
-        width: 5rem;
-    }
-    .course{
-        color: #2C2C2C;
-        font-size: 2rem;
     font-weight: 900;
-      }
   }
-  
-  @media (min-width: 327px) and (max-width: 366px) {
-    .pdowncontainer{
-      /* padding-left: 8rem;
+  .pdown {
+    color: #ffffff;
+    font-size: 1.7rem;
+  }
+  .imagechart {
+    width: 5rem;
+  }
+  .course {
+    color: #2c2c2c;
+    font-size: 2rem;
+    font-weight: 900;
+  }
+}
+
+@media (min-width: 327px) and (max-width: 366px) {
+  .pdowncontainer {
+    /* padding-left: 8rem;
       padding-right: 8rem; */
-      padding-top: 2rem;
-    }
-    .maincontainernav{
-      padding-left: 10rem;
-      padding-right: 10rem;
-     }
-    .radioTitle {
-      color: #FFFFFF;
-      font: bolder 1.4rem "Lato";
-      padding-bottom: 1rem;
+    padding-top: 2rem;
+  }
+  .maincontainernav {
+    padding-left: 10rem;
+    padding-right: 10rem;
+  }
+  .radioTitle {
+    color: #ffffff;
+    font: bolder 1.4rem "Lato";
+    padding-bottom: 1rem;
   }
   .scndInfos {
-      padding: 2rem 3rem;
-      border-radius: 0px 20px 0px 20px;
-      background-color: #3E4678;
-      /* height: 50%; */
-      /* width: 40rem; */
-      position: sticky;
-      box-shadow: 0 0 7px rgba(0, 0, 0, 0.25);
-      display: block;
-      transition: margin-top 1s ease-out;
-      display: flex;
-      flex-direction: column;
-      text-align: left;
-      gap: 1rem;
-      color: #FFFFFF;
-      font: bold 14px "Lato", sans-serif;
+    padding: 2rem 3rem;
+    border-radius: 0px 20px 0px 20px;
+    background-color: #3e4678;
+    /* height: 50%; */
+    /* width: 40rem; */
+    position: sticky;
+    box-shadow: 0 0 7px rgba(0, 0, 0, 0.25);
+    display: block;
+    transition: margin-top 1s ease-out;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 1rem;
+    color: #ffffff;
+    font: bold 14px "Lato", sans-serif;
   }
   .price {
-      color: #FFFFFF;
-      font-size: 1.5rem;
-      font-family: 'Lato';
-      align-self: center;
-      font-weight: 900;
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-family: "Lato";
+    align-self: center;
+    font-weight: 900;
   }
   .DescriptionInfoCourseTitle span {
-      font-family: 'Lato';
-      font-weight: 900;
-      text-transform: uppercase;
-      font-size: 1rem;
-      color: #2C2C2C;
+    font-family: "Lato";
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 1rem;
+    color: #2c2c2c;
   }
 
   /* .imgCourse { */
-      /* width: 19rem; */
-    
-      /* border-radius: 3rem;
+  /* width: 19rem; */
+
+  /* border-radius: 3rem;
      
       z-index: -1;} */
 
-  .CourseButtonsInfoPage button {
-      height: 4rem;
-      margin: 0.5rem 0rem;
-      padding: 0px 7px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: row-reverse;
-      border-radius: 5px;
-      border: none;
-      color: #3E4678;
-      font: 500 20px "Lato", sans-serif;
-      cursor: pointer;
-      font-weight: bolder;
+  .imagechart {
+    width: 2rem;
   }
-    
-  .imagechart{
-      width: 2rem;
+  .course {
+    color: #2c2c2c;
+    font-size: 2rem;
+    font-weight: 900;
   }
-  .course{
-      color: #2C2C2C;
-      font-size: 2rem;
-  font-weight: 900;
-    }
-  .pdown{
+  .pdown {
     color: #ffffff;
-    font-size:1.7rem;
-
+    font-size: 1.7rem;
   }
-   
-  
- 
-    .underline{
-  
-      width:18%;
-      background-color: #CD6214;
-      padding-top: 3px;
-      border-radius: 100px;
-      margin-top:0.4rem;
-    }
-    .backimage {
-   
-      height: 18rem;
-      border-radius: 0px 0px 22px 22px;
-      display: flex;
-      flex-direction: column;
 
-      
-    
-  
-    }
-   
- 
-
-    .text{
-      color: #FFFFFF;
-      margin-top: 1em;
-      font-size: 0.8em;
-    }
-    .navContainer{
-      padding-left: 8%;
-      padding-right: 14%;
-    }
+  .underline {
+    width: 18%;
+    background-color: #cd6214;
+    padding-top: 3px;
+    border-radius: 100px;
+    margin-top: 0.4rem;
   }
-  @media (min-width: 367px) and (max-width: 469px) {
-    .pdowncontainer{
-      /* padding-left: 8rem;
+  .backimage {
+    height: 18rem;
+    border-radius: 0px 0px 22px 22px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .text {
+    color: #ffffff;
+    margin-top: 1em;
+    font-size: 0.8em;
+  }
+  .navContainer {
+    padding-left: 8%;
+    padding-right: 14%;
+  }
+}
+@media (min-width: 367px) and (max-width: 469px) {
+  .pdowncontainer {
+    /* padding-left: 8rem;
       padding-right: 8rem; */
-      padding-top: 4rem;
-    }
-    .MainDivCourse{
-      width: 100%;
-      height: auto;
-      display: flex;
-      flex-direction: row;
-      align-items: flex-start;
-      justify-content: space-between;
-      padding-left: 4rem;
-      padding-right: 4rem;
-      padding-top: 5rem;
-      gap: 0;
+    padding-top: 4rem;
   }
-    .radioTitle {
-        color: #FFFFFF;
-        font: bolder 1.4rem "Lato";
-        padding-bottom: 1rem;
-    }
-    .scndInfos {
-        padding: 0rem 0rem;
-        border-radius: 0px 20px 0px 20px;
-        background-color: #3E4678;
-        /* height: 50%; */
-        /* width: 40rem; */
-        position: sticky;
-        box-shadow: 0 0 7px rgba(0, 0, 0, 0.25);
-        display: block;
-        transition: margin-top 1s ease-out;
-        display: flex;
-        flex-direction: column;
-        text-align: left;
-        gap: 1rem;
-        color: #FFFFFF;
-        font: bold 14px "Lato", sans-serif;
-    }
-    .price {
-        color: #FFFFFF;
-        font-size: 1.5rem;
-        font-family: 'Lato';
-        align-self: center;
-        font-weight: 900;
-    }
-    .DescriptionInfoCourseTitle span {
-        font-family: 'Lato';
-        font-weight: 900;
-        text-transform: uppercase;
-        font-size: 1.5rem;
-        color: #2C2C2C;
-    }
+  .MainDivCourse {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding-left: 4rem;
+    padding-right: 4rem;
+    padding-top: 5rem;
+    gap: 0;
+  }
+  .radioTitle {
+    color: #ffffff;
+    font: bolder 1.4rem "Lato";
+    padding-bottom: 1rem;
+  }
+  .scndInfos {
+    padding: 0rem 0rem;
+    border-radius: 0px 20px 0px 20px;
+    background-color: #3e4678;
+    /* height: 50%; */
+    /* width: 40rem; */
+    position: sticky;
+    box-shadow: 0 0 7px rgba(0, 0, 0, 0.25);
+    display: block;
+    transition: margin-top 1s ease-out;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 1rem;
+    color: #ffffff;
+    font: bold 14px "Lato", sans-serif;
+  }
+  .price {
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-family: "Lato";
+    align-self: center;
+    font-weight: 900;
+  }
+  .DescriptionInfoCourseTitle span {
+    font-family: "Lato";
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    color: #2c2c2c;
+  }
 
-    /* .imgCourse { */
-        /* width: 19rem; */
-      
-        /* border-radius: 3rem;
+  /* .imgCourse { */
+  /* width: 19rem; */
+
+  /* border-radius: 3rem;
        
         z-index: -1;} */
 
-    .CourseButtonsInfoPage button {
-        height: 4rem;
-        margin: 0.5rem 0rem;
-        padding: 0px 7px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: row-reverse;
-        border-radius: 5px;
-        border: none;
-        color: #3E4678;
-        font: 500 20px "Lato", sans-serif;
-        cursor: pointer;
-        font-weight: bolder;
-    }
-      
-    .imagechart{
-        width: 2rem;
-    }
-    .course{
-        color: #2C2C2C;
-        font-size: 2rem;
+  .imagechart {
+    width: 2rem;
+  }
+  .course {
+    color: #2c2c2c;
+    font-size: 2rem;
     font-weight: 900;
-      }
-    .pdown{
-      color: #ffffff;
-      font-size:1.7rem;
-  
-    }
-
-  
- 
-    .underline{
-  
-      width:25%;
-      background-color: #CD6214;
-      padding-top: 2px;
-      border-radius: 100px;
-      margin-top:0.5rem;
-    }
-    .backimage {
-   
-      height: 18rem;
-      border-radius: 0px 0px 22px 22px;
-      display: flex;
-      flex-direction: column;
-
-      
-    
-  
-    }
-    .underline{
-  
-      width:20%;
-      background-color: #CD6214;
-      padding-top: 3px;
-      border-radius: 100px;
-      margin-top:0.5rem;
-    }
-   
-
-    .text{
-      color: #FFFFFF;
-      margin-top: 1em;
-      font-size: 0.9em;
-    }
-    .navContainer{
-      padding-left: 8%;
-      padding-right: 10%;
-    }
+  }
+  .pdown {
+    color: #ffffff;
+    font-size: 1.7rem;
   }
 
-  /* @media (max-width: 700px) {
+  .underline {
+    width: 25%;
+    background-color: #cd6214;
+    padding-top: 2px;
+    border-radius: 100px;
+    margin-top: 0.5rem;
+  }
+  .backimage {
+    height: 18rem;
+    border-radius: 0px 0px 22px 22px;
+    display: flex;
+    flex-direction: column;
+  }
+  .underline {
+    width: 20%;
+    background-color: #cd6214;
+    padding-top: 3px;
+    border-radius: 100px;
+    margin-top: 0.5rem;
+  }
+
+  .text {
+    color: #ffffff;
+    margin-top: 1em;
+    font-size: 0.9em;
+  }
+  .navContainer {
+    padding-left: 8%;
+    padding-right: 10%;
+  }
+}
+
+/* @media (max-width: 700px) {
     .pdown{
       color: #a81212;
       font-size:2rem;
@@ -1235,7 +1132,7 @@ font-weight: 900;
     }
   
   } */
-  /* @media (max-width: 400px) {
+/* @media (max-width: 400px) {
     .pdown{
       color: #12a84c;
       font-size:1rem;
@@ -1243,701 +1140,49 @@ font-weight: 900;
     }
   
   }   */
-  @media (min-width: 469px) and (max-width: 576px) {
-    .DescriptionInfoCourseTitle span {
-      font-family: 'Lato';
-      font-weight: 900;
-      text-transform: uppercase;
-      font-size: 1.2rem;
-      color: #2C2C2C;
+@media (min-width: 469px) and (max-width: 576px) {
+  .DescriptionInfoCourseTitle span {
+    font-family: "Lato";
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    color: #2c2c2c;
   }
-  .DescriptionInfoCourseTitle .underline{
-  
-    width:3.7rem;
-    background-color: #CD6214;
-    padding:0.22em;
+  .DescriptionInfoCourseTitle .underline {
+    width: 3.7rem;
+    background-color: #cd6214;
+    padding: 0.22em;
     border-radius: 100px;
     margin-top: 10px;
   }
 
-    .pdowncontainer{
-      /* padding-left: 8rem;
+  .pdowncontainer {
+    /* padding-left: 8rem;
       padding-right: 8rem; */
-      padding-top: 4rem;
-    }
-    .MainDivCourse{
-      width: 100%;
-      height: auto;
-      display: flex;
-      flex-direction: row;
-      align-items: flex-start;
-      justify-content: space-between;
-      padding-left: 4rem;
-      padding-right: 4rem;
-      padding-top: 5rem;
-      gap: 0;
+    padding-top: 4rem;
   }
-    
-    .radioTitle {
-        color: #FFFFFF;
-        font: bolder 1.4rem "Lato";
-        padding-bottom: 1rem;
-    }
-    .scndInfos {
-        padding: 2rem 3rem;
-        border-radius: 0px 20px 0px 20px;
-        background-color: #3E4678;
-        /* height: 50%; */
-        /* width: 40rem; */
-        position: sticky;
-        box-shadow: 0 0 7px rgba(0, 0, 0, 0.25);
-        display: block;
-        transition: margin-top 1s ease-out;
-        display: flex;
-        flex-direction: column;
-        text-align: left;
-        gap: 1rem;
-        color: #FFFFFF;
-        font: bold 14px "Lato", sans-serif;
-    }
-    .price {
-        color: #FFFFFF;
-        font-size: 1.5rem;
-        font-family: 'Lato';
-        align-self: center;
-        font-weight: 900;
-    }
-
-
-    /* .imgCourse { */
-        /* width: 19rem;
-       */
-        /* border-radius: 3rem;
-       
-        z-index: -1;} */
- 
-    .CourseButtonsInfoPage button {
-        height: 4rem;
-        margin: 0.5rem 0rem;
-        padding: 0px 7px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: row-reverse;
-        border-radius: 5px;
-        border: none;
-        color: #3E4678;
-        font: 500 20px "Lato", sans-serif;
-        cursor: pointer;
-        font-weight: bolder;
-    }
-      
-    .imagechart{
-        width: 2rem;
-    }
-    .course{
-        color: #2C2C2C;
-        font-size: 2rem;
-    font-weight: 900;
-      }
-    .pdown{
-      color: #ffffff;
-      font-size:1.7rem;
-  
-    }
-
- 
-
-    .backimage {
-   
-      height: 18rem;
-      border-radius: 0px 0px 22px 22px;
-      display: flex;
-      flex-direction: column;
-
-      
-    
-  
-    }
-
-   
-
-    .text{
-      margin-top: 10px;
-    }
-  }
-
-  
-  
-  @media (min-width: 576px) and (max-width: 625px) {
-    .pdowncontainer{
-      /* padding-left: 8rem;
-      padding-right: 8rem; */
-      padding-top: 4rem;
-    }
-    .InfosRefDur {
-      width: 60%;
-    }
-    .radioTitle {
-        color: #FFFFFF;
-        font: bolder 1.4rem "Lato";
-        padding-bottom: 1rem;
-    }
-    .scndInfos {
-        padding: 1rem 0rem;
-        border-radius: 0px 20px 0px 20px;
-        background-color: #3E4678;
-        /* height: 50%; */
-        /* width: 40rem; */
-        position: sticky;
-        box-shadow: 0 0 7px rgba(0, 0, 0, 0.25);
-        display: block;
-        transition: margin-top 1s ease-out;
-        display: flex;
-        flex-direction: column;
-        text-align: left;
-        gap: 1rem;
-        color: #FFFFFF;
-        font: bold 14px "Lato", sans-serif;
-    }
-    .price {
-        color: #FFFFFF;
-        font-size: 1.5rem;
-        font-family: 'Lato';
-        align-self: center;
-        font-weight: 900;
-    }
-    .DescriptionInfoCourseTitle span {
-        font-family: 'Lato';
-        font-weight: 900;
-        text-transform: uppercase;
-        font-size: 1rem;
-        color: #2C2C2C;
-    }
-
-    /* .imgCourse { */
-        /* width: 19rem; */
-/*       
-        border-radius: 3rem;
-       
-       }
-  */
-    .CourseButtonsInfoPage button {
-        height: 4rem;
-        margin: 0.5rem 0rem;
-        padding: 0px 7px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: row-reverse;
-        border-radius: 5px;
-        border: none;
-        color: #3E4678;
-        font: 500 20px "Lato", sans-serif;
-        cursor: pointer;
-        font-weight: bolder;
-    }
-  
-    .imagechart{
-        width: 2rem;
-    }
-    .course{
-        color: #2C2C2C;
-        font-size: 2rem;
-    font-weight: 900;
-      }
-    .pdown{
-      color: #ffffff;
-      font-size:1.7rem;
-  
-    }
-  }
-  @media (min-width: 625px) and (max-width: 700px) {
-    .pdowncontainer{
-      /* padding-left: 8rem;
-      padding-right: 8rem; */
-      padding-top: 4rem;
-    }
-    
-    .CourseButtonsInfoPage button{
-      width: 70%;
-      height: 3rem;
-      margin: 3px 6px;
-      padding: 0 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: row-reverse;
-      border-radius: 14px;
-      border: none;
-      color: #3E4678;
-      font: 500 20px "Lato", sans-serif;
-      cursor: pointer;
-      font-weight: bolder;
-    
-  
-}   
-
-    .MainDivCourse{
-      width: 100%;
-      height: auto;
-      display: flex;
-      flex-direction: row;
-      align-items: flex-start;
-      justify-content: space-between;
-      padding-left: 5rem;
-      padding-right: 5rem;
-      padding-top: 5rem;
-      
-  }
-    .scndInfos{
-      padding: 0rem 0rem;
-      border-radius: 0px 40px 0px 40px;
-      background-color: #3E4678;
-      /* height: 50%; */
-      /* width: 40rem; */
-      position: sticky;
-      box-shadow: 0 0 7px rgba(0, 0, 0, 0.25);
-      display: block;
-      transition: margin-top 1s ease-out;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: left;
-      gap: 1rem;
-      color: #FFFFFF;
-      font: bold 20px "Lato", sans-serif;
-
-    }
-    .pdown{
-      color: #ffffff;
-      font-size:1.8rem;
-  
-    }
-
- 
-    .underline{
-  
-      width:25%;
-      background-color: #CD6214;
-      padding-top: 5px;
-      border-radius: 100px;
-      margin-top:0.5rem;
-    }
-    .backimage {
-   
-      height: 18rem;
-      border-radius: 0px 0px 22px 22px;
-      display: flex;
-      flex-direction: column;
-
-      
-    
-  
-    }
-    .underline{
-  
-      width:15%;
-      background-color: #CD6214;
-      padding-top: 5px;
-      border-radius: 100px;
-      margin-top: 10px;
-    }
-
-
-    .text{
-      margin-top: 10px;
-    }
-    .navContainer{
-      padding-left: 5%; 
-     padding-right: 5%;
-   }
-  }
-
-  
-  
-  
-  
-  
-  @media (min-width: 700px) and (max-width: 764px) {
-    .pdowncontainer{
-      /* padding-left: 8rem;
-      padding-right: 8rem; */
-      padding-top: 4rem;
-    }
-    .CourseButtonsInfoPage button{
-      width: 70%;
-      height: 3rem;
-      margin: 3px 6px;
-      padding: 0 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: row-reverse;
-      border-radius: 14px;
-      border: none;
-      color: #3E4678;
-      font: 500 20px "Lato", sans-serif;
-      cursor: pointer;
-      font-weight: bolder;
-    
-  
-}   
-
-    .MainDivCourse{
-      width: 100%;
-      height: auto;
-      display: flex;
-      flex-direction: row;
-      align-items: flex-start;
-      justify-content: space-between;
-      padding-left: 5rem;
-      padding-right: 5rem;
-      padding-top: 5rem;
-      
-  }
-    .scndInfos{
-      padding: 0rem 0rem;
-      border-radius: 0px 40px 0px 40px;
-      background-color: #3E4678;
-      /* height: 50%; */
-      /* width: 40rem; */
-      position: sticky;
-      box-shadow: 0 0 7px rgba(0, 0, 0, 0.25);
-      display: block;
-      transition: margin-top 1s ease-out;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: left;
-      gap: 1rem;
-      color: #FFFFFF;
-      font: bold 20px "Lato", sans-serif;
-
-    }
-    .pdown{
-      color: #ffffff;
-      font-size:1.8rem;
-  
-    }
-  
-  
- 
-    .underline{
-  
-      width:25%;
-      background-color: #CD6214;
-      padding-top: 5px;
-      border-radius: 100px;
-      margin-top:0.5rem;
-    }
-    .backimage {
-   
-      height: 18rem;
-      border-radius: 0px 0px 22px 22px;
-      display: flex;
-      flex-direction: column;
-
-      
-    
-  
-    }
-    .underline{
-  
-      width:15%;
-      background-color: #CD6214;
-      padding-top: 5px;
-      border-radius: 100px;
-      margin-top: 10px;
-    }
- 
-    .text{
-      margin-top: 10px;
-    }
-    .navContainer{
-      padding-left: 5%; 
-     padding-right: 5%;
-   }
-  }
-
-
-  @media (min-width: 764px) and (max-width: 780px) {
-    .pdowncontainer{
-      /* padding-left: 8rem;
-      padding-right: 8rem; */
-      padding-top: 4rem;
-    }
-    .navContainer{
-      margin-left: 4rem; 
-      margin-right:8rem;
-    }
-    .scndInfos{
-      padding: 1rem 0rem;
-      border-radius: 0px 40px 0px 40px;
-      background-color: #3E4678;
-      /* height: 50%; */
-      /* width: 40rem; */
-      position: sticky;
-      box-shadow: 0 0 7px rgba(0, 0, 0, 0.25);
-      display: block;
-      transition: margin-top 1s ease-out;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: left;
-      gap: 1rem;
-      color: #FFFFFF;
-      font: bold 20px "Lato", sans-serif;
-
-    }    .InfosRefDur{
-     
-    }
-    .CourseButtonsInfoPage button{
-      width: 64%;
-      height: 4rem;
-      margin: 3px 6px;
-      padding: 0 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: row-reverse;
-      border-radius: 14px;
-      border: none;
-      color: #3E4678;
-      font: 500 20px "Lato", sans-serif;
-      cursor: pointer;
-      font-weight: bolder;
-    
-  
-}   
-
-.InfosRefDur {
-  
-  width: 81%;
-}
-
-/* .imgCourse {
-     
-      height: 28rem;
-      border-radius: 3rem;
-     
- } */
-
-
-
-
-    .pdown{
-      color: #ffffff;
-      font-size:2.1rem;
-  
-    }
-  
-  
- 
-    .underline{
-  
-      width:25%;
-      background-color: #CD6214;
-      padding-top: 5px;
-      border-radius: 100px;
-      margin-top:0.5rem;
-    }
-    .backimage {
-   
-      height: 18rem;
-      border-radius: 0px 0px 22px 22px;
-      display: flex;
-      flex-direction: column;
-
-      
-    
-  
-    }
-    .underline{
-  
-      width:10%;
-      background-color: #CD6214;
-      padding-top: 5px;
-      border-radius: 100px;
-      margin-top: 10px;
-    }
-   
-
-    .text{
-      margin-top: 10px;
-    }
-  }
-  @media (min-width: 780px) and (max-width: 875px) {
-    .DescriptionInfoCourseTitle span {
-      font-family: 'Lato';
-      font-weight: 900;
-      text-transform: uppercase;
-      font-size: 1.4rem;
-      color: #2C2C2C;
-  }
-  .DescriptionInfoCourseTitle .underline{
-  
-    width:3.7rem;
-    background-color: #CD6214;
-    padding:0.22em;
-    border-radius: 100px;
-    margin-top: 10px;
-  }
-
-    .pdowncontainer{
-      /* padding-left: 8rem;
-      padding-right: 8rem; */
-      padding-top: 4rem;
-    }
-    /* .imgCourse{
-      height: 36vh
-
-    } */
-    .CourseButtonsInfoPage button{
-      width: 70%;
-      height: 3rem;
-      margin: 3px 6px;
-      padding: 0 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: row-reverse;
-      border-radius: 14px;
-      border: none;
-      color: #3E4678;
-      font: 500 20px "Lato", sans-serif;
-      cursor: pointer;
-      font-weight: bolder;
-    
-  
-}   
-
-    .MainDivCourse{
-      width: 100%;
-      height: auto;
-      display: flex;
-      flex-direction: row;
-      align-items: flex-start;
-      justify-content: space-between;
-      padding-left: 5rem;
-      padding-right: 5rem;
-      padding-top: 5rem;
-      
-  }
-    .scndInfos{
-      padding: 1rem 0rem;
-      border-radius: 0px 40px 0px 40px;
-      background-color: #3E4678;
-      /* height: 50%; */
-      /* width: 40rem; */
-      position: sticky;
-      box-shadow: 0 0 7px rgba(0, 0, 0, 0.25);
-      display: block;
-      transition: margin-top 1s ease-out;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: left;
-      gap: 1rem;
-      color: #FFFFFF;
-      font: bold 20px "Lato", sans-serif;
-
-    }
-    .pdown{
-      color: #ffffff;
-      font-size:1.8rem;
-  
-    }
-  
-  
- 
-    .underline{
-  
-      width:25%;
-      background-color: #CD6214;
-      padding-top: 5px;
-      border-radius: 100px;
-      margin-top:0.5rem;
-    }
-    .backimage {
-   
-      height: 18rem;
-      border-radius: 0px 0px 22px 22px;
-      display: flex;
-      flex-direction: column;
-
-      
-    
-  
-    }
-    .underline{
-  
-      width:15%;
-      background-color: #CD6214;
-      padding-top: 5px;
-      border-radius: 100px;
-      margin-top: 10px;
-    }
-
-
-    .text{
-      margin-top: 10px;
-    }
-    .navContainer{
-      padding-left: 5%; 
-     padding-right: 5%;
-   }
-  }
-
-  @media (max-width:876px) {
-    /* .imgCourse{
-      height: 36vh
-
-    } */
-     .maincontainernav{
-      padding-left: 5rem;
-      padding-right: 5rem;
-     }
-    .MainDivCourse{
-      width: 100%;
-      height: auto;
-      display: flex;
-      flex-direction: row;
-      align-items: flex-start;
-      justify-content: space-between;
-      padding-left: 5rem;
-      padding-right: 5rem;
-      padding-top: 5rem;
-      gap: 0;
-  }
-  
-  .rightSectionCourse {
-      /* position: -webkit-sticky; / */
-      /* position:relative; */
-      transition: all 0.3s ease-in-out;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      height: auto;
-      /* overflow-y: auto; */
-      margin-top: 0rem;
-      width: 42%;
-  }
-  .ScndSectionInfoCourse{
+  .MainDivCourse {
     width: 100%;
-    padding-bottom: 5rem;
+    height: auto;
     display: flex;
     flex-direction: row;
+    align-items: flex-start;
     justify-content: space-between;
+    padding-left: 4rem;
+    padding-right: 4rem;
+    padding-top: 5rem;
+    gap: 0;
   }
-  .rightSectionContainer{
-    width: 100%;
+
+  .radioTitle {
+    color: #ffffff;
+    font: bolder 1.4rem "Lato";
+    padding-bottom: 1rem;
   }
   .scndInfos {
-    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-    padding: 1rem 0rem;
-    border-radius: 0px 2rem 0px 2rem;
-    background-color: #3E4678;
+    padding: 2rem 3rem;
+    border-radius: 0px 20px 0px 20px;
+    background-color: #3e4678;
     /* height: 50%; */
     /* width: 40rem; */
     position: sticky;
@@ -1948,7 +1193,479 @@ font-weight: 900;
     flex-direction: column;
     text-align: left;
     gap: 1rem;
-    color: #FFFFFF;
+    color: #ffffff;
+    font: bold 14px "Lato", sans-serif;
+  }
+  .price {
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-family: "Lato";
+    align-self: center;
+    font-weight: 900;
+  }
+
+  /* .imgCourse { */
+  /* width: 19rem;
+       */
+  /* border-radius: 3rem;
+       
+        z-index: -1;} */
+
+  .imagechart {
+    width: 2rem;
+  }
+  .course {
+    color: #2c2c2c;
+    font-size: 2rem;
+    font-weight: 900;
+  }
+  .pdown {
+    color: #ffffff;
+    font-size: 1.7rem;
+  }
+
+  .backimage {
+    height: 18rem;
+    border-radius: 0px 0px 22px 22px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .text {
+    margin-top: 10px;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 625px) {
+  .pdowncontainer {
+    /* padding-left: 8rem;
+      padding-right: 8rem; */
+    padding-top: 4rem;
+  }
+  .InfosRefDur {
+    width: 60%;
+  }
+  .radioTitle {
+    color: #ffffff;
+    font: bolder 1.4rem "Lato";
+    padding-bottom: 1rem;
+  }
+  .scndInfos {
+    padding: 1rem 0rem;
+    border-radius: 0px 20px 0px 20px;
+    background-color: #3e4678;
+    /* height: 50%; */
+    /* width: 40rem; */
+    position: sticky;
+    box-shadow: 0 0 7px rgba(0, 0, 0, 0.25);
+    display: block;
+    transition: margin-top 1s ease-out;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 1rem;
+    color: #ffffff;
+    font: bold 14px "Lato", sans-serif;
+  }
+  .price {
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-family: "Lato";
+    align-self: center;
+    font-weight: 900;
+  }
+  .DescriptionInfoCourseTitle span {
+    font-family: "Lato";
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 1rem;
+    color: #2c2c2c;
+  }
+
+  /* .imgCourse { */
+  /* width: 19rem; */
+  /*       
+        border-radius: 3rem;
+       
+       }
+  */
+
+  .imagechart {
+    width: 2rem;
+  }
+  .course {
+    color: #2c2c2c;
+    font-size: 2rem;
+    font-weight: 900;
+  }
+  .pdown {
+    color: #ffffff;
+    font-size: 1.7rem;
+  }
+}
+@media (min-width: 625px) and (max-width: 700px) {
+  .pdowncontainer {
+    /* padding-left: 8rem;
+      padding-right: 8rem; */
+    padding-top: 4rem;
+  }
+
+  .MainDivCourse {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding-left: 5rem;
+    padding-right: 5rem;
+    padding-top: 5rem;
+  }
+  .scndInfos {
+    padding: 0rem 0rem;
+    border-radius: 0px 40px 0px 40px;
+    background-color: #3e4678;
+    /* height: 50%; */
+    /* width: 40rem; */
+    position: sticky;
+    box-shadow: 0 0 7px rgba(0, 0, 0, 0.25);
+    display: block;
+    transition: margin-top 1s ease-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+    gap: 1rem;
+    color: #ffffff;
+    font: bold 20px "Lato", sans-serif;
+  }
+  .pdown {
+    color: #ffffff;
+    font-size: 1.8rem;
+  }
+
+  .underline {
+    width: 25%;
+    background-color: #cd6214;
+    padding-top: 5px;
+    border-radius: 100px;
+    margin-top: 0.5rem;
+  }
+  .backimage {
+    height: 18rem;
+    border-radius: 0px 0px 22px 22px;
+    display: flex;
+    flex-direction: column;
+  }
+  .underline {
+    width: 15%;
+    background-color: #cd6214;
+    padding-top: 5px;
+    border-radius: 100px;
+    margin-top: 10px;
+  }
+
+  .text {
+    margin-top: 10px;
+  }
+  .navContainer {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+}
+
+@media (min-width: 700px) and (max-width: 764px) {
+  .pdowncontainer {
+    /* padding-left: 8rem;
+      padding-right: 8rem; */
+    padding-top: 4rem;
+  }
+
+  .MainDivCourse {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding-left: 5rem;
+    padding-right: 5rem;
+    padding-top: 5rem;
+  }
+  .scndInfos {
+    padding: 0rem 0rem;
+    border-radius: 0px 40px 0px 40px;
+    background-color: #3e4678;
+    /* height: 50%; */
+    /* width: 40rem; */
+    position: sticky;
+    box-shadow: 0 0 7px rgba(0, 0, 0, 0.25);
+    display: block;
+    transition: margin-top 1s ease-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+    gap: 1rem;
+    color: #ffffff;
+    font: bold 20px "Lato", sans-serif;
+  }
+  .pdown {
+    color: #ffffff;
+    font-size: 1.8rem;
+  }
+
+  .underline {
+    width: 25%;
+    background-color: #cd6214;
+    padding-top: 5px;
+    border-radius: 100px;
+    margin-top: 0.5rem;
+  }
+  .backimage {
+    height: 18rem;
+    border-radius: 0px 0px 22px 22px;
+    display: flex;
+    flex-direction: column;
+  }
+  .underline {
+    width: 15%;
+    background-color: #cd6214;
+    padding-top: 5px;
+    border-radius: 100px;
+    margin-top: 10px;
+  }
+
+  .text {
+    margin-top: 10px;
+  }
+  .navContainer {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+}
+
+@media (min-width: 764px) and (max-width: 780px) {
+  .pdowncontainer {
+    /* padding-left: 8rem;
+      padding-right: 8rem; */
+    padding-top: 4rem;
+  }
+  .navContainer {
+    margin-left: 4rem;
+    margin-right: 8rem;
+  }
+  .scndInfos {
+    padding: 1rem 0rem;
+    border-radius: 0px 40px 0px 40px;
+    background-color: #3e4678;
+    /* height: 50%; */
+    /* width: 40rem; */
+    position: sticky;
+    box-shadow: 0 0 7px rgba(0, 0, 0, 0.25);
+    display: block;
+    transition: margin-top 1s ease-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+    gap: 1rem;
+    color: #ffffff;
+    font: bold 20px "Lato", sans-serif;
+  }
+  .InfosRefDur {
+  }
+
+  .InfosRefDur {
+    width: 81%;
+  }
+
+  /* .imgCourse {
+     
+      height: 28rem;
+      border-radius: 3rem;
+     
+ } */
+
+  .pdown {
+    color: #ffffff;
+    font-size: 2.1rem;
+  }
+
+  .underline {
+    width: 25%;
+    background-color: #cd6214;
+    padding-top: 5px;
+    border-radius: 100px;
+    margin-top: 0.5rem;
+  }
+  .backimage {
+    height: 18rem;
+    border-radius: 0px 0px 22px 22px;
+    display: flex;
+    flex-direction: column;
+  }
+  .underline {
+    width: 10%;
+    background-color: #cd6214;
+    padding-top: 5px;
+    border-radius: 100px;
+    margin-top: 10px;
+  }
+
+  .text {
+    margin-top: 10px;
+  }
+}
+@media (min-width: 780px) and (max-width: 875px) {
+  .DescriptionInfoCourseTitle span {
+    font-family: "Lato";
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 1.4rem;
+    color: #2c2c2c;
+  }
+  .DescriptionInfoCourseTitle .underline {
+    width: 3.7rem;
+    background-color: #cd6214;
+    padding: 0.22em;
+    border-radius: 100px;
+    margin-top: 10px;
+  }
+
+  .pdowncontainer {
+    /* padding-left: 8rem;
+      padding-right: 8rem; */
+    padding-top: 4rem;
+  }
+  /* .imgCourse{
+      height: 36vh
+
+    } */
+  .MainDivCourse {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding-left: 5rem;
+    padding-right: 5rem;
+    padding-top: 5rem;
+  }
+  .scndInfos {
+    padding: 1rem 0rem;
+    border-radius: 0px 40px 0px 40px;
+    background-color: #3e4678;
+    /* height: 50%; */
+    /* width: 40rem; */
+    position: sticky;
+    box-shadow: 0 0 7px rgba(0, 0, 0, 0.25);
+    display: block;
+    transition: margin-top 1s ease-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+    gap: 1rem;
+    color: #ffffff;
+    font: bold 20px "Lato", sans-serif;
+  }
+  .pdown {
+    color: #ffffff;
+    font-size: 1.8rem;
+  }
+
+  .underline {
+    width: 25%;
+    background-color: #cd6214;
+    padding-top: 5px;
+    border-radius: 100px;
+    margin-top: 0.5rem;
+  }
+  .backimage {
+    height: 18rem;
+    border-radius: 0px 0px 22px 22px;
+    display: flex;
+    flex-direction: column;
+  }
+  .underline {
+    width: 15%;
+    background-color: #cd6214;
+    padding-top: 5px;
+    border-radius: 100px;
+    margin-top: 10px;
+  }
+
+  .text {
+    margin-top: 10px;
+  }
+  .navContainer {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+}
+
+@media (max-width: 876px) {
+  /* .imgCourse{
+      height: 36vh
+
+    } */
+  .maincontainernav {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+  .MainDivCourse {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding-left: 5rem;
+    padding-right: 5rem;
+    padding-top: 5rem;
+    gap: 0;
+  }
+
+  .rightSectionCourse {
+    /* position: -webkit-sticky; / */
+    /* position:relative; */
+    transition: all 0.3s ease-in-out;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    height: auto;
+    /* overflow-y: auto; */
+    margin-top: 0rem;
+    width: 42%;
+  }
+  .ScndSectionInfoCourse {
+    width: 100%;
+    padding-bottom: 5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .rightSectionContainer {
+    width: 100%;
+  }
+  .scndInfos {
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    padding: 1rem 0rem;
+    border-radius: 0px 2rem 0px 2rem;
+    background-color: #3e4678;
+    /* height: 50%; */
+    /* width: 40rem; */
+    position: sticky;
+    box-shadow: 0 0 7px rgba(0, 0, 0, 0.25);
+    display: block;
+    transition: margin-top 1s ease-out;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 1rem;
+    color: #ffffff;
     font: bold 14px "Lato", sans-serif;
   }
   .leftSectionCourse {
@@ -1958,143 +1675,125 @@ font-weight: 900;
     display: flex;
     flex-direction: column;
   }
-  .coursePart{
-    width:50%;
+  .coursePart {
+    width: 50%;
   }
   .rightSectionContainer {
     position: relative;
-    top:0;
+    top: 0;
     margin-bottom: 2rem;
+  }
 }
 
-  }
-  
-  @media (min-width: 874px) and (max-width: 1020px) {
-    .pdowncontainer{
-      /* padding-left: 8rem;
+@media (min-width: 874px) and (max-width: 1020px) {
+  .pdowncontainer {
+    /* padding-left: 8rem;
       padding-right: 8rem; */
-      padding-top: 4rem;
-    }
-    .maincontainernav{
-      padding-left: 5rem;
-      padding-right: 5rem;
-     }
-    
-    .rightSectionContainer{
-      width: 32%;
-    }
-.scndInfos {
-  padding: 1rem 0rem;
-      border-radius: 0px 2rem 0px 2rem;
-      background-color: #3E4678;
-      /* height: 50%; */
-      /* width: 40rem; */
-      position: sticky;
-      box-shadow: 0 0 7px rgba(0, 0, 0, 0.25);
-      display: block;
-      transition: margin-top 1s ease-out;
-      display: flex;
-      flex-direction: column;
-      text-align: left;
-      gap: 1rem;
-      color: #FFFFFF;
-      font: bold 14px "Lato", sans-serif;
+    padding-top: 4rem;
   }
-  .leftSectionCourse {
-      /* background-color: #6FC2D0; */
-      width: 66%;
-      /* height: 100%; */
-      display: flex;
-      flex-direction: column;
+  .maincontainernav {
+    padding-left: 5rem;
+    padding-right: 5rem;
   }
 
-    .FirsSectionInfoCourse{
-      /* display: flex; */
-      /* justify-content: start; */
-      /* align-items: start; */
-      /* width: 100%; */
-      margin-top: 1rem;
-      /* margin-bottom: 20px; */
-      /* flex-direction: column;*/
+  .rightSectionContainer {
+    width: 32%;
   }
-    .InfosRefDur {
-      width: 80%;
-    }
-    .radioTitle {
-      color: #FFFFFF;
-      font: bolder 1.4rem "Lato";
-      padding-bottom: 1rem;
+  .scndInfos {
+    padding: 1rem 0rem;
+    border-radius: 0px 2rem 0px 2rem;
+    background-color: #3e4678;
+    /* height: 50%; */
+    /* width: 40rem; */
+    position: sticky;
+    box-shadow: 0 0 7px rgba(0, 0, 0, 0.25);
+    display: block;
+    transition: margin-top 1s ease-out;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 1rem;
+    color: #ffffff;
+    font: bold 14px "Lato", sans-serif;
   }
- 
+  .leftSectionCourse {
+    /* background-color: #6FC2D0; */
+    width: 66%;
+    /* height: 100%; */
+    display: flex;
+    flex-direction: column;
+  }
+
+  .FirsSectionInfoCourse {
+    /* display: flex; */
+    /* justify-content: start; */
+    /* align-items: start; */
+    /* width: 100%; */
+    margin-top: 1rem;
+    /* margin-bottom: 20px; */
+    /* flex-direction: column;*/
+  }
+  .InfosRefDur {
+    width: 80%;
+  }
+  .radioTitle {
+    color: #ffffff;
+    font: bolder 1.4rem "Lato";
+    padding-bottom: 1rem;
+  }
+
   .price {
-      color: #FFFFFF;
-      font-size: 1.5rem;
-      font-family: 'Lato';
-      align-self: center;
-      font-weight: 900;
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-family: "Lato";
+    align-self: center;
+    font-weight: 900;
   }
   .DescriptionInfoCourseTitle span {
-      font-family: 'Lato';
-      font-weight: 900;
-      text-transform: uppercase;
-      font-size: 1.4rem;
-      color: #2C2C2C;
+    font-family: "Lato";
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 1.4rem;
+    color: #2c2c2c;
   }
-  .DescriptionInfoCourseTitle .underline{
-  
-    width:3.7rem;
-    background-color: #CD6214;
-    padding:0.22em;
+  .DescriptionInfoCourseTitle .underline {
+    width: 3.7rem;
+    background-color: #cd6214;
+    padding: 0.22em;
     border-radius: 100px;
     margin-top: 10px;
   }
-/* 
+  /* 
   .imgCourse {
     width: 100%;
       height: 26rem;
       border-radius: 3rem;
      
       z-index: -1;} */
-  .MainDivCourse{
-      width: 100%;
-      height: auto;
-      display: flex;
-      flex-direction: row;
-      align-items: flex-start;
-      justify-content: space-between;
-      padding-left: 5rem;
-      padding-right: 5rem;
-      padding-top: 5rem;
-      gap: 1rem;
+  .MainDivCourse {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding-left: 5rem;
+    padding-right: 5rem;
+    padding-top: 5rem;
+    gap: 1rem;
   }
-  .CourseButtonsInfoPage button {
-      height: 4rem;
-      margin: 1rem 1rem;
-      padding: 0px 7px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: row-reverse;
-      border-radius: 20px;
-      border: none;
-      color: #3E4678;
-      font: 500 20px "Lato", sans-serif;
-      cursor: pointer;
-      font-weight: bolder;
-  }
-    
-  .imagechart{
-      width: 2rem;
-  }
-  .course{
-      color: #2C2C2C;
-      font-size: 2rem;
-  font-weight: 900;
-    }
-  .pdown{
-    color: #ffffff;
-    font-size:1.7rem;
 
+  .imagechart {
+    width: 2rem;
+  }
+  .course {
+    color: #2c2c2c;
+    font-size: 2rem;
+    font-weight: 900;
+  }
+  .pdown {
+    color: #ffffff;
+    font-size: 1.7rem;
   }
   .rightSectionCourse {
     position: -webkit-sticky; /* For Safari */
@@ -2105,83 +1804,81 @@ font-weight: 900;
     height: auto;
     overflow-y: auto;
     margin-top: 5rem;
-    
-}
   }
-    
-  @media (min-width: 1020px) and (max-width:1082px) {
-    .pdowncontainer{
-      /* padding-left: 8rem;
+}
+
+@media (min-width: 1020px) and (max-width: 1082px) {
+  .pdowncontainer {
+    /* padding-left: 8rem;
       padding-right: 8rem; */
-      padding-top: 4rem;
-    }
-    .maincontainernav{
-      padding-left: 5rem;
-      padding-right: 5rem;
-     }
-    .rightSectionContainer{
-      width: 32%;
-    }
-.scndInfos {
-  padding: 1rem 0rem;
-      border-radius: 0px 2rem 0px 2rem;
-      background-color: #3E4678;
-      /* height: 50%; */
-      /* width: 40rem; */
-      position: sticky;
-      box-shadow: 0 0 7px rgba(0, 0, 0, 0.25);
-      display: block;
-      transition: margin-top 1s ease-out;
-      display: flex;
-      flex-direction: column;
-      text-align: left;
-      gap: 1rem;
-      color: #FFFFFF;
-      font: bold 14px "Lato", sans-serif;
+    padding-top: 4rem;
+  }
+  .maincontainernav {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+  .rightSectionContainer {
+    width: 32%;
+  }
+  .scndInfos {
+    padding: 1rem 0rem;
+    border-radius: 0px 2rem 0px 2rem;
+    background-color: #3e4678;
+    /* height: 50%; */
+    /* width: 40rem; */
+    position: sticky;
+    box-shadow: 0 0 7px rgba(0, 0, 0, 0.25);
+    display: block;
+    transition: margin-top 1s ease-out;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 1rem;
+    color: #ffffff;
+    font: bold 14px "Lato", sans-serif;
   }
   .leftSectionCourse {
-      /* background-color: #6FC2D0; */
-      width: 70%;
-      /* height: 100%; */
-      display: flex;
-      flex-direction: column;
+    /* background-color: #6FC2D0; */
+    width: 70%;
+    /* height: 100%; */
+    display: flex;
+    flex-direction: column;
   }
-    .rightSectionCourse {
-      position: -webkit-sticky; /* For Safari */
-      position: sticky;
-      top: 30%;
-      right: 90px;
-      bottom: 30px;
-      height: auto;
-      overflow-y: auto;
-      margin-top: 5rem;
-      
+  .rightSectionCourse {
+    position: -webkit-sticky; /* For Safari */
+    position: sticky;
+    top: 30%;
+    right: 90px;
+    bottom: 30px;
+    height: auto;
+    overflow-y: auto;
+    margin-top: 5rem;
   }
-    /* .imgCourse {
+  /* .imgCourse {
    
       height: 28rem;
       border-radius: 3rem;
      
       z-index: -1;} */
-    .radioTitle {
-      color: #FFFFFF;
-      font: bolder 1.4rem "Lato";
-      padding-bottom: 1rem;
+  .radioTitle {
+    color: #ffffff;
+    font: bolder 1.4rem "Lato";
+    padding-bottom: 1rem;
   }
 
   .price {
-      color: #FFFFFF;
-      font-size: 1.5rem;
-      font-family: 'Lato';
-      align-self: center;
-      font-weight: 900;
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-family: "Lato";
+    align-self: center;
+    font-weight: 900;
   }
   .DescriptionInfoCourseTitle span {
-      font-family: 'Lato';
-      font-weight: 900;
-      text-transform: uppercase;
-      font-size: 1rem;
-      color: #2C2C2C;
+    font-family: "Lato";
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 1rem;
+    color: #2c2c2c;
   }
 
   /* .imgCourse {
@@ -2190,134 +1887,109 @@ font-weight: 900;
       border-radius: 3rem;
      
       z-index: -1;} */
-  .MainDivCourse{
-      width: 100%;
-      height: auto;
-      display: flex;
-      flex-direction: row;
-      align-items: flex-start;
-      justify-content: space-between;
-      padding-left: 5rem;
-      padding-right: 5rem;
-      padding-top: 5rem;
-      gap: 1rem;
+  .MainDivCourse {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding-left: 5rem;
+    padding-right: 5rem;
+    padding-top: 5rem;
+    gap: 1rem;
   }
-  .CourseButtonsInfoPage button {
-      height: 4rem;
-      margin: 0.5rem 0rem;
-      padding: 0px 7px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: row-reverse;
-      border-radius: 5px;
-      border: none;
-      color: #3E4678;
-      font: 500 20px "Lato", sans-serif;
-      cursor: pointer;
-      font-weight: bolder;
+
+  .imagechart {
+    width: 3rem;
   }
-    
-  .imagechart{
-      width: 3rem;
+  .course {
+    color: #2c2c2c;
+    font-size: 2rem;
+    font-weight: 900;
   }
-  .course{
-      color: #2C2C2C;
-      font-size: 2rem;
-  font-weight: 900;
-    }
-  .pdown{
+  .pdown {
     color: #ffffff;
-    font-size:1.7rem;
-
+    font-size: 1.7rem;
   }
- 
-  
- 
 
-    .backimage {
-   
-      height: 18rem;
-      border-radius: 0px 0px 22px 22px;
-      display: flex;
-      flex-direction: column;
-
-      
-    
-  
-    }
-    .underline{
-  
-      width:10%;
-      background-color: #CD6214;
-      padding-top: 5px;
-      border-radius: 100px;
-      margin-top: 10px;
-    }
-  
-    .text{
-      margin-top: 10px;
-    }
+  .backimage {
+    height: 18rem;
+    border-radius: 0px 0px 22px 22px;
+    display: flex;
+    flex-direction: column;
   }
-  @media (min-width: 1082px) and (max-width:1200px) {
-    .pdowncontainer{
-      /* padding-left: 8rem;
+  .underline {
+    width: 10%;
+    background-color: #cd6214;
+    padding-top: 5px;
+    border-radius: 100px;
+    margin-top: 10px;
+  }
+
+  .text {
+    margin-top: 10px;
+  }
+}
+@media (min-width: 1082px) and (max-width: 1200px) {
+  .pdowncontainer {
+    /* padding-left: 8rem;
       padding-right: 8rem; */
-      padding-top: 4rem;
-    }
-    .maincontainernav{
-      padding-left: 5rem;
-      padding-right: 5rem;
-     }
-    .maincontainernav{
-      padding-left: 5rem;
-      padding-right: 5rem;
-     }
-    .rightSectionContainer{
-      width: 32%;
-    }
-    .radioTitle {
-      color: #FFFFFF;
-      font: bolder 1.4rem "Lato";
-      padding-bottom: 1rem;
+    padding-top: 4rem;
+  }
+  .maincontainernav {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+  .maincontainernav {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+  .rightSectionContainer {
+    width: 32%;
+  }
+  .radioTitle {
+    color: #ffffff;
+    font: bolder 1.4rem "Lato";
+    padding-bottom: 1rem;
   }
   .scndInfos {
     padding: 1rem 0rem;
-      border-radius: 0px 2rem 0px 2rem;
-      background-color: #3E4678;
-      /* height: 50%; */
-      /* width: 40rem; */
-      position: sticky;
-      box-shadow: 0 0 7px rgba(0, 0, 0, 0.25);
-      display: block;
-      transition: margin-top 1s ease-out;
-      display: flex;
-      flex-direction: column;
-      text-align: left;
-      gap: 1rem;
-      color: #FFFFFF;
-      font: bold 14px "Lato", sans-serif;
+    border-radius: 0px 2rem 0px 2rem;
+    background-color: #3e4678;
+    /* height: 50%; */
+    /* width: 40rem; */
+    position: sticky;
+    box-shadow: 0 0 7px rgba(0, 0, 0, 0.25);
+    display: block;
+    transition: margin-top 1s ease-out;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 1rem;
+    color: #ffffff;
+    font: bold 14px "Lato", sans-serif;
   }
   .price {
-      color: #FFFFFF;
-      font-size: 1.5rem;
-      font-family: 'Lato';
-      align-self: center;
-      font-weight: 900;
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-family: "Lato";
+    align-self: center;
+    font-weight: 900;
   }
   .DescriptionInfoCourseTitle span {
-      font-family: 'Lato';
-      font-weight: 900;
-      text-transform: uppercase;
-      font-size: 1rem;
-      color: #2C2C2C;
+    font-family: "Lato";
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 1rem;
+    color: #2c2c2c;
   }
   .leftSectionCourse {
-      /* background-color: #6FC2D0; */
-      width: 70%;
-      /* height: 100%; */
-      display: flex;
-      flex-direction: column;
+    /* background-color: #6FC2D0; */
+    width: 70%;
+    /* height: 100%; */
+    display: flex;
+    flex-direction: column;
   }
   /* .imgCourse {
     width: 100%;
@@ -2326,105 +1998,87 @@ font-weight: 900;
      
       z-index: -1;} */
 
-  .MainDivCourse{
-      /* width: 90%; */
-      width: 100%;
-      height: auto;
-      /* background-color: #1C4B82; */
-      display: flex;
-      flex-direction: row;
-      align-items: flex-start;
-      justify-content: space-between;
-      /* grid-template-columns: auto 19rem; */
-      padding-left: 5rem;
-      padding-right: 5rem;
-      padding-top: 5rem;
-      gap: 1rem;
+  .MainDivCourse {
+    /* width: 90%; */
+    width: 100%;
+    height: auto;
+    /* background-color: #1C4B82; */
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    /* grid-template-columns: auto 19rem; */
+    padding-left: 5rem;
+    padding-right: 5rem;
+    padding-top: 5rem;
+    gap: 1rem;
   }
-  .CourseButtonsInfoPage button {
-          height: 4rem;
-        margin: 0.5rem 0rem;
-        padding: 0px 17px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: row-reverse;
-        border-radius: 16px;
-        border: none;
-        color: #3E4678;
-        font: 500 20px "Lato", sans-serif;
-        cursor: pointer;
-        font-weight: bolder;
+  .imagechart {
+    width: 2rem;
   }
-    
-  .imagechart{
-      width: 2rem;
+  .course {
+    color: #2c2c2c;
+    font-size: 2rem;
+    font-weight: 900;
   }
-  .course{
-      color: #2C2C2C;
-      font-size: 2rem;
-  font-weight: 900;
-    }
-  .pdown{
+  .pdown {
     color: #ffffff;
-    font-size:1.7rem;
+    font-size: 1.7rem;
+  }
+}
 
-  }
- 
-  }
-  
-  @media (min-width: 1200px) and (max-width:1300px) {
-    .pdowncontainer{
-      /* padding-left: 8rem;
+@media (min-width: 1200px) and (max-width: 1300px) {
+  .pdowncontainer {
+    /* padding-left: 8rem;
       padding-right: 8rem; */
-      padding-top: 4rem;
-    }
-    .maincontainernav{
-      padding-left: 5rem;
-      padding-right: 5rem;
-     }
-    .radioTitle {
-      color: #FFFFFF;
-      font: bolder 1.4rem "Lato";
-      padding-bottom: 1rem;
+    padding-top: 4rem;
+  }
+  .maincontainernav {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+  .radioTitle {
+    color: #ffffff;
+    font: bolder 1.4rem "Lato";
+    padding-bottom: 1rem;
   }
   .scndInfos {
-      padding: 2rem 3rem;
-      border-radius: 0px 2rem 0px 2rem;
-      background-color: #3E4678;
-      /* height: 50%; */
-      /* width: 40rem; */
-      position: sticky;
-      box-shadow: 0 0 7px rgba(0, 0, 0, 0.25);
-      display: block;
-      transition: margin-top 1s ease-out;
-      display: flex;
-      flex-direction: column;
-      text-align: left;
-      gap: 1rem;
-      color: #FFFFFF;
-      font: bold 14px "Lato", sans-serif;
+    padding: 2rem 3rem;
+    border-radius: 0px 2rem 0px 2rem;
+    background-color: #3e4678;
+    /* height: 50%; */
+    /* width: 40rem; */
+    position: sticky;
+    box-shadow: 0 0 7px rgba(0, 0, 0, 0.25);
+    display: block;
+    transition: margin-top 1s ease-out;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 1rem;
+    color: #ffffff;
+    font: bold 14px "Lato", sans-serif;
   }
   .price {
-      color: #FFFFFF;
-      font-size: 1.5rem;
-      font-family: 'Lato';
-      align-self: center;
-      font-weight: 900;
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-family: "Lato";
+    align-self: center;
+    font-weight: 900;
   }
   .DescriptionInfoCourseTitle span {
-      font-family: 'Lato';
-      font-weight: 900;
-      text-transform: uppercase;
-      font-size: 1rem;
-      color: #2C2C2C;
+    font-family: "Lato";
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 1rem;
+    color: #2c2c2c;
   }
   .leftSectionCourse {
-      /* background-color: #6FC2D0; */
-      width: 59%;
-      /* height: 100%; */
-      display: flex;
-      flex-direction: column;
+    /* background-color: #6FC2D0; */
+    width: 59%;
+    /* height: 100%; */
+    display: flex;
+    flex-direction: column;
   }
   /* .imgCourse {
       width: 100%;
@@ -2433,93 +2087,71 @@ font-weight: 900;
      
       z-index: -1;} */
 
-  .MainDivCourse{
-      /* width: 90%; */
-      width: 100%;
-      height: auto;
-      /* background-color: #1C4B82; */
-      display: flex;
-      flex-direction: row;
-      align-items: flex-start;
-      justify-content: space-between;
-      /* grid-template-columns: auto 19rem; */
-      padding-left: 5rem;
-      padding-right: 5rem;
-      padding-top: 5rem;
-      gap: 4rem;
+  .MainDivCourse {
+    /* width: 90%; */
+    width: 100%;
+    height: auto;
+    /* background-color: #1C4B82; */
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    /* grid-template-columns: auto 19rem; */
+    padding-left: 5rem;
+    padding-right: 5rem;
+    padding-top: 5rem;
+    gap: 4rem;
   }
-  .CourseButtonsInfoPage button {
-          height: 4rem;
-        margin: 0.5rem 0rem;
-        padding: 0px 17px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: row-reverse;
-        border-radius: 16px;
-        border: none;
-        color: #3E4678;
-        font: 500 20px "Lato", sans-serif;
-        cursor: pointer;
-        font-weight: bolder;
+
+  .imagechart {
+    width: 2rem;
   }
-    
-  .imagechart{
-      width: 2rem;
+  .course {
+    color: #2c2c2c;
+    font-size: 2rem;
+    font-weight: 900;
   }
-  .course{
-      color: #2C2C2C;
-      font-size: 2rem;
-  font-weight: 900;
-    }
-  .pdown{
+  .pdown {
     color: #ffffff;
-    font-size:1.7rem;
-
+    font-size: 1.7rem;
   }
- 
-  }
-  
+}
 
-  @media (min-width: 1300px) and (max-width:1519px) {
-    .pdowncontainer{
-      /* padding-left: 8rem;
+@media (min-width: 1300px) and (max-width: 1519px) {
+  .pdowncontainer {
+    /* padding-left: 8rem;
       padding-right: 8rem; */
-      padding-top: 4rem;
-    }
-    .maincontainernav{
-      padding-left: 8rem;
-      padding-right: 8rem;
-     }
-    
-    .text{
-      margin-top: 20px;
-    }
- 
-   
+    padding-top: 4rem;
   }
-  @media(min-width:1520px) {
-    .maincontainer{
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-    .maincontainernav{
-      display: flex;
-   
+  .maincontainernav {
+    padding-left: 8rem;
+    padding-right: 8rem;
+  }
 
-       align-items:flex-start;
-       flex-direction: column;
-    }
-   
+  .text {
+    margin-top: 20px;
+  }
+}
+@media (min-width: 1520px) {
+  .maincontainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .maincontainernav {
+    display: flex;
 
-    .MotherDivCourse{
-      /* width: 100%; */
-      /* padding-left: 15rem;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .MotherDivCourse {
+    /* width: 100%; */
+    /* padding-left: 15rem;
     padding-right: 15rem; */
-    }
- .MainDivCourse{
-  width: 1500px;
- }
   }
+  .MainDivCourse {
+    width: 1500px;
+  }
+}

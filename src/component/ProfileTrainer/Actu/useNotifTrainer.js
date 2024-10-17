@@ -1,17 +1,20 @@
 import { Button } from "@mui/material";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { request } from "../../../core/api/request";
+import Select from "../../../shared/components/Inputs/Select";
 import { renderBCButton, renderResponseButton } from "./ActionButtons";
+import styles from "./styles.module.css";
 
 const useNotifTrainer = () => {
   const [openChange, setOpenChange] = useState(false);
   const [valueComment, setValueComment] = useState({
     Creator: "Me",
-    Comment: "",
+    Comment: ""
   });
   const [data, setData] = useState([]);
   const [comments, setComments] = useState([]);
   const [currentElement, setCurrentElement] = useState("");
+  const [currencySelection, setCurrencySelection] = useState({});
 
   const handleChange = (e) => {
     setValueComment((prev) => ({ ...prev, Comment: e.target.value }));
@@ -27,16 +30,20 @@ const useNotifTrainer = () => {
 
   const handleUpdate = useCallback(
     async (id, status, price) => {
+      const selectedCurrency = currencySelection[id] || "USD";
       const data = {
         reponseFormateur: status,
-        prixFormateur: price,
+        prixFormateur: {
+          value: price,
+          currency: selectedCurrency || "USD"
+        }
       };
 
       request.update(`Trainer/UpdateNotifTrainer`, id, data).then(() => {
         getNotifTrainer();
       });
     },
-    [getNotifTrainer]
+    [getNotifTrainer, currencySelection]
   );
 
   const renderCommentButton = (params) => (
@@ -52,6 +59,13 @@ const useNotifTrainer = () => {
     </Button>
   );
 
+  const handleCurrencyChange = (id, newCurrency) => {
+    setCurrencySelection((prev) => ({
+      ...prev,
+      [id]: newCurrency
+    }));
+  };
+
   const columns = useMemo(
     () => [
       { field: "subject", headerName: "Subject", width: 140 },
@@ -60,7 +74,25 @@ const useNotifTrainer = () => {
         field: "TJ",
         headerName: "TJ (Fees Included)",
         width: 150,
+        editable: true
+      },
+      {
+        field: "Currency",
+        headerName: "Currency",
+        width: 150,
         editable: true,
+        renderCell: (params) => {
+          return (
+            <Select
+              className={styles.currencySelect}
+              options={["USD", "EUR", "TND"]}
+              value={currencySelection[params.row.id] || params.value}
+              onChange={(e) =>
+                handleCurrencyChange(params.row.id, e.target.value)
+              }
+            />
+          );
+        }
       },
       {
         field: "statusMandat",
@@ -83,29 +115,29 @@ const useNotifTrainer = () => {
           }
 
           return <span style={{ color }}>{params.value}</span>;
-        },
+        }
       },
       { field: "NB", headerName: "NB d'inscrit", width: 130 },
       {
         field: "RF",
         headerName: "Trainer Response",
         width: 190,
-        renderCell: (params) => renderResponseButton(params, handleUpdate),
+        renderCell: (params) => renderResponseButton(params, handleUpdate)
       },
       {
         field: "BC",
         headerName: "Purchase Order",
         width: 190,
-        renderCell: (params) => renderBCButton(params),
+        renderCell: (params) => renderBCButton(params)
       },
       {
         field: "commentaire",
         headerName: "Comment",
         width: 190,
-        renderCell: renderCommentButton,
-      },
+        renderCell: renderCommentButton
+      }
     ],
-    [handleUpdate]
+    [handleUpdate, currencySelection]
   );
 
   const rows = useMemo(
@@ -118,18 +150,19 @@ const useNotifTrainer = () => {
         } -> ${new Date(row.courseDate[1]).getDate()}/${
           new Date(row.courseDate[1]).getMonth() + 1
         } - ${new Date(row.courseDate[1]).getFullYear()}`,
-        TJ: row.prixFormateur,
+        TJ: row.prixFormateur.value,
+        Currency: row.prixFormateur.currency,
         statusMandat: row.StatusMandate,
         NB: row.nbInscrit,
         reponseFormateur: row.reponseFormateur,
-        comments: row.comments,
+        comments: row.comments
       })),
     [data]
   );
 
   const columnsComments = [
     { field: "Creator", headerName: "Creator", width: 140 },
-    { field: "Comment", headerName: "Comment", width: 640 },
+    { field: "Comment", headerName: "Comment", width: 640 }
   ];
 
   const rowsComments = useMemo(
@@ -137,14 +170,14 @@ const useNotifTrainer = () => {
       comments.map((row, index) => ({
         id: index,
         Creator: row.Creator,
-        Comment: row.Comment,
+        Comment: row.Comment
       })),
     [comments]
   );
 
   const SendComment = async () => {
     const jsonData = {
-      data: { id: currentElement, comments: valueComment },
+      data: { id: currentElement, comments: valueComment }
     };
     request.create("Trainer/UpdateCommentsNotifTrainer", jsonData).then(() => {
       getNotifTrainer();
@@ -161,7 +194,7 @@ const useNotifTrainer = () => {
     columns,
     columnsComments,
     rowsComments,
-    SendComment,
+    SendComment
   };
 };
 

@@ -1,4 +1,5 @@
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import ComputerIcon from "@mui/icons-material/Computer";
 import DateRangeIcon from "@mui/icons-material/DateRange";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import LocalLibraryIcon from "@mui/icons-material/LocalLibrary";
@@ -63,6 +64,7 @@ const MobileDevice = ({ activeSection, handleSectionChange }) => {
           label="Calendar"
           section="calendar"
         />
+        <TopBarButton icon={ComputerIcon} label="Courses" section="courses" />
       </div>
     </>
   );
