@@ -1,24 +1,17 @@
 .featuredContainer {
   display: flex;
   flex-direction: row;
-  /* padding: 50px; */
   align-items: center;
   align-content: center;
   justify-content: space-between;
-   /* width: 100%;  */
-   margin-left: -0.5rem;
-
+  
 }
 
 .featuredTitle {
   margin-bottom: 2rem;
-  /* padding-left: 6.5rem;
-  padding-right: 6.5rem; */
-  font-size: 36px;
-  font-weight: bold;
+  margin-left: 4rem;
   padding-bottom: 50px;
 }
-
 
 .underline {
   width: 10%;
@@ -35,17 +28,13 @@
   
 }
 
-
 .navButton {
   color: #cd6214;
   border: 0px dotted #dddddd00;
   background-color: #3e467800;
   width: 50%;
-  /* height: 25px; */
-  /* border-radius: 50%; */
   cursor: pointer;
   font-size: 12px;
-  /* display: inline-flex; */
   align-items: center;
   justify-content: center;
   position: relative;
@@ -59,122 +48,14 @@
   display: flex;
   flex-wrap: nowrap;
   flex-direction: row;
-  gap: 10rem;
-}
-
-@media (max-width: 300px)  {
-  .cardsContainer {
-    gap: 1.5rem;
-    margin-left: -9%;
-  }
-}
-/* Media queries for different screen widths */
-@media (min-width: 300px) and (max-width: 355px) {
-  .cardsContainer {
-    gap: 2rem;
-    
-  }
-}
-
-/* For screens between 300px and 399px */
-@media (min-width: 355px) and (max-width: 399px) {
-  .cardsContainer {
-    gap: 2rem;
-    
-  }
-}
-
-/* For screens between 400px and 499px */
-@media (min-width: 400px) and (max-width: 499px) {
-  .cardsContainer {
-    gap: 2rem;
-    
-  }
-}
-
-/* For screens between 500px and 599px */
-@media (min-width: 500px) and (max-width: 599px) {
-  .cardsContainer {
-    gap: 4rem;
-  }
-}
-
-/* For screens between 600px and 699px */
-@media (min-width: 600px) and (max-width: 699px) {
-  .cardsContainer {
-    gap: 5rem;
-  }
-}
-
-/* For screens between 700px and 799px */
-@media (min-width: 700px) and (max-width: 800px) {
-  .cardsContainer {
-    gap: 4rem;
-  }
-}
-
-/* For screens between 800px and 899px */
-@media (min-width: 800px) and (max-width: 900px) {
-  .cardsContainer {
-    gap: 5rem;
-  }
-}
-
-/* For screens between 900px and 999px */
-@media (min-width: 900px) and (max-width: 999px) {
-  .cardsContainer {
-    gap: 3rem;
-    
-  }
-}
-
-/* For screens between 1000px and 1099px */
-@media (min-width: 1000px) and (max-width: 1099px) {
-  .cardsContainer {
-    gap: 4rem;
-  }
-}
-
-/* For screens between 1100px and 1199px */
-@media (min-width: 1100px) and (max-width: 1199px) {
-  .cardsContainer {
-    gap: 4.5rem;
-  }
-}
-
-/* For screens between 1200px and 1299px */
-@media (min-width: 1200px) and (max-width: 1299px) {
-  .cardsContainer {
-    gap: 6rem;
-  }
-}
-
-/* For screens between 1300px and 1399px */
-@media (min-width: 1300px) and (max-width: 1399px) {
-  .cardsContainer {
-    gap: 7rem;
-  }
-}
-
-/* For screens between 1400px and 1499px */
-@media (min-width: 1400px) and (max-width: 1499px) {
-  .cardsContainer {
-    gap: 7rem;
-  }
-}
-
-/* For screens above 1500px */
-@media (min-width: 1500px) {
-  .cardsContainer {
-    gap: 7rem;
-  }
+  gap: 2rem;
 }
 
 
 .card {
   background-color: #3e4678;
   color: #d9d9d9;
-  width: 150px;
+  width: 16.5rem;
   height: 15rem;
   border-radius: 1rem;
   display: flex;
@@ -184,125 +65,6 @@
   position: relative;
   overflow: visible;
 }
-
-/* Media queries for different screen widths */
-@media (max-width: 372px)  {
-  .card {
-    width: 95px;
-    height: 12.5rem;
-  }
-}
-/* For screens between 300px and 399px */
-@media (min-width: 372px) and (max-width: 400px) {
-  .card {
-    width: 98px;
-    height: 9.5rem;
-  }
-}
-@media (min-width: 400px) and (max-width: 470px) {
-  .card {
-    width: 118px;
-    height: 10.5rem;
-  }
-}
-@media (min-width: 470px) and (max-width: 500px) {
-  .card {
-    width: 140px;
-    height: 10.5rem;
-  }
-}
-
-
-/* For screens between 400px and 499px */
-@media (min-width: 500px) and (max-width: 560px) {
-  .card {
-    width: 148px;
-    height: 11.5rem;
-  }
-}
-
-/* For screens between 500px and 599px */
-@media (min-width: 560px) and (max-width: 700px) {
-  .card {
-    width: 180px;
-    height: 11.5rem;
-  }
-}
-
-
-/* For screens between 700px and 799px */
-@media (min-width: 700px) and (max-width: 799px) {
-  .card {
-    width: 202px;
-    height: 12.5rem;
-  }
-}
-
-/* For screens between 800px and 899px */
-@media (min-width: 800px) and (max-width: 899px) {
-  .card {
-    width: 230px;
-    height: 12.5rem;
-  }
-}
-
-/* For screens between 900px and 999px */
-@media (min-width: 900px) and (max-width: 999px) {
-  .card {
-    width: 202px;
-    height: 11.5rem;
-  }
-}
-
-/* For screens between 1000px and 1099px */
-@media (min-width: 1000px) and (max-width: 1099px) {
-  .card {
-    width: 200px;
-    height: 11.5rem;
-  }
-}
-
-/* For screens between 1100px and 1199px */
-@media (min-width: 1100px) and (max-width: 1199px) {
-  .card {
-    width: 240px;
-    height: 12.5rem;
-  }
-}
-
-/* For screens between 1200px and 1299px */
-@media (min-width: 1200px) and (max-width: 1299px) {
-  .card {
-    width: 250px;
-    height: 13rem;
-  }
-}
-
-/* For screens between 1300px and 1399px */
-@media (min-width: 1300px) and (max-width: 1399px) {
-  .card {
-    width: 260px;
-    height: 13rem;
-  }
-}
-
-/* For screens between 1400px and 1499px */
-@media (min-width: 1400px) and (max-width: 1499px) {
-  .card {
-    width: 270px;
-    height: 13rem;
-  }
-}
-
-/* For screens above 1500px */
-@media (min-width: 1500px) {
-  .card {
-    width: 280px;
-    height: 14rem;
-  }
-}
-
-
 
 .imageWrapper {
   width: 8rem;
@@ -317,130 +79,7 @@
   transform: translateX(-50%);
   background: white;
 }
-@media (max-width: 300px) {
-  .imageWrapper {
-    width: 4rem;
-    height: 4rem;
-    top: -2rem;
-  }
-}
 
-/* For screens between 300px and 399px */
-@media (min-width: 300px) and (max-width: 399px) {
-  .imageWrapper {
-    width: 4rem;
-    height: 4rem;
-    top: -2rem;
-  }
-}
-
-/* For screens between 400px and 499px */
-@media (min-width: 400px) and (max-width: 499px) {
-  .imageWrapper {
-    width: 6.75rem;
-    height: 6.75rem;
-    top: -3.25rem;
-  }
-}
-
-/* For screens between 500px and 599px */
-@media (min-width: 500px) and (max-width: 599px) {
-  .imageWrapper {
-    width: 6.75rem;
-    height: 6.75rem;
-    top: -3.25rem;
-  }
-}
-
-/* For screens between 600px and 699px */
-@media (min-width: 600px) and (max-width: 699px) {
-  .imageWrapper {
-    width: 7.5rem;
-    height: 7.5rem;
-    top: -3.75rem;
-  }
-}
-
-/* For screens between 700px and 799px */
-@media (min-width: 700px) and (max-width: 799px) {
-  .imageWrapper {
-    width: 7.5rem;
-    height: 7.5rem;
-    top: -3.75rem;
-  }
-}
-
-/* For screens between 800px and 899px */
-@media (min-width: 800px) and (max-width: 899px) {
-  .imageWrapper {
-    width: 8rem;
-    height: 8rem;
-    top: -3.5rem;
-  }
-}
-
-/* For screens between 900px and 999px */
-@media (min-width: 900px) and (max-width: 999px) {
-  .imageWrapper {
-    width: 8rem;
-    height: 8rem;
-    top: -3.5rem;
-  }
-}
-
-/* For screens between 1000px and 1099px */
-@media (min-width: 1000px) and (max-width: 1099px) {
-  .imageWrapper {
-    width: 7.5rem;
-    height: 7.5rem;
-    top: -3.75rem;
-  }
-}
-
-/* For screens between 1100px and 1199px */
-@media (min-width: 1100px) and (max-width: 1199px) {
-  .imageWrapper {
-    width: 8rem;
-    height: 8rem;
-    top: -4rem;
-  }
-}
-
-/* For screens between 1200px and 1299px */
-@media (min-width: 1200px) and (max-width: 1299px) {
-  .imageWrapper {
-    width: 9rem;
-    height: 9rem;
-    top: -4.25rem;
-  }
-}
-
-/* For screens between 1300px and 1399px */
-@media (min-width: 1300px) and (max-width: 1399px) {
-  .imageWrapper {
-    width: 9rem;
-    height: 9rem;
-    top: -4.5rem;
-  }
-}
-
-/* For screens between 1400px and 1499px */
-@media (min-width: 1400px) and (max-width: 1499px) {
-  .imageWrapper {
-    width: 9.5rem;
-    height: 9.5rem;
-    top: -4.75rem;
-  }
-}
-
-/* For screens above 1500px */
-@media (min-width: 1500px) {
-  .imageWrapper {
-    width: 9.5rem;
-    height: 9.5rem;
-    top: -4.75rem;
-  }
-}
 
 .cardImage {
   width: 100%;
@@ -454,116 +93,22 @@
 }
 
 .titleName {
-  font-size: 14px;
+  font-size: 1.6rem;
   text-align: center;
-  margin: 0.5rem 0;
+  margin: 0px 0px 15px 0px;
 }
 .titleName::first-letter {
   text-transform: uppercase;
 }
-@media (max-width: 300px)  {
-  .titleName {
-    font-size: 9px;
-    margin: 3px 0px 15px 0px;
-  }
-}
-/* For screens between 300px and 599px */
-@media (min-width: 300px) and (max-width: 599px) {
-  .titleName {
-    font-size: 12px;
-    margin: 3px 0px 15px 0px;
-  }
-}
-
-/* For screens between 600px and 899px */
-@media (min-width: 600px) and (max-width: 899px) {
-  .titleName {
-    font-size: 13px;
-    margin: 3px 0px 15px 0px;
-  }
-}
-
-/* For screens between 900px and 1199px */
-@media (min-width: 900px) and (max-width: 1199px) {
-  .titleName {
-    font-size: 14px;
-    margin: 0px 0px 15px 0px;
-  }
-}
-
-/* For screens between 1200px and 1499px */
-@media (min-width: 1200px) and (max-width: 1499px) {
-  .titleName {
-    font-size: 20px;
-    margin: 0px 0px 15px 0px;
-  }
-}
-
-/* For screens 1500px and larger */
-@media (min-width: 1500px) {
-  .titleName {
-    font-size: 22px;
-    margin: 1.2rem 0;
-  }
-}
 
 
 .description {
-  font-size: 12px;
+  font-size: 1rem;
   text-align: center;
   white-space: normal;
   padding: 0 12% 0 12%;
  
 }
-
-@media (max-width: 300px) {
-  .description {
-    font-size: 8px;
-    margin-top: -8px;
-   
-  }
-}
-/* For screens between 300px and 599px */
-@media (min-width: 300px) and (max-width: 599px) {
-  .description {
-    font-size: 8.5px;
-    margin-top: -8px;
-   
-  }
-}
-
-/* For screens between 600px and 899px */
-@media (min-width: 600px) and (max-width: 899px) {
-  .description {
-    font-size: 9.5px;
-    
-  }
-}
-
-/* For screens between 900px and 1199px */
-@media (min-width: 900px) and (max-width: 1199px) {
-  .description {
-    font-size: 10px;
-    
-  }
-}
-
-/* For screens between 1200px and 1499px */
-@media (min-width: 1200px) and (max-width: 1499px) {
-  .description {
-    font-size: 16px;
-   
-  }
-}
-
-/* For screens 1500px and larger */
-@media (min-width: 1500px) {
-  .description {
-    font-size: 18px;
-
-  }
-}
-
 .cardContent {
   display: flex;
   flex-direction: column;
@@ -572,306 +117,22 @@
   margin-top: 2rem;
 }
 
-
-.featuredTitle  {
-  font-size: 2rem;
-  font-weight: bold;
-  text-align: left;
-}
-@media (max-width: 270px)   {
-  .featuredTitle  {
-      font-size: 8px;
-     
-      margin-left: -6%; /* Adjust font size for small screens */
-      margin-bottom: 5%;
-  }
-}
-@media (min-width: 270px) and (max-width: 300px)  {
-  .featuredTitle  {
-      font-size: 11px;
-     
-      margin-left: -4%; /* Adjust font size for small screens */
-      margin-bottom: -10%;
-  }
-}
-@media (min-width: 300px) and (max-width: 356px) {
-  .featuredTitle {
-      font-size: 12px;
-      
-      margin-left: -3%; /* Adjust font size for small screens */
-      margin-bottom: -10%;
-  }
-}
-@media (min-width: 356px) and (max-width: 470px) {
-  .featuredTitle {
-      font-size: 12px;
-    
-      margin-left: 1%; /* Adjust font size for small screens */
-      margin-bottom: -6%;
-  }
-}
-
-
-@media (min-width: 471px) and (max-width: 576px) {
-  .featuredTitle {
-      font-size: 16px;
-      
-      margin-left: 1%; /* Adjust font size for small screens */
-      margin-bottom: 5%;
-  }
-}
-
-/* For medium screens (tablets) */
-@media (min-width: 577px) and (max-width: 768px) {
-  .featuredTitle {
-      font-size: 21px; /* Adjust font size for tablets */
-      
-      margin-left: 1%;
-      font-weight: 800; /* Augmentation du poids de la police */
-      margin-bottom: 4%;
-  }
-}
-
-@media (min-width: 769px) and (max-width: 1240px) {
-  .featuredTitle {
-      font-size: 25px; /* Adjust font size for small desktops */
-      
-      margin-left: 4%;
-      margin-bottom: 3%;
-      font-weight: 800; /* Augmentation du poids de la police */
-  }
-}
-@media (min-width: 1240px) and (max-width:1300px)  {
-  .featuredTitle {
-      font-size: 35px; /* Adjust font size for small desktops */
-      
-      margin-left: 5%;
-      margin-bottom: 4%;
-  }
-}
-@media (min-width: 1300px)   {
-  .featuredTitle {
-      font-size: 40px; /* Adjust font size for small desktops */
-      
-      margin-left: 5%;
-      margin-bottom: 4%;
-  }
-}
-
-@media (min-width: 1300px)  {
-  .featuredTitle {
-      font-size: 30px; /* Adjust font size for small desktops */
-      
-      margin-left: 5%;
-      margin-bottom: 2%;
-  }
-}
 .arrowButton {
   background-color: #00000000;
   border: 0px;
-  width: 50%;
-}
 
-/* For screens between 300px and 399px */
-@media (min-width: 300px) and (max-width: 400px) {
-  .arrowButton {
-    width: 40%;
-    
-  }
-}
-@media (min-width: 400px) and (max-width: 500px) {
-  .arrowButton {
-    width: 40%;
-    
-  }
-}
-
-
-/* For screens between 400px and 499px */
-@media (min-width: 500px) and (max-width: 540px) {
-  .arrowButton {
-    width: 51%;
-    margin-left: 6%;
-  }
-}
-
-/* For screens between 500px and 599px */
-@media (min-width: 540px) and (max-width: 599px) {
-  .arrowButton {
-    width: 40%;
-    margin-left: 6%;
-  }
-}
-
-/* For screens between 600px and 699px */
-@media (min-width: 600px) and (max-width: 699px) {
-  .arrowButton {
-    width: 45%;
-    margin-left: 6%;
-  }
-}
-
-/* For screens between 700px and 799px */
-@media (min-width: 700px) and (max-width: 799px) {
-  .arrowButton {
-    width: 60%;
-  }
-}
-
-/* For screens between 800px and 899px */
-@media (min-width: 800px) and (max-width: 899px) {
-  .arrowButton {
-    width: 65%;
-  }
-}
-
-/* For screens between 900px and 999px */
-@media (min-width: 900px) and (max-width: 999px) {
-  .arrowButton {
-    width: 70%;
-  }
-}
-
-/* For screens between 1000px and 1099px */
-@media (min-width: 1000px) and (max-width: 1099px) {
-  .arrowButton {
-    width: 75%;
-  }
-}
-
-/* For screens between 1100px and 1199px */
-@media (min-width: 1100px) and (max-width: 1199px) {
-  .arrowButton {
-    width: 80%;
-  }
-}
-
-/* For screens between 1200px and 1299px */
-@media (min-width: 1200px) and (max-width: 1299px) {
-  .arrowButton {
-    width: 85%;
-  }
-}
-
-/* For screens between 1300px and 1399px */
-@media (min-width: 1300px) and (max-width: 1399px) {
-  .arrowButton {
-    width: 90%;
-  }
-}
-
-/* For screens between 1400px and 1499px */
-@media (min-width: 1400px) and (max-width: 1499px) {
-  .arrowButton {
-    width: 95%;
-  }
-}
-
-/* For screens above 1500px */
-@media (min-width: 1500px) {
-  .arrowButton {
-    width: 100%;
-  }
 }
 .arrows {
-  width: 100%;
+  width: 2rem;
 }
-
-@media (max-width: 300px)  {
-  .arrows {
-    width: 10px;
+@media screen and (max-width: 600px) {
+  .featuredContainer {
+    margin-left: -1.2rem;
+  
   }
-}
-/* For screens between 300px and 399px */
-@media (min-width: 300px) and (max-width: 399px) {
-  .arrows {
-    width: 10px;
+
+  .featuredTitle {
+    margin-left: 2rem;
   }
+  
 }
-
-/* For screens between 400px and 499px */
-@media (min-width: 400px) and (max-width: 499px) {
-  .arrows {
-    width: 12px;
-  }
-}
-
-/* For screens between 500px and 599px */
-@media (min-width: 500px) and (max-width: 599px) {
-  .arrows {
-    width: 18px;
-  }
-}
-
-/* For screens between 600px and 699px */
-@media (min-width: 600px) and (max-width: 699px) {
-  .arrows {
-    width: 18px;
-  }
-}
-
-/* For screens between 700px and 799px */
-@media (min-width: 700px) and (max-width: 799px) {
-  .arrows {
-    width: 35px;
-  }
-}
-
-/* For screens between 800px and 899px */
-@media (min-width: 800px) and (max-width: 899px) {
-  .arrows {
-    width: 38px;
-  }
-}
-
-/* For screens between 900px and 999px */
-@media (min-width: 900px) and (max-width: 999px) {
-  .arrows {
-    width: 40px;
-  }
-}
-
-/* For screens between 1000px and 1099px */
-@media (min-width: 1000px) and (max-width: 1099px) {
-  .arrows {
-    width: 45px;
-  }
-}
-
-/* For screens between 1100px and 1199px */
-@media (min-width: 1100px) and (max-width: 1199px) {
-  .arrows {
-    width: 50px;
-  }
-}
-
-/* For screens between 1200px and 1299px */
-@media (min-width: 1200px) and (max-width: 1299px) {
-  .arrows {
-    width: 55px;
-  }
-}
-
-/* For screens between 1300px and 1399px */
-@media (min-width: 1300px) and (max-width: 1399px) {
-  .arrows {
-    width: 140%;
-  }
-}
-
-/* For screens between 1400px and 1499px */
-@media (min-width: 1400px) and (max-width: 1499px) {
-  .arrows {
-    width: 100%;
-  }
-}
-
-/* For screens above 1500px */
-@media (min-width: 1500px) {
-  .arrows {
-    width: 100%;
-  }
-}
-
-
- 
