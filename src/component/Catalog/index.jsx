@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import "./styles.module.css";
 import styles from "../Contact/styles.module.css";
 
@@ -6,26 +6,26 @@ import Nav from "../Nav";
 import Footer from "../footer";
 
 const Catalog = () => {
-  window.addEventListener("DOMContentLoaded", function () {
-    const iframe = document.querySelector("iframe");
+  const iframeRef = useRef(null);
 
-    if (iframe) {
-      iframe.onload = function () {
-        try {
-          const iframeDocument = iframe.contentWindow.document;
-
-          const logo = iframeDocument.querySelector(".logoBar");
-          if (logo) {
-            logo.style.display = "none";
-          }
-        } catch (error) {
-          console.error("Erreur en accédant à l'iframe:", error);
+  useEffect(() => {
+    const handleIframeLoad = () => {
+      const iframeDocument =
+        iframeRef.current.contentDocument ||
+        iframeRef.current.contentWindow.document;
+      const style = document.createElement("style");
+      style.innerHTML = `
+        #logoBar {
+          display: none !important;
         }
-      };
-    } else {
-      console.error("Iframe non trouvée");
+      `;
+      iframeDocument.head.appendChild(style);
+    };
+
+    if (iframeRef.current) {
+      iframeRef.current.onload = handleIframeLoad;
     }
-  });
+  }, []);
 
   return (
     <React.Fragment>
@@ -45,11 +45,12 @@ const Catalog = () => {
         style={{
           position: "relative",
           paddingTop: 0,
-          width: "1100px",
-          height: "600px",
+          width: "100%",
+          height: "500px",
         }}
       >
         <iframe
+          ref={iframeRef}
           style={{
             position: "absolute",
             border: "none",
@@ -58,12 +59,12 @@ const Catalog = () => {
             left: 0,
             top: 0,
           }}
-          src="https://online.fliphtml5.com/hxpoo/ywlj/"
+          src="/fliphtml5/hxpoo/ywlj/"
           seamless="seamless"
           scrolling="no"
-          frameborder="0"
-          allowtransparency="true"
-          allowfullscreen="true"
+          frameBorder="0"
+          allowTransparency="true"
+          allowFullScreen="true"
         ></iframe>
       </div>
 
