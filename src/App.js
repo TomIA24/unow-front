@@ -15,7 +15,7 @@ import Room from "./component/Room";
 import SignUp from "./component/SignUp";
 import Training from "./component/Training";
 
-import { Route, Routes } from "react-router-dom";
+import { Route, Router, Routes } from "react-router-dom";
 import MissingRoute from "./secure/MissingRoute";
 
 import HomeInterface from "./component/Home/HomeInterface";
@@ -30,6 +30,7 @@ import CourseForm from "./component/ProfileTrainer/Courses/CourseForm";
 import EditProfile from "./component/ProfileTrainer/EditProfile";
 import Timeout from "./component/Quiz/Questions/timeout";
 import { QuizProvider } from "./hooks/QuizContext";
+import Catalog from "./component/Catalog";
 
 function App() {
   const [startDate, setStartDate] = useState(null);
@@ -119,6 +120,8 @@ function App() {
                 element={<ProfileClient />}
               />
             )}
+
+            <Route exact path="/catalog" element={<Catalog />} />
           </Routes>
         </div>
       </QuizProvider>
