@@ -9,11 +9,11 @@ const Select = ({
   onChange,
   required,
   style,
-  className
+  className,
 }) => {
   return (
     <div className={styles.inputContainer}>
-      <label>{label}</label>
+      {label && <label>{label}</label>}
       <select
         style={style}
         ref={categoryRef}
