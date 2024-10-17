@@ -446,12 +446,11 @@ const StandardTraining = (props) => {
   // },[Data])
 
   const handleEnroll = async () => {
-    console.log("here");
-    // if (token) {
-    //   handleOpenEnrolled();
-    // } else {
-    //   window.location = "/login";
-    // }
+    if (token) {
+      handleOpenEnrolled();
+    } else {
+      window.location = "/login";
+    }
   };
 
   const [tool, setTool] = useState(false);
@@ -501,7 +500,6 @@ const StandardTraining = (props) => {
     return <Loading />;
   }
 
-  console.log(Data);
   return (
     <React.Fragment>
       <div className={styles.backimage}>

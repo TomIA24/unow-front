@@ -1,6 +1,6 @@
 import AddCardIcon from "@mui/icons-material/AddCard";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import Button from "../../../shared/components/button";
 import imageCourse from "../../assets/icon_course.svg";
 import imageTraining from "../../assets/icon_training.svg";
@@ -22,27 +22,47 @@ const Cart = ({ user }) => {
   } = useCart();
   const [selectedType, setSelectedType] = useState("COURSES");
 
+  const items = useMemo(() => {
+    return [
+      {
+        icon: imageCourse,
+        title: "COURSES",
+        count: cart?.courses?.length || 0,
+        width: "32px"
+      },
+      {
+        icon: imageTraining,
+        title: "TRAININGS",
+        count: cart?.trainings?.length,
+        width: "37px"
+      },
+      {
+        icon: imageVoucher,
+        count: cart?.vouchers?.length || 0,
+        title: "VOUCHERS",
+        width: "44px"
+      }
+    ];
+  }, [cart]);
+  console.log(cart);
+
   return (
     <div className={styles.leftSectionProfile}>
       <div className={styles.container}>
         <GenericSwitcher
-          items={[
-            { icon: imageCourse, title: "COURSES", width: "32px" },
-            { icon: imageTraining, title: "TRAININGS", width: "37px" },
-            { icon: imageVoucher, title: "VOUCHERS", width: "44px" }
-          ]}
+          items={items}
           selectedItem={selectedType}
           setSelectedItem={setSelectedType}
-          indicator={5}
+          path={"/candidate/profile"}
         />
 
         <div className={styles.content}>
-          {cart?.trainings?.map((course) => (
-            <div key={course._id} className={styles.card}>
+          {cart?.[selectedType.toLowerCase()]?.map((item) => (
+            <div key={item._id} className={styles.card}>
               <div className={styles.imgContainer}>
                 <img
                   className={styles.img}
-                  src={"images/welcome/welcome.png"}
+                  src={`${process.env.REACT_APP_API}${item.Thumbnail.filePath}`}
                   alt="cart item"
                 />
               </div>
@@ -50,7 +70,7 @@ const Cart = ({ user }) => {
               <div className={styles.info}>
                 <div className={styles.group}>
                   <p className={styles.title}>Web development</p>
-                  <div className={styles.price}>160$</div>
+                  <div className={styles.price}>{item.Price || 0}$</div>
                 </div>
                 <div className={styles.textContainer}>
                   <p>Intermediate</p>
