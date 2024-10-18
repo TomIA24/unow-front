@@ -28,7 +28,9 @@ const GenericSwitcher = ({ items, selectedItem, setSelectedItem, path }) => {
               />
 
               <p className={styles.textstyle}>{item.title}</p>
-              <p className={styles.indicator}> {item.count}</p>
+              {typeof item.count === "number" ? (
+                <p className={styles.indicator}>{item.count}</p>
+              ) : null}
             </Link>
           </button>
         );

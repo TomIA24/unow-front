@@ -8,13 +8,12 @@ import Modal from "@mui/material/Modal";
 import Rating from "@mui/material/Rating";
 import Tooltip from "@mui/material/Tooltip";
 import axios from "axios";
-import React, { useRef, useEffect, useState } from "react";
-import { BsArrowDownRightCircleFill } from "react-icons/bs";
-import { FaOpencart } from "react-icons/fa";
+import React, { useEffect, useRef, useState } from "react";
 import { RiSecurePaymentLine } from "react-icons/ri";
 import { useParams } from "react-router-dom";
-import Nav from "../../Nav";
+import { request } from "../../../core/api/request";
 import Footer from "../../Home/Footer";
+import Nav from "../../Nav";
 import styles from "./styles.module.css";
 
 const StandardCourse = () => {
@@ -47,7 +46,7 @@ const StandardCourse = () => {
     enrolledPaid: [],
     state: "",
     certificate: "",
-    evaluate: [],
+    evaluate: []
   });
   const style = {
     position: "absolute",
@@ -60,7 +59,7 @@ const StandardCourse = () => {
     boxShadow: 24,
     pt: 2,
     px: 4,
-    pb: 3,
+    pb: 3
   };
 
   /*///////////////////////////////////*/
@@ -99,7 +98,7 @@ const StandardCourse = () => {
     const config = {
       headers: {},
 
-      params: { id: id },
+      params: { id: id }
     };
     axios
       .get(`${process.env.REACT_APP_API}api/courses/specific`, config)
@@ -169,7 +168,7 @@ const StandardCourse = () => {
 
   const GetUsers = async (ids) => {
     const config = {
-      headers: {},
+      headers: {}
     };
     axios
       .post(
@@ -201,7 +200,7 @@ const StandardCourse = () => {
               message: e.message,
               rate: e.rate,
               name: user.userName,
-              image: user.image,
+              image: user.image
             }
           : null;
       }).filter(Boolean); // Remove any null entries
@@ -218,7 +217,7 @@ const StandardCourse = () => {
         sx={{
           width: 200,
           display: "flex",
-          alignItems: "center",
+          alignItems: "center"
         }}
       >
         <Rating
@@ -307,8 +306,8 @@ const StandardCourse = () => {
   const handleLastSeen = async () => {
     const config = {
       headers: {
-        authorization: `Bearer ${token}`,
-      },
+        authorization: `Bearer ${token}`
+      }
     };
     try {
       const url = `${process.env.REACT_APP_API}api/Candidat/lastSeen`;
@@ -334,49 +333,18 @@ const StandardCourse = () => {
 
   const handleCart = async () => {
     if (token) {
-      const config = {
-        headers: {
-          authorization: `Bearer ${token}`,
-        },
-      };
-      try {
-        const url = `${process.env.REACT_APP_API}api/Candidat/cart`;
-        axios
-          .post(
-            url,
-            { type: "course", enrolled: Data.enrolled, courseId: Data._id },
-            config
-          )
-          .then(async (res) => {
-            const url = `${process.env.REACT_APP_API}api/userData`;
-            try {
-              axios.get(url).then((response) => {
-                localStorage.setItem(
-                  "user",
-                  JSON.stringify(response.data.data)
-                );
-              });
-            } catch (err) {}
-          });
-      } catch (error) {
-        if (
-          error.response &&
-          error.response.status >= 400 &&
-          error.response.status <= 500
-        ) {
-          // setError(error.response.data.message);
-        }
-      }
-    } else {
-      window.location = "/login";
+      request.create("cart", {
+        itemType: "course",
+        itemId: Data._id
+      });
     }
   };
 
   const handleBuySTRIPE = async () => {
     const config = {
       headers: {
-        authorization: `Bearer ${token}`,
-      },
+        authorization: `Bearer ${token}`
+      }
     };
     try {
       const url = `${process.env.REACT_APP_API}api/payment/course`;
@@ -487,7 +455,7 @@ const StandardCourse = () => {
                   <div
                     className={styles.imgCourse}
                     style={{
-                      backgroundImage: `url(${process.env.REACT_APP_API}uploads/courseImg.png) !important`,
+                      backgroundImage: `url(${process.env.REACT_APP_API}uploads/courseImg.png) !important`
                     }}
                   >
                     <img
@@ -736,7 +704,7 @@ const StandardCourse = () => {
                               overflowY: "auto",
                               overflowX: "hidden",
                               maxHeight: "85vh",
-                              alignItems: "center",
+                              alignItems: "center"
                             }}
                           >
                             <div className={styles.ModalComponent}>
@@ -819,7 +787,7 @@ const StandardCourse = () => {
                               overflowY: "auto",
                               overflowX: "hidden",
                               maxHeight: "85vh",
-                              alignItems: "center",
+                              alignItems: "center"
                             }}
                           >
                             <Button
@@ -931,7 +899,7 @@ const StandardCourse = () => {
                             overflowY: "auto",
                             overflowX: "hidden",
                             maxHeight: "85vh",
-                            alignItems: "center",
+                            alignItems: "center"
                           }}
                         >
                           <div className={styles.ModalComponent}>
@@ -1014,7 +982,7 @@ const StandardCourse = () => {
                             overflowY: "auto",
                             overflowX: "hidden",
                             maxHeight: "85vh",
-                            alignItems: "center",
+                            alignItems: "center"
                           }}
                         >
                           <Button
