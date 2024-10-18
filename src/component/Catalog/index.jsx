@@ -59,7 +59,7 @@ const Catalog = () => {
             left: 0,
             top: 0,
           }}
-          src="/fliphtml5/hxpoo/ywlj/"
+          src="https://online.fliphtml5.com/hxpoo/ywlj/"
           seamless="seamless"
           scrolling="no"
           frameBorder="0"
