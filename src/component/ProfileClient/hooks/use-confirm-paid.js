@@ -16,7 +16,7 @@ const useConfirmPaid = ({ itemIdSelected, itemType, onClose }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = {
-      itemId: itemIdSelected,
+      itemId: itemIdSelected.id,
       itemType: itemType.slice(0, -1).toLowerCase()
     };
 

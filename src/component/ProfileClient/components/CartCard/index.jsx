@@ -63,7 +63,7 @@ const CartCard = ({
                 text="Pay Now"
                 className={styles.btn}
                 leftIcon={<AddCardIcon sx={{ fontSize: "17px" }} />}
-                onClick={() => handlePaid(id)}
+                onClick={() => handlePaid(id, price)}
               />
             </div>
           </div>

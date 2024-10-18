@@ -1,5 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
 import { request } from "../../../core/api/request";
+import imageCourse from "../../assets/icon_course.svg";
+import imageTraining from "../../assets/icon_training.svg";
+import imageVoucher from "../../assets/icon_voucher.svg";
 
 const useCart = () => {
   const [selectedType, setSelectedType] = useState("COURSES");
@@ -29,19 +32,19 @@ const useCart = () => {
   const items = useMemo(() => {
     return [
       {
-        icon: "/path/to/imageCourse",
+        icon: imageCourse,
         title: "COURSES",
         count: carts?.courses?.length || 0,
         width: "32px"
       },
       {
-        icon: "/path/to/imageTraining",
+        icon: imageTraining,
         title: "TRAININGS",
         count: carts?.trainings?.length || 0,
         width: "37px"
       },
       {
-        icon: "/path/to/imageVoucher",
+        icon: imageVoucher,
         count: carts?.vouchers?.length || 0,
         title: "VOUCHERS",
         width: "44px"

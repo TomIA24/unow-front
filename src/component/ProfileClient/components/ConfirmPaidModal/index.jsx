@@ -26,44 +26,69 @@ const ConfirmPaidModal = ({ onClose, open, itemType, itemIdSelected }) => {
               What an excellent choice <span>!</span>
             </h2>
             <p>Thank you for your confidence.</p>
-            <p>Could you confirm the contact method you prefer?</p>
+
+            {itemIdSelected?.isFree ? (
+              <p>
+                You have selected a free {itemType.toLowerCase().slice(0, -1)}.
+              </p>
+            ) : (
+              <p>Could you confirm the contact method you prefer?</p>
+            )}
           </div>
 
-          <form onSubmit={handleSubmit}>
-            <div className={styles.radioContainer}>
-              <div>
-                <input
-                  type="radio"
-                  id="contactChoice1"
-                  name="contact"
-                  value="email"
-                  checked={preferredContact === "email"}
-                  onChange={(e) => setPreferredContact(e.target.value)}
-                />
-                <label htmlFor="contactChoice1">Email</label>
-              </div>
+          {itemIdSelected?.isFree ? (
+            <>
+              <Button
+                type="button"
+                text="Confirm"
+                style={{ margin: "20px auto 0" }}
+                loading={loading}
+                onClick={handleSubmit}
+              />
+            </>
+          ) : (
+            <>
+              <form onSubmit={handleSubmit}>
+                <div className={styles.radioContainer}>
+                  <div>
+                    <input
+                      type="radio"
+                      id="contactChoice1"
+                      name="contact"
+                      value="email"
+                      checked={preferredContact === "email"}
+                      onChange={(e) => setPreferredContact(e.target.value)}
+                    />
+                    <label htmlFor="contactChoice1">Email</label>
+                  </div>
 
-              <div>
-                <input
-                  type="radio"
-                  id="contactChoice2"
+                  <div>
+                    <input
+                      type="radio"
+                      id="contactChoice2"
+                      name="contact"
+                      value="phone"
+                      checked={preferredContact === "phone"}
+                      onChange={(e) => setPreferredContact(e.target.value)}
+                    />
+                    <label htmlFor="contactChoice2">Phone</label>
+                  </div>
+                </div>
+                <Input
+                  required
                   name="contact"
-                  value="phone"
-                  checked={preferredContact === "phone"}
-                  onChange={(e) => setPreferredContact(e.target.value)}
+                  style={{
+                    height: "20px",
+                    borderColor: "var(--primary-color)"
+                  }}
+                  value={contact}
+                  onChange={(e) => setContact(e.target.value)}
                 />
-                <label htmlFor="contactChoice2">Phone</label>
-              </div>
-            </div>
-            <Input
-              style={{ height: "20px", borderColor: "var(--primary-color)" }}
-              name="contact"
-              value={contact}
-              onChange={(e) => setContact(e.target.value)}
-            />
 
-            <Button type="submit" text="Send" loading={loading} />
-          </form>
+                <Button type="submit" text="Send" loading={loading} />
+              </form>
+            </>
+          )}
         </div>
       </div>
     )

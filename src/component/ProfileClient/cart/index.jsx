@@ -11,15 +11,24 @@ const Cart = () => {
     useCart();
 
   const [openModal, setOpenModal] = useState(false);
-  const [itemIdSelected, setItemIdSelected] = useState(null);
+  const [itemIdSelected, setItemIdSelected] = useState({
+    id: null,
+    isFree: false
+  });
 
   const onClose = () => {
     setOpenModal(false);
-    setItemIdSelected(null);
+    setItemIdSelected({
+      id: null,
+      isFree: false
+    });
   };
 
-  const handlePaid = (id) => {
-    setItemIdSelected(id);
+  const handlePaid = (id, price) => {
+    setItemIdSelected({
+      id,
+      isFree: parseInt(price) === 0
+    });
     setOpenModal(true);
   };
 
