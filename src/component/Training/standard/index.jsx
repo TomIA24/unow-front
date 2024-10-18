@@ -23,6 +23,7 @@ import axios from "axios";
 import { format } from "date-fns";
 import React, { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
+import { request } from "../../../core/api/request";
 import Footer from "../../Home/Footer";
 import Loading from "../../Loading";
 import Nav from "../../Nav";
@@ -415,30 +416,10 @@ const StandardTraining = (props) => {
   };
 
   const handleCart = async () => {
-    const config = {
-      headers: { authorization: `Bearer ${token}` }
-    };
-    try {
-      const url = `${process.env.REACT_APP_API}api/Candidat/cart`;
-      axios
-        .post(
-          url,
-          { type: "training", enrolled: user._id, courseId: Data._id },
-          config
-        )
-        .then(async (res) => {
-          //console.log(res)
-          window.location.reload(true);
-        });
-    } catch (error) {
-      if (
-        error.response &&
-        error.response.status >= 400 &&
-        error.response.status <= 500
-      ) {
-        // setError(error.response.data.message);
-      }
-    }
+    request.create("cart", {
+      itemType: "training",
+      itemId: Data._id
+    });
   };
 
   // useEffect(()=>{
@@ -446,12 +427,11 @@ const StandardTraining = (props) => {
   // },[Data])
 
   const handleEnroll = async () => {
-    console.log("here");
-    // if (token) {
-    //   handleOpenEnrolled();
-    // } else {
-    //   window.location = "/login";
-    // }
+    if (token) {
+      handleOpenEnrolled();
+    } else {
+      window.location = "/login";
+    }
   };
 
   const [tool, setTool] = useState(false);
@@ -501,7 +481,6 @@ const StandardTraining = (props) => {
     return <Loading />;
   }
 
-  console.log(Data);
   return (
     <React.Fragment>
       <div className={styles.backimage}>

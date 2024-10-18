@@ -29,12 +29,11 @@ const Login = () => {
 
         const config = {
           headers: {
-            authorization: `Bearer ${res.data.data}`,
-          },
+            authorization: `Bearer ${res.data.data}`
+          }
         };
         const url = `${process.env.REACT_APP_API}api/userData`;
         await axios.get(url, config).then((response) => {
-          console.log("user data", response.data.data);
           localStorage.setItem("user", JSON.stringify(response.data.data));
           localStorage.setItem("login", true);
           const redirectPath = localStorage.getItem("redirectPath");
@@ -142,17 +141,16 @@ const Login = () => {
               </a>
 
               <p className={styles.nvaccount}>
-                Don’t have an account ? {" "}
+                Don’t have an account ?{" "}
                 <a href="/signup" className={styles.signupLink}>
                   Sign up
                 </a>
-                <img 
-                    src="/svg/signup.svg"
-                    style={{ height: 20 ,margin :"8px 2px 2px 2px"}}
-                    alt=""
-                  />
+                <img
+                  src="/svg/signup.svg"
+                  style={{ height: 20, margin: "8px 2px 2px 2px" }}
+                  alt=""
+                />
               </p>
-
             </form>
           </div>
         </div>

@@ -1,19 +1,19 @@
-import React from "react";
-import styles from "./styles.module.css";
-import useProfile from "../hooks/use-profile";
-import Loading from "../../Loading";
-import OndemandVideoIcon from "@mui/icons-material/OndemandVideo";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import HistoryEduIcon from "@mui/icons-material/HistoryEdu";
+import OndemandVideoIcon from "@mui/icons-material/OndemandVideo";
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
-import UserInfo from "../UserInfo";
-import Trainings from "../Trainings";
+import React from "react";
+import Loading from "../../Loading";
 import Courses from "../Courses";
+import Trainings from "../Trainings";
+import UserInfo from "../UserInfo";
 import Cart from "../cart";
+import useProfile from "../hooks/use-profile";
+import styles from "./styles.module.css";
 
 const Profile = (props) => {
   const { handleBtn, profileState, data, loading } = useProfile();
-  console.log(data);
+
   if (loading) {
     return <Loading />;
   } else {
@@ -72,7 +72,5 @@ const Profile = (props) => {
     );
   }
 };
-
-
 
 export default Profile;

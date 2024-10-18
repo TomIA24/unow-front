@@ -9,15 +9,34 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-  font-size: 20px;
+  font-weight: 900;
+  font-size: 1.5rem;
+  cursor: pointer;
 }
-.image {
-  width: 30px;
-  height: 30px;
-}
+
 .btnselectedstyle {
   border: none;
   background-color: #eaeaea;
   border-bottom: 5px solid #cd6214;
   color: black;
+}
+
+.indicator {
+  font-size: 0.9rem;
+  width: 19px;
+  height: 19px;
+  border-radius: 50%;
+  border: 1px solid #9ca0b9;
+}
+
+.btnselectedstyle .indicator {
+  border: 1px solid var(--secondary-color);
+  color: var(--secondary-color);
+}
+
+@media (max-width: 800px) {
+  .btnstyle {
+    padding: 10px 15px;
+    width: 100%;
+  }
 }
