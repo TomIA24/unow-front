@@ -42,15 +42,24 @@ export const renderResponseButton = (params, handleUpdate) => {
     opacityWaiting = "20%";
   }
 
-  if (
-    statusMandat === "pending" &&
-    ["rejected", "confirmed"].includes(reponseFormateur)
-  ) {
-    isDisabled = true;
-    opacityConfirm = "20%";
-    opacityReject = "20%";
+  if (statusMandat === "pending") {
+    isDisabled = false;
+    opacityConfirm = "50%";
+    opacityReject = "50%";
+    opacityWaiting = "50%"; 
+  
+    switch (reponseFormateur) {
+      case "rejected":
+        opacityReject = "100%";
+        break;
+      case "confirmed":
+        opacityConfirm = "100%";
+        break;
+      case "undecided":
+        opacityWaiting = "100%";
+        break;
+    }
   }
-
   return (
     <>
       <Button
@@ -73,7 +82,11 @@ export const renderResponseButton = (params, handleUpdate) => {
         />
       </Button>
 
-      <Button sx={buttonStyles(isDisabled)} disabled={isDisabled}>
+      <Button 
+      sx={buttonStyles(isDisabled)} 
+      disabled={isDisabled}
+      onClick={() => handleUpdate(id, "undecided", TJ)}
+      >
         <ErrorOutlineOutlinedIcon
           sx={{ color: "#ff9100", opacity: opacityWaiting, width: "50px" }}
         />
