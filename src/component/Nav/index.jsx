@@ -168,7 +168,7 @@ const Nav = () => {
                 onClick={() => {
                   localStorage.setItem("navState", 2);
                 }}
-                to="/catalog"
+                to="/trainingcatalog"
               >
                 <button type="button" className={styles.nav_btn}>
                   Catalog
