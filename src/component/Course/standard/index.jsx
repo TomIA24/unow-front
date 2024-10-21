@@ -733,7 +733,9 @@ const StandardCourse = () => {
                               >
                                 you can track your registration status through
                                 your profile,{" "}
-                                <a href="/profile">quick access to profile</a>
+                                <a href="/candidate/profile">
+                                  quick access to profile
+                                </a>
                               </p>
                             </div>
                           </Box>
@@ -928,7 +930,9 @@ const StandardCourse = () => {
                             >
                               you can track your registration status through
                               your profile,{" "}
-                              <a href="/profile">quick access to profile</a>
+                              <a href="/candidate/profile">
+                                quick access to profile
+                              </a>
                             </p>
                           </div>
                         </Box>
