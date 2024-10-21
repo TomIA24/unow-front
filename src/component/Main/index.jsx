@@ -104,16 +104,24 @@ const Main = () => {
     }
   }, [WindowWidth]);
 
+  const totalPages = Math.ceil(trainings.length / trainingsPerPage);
+
   const nextPage = () => {
-    if (currentPage < Math.ceil(trainings.length / trainingsPerPage)) {
-      setCurrentPage(currentPage + 1);
-    }
+ 
+  if (currentPage < totalPages-1) {
+    setCurrentPage(currentPage + 1);
+  } else {
+    setCurrentPage(1); //back to the first page
+  }
   };
 
   const prevPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
-    }
+
+  if (currentPage > 1) {
+    setCurrentPage(currentPage - 1);
+  } else {
+    setCurrentPage(totalPages ); 
+  }
   };
 
   const [isOpen, setIsOpen] = useState(false);
@@ -144,44 +152,6 @@ const Main = () => {
         leftSection: <AddIcCallIcon color="disabled" />,
       },
     ];
-  }, []);
-  const [currency, setCurrency] = useState(null);
-  const [error, setError] = useState(null);
-  const currencies = {
-  "Algeria": { currency: "Algerian dinar", code: "DZD" },
-  "Belgium": { currency: "Euro", code: "EUR" },
-  "Canada": { currency: "Canadian dollar", code: "CAD" },
-  "France": { currency: "Euro", code: "EUR" },
-  "Germany": { currency: "Euro", code: "EUR" },
-  "Morocco": { currency: "Moroccan dirham", code: "MAD" }, 
-  "Tunisia": { currency: "Tunisian dinar", code: "TND" },
-  "Egypt": { currency: "Egyptian pound", code: "EGP" },
-  "United Kingdom": { currency: "Pound sterling", code: "GBP" },
-  "United States": { currency: "United States dollar", code: "USD" },
-  };
-
-  useEffect(() => {
-    const fetchCurrency = async () => {
-      try {
-      
-        const ipResponse = await axios.get('https://api.ipify.org?format=json');
-        const ip = ipResponse.data.ip; 
-        const countryResponse = await axios.get(`https://ipapi.co/${ip}/json/`);
-        const country = countryResponse.data.country_name;
-        const currencyData = currencies[country];
-
-        if (currencyData) {
-          setCurrency(currencyData);
-        } else {
-          setError('Monnaie non trouvée pour ce pays');
-        }
-      } catch (err) {
-        setError('Erreur lors de la récupération des données');
-        console.error(err);
-      }
-    };
-
-    fetchCurrency();
   }, []);
   return (
     <div className={styles.body}>
@@ -243,9 +213,8 @@ const Main = () => {
                 <CourseTrainingCard
                   id={training._id}
                   key={training._id}
-                  thumbnail={training.Thumbnail.filePath}
+                  thumbnail={training.Thumbnail?.filePath ? training.Thumbnail.filePath : "./images/home/unknown.png"}
                   title={training.Title}
-                  currency={currency?.code}
                   category={training.Category}
                   price={training.Price}
                   level={training.Level}

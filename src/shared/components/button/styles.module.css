@@ -1,0 +1,21 @@
+.btn {
+  background: #3e4678;
+  border-radius: 12px;
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: white;
+  display: flex;
+  justify-content: center;
+  padding: 7px 20px;
+  min-width: 85px;
+  width: fit-content;
+  cursor: pointer;
+  display: flex;
+  gap: 5px;
+}
+
+.outline {
+  border: 1px solid #3e4678;
+  color: #3e4678;
+  background-color: transparent;
+}

@@ -24,6 +24,7 @@ const CourseForm = () => {
     MultipleRessourcesChange,
     handleDeleteSelected,
     handleSubmit,
+    certifcateList
   } = useCourseForm();
 
   return (
@@ -155,11 +156,11 @@ const CourseForm = () => {
               required
             />
 
-            <Input
+            <Select
               label="Certificate"
               name="certificate"
               placeholder="Enter certificate"
-              type="text"
+              options={certifcateList}
               value={formData.certificate}
               onChange={(e) => handleChangeFormData(e)}
               required

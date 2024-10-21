@@ -9,10 +9,11 @@ const Select = ({
   onChange,
   required,
   style,
+  className,
 }) => {
   return (
     <div className={styles.inputContainer}>
-      <label>{label}</label>
+      {label && <label>{label}</label>}
       <select
         style={style}
         ref={categoryRef}
@@ -20,9 +21,10 @@ const Select = ({
         value={value}
         onChange={onChange}
         required={required}
+        className={className}
       >
         <option value="">Select</option>
-        {options.map((option) => (
+        {options?.map((option) => (
           <option key={option} value={option}>
             {option}
           </option>

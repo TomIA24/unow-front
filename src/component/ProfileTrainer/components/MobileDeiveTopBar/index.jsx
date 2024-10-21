@@ -1,4 +1,5 @@
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import ComputerIcon from "@mui/icons-material/Computer";
 import DateRangeIcon from "@mui/icons-material/DateRange";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import LocalLibraryIcon from "@mui/icons-material/LocalLibrary";
@@ -6,7 +7,7 @@ import classNames from "classnames";
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./styles.module.css";
 
-const MobileDevice = ({ userInfo, activeSection, handleSectionChange }) => {
+const MobileDevice = ({ activeSection, handleSectionChange }) => {
   const ref = useRef();
   const [isFixed, setIsFixed] = useState(false);
 
@@ -63,30 +64,7 @@ const MobileDevice = ({ userInfo, activeSection, handleSectionChange }) => {
           label="Calendar"
           section="calendar"
         />
-      </div>
-
-      <div className={styles.personnelInfo}>
-        <div className={styles.imgContainer}>
-          <img
-            src={
-              userInfo?.image?.filePath
-                ? `${process.env.REACT_APP_API}${userInfo.image.filePath}`
-                : "/default-profile.png"
-            }
-            alt="Profile"
-          />
-        </div>
-        <div className={styles.userInfo}>
-          <div>
-            <p>{userInfo?.name}</p>
-            <p>Trainer</p>
-          </div>
-          <div>
-            <p> {userInfo?.phoneNumber || "--"}</p>
-            <p> {userInfo?.email || "--"}</p>
-            <p> {userInfo?.address || "--"}</p>
-          </div>
-        </div>
+        <TopBarButton icon={ComputerIcon} label="Courses" section="courses" />
       </div>
     </>
   );

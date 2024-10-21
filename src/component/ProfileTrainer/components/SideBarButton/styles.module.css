@@ -15,3 +15,18 @@
 .buttons button.active {
   background-color: var(--primary-color);
 }
+
+@media (max-width: 1200px) {
+  .buttons {
+    width: fit-content;
+  }
+  .buttons button {
+    width: 6rem;
+    display: grid;
+    place-items: center;
+    padding: 15px 0;
+  }
+  .buttons button span {
+    display: none;
+  }
+}

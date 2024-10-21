@@ -14,7 +14,6 @@ import InfoUser from "./InfoUser";
 import Trainings from "./Trainings";
 import MobileDevice from "./components/MobileDeiveTopBar";
 import SideBarButton from "./components/SideBarButton";
-import ProfileInfo from "./components/TopBarInfo";
 import styles from "./styles.module.css";
 
 const ProfileTrainer = () => {
@@ -53,30 +52,12 @@ const ProfileTrainer = () => {
         <div className="appWrapper" style={{ height: "100%" }}>
           <Nav />
           <div className={styles.container}>
-            <p className={styles.title}>Welcome Trainer</p>
-            {activeSection === "profile" && (
-              <>
-                <div className={styles.imgProfile}>
-                  <div className={styles.imgContainer}>
-                    <img
-                      src={
-                        userInfo?.image?.filePath
-                          ? `${process.env.REACT_APP_API}${userInfo.image.filePath}`
-                          : "/default-profile.png"
-                      }
-                      alt="Profile"
-                    />
-                  </div>
-                </div>
-                <ProfileInfo userInfo={userInfo} />
-              </>
-            )}
+            <p className={styles.title}>Welcome {userInfo?.name}</p>
           </div>
         </div>
       </div>
 
       <MobileDevice
-        userInfo={userInfo}
         activeSection={activeSection}
         handleSectionChange={(section) => handleSectionChange(section)}
       />
@@ -84,7 +65,7 @@ const ProfileTrainer = () => {
         <main className={styles.main}>
           <div className={styles.mainContainer}>{renderContent()}</div>
           <div className={styles.sideBar}>
-            <p className={styles.cardTitle}>{userInfo?.name}</p>
+            <p className={styles.cardTitle}>Welcome</p>
             <div className={styles.sideBarContainer}>
               <SideBarButton
                 icon={AccountCircleIcon}

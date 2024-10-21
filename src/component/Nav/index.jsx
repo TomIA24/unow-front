@@ -168,10 +168,10 @@ const Nav = () => {
                 onClick={() => {
                   localStorage.setItem("navState", 2);
                 }}
-                to="/about"
+                to="/trainingcatalog"
               >
                 <button type="button" className={styles.nav_btn}>
-                  About
+                  Catalog
                 </button>
                 {navState === 2 && <p className={styles.underline}></p>}
               </Link>

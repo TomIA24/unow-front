@@ -125,14 +125,13 @@ if (loading) {
         </div>
         <div className={styles.profileCapsule2}>
           <div className={styles.profileInfoHeader}>
-            <h1>{data.name}</h1>
+            <h1>{data.name} {data.userName}</h1>
             <div className={styles.profileInfoHeaderUnderline} />
           </div>
           <div className={styles.profileInfoDescription}>
             <h5>{data.phone}</h5>
             <h5>{data.email}</h5>
-            {/* <h5>{data.address}</h5> */}
-            <h5>address</h5>
+           
           </div>
         </div>
       </>

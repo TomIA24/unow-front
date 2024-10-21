@@ -1,13 +1,13 @@
-import React, { useState, useRef } from "react";
-import styles from "./styles.module.css";
+import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
+import axios from "axios";
+import React, { useEffect, useRef, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { CourseRating } from "../../../../shared/rating";
+import pay from "../../../assets/pay.png";
 import useCategories from "../../hooks/use-categories";
 import useProfile from "../../hooks/use-profile";
-import pay from "../../../assets/pay.png";
-import { CourseRating } from "../../../../shared/rating";
-import { Link, useNavigate } from "react-router-dom";
-import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import x from "./+.png";
-import axios from "axios";
+import styles from "./styles.module.css";
 
 export default function CourseElement({ course, type }) {
   const { category } = useCategories(course.Category);
@@ -18,8 +18,8 @@ export default function CourseElement({ course, type }) {
   const handleBuySTRIPE = async () => {
     const config = {
       headers: {
-        authorization: `Bearer ${token}`,
-      },
+        authorization: `Bearer ${token}`
+      }
     };
     try {
       const url = `${process.env.REACT_APP_API}api/payment/course`;
@@ -34,7 +34,44 @@ export default function CourseElement({ course, type }) {
     setOpenPopup(!openPopup);
   };
   const navigate = useNavigate();
+  const [currency, setCurrency] = useState(null);
+  const [error, setError] = useState(null);
+  const currencies = {
+    Algeria: { currency: "Algerian dinar", code: "DZD" },
+    Belgium: { currency: "Euro", code: "EUR" },
+    Canada: { currency: "Canadian dollar", code: "CAD" },
+    France: { currency: "Euro", code: "EUR" },
+    Germany: { currency: "Euro", code: "EUR" },
+    Morocco: { currency: "Moroccan dirham", code: "MAD" },
+    Tunisia: { currency: "Tunisian dinar", code: "TND" },
+    Egypt: { currency: "Egyptian pound", code: "EGP" },
+    "United Kingdom": { currency: "Pound sterling", code: "GBP" },
+    "United States": { currency: "United States dollar", code: "USD" }
+  };
 
+  useEffect(() => {
+    const fetchCurrency = async () => {
+      try {
+        const ipResponse = await axios.get("https://api.ipify.org?format=json");
+        const ip = ipResponse.data.ip;
+        const countryResponse = await axios.get(`https://ipapi.co/${ip}/json/`);
+        const country = countryResponse.data.country_name;
+        const currencyData = currencies[country];
+
+        if (currencyData) {
+          setCurrency(currencyData);
+        } else {
+          setError("Monnaie non trouvée pour ce pays");
+        }
+      } catch (err) {
+        setError("Erreur lors de la récupération des données");
+        console.error(err);
+      }
+    };
+
+    fetchCurrency();
+  }, []);
+  console.log("currency", currency?.code);
   return (
     <div className={styles.courseContainerElement}>
       <div className={styles.imgCourseContainer}>
@@ -90,7 +127,10 @@ export default function CourseElement({ course, type }) {
  
           > */}
           <div className={styles.buttonsContainer}>
-            <p className={styles.price}>{course?.Price}DT</p>
+            <p className={styles.price}>
+              {course?.Price}
+              {currency?.code}
+            </p>
             <div className={styles.underline} />
             {data?.CoursesPaid?.includes(course._id) ? (
               <div className={styles.statePrimary}>
@@ -107,7 +147,7 @@ export default function CourseElement({ course, type }) {
             {data?.CoursesPaid?.includes(course._id) ? (
               <Link
                 to={{
-                  pathname: `/${type}/${course._id}`,
+                  pathname: `/${type}/${course._id}`
                 }}
                 className={styles.textCourseFooterBtn}
               >
@@ -133,7 +173,7 @@ export default function CourseElement({ course, type }) {
         <div className={styles.overlayStyles}>
           <div ref={dialogRef} className={styles.dialogStyles}>
             <div className={styles.iamgedialog}>
-              <a href="/profile">
+              <a href="/candidate/profile">
                 <img src={x} alt="" className={styles.back} />
               </a>
               <p>

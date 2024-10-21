@@ -64,14 +64,14 @@
 }
 
 .imgContainer img {
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
 }
 
 .main {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 1.25rem;
   margin: 5rem 0px;
 }
@@ -106,18 +106,23 @@
 }
 
 /* media Query */
-@media screen and (max-width: 992px) {
-  .main {
-    flex-direction: column-reverse;
-    gap: 2rem;
+@media (max-width: 1200px) {
+  .cardTitle {
+    font-size: 1.25rem;
   }
+
   .sideBar {
-    width: 30rem;
-    margin-left: auto;
+    padding: 30px 24px;
+    width: fit-content;
+    flex: 0 !important;
   }
 }
 
-@media screen and (max-width: 768px) {
+@media (max-width: 768px) {
+  .main {
+    margin-top: 22px;
+  }
+
   .img_container,
   .title,
   .imgProfile,
@@ -139,10 +144,6 @@
   .imgContainer img {
     width: 100px;
     height: 100px;
-  }
-
-  .main {
-    margin-top: 0;
   }
 
   .mainContainer {

@@ -5,6 +5,7 @@ const Input = ({
   name,
   placeholder,
   type = "text",
+  style,
   value,
   onChange,
   onClick,
@@ -14,6 +15,7 @@ const Input = ({
     <div className={styles.inputContainer} onClick={onClick}>
       <label>{label}</label>
       <input
+        style={style}
         type={type}
         name={name}
         placeholder={placeholder}
