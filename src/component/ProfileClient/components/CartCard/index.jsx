@@ -10,6 +10,7 @@ const statusColor = {
 };
 
 const CartCard = ({
+  itemId,
   id,
   title,
   thumbnail,
@@ -27,7 +28,7 @@ const CartCard = ({
         <div className={styles.imgContainer}>
           <img
             className={styles.img}
-            src={`${process.env.REACT_APP_API}${thumbnail.filePath}`}
+            src={`${process.env.REACT_APP_API}${thumbnail?.filePath}`}
             alt="cart item"
           />
         </div>
@@ -57,7 +58,7 @@ const CartCard = ({
                 loading={loading}
                 className={styles.btn}
                 leftIcon={<DeleteOutlineIcon sx={{ fontSize: "17px" }} />}
-                onClick={() => handleDelete(id)}
+                onClick={() => handleDelete(itemId)}
               />
               <Button
                 text="Pay Now"

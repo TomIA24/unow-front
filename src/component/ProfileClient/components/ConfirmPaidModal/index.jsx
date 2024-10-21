@@ -4,7 +4,13 @@ import Input from "../../../../shared/components/Inputs/Input";
 import useConfirmPaid from "../../hooks/use-confirm-paid";
 import styles from "./styles.module.css";
 
-const ConfirmPaidModal = ({ onClose, open, itemType, itemIdSelected }) => {
+const ConfirmPaidModal = ({
+  onClose,
+  open,
+  itemType,
+  itemIdSelected,
+  setCarts
+}) => {
   const {
     loading,
     preferredContact,
@@ -12,7 +18,7 @@ const ConfirmPaidModal = ({ onClose, open, itemType, itemIdSelected }) => {
     setPreferredContact,
     setContact,
     handleSubmit
-  } = useConfirmPaid({ itemIdSelected, itemType, onClose });
+  } = useConfirmPaid({ itemIdSelected, itemType, onClose, setCarts });
 
   return (
     open && (
