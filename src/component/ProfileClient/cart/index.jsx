@@ -7,8 +7,15 @@ import useCart from "../hooks/use-cart";
 import styles from "./styles.module.css";
 
 const Cart = () => {
-  const { carts, selectedType, setSelectedType, loading, items, handleDelete } =
-    useCart();
+  const {
+    carts,
+    setCarts,
+    selectedType,
+    setSelectedType,
+    loading,
+    items,
+    handleDelete
+  } = useCart();
 
   const [openModal, setOpenModal] = useState(false);
   const [itemIdSelected, setItemIdSelected] = useState({
@@ -49,12 +56,13 @@ const Cart = () => {
           {carts?.[selectedType.toLowerCase()]?.map((item) => (
             <CartCard
               key={item._id}
-              id={item.item._id}
-              title={item.item.Title}
-              thumbnail={item.item.Thumbnail}
-              price={item.item.Price}
-              category={item.item.Category}
-              level={item.item.Level}
+              itemId={item._id}
+              id={item.item?._id}
+              title={item.item?.Title}
+              thumbnail={item.item?.Thumbnail}
+              price={item.item?.Price}
+              category={item.item?.Category}
+              level={item.item?.Level}
               status={item.status}
               loading={loading}
               handleDelete={handleDelete}
@@ -66,6 +74,7 @@ const Cart = () => {
       <ConfirmPaidModal
         open={openModal}
         onClose={onClose}
+        setCarts={setCarts}
         itemType={selectedType}
         itemIdSelected={itemIdSelected}
       />

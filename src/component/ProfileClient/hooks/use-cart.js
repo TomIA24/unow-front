@@ -58,7 +58,7 @@ const useCart = () => {
       setCarts({
         ...carts,
         [selectedType.toLowerCase()]: carts[selectedType.toLowerCase()].filter(
-          (item) => item._id !== id
+          (item) => item?._id !== id
         )
       });
       setLoading(false);
@@ -67,6 +67,7 @@ const useCart = () => {
 
   return {
     carts,
+    setCarts,
     selectedType,
     setSelectedType,
     loading,

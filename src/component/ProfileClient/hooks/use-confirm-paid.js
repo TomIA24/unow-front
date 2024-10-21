@@ -1,7 +1,7 @@
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { request } from "../../../core/api/request";
 
-const useConfirmPaid = ({ itemIdSelected, itemType, onClose }) => {
+const useConfirmPaid = ({ itemIdSelected, itemType, onClose, setCarts }) => {
   const user = useMemo(() => JSON.parse(localStorage.getItem("user")), []);
   const [loading, setLoading] = useState(false);
   const [preferredContact, setPreferredContact] = useState("email");
@@ -12,6 +12,23 @@ const useConfirmPaid = ({ itemIdSelected, itemType, onClose }) => {
       setContact(user?.[preferredContact]);
     }
   }, [user, preferredContact]);
+
+  const fetchCart = useCallback(async () => {
+    request.list("cart").then((data) => {
+      const vouchers = data.cartItems.filter((item) => item.type === "voucher");
+      const courses = data.cartItems.filter((item) => item.type === "course");
+      const trainings = data.cartItems.filter(
+        (item) => item.type === "training"
+      );
+
+      setCarts({
+        courses,
+        trainings,
+        vouchers
+      });
+    });
+    // eslint-disable-next-line
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -29,7 +46,8 @@ const useConfirmPaid = ({ itemIdSelected, itemType, onClose }) => {
     }
 
     setLoading(true);
-    request.create("/order", data).then(() => {
+    request.create("/order", data).then((res) => {
+      fetchCart();
       onClose();
       setLoading(false);
     });
