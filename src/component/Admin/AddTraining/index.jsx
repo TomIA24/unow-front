@@ -130,6 +130,7 @@ const AddTraining = () => {
     Level: "",
     Reference: "",
     Date: DatesPicked,
+    Duration:"",
     TimePerDay: null,
     enrolled: [],
     state: "none",
@@ -164,6 +165,7 @@ const AddTraining = () => {
     Level: "",
     Reference: "",
     Date: DatesPicked,
+    Duration:"",
     TimePerDay: {},
     enrolled: [],
     state: "none",
@@ -206,7 +208,22 @@ const AddTraining = () => {
       </MenuItem>
     );
   });
+  const durationsList = [
+    "1 hour",
+    "2 hours",
+    "3 hours",
+    "4 hours",
+    "5 hours",
+    "6 hours",
+  ];
 
+  const durations = durationsList.map((duration) => {
+    return (
+      <MenuItem key={duration} value={duration}>
+        {duration}
+      </MenuItem>
+    );
+  });
   const [singleFile, setSingleFile] = useState("");
   const [singleFilePath, setSingleFilePath] = useState("");
   const [prev, setPrev] = useState(null);
@@ -450,7 +467,6 @@ const AddTraining = () => {
       "Ressources"
     );
   };
-
   return (
     <>
       <form className={styles.CourseForm} action="">
@@ -1080,6 +1096,36 @@ const AddTraining = () => {
                   />
                 </Box>
               </FormControl>
+              <FormControl
+                className={styles.FormControl}
+                sx={{ m: 1, minWidth: "80%" }}
+              >
+                <Box
+                  component="form"
+                  sx={{
+                    "& > :not(style)": { width: "100%" },
+                  }}
+                  noValidate
+                  autoComplete="off"
+                >
+                <InputLabel id="demo-simple-select-autowidth-label">
+                  Duration
+                </InputLabel>
+                <Select
+                  labelId="demo-simple-select-autowidth-label"
+                  id="demo-simple-select-autowidth"
+                  value={data?.Duration}
+                  onChange={(e) => handleChange(e)}
+                  name="Duration"
+                  label="Duration"
+                >
+                  <MenuItem value="">
+                    <em>None</em>
+                  </MenuItem>
+                 {durations}
+                </Select>
+                </Box>
+                </FormControl>
               <div className={styles.Date}>
                 <div className={styles.DatePicker}>
                   <LocalizationProvider dateAdapter={AdapterDateFns}>
