@@ -1,7 +1,8 @@
 import styles from "./styles.module.css";
-import { 
-  // Link, 
-        useNavigate } from "react-router-dom";
+import {
+  // Link,
+  useNavigate,
+} from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 // import { IoIosArrowForward, IoMdArrowDropright } from "react-icons/io";
@@ -27,6 +28,7 @@ const AddTrainer = () => {
     socialReason: "",
     image: "",
     firstConnection: true,
+    userType: "Trainer",
   };
   const [data, setData] = useState({
     name: "",
@@ -39,7 +41,7 @@ const AddTrainer = () => {
     monthlyBandwidth: "",
     animationLanguage: [""],
     description: "",
-    programs: [""],
+    programs: [],
     dateOfCreation: "",
     chargeTVA: false,
     RCS: "",
@@ -78,7 +80,7 @@ const AddTrainer = () => {
     try {
       const url = `${process.env.REACT_APP_API}api/Trainer`;
       const { data: res } = await axios.post(url, data, { headers: {} });
-      console.log(res)
+      console.log(res);
       // window.location.reload();
       setData({ ...initialData });
       setSaved(true);
