@@ -533,7 +533,7 @@ const StandardTraining = (props) => {
                   <div
                     className={styles.imgCourse}
                     style={{
-                      backgroundImage: `url(${process.env.REACT_APP_API}uploads/courseImg.png) !important`
+                      backgroundImage: `url(${process.env.REACT_APP_API}uploads/courseImg.png) !important`,
                     }}
                   >
                     {/* <img
@@ -551,7 +551,7 @@ const StandardTraining = (props) => {
                   <div
                     className={styles.imgCourse}
                     style={{
-                      backgroundImage: `url(${process.env.REACT_APP_API}uploads/courseImg.png) !important`
+                      backgroundImage: `url(${process.env.REACT_APP_API}uploads/courseImg.png) !important`,
                     }}
                   >
                     <img
@@ -737,7 +737,13 @@ const StandardTraining = (props) => {
                             Duration: <span> 2 hours/Day</span>
                           </li>
                           <li>
-                            Lectures: <span> {Data.TimePerDay}</span>
+                            Lectures:{" "}
+                            <span>
+                              {new Date(Data.TimePerDay).toLocaleTimeString(
+                                [],
+                                { hour: "2-digit", minute: "2-digit" }
+                              )}
+                            </span>
                           </li>
                           <li>
                             Level: <span> {Data.Level}</span>
@@ -854,7 +860,7 @@ const StandardTraining = (props) => {
                               overflowY: "auto",
                               overflowX: "hidden",
                               maxHeight: "85vh",
-                              alignItems: "center"
+                              alignItems: "center",
                             }}
                           >
                             <div className={styles.ModalComponent}>
@@ -989,7 +995,7 @@ const StandardTraining = (props) => {
                               flexDirection: "column",
                               overflowY: "auto",
                               overflowX: "hidden",
-                              maxHeight: "85vh"
+                              maxHeight: "85vh",
                             }}
                           >
                             <div className={styles.ModalComponent}>
@@ -1035,7 +1041,7 @@ const StandardTraining = (props) => {
                                             onChange={(newDate) => {
                                               setCustomizeNotif({
                                                 ...CustomizeNotif,
-                                                date: newDate
+                                                date: newDate,
                                               });
                                             }}
                                             renderInput={(
@@ -1058,7 +1064,7 @@ const StandardTraining = (props) => {
                                           onChange={(newDate) => {
                                             setCustomizeNotif({
                                               ...CustomizeNotif,
-                                              date: newDate
+                                              date: newDate,
                                             });
                                           }}
                                           renderInput={(
@@ -1096,7 +1102,7 @@ const StandardTraining = (props) => {
                                             onChange={(newTime) => {
                                               setCustomizeNotif({
                                                 ...CustomizeNotif,
-                                                time: newTime
+                                                time: newTime,
                                               });
                                             }}
                                             renderInput={(params) => (
@@ -1111,7 +1117,7 @@ const StandardTraining = (props) => {
                                           onChange={(newTime) => {
                                             setCustomizeNotif({
                                               ...CustomizeNotif,
-                                              time: newTime
+                                              time: newTime,
                                             });
                                           }}
                                           renderInput={(params) => (
@@ -1141,7 +1147,7 @@ const StandardTraining = (props) => {
                                           <InputAdornment position="end">
                                             hrs
                                           </InputAdornment>
-                                        )
+                                        ),
                                       }}
                                       name="duration"
                                       value={CustomizeNotif.duration}
@@ -1163,7 +1169,7 @@ const StandardTraining = (props) => {
                                       <Box
                                         component="form"
                                         sx={{
-                                          "& > :not(style)": { width: "100%" }
+                                          "& > :not(style)": { width: "100%" },
                                         }}
                                         noValidate
                                         autoComplete="off"
@@ -1343,7 +1349,7 @@ const StandardTraining = (props) => {
                             overflowY: "auto",
                             overflowX: "hidden",
                             maxHeight: "85vh",
-                            alignItems: "center"
+                            alignItems: "center",
                           }}
                         >
                           <div className={styles.ModalComponent}>
@@ -1478,7 +1484,7 @@ const StandardTraining = (props) => {
                             flexDirection: "column",
                             overflowY: "auto",
                             overflowX: "hidden",
-                            maxHeight: "85vh"
+                            maxHeight: "85vh",
                           }}
                         >
                           <div className={styles.ModalComponent}>
@@ -1524,7 +1530,7 @@ const StandardTraining = (props) => {
                                           onChange={(newDate) => {
                                             setCustomizeNotif({
                                               ...CustomizeNotif,
-                                              date: newDate
+                                              date: newDate,
                                             });
                                           }}
                                           renderInput={(
@@ -1547,7 +1553,7 @@ const StandardTraining = (props) => {
                                         onChange={(newDate) => {
                                           setCustomizeNotif({
                                             ...CustomizeNotif,
-                                            date: newDate
+                                            date: newDate,
                                           });
                                         }}
                                         renderInput={(startProps, endProps) => (
@@ -1582,7 +1588,7 @@ const StandardTraining = (props) => {
                                           onChange={(newTime) => {
                                             setCustomizeNotif({
                                               ...CustomizeNotif,
-                                              time: newTime
+                                              time: newTime,
                                             });
                                           }}
                                           renderInput={(params) => (
@@ -1597,7 +1603,7 @@ const StandardTraining = (props) => {
                                         onChange={(newTime) => {
                                           setCustomizeNotif({
                                             ...CustomizeNotif,
-                                            time: newTime
+                                            time: newTime,
                                           });
                                         }}
                                         renderInput={(params) => (
@@ -1627,7 +1633,7 @@ const StandardTraining = (props) => {
                                         <InputAdornment position="end">
                                           hrs
                                         </InputAdornment>
-                                      )
+                                      ),
                                     }}
                                     name="duration"
                                     value={CustomizeNotif.duration}
@@ -1649,7 +1655,7 @@ const StandardTraining = (props) => {
                                     <Box
                                       component="form"
                                       sx={{
-                                        "& > :not(style)": { width: "100%" }
+                                        "& > :not(style)": { width: "100%" },
                                       }}
                                       noValidate
                                       autoComplete="off"
