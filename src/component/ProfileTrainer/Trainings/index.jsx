@@ -31,7 +31,7 @@ const Trainings = () => {
               <p className={styles.title}>{training?.Category}</p>
               <div className={styles.textContainer}>
                 <p>{training.Title}</p>
-                <p>{format(new Date(training?.TimePerDay), "dd/MM/yyyy")}</p>
+                <p>{format(new Date(training?.Date[0][0]), "dd/MM/yyyy")}</p>
                 <p>{format(new Date(training?.TimePerDay), "HH:mm")}</p>
               </div>
               <button>
