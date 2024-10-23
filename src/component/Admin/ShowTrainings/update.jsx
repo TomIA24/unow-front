@@ -207,7 +207,22 @@ const Update = ({ Course, setOpenChange, openChange }) => {
     setDatesPicked([...DatesPicked, value]);
     setValue([null, null]);
   };
+  const durationsList = [
+    "1 hour",
+    "2 hours",
+    "3 hours",
+    "4 hours",
+    "5 hours",
+    "6 hours",
+  ];
 
+  const durations = durationsList.map((duration) => {
+    return (
+      <MenuItem key={duration} value={duration}>
+        {duration}
+      </MenuItem>
+    );
+  });
   const Dates = DatesPicked?.map((Date, i) => {
     return (
       <p key={i}>
@@ -607,6 +622,24 @@ const Update = ({ Course, setOpenChange, openChange }) => {
             />
           </div>
           <div className={styles.DatePickedDiplay}>{DatesPicked && Dates}</div>
+          <FormControl sx={{ m: 1, minWidth: "80%" }}>
+            <InputLabel id="demo-simple-select-autowidth-label">
+            Duration
+            </InputLabel>
+            <Select
+              labelId="demo-simple-select-autowidth-label"
+              id="demo-simple-select-autowidth"
+              value={course.Duration}
+              onChange={(e) => handleChange(e)}
+              name="Duration"
+              label="Duration"
+            >
+              <MenuItem   value={course.Duration}>
+                <em>None</em>
+              </MenuItem>
+              {durations}
+            </Select>
+          </FormControl>
           <FormControl sx={{ m: 1, minWidth: "80%" }}>
             <Box
               component="form"

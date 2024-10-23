@@ -12,6 +12,7 @@ const Button = ({
   loading,
   style = {},
   disabled,
+  leftIcon
 }) => {
   return (
     <button
@@ -22,6 +23,7 @@ const Button = ({
       onClick={onClick}
       disabled={disabled || loading}
     >
+      {leftIcon}
       {loading ? (
         <CircularProgress
           size={20}
@@ -29,7 +31,7 @@ const Button = ({
             color:
               varaint === "outline"
                 ? "var(--secondary-color)"
-                : "var(--text-color)",
+                : "var(--text-color)"
           }}
         />
       ) : (

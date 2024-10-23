@@ -1,0 +1,19 @@
+
+:root {
+    --flipbook-width: 600px;
+    --flipbook-height: 400px;
+  }
+
+  @media (max-width: 768px) {
+    :root {
+      --flipbook-width: 350px;
+      --flipbook-height: 400px;
+    }
+  }
+  
+
+  @media (min-width: 1200px) {
+    .test {
+        margin-left: 5%;
+    }
+  }

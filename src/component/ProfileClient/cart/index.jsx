@@ -1,84 +1,83 @@
-import React from "react";
-
+import React, { useState } from "react";
+import EmptyBox from "../../../shared/components/EmptyBox";
+import GenericSwitcher from "../../GenericSwitcher";
+import CartCard from "../components/CartCard";
+import ConfirmPaidModal from "../components/ConfirmPaidModal";
+import useCart from "../hooks/use-cart";
 import styles from "./styles.module.css";
 
-import Loading from "../../Loading";
-import useCart from "../hooks/use-cart";
-import EmptyTrainings from "../../assets/empty.png";
-import EmptyCourses from "../../assets/emptyCourses.png";
-import CourseElement from "../components/CourseCardElement";
-
-const Cart = ({ user }) => {
+const Cart = () => {
   const {
-    data,
-    cart,
+    carts,
+    setCarts,
+    selectedType,
+    setSelectedType,
     loading,
-    isCoursesLoading,
-    isTrainingsLoading,
-    handleCourse,
-    handleTraining,
-    handleBuySTRIPE,
+    items,
+    handleDelete
   } = useCart();
 
-  
-console.log("cart",cart)
+  const [openModal, setOpenModal] = useState(false);
+  const [itemIdSelected, setItemIdSelected] = useState({
+    id: null,
+    isFree: false
+  });
+
+  const onClose = () => {
+    setOpenModal(false);
+    setItemIdSelected({
+      id: null,
+      isFree: false
+    });
+  };
+
+  const handlePaid = (id, price) => {
+    setItemIdSelected({
+      id,
+      isFree: parseInt(price) === 0
+    });
+    setOpenModal(true);
+  };
+
   return (
     <div className={styles.leftSectionProfile}>
-      <div className={styles.CartDiv}>
-        <div className={styles.titleContainer}>
-          <h1>Courses</h1>
-          <div className={styles.underline} />
-        </div>
-        <div className={styles.carouselDivContainer}>
-          <div className={styles.carouselDiv}>
-            {isCoursesLoading ? (
-              <Loading />
-            ) : (
-              <>
-                {cart?.courses?.length > 0 ? (
-                  <div className={styles.coursesInner}>
-                    {cart?.courses?.map((course) => (
-                      <CourseElement course={course} type="course" />
-                    ))}
-                  </div>
-                ) : (
-                  <div className={styles.emptyBox}>
-                    <img src={EmptyCourses} alt="" />
-                  </div>
-                )}
-              </>
-            )}
-          </div>
-        </div>
-      </div>
+      <div className={styles.container}>
+        <GenericSwitcher
+          items={items}
+          selectedItem={selectedType}
+          setSelectedItem={setSelectedType}
+          path={"/candidate/profile"}
+        />
 
-      <div className={styles.CartDiv}>
-        <div className={styles.titleContainer}>
-          <h1>Trainings</h1>
-          <div className={styles.underline} />
-        </div>
-        <div className={styles.carouselDivContainer}>
-          <div className={styles.carouselDiv}>
-            {isTrainingsLoading ? (
-              <Loading />
-            ) : (
-              <>
-                {cart?.trainings?.length > 0 ? (
-                  <div className={styles.coursesInner}>
-                    {cart?.trainings?.map((course) => (
-                      <CourseElement course={course} type="Training" />
-                    ))}
-                  </div>
-                ) : (
-                  <div className={styles.emptyBox}>
-                    <img src={EmptyTrainings} alt="" />
-                  </div>
-                )}
-              </>
-            )}
-          </div>
+        <div className={styles.content}>
+          {carts?.[selectedType.toLowerCase()]?.length === 0 && (
+            <EmptyBox text="Nothing to see here" />
+          )}
+          {carts?.[selectedType.toLowerCase()]?.map((item) => (
+            <CartCard
+              key={item._id}
+              itemId={item._id}
+              id={item.item?._id}
+              title={item.item?.Title}
+              thumbnail={item.item?.Thumbnail}
+              price={item.item?.Price}
+              category={item.item?.Category}
+              level={item.item?.Level}
+              status={item.status}
+              loading={loading}
+              handleDelete={handleDelete}
+              handlePaid={handlePaid}
+            />
+          ))}
         </div>
       </div>
+      <ConfirmPaidModal
+        open={openModal}
+        onClose={onClose}
+        setCarts={setCarts}
+        itemType={selectedType}
+        itemIdSelected={itemIdSelected}
+      />
     </div>
   );
 };
