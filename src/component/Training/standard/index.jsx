@@ -44,8 +44,8 @@ const StandardTraining = (props) => {
     if (token) {
       const config = {
         headers: {
-          authorization: `Bearer ${token}`
-        }
+          authorization: `Bearer ${token}`,
+        },
       };
       const url2 = `${process.env.REACT_APP_API}api/userData`;
       try {
@@ -85,7 +85,7 @@ const StandardTraining = (props) => {
     state: "",
     certificate: "",
     evaluate: [],
-    rating: 0
+    rating: 0,
   });
   const style = {
     position: "absolute",
@@ -98,7 +98,7 @@ const StandardTraining = (props) => {
     boxShadow: 24,
     pt: 2,
     px: 4,
-    pb: 3
+    pb: 3,
   };
 
   useEffect(() => {
@@ -112,7 +112,7 @@ const StandardTraining = (props) => {
     time: new Date(""),
     duration: "",
     message: "",
-    NotifType: "Customization"
+    NotifType: "Customization",
   };
 
   const [openCustom, setOpenCustom] = React.useState(false);
@@ -134,7 +134,7 @@ const StandardTraining = (props) => {
     "Date",
     "format",
     "durée de la formation",
-    "Autre..."
+    "Autre...",
   ];
 
   const [selectedOptions, setSelectedOptions] = useState([]);
@@ -162,13 +162,13 @@ const StandardTraining = (props) => {
     time: new Date(""),
     duration: "",
     message: "",
-    NotifType: "Customization"
+    NotifType: "Customization",
   });
 
   const handleSend = async (e) => {
     e.preventDefault();
     const config = {
-      headers: { authorization: `Bearer ${localStorage.getItem("token")}` }
+      headers: { authorization: `Bearer ${localStorage.getItem("token")}` },
     };
     const url = `${process.env.REACT_APP_API}api/notifications/saveNotifications`;
     axios.post(url, CustomizeNotif, config).then((res) => {
@@ -207,7 +207,7 @@ const StandardTraining = (props) => {
 
   const GetUsers = async (ids) => {
     const config = {
-      headers: {}
+      headers: {},
     };
     axios
       .post(
@@ -240,7 +240,7 @@ const StandardTraining = (props) => {
               message: e.message,
               rate: e.rate,
               name: u.userName,
-              image: u.image
+              image: u.image,
             });
           }
         });
@@ -264,7 +264,7 @@ const StandardTraining = (props) => {
         `${process.env.REACT_APP_API}api/trainings/specific`,
         {
           params: { id: id },
-          headers: { authorization: `Bearer ${localStorage.getItem("token")}` }
+          headers: { authorization: `Bearer ${localStorage.getItem("token")}` },
         },
         {}
       )
@@ -326,7 +326,7 @@ const StandardTraining = (props) => {
     Tunisia: { currency: "Tunisian dinar", code: "TND" },
     Egypt: { currency: "Egyptian pound", code: "EGP" },
     "United Kingdom": { currency: "Pound sterling", code: "GBP" },
-    "United States": { currency: "United States dollar", code: "USD" }
+    "United States": { currency: "United States dollar", code: "USD" },
   };
 
   useEffect(() => {
@@ -357,7 +357,7 @@ const StandardTraining = (props) => {
         sx={{
           width: 200,
           display: "flex",
-          alignItems: "center"
+          alignItems: "center",
         }}
       >
         {/* <Rating
@@ -397,7 +397,7 @@ const StandardTraining = (props) => {
 
   const handleLastSeen = async () => {
     const config = {
-      headers: { authorization: `Bearer ${token}` }
+      headers: { authorization: `Bearer ${token}` },
     };
     try {
       const url = `${process.env.REACT_APP_API}api/Candidat/lastSeenTraining`;
@@ -418,7 +418,7 @@ const StandardTraining = (props) => {
   const handleCart = async () => {
     request.create("cart", {
       itemType: "training",
-      itemId: Data._id
+      itemId: Data._id,
     });
   };
 
@@ -700,7 +700,7 @@ const StandardTraining = (props) => {
                             Date :
                           </h1>
                           {Data.state !== "expired" ? (
-                            <p className={style.radioLable}>{}</p>
+                            <p>{datesDisplay}</p>
                           ) : (
                             <p>session concluded</p>
                           )}
@@ -710,19 +710,13 @@ const StandardTraining = (props) => {
                 </p> */}
                         <ul>
                           <li>
-                            Instructor: <span> 4 hours/Day</span>
+                            Instructor: <span> {Data.Instructor || "-"}</span>
                           </li>
                           <li>
-                            Duration: <span> 2 hours/Day</span>
+                            Duration: <span> {Data.Duration}</span>
                           </li>
                           <li>
-                            Lectures:{" "}
-                            <span>
-                              {new Date(Data.TimePerDay).toLocaleTimeString(
-                                [],
-                                { hour: "2-digit", minute: "2-digit" }
-                              )}
-                            </span>
+                            Lectures: <span> {Data.TimePerDay}</span>
                           </li>
                           <li>
                             Level: <span> {Data.Level}</span>
